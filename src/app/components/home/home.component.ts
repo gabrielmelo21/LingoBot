@@ -29,6 +29,10 @@ export class HomeComponent {
       case 2:
         this.router.navigate(['/videos']);
         break;
+      case 3:
+        this.router.navigate(['/quests']);
+        break;
+
       default:
         console.warn("Nenhuma rota definida para este índice:", number);
     }

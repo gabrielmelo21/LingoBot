@@ -26,7 +26,8 @@ import { FooterLinksComponent } from './footer-links/footer-links.component';
 import { FlashcardsComponent } from './flashcards/flashcards.component';
 import { HeaderComponent } from './header/header.component';
 import { DiscoverExpressionsComponent } from './discover-expressions/discover-expressions.component';
-import { LingobotCardComponent } from './lingobot-card/lingobot-card.component'
+import { LingobotCardComponent } from './lingobot-card/lingobot-card.component';
+import { QuestsComponent } from './quests/quests.component'
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { LingobotCardComponent } from './lingobot-card/lingobot-card.component'
     FlashcardsComponent,
     HeaderComponent,
     DiscoverExpressionsComponent,
-    LingobotCardComponent
+    LingobotCardComponent,
+    QuestsComponent
 
   ],
     exports: [

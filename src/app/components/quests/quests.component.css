@@ -1,0 +1,324 @@
+/* Estilização do Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: linear-gradient(135deg, #4A90E2, #904E95);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  border-radius: 20px;
+}
+
+
+/* Ajuste do Título */
+.header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+
+/* TELAS PC */
+@media (min-width: 769px) {
+
+  .game-button{
+    color: white !important;
+    font-size: 15px !important;
+  }
+
+  .back-btn{
+    width:3% !important;
+    cursor: pointer;
+  }
+  .back-btn:hover{
+    animation: pulse 1.5s infinite;
+  }
+
+  /* Ajuste do Título */
+  .header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 17px;
+    font-weight: bold;
+    margin-top:  0px !important;
+
+
+
+  }
+
+
+}
+
+
+/* Telas Mobile */
+@media (max-width: 768px) {
+
+
+  .game-button{
+    color: white !important;
+  }
+
+
+  /* Ajuste do Título */
+  .header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: -15px !important;
+
+  }
+
+
+  .back-btn{
+    width:10% !important;
+    cursor: pointer;
+    float: left;
+  }
+  .back-btn:hover{
+    animation: pulse 1.5s infinite;
+  }
+}
+
+
+
+
+
+
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas menores */
+}
+
+.left-side, .right-side {
+  box-sizing: border-box; /* Garante que o padding e a borda não afetem a largura */
+}
+
+.left-side {
+  flex: 0 0 60%; /* Ocupa 65% da largura */
+}
+
+.right-side {
+  flex: 0 0 40%; /* Ocupa 35% da largura */
+
+}
+
+
+
+
+
+.speech-bubble-container {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Aumentei o espaço entre imagem e balão */
+  margin-right: 10px;
+  width: 90%;
+}
+
+.person-icon {
+  width: 150px; /* Aumentei o tamanho da imagem */
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover; /* Garante que a imagem não distorça */
+  margin-left: 20px; /* Espaço extra à esquerda */
+}
+
+
+
+
+.speech-bubble {
+  position: relative;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 500px; /* Aumentei a largura máxima */
+  font-size: 1.1rem;
+  line-height: 1.4;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adicionei sombra sutil */
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  left: -20px; /* Ajuste para a imagem maior */
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid #f1f1f1; /* Tamanho aumentado da ponta */
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-side, .right-side {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .speech-bubble-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .person-icon {
+    width: 100px;
+    height: 100px;
+    margin-left: 0;
+  }
+
+  .speech-bubble {
+    max-width: 90%;
+    margin-left: 20px;
+  }
+
+  .speech-bubble::before {
+    left: 20px;
+    top: -20px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #f1f1f1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** BOTÃO   ESTILO JOGO **/
+.game-button {
+  padding: 25px;
+  font-size: 12pt  ;
+  color: white  ;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  background: linear-gradient(145deg, #007bff, #6f42c1);
+  box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-in-out;
+}
+
+.game-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Animações */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+
+.game-button:hover {
+  background: linear-gradient(145deg, #1e90ff, #8a2be2);
+  animation: pulse 1.5s infinite;
+}
+
+.game-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.1)
+  );
+  transition: left 0.5s ease-in-out;
+}
+
+.game-button:hover::before {
+  left: 100%;
+}
+
+
+.white-button {
+  padding: 25px;
+  color: #007bff !important; /* Texto azul */
+  border: 2px solid #007bff; /* Borda azul */
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  background: white; /* Fundo branco */
+  box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3); /* Sombra 3D */
+  transition: all 0.1s ease-in-out;
+}
+
+.white-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.white-button:hover {
+  background: #f0f0f0; /* Fundo cinza claro ao passar o mouse */
+}
+
+.white-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 123, 255, 0.1),
+    rgba(0, 123, 255, 0.4),
+    rgba(0, 123, 255, 0.1)
+  );
+  transition: left 0.5s ease-in-out;
+}
+
+.white-button:hover::before {
+  left: 100%;
+}
+
+
+.button-container {
+  display: flex;
+  align-items: center; /* Alinha os botões verticalmente */
+  gap: 20px; /* Espaçamento entre os botões */
+  margin-top: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

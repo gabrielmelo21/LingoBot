@@ -1,0 +1,145 @@
+
+<header class="header">
+  <img src="assets/lingobot/icons/return-icon.png" (click)="navigate_to()" class="back-btn">
+  <h1 class="header-title">Desafios do LingoBot</h1>
+</header>
+
+<!--
+
+1. Listening (Compreensão Auditiva)
+O usuário ouve um áudio gerado pela IA sobre um tema aleatório e deve responder com um resumo ou transcrição do que foi dito. A IA avalia a resposta e retorna um feedback indicando se está correta.
+
+2. Writing (Escrita)
+O usuário recebe um tema e deve escrever um texto curto. A IA analisa a gramática, coerência e vocabulário, sugerindo correções e melhorias.
+
+3. Reading (Leitura)
+O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo ser de múltipla escolha ou completar frases. A IA avalia a precisão das respostas.
+
+-->
+
+
+
+
+
+
+<div class="container" style="margin-top: 20px">
+  <div class="left-side">
+    <div class="speech-bubble-container"  >
+      <img src="assets/lingobot/lingobot-explicando4.png" class="person-icon">
+      <div class="speech-bubble">
+
+        <div  *ngIf="userChoiceStatus==''">
+          <p>Aqui irei te propor desafios de <b>Listening, Writing e Reading</b>, cada um desses
+            desafios irá fazer você evoluir seu Inglês e você <b>ganha LingoPoints com isso sobe no Ranking.</b>
+            <br>Eu sempre vou te <b>avaliar, dizendo
+              se sua resposta está correta ou errada e onde errou</b>, agora me diga, qual habilidade quer treinar?
+          </p>
+
+          <div class="button-container animation-zoom">
+            <button mat-flat-button class="game-button" (click)="userChoice('listening')">Listening</button>
+            <button mat-flat-button class="game-button" (click)="userChoice('writing')">Writing</button>
+            <button mat-flat-button class="game-button" (click)="userChoice('reading')">Reading</button>
+          </div>
+
+        </div> <!-- fase 1 -->
+
+        <div  *ngIf="userChoiceStatus=='listening'">
+
+          <!-- tip Da pro usuairo escolher o tema do audio -->
+           <p>Muito bem! ótima escolha, vamos treinar <b>Listening (Compreensão Auditiva)</b>
+             Irei te mostrar um audio com um tema aleatório e você deve me dizer qual o assunto do audio,
+             Você deve responder na caixa de texto, após isso irei avaliar a resposta!
+           </p>
+
+
+          <div class="button-container animation-zoom">
+            <button mat-flat-button class="white-button" (click)="userChoice('')">Voltar</button>
+            <button mat-flat-button class="game-button" (click)="userChoice('listening')">Gerar Exercício</button>
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div> <!-- left side -->
+
+
+<!--
+    <div *ngIf="isLoading" class="loading-container">
+      <img src="assets/lingobot/lingobot-com-martelo.png"  class="lingobot-loading">
+      <h2>LingoBot está trabalhando nisso...</h2>
+    </div>
+*ngIf="userChoiceStatus==''"
+-->
+
+
+
+
+
+
+<!--
+
+
+
+
+
+        <div *ngIf="userChoiceStatus=='youtube'">
+          <p>Ok! <b>Ótima escolha (nome)</b>, agora me informe qual o link do <b>YouTube</b> para eu poder carregar o vídeo para você e vamos estudar com algum conteúdo legal!
+          </p>
+
+          <form [formGroup]="formulario" style="margin:15px;margin-top:30px !important;">
+            <mat-form-field style="width: 100%">
+              <mat-label>Link do YouTube</mat-label>
+              <input matInput formControlName="url_youtube" placeholder="Cole o link do YouTube aqui">
+            </mat-form-field>
+          </form>
+
+
+          <div class="button-container animation-zoom">
+            <button mat-flat-button class="white-button" (click)="userChoice('')" >Voltar</button>
+            <button mat-flat-button class="game-button" (click)="loadVideo()">Carregar Vídeo</button>
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="button-container animation-zoom ifMobile_marginTop" *ngIf="userChoiceStatus==''">
+          <button mat-flat-button class="white-button" (click)="userChoice('video_aleatorio')" >Vídeo Aleatório</button>
+          <button mat-flat-button class="game-button" (click)="userChoice('youtube')"  >Vídeo do Youtube</button>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+  -->
+
+
+  <div class="right-side">
+    <app-lingobot-card></app-lingobot-card>
+  </div>
+
+
+</div>
+
+
+
+
+

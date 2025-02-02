@@ -10,6 +10,7 @@ import {RedirectComponent} from "./components/redirect/redirect.component";
 import {TeacherComponent} from "./components/teacher/teacher.component";
 import {DiscoverExpressionsComponent} from "./components/discover-expressions/discover-expressions.component";
 import {FlashcardsComponent} from "./components/flashcards/flashcards.component";
+import {QuestsComponent} from "./components/quests/quests.component";
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: "teacher", component: TeacherComponent},
   { path: "discoverExpressions", component: DiscoverExpressionsComponent },
   { path: "flashcards", component: FlashcardsComponent },
+  { path: "quests", component: QuestsComponent }
 
 
 
