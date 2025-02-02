@@ -1,0 +1,50 @@
+.my-smartcards-conteiner{
+  height: 660px;
+  margin:10px !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background:rgba(0,0,0,.6);
+  border-radius:20px;
+
+  scrollbar-width: thin; /* Opções: auto, thin, none */
+  scrollbar-color: #888 transparent; /* thumb color track color */
+
+}
+
+.container {
+  display: flex;
+  height: 50vh; /* Para ocupar a altura total da tela */
+}
+
+.sidebar {
+  flex: 0 0 30%;
+
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  margin-bottom: 10px; /* Espaço entre os botões */
+  background:transparent !important;
+  color:white !important;
+  border-radius: 20px;
+}
+
+.thumb{
+  background:rgba(0,0,0,.6);
+  border-radius:20px;
+  padding: 10px;
+  margin:10px;
+}
+
+.button:hover{
+  background: #FFFFFF !important;
+  color:black !important;
+}
+
+.content {
+  flex: 1;
+
+  padding: 20px;
+}

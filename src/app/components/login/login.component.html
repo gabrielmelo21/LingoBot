@@ -1,0 +1,229 @@
+<div class="conteiner">
+
+
+<!--
+<app-logo-header></app-logo-header>
+
+  -->
+
+  <div class="top-bar">
+
+  </div>
+
+
+
+<div class="presentation-container" *ngIf="showPresentation">
+  <div class="thumb">
+
+
+
+
+    <img src="assets/lingobot/logo-final.png" alt="Logo"  style="margin-top:50px" class="animation-zoom main-logo">
+
+    <div class="rotating-feature-container animation-zoom">
+      <p class="rotating-feature fade-in">{{ features[currentFeatureIndex] }}</p>
+    </div>
+
+    <img src="assets/lingobot/lingobot-fotogenico.png" class="lingbot animation-zoom">
+
+    <div class="button-container animation-zoom">
+      <button mat-flat-button class="game-button" (click)="openModal('criarConta')">Criar conta</button>
+      <button mat-flat-button class="white-button" (click)="openModal('login')">Já tenho conta</button>
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+  <!-- Estrutura do modal -->
+  <div class="modal-overlay " *ngIf="isModalOpen"  >
+    <div class="modal-content animation-zoom  ">
+
+      <img *ngIf="modalType=='login'" src="assets/lingobot/logo-final.png" alt="Logo"  style="margin:10px;width: 40%" class="animation-zoom">
+
+      <button class="close-button" (click)="closeModal()">×</button>
+
+
+      <div *ngIf="modalType=='criarConta'">
+        <div  >
+          <div  >
+            <!-- Spinner de loading -->
+            <div *ngIf="loginIsLoading" class="spinner-container">
+              <mat-spinner class="spinner" style="width: 100%;"></mat-spinner>
+              <br>
+              <h4 style="text-align: center">Loading...</h4>
+            </div>
+
+            <!-- Spinner de loading secundário -->
+            <div *ngIf="isLoading" class="spinner-container">
+              <mat-spinner class="spinner" style="width: 100%;"></mat-spinner>
+            </div>
+
+            <!-- Mensagem de sucesso -->
+            <div style="text-align: center" *ngIf="successImg">
+              <div class="center animation-zoom">
+                <img src="assets/check-mark.png" width="50%" height="50%">
+              </div><br>
+              <h4>Sucesso ao criar conta!</h4>
+            </div>
+
+            <!-- Mensagem de falha -->
+            <div style="text-align: center" *ngIf="failImg">
+              <div class="center animation-zoom">
+                <img src="assets/error.png" width="50%" height="50%">
+              </div><br>
+              <h4>Falha ao criar conta, tente novamente.</h4><br>
+              <button (click)="tentarNovamente()" mat-fab extended class="game-button">Tentar Novamente</button>
+            </div>
+
+            <!-- Formulário dividido em partes -->
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+              <!-- Parte 1: Nome e Sobrenome -->
+              <div *ngIf="currentStep === 1" class="form-step">
+                <h3>Passo 1: Informações Pessoais</h3>
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Nome</mat-label>
+                  <input matInput formControlName="nome" type="text" required>
+                  <mat-error *ngIf="signupForm.get('nome')?.invalid && signupForm.get('nome')?.touched">
+                    Nome é obrigatório
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Sobrenome</mat-label>
+                  <input matInput formControlName="sobrenome" type="text" required>
+                  <mat-error *ngIf="signupForm.get('sobrenome')?.invalid && signupForm.get('sobrenome')?.touched">
+                    Sobrenome é obrigatório
+                  </mat-error>
+                </mat-form-field>
+
+                <div class="button-container">
+                  <button mat-flat-button class="game-button" type="button" (click)="nextStep()">Próximo</button>
+                </div>
+              </div>
+
+              <!-- Parte 2: Email, Senha e Confirmar Senha -->
+              <div *ngIf="currentStep === 2" class="form-step">
+                <h3>Passo 2: Credenciais</h3>
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Email</mat-label>
+                  <input matInput formControlName="email" type="email" required>
+                  <mat-error *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+                    Email inválido
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Senha</mat-label>
+                  <input matInput formControlName="senha" type="password" required>
+                  <mat-error *ngIf="signupForm.get('senha')?.invalid && signupForm.get('senha')?.touched">
+                    A senha deve ter pelo menos 6 caracteres
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width">
+                  <mat-label>Confirme a Senha</mat-label>
+                  <input matInput formControlName="confirmSenha" type="password" required>
+                  <mat-error *ngIf="signupForm.get('confirmSenha')?.invalid && signupForm.get('confirmSenha')?.touched || signupForm.hasError('mismatch')">
+                    As senhas não correspondem
+                  </mat-error>
+                </mat-form-field>
+
+                <div *ngIf="signupForm.hasError('mismatch') && signupForm.get('confirmSenha')?.touched" class="mismatch-message">
+                  As senhas não correspondem
+                </div>
+
+                <div class="button-container">
+                  <button mat-flat-button class="white-button" type="button" (click)="prevStep()">Voltar</button>
+                  <button mat-flat-button class="game-button" type="submit">Criar conta</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div *ngIf="modalType=='login'">
+
+        <form [formGroup]="loginForm" *ngIf="isLoginMode && !loginIsLoading" (ngSubmit)="onLogin()">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" formControlName="password" required>
+          </mat-form-field>
+
+          <p style="color:red;" *ngIf="loginErrorMsg">Email ou senha incorretos, tente novamente.</p>
+          <!--
+          <div class="button-container">
+            <button mat-fab extended class="btn-tool full-width" type="submit">Entrar</button>
+          </div>
+         -->
+        </form>
+        <div class="modal-actions">
+          <button mat-flat-button class="white-button" >Esqueci a Senha</button>
+          <button mat-flat-button class="game-button" (click)="closeModal()">Entrar</button>
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+<div *ngIf="!showPresentation" style="margin-top: 80px;">
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+<!--
+      <div class="google-login-container">
+        <div class="divLine"></div>
+        <p>Ou entrar com Google</p>
+        <div class="center">
+          <div id="g_id_onload"
+               data-client_id="879122831607-t6m3307s3h3ngrnbibg3g8pbt2efc9ei.apps.googleusercontent.com"
+               data-context="signin"
+               data-ux_mode="popup"
+               data-login_uri="http://localhost:8085/googleLogin"
+               data-auto_prompt="false">
+          </div>
+
+          <div class="g_id_signin"
+               data-type="standard"
+               data-shape="rectangular"
+               data-theme="outline"
+               data-text="signin_with"
+               data-size="large"
+               data-logo_alignment="left">
+          </div>
+        </div>
+
+
+      </div>
+-->

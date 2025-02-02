@@ -1,0 +1,137 @@
+/* TELAS PC */
+@media (min-width: 769px) {
+
+  .game-button{
+    color: white !important;
+     font-size: 15pt !important;
+  }
+
+  .back-btn{
+    width:3% !important;
+    cursor: pointer;
+  }
+  .back-btn:hover{
+    animation: pulse 1.5s infinite;
+  }
+
+  /* Ajuste do Título */
+  .header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 17px;
+    font-weight: bold;
+    margin-top:  0px !important;
+
+
+
+  }
+
+
+}
+
+
+/* Telas Mobile */
+@media (max-width: 768px) {
+
+  .game-button{
+    color: white !important;
+    font-size: 15px !important;
+  }
+
+
+  /* Ajuste do Título */
+  .header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: -15px !important;
+
+  }
+
+
+  .back-btn{
+    width:10% !important;
+    cursor: pointer;
+    float: left;
+  }
+  .back-btn:hover{
+    animation: pulse 1.5s infinite;
+  }
+}
+
+
+/* Estilização do Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: linear-gradient(135deg, #4A90E2, #904E95);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  border-radius: 20px;
+}
+
+
+/* Ajuste do Título */
+.header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+
+
+
+
+/* Grid Principal */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  gap: 20px;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Card do Formulário */
+.form-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagem */
+.image-container img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Responsividade para Mobile */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Uma coluna no mobile */
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-title {
+    margin-top: 10px;
+  }
+}
+
+
+
+
+
+

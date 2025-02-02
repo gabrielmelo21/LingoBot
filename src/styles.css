@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+/* styles.css (ou styles.scss) */
+
+
+html, body { height: 100%;   }
+body { margin: 0;    overflow-y: scroll;overflow-x: hidden  }
+
+
+.btn-tool{
+  margin-right: 10px;
+  margin-top:20px;
+  background-image: url('https://images.pexels.com/photos/6985118/pexels-photo-6985118.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  margin-right: auto;
+  font-family: 'Bangers', cursive;
+
+  background: linear-gradient(45deg, #00ffff, #800080); /* Gradiente ciano a roxo */
+  background-clip: text; /* Aplicar o gradiente ao texto */
+  -webkit-background-clip: text; /* Para navegadores baseados em Webkit */
+  color: transparent; /* Tornar o texto transparente para mostrar o gradiente */
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.1); /* Text-shadow branco bonito */
+  letter-spacing: 2px; /* Aumentar o espaçamento entre as letras */
+  padding-right: 10px; /* Adicionar um espaço extra à direita */
+
+  text-align: center;
+  margin: 20px;
+  padding: 4px;
+
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0.1); /* Começa bem pequeno */
+  }
+  to {
+    transform: scale(1); /* Chega ao tamanho normal */
+  }
+}
+
+.animation-zoom {
+  animation: zoom 1.2s ease-in-out;
+}
+
+.texto{
+  margin:10px !important;
+  padding:10px !important;
+  text-align: center !important;
+  font-size: 16pt !important;
+}
+.titulo{
+  color: white;
+  font-weight: bold;
+  margin:10px !important;
+  padding:10px !important;
+  text-align: center !important;
+  font-size: 25pt !important;
+}
+.color{
+  color:white !important;
+  font-weight: bold !important;
+}
+
+.borderRadius10{
+  border-radius: 10px !important;
+}
+
+.divLine {
+  height: 1px;
+  background-color: #1c1c1c;
+  margin: 10px 0; /* Ajuste as margens conforme necessário */
+}
+
+button:focus,
+button:active,
+a:focus,
+a:active {
+  outline: none !important;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+

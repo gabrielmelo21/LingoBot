@@ -1,0 +1,372 @@
+
+
+.fade-in{
+  animation: fade-in 0.5s ease-in-out; /* Aplica a animação de fade-in */
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5px;
+}
+
+
+
+/* Telas Mobile */
+@media (max-width: 768px) {
+
+
+  /* Container para a frase rotativa */
+  .rotating-feature-container {
+    margin-top: 80px; /* Espaço para a barra fixa no topo */
+    text-align: center;
+
+  }
+
+  /* Estilo da frase rotativa */
+  .rotating-feature {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    position: absolute;
+    width: 90%;
+    padding: 10px;
+    text-align: center;
+    color: black !important;
+    font-weight: bold;
+    font-size: 13pt;
+    margin-top: -60px !important;
+  }
+
+  .lingbot{
+    width: 70%;
+    border-radius: 40% !important;
+
+  }
+  .main-logo{
+    width: 50%;
+    height: 50%;
+  }
+}
+/** PC **/
+@media (min-width: 768px) {
+  .lingbot{
+    width: 20%;
+    border-radius:40% !important;
+    margin: 20px;
+  }
+
+  .main-logo{
+    width: 30%;
+    height: 30%;
+  }
+
+
+
+
+  /* Container para a frase rotativa */
+  .rotating-feature-container {
+    margin-top: 80px; /* Espaço para a barra fixa no topo */
+    text-align: center;
+
+  }
+
+  /* Estilo da frase rotativa */
+  .rotating-feature {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+
+    padding: 10px;
+    text-align: center;
+    color: black !important;
+    font-weight: bold;
+    font-size: 13pt;
+    margin-top: -60px !important;
+  }
+
+
+}
+
+
+/* Barra fixa no topo */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px; /* Altura da barra */
+  background: linear-gradient(90deg, #007bff, #6f42c1); /* Gradiente azul para roxo */
+  z-index: 1000; /* Garante que a barra fique acima de outros elementos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* Cor do texto */
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+
+
+
+/* Classe para mostrar a frase com fade-in */
+.rotating-feature.fade-in {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+
+
+
+
+/** BOTÃO   ESTILO JOGO **/
+game-button, .game-button {
+  padding: 15px 30px;
+  font-size: 15pt;
+  font-weight: bold;
+  color: white !important;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  background: linear-gradient(145deg, #007bff, #6f42c1);
+  box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-in-out;
+}
+
+.game-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Animações */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+
+.game-button:hover {
+  background: linear-gradient(145deg, #1e90ff, #8a2be2);
+  animation: pulse 1.5s infinite;
+}
+
+.game-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.1)
+  );
+  transition: left 0.5s ease-in-out;
+}
+
+.game-button:hover::before {
+  left: 100%;
+}
+
+
+
+
+
+
+
+
+
+.white-button {
+  padding: 15px 30px;
+  font-size: 10pt;
+  font-weight: bold;
+  color: #007bff; /* Texto azul */
+  text-transform: uppercase;
+  border: 2px solid #007bff; /* Borda azul */
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  background: white; /* Fundo branco */
+  box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3); /* Sombra 3D */
+  transition: all 0.1s ease-in-out;
+}
+
+.white-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.white-button:hover {
+  background: #f0f0f0; /* Fundo cinza claro ao passar o mouse */
+}
+
+.white-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 123, 255, 0.1),
+    rgba(0, 123, 255, 0.4),
+    rgba(0, 123, 255, 0.1)
+  );
+  transition: left 0.5s ease-in-out;
+}
+
+.white-button:hover::before {
+  left: 100%;
+}
+.button-container {
+  display: flex;
+  align-items: center; /* Alinha os botões verticalmente */
+  gap: 20px; /* Espaçamento entre os botões */
+  margin-top: 40px;
+}
+
+
+
+
+.presentation-container {
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+
+
+/** MODAL **/
+
+
+/* Estilo do overlay (fundo escuro) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Garante que o modal fique acima de outros elementos */
+}
+
+/* Estilo do conteúdo do modal */
+.modal-content {
+  background: white;
+  padding: 40px 20px 20px; /* Mais espaço no topo para o botão de fechar */
+  border-radius: 15px;
+  width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative; /* Permite posicionar o botão de fechar absolutamente */
+}
+
+/* Estilo do título do modal */
+.modal-content h2 {
+  color: #007bff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Estilo do texto do modal */
+.modal-content p {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Estilo dos botões do modal */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Estilo do botão de fechar (X) */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease;
+  z-index: 9999;
+}
+
+.close-button:hover {
+  color: #333; /* Cor mais escura ao passar o mouse */
+}
+
+
+
+
+
+
+/* Mensagens de erro */
+.mismatch-message {
+  color: #ff4444;
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid #ff4444;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mismatch-message::before {
+  content: '⚠️';
+  font-size: 1.2rem;
+}
+
+/* Container dos botões */
+.button-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.full-width{
+  width: 100%;
+}
+
+
+/* Divisória */
+.divLine {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  margin: 2rem 0;
+}
+

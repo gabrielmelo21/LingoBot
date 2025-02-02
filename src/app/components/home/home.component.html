@@ -1,0 +1,18 @@
+<div class="grid">
+  <div *ngFor="let feature of appFeatures; let i = index"
+       (mouseenter)="playHover()"
+       class="card"
+       [ngClass]="'card-' + (i + 1)"
+       (click)="navigate_to(i)">  <!-- Aqui está o evento de clique -->
+
+    <h3>{{ feature.title }}</h3>
+    <p>{{ feature.details }}</p>
+
+    <!-- Ícone reposicionado -->
+    <div class="card-icon">
+      <img [src]="feature.icon" alt="Icon">
+    </div>
+  </div>
+</div>
+
+

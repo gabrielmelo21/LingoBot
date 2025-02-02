@@ -1,0 +1,44 @@
+<header class="header">
+  <img src="assets/lingobot/icons/return-icon.png" (click)="navigate_to()" class="back-btn">
+  <h1 class="header-title">Meus Flashcards</h1>
+</header>
+
+
+<div *ngIf="listWords$ | async as words">
+    <div class="card-container" style="  background-image:url('assets/lingobot/imgs/corki.png');">
+
+      <div *ngFor="let word of words" class="flip-card " >
+
+        <div class="flip-card-inner"  (mouseenter)="playHover()">
+          <div class="flip-card-front">
+            <h3>{{ word.english }}</h3>
+          </div>
+          <div class="flip-card-back">
+            <mat-icon style='color:red;float:left;margin:10px;' (click)="delete_smartcard(word.id)">delete</mat-icon>
+            <br>
+            <h3>{{ word.portugues }}</h3>
+            <p>{{ word.explain }}</p>
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div *ngIf="emptyList"  style="margin-top: 10%">
+    <div class="center" >  <img src="assets/vazio.png" width="250" height="220" ></div>
+    <br>
+    <h3 class="titulo">Your binder is empty.</h3>
+  </div>
+
+
+
+
+
+
+
+

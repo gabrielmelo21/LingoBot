@@ -1,0 +1,49 @@
+
+<div class="form-card">
+  <div class="speech-bubble-container">
+    <!-- Ícone da pessoa -->
+    <img src="assets/lingobot/lingobot-icon.png"  style="border-radius: 20px" alt="Person Icon" class="person-icon">
+
+    <!-- Balão de fala -->
+    <div class="speech-bubble animation-zoom">
+
+
+      <div class="loading-dots" *ngIf="isLoading">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+
+
+      <p [innerHTML]="lingoBotBobble"></p>
+
+
+
+
+      <form [formGroup]="formulario"   style="margin:15px;margin-top:30px !important;">
+        <mat-form-field *ngIf="!sendQuestion"  style="width: 100%">
+          <mat-label>Ex: "{{expressaoAleatoria}}"</mat-label>
+          <input matInput formControlName="english" (input)="verify_button_completeWithGPT()" >
+        </mat-form-field>
+        <br>
+
+
+        <div class="button-container animation-zoom" *ngIf="this.buttonGPT && !sendQuestion">
+          <button mat-flat-button class="white-button" (click)="justTranslate()" >Apenas Traduza</button>
+          <button mat-flat-button class="game-button" (click)="getLingoBotExplanation()" >Explicação do LingoBot</button>
+        </div>
+
+
+        <div class="button-container animation-zoom" *ngIf="sendQuestion">
+          <button mat-flat-button class="white-button" >Voltar</button>
+          <button mat-flat-button class="game-button"  >Salvar Explicação em Flashcard</button>
+        </div>
+
+      </form>
+
+
+
+    </div>
+
+  </div>
+</div>

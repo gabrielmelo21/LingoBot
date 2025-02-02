@@ -1,0 +1,46 @@
+<!--<h1>Aqui vai ficar a barra de video , video e inputs para marcar expressions </h1>
+-->
+<style>
+  .recording-indicator {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+</style>
+
+<h3 style="text-align: center;margin: 20px;">Tradutor</h3>
+
+
+
+  <!--
+
+  <button *ngIf="buttonGPT" (click)="completeGPT()" mat-raised-button color="primary" type="submit" class="mat-button-sm">
+    Tradu
+  </button>-->
+
+
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" style="margin:15px;margin-top:30px !important;">
+  <mat-form-field  style="width: 100%">
+    <mat-label>Traduzir Palvra/Frase</mat-label>
+    <input matInput formControlName="english"  >
+  </mat-form-field>
+
+
+  <div class="button-container" *ngIf="this.formulario.valid">
+    <button  mat-fab extended class="btn-tool" type="submit" >Traduzir</button>
+  </div>
+
+</form>
+
+<mat-spinner  *ngIf="isLoading"  color="primary" style="margin: 35px auto auto;"></mat-spinner>
+
+<div class="center-container" *ngIf="transalateResponse">
+  <h3>A Traduçao de: {{wordToTranslate}} </h3>
+  <p style="font-size:15pt;">{{transalateResponse}}</p>
+</div>
+
+
+
+
+

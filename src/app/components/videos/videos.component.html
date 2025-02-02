@@ -1,0 +1,93 @@
+<header class="header">
+  <img src="assets/lingobot/icons/return-icon.png" (click)="navigate_to()" class="back-btn">
+  <h1 class="header-title">Estudar com Vídeos</h1>
+</header>
+
+<div class="container" style="margin-top: 20px">
+  <div class="left-side">
+
+
+
+    <div *ngIf="isLoading" class="loading-container">
+      <img src="assets/lingobot/lingobot-com-martelo.png"  class="lingobot-loading">
+      <h2>LingoBot está trabalhando nisso...</h2>
+    </div>
+
+
+
+
+    <div *ngIf="videoURL_youtube!=='' && !isLoading" style="float:left !important;transform: scale(0.6)" >
+      <button mat-flat-button class="white-button" (click)="carregarOutroVideo()" >Carregar outro vídeo</button>
+    </div>
+    <div *ngIf="videoURL_youtube!==''"   class="youtube-container" >
+    <youtube-player   (ready)="onPlayerReady()" [videoId]="this.videoURL_youtube"></youtube-player>
+    </div>
+
+
+
+
+
+
+    <div class="speech-bubble-container" *ngIf="videoURL_youtube==''">
+      <img src="assets/lingobot/lingobot-explicando4.png" class="person-icon">
+      <div class="speech-bubble">
+
+        <div *ngIf="userChoiceStatus==''">
+          <p>Aqui você tem duas opções de estudo, carregar um vídeo aleatório de um de nossos canais recomendados ou
+            carregar um vídeo do <b>YouTube</b> que você desejar apenas colocando o link na caixa de texto abaixo, como deseja Estudar?
+          </p>
+        </div>
+
+
+
+
+        <div *ngIf="userChoiceStatus=='youtube'">
+          <p>Ok! <b>Ótima escolha (nome)</b>, agora me informe qual o link do <b>YouTube</b> para eu poder carregar o vídeo para você e vamos estudar com algum conteúdo legal!
+          </p>
+
+          <form [formGroup]="formulario" style="margin:15px;margin-top:30px !important;">
+            <mat-form-field style="width: 100%">
+              <mat-label>Link do YouTube</mat-label>
+              <input matInput formControlName="url_youtube" placeholder="Cole o link do YouTube aqui">
+            </mat-form-field>
+          </form>
+
+
+          <div class="button-container animation-zoom">
+            <button mat-flat-button class="white-button" (click)="userChoice('')" >Voltar</button>
+            <button mat-flat-button class="game-button" (click)="loadVideo()">Carregar Vídeo</button>
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="button-container animation-zoom ifMobile_marginTop" *ngIf="userChoiceStatus==''">
+          <button mat-flat-button class="white-button" (click)="userChoice('video_aleatorio')" >Vídeo Aleatório</button>
+          <button mat-flat-button class="game-button" (click)="userChoice('youtube')"  >Vídeo do Youtube</button>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+  <!-- Se for mobile, sumir, quando o usuario carregar o video, aparecer-->
+  <div class="right-side">
+    <app-lingobot-card></app-lingobot-card>
+  </div>
+</div>
+
+
+
+
+

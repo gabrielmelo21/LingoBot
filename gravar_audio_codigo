@@ -1,0 +1,104 @@
+  mediaRecorder: MediaRecorder | null = null;
+  audioChunks: Blob[] = [];
+  audioUrl: string | null = null;
+  isRecording: boolean = false;
+  isGoing: boolean = false;
+  isPaused: boolean = false;
+
+
+  transcript: string = '';
+  recognition: any;
+
+  startRecording() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      console.error('getUserMedia not supported on your browser!');
+      return;
+    }
+
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => {
+        this.mediaRecorder = new MediaRecorder(stream);
+        this.mediaRecorder.start();
+        this.isRecording = true;
+        this.isGoing = true; // Atualiza o estado para indicar que a gravação está em andamento
+        console.log('Recording started');
+
+        this.mediaRecorder.ondataavailable = (event) => {
+          this.audioChunks.push(event.data);
+        };
+
+        this.mediaRecorder.onstop = () => {
+          const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
+          this.audioUrl = URL.createObjectURL(audioBlob);
+          this.audioChunks = []; // reset audio chunks
+          this.isRecording = false;
+          this.isGoing = false; // Atualiza o estado para indicar que a gravação parou
+          this.isPaused = false; // Atualiza o estado para indicar que a gravação não está mais pausada
+          console.log('Recording stopped');
+        };
+
+        this.mediaRecorder.onpause = () => {
+          this.isPaused = true;
+          console.log('Recording paused');
+        };
+
+        this.mediaRecorder.onresume = () => {
+          this.isPaused = false;
+          console.log('Recording resumed');
+        };
+      })
+      .catch(error => {
+        console.error('Error accessing microphone:', error);
+      });
+  }
+
+  pauseRecording() {
+    if (this.mediaRecorder && this.isRecording && !this.isPaused) {
+      this.mediaRecorder.pause();
+      console.log('Recording paused');
+    }
+  }
+
+  resumeRecording() {
+    if (this.mediaRecorder && this.isRecording && this.isPaused) {
+      this.mediaRecorder.resume();
+      console.log('Recording resumed');
+    }
+  }
+
+  stopRecording() {
+    if (this.mediaRecorder && this.isRecording) {
+      this.mediaRecorder.stop();
+      console.log('Recording stopped manually');
+
+      // Simulando um segundo clique chamando o método stopRecording novamente
+      setTimeout(() => {
+        if (this.mediaRecorder && this.isRecording) {
+          this.mediaRecorder.stop();
+          console.log('Second stop call');
+        }
+      }, 0); // Chamando imediatamente para simular o duplo clique
+    }
+  }
+
+
+  // O PROXIMO PASSO SERIA FAZER O UPLOAD DO AUDIO PARA O PYTHON
+
+  /** teste **/
+
+
+
+<div>
+  <button (click)="startRecording()" [disabled]="isRecording">Gravar Áudio</button>
+  <button (click)="pauseRecording()" [disabled]="!isRecording || isPaused">Pausar Áudio</button>
+  <button (click)="resumeRecording()" [disabled]="!isRecording || !isPaused">Retomar Áudio</button>
+  <button (dblclick)="stopRecording()" (click)="stopRecording()" [disabled]="!isRecording">Parar Áudio</button>
+</div>
+<div *ngIf="isGoing">
+  <p>Gravando...</p>
+</div>
+<div *ngIf="audioUrl">
+  <h3>Áudio Gravado:</h3>
+  <audio [src]="audioUrl" controls></audio>
+
+</div>
