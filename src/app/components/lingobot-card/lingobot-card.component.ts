@@ -221,7 +221,7 @@ export class LingobotCardComponent {
 
 
 
-
+/**
 
 
   public completeGPT() {
@@ -321,7 +321,7 @@ export class LingobotCardComponent {
   }
 
 
-
+**/
 
 
 

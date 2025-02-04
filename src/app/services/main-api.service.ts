@@ -19,8 +19,8 @@ interface UserData {
   providedIn: 'root'
 })
 export class MainAPIService {
-  private readonly API = 'http://localhost:8085/api';
-  private readonly API3 = "http://127.0.0.1:5000/ask"
+  //private readonly API = 'http://localhost:8085/api';
+  private readonly API = "http://127.0.0.1:5000/"
 
   /**
    * http://localhost:8085/gpt
@@ -32,14 +32,61 @@ export class MainAPIService {
   constructor(private http: HttpClient) { }
 
 
-  public completeWithGPT(prompt: any) {
-    const prompt1 = "Explique de forma resumida a expressão '" + prompt + "'";
-    const data = {
-      "prompt": prompt1
-    };
+  //const prompt0 = "Explique de forma resumida a expressão '" + prompt + "'";
 
-    return this.http.post(this.API3, data, { responseType: 'text' as 'json' });
+
+  public GPT(prompt: string, userText: string, type: string): Observable<any> {
+    let prompt0 = '';
+
+    switch (type) {
+      case "ListeningChecking":
+        prompt0 = `o texto "${userText}" fala sobre o tema disso "${prompt}". é relacionado ou próximo? Responda apenas com True ou False.`;
+        break;
+      case "WritingChecking":
+        prompt0 = `Avalie o seguinte texto em inglês e forneça um JSON com a pontuação de gramática, coerência e vocabulário (0 a 1000 cada), além de erros e sugestões de melhoria. Retorne apenas o JSON, sem explicações extras.
+Texto: "${userText}"
+Tema: "${prompt}"
+Formato de resposta esperado:
+{
+  "gramatica": 1000,
+  "coerencia": 1000,
+  "vocabulario": 1000,
+  "erros": "Descreva erros aqui",
+  "melhorias": "Sugira melhorias aqui",
+  "notaFinal": 3000
+}`;
+        break;
+
+      default:
+        throw new Error("Tipo inválido fornecido para GPT.");
+    }
+
+    const data = { "prompt": prompt0 };
+
+    return this.http.post(this.API + "/chat", data, { responseType: 'text' as 'json' });
   }
+
+
+
+  getText(difficulty: string) {
+    const data = { "difficulty": difficulty };
+    return this.http.post<any>(this.API + "/get-text",  data );
+  }
+
+  getTema(difficulty: string) {
+    const data = { "difficulty": difficulty };
+    return this.http.post<any>(this.API + "/get-temas",  data );
+  }
+
+
+
+
+  //gerar texto para audio
+  getTTS(text: string) {
+    return this.http.post(`${this.API}/tts`, { text }, { responseType: 'blob' });
+  }
+
+
 
 
   public transalateWithGPT(prompt: any){
@@ -48,7 +95,7 @@ export class MainAPIService {
       "prompt": prompt1
     };
 
-    return this.http.post(this.API3, data, { responseType: 'text' as 'json' });
+    return this.http.post(this.API, data, { responseType: 'text' as 'json' });
   }
 
 
@@ -58,7 +105,7 @@ export class MainAPIService {
       "prompt": prompt1
     };
 
-    return this.http.post(this.API3, data, { responseType: 'text' as 'json' });
+    return this.http.post(this.API, data, { responseType: 'text' as 'json' });
   }
 
 
@@ -69,7 +116,7 @@ export class MainAPIService {
       "prompt": prompt1
     };
 
-    return this.http.post(this.API3, data, { responseType: 'text' as 'json' });
+    return this.http.post(this.API, data, { responseType: 'text' as 'json' });
   }
 
 

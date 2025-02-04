@@ -10,6 +10,11 @@ import {catchError, finalize, tap} from "rxjs";
   styleUrls: ['./expression-generator.component.css']
 })
 export class ExpressionGeneratorComponent  {
+
+
+  /**
+   *
+   *
   formulario: FormGroup;
   buttonGPT: boolean = false;
   isLoading: boolean = false;
@@ -65,6 +70,7 @@ export class ExpressionGeneratorComponent  {
   }
 
    showInputs: boolean = false;
+
   public completeGPT() {
 
 
@@ -162,6 +168,6 @@ export class ExpressionGeneratorComponent  {
 
 
   }
-
+**/
 
 }
