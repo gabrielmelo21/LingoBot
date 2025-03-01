@@ -1,0 +1,45 @@
+<div class="ranking-container mobileConfig">
+  <!-- Pódio -->
+  <div class="podium">
+    <div class="rank third podium-item">
+      <img [src]="ranking[2]?.avatar" alt="Avatar" />
+      <div class="name">{{ ranking[2]?.nome }}</div>
+      <div class="score">{{ ranking[2]?.LingoEXP }} LXP</div>
+    </div>
+    <div class="rank first podium-item">
+      <img [src]="ranking[0]?.avatar" alt="Avatar" />
+      <div class="name">{{ ranking[0]?.nome }}</div>
+      <div class="score">{{ ranking[0]?.LingoEXP }} LXP</div>
+    </div>
+    <div class="rank second podium-item">
+      <img [src]="ranking[1]?.avatar" alt="Avatar" />
+      <div class="name">{{ ranking[1]?.nome }}</div>
+      <div class="score">{{ ranking[1]?.LingoEXP }} LXP</div>
+    </div>
+  </div>
+
+  <!-- Lista de outros jogadores -->
+  <div class="ranking-list">
+    <div *ngFor="let player of ranking.slice(3); let i = index" [ngClass]="{ 'highlight': player.email === user.email }" class="ranking-item">
+      <img [src]="player.avatar" class="ranking-avatar" alt="Avatar" />
+      <div class="ranking-position">{{ i + 4 }}&deg;</div> <!-- Posição numérica começa do 4 -->
+      <div class="ranking-name">{{ player.nome }}</div>
+      <div class="ranking-score">{{ player.LingoEXP }} LXP</div>
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+  @media (max-width: 768px) {
+    .ranking-container {
+      margin-top: 120px;
+      padding: 20px;
+    }
+    .mobileConfig{
+      margin-left: -20px !important;
+      width: 100% !important;
+    }
+  }
+</style>

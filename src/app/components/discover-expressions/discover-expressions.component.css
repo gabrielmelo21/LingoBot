@@ -33,7 +33,9 @@
 
 /* Telas Mobile */
 @media (max-width: 768px) {
-
+  .imgDisplayNone{
+    display: none;
+  }
   .game-button{
     color: white !important;
     font-size: 15px !important;
@@ -52,14 +54,10 @@
   }
 
 
-  .back-btn{
-    width:10% !important;
-    cursor: pointer;
-    float: left;
-  }
-  .back-btn:hover{
-    animation: pulse 1.5s infinite;
-  }
+
+
+
+
 }
 
 

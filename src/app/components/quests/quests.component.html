@@ -42,15 +42,15 @@ O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo 
     </div>
 
 
-    <!-- Card de Sucesso -->
+    <!-- Card de Sucesso
     <div *ngIf="isCorrectAnswer" class="card success-card">
       <img src="assets/lingobot/lingobot-fotogenico-transparente.png" alt="Sucesso">
       <h2 class="success-title"><b>Parabéns</b>!</h2>
       <p class="success-text">Você acertou e ganhou <b>{{ calculatedPoints }}</b> LingoEXP!</p>
       <button   mat-flat-button (click)="continue()" class="game-button">Continuar</button>
     </div>
-
-    <!-- Card de Erro -->
+    -->
+    <!-- Card de Erro
     <div *ngIf="isWrongAnswer" class="card error-card">
       <img src="assets/lingobot/lingobot-triste.png" alt="Erro">
       <h2 class="error-title"><b>Que pena!</b></h2>
@@ -61,32 +61,192 @@ O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo 
 
 
 
+          localStorage.setItem("isLevelUp", "true");
+      localStorage.setItem("new_level", userData.Level+"")
+
+
+    -->
+
+    <app-modal-feedback
+      [title]="'Parabéns!'"
+      [message]="'Você acertou e ganhou ' + calculatedPoints + ' LingoEXP!'"
+      [image]="'assets/lingobot/lingobot-resposta-correta2.png'"
+      [buttonText]="'Continuar'"
+      [isVisible]="isCorrectAnswer"
+      (onClose)="continue()"
+    ></app-modal-feedback>
+
+    <app-modal-feedback
+      [title]="'Que pena!'"
+      [message]="'Você errou! Diminua a dificuldade se precisar, mas não desista, tente novamente.'"
+      [image]="'assets/lingobot/lingobot-resposta-errada2.png'"
+      [buttonText]="'Continuar'"
+      [isVisible]="isWrongAnswer"
+      (onClose)="continue()"
+    ></app-modal-feedback>
+
+
+
 
     <div class="speech-bubble-container" *ngIf="!isLoading" >
       <img src="assets/lingobot/lingobot-explicando4.png" class="person-icon">
       <div class="speech-bubble">
 
 
-
-
-
+        <!--
+ <button (click)="retiraMoedas()" >Retirar moedas</button>
+ <button (click)=" colocarMoedas()" >Colocar moedas</button>
+        -->
 
 
 
         <div  *ngIf="userChoiceStatus==''">
+
+                <h2><b>Desafios do LingoBot</b> <br> (Intermediário)</h2>
           <p>Aqui irei te propor desafios de <b>Listening, Writing e Reading</b>, cada um desses
             desafios irá fazer você evoluir seu Inglês e você <b>ganha LingoEXP com isso sobe de Nível e Ranking Global.</b>
             <br>Eu sempre vou te <b>avaliar, dizendo
               se sua resposta está correta ou errada e onde errou</b>, agora me diga, qual habilidade quer treinar?
           </p>
 
-          <div class="button-container animation-zoom">
-            <button mat-flat-button class="game-button" (click)="userChoice('listening')">Listening</button>
-            <button mat-flat-button class="game-button" (click)="userChoice('writing')">Writing</button>
-            <button mat-flat-button class="game-button" (click)="userChoice('reading')">Reading</button>
+          <!--
+                <div class="button-container animation-zoom">
+                  <button mat-flat-button class="game-button" (click)="userChoice('listening')">Listening</button>
+                  <button mat-flat-button class="game-button" (click)="userChoice('writing')">Writing</button>
+                  <button mat-flat-button class="game-button" (click)="userChoice('reading')">Reading</button>
+                </div>
+
+
+             3 banner nivel intermediario -->
+
+
+          <div
+            (mouseenter)="onMouseEnter()"
+            (click)="userChoice('listening')"
+            style="background-image: url('assets/lingobot/lingobot-estudando-listening-banner.png'); background-position: center; background-size: 160%;"
+            class="card-study">
+            <h3>Listening</h3>
           </div>
+           <br>
+
+          <div
+            (mouseenter)="onMouseEnter()"
+            (click)="userChoice('writing')"
+            style="background-image: url('assets/lingobot/lingobot-estudando-writing-banner5.png');background-position: center; background-size: 160%;"
+            class="card-study">
+            <h3>Writing</h3>
+          </div>
+          <br>
+
+          <div
+            (mouseenter)="onMouseEnter()"
+            (click)="userChoice('reading')"
+            style="background-image: url('assets/lingobot/lingobot-estudando-reading-banner.png');background-position: center;  background-size: 160%;"
+            class="card-study">
+            <h3>Reading</h3>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
         </div> <!-- fase 1 -->
 
+
+
+
+        <!-- Exercício de Reading  Config -->
+        <div  *ngIf="userChoiceStatus=='reading'">
+          <p>Muito bem! ótima escolha, vamos treinar <b>Reading (Leitura)</b>
+            Irei te propor um texto com tema aleatório para você ler e responder escolhendo uma das
+            opções <b>A, B, C ou D</b>
+          </p><br>
+          <h4>Configuração de Dificuldade, quanto mais difícil mais <b>LingoEXP</b></h4>
+
+          <div class="button-container animation-zoom">
+
+            <button mat-flat-button class="white-button" [class.active]="isActive('easy')"   (click)="selectDifficulty('easy')">Easy</button>
+            <button mat-flat-button class="white-button" [class.active]="isActive('medium')"  (click)="selectDifficulty('medium')">Medium</button>
+            <button mat-flat-button class="white-button" [class.active]="isActive('hard')" (click)="selectDifficulty('hard')">Hard</button>
+
+          </div>
+
+          <br>
+          <!--
+                   <b>LingoEXP</b> base por dificuldade do Tema: <b style="color:#2ecc71;">+{{calculatedPoints}} LE</b>
+          -->
+          <div class="loading-dots" *ngIf="isLoading">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+          <br>
+
+          <div *ngIf="showFailMessage" class="fail-message">
+          Você está sem <b>LingoTokens</b>, vá na opção Planos e adiquira LingoTokens.
+          </div>
+
+
+
+          <div class="button-container animation-zoom">
+            <button mat-flat-button class="white-button" (click)="userChoice('')">Voltar</button>
+            <button *ngIf="this.selectedDifficulty" mat-flat-button class="game-button" (click)="gerarExercicio('reading')">Gerar Exercício</button>
+          </div>
+
+        </div>
+
+
+
+
+        <!-- Exercício de Reading -->
+        <div  *ngIf="userChoiceStatus=='reading_exercise'">
+          <b style="text-align: center">Leia o texto e responda:</b>
+          <br>
+          <p style="text-align: left;text-indent: 20px">
+            {{this.exerciseReading}}
+          </p>
+          <br>
+
+          <div class="button-container-options">
+            <div *ngFor="let option of options; let i = index">
+              <input
+                type="radio"
+                name="option"
+                [id]="'option' + i"
+                [checked]="selectedOption === i"
+                (change)="selectOption(i)"
+                class="option-radio"
+              />
+              <label [for]="'option' + i" [ngClass]="{'selected': selectedOption === i}">
+                {{ option.text }}
+              </label>
+            </div>
+          </div>
+
+
+          <!-- Botão de Corrigir -->
+          <br>
+          <div class="loading-dots" *ngIf="isLoading">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+          <div class="button-container animation-zoom">
+            <button mat-flat-button class="white-button"  (click)="userChoice('reading')">Voltar</button>
+            <button mat-flat-button class="game-button" (click)="checkAnswerReadingExercise()">Corrigir</button>
+          </div>
+
+
+
+        </div>
 
 
 
@@ -111,8 +271,23 @@ O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo 
           </div>
 
           <br>
+<!--
          <b>LingoEXP</b> base por dificuldade do Tema: <b style="color:#2ecc71;">+{{calculatedPoints}} LE</b>
+-->
 
+          <div class="loading-dots" *ngIf="isLoading">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+          <br>
+          <div *ngIf="showFailMessage" class="fail-message">
+            Você está sem <b>LingoTokens</b>, vá na opção Planos e adiquira LingoTokens.
+          </div>
+
+
+        <br>
           <div class="button-container animation-zoom">
             <button mat-flat-button class="white-button" (click)="userChoice('')">Voltar</button>
             <button *ngIf="this.selectedDifficulty" mat-flat-button class="game-button" (click)="gerarExercicio('writing')">Gerar Exercício</button>
@@ -128,9 +303,9 @@ O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo 
          Crie um texto em inglês sobre:<br> <p> <b>{{exerciseWriting}}</b></p><br>
 
 
-
+           <!--
           <b>LingoEXP</b> base por dificuldade do Tema: <b style="color:#2ecc71;">+{{calculatedPoints}} LE</b>
-
+           -->
 
           <form [formGroup]="teaxtareaWriting" style="margin:15px;margin-top:30px !important;">
 
@@ -139,6 +314,12 @@ O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo 
               <textarea matInput formControlName="userText" rows="4"></textarea>
             </mat-form-field>
           </form>
+
+          <div class="loading-dots" *ngIf="isLoading">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
 
 
 
@@ -175,6 +356,16 @@ O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo 
               <span class="label">Nota Final:</span>
               <span class="value">{{ writingFinalScore }}</span>
             </div>
+            <div class="feedback-item">
+              <span class="label">Bônus por dificuldade:</span>
+              <span class="value">+{{ this.bonusXP_writing }} LXP</span>
+            </div>
+            <div class="feedback-item">
+              <span class="label">LingoEXP (+Bônus):</span>
+              <span class="value">{{  writing_lingoEXP_final }} LXP</span>
+            </div>
+
+            <p style="font-size: 12px; color: gray; margin-top: 5px;text-align: center">9000 é a nota máxima possível.</p>
 
             <div class="feedback-item">
               <span class="label">Erros:</span>
@@ -187,6 +378,9 @@ O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo 
             </div>
           </div>
 
+
+
+          <button mat-flat-button class="game-button" (click)="continue()">Continuar</button>
 
         </div>
 
@@ -229,7 +423,15 @@ O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo 
           </div>
 
           <br>
-          Total de <b>LingoEXP</b> por acerto: <b style="color:#2ecc71;">+{{calculatedPoints}} LE</b>
+          Total de <b>LingoEXP</b> por acerto: <b style="color:#2ecc71;">+{{calculatedPoints}} LXP</b>
+          <br>
+
+          <div *ngIf="showFailMessage" class="fail-message">
+            Você está sem <b>LingoTokens</b>, vá na opção Planos e adiquira LingoTokens.
+          </div>
+
+
+
 
           <div class="button-container animation-zoom">
             <button mat-flat-button class="white-button" (click)="userChoice('')">Voltar</button>
@@ -279,9 +481,18 @@ O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo 
               <input matInput formControlName="mainTheme" >
             </mat-form-field>
             <br>
-
-
           </form>
+
+
+          <div class="loading-dots" *ngIf="isLoading">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+
+
+
 
           <div class="button-container animation-zoom">
             <button mat-flat-button class="white-button" (click)="userChoice('listening')">Voltar</button>
@@ -289,7 +500,7 @@ O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo 
           </div>
 
           <br>
-          <p style="font-size: 10pt !important;"><b style="color:#2ecc71;"> +{{calculatedPoints}} LE</b> por acerto.</p>
+          <p style="font-size: 10pt !important;"><b style="color:#2ecc71;"> +{{calculatedPoints}} LXP</b> por acerto.</p>
 
         </div> <!-- exercicio de listening -->
 
@@ -357,13 +568,13 @@ O usuário lê um texto e responde perguntas relacionadas ao conteúdo, podendo 
 
 
   </div>
-  -->
+
 
 
   <div class="right-side">
     <app-lingobot-card></app-lingobot-card>
   </div>
-
+  -->
 
 </div>
 

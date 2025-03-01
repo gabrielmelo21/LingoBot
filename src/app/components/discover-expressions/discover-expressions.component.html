@@ -1,14 +1,46 @@
-<header class="header">
+<header class="header hide-on-mobile">
   <img src="assets/lingobot/icons/return-icon.png" (click)="navigate_to()" class="back-btn">
   <h1 class="header-title">Desvendar expressões, girías, contrações etc.</h1>
 </header>
 
+
+
+
  <div class="grid-container">
 
-   <app-lingobot-card></app-lingobot-card>
+   <app-lingobot-card class="mobileConfig"> </app-lingobot-card>
 
-
+<!--
   <div class="image-container">
-    <img src="assets/lingobot/lingobot-livro-na-mao.png" alt="Imagem de Exemplo">
+    <img src="assets/lingobot/lingobot-livro-na-mao.png" alt="Imagem de Exemplo" class="imgDisplayNone">
   </div>
+-->
 </div>
+
+<style>
+
+  /* TELAS PC */
+  @media (min-width: 769px) {
+
+    .hide-on-pc{
+      display: none !important;
+    }
+  }
+
+
+
+  /* Telas Mobile */
+  @media (max-width: 768px) {
+
+    .mobileConfig{
+      margin-top: 80px !important;
+    }
+
+    .hide-on-mobile{
+      display: none !important;
+    }
+
+
+  }
+
+</style>

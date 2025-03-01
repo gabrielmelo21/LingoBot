@@ -54,9 +54,10 @@
 
 
           <div class="button-container animation-zoom">
-            <button mat-flat-button class="white-button" (click)="userChoice('')" >Voltar</button>
-            <button mat-flat-button class="game-button" (click)="loadVideo()">Carregar Vídeo</button>
+            <button mat-flat-button class="white-button" (click)="userChoice('')">Voltar</button>
+            <button *ngIf="formulario.get('url_youtube')?.value" mat-flat-button class="game-button" (click)="loadVideo()">Carregar Vídeo</button>
           </div>
+
 
 
         </div>
@@ -81,10 +82,10 @@
 
   </div>
 
-  <!-- Se for mobile, sumir, quando o usuario carregar o video, aparecer-->
+  <!-- Se for mobile, sumir, quando o usuario carregar o video, aparecer
   <div class="right-side">
     <app-lingobot-card></app-lingobot-card>
-  </div>
+  </div>-->
 </div>
 
 

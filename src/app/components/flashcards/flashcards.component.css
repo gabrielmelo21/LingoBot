@@ -39,12 +39,15 @@
 @media (max-width: 768px) {
 
 
-  .card-container{
-    width: 100%;
-    margin-left: 0px;
+  .card-container {
+    margin-top: 150px !important;
+    flex-direction: column;
+    align-items: center; /* Garante alinhamento no centro */
   }
-  .flip-card{
-    margin-left: 25% !important;
+
+  .flip-card {
+    width: 90%; /* Ocupa quase toda a largura */
+    max-width: 300px; /* Limita o tamanho máximo */
   }
 
 
@@ -128,15 +131,53 @@
   background-color: #fff7ab;
   color: black;
   transform: rotateY(180deg);
+  position: relative; /* Para que o botão delete seja posicionado dentro do card */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
-.flip-card-back h3{
-  font-size: 17pt !important;
-  margin-top: 30px;
+
+/* Posicionamento do botão delete */
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: red;
+  cursor: pointer;
+  font-size: 22px; /* Ajuste o tamanho conforme necessário */
+  background: none;
+  border: none;
 }
-.flip-card-back p{
-  font-size: 13pt !important;
+
+
+/* Área interna rolável */
+.flip-card-content {
+  max-height: 150px; /* Mantém o espaço fixo para o conteúdo */
+  overflow-y: auto; /* Adiciona rolagem apenas se necessário */
+  width: 100%;
+  padding-right: 10px; /* Dá um espaço da borda para o scroll */
+  text-align: center;
+  scrollbar-width: thin; /* Scroll fino e discreto (Firefox) */
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* Personalizando a barra de rolagem (Chrome, Edge e Safari) */
+.flip-card-content::-webkit-scrollbar {
+  width: 6px; /* Deixa a barra de rolagem mais fina */
+}
+
+.flip-card-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3); /* Cor discreta */
+  border-radius: 10px; /* Deixa arredondado */
+}
+
+.flip-card-content p {
+  font-size: 10pt !important;
   margin-top: 10px;
-  padding:10px;
+  padding: 5px;
+  word-wrap: break-word;
 }
 
 
@@ -171,5 +212,63 @@
   margin-top: 20px;
 }
 
+
+
+
+
+/** BOTÃO   ESTILO JOGO **/
+.game-button {
+  padding: 25px;
+  font-size: 12pt  ;
+  color: white  !important;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  background: linear-gradient(145deg, #007bff, #6f42c1);
+  box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-in-out;
+}
+
+.game-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Animações */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+
+.game-button:hover {
+  background: linear-gradient(145deg, #1e90ff, #8a2be2);
+  animation: pulse 1.5s infinite;
+}
+
+.game-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.1)
+  );
+  transition: left 0.5s ease-in-out;
+}
+
+.game-button:hover::before {
+  left: 100%;
+}
 
 

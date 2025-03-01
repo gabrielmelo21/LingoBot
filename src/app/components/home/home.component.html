@@ -1,18 +1,248 @@
-<div class="grid">
-  <div *ngFor="let feature of appFeatures; let i = index"
-       (mouseenter)="playHover()"
-       class="card"
-       [ngClass]="'card-' + (i + 1)"
-       (click)="navigate_to(i)">  <!-- Aqui está o evento de clique -->
 
-    <h3>{{ feature.title }}</h3>
-    <p>{{ feature.details }}</p>
 
-    <!-- Ícone reposicionado -->
-    <div class="card-icon">
-      <img [src]="feature.icon" alt="Icon">
+<div class="grid mobileConfig">
+  <!-- Card 1 -->
+
+
+  <!--  <button (click)="installPWA()">Instalar App</button>
+ -->
+
+
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(132)"
+    style="
+    background-image: url('assets/lingobot/lingobot-desafios-iniciantes.png');
+    background-size: 130%;
+    background-position: right;
+    position: relative;
+  "
+    class="card"
+  >
+    <h3>
+      Desafios do LingoBot <br /><span style="color: #2ecc71">(Iniciante)</span>
+    </h3>
+    <div class="token-info">
+      <span>Custo de tokens por atividade</span>
+      <img src="assets/lingobot/icons/LingoToken.png" alt="LingoToken" class="token-icon" />
+      <span class="token-amount">0</span>
     </div>
   </div>
+
+  <!--
+  <button (click)="tirarMoedas()">TIRAR MOEDAS</button>
+  <button (click)="colocarMoedas()">COLOCAR MOEDAS</button>
+  -->
+
+
+
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(1)"
+    style="
+    background-image: url('assets/lingobot/lingobot-entregando-uma-prova.png');
+    background-size: 100%;
+    background-position: right;
+    position: relative;
+  "
+    class="card"
+  >
+    <h3>
+      Desafios do LingoBot <br /><span style="color: darkorange">(Intermediário)</span>
+    </h3>
+    <div class="token-info">
+      <span>Custo de tokens por atividade</span>
+      <img src="assets/lingobot/icons/LingoToken.png" alt="LingoToken" class="token-icon" />
+      <span class="token-amount">100</span>
+    </div>
+  </div>
+
+
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(0)"
+    style="background-image: url('assets/lingobot/lingobot-ensinando2.png'); background-size: 100%; background-position: right"
+    class="card card-1">
+    <h3>Desvendar expressões, girías, contrações etc.</h3>
+    <!-- <p>Tire dúvidas com LingoBot sobre expressões em inglês que não têm tradução direta</p> -->
+
+
+    <div class="token-info">
+      <span>Custo de tokens por resposta</span>
+      <img src="assets/lingobot/icons/LingoToken.png" alt="LingoToken" class="token-icon" />
+      <span class="token-amount">50</span>
+    </div>
+
+
+  </div>
+
+
+
+  <!-- Card 3 -->
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(2)"
+    style="background-image: url('assets/lingobot/lingobot-estudando-assistindo.png'); background-size: 100%; background-position: right"
+    class="card card-3">
+    <h3>Estudar com Vídeos</h3>
+    <!-- <p>Estude com vídeos de canais recomendados e crie Flashcards e descubra expressões e significados.</p> -->
+
+    <div class="token-info">
+      <span>Custo de tokens por atividade</span>
+      <img src="assets/lingobot/icons/LingoToken.png" alt="LingoToken" class="token-icon" />
+      <span class="token-amount">0</span>
+    </div>
+
+  </div>
+
+  <!-- Card 4 -->
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(31)"
+    style="background-image: url('assets/lingobot/lingobot-estudando-com-flashcards.png'); background-size: 100%; background-position: right"
+    class="card card-4">
+    <h3>Meus Flashcards</h3>
+    <!-- <p>Crie e salve flashcards de novas expressões que você aprender</p> -->
+  </div>
+
+  <!-- Card 6
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(10)"
+    style="background-image: url('assets/lingobot/lingobot-conversando.png'); background-size: 100%; background-position: right"
+    class="card card-6">
+    <h3>Fale com LingoBot <br> <b style="color:goldenrod !important;">(Coming Soon)</b></h3>
+
+  </div>
+  -->
+  <!-- Card 4 -->
+
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(4)"
+    style="background-image: url('assets/lingobot/lingobot-ranking.png'); background-size: 100%; background-position: right"
+    class="card card-4">
+    <h3>Ranking</h3>
+
+  </div>
+
+
+
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(5)"
+    style="background-image: url('assets/lingobot/lingobot-moedas-de-ouro.png'); background-size: 100%; background-position: right"
+    class="card card-4">
+    <h3>Check-In Diário - Pegue LingoTokens!</h3>
+
+  </div>
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(81)"
+    style="background-image: url('assets/lingobot/lingobot-segurando-lxp.png'); background-size: 100%; background-position: right"
+    class="card card-4">
+    <h3>Missões Diárias</h3>
+
+  </div>
+
+
+
+
+
+
+
+
+  <!-- Card 5
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(4)"
+
+    style="background-image: url('assets/lingobot/lingobot-trofeu-ranking.png'); background-size: 100%; background-position: right"
+    class="card card-5">
+    <h3>Ranking <br><b style="color:goldenrod !important;">(Coming Soon)</b></h3>
+  </div>
+  -->
+  <!-- Card 6 -->
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(6)"
+    style="background-image: url('assets/lingobot/lingobot-pilha-de-moedas.png'); background-size: 100%; background-position: right"
+    class="card card-6">
+    <h3>Planos e LingoTokens</h3>
+
+  </div>
+
+  <!-- Card 6 -->
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(71)"
+    style="background-image: url('assets/lingobot/lingobot-compartilhando-app2.png'); background-size: 100%; background-position: right"
+    class="card card-6">
+    <h3>Programa de Compartilhamento</h3>
+  </div>
+
+
+
+  <!-- Card 4
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(8)"
+    style="background-image: url('assets/lingobot/lingobot-usuario-settings.png'); background-size: 100%; background-position: right"
+    class="card card-4">
+    <h3>Configurações/Conta</h3>
+
+  </div>
+  -->
+
+
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(8)"
+    style="background-image: url('assets/lingobot/lingobot-feedback-bug-report-sugestao.png'); background-size: 100%; background-position: right"
+    class="card card-4">
+    <h3>Feedback & Bug Report</h3>
+
+  </div>
+
+
+
+
 </div>
 
+
+
+
+
+<style>
+  .token-info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
+  .token-icon {
+    width: 16px;
+    height: 16px;
+    margin: 0 5px;
+  }
+
+  .token-amount {
+    font-weight: bold;
+    color: gold;
+  }
+
+
+  @media (max-width: 768px) {
+    .mobileConfig{
+      margin-top: 80px !important;
+    }
+  }
+</style>
 

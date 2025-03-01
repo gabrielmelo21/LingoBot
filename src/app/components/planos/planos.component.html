@@ -1,0 +1,66 @@
+
+<div class="home-icon" (click)="navigate_to()">
+  <mat-icon>home</mat-icon>
+</div>
+
+
+<div class="planos-container">
+  <!-- Plano Anual -->
+  <div class="plano-card" style="background-size:cover;background-image: url('assets/lingobot/lingobot-pilha-de-moedas-expandido.png');">
+    <div class="plano-content">
+      <h2>Plano Anual</h2>
+      <div class="reward">
+        <img src="assets/lingobot/icons/LingoToken.png" class="reward-icon" style="  width: 46px !important;" />
+        <img src="assets/lingobot/icons/infinity.png" class="reward-icon" />
+      </div>
+      <p class="preco">R$ 299,90/ano</p>
+      <button mat-flat-button class="game-button">Assinar Agora</button>
+    </div>
+  </div>
+
+  <!-- Plano Mensal -->
+  <div class="plano-card" style="background-size:cover;background-image: url('assets/lingobot/lingobot-pilha-de-moedas-expandido.png');" >
+    <div class="plano-content">
+      <h2>Plano Mensal</h2>
+      <div class="reward">
+        <img src="assets/lingobot/icons/LingoToken.png" class="reward-icon"  style="  width: 46px !important;"  />
+        <img src="assets/lingobot/icons/infinity.png" class="reward-icon" />
+      </div>
+      <p class="preco">R$ 29,90/mês</p>
+      <button mat-flat-button class="game-button">Assinar Agora</button>
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+  /* Telas Mobile */
+  @media (max-width: 768px) {
+
+    .home-icon {
+      display: none;
+    }
+
+  }
+
+  /* Ícone dentro do escopo - canto superior esquerdo */
+  .home-icon {
+    float: left !important;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333; /* Cor do ícone */
+    transition: color 0.3s;
+  }
+
+  /* Efeito hover para destacar o clique */
+  .home-icon:hover {
+    color: #007bff;
+  }
+
+
+
+</style>
+
+

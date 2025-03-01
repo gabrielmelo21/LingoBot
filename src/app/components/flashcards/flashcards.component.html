@@ -1,42 +1,119 @@
-<header class="header">
+<header class="header hide-on-mobile">
   <img src="assets/lingobot/icons/return-icon.png" (click)="navigate_to()" class="back-btn">
   <h1 class="header-title">Meus Flashcards</h1>
 </header>
 
 
-<div *ngIf="listWords$ | async as words">
-    <div class="card-container" style="  background-image:url('assets/lingobot/imgs/corki.png');">
+<!--
+<div *ngIf="hasEnoughFlashcards$ | async" class="image-container">
 
-      <div *ngFor="let word of words" class="flip-card " >
+  <p class="image-text">Memorize palavras com flashcards!</p>
+  <button mat-flat-button class="game-button">Começar Desafio</button>
+</div>
 
-        <div class="flip-card-inner"  (mouseenter)="playHover()">
-          <div class="flip-card-front">
-            <h3>{{ word.english }}</h3>
-          </div>
-          <div class="flip-card-back">
-            <mat-icon style='color:red;float:left;margin:10px;' (click)="delete_smartcard(word.id)">delete</mat-icon>
-            <br>
-            <h3>{{ word.portugues }}</h3>
-            <p>{{ word.explain }}</p>
+
+ QUERO VER COMO VOU FAZER, USO IA?
+
+-->
 
 
 
-          </div>
+
+
+<div *ngIf="!isEmpty">
+  <div class="card-container" style="background-image:url('assets/lingobot/imgs/corki.png');">
+    <div *ngFor="let word of flashcards" class="flip-card">
+      <div class="flip-card-inner" (mouseenter)="playHover()">
+
+        <div class="flip-card-front">
+          <h3>{{ word.word }}</h3>
+        </div>
+        <div class="flip-card-back">
+          <mat-icon class="delete-btn" (click)="delete_smartcard(word.id)">delete</mat-icon>
+          <p><b>Tradução:</b> {{ word.translation }}<br><b>Explicação:</b> {{ word.explanation }}<br><b>Como usar:</b> {{ word.how_to_use }}</p>
         </div>
       </div>
-
-
     </div>
   </div>
+</div>
 
-  <div *ngIf="emptyList"  style="margin-top: 10%">
-    <div class="center" >  <img src="assets/vazio.png" width="250" height="220" ></div>
-    <br>
-    <h3 class="titulo">Your binder is empty.</h3>
+<!-- Mostra a mensagem de binder vazio apenas se `isEmpty` for true -->
+<div *ngIf="isEmpty" style="margin-top: 10%">
+  <div class="center">
+    <img src="assets/vazio.png" width="250" height="220">
   </div>
+  <h3 class="titulo" style="color: black !important;">Your binder is empty.</h3>
+</div>
+
+
+<style>
+
+  /* TELAS PC */
+  @media (min-width: 769px) {
+
+    .hide-on-pc{
+      display: none !important;
+    }
+
+
+  }
 
 
 
+  /* Telas Mobile */
+  @media (max-width: 768px) {
+   .image-container{
+     margin-top: 100px !important;
+   }
+    .mobileConfig {
+      margin-top: 80px !important;
+    }
+
+    .hide-on-mobile {
+      display: none !important;
+    }
+
+  }
+
+
+
+
+
+
+
+  .image-container {
+    background-image: url('assets/lingobot/lingobot-estudando-com-flashcards.png');
+    background-size: 100%; /* Ajusta para caber sem cortes */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+
+    height: 250px;
+    display: flex;
+    flex-direction: column; /* Organiza os elementos em coluna */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    border-radius: 15px;
+
+
+  }
+
+  .image-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 12px;
+  }
+
+
+  .game-button{
+    margin-top: 120px !important;
+  }
+
+</style>
 
 
 

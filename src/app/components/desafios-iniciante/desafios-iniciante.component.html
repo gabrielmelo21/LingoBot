@@ -1,0 +1,63 @@
+
+<div class="home-icon" (click)="navigate_to()">
+  <mat-icon>home</mat-icon>
+</div>
+
+
+<div class="game-container">
+  <h2>Desafios do LingoBot (Iniciante)</h2>
+  <p>Traduza a palavra abaixo:</p>
+
+  <h3 class="word-target">
+    {{ traduzirParaIngles ? desafioAtual.portugues : desafioAtual.ingles }}
+  </h3>
+
+  <input style="height: 200px;outline: none;width: 90%;" type="text" [(ngModel)]="respostaUsuario" class="answer-input" placeholder="Digite sua resposta..." />
+  <div *ngIf="showSuccessMessage" class="success-message">
+    Você acertou! +500 LXP
+  </div>
+
+  <div *ngIf="showFailMessage" class="fail-message">
+    Você errou! A resposta correta era: <strong>{{ respostaCorreta }}</strong>
+  </div>
+
+  <br>
+  <button mat-flat-button class="game-button" (click)="verificarResposta()">Responder</button>
+
+
+</div>
+
+
+
+<style>
+  /* Telas Mobile */
+  @media (max-width: 768px) {
+   .game-container{
+      margin-top: 120px !important;
+   }
+    .home-icon {
+      display: none;
+    }
+
+  }
+
+    /* Ícone dentro do escopo - canto superior esquerdo */
+  .home-icon {
+    float: left !important;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333; /* Cor do ícone */
+    transition: color 0.3s;
+  }
+
+  /* Efeito hover para destacar o clique */
+  .home-icon:hover {
+    color: #007bff;
+  }
+
+
+
+</style>
+
+

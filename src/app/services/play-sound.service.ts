@@ -1,77 +1,156 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PlaySoundService {
+export class PlaySoundService implements OnDestroy {
+  private currentAudio: HTMLAudioElement | null = null; // Mantém referência ao áudio longo
+
 
   constructor() { }
 
+  playDiscoverExpression() {
+    this.playAudio("discover-expression.mp3", false);
+  }
+
+  playDesafios() {
+    this.playAudio("desafios.mp3", false);
+  }
+
+  playDesafiosListening() {
+ //   this.playAudio("desafios-listening.mp3", false);
+  }
+
+  playDesafiosWriting() {
+   // this.playAudio("desafios-writing.mp3", false);
+  }
+
+  playDesafiosReading() {
+  //  this.playAudio("desafios-reading.mp3", false);
+  }
+
+  playEstudarVideos() {
+    this.playAudio("estudar-com-videos.mp3", false);
+  }
+
+  playEstudarVideos2() {
+    this.playAudio("estudar-com-videos2.mp3", false);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  playLevelUp(){
+    this.playAudio("level-up.mp3", false);
+  }
+
+  playTokenZero(){
+    this.playAudio("error2.mp3", false);
+  }
+
+
+
+
   playCleanSound(): void {
-    this.playAudio('clean sound.mp3');
+    this.playAudio('clean sound.mp3', true);
   }
 
   playCleanSound2(): void {
-    this.playAudio('clean sound 2.mp3');
+    this.playAudio('clean sound 2.mp3', true);
   }
 
   playCleanNavigationSound(): void {
-    this.playAudio('clean-navigation-sound.mp3');
+    this.playAudio('clean-navigation-sound.mp3', true);
   }
 
   playError(): void {
-    this.playAudio('error.mp3');
+    this.playAudio('error.mp3', true);
   }
 
   playErrorQuestion(): void {
-    this.playAudio('error-question.mp3');
+    this.playAudio('error-question.mp3', true);
   }
 
   playIntroSound2(): void {
-    this.playAudio('intro-sound-2-269294.mp3');
+    this.playAudio('intro-sound-2-269294.mp3', true);
   }
 
   playMessage(): void {
-    this.playAudio('message.mp3');
+    this.playAudio('message.mp3', true);
   }
 
   playNavigation(): void {
-    this.playAudio('navigation.mp3');
+    this.playAudio('navigation.mp3', true);
   }
 
   playNotification(): void {
-    this.playAudio('notification.mp3');
+    this.playAudio('notification.mp3', true);
   }
 
   playNotification1(): void {
-    this.playAudio('notification-1-269296.mp3');
+    this.playAudio('notification-1-269296.mp3', true);
   }
 
   playNotificationOff(): void {
-    this.playAudio('notification-off-269282.mp3');
+    this.playAudio('notification-off-269282.mp3', true);
   }
 
   playNotificationPluckOff(): void {
-    this.playAudio('notification-pluck-off-269290.mp3');
+    this.playAudio('notification-pluck-off-269290.mp3', true);
   }
 
   playPop(): void {
-    this.playAudio('pop.mp3');
+    this.playAudio('pop.mp3', true);
   }
 
   playWinSound(): void {
-    this.playAudio('win sound.mp3');
+    this.playAudio('win sound.mp3', true);
   }
 
   playWin2(): void {
-    this.playAudio('win2.mp3');
+    this.playAudio('win2.mp3', true);
   }
 
-  playSwipe(){
-    this.playAudio('swipe.mp3');
+  playSwipe() {
+    this.playAudio('swipe.mp3', true);
   }
-  private playAudio(filename: string): void {
+
+  private playAudio(filename: string, allowOverlap: boolean): void {
+    if (!allowOverlap && this.currentAudio) {
+      this.currentAudio.pause();
+      this.currentAudio.currentTime = 0;
+    }
+
     const audio = new Audio(`assets/lingobot/audio-pack/${filename}`);
+    if (!allowOverlap) {
+      this.currentAudio = audio;
+    }
     audio.play().catch(error => console.error('Error playing sound:', error));
   }
+
+  ngOnDestroy(): void {
+    // Para o áudio longo quando o serviço for destruído (ex: mudança de página)
+    if (this.currentAudio) {
+      this.currentAudio.pause();
+      this.currentAudio.currentTime = 0;
+    }
+  }
+
+  stopAudio(): void {
+    if (this.currentAudio) {
+      this.currentAudio.pause();
+      this.currentAudio.currentTime = 0;
+    }
+  }
+
+
+
 }

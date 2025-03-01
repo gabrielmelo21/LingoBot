@@ -28,6 +28,7 @@
 
   /* Container para a frase rotativa */
   .rotating-feature-container {
+    display: none;
     margin-top: 80px; /* Espaço para a barra fixa no topo */
     text-align: center;
 
@@ -70,6 +71,50 @@
     width: 30%;
     height: 30%;
   }
+
+
+
+
+
+
+
+
+
+  /* Torna a imagem responsiva */
+  .responsive-img {
+    width: 100%;
+    max-width: 150px; /* Ajuste conforme necessário */
+    height: auto;
+  }
+
+  /* Animação de floating */
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .floating-animation {
+    animation: floating 2s ease-in-out infinite;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -130,14 +175,12 @@
 
 
 
-
 /** BOTÃO   ESTILO JOGO **/
-game-button, .game-button {
-  padding: 15px 30px;
-  font-size: 15pt;
-  font-weight: bold;
+.game-button {
+  padding: 25px;
+  font-size: 12pt  ;
   color: white !important;
-  text-transform: uppercase;
+  width: 100% !important;
   border: none;
   border-radius: 15px;
   cursor: pointer;
@@ -191,25 +234,20 @@ game-button, .game-button {
 
 
 
-
-
-
-
-
+/** BOTÃO   ESTILO JOGO - VERSÃO BRANCA **/
 .white-button {
-  padding: 15px 30px;
-  font-size: 10pt;
-  font-weight: bold;
-  color: #007bff; /* Texto azul */
-  text-transform: uppercase;
-  border: 2px solid #007bff; /* Borda azul */
+  padding: 25px;
+  font-size: 12pt;
+  color: black !important; /* Texto preto */
+  width: 100% !important;
+
   border-radius: 15px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   outline: none;
   background: white; /* Fundo branco */
-  box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3); /* Sombra 3D */
+  box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.1s ease-in-out;
 }
 
@@ -218,8 +256,16 @@ game-button, .game-button {
   box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
+/* Animações */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 .white-button:hover {
-  background: #f0f0f0; /* Fundo cinza claro ao passar o mouse */
+  background: #f0f0f0; /* Leve cinza para efeito de hover */
+  animation: pulse 1.5s infinite;
 }
 
 .white-button::before {
@@ -231,9 +277,9 @@ game-button, .game-button {
   height: 100%;
   background: linear-gradient(
     90deg,
-    rgba(0, 123, 255, 0.1),
-    rgba(0, 123, 255, 0.4),
-    rgba(0, 123, 255, 0.1)
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.1)
   );
   transition: left 0.5s ease-in-out;
 }
@@ -241,6 +287,12 @@ game-button, .game-button {
 .white-button:hover::before {
   left: 100%;
 }
+
+
+
+
+
+
 .button-container {
   display: flex;
   align-items: center; /* Alinha os botões verticalmente */

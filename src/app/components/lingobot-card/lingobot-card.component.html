@@ -1,42 +1,76 @@
 
-<div class="form-card">
-  <div class="speech-bubble-container">
+<div class="form-card" style="background: transparent !important;">
+  <div class="speech-bubble-container animation-zoom">
     <!-- Ícone da pessoa -->
-    <img src="assets/lingobot/lingobot-icon.png"  style="border-radius: 20px" alt="Person Icon" class="person-icon">
+    <img src="assets/lingobot/lingobot-button-icon.png"  style="border-radius: 20px" alt="Person Icon" class="person-icon">
 
     <!-- Balão de fala -->
-    <div class="speech-bubble animation-zoom">
-
-
-      <div class="loading-dots" *ngIf="isLoading">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-
-
-      <p [innerHTML]="lingoBotBobble"></p>
+    <div class="speech-bubble">
 
 
 
+
+      <p [innerHTML]="lingoBotBobble" *ngIf="!sendQuestion"  ></p>
 
       <form [formGroup]="formulario"   style="margin:15px;margin-top:30px !important;">
         <mat-form-field *ngIf="!sendQuestion"  style="width: 100%">
           <mat-label>Ex: "{{expressaoAleatoria}}"</mat-label>
-          <input matInput formControlName="english" (input)="verify_button_completeWithGPT()" >
+          <input  (keydown.enter)="preventEnter($event)" matInput formControlName="english" (input)="verifyIsNotNull()" >
         </mat-form-field>
         <br>
 
+        <div class="loading-dots" *ngIf="isLoading">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+
+        <div *ngIf="translation2 && !isLoading && !sendQuestion" class="translation-box">
+          <p><i style="font-size: 11pt;color: silver">Tradução </i><br> {{ translation2 }}</p>
+        </div>
+
+
 
         <div class="button-container animation-zoom" *ngIf="this.buttonGPT && !sendQuestion">
-          <button mat-flat-button class="white-button" (click)="justTranslate()" >Apenas Traduza</button>
+          <button mat-flat-button class="white-button" (click)="getTranslation()" >Apenas Traduza</button>
           <button mat-flat-button class="game-button" (click)="getLingoBotExplanation()" >Explicação do LingoBot</button>
         </div>
 
 
+
+
+
+        <div *ngIf="sendQuestion" class="explanation-card">
+          <div class="card-header">
+            <h2>Explicação da Expressão</h2>
+          </div>
+
+          <div class="card-body">
+            <div class="section">
+              <h3>Explicação:</h3>
+              <p>{{ explanation }}</p>
+            </div>
+            <div class="section">
+              <h3>Como Usar:</h3>
+              <p>{{ usage }}</p>
+            </div>
+            <div class="section">
+              <h3>Tradução:</h3>
+              <p>{{ translation }}</p>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div *ngIf="showSuccessMessage" class="success-message">
+          Flashcard salvo com sucesso!
+        </div>
+
+
         <div class="button-container animation-zoom" *ngIf="sendQuestion">
-          <button mat-flat-button class="white-button" >Voltar</button>
-          <button mat-flat-button class="game-button"  >Salvar Explicação em Flashcard</button>
+          <button mat-flat-button class="white-button" (click)="voltar();">Voltar</button>
+          <button mat-flat-button class="game-button" (click)="saveFlashcard()">Salvar Flashcard</button>
         </div>
 
       </form>

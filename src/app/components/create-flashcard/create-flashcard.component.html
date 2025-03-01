@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Criar Flashcard</h2>
+  <form (submit)="saveFlashcard(); $event.preventDefault()">
+    <mat-form-field class="form-field">
+      <mat-label>Palavra</mat-label>
+      <input matInput placeholder="Word" [(ngModel)]="newFlashcard.word" name="word" required />
+      <mat-error *ngIf="!newFlashcard.word">A palavra principal (word) é obrigatória!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Explicação</mat-label>
+      <textarea matInput placeholder="Explanation" [(ngModel)]="newFlashcard.explanation" name="explanation"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Como Usar</mat-label>
+      <textarea matInput placeholder="How to Use" [(ngModel)]="newFlashcard.how_to_use" name="how_to_use"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Tradução</mat-label>
+      <textarea matInput placeholder="Translation" [(ngModel)]="newFlashcard.translation" name="translation"></textarea>
+    </mat-form-field>
+
+
+    <div *ngIf="showSuccessMessage" class="success-message">
+      Flashcard salvo com sucesso!
+    </div>
+
+
+    <button type="submit" class="game-button">Salvar Flashcard</button>
+  </form>
+</div>

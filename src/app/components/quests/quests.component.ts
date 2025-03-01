@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
 import {MainAPIService} from "../../services/main-api.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../services/auth.service";
 
 
 
@@ -25,12 +26,12 @@ export class QuestsComponent {
   audioElement: HTMLAudioElement | null = null;
 
 
-
-
   //Sempre que o user atingir 50 mil pontos ele upa.
 
 
-  constructor(  private formBuilder: FormBuilder, private router: Router, private playSound: PlaySoundService, private apiService: MainAPIService){
+  constructor(  private auth: AuthService,  private formBuilder: FormBuilder, private router: Router, private playSound: PlaySoundService, private apiService: MainAPIService){
+    window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
+
     this.formulario = this.formBuilder.group({
       mainTheme: ['', Validators.required],
     });
@@ -41,26 +42,52 @@ export class QuestsComponent {
     });
 
 
+  // this.playSound.playDesafios()
+
   }
+
+
+
+  retiraMoedas(){
+   this.auth.decreseToken(300)
+  }
+  colocarMoedas(){
+    this.auth.updateLocalUserData({tokens: 300})
+  }
+
+
+  checkLevelUp(newExp: number): void {
+    this.auth.checkLevelUp(newExp);
+    this.auth.getExpPercentage();
+  }
+
 
 
   userChoice(choice: string) {
     this.playSound.playCleanNavigationSound()
+    this.playSound.stopAudio();
     this.userChoiceStatus = choice;
 
     if (this.userChoiceStatus == "listening"){
+      this.playSound.playDesafiosListening()
       // limpa configurações
       this.calculatedPoints = 0;
       this.selectedDifficulty = ''
+      this.formulario.get('mainTheme')?.reset();
     }
 
     if (this.userChoiceStatus == "writing"){
+
+      // se ja tocou não ficar tocando novamente.... ? nao sei ainda acho que depois de fazer exercicios não
+      this.playSound.playDesafiosWriting()
       // limpa configurações
       this.calculatedPoints = 0;
       this.selectedDifficulty = ''
+      this.teaxtareaWriting.get('userText')?.reset();
     }
 
     if (this.userChoiceStatus == "reading"){
+      this.playSound.playDesafiosReading()
       // limpa configurações
       this.calculatedPoints = 0;
       this.selectedDifficulty = ''
@@ -74,12 +101,45 @@ export class QuestsComponent {
 
   exerciseText: string = '';
   exerciseWriting: string = '';
+  exerciseReading: string = '';
   isLoading: boolean = false;
 
+
+
+  options = [
+    { text: "A) Loading...", right: false },
+    { text: "B) Loading...", right: true },
+    { text: "C) Loading...", right: false },
+    { text: "D) Loading...", right: false }
+  ];
+
+  selectedOption: number | null = null;
+
+
+  selectOption(index: number): void {
+    this.playSound.playNotification();
+    this.selectedOption = index;
+  }
+
+
   gerarExercicio(type: string) {
+
+
+    if(  this.auth.getUserTokens() >= 100){
+
+    this.auth.decreseToken(100);
+
+
+
+    if(this.selectedDifficulty == "hard"){
+      this.auth.updateMetaUser({ meta8: true });
+    }
+
+    this.playSound.stopAudio();
     this.isLoading = true;
 
     if (type === 'listening') {
+      this.auth.updateMetaUser({ meta1: true });
       this.apiService.getText(this.selectedDifficulty).subscribe(response => {
         this.exerciseText = response.text;
 
@@ -97,6 +157,7 @@ export class QuestsComponent {
 
 
     if (type === 'writing') {
+      this.auth.updateMetaUser({ meta2: true });
       this.apiService.getTema(this.selectedDifficulty).subscribe(response => {
             this.playSound.playNotification();
             this.exerciseWriting = response.text;
@@ -107,12 +168,53 @@ export class QuestsComponent {
 
     }
 
+    if (type === 'reading') {
+      this.auth.updateMetaUser({ meta3: true });
+      this.apiService.getLongText(this.selectedDifficulty).subscribe(response1 => {
+        this.playSound.playNotification();
+        this.exerciseReading = response1.text;
+        this.isLoading = false;
+        this.userChoiceStatus = "reading_exercise";
+
+        this.apiService.GPT(this.exerciseReading, "", "ReadingGenerateExerciseOptions").subscribe(response => {
+          console.log('Resposta bruta da API:', response); // 🔍 Debug
+
+          try {
+            // Primeiro parse
+            const parsedResponse = JSON.parse(response);
+
+            // Segundo parse (pois `parsedResponse.response` ainda pode ser uma string JSON)
+            const finalData = JSON.parse(parsedResponse.response);
+
+            console.log('JSON final parseado:', finalData); // Debug do JSON correto
+
+            // Atribuindo as opções geradas pela API à variável options
+            this.options = finalData.options;
+
+          } catch (error) {
+            console.error('Erro ao fazer o parse da resposta JSON:', error);
+          }
+        });
 
 
 
 
 
+      });
+    }
 
+
+
+    }else{
+      this.auth.checkTokens()
+      this.playSound.playTokenZero()
+      this.showFailMessage = true;
+      setTimeout(() => {
+        this.showFailMessage = false;
+      }, 3000);
+
+
+    }
 
   }
 
@@ -137,6 +239,7 @@ export class QuestsComponent {
   listeningExerciseGPTresponse: string = '';
   hideMainPage: boolean = false;
   verifyListeningExercise(){
+
     const textoUser = this.formulario.get("mainTheme")?.value + "";
 
 
@@ -158,12 +261,12 @@ export class QuestsComponent {
 
       if (this.listeningExerciseGPTresponse == "True" || this.listeningExerciseGPTresponse == "true"){
          this.hideMainPage = true;
-         this.checkAnswer(true)
+         this.checkAnswer(true, "listening")
       }
 
       if (this.listeningExerciseGPTresponse == "False" || this.listeningExerciseGPTresponse == "false"){
         this.hideMainPage = true;
-        this.checkAnswer(false)
+        this.checkAnswer(false, "listening")
       }
 
     });
@@ -183,12 +286,16 @@ export class QuestsComponent {
   writingErrors: string = '';
   writingImprovements: string = '';
   writingFinalScore: number = 0;
+  bonusXP_writing: number = 0;
+  writing_lingoEXP_final: number = 0;
+
 
   verifyWritingExercise() {
+    this.isLoading = true;
     const textoUser = this.teaxtareaWriting.get("userText")?.value + "";
 
     this.playSound.playCleanNavigationSound()
-    console.log(prompt);
+
 
 
 
@@ -212,6 +319,31 @@ export class QuestsComponent {
         this.writingErrors = finalData.erros;
         this.writingImprovements = finalData.melhorias;
         this.writingFinalScore = finalData.notaFinal;
+
+
+        // DANDO OS PONTOS
+         switch (this.selectedDifficulty){
+           case "easy":
+             this.bonusXP_writing = 1000;
+           break;
+           case "medium":
+             this.bonusXP_writing = 2000;
+             break;
+           case "hard":
+             this.bonusXP_writing = 3000;
+             break;
+           default:
+             this.bonusXP_writing = 0;
+             break;
+         }
+
+        this.writing_lingoEXP_final = Number(this.bonusXP_writing) + Number(this.writingFinalScore);
+
+
+          this.checkLevelUp(this.writing_lingoEXP_final)
+
+        this.isLoading = false;
+
 
       } catch (error) {
         console.error('Erro ao fazer o parse da resposta JSON:', error);
@@ -237,12 +369,57 @@ export class QuestsComponent {
 
   isCorrectAnswer: boolean = false;
   isWrongAnswer: boolean = false;
+  continueButton: string = "";
 
-  checkAnswer(isCorrect: boolean) {
+  isCorrect: boolean | null = null; // Para armazenar o resultado da correção
+  showFailMessage: any;
+
+  checkAnswerReadingExercise(): void {
+    if (this.selectedOption !== null) {
+      const isCorrect = this.options[this.selectedOption].right;
+      this.checkAnswer(isCorrect, "reading")
+    }
+  }
+
+
+
+  checkAnswer(isCorrect: boolean, type: string) {
+
+
     if (isCorrect) {
+
+
+      if (this.userChoiceStatus == "reading_exercise"){
+        switch (this.selectedDifficulty){
+          case "easy":
+            this.calculatedPoints = 4000;
+            this.checkLevelUp(this.calculatedPoints)
+            break;
+          case "medium":
+            this.calculatedPoints = 6000;
+            this.checkLevelUp(this.calculatedPoints)
+            break;
+          case "hard":
+            this.calculatedPoints = 8000;
+            this.checkLevelUp(this.calculatedPoints)
+            break;
+          default:
+            this.calculatedPoints = 0;
+            break;
+        }
+
+      }
+
+
+        if (this.calculatedPoints){
+            this.checkLevelUp(this.calculatedPoints)
+        }
+
+
       this.playSound.playWinSound()
       this.isCorrectAnswer = true;
       this.isWrongAnswer = false;
+
     } else {
       this.playSound.playErrorQuestion()
       this.isCorrectAnswer = false;
@@ -252,12 +429,35 @@ export class QuestsComponent {
 
   continue() {
     this.playSound.playCleanNavigationSound()
-    this.isCorrectAnswer = false;
-    this.isWrongAnswer = false;
-    this.hideMainPage = false;
-    this.userChoiceStatus = "listening"
+    if (this.userChoiceStatus == "writing_feedback"){
+      this.userChoiceStatus = "writing"
 
-    // Lógica para carregar a próxima questão...
+    }
+    if(this.userChoiceStatus == "listening_exercise"){
+      this.isCorrectAnswer = false;
+      this.isWrongAnswer = false;
+      this.hideMainPage = false;
+      this.userChoiceStatus = "listening"
+    }
+
+    if (this.userChoiceStatus == "reading_exercise"){
+      this.isCorrectAnswer = false;
+      this.isWrongAnswer = false;
+      this.hideMainPage = false;
+      this.userChoiceStatus = "reading"
+      this.selectedOption = null
+      this.options = [
+        { text: "A) Loading...", right: false },
+        { text: "B) Loading...", right: true },
+        { text: "C) Loading...", right: false },
+        { text: "D) Loading...", right: false }
+      ]
+
+
+    }
+
+
+
   }
 
 
@@ -265,21 +465,6 @@ export class QuestsComponent {
 
 
 
-
-
-
-
-
-
-
-
-
-  generateAudio(text: string) {
-    this.apiService.getTTS(text).subscribe(blob => {
-      const audioBlob = new Blob([blob], { type: 'audio/mp3' });
-      this.audioUrl = URL.createObjectURL(audioBlob);
-    });
-  }
 
 
 
@@ -292,6 +477,9 @@ export class QuestsComponent {
     this.playSound.playCleanNavigationSound()
     this.selectedDifficulty = difficulty;
     this.calculatePointsListening();
+
+
+
   }
 
 
@@ -311,6 +499,7 @@ export class QuestsComponent {
   isActive2(choice: boolean): boolean {
     return this.selectedChoice === choice; // Verifica se o botão está ativo
   }
+
 
 
 
@@ -344,39 +533,9 @@ export class QuestsComponent {
   }
 
 
-
-
-
-
-  calculatePointsWriting() {
-    if (this.selectedDifficulty === 'easy') {
-
-      if (this.selectedChoice === true) {
-        this.calculatedPoints = 3000; // 2000 + 1000 bônus
-      } else {
-        this.calculatedPoints = 2000; // Sem bônus
-      }
-    }
-
-    if (this.selectedDifficulty === 'medium') {
-
-
-      if (this.selectedChoice === true) {
-        this.calculatedPoints = 5000; // 4000 + 1000 bônus
-      } else {
-        this.calculatedPoints = 4000; // Sem bônus
-      }
-    }
-
-    if (this.selectedDifficulty === 'hard') {
-      if (this.selectedChoice === true) {
-        this.calculatedPoints = 7000; // 6000 + 1000 bônus
-      } else {
-        this.calculatedPoints = 6000; // Sem bônus
-      }
-    }
+  onMouseEnter() {
+    this.playSound.playCleanSound();
   }
 
-
-
 }
+

@@ -15,6 +15,12 @@ export class DiscoverExpressionsComponent {
   isLoading: boolean = false;
   constructor(private playSound: PlaySoundService,
               private router: Router) {
+    window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
+
+
+
+    //this.playSound.playDiscoverExpression();  -> opção para o user
+
 
   }
 

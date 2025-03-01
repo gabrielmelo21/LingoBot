@@ -1,27 +1,187 @@
-<header>
-
-
-
-  <img src="assets/lingobot/logo-final-transparent.png" alt="Logo" class="logo">
-
+<!-- HEADER PARA DESKTOP -->
+<header class="hide-on-mobile desktop-header" *ngIf="!isLoginRoute">
+  <img src="assets/lingobot/logo-final-beta.png" alt="Logo" class="logo">
 
   <div class="user-card">
     <div class="user-info">
       <img src="assets/lingobot/lingobot-icon.png" alt="User Photo" class="avatar">
       <div class="user-details">
-        <h2>Robert Fox</h2>
-        <p>LingoPoints: 9999</p>
-        <div class="level-bar">
-          <div class="progress" style="width: 65%;"></div>
+        <h2>{{ user.nome }}</h2>
+        <div class="user-stats">
+          <div class="tokens">
+            <img src="assets/lingobot/icons/LingoToken.png" alt="LingoToken" class="token-icon">
+            <span class="token-text">{{ user.tokens}}</span>
+          </div>
         </div>
-        <p class="level-text">Nível 12</p>
+      </div>
+
+      <div class="level-bar-container">
+        <p><strong>Level:</strong> {{ user.Level }}</p>
+        <div class="level-bar">
+          <div class="progress" [style.width.%]="expPercentage">
+            <span class="progress-text">{{ expPercentage | number:'1.0-0' }}%</span>
+          </div>
+        </div>
+        <p style="display: flex; align-items: center; gap: 5px;margin-left:60px;">
+          <img src="assets/lingobot/icons/lxp.png" width="28" height="16">
+          {{ user.LingoEXP }} / {{ expNeeded }}
+        </p>
+
       </div>
     </div>
+
   </div>
-
-
-
-
 
   <img src="assets/lingobot/lingobot-fotogenico.png" alt="Extra Photo" class="extra-photo">
 </header>
+
+<header class="hide-on-pc mobile-header" *ngIf="!this.isLoginRoute" >
+  <div class="user-card">
+    <img src="assets/lingobot/lingobot-icon.png" alt="User Photo" class="avatar">
+    <div class="user-info">
+      <h2>{{ user.nome }}</h2>
+      <div class="tokens">
+        <img src="assets/lingobot/icons/LingoToken.png" alt="Token" class="token-icon">
+        <span class="token-text">{{ user.tokens }}</span>
+      </div>
+    </div>
+
+    <div class="level-info">
+      <p><strong>Level:</strong> {{ user.Level }}</p>
+
+      <div class="level-bar">
+        <div class="progress" [style.width.%]="expPercentage">
+          <span class="progress-text">{{ expPercentage | number:'1.0-0' }}%</span>
+        </div>
+      </div>
+
+      <p style="display: flex; align-items: center; gap: 5px;margin-left: 60px !important; " class=" mobileConfig">
+        <img src="assets/lingobot/icons/lxp.png" width="28" height="16">
+        {{ user.LingoEXP }} / {{ expNeeded }}
+      </p>
+
+    </div>
+  </div>
+
+</header>
+
+
+<style>
+  /* HEADER MOBILE */
+  @media (max-width: 768px) {
+    . mobileConfig{
+      margin-left: 150px !important;
+    }
+
+    .mobile-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #4A90E2, #904E95);
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+    }
+
+    .user-card {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    .user-info {
+      flex: 1;
+    }
+
+    h2 {
+      font-size: 16px;
+      margin: 0;
+      text-align: left;
+    }
+
+    .tokens {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .token-icon {
+      width: 30px;
+      height: 27px;
+    }
+
+    .token-text {
+      font-size: 16px;
+      font-weight: bold;
+      color: #FFD700;
+    }
+
+    .level-info {
+      width: 100%;
+      text-align: center;
+    }
+
+    .level-bar {
+      width: 80%;
+      margin: 5px auto;
+      height: 15px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      background: #FFD700;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 0.5s ease-in-out; /* Adiciona animação suave */
+    }
+
+    .progress-text {
+      font-size: 14px;
+      font-weight: bold;
+      color: #000;
+      position: absolute;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+
+  .modal-content h2 {
+    color: #ff6600;
+  }
+
+  .modal-content button {
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .modal-content button:hover {
+    background: #e65c00;
+  }
+</style>
+
+

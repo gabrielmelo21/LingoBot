@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {Router} from "@angular/router";
+import {PlaySoundService} from "../../services/play-sound.service";
 
 @Component({
   selector: 'app-bottom-navigation',
@@ -7,9 +9,36 @@ import {Component} from '@angular/core';
 })
 export class BottomNavigationComponent  {
 
-  selectedOption: string | null = 'home'; // Define 'home' como ativo por padrão ao carregar a página
 
-  selectOption(option: string) {
-    this.selectedOption = option;
+  constructor(private _router: Router, private playSound: PlaySoundService) {}
+
+
+
+
+  navigate_to(route: string) {
+    this.playSound.playSwipe()
+    switch (route) {
+      case 'home':
+        this._router.navigate(['/home']);
+        break;
+      case 'missoes-diarias':
+        this._router.navigate(['/missoes-diarias']);
+        break;
+      case 'check-in':
+        this._router.navigate(['/check-in']);
+        break;
+
+      case 'ranking':
+        this._router.navigate(['/ranking']);
+        break;
+
+      case 'referral':
+        this._router.navigate(['/referral']);
+        break;
+
+      default:
+        this._router.navigate(['/home']);  // Caso padrão
+        break;
+    }
   }
 }

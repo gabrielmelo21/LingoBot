@@ -1,16 +1,38 @@
-<!--
-<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-<nav class="bottom-navigation">
-  <a routerLink="/home" routerLinkActive="active" (click)="selectOption('home')" [ngClass]="{ 'selected': selectedOption === 'home' }">
+<div class="bottom-nav hide-on-pc">
+  <button class="nav-item" (click)="navigate_to('home')">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button class="nav-item" (click)="navigate_to('missoes-diarias')">
+    <mat-icon>assignment</mat-icon>
+    <!-- Missões diárias -->
+  </button>
+  <button class="nav-item" (click)="navigate_to('check-in')">
+    <mat-icon>event_available</mat-icon>
+    <!-- Check-in diário -->
+  </button>
 
-    <i class="fi fi-sr-home icon-circle"   [ngClass]="{ 'selected-circle': selectedOption === 'home' }"></i>
-  </a>
-  <a  routerLink="/expressionGenerator" routerLinkActive="active" (click)="selectOption('expressionGenerator')" [ngClass]="{ 'selected': selectedOption === 'expressionGenerator' }">
-    <i class="fi fi-sr-add icon-circle" [ngClass]="{ 'selected-circle': selectedOption === 'expressionGenerator' }"></i>
-  </a>
+  <button class="nav-item" (click)="navigate_to('ranking')">
+    <mat-icon>emoji_events</mat-icon>
+    <!-- Ranking -->
+  </button>
 
-  <a routerLink="/pratice" routerLinkActive="active" (click)="selectOption('practice')" [ngClass]="{ 'selected': selectedOption === 'practice' }">
-    <i class="fi fi-sr-edit icon-circle" [ngClass]="{ 'selected-circle': selectedOption === 'practice' }"></i>
-  </a>
+  <button class="nav-item" (click)="navigate_to('referral')">
+  <mat-icon>share</mat-icon>
+  <!-- Compartilhamento -->
+</button>
+</div>
 
-</nav>  -->
+
+<style>
+
+  /* TELAS PC */
+  @media (min-width: 769px) {
+
+    .hide-on-pc{
+      display: none !important;
+    }
+  }
+
+
+
+</style>

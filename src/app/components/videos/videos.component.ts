@@ -1,7 +1,8 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {PlaySoundService} from "../../services/play-sound.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 interface VideoData {
   videoID: string; // URL do vídeo
@@ -19,9 +20,15 @@ export class VideosComponent {
   videoURL_fromUser: string = "";
   videoURL_youtube: string = "";
   formulario: FormGroup;
+  formValidated: boolean = false;
+  interval: any;
+   videoCarregado: boolean | undefined;
 
 
-  constructor( private router: Router, private playSound: PlaySoundService, private formBuilder: FormBuilder, private cdr: ChangeDetectorRef) {
+  constructor(private auth: AuthService, private router: Router, private playSound: PlaySoundService, private formBuilder: FormBuilder, private cdr: ChangeDetectorRef) {
+   //this.playSound.playEstudarVideos()
+    window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
+
     const scriptTag = document.createElement("script")
     scriptTag.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(scriptTag)
@@ -31,15 +38,33 @@ export class VideosComponent {
     });
 
 
+    // Assina as mudanças de rota para parar o intervalo quando sair da rota /videos
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        if (this.router.url !== '/videos') {
+          this.stopXPInterval();
+        } else {
+          this.startXPInterval();
+        }
+      }
+    });
+
+
   }
   userChoice(choice: string) {
     this.playSound.playCleanNavigationSound()
     this.userChoiceStatus = choice;
 
     if (choice == "video_aleatorio"){
-      this.loadVideo()
-    }
 
+      if (this.router.url == '/videos') {
+        this.loadVideo()
+      }
+
+    }
+    if (this.userChoiceStatus == "youtube"){
+   //   this.playSound.playEstudarVideos2()
+    }
 
   }
 
@@ -60,9 +85,35 @@ export class VideosComponent {
 
 
 
+  // Método para começar o XP
+  startXPInterval() {
+    if (this.videoCarregado) { // Só começa o XP se o vídeo foi carregado
+      const xpPerSecond = 3;
+
+      if (!this.interval) {
+        this.interval = setInterval(() => {
+          if (document.visibilityState === "visible") {
+            this.auth.checkLevelUp(xpPerSecond); // Adiciona XP
+          }
+        }, 1000); // Executa a cada segundo
+      }
+    }
+  }
+
+  // Método para parar o XP
+  stopXPInterval() {
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    }
+  }
+
+  // Carregar o vídeo
   public loadVideo() {
-    this.playSound.playCleanNavigationSound()
+    this.playSound.playCleanNavigationSound();
     this.isLoading = true;
+
+    this.auth.updateMetaUser({ meta5: true });
 
 
     let videoFromUser = '';
@@ -70,16 +121,19 @@ export class VideosComponent {
       videoFromUser = this.formulario.get('url_youtube')?.value;
       let startIndex = videoFromUser.indexOf("v=") + 2;
       this.videoURL_youtube = videoFromUser.substr(startIndex, 11);
-    }else{
+    } else {
       this.videoURL_youtube = this.getRandomVideo(); // Escolhe um aleatório
     }
 
-
-
-
     this.cdr.detectChanges(); // Força a detecção de mudanças
 
+    // Marca que o vídeo foi carregado
+    this.videoCarregado = true;
 
+    // Começa a soma de XP, mas só se estiver na rota /videos
+    if (this.router.url === '/videos') {
+      this.startXPInterval();
+    }
   }
 
 

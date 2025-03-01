@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {PlaySoundService} from "../../services/play-sound.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 
 
@@ -12,7 +13,36 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent {
 
-  constructor(private playSound: PlaySoundService,  private router: Router) {
+
+  deferredPrompt: any;
+
+  @HostListener('window:beforeinstallprompt', ['$event'])
+  onBeforeInstallPrompt(event: Event) {
+    event.preventDefault();
+    this.deferredPrompt = event;
+  }
+
+  installPWA() {
+    if (this.deferredPrompt) {
+      this.deferredPrompt.prompt();
+      this.deferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('Usuário aceitou a instalação');
+        } else {
+          console.log('Usuário recusou a instalação');
+        }
+        this.deferredPrompt = null;
+      });
+    }
+  }
+
+  constructor(private playSound: PlaySoundService,  private router: Router, private auth: AuthService) {
+  }
+
+
+  checkLevelUp(newExp: number): void {
+    this.auth.checkLevelUp(newExp);
+    this.auth.getExpPercentage();
   }
 
 
@@ -24,14 +54,38 @@ export class HomeComponent {
         this.router.navigate(['/discoverExpressions']);
         break;
       case 1:
-        this.router.navigate(['/flashcards']);
+        this.router.navigate(['/quests']);
+
         break;
       case 2:
         this.router.navigate(['/videos']);
         break;
-      case 3:
-        this.router.navigate(['/quests']);
+      case 31:
+     this.router.navigate(['/flashcards']);
         break;
+      case 4:
+        this.router.navigate(['/ranking']);
+        break;
+      case 5:
+        this.router.navigate(['/check-in']);
+        break;
+      case 6:
+        this.router.navigate(['/planos']);
+        break;
+      case 71:
+        this.router.navigate(['/referral']);
+        break;
+      case 8:
+        this.router.navigate(['/settings']);
+        break;
+      case 81:
+        this.router.navigate(['/missoes-diarias']);
+        break;
+      case 132:
+        this.router.navigate(['/desafios-iniciante']);
+        break;
+
+
 
       default:
         console.warn("Nenhuma rota definida para este índice:", number);
@@ -40,23 +94,23 @@ export class HomeComponent {
 
 
 
-  playHover() {
+
+
+  onMouseEnter() {
     this.playSound.playCleanSound();
   }
-  playClickSound(){
-    this.playSound.playCleanNavigationSound();
-  }
+
 
   appFeatures = [
     {
       title: 'Desvendar expressões, girías, contrações etc.',
       details: 'Tire dúvidas con LingoBot sobre expressões em inglês que não tem tradução direta',
-      icon: 'assets/lingobot/lingobot-livro-na-mao.png'
+      icon: 'assets/lingobot/lingobot-desafios.png'
     },
     {
-      title: 'Meus Flashcards',
-      details: 'Crie e salve flashcards de novas expressões que você aprender',
-      icon: 'assets/lingobot/lingobot-flashcards.png'
+      title: 'Desafios do LingoBot',
+      details: 'Resolva desafios propostos pelo LingoBot e acumule LingoEXP',
+      icon: 'assets/lingobot/lingobot-livro-na-mao.png'
     },
     {
       title: 'Estudar com Vídeos',
@@ -64,20 +118,36 @@ export class HomeComponent {
       icon: 'assets/lingobot/lingobot-assistindo.png'
     },
     {
-      title: 'Desafios do LingoBot',
-      details: 'Resolva desafios propostos pelo LingoBot e acumule LingoPoints',
-      icon: 'assets/lingobot/lingobot-desafios.png'
+      title: 'Meus Flashcards (Coming Soon)',
+      details: 'Crie e salve flashcards de novas expressões que você aprender',
+      icon: 'assets/lingobot/lingobot-flashcards.png'
     },
     {
-      title: 'Tire suas dúvidas com LingoBot',
-      details: 'Converse com LingoBot e tire suas dúvidas e questões',
-      icon: 'assets/lingobot/lingo-bot-walking-transparent.png'
+      title: 'Ranking (Coming Soon)',
+      details: 'Acumule LingoEXP e suba no Ranking Global',
+      icon: 'assets/lingobot/lingobot-competindo.png'
     },
     {
       title: 'Check-In Diário',
-      details: 'Visite o LingoBot diáriamente e ganhe LingoPoints',
+      details: 'Visite o LingoBot diáriamente e ganhe LXP e LingoTokens',
       icon: 'assets/lingobot/lingobot-calendario.png'
     }
   ];
 
+  /**
+   *  Mais opções que deve ter
+   *  Configurações de conta
+   *  Assinatura - se é a versão free
+   */
+
+  tirarMoedas() {
+    //this.auth.decreseToken(1000)
+    this.auth.decreaseLocalUserData({ tokens: 1000 });
+    this.auth.checkTokens()
+
+  }
+
+  colocarMoedas() {
+    this.auth.updateLocalUserData({ tokens: 1000 });
+  }
 }

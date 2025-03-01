@@ -5,6 +5,21 @@ import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MainAPIService} from "../../services/main-api.service";
 import {catchError, finalize, tap} from "rxjs";
+import {AuthService} from "../../services/auth.service";
+
+
+
+
+interface Flashcard {
+  id: number;
+  word: string;
+  explanation: string;
+  how_to_use: string;
+  translation: string;
+}
+
+
+
 
 @Component({
   selector: 'app-lingobot-card',
@@ -12,6 +27,14 @@ import {catchError, finalize, tap} from "rxjs";
   styleUrls: ['./lingobot-card.component.css']
 })
 export class LingobotCardComponent {
+
+  newFlashcard: Flashcard = {
+    id: 0,
+    word: '',
+    explanation: '',
+    how_to_use: '',
+    translation: ''
+  };
 
 
 
@@ -24,7 +47,7 @@ export class LingobotCardComponent {
 
 
 
-  constructor(private playSound: PlaySoundService,  private router: Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private mainAPI: MainAPIService) {
+  constructor(private auth: AuthService, private apiService: MainAPIService, private playSound: PlaySoundService,  private router: Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
 
     let expressoesEmIngles: string[] = [
       "A piece of cake", // Algo muito fácil
@@ -126,8 +149,6 @@ export class LingobotCardComponent {
 
     this.expressaoAleatoria = expressoesEmIngles[Math.floor(Math.random() * expressoesEmIngles.length)];
 
-
-
     this.formulario = this.formBuilder.group({
       english: ['', Validators.required],
       portugues: ['', Validators.required],
@@ -151,22 +172,102 @@ export class LingobotCardComponent {
 
 
   /** notification126 é usado quando conclui a resposta da IA **/
+  explanation: string = '';
+  usage: string = '';
+  translation: string = '';
 
-  getLingoBotExplanation(){
-    this.playSound.playCleanNavigationSound()
-    this.simulation()
+
+  preventEnter(event: Event) {
+    const keyboardEvent = event as KeyboardEvent;
+    keyboardEvent.preventDefault();
+  }
+  voltar(){
+    this.sendQuestion = false;
   }
 
-  justTranslate(){
-    this.playSound.playCleanNavigationSound()
-    this.simulation()
+
+
+  getLingoBotExplanation() {
+    if(this.auth.getUserTokens() >= 50){
+
+      this.isLoading = true;
+    this.playSound.playCleanNavigationSound();
+    const userText = this.formulario.get('english')?.value;
+
+
+
+
+    this.apiService.GPT("", userText, "ExplainExpression").subscribe(response => {
+      console.log('Resposta bruta da API:', response); // 🔍 Debug
+
+       this.auth.decreseToken(50);
+      this.auth.updateMetaUser({ meta4: true });
+
+      try {
+        // Primeiro parse: para acessar o campo 'response'
+        const parsedResponse = JSON.parse(response);  // Agora temos o JSON da resposta
+
+        // A resposta verdadeira está dentro do campo 'response' como uma string
+        const responseData = JSON.parse(parsedResponse.response); // Fazendo o parse novamente para acessar os dados
+
+        // Agora extraímos os valores de explicacao, uso e traducao
+        if (responseData && responseData.explicacao && responseData.uso && responseData.traducao) {
+          this.explanation = responseData.explicacao;
+          this.usage = responseData.uso;
+          this.translation = responseData.traducao;
+
+          this.newFlashcard.word = userText;
+          this.newFlashcard.explanation = this.explanation;
+          this.newFlashcard.how_to_use = this.usage;
+          this.newFlashcard.translation = this.translation;
+
+          // Ativa a visualização do card
+          this.sendQuestion = true;
+          this.playSound.playNotification()
+          this.isLoading = false;
+        }
+      } catch (error) {
+        console.error('Erro ao parsear a resposta da API:', error);
+      }
+    });
+
+     }else{
+       // ativar modal
+      this.auth.checkTokens()
+      this.playSound.playErrorQuestion()
+       console.log("Tokens insuficientes")
+     }
+
+
   }
 
 
 
 
+  translation2: string = '';
+  getTranslation() {
+    const userText = this.formulario.get('english')?.value;
 
-  public verify_button_completeWithGPT() {
+    this.isLoading = true;
+    this.playSound.playCleanNavigationSound();
+
+
+    this.apiService.translateText(userText).subscribe(response => {
+      console.log('Resposta da API:', response); // Debug
+      if (response.text) {
+        this.translation2 = response.text;
+        this.isLoading = false;
+      } else {
+        this.translation2 = 'Erro ao traduzir.';
+      }
+    }, error => {
+      console.error('Erro na requisição:', error);
+      this.translation2 = 'Erro ao conectar com o servidor.';
+    });
+  }
+
+
+  public verifyIsNotNull() {
     const englishControl = this.formulario.get('english');
     //faz aparecer o botão caso tenha conteudo no input
     if (englishControl) {
@@ -180,8 +281,8 @@ export class LingobotCardComponent {
 
   showInputs: boolean = false;
 
-  lingoBotBobble: string = " Digite uma <B>expressão,phrsal verb, gíria ou frase que você não compreendeu</B>\n" +
-    "          e eu irei explicar para você! caso queira também posso  apena traduzir. <br>\n"
+  lingoBotBobble: string = "Digite uma <B>expressão,phrsal verb, gíria ou frase que você não compreendeu</B>\n" +
+    "          e eu irei explicar para você! caso queira também posso apenas traduzir. <br>\n"
 
 
   fakeText: string = "A expressão \"beat around the bush\" significa \"enrolar\" ou \"não ir direto ao ponto\". É usada quando alguém evita falar sobre algo importante ou difícil, em vez de ser direto e claro.\n" +
@@ -215,7 +316,32 @@ export class LingobotCardComponent {
 
 
 
+  showSuccessMessage = false;
 
+  saveFlashcard() {
+    if (!this.newFlashcard.word.trim()) {
+      alert('A palavra principal (word) é obrigatória!');
+      return;
+    }
+
+
+    this.newFlashcard.id = new Date().getTime(); // Gera um ID único
+    const storedFlashcards = localStorage.getItem('flashcards');
+    const flashcards: Flashcard[] = storedFlashcards ? JSON.parse(storedFlashcards) : [];
+
+    flashcards.push({ ...this.newFlashcard });
+    localStorage.setItem('flashcards', JSON.stringify(flashcards));
+
+    this.showSuccessMessage = true; // Exibe a mensagem de sucesso
+
+    setTimeout(() => {
+      this.showSuccessMessage = false; // Oculta a mensagem após 3 segundos
+    }, 3000);
+
+    this.playSound.playCleanSound()
+    this.auth.updateMetaUser({ meta7: true });
+
+  }
 
 
 
@@ -322,6 +448,7 @@ export class LingobotCardComponent {
 
 
 **/
+
 
 
 
