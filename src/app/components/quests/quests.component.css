@@ -23,21 +23,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* TELAS PC */
 @media (min-width: 769px) {
 
@@ -384,11 +369,6 @@
 
 
 
-
-
-
-
-
 .writing-feedback {
   max-width: 500px;
   margin: 20px auto;
@@ -443,19 +423,6 @@
   font-size: 11pt !important;
   padding-left:20px  !important;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .card {
@@ -529,17 +496,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 /** loading de póntinhos **/
 .loading-dots {
   display: inline-flex;
@@ -573,13 +529,6 @@
     opacity: 1; /* Bolinha visível */
   }
 }
-
-
-
-
-
-
-
 
 
 
@@ -637,17 +586,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .fail-message {
   background: linear-gradient(145deg, #d9534f, #c9302c); /* Gradiente vermelho */
   color: white;
@@ -669,18 +607,3 @@
   90% { opacity: 1; }
   100% { opacity: 0; transform: translateY(-10px); }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
