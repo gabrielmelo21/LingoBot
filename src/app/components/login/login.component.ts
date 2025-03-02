@@ -175,15 +175,16 @@ export class LoginComponent {
   }
 
 
-  // Método para chamar a criação do usuário
+// Método para chamar a criação do usuário
   onSubmit() {
-    if(this.signupForm.valid){
-    this.isLoading = true;
+    if (this.signupForm.valid) {
+      this.isLoading = true;
+
       const usuario = {
         nome: this.signupForm.value.nome,
         sobrenome: this.signupForm.value.sobrenome,
         email: this.signupForm.value.email,
-        password: this.signupForm.value.senha,
+        password: this.signupForm.value.senha, // Senha sem hash
         gender: this.signupForm.value.genero,
         data_nascimento: this.signupForm.value.dataNascimento,
         referal_code: this.signupForm.value.referal_code || null,
@@ -193,36 +194,21 @@ export class LoginComponent {
         timezone: this.signupForm.value.timezone
       };
 
-      // Gerar o hash da senha
-      bcrypt.hash(usuario.password, 10, (err, hashedPassword) => {
-        if (err) {
-          console.error('Erro ao gerar o hash da senha:', err);
+      // Chamada para a API com a senha em texto puro
+      this.mainAPI.criarUsuario(usuario).subscribe(
+        (response) => {
           this.isLoading = false;
-          return;
+          this.successImg = true;
+          this.modalType = "";
+          console.log(response)
+        },
+        (error) => {
+          this.isLoading = false;
+          this.failImg = true;
+          console.log(error);
+          this.modalType = "";
         }
-
-        // Substitui a senha com o hash gerado
-        usuario.password = hashedPassword;
-
-      //  console.log(usuario.password);
-      })
-
-
-    // Chamada para o serviço API
-    this.mainAPI.criarUsuario(usuario).subscribe(
-      (response) => {
-        this.isLoading = false;
-        this.successImg = true;
-    //    console.log(response)
-        this.modalType = ""
-      },
-      (error) => {
-        this.isLoading = false;
-        this.failImg = true;
-        console.log(error)
-        this.modalType = ""
-      }
-    );
+      );
     }
   }
 

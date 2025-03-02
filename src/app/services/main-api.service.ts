@@ -158,7 +158,7 @@ Texto: "${userText}"
 
   // Método para obter o ranking
   getRanking(): Observable<any> {
-    return this.http.get<any>(`${this.API}ranking`);
+    return this.http.get<any>(`${this.API}/ranking`);
   }
 
 
