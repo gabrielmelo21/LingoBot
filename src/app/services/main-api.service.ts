@@ -21,8 +21,8 @@ interface UserData {
   providedIn: 'root'
 })
 export class MainAPIService {
- // private readonly API = 'https://lingobot-api.onrender.com';
-  private readonly API = "http://127.0.0.1:5000"
+  private readonly API = 'https://lingobot-api.onrender.com';
+ // private readonly API = "http://127.0.0.1:5000"
 
   /**
    * http://localhost:8085/gpt

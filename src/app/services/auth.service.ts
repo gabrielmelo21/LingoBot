@@ -11,8 +11,8 @@ export class AuthService {
   private tokenKey = 'token';
   private refreshTokenKey = 'refreshToken';
   private userKey = 'userData';
-  // private apiUrl = 'https://lingobot-api.onrender.com/'; // Ajuste para o URL real do seu backend
-  private readonly  apiUrl = "http://127.0.0.1:5000/" //aqui tem a barra, no outro arquivo não, pq nao padroniza seu FDP!!!
+  private apiUrl = 'https://lingobot-api.onrender.com/'; // Ajuste para o URL real do seu backend
+ // private readonly  apiUrl = "http://127.0.0.1:5000/" //aqui tem a barra, no outro arquivo não, pq nao padroniza seu FDP!!!
 
   private userSubject = new BehaviorSubject<any>(this.getUserData()); // Inicializa com os dados do localStorage
   user$ = this.userSubject.asObservable(); // Observable para observar as mudanças no usuário
