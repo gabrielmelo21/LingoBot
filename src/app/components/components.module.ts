@@ -29,7 +29,12 @@ import { MissoesDiariasComponent } from './missoes-diarias/missoes-diarias.compo
 import { ReferralComponent } from './referral/referral.component';
 import { DesafiosInicianteComponent } from './desafios-iniciante/desafios-iniciante.component';
 import { BugReportComponent } from './bug-report/bug-report.component';
-import { RankingComponent } from './ranking/ranking.component'
+import { RankingComponent } from './ranking/ranking.component';
+import { TrilhaDeEstudosComponent } from './trilha-de-estudos/trilha-de-estudos.component';
+import { TrilhaDeEstudosActiveComponent } from './trilha-de-estudos-active/trilha-de-estudos-active.component';
+import { Step1Component } from './step1/step1.component';
+import { Step2Component } from './step2/step2.component';
+import { Step3Component } from './step3/step3.component'
 
 
 @NgModule({
@@ -51,7 +56,12 @@ import { RankingComponent } from './ranking/ranking.component'
     ReferralComponent,
     DesafiosInicianteComponent,
     BugReportComponent,
-    RankingComponent
+    RankingComponent,
+    TrilhaDeEstudosComponent,
+    TrilhaDeEstudosActiveComponent,
+    Step1Component,
+    Step2Component,
+    Step3Component
 
   ],
     exports: [

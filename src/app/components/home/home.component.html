@@ -7,6 +7,31 @@
   <!--  <button (click)="installPWA()">Instalar App</button>
  -->
 
+  <button (click)="goto_step3()">step3</button>
+
+  <div
+    (mouseenter)="onMouseEnter()"
+    (click)="navigate_to(432)"
+    style="
+    background-image: url('assets/lingobot/trilha-do-caralho3.png');
+    background-size: cover;
+    position: relative;
+  "
+    class="card"
+  >
+    <h3>
+
+    </h3>
+
+
+    <div class="token-info">
+        <span>Trilhas de Estudo</span>
+    </div>
+
+  </div>
+
+
+
 
   <div
     (mouseenter)="onMouseEnter()"
@@ -224,7 +249,7 @@
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 20px;
   }
 
   .token-icon {

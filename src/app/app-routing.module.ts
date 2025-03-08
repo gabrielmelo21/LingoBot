@@ -11,6 +11,11 @@ import {MissoesDiariasComponent} from "./components/missoes-diarias/missoes-diar
 import {ReferralComponent} from "./components/referral/referral.component";
 import {DesafiosInicianteComponent} from "./components/desafios-iniciante/desafios-iniciante.component";
 import {RankingComponent} from "./components/ranking/ranking.component";
+import {TrilhaDeEstudosComponent} from "./components/trilha-de-estudos/trilha-de-estudos.component";
+import {TrilhaDeEstudosActiveComponent} from "./components/trilha-de-estudos-active/trilha-de-estudos-active.component";
+import {Step1Component} from "./components/step1/step1.component";
+import {Step2Component} from "./components/step2/step2.component";
+import {Step3Component} from "./components/step3/step3.component";
 
 
 const routes: Routes = [
@@ -30,6 +35,11 @@ const routes: Routes = [
   { path: "referral", component: ReferralComponent },
   { path: "desafios-iniciante", component: DesafiosInicianteComponent },
   { path: "ranking", component: RankingComponent },
+  { path: "trilha", component: TrilhaDeEstudosComponent },
+  { path: "trilha-active", component: TrilhaDeEstudosActiveComponent  },
+  { path: "step1", component: Step1Component  },
+  { path: "step2", component: Step2Component  },
+  { path: "step3", component: Step3Component  },
 
 
 

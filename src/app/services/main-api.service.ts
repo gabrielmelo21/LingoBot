@@ -21,8 +21,8 @@ interface UserData {
   providedIn: 'root'
 })
 export class MainAPIService {
-  private readonly API = 'https://lingobot-api.onrender.com';
- // private readonly API = "http://127.0.0.1:5000/"
+ // private readonly API = 'https://lingobot-api.onrender.com';
+  private readonly API = "http://127.0.0.1:5000"
 
   /**
    * http://localhost:8085/gpt
@@ -32,6 +32,23 @@ export class MainAPIService {
    * @param http
    */
   constructor(private http: HttpClient) { }
+
+
+
+
+  // Modificar para especificar que a resposta tem o formato { text: string }
+  uploadAudio(file: File): Observable<{ text: string }> {
+    const formData = new FormData();
+    formData.append('audio', file, file.name);
+
+    return this.http.post<{ text: string }>(this.API + "/transcribe", formData);
+  }
+
+
+
+
+
+
 
 
   // Método para criar o usuário
@@ -66,7 +83,15 @@ export class MainAPIService {
 
     switch (type) {
       case "ListeningChecking":
-        prompt0 = `o texto "${userText}" fala sobre o tema disso "${prompt}". é relacionado ou próximo? Responda apenas com True ou False.`;
+        prompt0 = `
+        O usuário ouviu um áudio sobre o tema: "${prompt}". Ele forneceu a seguinte resposta: "${userText}".
+        Baseado no que foi dito pelo usuário, você acha que ele compreendeu o conteúdo do áudio?
+        Considere se a resposta está coerente com o tema, a clareza das ideias e se a resposta reflete o entendimento real do que foi falado no áudio.
+        Responda com 'True' se a compreensão foi adequada, ou 'False' se a resposta está incorreta ou não condiz com o conteúdo do áudio.
+      `;
+
+
+       // prompt0 = `o texto "${userText}" fala sobre o tema disso "${prompt}". é relacionado ou próximo? Responda apenas com True ou False.`;
         break;
       case "WritingChecking":
         prompt0 = `Avalie o seguinte texto em inglês e forneça um JSON com a pontuação de gramática, coerência e vocabulário (0 a 3000 cada, pode ser rígido), além de erros e sugestões de melhoria. Retorne apenas o JSON, sem explicações extras.
@@ -112,6 +137,62 @@ Exemplo de resposta esperada (somente o JSON):
 Texto: "${userText}"
 `;
       break;
+
+      case "ListeningExerciseStep1":
+        // pegar o tema do usuario e transforma em um texto para o Audio
+        prompt0 = `Write a short and engaging text (1 sentences) in **natural English** about "${prompt}".
+Avoid obvious and predictable facts. Be creative and bring an interesting, curious, or unexpected perspective on the topic.
+Use **moderate idioms and natural expressions**, making it sound like something a native speaker would say in a casual conversation or narration.`;
+        break;
+
+      case "ConversationExerciseStep2":
+
+        // Use expressões idiomáticas sempre que fizer sentido para tornar as perguntas mais naturais. -> coloque isso para niveis mais altos
+
+        prompt0 = `Assim como em uma conversa informal, crie 5 perguntas em inglês sobre "${prompt}".
+
+Formato de resposta esperado (apenas JSON, sem explicações adicionais):
+{
+  "questions": {
+    "quest1": "[Primeira pergunta em inglês]",
+    "quest2": "[Segunda pergunta em inglês]",
+    "quest3": "[Terceira pergunta em inglês]",
+    "quest4": "[Quarta pergunta em inglês]",
+    "quest5": "[Quinta pergunta em inglês]"
+  }
+}`
+        break;
+
+      case "ConversationExerciseStep2_avaliation":
+        prompt0 = `
+Aqui estão as perguntas e as respostas do aluno:
+${prompt}
+**Tarefa:**
+1. Identifique **erros gramaticais** e forneça a versão corrigida.
+2. Explique brevemente o erro e a correção.
+3. Se o inglês estiver bom, incentive o aluno.
+4. Dê **1 ou 2 dicas** curtas para melhorar.
+
+**Resposta esperada:**
+- A resposta deve ser um objeto JSON com a seguinte estrutura:
+  {
+    "respostas": [
+      {
+        "erro": "Se houver erro, descreva brevemente",
+        "correcao": "Versão corrigida",
+        "dicas": ["Dica 1", "Dica 2"]
+      },
+      ...
+    ]
+  }
+
+Responda de forma objetiva e concisa, sem explicações longas.
+  `;
+        break;
+
+
+
+
 
       default:
         throw new Error("Tipo inválido fornecido para GPT.");

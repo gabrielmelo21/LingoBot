@@ -84,7 +84,9 @@ export class HomeComponent {
       case 132:
         this.router.navigate(['/desafios-iniciante']);
         break;
-
+      case 432:
+        this.router.navigate(['/trilha']);
+       break;
 
 
       default:
@@ -149,5 +151,9 @@ export class HomeComponent {
 
   colocarMoedas() {
     this.auth.updateLocalUserData({ tokens: 1000 });
+  }
+
+  goto_step3() {
+    this.router.navigate(['/step3']);
   }
 }

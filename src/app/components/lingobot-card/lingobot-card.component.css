@@ -55,40 +55,51 @@
 /** BOLHA DE DIALOGO **/
 
 
-
 .speech-bubble-container {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espaço entre o ícone e o balão */
+  gap: 20px; /* Aumenta o espaço entre o ícone e o balão */
+  padding-left: 10px; /* Move o personagem um pouco para a direita */
+  width: 95% !important;
+
 }
 
 .person-icon {
-  width: 75px; /* Tamanho do ícone */
+  width: 75px;
   height: 75px;
-  border-radius: 50%; /* Para deixar o ícone redondo */
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra suave */
 }
 
 .speech-bubble {
   position: relative;
-  background-color: #f1f1f1; /* Cor de fundo do balão */
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 90%; /* Largura máxima do balão */
+  background: linear-gradient(145deg, #1e90ff, #8a2be2);
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 15px;
+  max-width: 100%;
+  color: #333; /* Cor do texto para contraste */
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2),
+  0px 2px 5px rgba(0, 0, 0, 0.1),
+  inset 0px 2px 4px rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+
 }
 
 .speech-bubble::before {
   content: '';
   position: absolute;
-  left: -10px; /* Posiciona a "ponta" do balão */
+  left: -15px; /* Ajusta a posição da "ponta" do balão */
   top: 50%;
   transform: translateY(-50%);
   width: 0;
   height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid #f1f1f1; /* Cor da "ponta" do balão */
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 15px solid #8a2be2; /* Cor da "ponta" do balão */
 }
-
 
 
 

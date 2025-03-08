@@ -1,0 +1,148 @@
+<div class="grid mobileConfig">
+
+
+
+
+
+  <div *ngIf="showSuccessMessage" class="success-message show">
+    Trilha liberada com sucesso!
+  </div>
+  <div *ngIf="showFailMessage" class="fail-popup">
+    Você está sem <b>LingoTokens</b>, vá na opção Planos e adquira LingoTokens.
+  </div>
+
+
+
+
+
+  <div class="selected-trail-card" *ngIf="trilhaAtual !== ''">
+    <p class="trail-title">Trilha Ativa</p>
+
+    <h3>{{ trilhaAtual }}</h3>
+    <p>Recompensa final:
+      <img src="assets/lingobot/icons/lxp.png" width="28" height="16" style="padding-right: 10px">
+      <span class="lxp-value">{{ final_lxp_bounty }}</span>
+    </p>
+  </div>
+
+
+
+
+
+
+
+  <div
+    (mouseenter)="onMouseEnter()"
+    style="background-image: url('assets/lingobot/trilha-do-caralho3.png'); background-size: cover; position: relative;"
+    class="card"
+  >
+    <!-- Informações da Trilha no canto superior esquerdo -->
+    <div class="trilha-info">
+      <span>Trilha de Estudos - Level 1 <br> Recompensa Final:
+        <img src="assets/lingobot/icons/lxp.png" width="28" height="16" style="padding-right: 10px">
+        <span class="lxp-value">10000</span></span>
+    </div>
+
+
+    <div class="lock-icon" [ngClass]="trilhaAtual !== 'Level 1' ? 'locked' : 'unlocked'">
+      <mat-icon *ngIf="trilhaAtual !== 'Level 1'">lock</mat-icon>
+      <mat-icon *ngIf="trilhaAtual === 'Level 1'">lock_open</mat-icon>
+    </div>
+
+
+
+    <!-- Botão para liberar trilha (só aparece se não houver trilha ativa) -->
+    <div class="button-container" *ngIf="this.user.Level >= 1 && this.trilhaAtual === ''">
+      <button class="game-button" mat-flat-button (click)="selectTrilha(1)">
+    <span class="button-content">
+      Liberar trilha por
+      <span class="token-wrapper">
+        <img src="assets/lingobot/icons/LingoToken.png" alt="Token" class="token-icon">
+        <span class="gold-text">500</span>
+      </span>
+    </span>
+      </button>
+    </div>
+
+    <!-- Botão para iniciar trilha (aparece apenas para a trilha ativa) -->
+    <div class="button-container" *ngIf="this.trilhaAtual === 'Level 1'">
+      <button class="game-button" mat-flat-button (click)="navigate_to()">
+    <span class="button-content">
+      Iniciar Trilha
+    </span>
+      </button>
+    </div>
+
+    <!-- Mensagem para impedir ativação de outra trilha se já houver uma ativa -->
+    <div class="button-container atinja-level" *ngIf="this.trilhaAtual !== '' && this.trilhaAtual !== 'Level 1'">
+      <p>Finalize a Trilha Atual</p>
+    </div>
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+  <div
+    (mouseenter)="onMouseEnter()"
+    style="background-image: url('assets/lingobot/trilha-do-caralho3.png'); background-size: cover; position: relative;"
+    class="card"
+  >
+    <!-- Informações da Trilha no canto superior esquerdo -->
+    <div class="trilha-info">
+      <span>Trilha de Estudos - Level 10 <br> Recompensa Final:
+        <img src="assets/lingobot/icons/lxp.png" width="28" height="16" style="padding-right: 10px;padding-top: 10px">
+        <span class="lxp-value">20000</span></span>
+    </div>
+
+    <!-- Cadeado no canto superior direito -->
+    <div class="lock-icon" [ngClass]="trilhaAtual !== 'Level 10' ? 'locked' : 'unlocked'">
+      <mat-icon *ngIf="trilhaAtual !== 'Level 10'">lock</mat-icon>
+      <mat-icon *ngIf="trilhaAtual === 'Level 10'">lock_open</mat-icon>
+    </div>
+
+
+    <!-- Botão para liberar trilha (só aparece se não houver trilha ativa) -->
+    <div class="button-container" *ngIf="this.user.Level >= 10 && this.trilhaAtual === ''">
+      <button class="game-button" mat-flat-button (click)="selectTrilha(10)">
+    <span class="button-content">
+      Liberar trilha por
+      <span class="token-wrapper">
+        <img src="assets/lingobot/icons/LingoToken.png" alt="Token" class="token-icon">
+        <span class="gold-text">500</span>
+      </span>
+    </span>
+      </button>
+    </div>
+
+    <!-- Botão para iniciar trilha (aparece apenas para a trilha ativa) -->
+    <div class="button-container" *ngIf="this.trilhaAtual === 'Level 10'">
+      <button class="game-button" mat-flat-button (click)="navigate_to()">
+    <span class="button-content">
+      Iniciar Trilha
+    </span>
+      </button>
+    </div>
+
+    <!-- Mensagem para impedir ativação de outra trilha se já houver uma ativa -->
+    <div class="button-container atinja-level" *ngIf="this.trilhaAtual !== '' && this.trilhaAtual !== 'Level 10'">
+      <p>Finalize a Trilha Atual</p>
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+</div>

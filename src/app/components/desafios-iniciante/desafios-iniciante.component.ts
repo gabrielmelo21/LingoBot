@@ -120,6 +120,7 @@ export class DesafiosInicianteComponent implements OnInit {
   showFailMessage = false;
   traduzirParaIngles = true;
 
+
   ngOnInit() {
     this.novoDesafio();
   }

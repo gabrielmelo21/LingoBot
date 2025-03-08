@@ -281,8 +281,7 @@ export class LingobotCardComponent {
 
   showInputs: boolean = false;
 
-  lingoBotBobble: string = "Digite uma <B>expressão,phrsal verb, gíria ou frase que você não compreendeu</B>\n" +
-    "          e eu irei explicar para você! caso queira também posso apenas traduzir. <br>\n"
+  lingoBotBobble: string = "Digite uma palavra, expressão ou frase que não entendeu, e eu explico ou traduzo para você!"
 
 
   fakeText: string = "A expressão \"beat around the bush\" significa \"enrolar\" ou \"não ir direto ao ponto\". É usada quando alguém evita falar sobre algo importante ou difícil, em vez de ser direto e claro.\n" +

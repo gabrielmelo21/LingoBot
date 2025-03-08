@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from "@angular/router";
 import {AuthService} from "./services/auth.service";
 import {PlaySoundService} from "./services/play-sound.service";
+import {TrilhaService} from "./services/trilha.service";
 
 
 
@@ -30,13 +31,13 @@ export class AppComponent implements OnInit{
 
 
 
-  constructor(
+  constructor(  private trilha: TrilhaService,
                 private router: Router,
                 private auth: AuthService,
                 private playSound: PlaySoundService
   ) {
 
-
+    //localStorage.clear();
 
 
 this.router.events.subscribe(event => {
@@ -77,6 +78,18 @@ this.router.events.subscribe(event => {
 
 
   ngOnInit() {
+
+
+    if (!this.trilha.getTrilhaData()) {
+     console.log("trilha iniciada");
+      this.trilha.initializeTrilhaData();
+    }else{
+     console.log("trilha base ja foi iniciada - " + localStorage.getItem("trilhaData"))
+    }
+
+
+
+
     // Pega os últimos 6 caracteres da URL
     const referralCode = window.location.href.slice(-6);
 

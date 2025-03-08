@@ -1,0 +1,15 @@
+<div class="button-container">
+  <!-- Texto de status -->
+  <p class="status-text">{{ recordingStatus }}</p>
+
+  <!-- Botão de gravação -->
+  <button
+    class="record-button"
+    (mousedown)="startRecording()"
+    (mouseup)="stopRecording()"
+    (mouseleave)="cancelRecording()"
+    [class.recording]="isRecording"
+  >
+    <mat-icon>mic</mat-icon>
+  </button>
+</div>

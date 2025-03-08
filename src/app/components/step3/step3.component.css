@@ -1,0 +1,51 @@
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.status-text {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.record-button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(145deg, #007bff, #6f42c1);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.record-button:active {
+  transform: scale(1.1);
+}
+
+.recording {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(111, 66, 193, 1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+}
