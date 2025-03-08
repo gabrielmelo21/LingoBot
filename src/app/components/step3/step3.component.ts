@@ -63,11 +63,14 @@ export class Step3Component {
 
     this.recordingStatus = 'Enviando áudio...';
 
-    const audioFile = new File([this.audioBlob], 'audio.webm', {
-      type: 'audio/webm',
-    });
+    // Converter o Blob para um arquivo MP3 ou WAV se necessário
+    const audioFile = new File([this.audioBlob], 'audio.mp3', { type: 'audio/mp3' });
 
-    this.api.uploadAudio(audioFile).subscribe(
+    // Criar FormData e garantir que a chave seja 'file'
+    const formData = new FormData();
+    formData.append('file', audioFile, 'audio.mp3'); // Mudando 'audio' para 'file'
+
+    this.api.uploadAudio(formData).subscribe(
       (response) => {
         this.recordingStatus = 'Transcrição: ' + response.text;
       },
@@ -76,4 +79,5 @@ export class Step3Component {
       }
     );
   }
+
 }

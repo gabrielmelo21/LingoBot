@@ -36,14 +36,9 @@ export class MainAPIService {
 
 
 
-  // Modificar para especificar que a resposta tem o formato { text: string }
-  uploadAudio(file: File): Observable<{ text: string }> {
-    const formData = new FormData();
-    formData.append('audio', file, file.name);
-
+  uploadAudio(formData: FormData): Observable<{ text: string }> {
     return this.http.post<{ text: string }>(this.API + "/transcribe", formData);
   }
-
 
 
 
