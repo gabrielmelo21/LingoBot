@@ -1,12 +1,14 @@
-<div class="audio-container">
+<div class="audio-container" style="margin-top: 200px">
   <p>{{ recordingStatus }}</p>
-
+  <h5>Update 20:03 - touchstart touch end</h5>
   <!-- Botão de gravar -->
   <button
     class="record-btn"
     (mousedown)="startRecording()"
     (mouseup)="stopRecording()"
-    (mouseleave)="stopRecording()">
+    (mouseleave)="stopRecording()"
+    (touchstart)="startRecording()"
+    (touchend)="stopRecording()">
     🎤 Segure para gravar
   </button>
 

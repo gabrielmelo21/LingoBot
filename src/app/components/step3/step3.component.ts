@@ -17,6 +17,8 @@ export class Step3Componentexport  {
   constructor(private api: MainAPIService) {}
 
   startRecording() {
+    if (this.isRecording) return;
+
     this.isRecording = true;
     this.recordingStatus = 'Gravando...';
 
@@ -33,16 +35,16 @@ export class Step3Componentexport  {
   }
 
   stopRecording() {
-    if (this.isRecording && this.mediaRecorder) {
-      this.isRecording = false;
-      this.recordingStatus = 'Gravação finalizada. Você pode ouvir antes de enviar.';
+    if (!this.isRecording) return;
 
-      this.mediaRecorder.stop();
-      this.mediaRecorder.onstop = () => {
-        this.audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
-        this.audioUrl = URL.createObjectURL(this.audioBlob); // Cria a URL para o player de áudio
-      };
-    }
+    this.isRecording = false;
+    this.recordingStatus = 'Gravação finalizada. Você pode ouvir antes de enviar.';
+
+    this.mediaRecorder.stop();
+    this.mediaRecorder.onstop = () => {
+      this.audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
+      this.audioUrl = URL.createObjectURL(this.audioBlob); // Cria a URL para o player de áudio
+    };
   }
 
   cancelRecording() {
