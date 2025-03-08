@@ -1,15 +1,20 @@
-<div class="button-container" style="margin-top: 200px">
-  <!-- Texto de status -->
-  <p class="status-text">{{ recordingStatus }}</p>
+<div class="audio-container">
+  <p>{{ recordingStatus }}</p>
 
-  <!-- Botão de gravação -->
+  <!-- Botão de gravar -->
   <button
-    class="record-button"
+    class="record-btn"
     (mousedown)="startRecording()"
     (mouseup)="stopRecording()"
-    (mouseleave)="cancelRecording()"
-    [class.recording]="isRecording"
-  >
-    <mat-icon>mic</mat-icon>
+    (mouseleave)="stopRecording()">
+    🎤 Segure para gravar
+  </button>
+
+  <!-- Mostrar player de áudio se tiver um áudio gravado -->
+  <audio *ngIf="audioUrl" [src]="audioUrl" controls></audio>
+
+  <!-- Botão de enviar áudio -->
+  <button *ngIf="audioUrl" (click)="sendAudio()" class="send-btn">
+    📤 Enviar áudio
   </button>
 </div>

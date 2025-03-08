@@ -6,11 +6,13 @@ import {MainAPIService} from "../../services/main-api.service";
   templateUrl: './step3.component.html',
   styleUrls: ['./step3.component.css']
 })
-export class Step3Component {
+export class Step3Componentexport  {
   isRecording = false;
   recordingStatus = 'Pronto para gravar';
   mediaRecorder!: MediaRecorder;
   audioChunks: Blob[] = [];
+  audioUrl: string | null = null; // Para armazenar a URL do áudio gravado
+  audioBlob: Blob | null = null; // Para armazenar o áudio gravado
 
   constructor(private api: MainAPIService) {}
 
@@ -33,12 +35,12 @@ export class Step3Component {
   stopRecording() {
     if (this.isRecording && this.mediaRecorder) {
       this.isRecording = false;
-      this.recordingStatus = 'Gravação finalizada. Enviando...';
+      this.recordingStatus = 'Gravação finalizada. Você pode ouvir antes de enviar.';
 
       this.mediaRecorder.stop();
       this.mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
-        this.confirmAndSend(audioBlob);
+        this.audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
+        this.audioUrl = URL.createObjectURL(this.audioBlob); // Cria a URL para o player de áudio
       };
     }
   }
@@ -51,25 +53,25 @@ export class Step3Component {
     }
   }
 
-  confirmAndSend(audioBlob: Blob) {
-    const confirmSend = confirm('Deseja enviar este áudio para transcrição?');
-
-    if (confirmSend) {
-      const audioFile = new File([audioBlob], 'audio.webm', {
-        type: 'audio/webm',
-      });
-
-      this.api.uploadAudio(audioFile).subscribe(
-        (response) => {
-          this.recordingStatus = 'Transcrição concluída: ' + response.text;
-        },
-        (error) => {
-          this.recordingStatus = 'Erro ao transcrever áudio';
-        }
-      );
-    } else {
-      this.recordingStatus = 'Envio cancelado';
+  sendAudio() {
+    if (!this.audioBlob) {
+      this.recordingStatus = 'Nenhum áudio gravado para enviar.';
+      return;
     }
+
+    this.recordingStatus = 'Enviando áudio...';
+
+    const audioFile = new File([this.audioBlob], 'audio.webm', {
+      type: 'audio/webm',
+    });
+
+    this.api.uploadAudio(audioFile).subscribe(
+      (response) => {
+        this.recordingStatus = 'Transcrição: ' + response.text;
+      },
+      (error) => {
+        this.recordingStatus = 'Erro ao transcrever áudio';
+      }
+    );
   }
 }
-
