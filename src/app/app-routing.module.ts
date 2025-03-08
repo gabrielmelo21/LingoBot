@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import {VideosComponent} from "./components/videos/videos.component";
 import {LoginComponent} from "./components/login/login.component";
 import {DiscoverExpressionsComponent} from "./components/discover-expressions/discover-expressions.component";
 import {FlashcardsComponent} from "./components/flashcards/flashcards.component";
@@ -24,7 +23,6 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule),
   },
-  { path: 'videos', component: VideosComponent },
   { path: 'login', component: LoginComponent },
   { path: "discoverExpressions", component: DiscoverExpressionsComponent },
   { path: "flashcards", component: FlashcardsComponent },

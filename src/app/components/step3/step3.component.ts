@@ -6,7 +6,7 @@ import {MainAPIService} from "../../services/main-api.service";
   templateUrl: './step3.component.html',
   styleUrls: ['./step3.component.css']
 })
-export class Step3Componentexport  {
+export class Step3Component {
   isRecording = false;
   recordingStatus = 'Pronto para gravar';
   mediaRecorder!: MediaRecorder;

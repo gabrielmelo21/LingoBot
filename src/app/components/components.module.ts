@@ -11,7 +11,6 @@ import {MatCardModule} from "@angular/material/card";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from "@angular/material/input";
 import {MatGridListModule} from "@angular/material/grid-list";
-import { VideosComponent } from './videos/videos.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {YouTubePlayerModule} from "@angular/youtube-player";
 import { LoginComponent } from './login/login.component';
@@ -40,7 +39,6 @@ import { Step3Component } from './step3/step3.component'
 @NgModule({
   declarations: [
     HomeComponent,
-    VideosComponent,
     LoginComponent,
     FooterLinksComponent,
     FlashcardsComponent,
