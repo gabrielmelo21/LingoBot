@@ -1,4 +1,19 @@
-<div class="ranking-container mobileConfig">
+
+
+<div class="loading-dots" *ngIf="isLoading" style="margin-top: 150px !important;margin-bottom: 50px !important;">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+
+
+<div class="ranking-container mobileConfig" *ngIf="!isLoading">
+
+
+
+
+
   <!-- Pódio -->
   <div class="podium">
     <div class="rank third podium-item">

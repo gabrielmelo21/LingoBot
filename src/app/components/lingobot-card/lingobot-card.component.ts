@@ -188,7 +188,7 @@ export class LingobotCardComponent {
 
 
   getLingoBotExplanation() {
-    if(this.auth.getUserTokens() >= 50){
+  //  if(this.auth.getUserTokens() >= 50){
 
       this.isLoading = true;
     this.playSound.playCleanNavigationSound();
@@ -200,7 +200,7 @@ export class LingobotCardComponent {
     this.apiService.GPT("", userText, "ExplainExpression").subscribe(response => {
       console.log('Resposta bruta da API:', response); // 🔍 Debug
 
-       this.auth.decreseToken(50);
+     //  this.auth.decreseToken(50);
       this.auth.updateMetaUser({ meta4: true });
 
       try {
@@ -231,13 +231,13 @@ export class LingobotCardComponent {
       }
     });
 
-     }else{
+  /**   }else{
        // ativar modal
       this.auth.checkTokens()
       this.playSound.playErrorQuestion()
        console.log("Tokens insuficientes")
      }
-
+**/
 
   }
 

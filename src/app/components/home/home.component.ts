@@ -156,4 +156,8 @@ export class HomeComponent {
   goto_step3() {
     this.router.navigate(['/step3']);
   }
+
+  goto_step4() {
+    this.router.navigate(['/step4']);
+  }
 }

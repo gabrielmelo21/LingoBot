@@ -73,34 +73,33 @@
 
 .speech-bubble {
   position: relative;
-  background: linear-gradient(145deg, #1e90ff, #8a2be2);
+  background: linear-gradient(145deg, #ffffff, #e0e0e0); /* Gradiente branco suave */
   border: 3px solid rgba(0, 0, 0, 0.2);
   padding: 15px;
   border-radius: 15px;
   max-width: 100%;
-  color: #333; /* Cor do texto para contraste */
+  color: black !important;
   font-weight: bold;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2),
-  0px 2px 5px rgba(0, 0, 0, 0.1),
-  inset 0px 2px 4px rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0px 4px 10px rgba(0, 0, 0, 0.2),
+    0px 2px 5px rgba(0, 0, 0, 0.1),
+    inset 0px 2px 4px rgba(255, 255, 255, 0.3);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-
 }
 
-.speech-bubble::before {
+/* 🔹 Corrigindo a ponta do balão */
+.speech-bubble::after {
   content: '';
   position: absolute;
-  left: -15px; /* Ajusta a posição da "ponta" do balão */
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: -18px; /* Ajustado para alinhar com a borda */
+  left: 25px; /* Melhor posicionamento */
   width: 0;
   height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-right: 15px solid #8a2be2; /* Cor da "ponta" do balão */
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 18px solid #e0e0e0; /* Combina com o gradiente do balão */
+  filter: brightness(95%); /* Suaviza a transição */
 }
-
 
 
 
@@ -352,4 +351,25 @@
   word-wrap: break-word;
 }
 
+
+
+
+/* Animação sutil de flutuação */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Imagem do personagem */
+.character-image {
+  width: 30%;
+  float: left;
+  margin-top: 20px;
+  border-radius: 20px;
+  animation: float 3s ease-in-out infinite;
+}
 

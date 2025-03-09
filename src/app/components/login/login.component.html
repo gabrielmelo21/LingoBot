@@ -89,8 +89,8 @@
 
               <!-- Adicionando Data de Nascimento e Gênero -->
               <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Data de Nascimento</mat-label>
-                <input matInput formControlName="dataNascimento" type="date" required>
+                <mat-label>Ano de Nascimento</mat-label>
+                <input matInput formControlName="dataNascimento" type="number" required>
                 <mat-error *ngIf="signupForm.get('dataNascimento')?.invalid && signupForm.get('dataNascimento')?.touched">
                   Data de nascimento é obrigatória
                 </mat-error>
@@ -153,6 +153,16 @@
 
 
 
+              <!-- Loading -->
+              <div class="loading-dots" *ngIf="isLoading">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+
+
+
+
               <div class="button-container">
                 <button mat-flat-button class="white-button" type="button" (click)="prevStep()">Voltar</button>
                 <button mat-flat-button class="game-button" type="submit">Criar conta</button>
@@ -183,11 +193,18 @@
           </div>
         </form>
 
-        <div *ngIf="loginIsLoading" class="spinner-container">
-          <img src="assets/lingobot/lingobot-pensando-sorrindo.png" class="floating-animation responsive-img">
-        </div>
+
+
+
+          <!-- Loading -->
+          <div class="loading-dots"  *ngIf="loginIsLoading" style="margin-top: 50px;margin-bottom: 50px">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
         <br>
-        <h4 style="text-align: center" *ngIf="loginIsLoading">Carregando...</h4>
+        <h4 style="text-align: center" *ngIf="loginIsLoading">Entrando...</h4>
 
 
       </div>

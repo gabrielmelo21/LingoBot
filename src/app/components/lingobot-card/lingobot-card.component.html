@@ -1,22 +1,24 @@
 
 <div class="form-card" style="background: transparent !important;">
-  <div class="speech-bubble-container animation-zoom">
-    <!-- Ícone da pessoa -->
-    <img src="assets/lingobot/lingobot-button-icon.png"  style="border-radius: 20px" alt="Person Icon" class="person-icon">
+  <div class=" animation-zoom"  >
 
-    <!-- Balão de fala -->
-    <div class="speech-bubble">
+    <div class="speech-bubble" style=" width: 100% !important;">
 
-
-
-
-      <p [innerHTML]="lingoBotBobble" *ngIf="!sendQuestion"   style="color: white !important;"></p>
+      <p [innerHTML]="lingoBotBobble" *ngIf="!sendQuestion"   ></p>
 
       <form [formGroup]="formulario"   style="margin:15px;margin-top:30px !important;">
-        <mat-form-field *ngIf="!sendQuestion"  style="width: 100%">
-          <mat-label>Ex: "{{expressaoAleatoria}}"</mat-label>
-          <input  (keydown.enter)="preventEnter($event)" matInput formControlName="english" (input)="verifyIsNotNull()" >
-        </mat-form-field>
+
+          <textarea
+            *ngIf="!sendQuestion"
+            formControlName="english"
+            class="answer-input"
+            placeholder=" Ex: '{{ expressaoAleatoria }}'"
+            rows="4"
+            cols="50"
+            (keydown.enter)="preventEnter($event)"
+            (input)="verifyIsNotNull()">
+            </textarea>
+
         <br>
 
         <div class="loading-dots" *ngIf="isLoading">
@@ -77,7 +79,28 @@
 
 
 
-    </div>
+    </div> <!--speach bouble -->
+    <!-- Imagem do personagem -->
+    <img src="assets/lingobot/lingobot-conversando-transparent.png" class="character-image">
+
 
   </div>
 </div>
+
+
+
+<style>
+
+  .answer-input {
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    height: 100px;
+    outline: none;
+    width: 90%;
+    background: white !important;
+  }
+</style>

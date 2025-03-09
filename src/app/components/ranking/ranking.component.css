@@ -155,3 +155,55 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** loading de póntinhos **/
+.loading-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  margin: 0 2px;
+  background-color: #000; /* Cor das bolinhas */
+  border-radius: 50%;
+  opacity: 0;
+  animation: blink 1.4s infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s; /* Atraso para a segunda bolinha */
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s; /* Atraso para a terceira bolinha */
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0; /* Bolinha invisível */
+  }
+  50% {
+    opacity: 1; /* Bolinha visível */
+  }
+}
+
+

@@ -12,6 +12,7 @@ import {MainAPIService} from "../../services/main-api.service";
 export class RankingComponent implements OnInit {
   ranking: any[] = [];
   user: any;
+  isLoading: boolean = false;
 
   constructor(private mainApiService: MainAPIService, private playSoundService: PlaySoundService, private auth: AuthService, router: Router) {
     window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
@@ -30,13 +31,16 @@ export class RankingComponent implements OnInit {
   }
 
   getRanking(): void {
+    this.isLoading = true;
     this.mainApiService.getRanking().subscribe(
       (data: any[]) => {
         this.ranking = data;
         console.log('Ranking obtido.');
+        this.isLoading = false;
       },
       (error: any) => {
         console.error('Erro ao obter ranking:', error);
+        this.isLoading = false;
       }
     );
   }
