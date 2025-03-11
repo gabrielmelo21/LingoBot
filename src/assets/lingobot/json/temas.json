@@ -23,6 +23,14 @@
       {
         "asking": "Great choice! Your total is $8.99. Will you be paying with cash or card?",
         "expected_answer": "I'll pay by card, please."
+      },
+      {
+        "asking": "Would you like any sauces with that?",
+        "expected_answer": "Yes, can I have some ketchup and mayo?"
+      },
+      {
+        "asking": "Thank you for your order! Enjoy your meal.",
+        "expected_answer": "Thank you! Have a great day."
       }
     ]
   },
@@ -40,7 +48,7 @@
     "conversation_exercise": [
       {
         "asking": "Hello! How can I assist you today?",
-        "expected_answer": "Hi! I’d like to reserve a room for two people."
+        "expected_answer": "Hi! I'd like to reserve a room for two people."
       },
       {
         "asking": "When would you like to check in?",
@@ -49,6 +57,14 @@
       {
         "asking": "Great! The price for a double room is $150 per night. Would you like to proceed?",
         "expected_answer": "Yes, please confirm the reservation."
+      },
+      {
+        "asking": "Do you require any additional amenities, such as breakfast or Wi-Fi?",
+        "expected_answer": "Yes, please include free Wi-Fi and breakfast."
+      },
+      {
+        "asking": "Your reservation is confirmed. Is there anything else I can help you with?",
+        "expected_answer": "No, that's all, thank you."
       }
     ]
   },
@@ -75,6 +91,14 @@
       {
         "asking": "Is that all for today?",
         "expected_answer": "Yes, that's all, thank you."
+      },
+      {
+        "asking": "Would you like any extra flavor shots in your latte?",
+        "expected_answer": "No, I prefer it plain, thanks."
+      },
+      {
+        "asking": "Your order will be ready shortly. Enjoy your coffee!",
+        "expected_answer": "Thank you, I appreciate it."
       }
     ]
   },
@@ -101,6 +125,14 @@
       {
         "asking": "Your total is $20. Would you like to select your seats now?",
         "expected_answer": "Yes, please help me choose my seats."
+      },
+      {
+        "asking": "Would you like any snacks with your tickets?",
+        "expected_answer": "Yes, I'd like a popcorn and a soda."
+      },
+      {
+        "asking": "Enjoy your movie and have a great night!",
+        "expected_answer": "Thank you, I'm excited!"
       }
     ]
   },
@@ -127,6 +159,14 @@
       {
         "asking": "Your ride will take approximately 15 minutes. Is that okay?",
         "expected_answer": "Yes, that's fine."
+      },
+      {
+        "asking": "Can you confirm your pickup location?",
+        "expected_answer": "Sure, it's at the corner of 5th and Main."
+      },
+      {
+        "asking": "Thank you for riding with us. Enjoy your day!",
+        "expected_answer": "Thank you!"
       }
     ]
   },
@@ -153,6 +193,14 @@
       {
         "asking": "Would you like any dessert with that?",
         "expected_answer": "Do you have any vegan options?"
+      },
+      {
+        "asking": "Would you like extra avocado on your wrap?",
+        "expected_answer": "Yes, that sounds great."
+      },
+      {
+        "asking": "Your order will be ready soon. Enjoy your meal!",
+        "expected_answer": "Thank you very much!"
       }
     ]
   },
@@ -179,6 +227,14 @@
       {
         "asking": "Is there any landmark nearby to help you find it?",
         "expected_answer": "Yes, it's near the big clock tower."
+      },
+      {
+        "asking": "Should I walk or take a taxi from here?",
+        "expected_answer": "Walking is fine; it's not too far."
+      },
+      {
+        "asking": "Thank you for your help!",
+        "expected_answer": "You're welcome, have a good day!"
       }
     ]
   },
@@ -205,6 +261,14 @@
       {
         "asking": "Would you like to join me for a local tour?",
         "expected_answer": "That sounds interesting, let's plan it."
+      },
+      {
+        "asking": "Have you tried the local cuisine in the area?",
+        "expected_answer": "Yes, the street food is fantastic."
+      },
+      {
+        "asking": "Thanks for the recommendations, I'll definitely check them out!",
+        "expected_answer": "My pleasure!"
       }
     ]
   },
@@ -231,6 +295,14 @@
       {
         "asking": "Would you like to purchase it?",
         "expected_answer": "Yes, I'll take it."
+      },
+      {
+        "asking": "Would you like to see some other options?",
+        "expected_answer": "Sure, I'd love to compare."
+      },
+      {
+        "asking": "Thank you for shopping with us.",
+        "expected_answer": "Thank you, have a great day!"
       }
     ]
   },
@@ -257,6 +329,14 @@
       {
         "asking": "How long do you plan to stay?",
         "expected_answer": "I will be staying for two weeks."
+      },
+      {
+        "asking": "Do you have a return ticket?",
+        "expected_answer": "Yes, I have it right here."
+      },
+      {
+        "asking": "Thank you, enjoy your stay!",
+        "expected_answer": "Thank you very much."
       }
     ]
   },
@@ -283,6 +363,14 @@
       {
         "asking": "Are you familiar with the company's layout?",
         "expected_answer": "Not yet, can you show me around?"
+      },
+      {
+        "asking": "What department will you be joining?",
+        "expected_answer": "I'll be working in the marketing department."
+      },
+      {
+        "asking": "We look forward to working with you!",
+        "expected_answer": "Thank you, I'm happy to be here."
       }
     ]
   },
@@ -309,6 +397,14 @@
       {
         "asking": "Does that make sense now?",
         "expected_answer": "Yes, thank you for the clarification."
+      },
+      {
+        "asking": "Can you also help me with the data analysis?",
+        "expected_answer": "Absolutely, I'll assist you."
+      },
+      {
+        "asking": "I really appreciate your support.",
+        "expected_answer": "No problem at all."
       }
     ]
   },
@@ -335,6 +431,14 @@
       {
         "asking": "Would you like to exchange business cards?",
         "expected_answer": "Yes, that would be great."
+      },
+      {
+        "asking": "What projects are you currently working on?",
+        "expected_answer": "I'm working on a new startup project."
+      },
+      {
+        "asking": "Let's keep in touch after the event.",
+        "expected_answer": "Absolutely, I'll send you my details."
       }
     ]
   },
@@ -361,6 +465,14 @@
       {
         "asking": "Would you be available for extra help during office hours?",
         "expected_answer": "Of course, feel free to stop by."
+      },
+      {
+        "asking": "Can you recommend any additional reading material?",
+        "expected_answer": "Yes, I can suggest a few books."
+      },
+      {
+        "asking": "Thank you for your time and guidance.",
+        "expected_answer": "You're welcome, happy to help."
       }
     ]
   },
@@ -387,6 +499,14 @@
       {
         "asking": "Is there anything else you need?",
         "expected_answer": "No, that's all. Thank you."
+      },
+      {
+        "asking": "Can you confirm your room number?",
+        "expected_answer": "Yes, it's room 405."
+      },
+      {
+        "asking": "We'll send someone immediately to fix it.",
+        "expected_answer": "Thank you very much."
       }
     ]
   },
@@ -413,6 +533,14 @@
       {
         "asking": "Is anyone else with you?",
         "expected_answer": "Yes, please send help quickly."
+      },
+      {
+        "asking": "Is the injured person conscious?",
+        "expected_answer": "Yes, but they need urgent care."
+      },
+      {
+        "asking": "Help is on the way.",
+        "expected_answer": "Thank you for your prompt assistance."
       }
     ]
   },
@@ -439,6 +567,14 @@
       {
         "asking": "Do you remember any details about the suspect?",
         "expected_answer": "Yes, he was wearing a dark jacket."
+      },
+      {
+        "asking": "Were there any witnesses?",
+        "expected_answer": "Yes, a few people saw the incident."
+      },
+      {
+        "asking": "We will file a report and investigate further.",
+        "expected_answer": "Thank you for your assistance."
       }
     ]
   },
@@ -465,6 +601,14 @@
       {
         "asking": "Can you describe your symptoms?",
         "expected_answer": "I'm experiencing severe pain."
+      },
+      {
+        "asking": "Have you taken any medication?",
+        "expected_answer": "No, not yet."
+      },
+      {
+        "asking": "We'll attend to you as quickly as possible.",
+        "expected_answer": "Thank you so much."
       }
     ]
   },
@@ -491,6 +635,14 @@
       {
         "asking": "Have you attended any concerts lately?",
         "expected_answer": "Yes, I recently saw a live performance."
+      },
+      {
+        "asking": "Do you play any musical instruments?",
+        "expected_answer": "I play the guitar."
+      },
+      {
+        "asking": "Music really brings people together.",
+        "expected_answer": "Absolutely, I couldn't agree more."
       }
     ]
   },
@@ -517,6 +669,14 @@
       {
         "asking": "Did you catch the game last night?",
         "expected_answer": "Yes, it was very exciting."
+      },
+      {
+        "asking": "Who is your favorite player?",
+        "expected_answer": "I admire [Player Name]."
+      },
+      {
+        "asking": "Sports always spark great conversations.",
+        "expected_answer": "Indeed, they do."
       }
     ]
   },
@@ -543,6 +703,14 @@
       {
         "asking": "Shall we meet at 6 PM?",
         "expected_answer": "Perfect, see you then."
+      },
+      {
+        "asking": "Should we meet at our usual spot?",
+        "expected_answer": "Yes, that works for me."
+      },
+      {
+        "asking": "Looking forward to catching up!",
+        "expected_answer": "Me too, see you soon."
       }
     ]
   },
@@ -569,6 +737,14 @@
       {
         "asking": "Would you like a brochure?",
         "expected_answer": "Yes, please."
+      },
+      {
+        "asking": "Is there a guided tour available?",
+        "expected_answer": "Yes, they offer guided tours every hour."
+      },
+      {
+        "asking": "Thank you for the information.",
+        "expected_answer": "You're welcome!"
       }
     ]
   },
@@ -595,6 +771,14 @@
       {
         "asking": "Would you like to bring it in for a repair?",
         "expected_answer": "Yes, please."
+      },
+      {
+        "asking": "Do you have your warranty information?",
+        "expected_answer": "Yes, I have it with me."
+      },
+      {
+        "asking": "We'll diagnose and fix the issue as soon as possible.",
+        "expected_answer": "Thank you for your help."
       }
     ]
   },
@@ -621,6 +805,14 @@
       {
         "asking": "It looks like your order has shipped. Anything else?",
         "expected_answer": "No, that's all. Thank you."
+      },
+      {
+        "asking": "Would you like to receive updates via email?",
+        "expected_answer": "Yes, that would be great."
+      },
+      {
+        "asking": "Your order will arrive soon. Have a nice day!",
+        "expected_answer": "Thank you!"
       }
     ]
   },
@@ -647,6 +839,14 @@
       {
         "asking": "Would you like to speak with technical support?",
         "expected_answer": "Yes, please transfer me."
+      },
+      {
+        "asking": "Can you provide your account number?",
+        "expected_answer": "Sure, it's 987654."
+      },
+      {
+        "asking": "Thank you for your patience. We will resolve this shortly.",
+        "expected_answer": "Thank you, I appreciate it."
       }
     ]
   },
@@ -673,6 +873,14 @@
       {
         "asking": "Your subscription has been cancelled. Anything else?",
         "expected_answer": "No, thank you."
+      },
+      {
+        "asking": "Would you like to share feedback on your experience?",
+        "expected_answer": "Yes, I think it could be improved."
+      },
+      {
+        "asking": "We appreciate your feedback and hope to serve you better.",
+        "expected_answer": "Thank you."
       }
     ]
   },
@@ -699,6 +907,14 @@
       {
         "asking": "Is everything okay with your meal?",
         "expected_answer": "Yes, everything was great."
+      },
+      {
+        "asking": "Would you like a receipt with that?",
+        "expected_answer": "Yes, please."
+      },
+      {
+        "asking": "Thank you for dining with us. Have a great night!",
+        "expected_answer": "Thank you!"
       }
     ]
   },
@@ -725,6 +941,14 @@
       {
         "asking": "Your ride should arrive in 5 minutes. Is that okay?",
         "expected_answer": "Yes, that's fine."
+      },
+      {
+        "asking": "Can you confirm your pickup location?",
+        "expected_answer": "It's at the main entrance."
+      },
+      {
+        "asking": "Thank you for choosing our service.",
+        "expected_answer": "Thank you!"
       }
     ]
   },
@@ -751,6 +975,14 @@
       {
         "asking": "How do you find the fit?",
         "expected_answer": "It fits perfectly, thank you."
+      },
+      {
+        "asking": "Would you like to see another color?",
+        "expected_answer": "Sure, I'd like to try a different one."
+      },
+      {
+        "asking": "Thank you for your assistance.",
+        "expected_answer": "You're welcome!"
       }
     ]
   },
@@ -777,6 +1009,14 @@
       {
         "asking": "Would you prefer a refund or an exchange?",
         "expected_answer": "I'd like to exchange it, please."
+      },
+      {
+        "asking": "Do you have the receipt with you?",
+        "expected_answer": "Yes, here it is."
+      },
+      {
+        "asking": "Your exchange is being processed. Thank you for your patience.",
+        "expected_answer": "Thank you!"
       }
     ]
   },
@@ -803,6 +1043,14 @@
       {
         "asking": "Is there anything else you need?",
         "expected_answer": "No, that's all for now."
+      },
+      {
+        "asking": "Would you like any recommendations for new products?",
+        "expected_answer": "Sure, I'd love to know what's popular."
+      },
+      {
+        "asking": "Thank you for shopping with us.",
+        "expected_answer": "Thank you, have a nice day!"
       }
     ]
   },
@@ -829,6 +1077,14 @@
       {
         "asking": "Would you like a replacement or a refund?",
         "expected_answer": "I would prefer a replacement."
+      },
+      {
+        "asking": "Can you confirm your order number?",
+        "expected_answer": "Yes, it's 555123."
+      },
+      {
+        "asking": "We apologize for the inconvenience and will correct this immediately.",
+        "expected_answer": "Thank you for understanding."
       }
     ]
   },
@@ -855,6 +1111,14 @@
       {
         "asking": "Would you like to proceed with the rental?",
         "expected_answer": "Yes, that sounds good."
+      },
+      {
+        "asking": "Do you need any additional features like GPS or a child seat?",
+        "expected_answer": "Yes, a GPS would be great."
+      },
+      {
+        "asking": "Thank you, your rental is confirmed.",
+        "expected_answer": "Thank you!"
       }
     ]
   },
@@ -881,6 +1145,14 @@
       {
         "asking": "Would you be open to a salary review?",
         "expected_answer": "Yes, I believe a salary increase is justified."
+      },
+      {
+        "asking": "Are you aware of the current market standards?",
+        "expected_answer": "Yes, I've researched industry benchmarks."
+      },
+      {
+        "asking": "Thank you for discussing this with me.",
+        "expected_answer": "Thank you, I appreciate your time."
       }
     ]
   },
@@ -907,6 +1179,14 @@
       {
         "asking": "Would you like to set up a meeting?",
         "expected_answer": "Yes, that would be great."
+      },
+      {
+        "asking": "Can you share your proposal with me?",
+        "expected_answer": "I'll send you the details shortly."
+      },
+      {
+        "asking": "Thank you for your time and consideration.",
+        "expected_answer": "Thank you, looking forward to it."
       }
     ]
   },
@@ -933,6 +1213,14 @@
       {
         "asking": "Would you like some feedback on your draft?",
         "expected_answer": "Yes, that would be very helpful."
+      },
+      {
+        "asking": "Have you set a deadline for the presentation?",
+        "expected_answer": "Yes, it's due next Monday."
+      },
+      {
+        "asking": "Best of luck with your presentation!",
+        "expected_answer": "Thank you, I appreciate it."
       }
     ]
   },
@@ -959,6 +1247,14 @@
       {
         "asking": "Would you like to meet to discuss further?",
         "expected_answer": "Sure, I'd be happy to provide more details."
+      },
+      {
+        "asking": "How do you feel about the overall project?",
+        "expected_answer": "I'm satisfied, but I see potential for enhancement."
+      },
+      {
+        "asking": "Thank you for your constructive feedback.",
+        "expected_answer": "You're welcome, glad to help."
       }
     ]
   },
@@ -975,16 +1271,24 @@
     ],
     "conversation_exercise": [
       {
-        "asking": "Hello, I see you're upset. Can you tell me what happened?",
-        "expected_answer": "I'm not happy with the service I received."
+        "asking": "Hello, I understand you're not satisfied with our service.",
+        "expected_answer": "Yes, I'm quite upset with the delay."
+      },
+      {
+        "asking": "Can you please explain the issue?",
+        "expected_answer": "The service was not up to the mark."
       },
       {
         "asking": "What can we do to make things right?",
         "expected_answer": "I'd like a refund or a discount."
       },
       {
-        "asking": "Will you give us another chance to improve?",
-        "expected_answer": "I hope so, but I'll need assurance."
+        "asking": "Would you be willing to try our service again?",
+        "expected_answer": "I'm not sure, I need reassurance."
+      },
+      {
+        "asking": "Thank you for your feedback. We will strive to improve.",
+        "expected_answer": "I hope so, thank you."
       }
     ]
   }
