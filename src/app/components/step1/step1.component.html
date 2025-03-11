@@ -49,22 +49,49 @@
 
 
 
+  <!-- Container dos botões -->
+  <div class="button-container-choice">
+    <!-- Botão "Eu escolho o tema" -->
+    <button class="custom-button" (click)="selecionarTema(true)">
+      <img src="assets/lingobot/icons/ideia.png" alt="Escolher tema">
+      <span>Eu escolho o tema</span>
+    </button>
+
+    <!-- Botão "Tema Aleatório" -->
+    <button class="custom-button" (click)="selecionarTema(false)">
+      <img src="assets/lingobot/icons/dados.png" alt="Tema aleatório">
+      <span>Tema Aleatório</span>
+    </button>
+  </div>
+
+  <!-- Texto explicativo e input para escolha do tema -->
+  <div *ngIf="exibirFormulario">
+    <p>
+      <b style="color: rebeccapurple">
+        Escolha um tema que tenha a ver com seus interesses!
+      </b>
+      Pode ser algo relacionado à sua carreira, estudos, ou algo mais descontraído, como filmes, músicas e viagens, sobre alguém que você é fã etc, mas deve fazer sentido para você.
+      <b style="color: rebeccapurple">
+        Após ouvir o áudio, explique o que entendeu e o LingoBot irá avaliar sua compreensão.
+      </b>
+    </p>
+
+    <!-- Caixa de texto para escolher o tema -->
+    <form [formGroup]="formulario">
+      <input type="text"
+             formControlName="mainTheme"
+             class="answer-input"
+             placeholder="Exemplo: Tecnologia, Filmes, Viagens..." />
+    </form>
+    <!-- Botão para gerar exercício -->
+    <div >
+      <button mat-flat-button class="game-button" (click)="enviarTema()">Gerar Exercício</button>
+    </div>
+
+  </div>
 
 
-  <p>
-    <b style="color: rebeccapurple">Escolha um tema que tenha a ver com seus interesses!</b> Pode ser algo relacionado à sua carreira, estudos,  ou algo mais descontraído, como filmes, músicas e viagens, sobre alguêm que você é fã etc, mas deve fazer sentido para você.
-    <b style="color: rebeccapurple">Após ouvir o áudio, explique o que entendeu e o LingoBot irá avaliar sua compreensão.</b>
-  </p>
-
-  <!-- Caixa de texto para escolher o tema -->
-  <form [formGroup]="formulario">
-    <input type="text"
-           formControlName="mainTheme"
-           class="answer-input"
-           placeholder="Exemplo: Tecnologia, Filmes, Viagens..." />
-  </form>
-
-
+  <!-- Loading -->
   <div class="loading-dots" *ngIf="isLoading">
     <span class="dot"></span>
     <span class="dot"></span>
@@ -72,9 +99,6 @@
   </div>
 
 
-  <div class="button-container animation-zoom">
-    <button   mat-flat-button class="game-button" (click)="enviarTema()">Gerar Exercício</button>
-  </div>
 
 
 </div><!-- exercicio de listening config gerarExercicio()-->

@@ -1,10 +1,60 @@
 
-
-.button-container {
+/** 2 BOTÃO DE ESCOLHA **/
+.button-container-choice {
   display: flex;
-  align-items: revert; /* Alinha os botões verticalmente */
-  margin-top: 20px;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
 }
+
+.custom-button {
+  background-color: #f0f0f0; /* Cinza suave */
+  border: none;
+  border-radius: 25px; /* Arredondado */
+  padding: 15px;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.custom-button img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 8px;
+}
+
+.custom-button span {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.custom-button:hover {
+  background-color: #e0e0e0; /* Efeito hover mais escuro */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /** BOTÃO   ESTILO JOGO **/

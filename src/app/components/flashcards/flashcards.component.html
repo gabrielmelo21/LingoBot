@@ -16,12 +16,13 @@
 
 -->
 
+<div style="background-image:url('assets/lingobot/imgs/corki.png');margin: -70px !important;margin-bottom: -20px !important;height: 700px">
 
 
 
 
 <div *ngIf="!isEmpty">
-  <div class="card-container" style="background-image:url('assets/lingobot/imgs/corki.png');">
+  <div class="card-container" >
     <div *ngFor="let word of flashcards" class="flip-card">
       <div class="flip-card-inner" (mouseenter)="playHover()">
 
@@ -45,6 +46,7 @@
   <h3 class="titulo" style="color: black !important;">Your binder is empty.</h3>
 </div>
 
+</div>
 
 <style>
 
@@ -74,12 +76,6 @@
     }
 
   }
-
-
-
-
-
-
 
   .image-container {
     background-image: url('assets/lingobot/lingobot-estudando-com-flashcards.png');

@@ -7,15 +7,4 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./step4.component.css']
 })
 export class Step4Component {
-  formulario: FormGroup;
-
-  constructor(private formBuilder: FormBuilder,) {
-
-    this.formulario = this.formBuilder.group({
-      mainTheme: ['', Validators.required], // Campo do tema
-      respostaUsuario: [''] // Resposta do usuário
-    });
-
-
-  }
 }

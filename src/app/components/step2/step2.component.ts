@@ -207,6 +207,8 @@ export class Step2Component {
 
 
 
+
+
   voltar() {
     this.playSound.playCleanSound2()
     this.router.navigate(["/trilha-active"]);

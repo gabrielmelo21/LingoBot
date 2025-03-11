@@ -53,6 +53,11 @@ export class MainAPIService {
 
 
 
+  getTemas(): Observable<any> {
+  const jsonUrl = 'assets/lingobot/json/temas.json';
+    return this.http.get<any>(jsonUrl);
+  }
+
 
   login(email: string, password: string) {
     const data = {
@@ -183,6 +188,45 @@ ${prompt}
 
 Responda de forma objetiva e concisa, sem explicações longas.
   `;
+        break;
+
+case "ConversationExerciseStep3_learn_and_practice":
+        prompt0 = `O usuário escolheu o tema: "${prompt}".
+**Objetivo:** Ensinar sobre o tema escolhido e criar um exercício de conversação.
+**Instruções:**
+1. Forneça uma breve explicação sobre como esse tipo de conversa ocorre na prática.
+2. Liste termos e frases úteis para essa situação.
+3. Monte um exercício simulando um diálogo, onde o GPT faz perguntas e espera respostas do usuário.
+
+**Formato esperado (JSON):**
+{
+  "theme_tutorial": "[Breve explicação sobre como esse tipo de conversa ocorre no dia a dia]",
+  "useful_phrases": [
+    "[Frase 1]",
+    "[Frase 2]",
+    "[Frase 3]",
+    "[Frase 4]",
+    "[Frase 5]"
+  ],
+  "conversation_exercise": {
+    "gpt_asking1": "[GPT inicia a conversa simulada em inglês]",
+    "expected_answer1": "[Resposta esperada do usuário]",
+    "gpt_asking2": "[GPT continua a conversa]",
+    "expected_answer2": "[Outra resposta esperada do usuário]",
+    "gpt_asking3": "[Última pergunta do GPT]",
+    "expected_answer3": "[Última resposta esperada do usuário]"
+  }
+}
+
+**Regras adicionais:**
+- Use expressões idiomáticas se fizer sentido (principalmente para níveis mais altos).
+- Mantenha a linguagem natural e conversacional.
+- As respostas esperadas devem refletir como um falante real responderia na prática.
+- Não forneça explicações fora do JSON.
+
+Gere apenas o JSON como resposta.`;
+
+        alert(prompt0)
         break;
 
 

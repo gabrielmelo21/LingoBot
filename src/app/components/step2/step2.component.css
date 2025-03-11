@@ -131,6 +131,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** loading de póntinhos **/
 .loading-dots {
   display: inline-flex;
@@ -235,4 +253,11 @@
 .game-button:hover::before {
   left: 100%;
 }
+
+
+
+
+
+
+
 

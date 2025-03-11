@@ -68,7 +68,13 @@ export class Step1Component implements OnInit {
 
 
 
-  constructor(protected trilhaService: TrilhaService, private auth: AuthService, private formBuilder: FormBuilder, private playSound: PlaySoundService, private apiService: MainAPIService, private router: Router) {
+  constructor(
+              protected trilhaService: TrilhaService,
+              private auth: AuthService,
+              private formBuilder: FormBuilder,
+              private playSound: PlaySoundService,
+              private apiService: MainAPIService,
+              private router: Router) {
     window.scrollTo(0, 0);
 
 
@@ -128,6 +134,34 @@ export class Step1Component implements OnInit {
       }
     });
   }
+
+
+
+
+
+  exibirFormulario: boolean = false;
+
+  selecionarTema(escolhaTema: boolean) {
+    this.playSound.playCleanSound()
+
+
+    if (escolhaTema) {
+      this.exibirFormulario = true; // Mostra o input para escolher o tema
+    } else {
+      this.exibirFormulario = false; // Tema aleatório
+
+      //carregar tema aleatorio = request nos textos aleatorios que temos
+
+      this.apiService.getText("medium").subscribe(response => {
+        this.exerciseText = response.text;
+        this.userChoiceStatus = "listening_exercise";
+         this.getAudioTTS(this.exerciseText)
+      });
+
+    }
+  }
+
+
 
 
 
