@@ -48,7 +48,7 @@ background-image: url('assets/lingobot/lingobot-estudando-listening-banner.png')
     </div>
 
     <h3>Exercício 1</h3>
-    <p>Exercício de Listening</p>
+    <p>{{ this.exerciseDescrption1 }}</p>
 
     <!-- Botão "Iniciar Exercício" -->
     <button mat-flat-button class="game-button" (click)=" navigate_to_exercise(1)" *ngIf="step1==false">Iniciar Exercício</button>
@@ -97,7 +97,7 @@ background-image: url('assets/lingobot/lingobot-estudando-assistindo.png');
     </div>
 
     <h3>Exercício 2</h3>
-    <p>Writing Conversation</p>
+    <p>{{ this.exerciseDescrption2 }}</p>
 
     <!-- Botão "Iniciar Exercício" -->
     <button  (click)=" navigate_to_exercise(2)" mat-flat-button class="game-button" *ngIf="step2==false">Iniciar Exercício</button>
@@ -145,7 +145,8 @@ background-image: url('assets/lingobot/lingobot-estudando-reading-banner.png');
     </div>
 
     <h3>Exercício 3</h3>
-    <p>Speaking Conversation!</p>
+    <p>{{ this.exerciseDescrption3 }}</p>
+
 
     <!-- Botão "Iniciar Exercício" -->
     <button  (click)=" navigate_to_exercise(3)" mat-flat-button class="game-button" *ngIf="step3==false">Iniciar Exercício</button>
@@ -174,7 +175,7 @@ background-image: url('assets/lingobot/lingobot-estudando-reading-banner.png');
 
 <div class="exercise-container"
      style="
-background-image: url('assets/lingobot/lingobot-desafios-iniciantes.png');
+background-image: url('assets/lingobot/lingobot-entregando-uma-prova.png');
  background-size: cover;
  background-position: left !important;
  border-radius: 20px;
@@ -194,7 +195,8 @@ background-image: url('assets/lingobot/lingobot-desafios-iniciantes.png');
     </div>
 
     <h3>Exercício 4</h3>
-    <p>Conversation!</p>
+    <p>{{ this.exerciseDescrption4 }}</p>
+
 
     <!-- Botão "Iniciar Exercício" -->
     <button  (click)=" navigate_to_exercise(4)" mat-flat-button class="game-button" *ngIf="step4==false">Iniciar Exercício</button>
@@ -242,7 +244,7 @@ background-image: url('assets/lingobot/lingobot-estudando-writing-banner5.png');
     </div>
 
     <h3>Exercício 5</h3>
-    <p>Conversation!</p>
+    <p>{{ this.exerciseDescrption5}}</p>
 
     <!-- Botão "Iniciar Exercício" -->
     <button  (click)=" navigate_to_exercise(5)" mat-flat-button class="game-button" *ngIf="step5==false">Iniciar Exercício</button>
@@ -275,7 +277,7 @@ background-image: url('assets/lingobot/lingobot-estudando-writing-banner5.png');
 
 <div class="exercise-container"
      style="
-background-image: url('assets/lingobot/lingobot-conversando.png');
+background-image: url('assets/lingobot/lingobot-estudando-com-flashcards.png');
  background-size: cover;
  background-position: left !important;
  border-radius: 20px;
@@ -285,7 +287,7 @@ background-image: url('assets/lingobot/lingobot-conversando.png');
  justify-content: center;
  align-items: center;
  position: relative;
-">
+" *ngIf="trilhaAtual!=='Level 1'">
   <div class="exercise-details">
     <!-- Estrela no canto superior esquerdo -->
     <div class="star-container">
@@ -295,7 +297,8 @@ background-image: url('assets/lingobot/lingobot-conversando.png');
     </div>
 
     <h3>Exercício 6</h3>
-    <p>Speaking! - Fale com LingoBot!</p>
+   <!-- <p>Speaking! - Fale com LingoBot!</p> -->
+    <p>{{ this.exerciseDescrption6 }}</p>
 
     <!-- Botão "Iniciar Exercício" -->
     <button  (click)=" navigate_to_exercise(6)" mat-flat-button class="game-button" *ngIf="step6==false">Iniciar Exercício</button>

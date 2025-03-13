@@ -21,7 +21,6 @@ import { DiscoverExpressionsComponent } from './discover-expressions/discover-ex
 import { LingobotCardComponent } from './lingobot-card/lingobot-card.component';
 import { QuestsComponent } from './quests/quests.component';
 import { ModalFeedbackComponent } from './modal-feedback/modal-feedback.component';
-import { CheckInComponent } from './check-in/check-in.component';
 import { PlanosComponent } from './planos/planos.component';
 import { CreateFlashcardComponent } from './create-flashcard/create-flashcard.component';
 import { MissoesDiariasComponent } from './missoes-diarias/missoes-diarias.component';
@@ -34,7 +33,11 @@ import { TrilhaDeEstudosActiveComponent } from './trilha-de-estudos-active/trilh
 import { Step1Component } from './step1/step1.component';
 import { Step2Component } from './step2/step2.component';
 import { Step3Component } from './step3/step3.component';
-import { Step4Component } from './step4/step4.component'
+import { Step4Component } from './step4/step4.component';
+import { Step1FreeComponent } from './step1-free/step1-free.component';
+import { Step2FreeComponent } from './step2-free/step2-free.component';
+import { Step3FreeComponent } from './step3-free/step3-free.component';
+
 
 
 @NgModule({
@@ -48,7 +51,6 @@ import { Step4Component } from './step4/step4.component'
     LingobotCardComponent,
     QuestsComponent,
     ModalFeedbackComponent,
-    CheckInComponent,
     PlanosComponent,
     CreateFlashcardComponent,
     MissoesDiariasComponent,
@@ -61,7 +63,10 @@ import { Step4Component } from './step4/step4.component'
     Step1Component,
     Step2Component,
     Step3Component,
-    Step4Component
+    Step4Component,
+    Step1FreeComponent,
+    Step2FreeComponent,
+    Step3FreeComponent,
 
   ],
     exports: [

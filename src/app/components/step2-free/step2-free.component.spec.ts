@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CheckInComponent } from './check-in.component';
+import { Step2FreeComponent } from './step2-free.component';
 
-describe('CheckInComponent', () => {
-  let component: CheckInComponent;
-  let fixture: ComponentFixture<CheckInComponent>;
+describe('Step2FreeComponent', () => {
+  let component: Step2FreeComponent;
+  let fixture: ComponentFixture<Step2FreeComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CheckInComponent]
+      declarations: [Step2FreeComponent]
     });
-    fixture = TestBed.createComponent(CheckInComponent);
+    fixture = TestBed.createComponent(Step2FreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

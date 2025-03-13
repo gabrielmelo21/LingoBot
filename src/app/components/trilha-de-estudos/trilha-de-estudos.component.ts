@@ -15,7 +15,8 @@ export class TrilhaDeEstudosComponent  implements OnInit {
    showSuccessMessage = false;
    trilhaPaid: any;
    showFailMessage: boolean = false;
-    final_lxp_bounty: any;
+   final_lxp_bounty: any;
+   final_tokens_bounty: any;
 
   constructor(private trilhaService: TrilhaService, private authService: AuthService ,  private router: Router, private playSound: PlaySoundService) {
     window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
@@ -23,6 +24,7 @@ export class TrilhaDeEstudosComponent  implements OnInit {
     this.trilhaAtual = trilha.trilha_on
     this.trilhaPaid = trilha.paid;
     this.final_lxp_bounty = trilha.final_lxp_bounty;
+    this.final_tokens_bounty = trilha.final_tokens_bounty
 
   }
 
@@ -47,54 +49,134 @@ export class TrilhaDeEstudosComponent  implements OnInit {
 
   }
 
+   alertMsg: string = ""
+
   selectTrilha(number: number) {
+//this.user.Level >= 40
 
-    if (this.authService.getUserTokens() >=500){
 
-      this.playSound.playWin2()
-      this.authService.decreseToken(500)
+    //       criar variavel com msg personalizada
+    //       this.showFailMessage = true; // Exibe a mensagem
+    //       setTimeout(() => {
+    //         this.showFailMessage = false; // Oculta após 3 segundos
+    //       }, 3000);
+
+     // this.playSound.playWin2()
+     // this.authService.decreseToken(500)
 
       switch (number) {
         case 1:
-          this.trilhaAtual = "Level 1"
-          this.final_lxp_bounty = 10000
-          this.trilhaService.updateTrilhaData({  trilha_on: "Level 1" });
-          this.trilhaService.updateTrilhaData({  trilha_paid: "true" });
-          this.trilhaService.updateTrilhaData({  final_lxp_bounty: "10000" });
+          if(this.user.Level >= 1){
+            this.playSound.playCleanSound2()
+            this.trilhaAtual = "Level 1"
+            this.final_lxp_bounty = 10000
+            this.final_tokens_bounty = 250
+            this.trilhaService.updateTrilhaData({  trilha_on: "Level 1" });
+            this.trilhaService.updateTrilhaData({  final_lxp_bounty: 10000 });
+            this.trilhaService.updateTrilhaData({  final_tokens_bounty: 250 });
+            this.alertMsg = "Trilha liberada com sucesso!"
+            this.showSuccessMessage = true; // Exibe a mensagem
+            setTimeout(() => {
+              this.showSuccessMessage = false; // Oculta após 3 segundos
+              this.alertMsg = ""
+            }, 3000);
+          }
+
           break;
-        case 10:
-          this.trilhaAtual = "Level 10"
-          this.final_lxp_bounty = 10000
-          this.trilhaService.updateTrilhaData({  trilha_on: "Level 10" });
-          this.trilhaService.updateTrilhaData({  trilha_paid: "true" });
-          this.trilhaService.updateTrilhaData({  final_lxp_bounty: "20000" });
+        case 20:
+          if(this.user.Level >= 20 && this.authService.getUserTokens() >=2000) {
+            this.playSound.playCleanSound2()
+            this.authService.decreseToken(2000)
+            this.trilhaAtual = "Level 20"
+            this.final_lxp_bounty = 20000
+            this.final_tokens_bounty = 500
+            this.trilhaService.updateTrilhaData({trilha_on: "Level 20"});
+            this.trilhaService.updateTrilhaData({final_lxp_bounty: 20000});
+            this.trilhaService.updateTrilhaData({final_tokens_bounty: 500});
+
+            this.alertMsg = "Trilha liberada com sucesso!"
+            this.showSuccessMessage = true; // Exibe a mensagem
+            setTimeout(() => {
+              this.showSuccessMessage = false; // Oculta após 3 segundos
+              this.alertMsg = ""
+            }, 3000);
+
+          }else{
+
+            this.playSound.playTokenZero()
+            if(this.user.Level < 20){
+              this.alertMsg = "Atinja o Level 20 para desbloquear essa trilha"
+              this.showFailMessage = true; // Exibe a mensagem
+              setTimeout(() => {
+                this.showFailMessage = false; // Oculta após 3 segundos
+                this.alertMsg = ""
+              }, 3000);
+            }else if(this.authService.getUserTokens() < 2000){
+
+              this.alertMsg = "Você precisa de pelo menos 2000 Tokens"
+              this.showFailMessage = true; // Exibe a mensagem
+              setTimeout(() => {
+                this.showFailMessage = false; // Oculta após 3 segundos
+                this.alertMsg = ""
+              }, 3000);
+            }
+
+
+          }
+
+          break;
+
+
+
+
+        case 40:
+          if(this.user.Level >= 40 && this.authService.getUserTokens() >=5000) {
+            this.playSound.playCleanSound2()
+            this.authService.decreseToken(5000)
+            this.trilhaAtual = "Level 40"
+            this.final_lxp_bounty = 100000
+            this.final_tokens_bounty = 750
+            this.trilhaService.updateTrilhaData({trilha_on: "Level 50"});
+            this.trilhaService.updateTrilhaData({final_lxp_bounty: 100000});
+            this.trilhaService.updateTrilhaData({final_tokens_bounty: 750});
+
+            this.alertMsg = "Trilha liberada com sucesso!"
+            this.showSuccessMessage = true; // Exibe a mensagem
+            setTimeout(() => {
+              this.showSuccessMessage = false; // Oculta após 3 segundos
+              this.alertMsg = ""
+            }, 3000);
+
+          }else{
+
+            this.playSound.playTokenZero()
+            if(this.user.Level < 40){
+              this.alertMsg = "Atinja o Level 40 para desbloquear essa trilha"
+              this.showFailMessage = true; // Exibe a mensagem
+              setTimeout(() => {
+                this.showFailMessage = false; // Oculta após 3 segundos
+                this.alertMsg = ""
+              }, 3000);
+            }else if(this.authService.getUserTokens() < 5000){
+
+              this.alertMsg = "Você precisa de pelo menos 5000 Tokens"
+              this.showFailMessage = true; // Exibe a mensagem
+              setTimeout(() => {
+                this.showFailMessage = false; // Oculta após 3 segundos
+                this.alertMsg = ""
+              }, 3000);
+            }
+
+
+
+
+          }
+
           break;
 
         default:
           break;
       }
-
-
-
-      this.showSuccessMessage = true; // Exibe a mensagem de sucesso
-
-      setTimeout(() => {
-        this.showSuccessMessage = false; // Oculta a mensagem após 3 segundos
-      }, 3000);
-
-
-
-
-    }else{
-      this.playSound.playTokenZero()
-      this.showFailMessage = true; // Exibe a mensagem
-      setTimeout(() => {
-        this.showFailMessage = false; // Oculta após 3 segundos
-      }, 3000);
-
-
-    }
-
 
 
   }

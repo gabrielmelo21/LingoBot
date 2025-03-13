@@ -1,0 +1,86 @@
+
+<div class="home-icon" (click)="navigate_to()">
+  <mat-icon>home</mat-icon>
+</div>
+
+
+
+
+
+<div class="conversation-container">
+  <div class="speech-bubble">
+    <!-- Exibe a pergunta atual
+    <p *ngIf="!isLoading && perguntaAtual">{{ perguntaAtual }}</p>
+    -->
+    <!-- Loading
+    <div class="loading-dots" *ngIf="isLoading">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    -->
+
+    <p>Traduza a palavra abaixo:</p>
+
+    <h3 class="word-target">
+      {{ traduzirParaIngles ? desafioAtual.portugues : desafioAtual.ingles }}
+    </h3>
+
+
+    <div *ngIf="showSuccessMessage" class="success-message">
+      Você acertou! +500 LXP
+    </div>
+
+    <div *ngIf="showFailMessage" class="fail-message">
+      Você errou! A resposta correta era: <strong>{{ respostaCorreta }}</strong>
+    </div>
+
+  </div> <!-- end bubble -->
+
+  <img src="assets/lingobot/lingobot-conversando-transparent.png" class="character-image">
+
+</div>
+
+
+
+
+<div class="game-container">
+  <input style="height: 100px;outline: none;width: 90%;" type="text" [(ngModel)]="respostaUsuario" class="answer-input" placeholder="Digite sua resposta..." />
+  <br>
+  <button mat-flat-button class="game-button" (click)="verificarResposta()">Responder</button>
+</div>
+
+
+
+<style>
+  /* Telas Mobile */
+  @media (max-width: 768px) {
+    .game-container{
+      margin-top:  10px !important;
+    }
+    .home-icon {
+      display: none;
+    }
+
+  }
+
+  /* Ícone dentro do escopo - canto superior esquerdo */
+  .home-icon {
+    float: left !important;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333; /* Cor do ícone */
+    transition: color 0.3s;
+  }
+
+  /* Efeito hover para destacar o clique */
+  .home-icon:hover {
+    color: #007bff;
+  }
+
+
+
+</style>
+
+

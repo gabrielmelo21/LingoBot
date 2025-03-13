@@ -23,19 +23,73 @@
   top: 10px;
   left: 10px;
   display: flex;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 15px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+
+  border-radius: 8px;
+  font-size: 14px;
+  color: #FFF;
+
+
+  /* Glass Effect */
+  background: rgba(255, 255, 255, 0.1); /* Leve transparência */
+  backdrop-filter: blur(10px); /* Desfoque do fundo */
+  -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+
+
 }
+
+/* Título do Level */
+.level-info {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.level-title {
+  font-size: 16px;
+}
+
+/* Estilização dos Prêmios */
+.rewards {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.reward-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.reward-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.reward-value {
+  font-weight: bold;
+  font-size: 14px;
+}
+
 
 .atinja-level{
   align-items: center;
-  background: rgba(0, 0, 0, 0.6);
+  /* Glass Effect */
+  background: rgba(255, 255, 255, 0.1); /* Leve transparência */
+  backdrop-filter: blur(10px); /* Desfoque do fundo */
+  -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+
+
   color: white;
-  padding: 5px 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-radius: 5px;
   font-size: 14px;
 }
@@ -274,38 +328,69 @@
 
 
 
-.selected-trail-card {
-  background: linear-gradient(145deg, #007bff, #6f42c1); /* Azul para roxo */
-  color: white; /* Texto branco */
-  padding: 15px 20px; /* Espaçamento interno */
-  border-radius: 12px; /* Bordas arredondadas */
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4); /* Sombra elegante */
-  text-align: center; /* Centraliza o conteúdo */
-  width: 260px; /* Largura fixa */
-  margin: 20px auto; /* Centraliza horizontalmente */
+
+/* Card com fundo cinza básico */
+.trail-card-basic {
+  position: relative;
+  background: #f0f0f0; /* Cinza claro */
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  margin-left: -20px;
   font-size: 16px;
   font-weight: bold;
+  color: #333; /* Texto escuro para contraste */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-.trail-title {
+/* Título da Trilha */
+.trail-card-title {
   font-size: 14px;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
   margin-bottom: 8px;
-  color: white;
+  color: #555;
 }
 
-.selected-trail-card h3 {
+/* Nome da Trilha */
+.trail-card-name {
   margin: 5px 0;
-  font-size: 24px;
-  color: white;
+  font-size: 22px;
   font-weight: bold;
+  color: #222;
 }
 
-.lxp-value {
+/* Container do Final Bounty */
+.trail-card-bounty {
+  margin-top: 10px;
+}
+
+/* Alinha os ícones e valores na vertical */
+.trail-card-rewards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* Estilização dos Ícones e Valores */
+.trail-card-reward {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trail-card-icon {
+  height: 24px !important;
+  width: 24px;
+}
+
+.trail-card-value {
   font-size: 18px;
   font-weight: bold;
-  color: gold; /* Destaque dourado */
+  color: #d4af37; /* Dourado suave */
 }
 

@@ -1,0 +1,195 @@
+
+
+/* Animação sutil de flutuação */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+/* Contêiner principal */
+.conversation-container {
+  width: 100%;
+  max-width: 600px; /* Ajuste conforme necessário */
+  position: relative;
+}
+.speech-bubble {
+  margin-top: 100px !important;
+  position: relative;
+  background: linear-gradient(145deg, #ffffff, #e0e0e0); /* Gradiente branco suave */
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 15px;
+  max-width: 100%;
+  color: #333;
+  font-weight: bold;
+  box-shadow:
+    0px 4px 10px rgba(0, 0, 0, 0.2),
+    0px 2px 5px rgba(0, 0, 0, 0.1),
+    inset 0px 2px 4px rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* 🔹 Corrigindo a ponta do balão */
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -18px; /* Ajustado para alinhar com a borda */
+  left: 25px; /* Melhor posicionamento */
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 18px solid #e0e0e0; /* Combina com o gradiente do balão */
+  filter: brightness(95%); /* Suaviza a transição */
+}
+
+/* Título da avaliação */
+.speech-bubble h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+
+/* Imagem do personagem */
+.character-image {
+  width: 30%;
+  float: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.game-container {
+  text-align: center;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+}
+
+.word-target {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.answer-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.fail-message {
+  background: linear-gradient(145deg, #d9534f, #c9302c); /* Gradiente vermelho */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeInOut 3s ease-in-out;
+}
+
+.success-message {
+  background: linear-gradient(145deg, #4CAF50, #66BB6A); /* Gradiente verde suave */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeInOut 3s ease-in-out;
+}
+
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+
+
+
+
+/** BOTÃO   ESTILO JOGO **/
+.game-button {
+  padding: 25px;
+  font-size: 12pt  ;
+  color: white !important;
+  width: 100% !important;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  background: linear-gradient(145deg, #007bff, #6f42c1);
+  box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-in-out;
+}
+
+.game-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Animações */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+
+.game-button:hover {
+  background: linear-gradient(145deg, #1e90ff, #8a2be2);
+  animation: pulse 1.5s infinite;
+}
+
+.game-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.1)
+  );
+  transition: left 0.5s ease-in-out;
+}
+
+.game-button:hover::before {
+  left: 100%;
+}

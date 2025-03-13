@@ -37,7 +37,8 @@ export class TrilhaService {
       rounds_step5: 0,
       step6: false,
       rounds_step6: 0,
-      final_lxp_bounty: 0, // Agora numérico
+      final_lxp_bounty: 0,
+      final_tokens_bounty: 0,
     };
 
 
