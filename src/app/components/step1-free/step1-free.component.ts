@@ -3,6 +3,8 @@ import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
 import {MainAPIService} from "../../services/main-api.service";
+import {TrilhaService} from "../../services/trilha.service";
+import {Subscription} from "rxjs";
 
 
 interface Desafio {
@@ -20,9 +22,16 @@ export class Step1FreeComponent implements OnInit {
   respostaCorreta: any;
 
 
-  constructor(private apiService: MainAPIService, private router: Router, private  playSound: PlaySoundService, private auth: AuthService) {
+  constructor(private apiService: MainAPIService,
+              private router: Router,
+              private  playSound: PlaySoundService,
+              private auth: AuthService,
+              protected trilhaService: TrilhaService,
+              ) {
     window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
   }
+
+
 
 
   desafios: Desafio[] = [
@@ -126,8 +135,30 @@ export class Step1FreeComponent implements OnInit {
   traduzirParaIngles = true;
 
 
+
+
+
+
+
+  round_step2 = 0;
+  rounds_needed = 10;
+  trilhaSubscription!: Subscription;
+
   ngOnInit() {
     this.novoDesafio();
+
+      // Se inscreve no observable para atualizar automaticamente
+      this.trilhaSubscription = this.trilhaService.trilha$.subscribe((trilha) => {
+        if (trilha) {
+          this.round_step2 = trilha.rounds_step2;
+
+          // Se rounds_step1 atingiu 3, atualiza step1 automaticamente
+          if (this.round_step2 == 10 && !trilha.step2) {
+            this.trilhaService.updateTrilhaData({ step2: true });
+          }
+        }
+      });
+
   }
 
   novoDesafio() {
@@ -145,13 +176,17 @@ export class Step1FreeComponent implements OnInit {
 
 
   verificarResposta() {
-    // Função para normalizar contrações
-    const normalizarContracoes = (texto: string): string => {
+
+    const normalizarTexto = (texto: string): string => {
       return texto
         .toLowerCase()
         .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove acentos
-        .trim()
-        .replace(/[‘’´`]/g, "'") // Normaliza todos os tipos de apóstrofos para um único tipo (')
+        .trim();
+    };
+
+    // Expande contrações para suas formas completas
+    const expandirContracoes = (texto: string): string => {
+      return texto
         .replace(/he's/g, "he is")
         .replace(/it's/g, "it is")
         .replace(/I'm/g, "I am")
@@ -159,17 +194,47 @@ export class Step1FreeComponent implements OnInit {
         .replace(/you're/g, "you are")
         .replace(/they're/g, "they are")
         .replace(/we're/g, "we are")
-        .replace(/what's/g, "what is");
+        .replace(/what's/g, "what is")
+        .replace(/don't/g, "do not")
+        .replace(/doesn't/g, "does not")
+        .replace(/didn't/g, "did not")
+        .replace(/can't/g, "cannot")
+        .replace(/won't/g, "will not");
     };
 
+    // Contrai formas completas para contrações comuns
+    const contrairExpansoes = (texto: string): string => {
+      return texto
+        .replace(/he is/g, "he's")
+        .replace(/it is/g, "it's")
+        .replace(/I am/g, "I'm")
+        .replace(/i am/g, "I'm")
+        .replace(/you are/g, "you're")
+        .replace(/they are/g, "they're")
+        .replace(/we are/g, "we're")
+        .replace(/what is/g, "what's")
+        .replace(/do not/g, "don't")
+        .replace(/does not/g, "doesn't")
+        .replace(/did not/g, "didn't")
+        .replace(/cannot/g, "can't")
+        .replace(/will not/g, "won't");
+    };
 
-    // Resposta correta e digitada, ambas normalizadas
-    const respostaCorreta = normalizarContracoes(this.traduzirParaIngles ? this.desafioAtual.ingles : this.desafioAtual.portugues);
-    const respostaDigitada = normalizarContracoes(this.respostaUsuario);
+    const respostaCorretaOriginal = this.traduzirParaIngles ? this.desafioAtual.ingles : this.desafioAtual.portugues;
+    const respostaDigitada = this.respostaUsuario;
 
-    if (respostaDigitada === respostaCorreta) {
+    const respostaNormalizada = normalizarTexto(respostaCorretaOriginal);
+    const respostaExpandida = normalizarTexto(expandirContracoes(respostaCorretaOriginal));
+    const respostaContraida = normalizarTexto(contrairExpansoes(respostaCorretaOriginal));
+    const respostaUsuarioNormalizada = normalizarTexto(respostaDigitada);
+
+    if (
+      respostaUsuarioNormalizada === respostaNormalizada ||
+      respostaUsuarioNormalizada === respostaExpandida ||
+      respostaUsuarioNormalizada === respostaContraida
+    ) {
       this.auth.checkLevelUp(500);
-
+      this.trilhaService.updateTrilhaData({ rounds_step2: 1 });
       this.playSound.playWin2();
       this.showSuccessMessage = true;
 
@@ -235,7 +300,7 @@ export class Step1FreeComponent implements OnInit {
 
   navigate_to() {
     this.playSound.playCleanSound()
-    this.router.navigate(['/home']);
+    this.router.navigate(['/trilha-active']);
   }
 
 }

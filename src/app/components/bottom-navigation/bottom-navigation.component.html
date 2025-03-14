@@ -4,35 +4,18 @@
   </button>
   <button class="nav-item" (click)="navigate_to('missoes-diarias')">
     <mat-icon>assignment</mat-icon>
-    <!-- Missões diárias -->
   </button>
-  <button class="nav-item" (click)="navigate_to('check-in')">
-    <mat-icon>event_available</mat-icon>
-    <!-- Check-in diário -->
+
+  <!-- Botão central destacado -->
+  <button class="nav-item nav-item-center" (click)="navigate_to('trilha')">
+    <mat-icon class="white-icon">landscape</mat-icon>
   </button>
 
   <button class="nav-item" (click)="navigate_to('ranking')">
     <mat-icon>emoji_events</mat-icon>
-    <!-- Ranking -->
   </button>
-
   <button class="nav-item" (click)="navigate_to('referral')">
-  <mat-icon>share</mat-icon>
-  <!-- Compartilhamento -->
-</button>
+    <mat-icon>share</mat-icon>
+  </button>
 </div>
 
-
-<style>
-
-  /* TELAS PC */
-  @media (min-width: 769px) {
-
-    .hide-on-pc{
-      display: none !important;
-    }
-  }
-
-
-
-</style>

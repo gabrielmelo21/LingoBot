@@ -193,3 +193,52 @@
 .game-button:hover::before {
   left: 100%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.selected-trail-card {
+  float: right;
+  width: 40%;
+  margin-top: 10px !important; /* Ajustado conforme pedido */
+  padding: 5px;
+  border-radius: 20px;
+  background: #e0e0e0; /* Cinza mais leve e bonito */
+}
+
+.trail-title {
+  margin: 0 !important;
+  padding: 0;
+  font-weight: bold;
+  color: #333; /* Melhor contraste */
+}
+
+h3 {
+  text-align: center;
+  margin: 0 !important;
+  padding: 0;
+  font-size: 11pt;
+  color: #222;
+}
+

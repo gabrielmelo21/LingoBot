@@ -24,8 +24,8 @@ export class BottomNavigationComponent  {
       case 'missoes-diarias':
         this._router.navigate(['/missoes-diarias']);
         break;
-      case 'check-in':
-        this._router.navigate(['/check-in']);
+      case 'trilha':
+        this._router.navigate(['/trilha']);
         break;
 
       case 'ranking':

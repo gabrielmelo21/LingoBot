@@ -32,7 +32,7 @@
     </div>
 
     <div *ngIf="showFailMessage" class="fail-message">
-      Você errou! A resposta correta era: <strong>{{ respostaCorreta }}</strong>
+      A resposta correta é: <strong>{{ respostaCorreta }}</strong>
     </div>
 
   </div> <!-- end bubble -->
@@ -41,6 +41,18 @@
 
 </div>
 
+
+<div class="selected-trail-card">
+  <p class="trail-title">Exercícios Feitos</p>
+  <h3>{{ (trilhaService.trilha$ | async)?.rounds_step2 }}/{{ rounds_needed }}</h3>
+
+  <button *ngIf="(trilhaService.trilha$ | async)?.rounds_step2 >= 10"
+          mat-flat-button
+          class="game-button"
+          (click)=" navigate_to()">
+    Próxima Etapa
+  </button>
+</div>
 
 
 
