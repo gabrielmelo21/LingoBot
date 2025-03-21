@@ -37,7 +37,7 @@
 
 
 
-  <div  (mouseenter)="onMouseEnter()"  style="background-image: url('assets/lingobot/trilha-do-caralho3.png'); background-size: cover; position: relative;"
+  <div  (mouseenter)="onMouseEnter()"  style="background-position: bottom;background-image: url('assets/lingobot/portao da torre.jpg'); background-size: cover; position: relative;"
     class="card">
 
 
@@ -108,7 +108,7 @@
 
   <div
     (mouseenter)="onMouseEnter()"
-    style="background-image: url('assets/lingobot/lingobot-trilha2.png'); background-size: cover; position: relative;"
+    style="background-image: url('assets/lingobot/andando na masmorra.jpg'); background-size: cover; position: relative;background-position: center"
     class="card"
   >
     <!-- Informações da Trilha no canto superior esquerdo -->
@@ -187,15 +187,14 @@
 
 
 
-
+<!--
 
   <div
     (mouseenter)="onMouseEnter()"
     style="background-image: url('assets/lingobot/lingobot-trilha3.png'); background-size: cover; position: relative;"
     class="card"
   >
-    <!-- Informações da Trilha no canto superior esquerdo -->
-    <!-- Informações da Trilha no canto superior esquerdo -->
+
     <div class="trilha-info">
       <div class="level-info">
         <span class="level-title">Level 40</span> <br>
@@ -212,14 +211,14 @@
         </div>
       </div>
     </div>
-    <!-- Cadeado no canto superior direito -->
+
     <div class="lock-icon" [ngClass]="trilhaAtual !== 'Level 40' ? 'locked' : 'unlocked'">
       <mat-icon *ngIf="trilhaAtual !== 'Level 40'">lock</mat-icon>
       <mat-icon *ngIf="trilhaAtual === 'Level 40'">lock_open</mat-icon>
     </div>
 
 
-    <!-- Botão para liberar trilha (só aparece se não houver trilha ativa) -->
+
     <div class="button-container" *ngIf="this.trilhaAtual === ''">
       <button class="game-button" mat-flat-button (click)="selectTrilha(40)">
     <span class="button-content">
@@ -232,7 +231,7 @@
       </button>
     </div>
 
-    <!-- Botão para iniciar trilha (aparece apenas para a trilha ativa) -->
+
     <div class="button-container" *ngIf="this.trilhaAtual === 'Level 40'">
       <button class="game-button" mat-flat-button (click)="navigate_to()">
     <span class="button-content">
@@ -241,7 +240,7 @@
       </button>
     </div>
 
-    <!-- Mensagem para impedir ativação de outra trilha se já houver uma ativa -->
+
     <div class="button-container atinja-level" *ngIf="this.trilhaAtual !== '' && this.trilhaAtual !== 'Level 40'">
       <p>Finalize a Trilha Atual</p>
     </div>
@@ -251,7 +250,7 @@
   </div>
 
 
-
+-->
 
 
 

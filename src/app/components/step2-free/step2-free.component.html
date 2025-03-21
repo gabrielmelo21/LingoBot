@@ -7,6 +7,52 @@
 
 
 
+
+
+<div  *ngIf="userChoiceStatus==''">
+
+  <!-- Container dos botões -->
+  <div class="button-container-choice" >
+    <!-- Botão "Eu escolho o tema" -->
+    <button class="custom-button" (click)="selectExerciseType('conversation')">
+      <img src="assets/lingobot/icons/chat.png" alt="Escolher tema">
+      <span>Conversation</span>
+      <p>+750 LXP/acertos</p>
+    </button>
+
+    <!-- Botão "Tema Aleatório" -->
+    <button class="custom-button" (click)="selectExerciseType('multi-choice')">
+      <img src="assets/lingobot/icons/multi-choice.png" alt="Tema aleatório">
+      <span>Multi-choice</span>
+      <p>+500 LXP/acertos</p>
+    </button>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div  *ngIf="userChoiceStatus=='conversation'">
+
+
 <div class="conversation-container">
   <div class="speech-bubble">
     <!-- Exibe a pergunta atual
@@ -28,7 +74,7 @@
 
 
     <div *ngIf="showSuccessMessage" class="success-message">
-      Você acertou! +500 LXP
+      Você acertou! +750 LXP
     </div>
 
     <div *ngIf="showFailMessage" class="fail-message">
@@ -61,6 +107,106 @@
   <br>
   <button mat-flat-button class="game-button" (click)="verificarResposta()">Responder</button>
 </div>
+  <br>
+  <hr style="background: #f5f5f5; ">
+  <button mat-flat-button class="rounded-button" (click)="selectExerciseType('')" style="margin-top:10px;">
+    Change Exercise Type
+  </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div *ngIf="userChoiceStatus=='multi-choice'">
+  <div class="speech-bubble">
+    <h3 class="word-target" style="font-size: 12pt !important;">
+      {{ isIngles ? 'Qual é o significado de' : 'Qual é a tradução de' }} "{{ palavraPrincipal }}"?
+    </h3>
+
+    <div *ngIf="showSuccessMessage" class="success-message">
+      Você acertou! +500 LXP
+    </div>
+
+    <div *ngIf="showFailMessage" class="fail-message">
+      A resposta correta é: <strong>{{ this.respostaCorreta2 }}</strong>
+    </div>
+  </div> <!-- end bubble -->
+
+  <img src="assets/lingobot/lingobot-conversando-transparent.png" class="character-image">
+
+  <div class="selected-trail-card">
+    <p class="trail-title">Exercícios Feitos</p>
+    <h3>{{ (trilhaService.trilha$ | async)?.rounds_step3 }}/{{ rounds_needed }}</h3>
+    <button *ngIf="(trilhaService.trilha$ | async)?.rounds_step3 >= 10"
+            mat-flat-button
+            class="game-button"
+            (click)="navigate_to()">
+      Próxima Etapa
+    </button>
+  </div>
+  <br>
+
+  <div *ngIf="palavraPrincipal" class="opcoes-container"  style="margin-top: 120px;">
+    <div *ngFor="let opcao of opcoes" style="width: 100% !important;">
+      <button [ngClass]="{'selected': opcao === opcaoSelecionada}" (click)="selecionarOpcao(opcao)">
+        {{ opcao }}
+      </button>
+    </div>
+  </div>
+
+
+
+  <button style="margin-top: 30px" class="game-button" mat-flat-button (click)="verificarResposta2(opcaoSelecionada)" [disabled]="!opcaoSelecionada">
+    Responder
+  </button>
+
+
+
+  <br>
+  <hr style="background: #f5f5f5;margin-top: 30px;">
+  <button mat-flat-button class="rounded-button" (click)="selectExerciseType('')" style="margin-top:10px;">
+    Change Exercise Type
+  </button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -50,6 +50,8 @@ export class TrilhaDeEstudosActiveComponent implements OnInit {
       this.step6 = trilha.step6;
     });
 
+    //this.step1 = true;
+
     //se for LEVEL 1 exerciseDescrption1 vai ter X e assim por diante.
 
     if(this.trilhaAtual == ''){

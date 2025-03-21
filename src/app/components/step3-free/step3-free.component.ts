@@ -33,13 +33,34 @@ export class Step3FreeComponent implements OnInit {
   }
 
 
-
-
+/**
   desafios: Desafio[] = [
-
-    { ingles: 'give up', portugues: 'desistir' },
-
+    { ingles: "Break a leg", portugues: "Boa sorte" },
+    { ingles: "Hit the sack", portugues: "Ir dormir" },
+    { ingles: "Let the cat out of the bag", portugues: "Deixar escapar um segredo" },
+    { ingles: "Bite the bullet", portugues: "Enfrentar uma situação difícil" },
+    { ingles: "Burn the midnight oil", portugues: "Virar a noite estudando ou trabalhando" },
+    { ingles: "Spill the beans", portugues: "Revelar um segredo" },
+    { ingles: "Under the weather", portugues: "Estar doente" },
+    { ingles: "Cut to the chase", portugues: "Ir direto ao ponto" },
+    { ingles: "Costs an arm and a leg", portugues: "Custar os olhos da cara" },
+    { ingles: "Piece of cake", portugues: "Muito fácil" }
   ];
+**/
+
+
+desafios: Desafio[] = [
+  { ingles: "What's up?", portugues: "E aí?" },
+  { ingles: "No big deal", portugues: "Nada demais" },
+  { ingles: "Piece of cake", portugues: "Moleza" },
+  { ingles: "Chill out", portugues: "Relaxa" },
+  { ingles: "Bail", portugues: "Dar o fora" },
+  { ingles: "Throw shade", portugues: "Falar mal de alguém" },
+  { ingles: "Slay", portugues: "Mandar muito bem" },
+  { ingles: "GOAT (Greatest of All Time)", portugues: "O melhor de todos os tempos" },
+  { ingles: "Salty", portugues: "Estar ressentido ou irritado" },
+  { ingles: "Flex", portugues: "Se exibir" }
+];
 
 
 
@@ -61,7 +82,7 @@ export class Step3FreeComponent implements OnInit {
   trilhaSubscription!: Subscription;
 
   ngOnInit() {
-    this.novoDesafio();
+
 
     // Se inscreve no observable para atualizar automaticamente
     this.trilhaSubscription = this.trilhaService.trilha$.subscribe((trilha) => {
@@ -149,7 +170,7 @@ export class Step3FreeComponent implements OnInit {
       respostaUsuarioNormalizada === respostaExpandida ||
       respostaUsuarioNormalizada === respostaContraida
     ) {
-      this.auth.checkLevelUp(500);
+      this.auth.checkLevelUp(750);
       this.trilhaService.updateTrilhaData({ rounds_step3: 1 });
       this.playSound.playWin2();
       this.showSuccessMessage = true;
@@ -218,5 +239,135 @@ export class Step3FreeComponent implements OnInit {
     this.playSound.playCleanSound()
     this.router.navigate(['/trilha-active']);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  selectExerciseType(b: string){
+    this.playSound.playCleanSound();
+    this.userChoiceStatus =  b;
+
+    if(this.userChoiceStatus == 'conversation'){
+      this.novoDesafio();
+    }
+    if (this.userChoiceStatus == "multi-choice"){
+      this.novaQuestao();
+    }
+  }
+
+
+
+
+
+
+
+
+
+  userChoiceStatus: string = '';
+  opcaoSelecionada: string | null = null;
+
+  selecionarOpcao(opcao: string) {
+    this.playSound.playNotification()
+    this.opcaoSelecionada = opcao;
+  }
+
+
+
+  palavraPrincipal: string = '';
+  opcoes: string[] = [];
+  isIngles: boolean = false;
+  respostaCorreta2: string = ''; // Renomeando para "respostaCorreta"
+
+  novaQuestao(): void {
+    const desafio = this.sorteiaDesafio();
+    this.palavraPrincipal = desafio.palavraPrincipal;
+    this.isIngles = desafio.isIngles;
+    this.opcoes = desafio.opcoes;
+    this.respostaCorreta2 = this.isIngles ? desafio.portugues : desafio.ingles; // Correção para garantir a tradução correta
+  }
+
+  sorteiaDesafio(): {
+    ingles: string;
+    portugues: string;
+    palavraPrincipal: string;
+    isIngles: boolean;
+    opcoes: string[];
+  } {
+    const desafio = this.desafios[Math.floor(Math.random() * this.desafios.length)];
+    const isIngles = Math.random() < 0.5;
+    const palavraPrincipal = isIngles ? desafio.ingles : desafio.portugues;
+    const opcoes = this.geraOpcoes(palavraPrincipal, isIngles, desafio);
+
+    return { ingles: desafio.ingles, portugues: desafio.portugues, palavraPrincipal, isIngles, opcoes };
+  }
+
+  private geraOpcoes(palavraPrincipal: string, isIngles: boolean, desafio: Desafio): string[] {
+    // Se a palavra principal for em inglês, as opções precisam ser em português
+    const opcoesErradas = this.desafios
+      .filter(d => (isIngles ? d.portugues : d.ingles) !== palavraPrincipal)
+      .map(d => (isIngles ? d.portugues : d.ingles));
+
+    // Seleciona aleatoriamente 3 opções erradas
+    const opcoesSelecionadas = this.embaralha(opcoesErradas).slice(0, 3);
+
+    // Adiciona a resposta correta (sempre no idioma oposto)
+    const respostaCorreta = isIngles ? desafio.portugues : desafio.ingles;
+    opcoesSelecionadas.push(respostaCorreta);
+
+    // Embaralha as opções finais
+    return this.embaralha(opcoesSelecionadas);
+  }
+
+  private embaralha(array: string[]): string[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Troca de lugar
+    }
+    return array;
+  }
+
+  verificarResposta2(resposta: string | null): void {
+    if (resposta === this.respostaCorreta2) {
+
+      this.auth.checkLevelUp(500);
+      this.trilhaService.updateTrilhaData({ rounds_step3: 1 });
+      this.playSound.playWin2();
+      this.showSuccessMessage = true;
+
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+        this.novaQuestao();
+      }, 3000);
+
+
+    } else {
+      this.playSound.playErrorQuestion();
+      this.showFailMessage = true;
+      setTimeout(() => {
+        this.showFailMessage = false;
+        this.novaQuestao();
+      }, 3000);
+    }
+
+  }
+
+
+
 
 }

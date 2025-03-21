@@ -37,9 +37,9 @@ export class Step2FreeComponent implements OnInit {
 
 
   desafios: Desafio[] = [
-    // Entradas existentes mantidas
+
     { ingles: 'give up', portugues: 'desistir' },
-    { ingles: 'look after', portugues: 'cuidar' }, // [[1]][[2]][[7]]
+    { ingles: 'look after', portugues: 'cuidar' },
     { ingles: 'put off', portugues: 'adiar' },
     { ingles: 'run into', portugues: 'encontrar' },
     { ingles: 'turn down', portugues: 'recusar' },
@@ -78,22 +78,24 @@ export class Step2FreeComponent implements OnInit {
     { ingles: 'turn up', portugues: 'aumentar' },
     { ingles: 'work out', portugues: 'resolver' },
 
-    // Novas entradas adicionadas
-    { ingles: 'look up', portugues: 'procurar' }, // Buscar informação [[3]]
-    { ingles: 'take off', portugues: 'tirar' }, // Remover (ex.: roupa) ou "descolar" (avião)
+
+    { ingles: 'look up', portugues: 'procurar' },
+    { ingles: 'take off', portugues: 'tirar' },
     { ingles: 'look into', portugues: 'investigar' },
-    { ingles: 'hand in', portugues: 'entregar' }, // Ex.: entregar trabalho
-    { ingles: 'fill out', portugues: 'preencher' }, // Preencher formulário
-    { ingles: 'look out', portugues: 'cuidado' }, // Aviso de perigo
+    { ingles: 'hand in', portugues: 'entregar' },
+    { ingles: 'fill out', portugues: 'preencher' },
+    { ingles: 'look out', portugues: 'cuidado' },
     { ingles: 'wake up', portugues: 'acordar' },
-    { ingles: 'log in', portugues: 'entrar' }, // Em sistemas
+    { ingles: 'log in', portugues: 'entrar' },
     { ingles: 'sign up', portugues: 'inscrever-se' },
     { ingles: 'back up', portugues: 'fazer backup' },
     { ingles: 'turn off', portugues: 'desligar' },
     { ingles: 'turn on', portugues: 'ligar' },
-    { ingles: 'put on', portugues: 'colocar' }, // Ex.: roupa
-    { ingles: 'take out', portugues: 'tirar' }, // Ex.: extrair algo
+    { ingles: 'put on', portugues: 'colocar' },
+    { ingles: 'take out', portugues: 'tirar' },
     { ingles: 'look down on', portugues: 'desprezar' }
+
+
   ];
 
 
@@ -116,7 +118,7 @@ export class Step2FreeComponent implements OnInit {
   trilhaSubscription!: Subscription;
 
   ngOnInit() {
-    this.novoDesafio();
+
 
     // Se inscreve no observable para atualizar automaticamente
     this.trilhaSubscription = this.trilhaService.trilha$.subscribe((trilha) => {
@@ -204,7 +206,7 @@ export class Step2FreeComponent implements OnInit {
       respostaUsuarioNormalizada === respostaExpandida ||
       respostaUsuarioNormalizada === respostaContraida
     ) {
-      this.auth.checkLevelUp(500);
+      this.auth.checkLevelUp(750);
       this.trilhaService.updateTrilhaData({ rounds_step3: 1 });
       this.playSound.playWin2();
       this.showSuccessMessage = true;
@@ -273,5 +275,135 @@ export class Step2FreeComponent implements OnInit {
     this.playSound.playCleanSound()
     this.router.navigate(['/trilha-active']);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  selectExerciseType(b: string){
+    this.playSound.playCleanSound();
+    this.userChoiceStatus =  b;
+
+    if(this.userChoiceStatus == 'conversation'){
+      this.novoDesafio();
+    }
+    if (this.userChoiceStatus == "multi-choice"){
+      this.novaQuestao();
+    }
+  }
+
+
+
+
+
+
+
+
+
+  userChoiceStatus: string = '';
+  opcaoSelecionada: string | null = null;
+
+  selecionarOpcao(opcao: string) {
+    this.playSound.playNotification()
+    this.opcaoSelecionada = opcao;
+  }
+
+
+
+  palavraPrincipal: string = '';
+  opcoes: string[] = [];
+  isIngles: boolean = false;
+  respostaCorreta2: string = ''; // Renomeando para "respostaCorreta"
+
+  novaQuestao(): void {
+    const desafio = this.sorteiaDesafio();
+    this.palavraPrincipal = desafio.palavraPrincipal;
+    this.isIngles = desafio.isIngles;
+    this.opcoes = desafio.opcoes;
+    this.respostaCorreta2 = this.isIngles ? desafio.portugues : desafio.ingles; // Correção para garantir a tradução correta
+  }
+
+  sorteiaDesafio(): {
+    ingles: string;
+    portugues: string;
+    palavraPrincipal: string;
+    isIngles: boolean;
+    opcoes: string[];
+  } {
+    const desafio = this.desafios[Math.floor(Math.random() * this.desafios.length)];
+    const isIngles = Math.random() < 0.5;
+    const palavraPrincipal = isIngles ? desafio.ingles : desafio.portugues;
+    const opcoes = this.geraOpcoes(palavraPrincipal, isIngles, desafio);
+
+    return { ingles: desafio.ingles, portugues: desafio.portugues, palavraPrincipal, isIngles, opcoes };
+  }
+
+  private geraOpcoes(palavraPrincipal: string, isIngles: boolean, desafio: Desafio): string[] {
+    // Se a palavra principal for em inglês, as opções precisam ser em português
+    const opcoesErradas = this.desafios
+      .filter(d => (isIngles ? d.portugues : d.ingles) !== palavraPrincipal)
+      .map(d => (isIngles ? d.portugues : d.ingles));
+
+    // Seleciona aleatoriamente 3 opções erradas
+    const opcoesSelecionadas = this.embaralha(opcoesErradas).slice(0, 3);
+
+    // Adiciona a resposta correta (sempre no idioma oposto)
+    const respostaCorreta = isIngles ? desafio.portugues : desafio.ingles;
+    opcoesSelecionadas.push(respostaCorreta);
+
+    // Embaralha as opções finais
+    return this.embaralha(opcoesSelecionadas);
+  }
+
+  private embaralha(array: string[]): string[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Troca de lugar
+    }
+    return array;
+  }
+
+  verificarResposta2(resposta: string | null): void {
+    if (resposta === this.respostaCorreta2) {
+
+      this.auth.checkLevelUp(500);
+      this.trilhaService.updateTrilhaData({ rounds_step3: 1 });
+      this.playSound.playWin2();
+      this.showSuccessMessage = true;
+
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+        this.novaQuestao();
+      }, 3000);
+
+
+    } else {
+      this.playSound.playErrorQuestion();
+      this.showFailMessage = true;
+      setTimeout(() => {
+        this.showFailMessage = false;
+        this.novaQuestao();
+      }, 3000);
+    }
+
+  }
+
+
+
 
 }

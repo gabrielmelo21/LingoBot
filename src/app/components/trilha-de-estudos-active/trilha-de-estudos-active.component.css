@@ -5,58 +5,43 @@
   align-items: center;
   margin-bottom: 20px;
   position: relative;
-  width: 100% !important;
+  width: 100%;
+  height: 300px;
 }
 
-/* Contêiner de detalhes (centralizado no banner) */
+/* Contêiner de detalhes */
 .exercise-details {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-
-  /* Glass Effect */
-  background: rgba(255, 255, 255, 0.05); /* Transparência mais sutil */
-  backdrop-filter: blur(6px); /* Desfoque mais leve */
-  -webkit-backdrop-filter: blur(6px); /* Suporte para Safari */
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Borda mais discreta */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* Sombra ainda mais suave */
-
-
-  padding: 20px;
+  justify-content: space-between; /* Espaça os itens dentro do container */
   width: 50%; /* Ajuste conforme necessário */
-  border-radius: 20px;
+  height: 100%; /* Ocupa toda a altura do contêiner */
   position: relative;
-}
-
-/* Estrela no canto superior esquerdo do exercise-details */
-.star-container {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  border-radius: 50%;
-}
-
-/* Ícone da estrela */
-.status-icon {
-  font-size: 30pt !important;
   padding: 20px;
-  color: gray;
-  transition: color 0.3s ease-in-out;
+  border-radius: 20px;
+  text-align: left;
 }
 
-.status-icon.completed {
-  background: linear-gradient(45deg, #ffcc00, #ff6600);
-  -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: none;
+/* Container para o título e descrição */
+/* Container para o título e descrição */
+.header {
+  position: absolute;
+  top: 25px;
+  left: -50px;
+  text-align: left;
+
+  /* Efeito Glass */
+  background: rgba(255, 255, 255, 0.1); /* Transparência suave */
+  backdrop-filter: blur(8px); /* Desfoque no fundo */
+  -webkit-backdrop-filter: blur(8px); /* Suporte para Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borda mais suave */
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
 }
 
-.status-icon.incomplete {
-  color: gray;
-}
 
-/* Estilos do texto */
+/* Estilo do título */
 .exercise-details h3 {
   margin: 0;
   font-size: 18px;
@@ -64,22 +49,53 @@
   color: white !important;
 }
 
+/* Estilo da descrição */
 .exercise-details p {
   margin: 5px 0;
   font-size: 14px;
   color: white !important;
 }
 
+/* Alinhamento do success-card no canto superior direito */
+.success-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 5px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 25px;
+  left: -50px;
+}
 
-/* Estilo do botão */
+
+
+/* Estilo do ícone */
+.check-icon {
+  font-size: 24px;
+  padding: 5px;
+  color: white;
+}
+
+
+
+
 .game-button {
-  padding: 12px 20px;
+  padding: 12px 20px !important;
   font-size: 14px;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  position: relative;
+  margin-top: 150%;
   overflow: hidden;
   outline: none;
   background: linear-gradient(145deg, #007bff, #6f42c1);
@@ -229,29 +245,6 @@
 
 
 
-
-
-.success-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 15px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #4CAF50, #66BB6A);
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  text-align: center;
-  margin-top: 10px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.check-icon {
-  font-size: 24px;
-  padding: 5px;
-  color: white;
-}
 
 
 

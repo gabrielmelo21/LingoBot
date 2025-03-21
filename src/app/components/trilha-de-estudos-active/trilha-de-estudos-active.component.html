@@ -26,40 +26,30 @@
    EXERCICIO DE LISTENING 1
 
 -->
-<div class="exercise-container"
-     style="
-background-image: url('assets/lingobot/lingobot-estudando-listening-banner.png');
- background-size: cover;
- background-position: left !important;
- border-radius: 20px;
- margin-top: 20px;
- height: 300px;
- display: flex;
- justify-content: center;
- align-items: center;
- position: relative;
-">
+<div class="exercise-container">
+  <!-- Vídeo de fundo (exibido quando step1 == true) -->
+  <video *ngIf="step1 == true" autoplay muted playsinline class="background-video">
+    <source src="assets/lingobot/videos/portao_abrindo.mp4" type="video/mp4">
+  </video>
+
+  <!-- Imagem de fundo (exibida quando step1 == false) -->
+  <div *ngIf="step1 == false" class="image-background"></div>
+
   <div class="exercise-details">
-    <!-- Estrela no canto superior esquerdo -->
-    <div class="star-container">
-      <mat-icon [ngClass]="{ 'status-icon': true, 'completed': step1, 'incomplete': !step1 }">
-        star
-      </mat-icon>
+    <div class="header" *ngIf="step1 == false">
+      <h3>Portão 1°</h3>
+      <p>{{ this.exerciseDescrption1 }}</p>
     </div>
 
-    <h3>Exercício 1</h3>
-    <p>{{ this.exerciseDescrption1 }}</p>
+    <button mat-flat-button class="game-button" (click)="navigate_to_exercise(1)" *ngIf="step1==false">Iniciar Exercício</button>
 
-    <!-- Botão "Iniciar Exercício" -->
-    <button mat-flat-button class="game-button" (click)=" navigate_to_exercise(1)" *ngIf="step1==false">Iniciar Exercício</button>
-
-    <!-- Mensagem de "Etapa Finalizada!" com Ícone -->
     <div class="success-card" *ngIf="step1==true">
       <mat-icon class="check-icon">check_circle</mat-icon>
       <span>Etapa Finalizada!</span>
     </div>
   </div>
 </div>
+
 
 
 
@@ -75,34 +65,23 @@ background-image: url('assets/lingobot/lingobot-estudando-listening-banner.png')
 -->
 
 
-<div class="exercise-container"
-     style="
-background-image: url('assets/lingobot/lingobot-estudando-assistindo.png');
- background-size: cover;
- background-position: left !important;
- border-radius: 20px;
- margin-top: 20px;
- height: 300px;
- display: flex;
- justify-content: center;
- align-items: center;
- position: relative;
-">
+<div class="exercise-container">
+  <!-- Vídeo de fundo (exibido quando step2 == true) -->
+  <video *ngIf="step2 == true" autoplay muted playsinline class="background-video">
+    <source src="assets/lingobot/videos/portao_abrindo.mp4" type="video/mp4">
+  </video>
+
+  <!-- Imagem de fundo (exibida quando step2 == false) -->
+  <div *ngIf="step2 == false" class="image-background"></div>
+
   <div class="exercise-details">
-    <!-- Estrela no canto superior esquerdo -->
-    <div class="star-container">
-      <mat-icon [ngClass]="{ 'status-icon': true, 'completed': step2, 'incomplete': !step2 }">
-        star
-      </mat-icon>
+    <div class="header" *ngIf="step2 == false">
+      <h3>Portão 2°</h3>
+      <p>{{ this.exerciseDescrption2 }}</p>
     </div>
 
-    <h3>Exercício 2</h3>
-    <p>{{ this.exerciseDescrption2 }}</p>
+    <button mat-flat-button class="game-button" (click)="navigate_to_exercise(2)" *ngIf="step2==false">Iniciar Exercício</button>
 
-    <!-- Botão "Iniciar Exercício" -->
-    <button  (click)=" navigate_to_exercise(2)" mat-flat-button class="game-button" *ngIf="step2==false">Iniciar Exercício</button>
-
-    <!-- Mensagem de "Etapa Finalizada!" com Ícone -->
     <div class="success-card" *ngIf="step2==true">
       <mat-icon class="check-icon">check_circle</mat-icon>
       <span>Etapa Finalizada!</span>
@@ -116,42 +95,23 @@ background-image: url('assets/lingobot/lingobot-estudando-assistindo.png');
 
 
 
-<!--
+<div class="exercise-container">
+  <!-- Vídeo de fundo (exibido quando step3 == true) -->
+  <video *ngIf="step3 == true" autoplay muted playsinline class="background-video">
+    <source src="assets/lingobot/videos/portao_abrindo.mp4" type="video/mp4">
+  </video>
 
-   EXERCICIO DE READING 3
+  <!-- Imagem de fundo (exibida quando step3 == false) -->
+  <div *ngIf="step3 == false" class="image-background"></div>
 
--->
-
-
-<div class="exercise-container"
-     style="
-background-image: url('assets/lingobot/lingobot-estudando-reading-banner.png');
- background-size: cover;
- background-position: left !important;
- border-radius: 20px;
- margin-top: 20px;
- height: 300px;
- display: flex;
- justify-content: center;
- align-items: center;
- position: relative;
-">
   <div class="exercise-details">
-    <!-- Estrela no canto superior esquerdo -->
-    <div class="star-container">
-      <mat-icon [ngClass]="{ 'status-icon': true, 'completed': step3, 'incomplete': !step3 }">
-        star
-      </mat-icon>
+    <div class="header" *ngIf="step3 == false">
+      <h3>Portão 3°</h3>
+      <p>{{ this.exerciseDescrption3 }}</p>
     </div>
 
-    <h3>Exercício 3</h3>
-    <p>{{ this.exerciseDescrption3 }}</p>
+    <button mat-flat-button class="game-button" (click)="navigate_to_exercise(3)" *ngIf="step3==false">Iniciar Exercício</button>
 
-
-    <!-- Botão "Iniciar Exercício" -->
-    <button  (click)=" navigate_to_exercise(3)" mat-flat-button class="game-button" *ngIf="step3==false">Iniciar Exercício</button>
-
-    <!-- Mensagem de "Etapa Finalizada!" com Ícone -->
     <div class="success-card" *ngIf="step3==true">
       <mat-icon class="check-icon">check_circle</mat-icon>
       <span>Etapa Finalizada!</span>
@@ -172,45 +132,29 @@ background-image: url('assets/lingobot/lingobot-estudando-reading-banner.png');
 -->
 
 
+<div class="exercise-container">
+  <!-- Vídeo de fundo (exibido quando step4 == true) -->
+  <video *ngIf="step4 == true" autoplay muted playsinline class="background-video">
+    <source src="assets/lingobot/videos/portao_abrindo.mp4" type="video/mp4">
+  </video>
 
-<div class="exercise-container"
-     style="
-background-image: url('assets/lingobot/lingobot-entregando-uma-prova.png');
- background-size: cover;
- background-position: left !important;
- border-radius: 20px;
- margin-top: 20px;
- height: 300px;
- display: flex;
- justify-content: center;
- align-items: center;
- position: relative;
-">
+  <!-- Imagem de fundo (exibida quando step4 == false) -->
+  <div *ngIf="step4 == false" class="image-background"></div>
+
   <div class="exercise-details">
-    <!-- Estrela no canto superior esquerdo -->
-    <div class="star-container">
-      <mat-icon [ngClass]="{ 'status-icon': true, 'completed': step4, 'incomplete': !step4 }">
-        star
-      </mat-icon>
+    <div class="header" *ngIf="step4 == false">
+      <h3>Portão 4°</h3>
+      <p>{{ this.exerciseDescrption4 }}</p>
     </div>
 
-    <h3>Exercício 4</h3>
-    <p>{{ this.exerciseDescrption4 }}</p>
+    <button mat-flat-button class="game-button" (click)="navigate_to_exercise(4)" *ngIf="step4==false">Iniciar Exercício</button>
 
-
-    <!-- Botão "Iniciar Exercício" -->
-    <button  (click)=" navigate_to_exercise(4)" mat-flat-button class="game-button" *ngIf="step4==false">Iniciar Exercício</button>
-
-    <!-- Mensagem de "Etapa Finalizada!" com Ícone -->
     <div class="success-card" *ngIf="step4==true">
       <mat-icon class="check-icon">check_circle</mat-icon>
       <span>Etapa Finalizada!</span>
     </div>
   </div>
 </div>
-
-
-
 
 
 
@@ -221,35 +165,23 @@ background-image: url('assets/lingobot/lingobot-entregando-uma-prova.png');
 -->
 
 
+<div class="exercise-container">
+  <!-- Vídeo de fundo (exibido quando step5 == true) -->
+  <video *ngIf="step5 == true" autoplay muted playsinline class="background-video">
+    <source src="assets/lingobot/videos/portao_abrindo.mp4" type="video/mp4">
+  </video>
 
-<div class="exercise-container"
-     style="
-background-image: url('assets/lingobot/lingobot-estudando-writing-banner5.png');
- background-size: cover;
- background-position: left !important;
- border-radius: 20px;
- margin-top: 20px;
- height: 300px;
- display: flex;
- justify-content: center;
- align-items: center;
- position: relative;
-">
+  <!-- Imagem de fundo (exibida quando step5 == false) -->
+  <div *ngIf="step5 == false" class="image-background"></div>
+
   <div class="exercise-details">
-    <!-- Estrela no canto superior esquerdo -->
-    <div class="star-container">
-      <mat-icon [ngClass]="{ 'status-icon': true, 'completed': step5, 'incomplete': !step5 }">
-        star
-      </mat-icon>
+    <div class="header" *ngIf="step5 == false">
+      <h3>Portão 5°</h3>
+      <p>{{ this.exerciseDescrption5 }}</p>
     </div>
 
-    <h3>Exercício 5</h3>
-    <p>{{ this.exerciseDescrption5}}</p>
+    <button mat-flat-button class="game-button" (click)="navigate_to_exercise(5)" *ngIf="step5==false">Iniciar Exercício</button>
 
-    <!-- Botão "Iniciar Exercício" -->
-    <button  (click)=" navigate_to_exercise(5)" mat-flat-button class="game-button" *ngIf="step5==false">Iniciar Exercício</button>
-
-    <!-- Mensagem de "Etapa Finalizada!" com Ícone -->
     <div class="success-card" *ngIf="step5==true">
       <mat-icon class="check-icon">check_circle</mat-icon>
       <span>Etapa Finalizada!</span>
@@ -267,43 +199,29 @@ background-image: url('assets/lingobot/lingobot-estudando-writing-banner5.png');
 
 
 
-
 <!--
 
    EXERCICIO DE SPEAKING 6
 
 -->
 
+<div class="exercise-container" *ngIf="trilhaAtual !=='Level 1'">
+  <!-- Vídeo de fundo (exibido quando step6 == true) -->
+  <video *ngIf="step6 == true" autoplay muted playsinline class="background-video">
+    <source src="assets/lingobot/videos/portao_abrindo.mp4" type="video/mp4">
+  </video>
 
-<div class="exercise-container"
-     style="
-background-image: url('assets/lingobot/lingobot-estudando-com-flashcards.png');
- background-size: cover;
- background-position: left !important;
- border-radius: 20px;
- margin-top: 20px;
- height: 300px;
- display: flex;
- justify-content: center;
- align-items: center;
- position: relative;
-" *ngIf="trilhaAtual!=='Level 1'">
+  <!-- Imagem de fundo (exibida quando step6 == false) -->
+  <div *ngIf="step6 == false" class="image-background"></div>
+
   <div class="exercise-details">
-    <!-- Estrela no canto superior esquerdo -->
-    <div class="star-container">
-      <mat-icon [ngClass]="{ 'status-icon': true, 'completed': step6, 'incomplete': !step6 }">
-        star
-      </mat-icon>
+    <div class="header" *ngIf="step6 == false">
+      <h3>Portão 6°</h3>
+      <p>{{ this.exerciseDescrption6 }}</p>
     </div>
 
-    <h3>Exercício 6</h3>
-   <!-- <p>Speaking! - Fale com LingoBot!</p> -->
-    <p>{{ this.exerciseDescrption6 }}</p>
+    <button mat-flat-button class="game-button" (click)="navigate_to_exercise(6)" *ngIf="step6==false">Iniciar Exercício</button>
 
-    <!-- Botão "Iniciar Exercício" -->
-    <button  (click)=" navigate_to_exercise(6)" mat-flat-button class="game-button" *ngIf="step6==false">Iniciar Exercício</button>
-
-    <!-- Mensagem de "Etapa Finalizada!" com Ícone -->
     <div class="success-card" *ngIf="step6==true">
       <mat-icon class="check-icon">check_circle</mat-icon>
       <span>Etapa Finalizada!</span>
@@ -313,15 +231,84 @@ background-image: url('assets/lingobot/lingobot-estudando-com-flashcards.png');
 
 
 
-
-
-
-
 <style>
+
+
+
+
+  /* Contêiner principal */
+  .exercise-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-top:30px;
+  }
+
+  /* Vídeo de fundo */
+  .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz o vídeo cobrir toda a área do contêiner */
+    z-index: -1; /* Coloca o vídeo atrás dos outros elementos */
+    border-radius: 20px;
+
+  }
+
+  /* Imagem de fundo */
+  .image-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/lingobot/portoes-dentro-da-dugeon.png');
+    background-size: cover;
+    background-position: left !important;
+    border-radius: 20px;
+    z-index: -1; /* Coloca a imagem atrás dos outros elementos */
+  }
+
+  /* Contêiner de detalhes */
+  .exercise-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: left;
+  }
+
+  /* Resto dos estilos permanecem os mesmos */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   .banner-trilha {
 
-  background-image: url('assets/lingobot/trilha-do-caralho3.png');
+  background-image: url('assets/lingobot/portao da torre.jpg');
 
 
 }

@@ -324,31 +324,28 @@
 
 
 
+
 .selected-trail-card {
-  background: linear-gradient(145deg, #007bff, #6f42c1); /* Azul para roxo */
-  color: white; /* Texto branco */
-  padding: 15px 20px; /* Espaçamento interno */
-  border-radius: 12px; /* Bordas arredondadas */
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4); /* Sombra elegante */
-  text-align: center; /* Centraliza o conteúdo */
-  width: 260px; /* Largura fixa */
-  margin: 20px auto; /* Centraliza horizontalmente */
-  font-size: 16px;
-  font-weight: bold;
+  width: 40%;
+  padding: 5px;
+  border-radius: 20px;
+
+  margin: auto;
+  background: #e0e0e0; /* Cinza mais leve e bonito */
 }
 
 .trail-title {
-  font-size: 14px;
-  text-transform: uppercase;
+  margin: 0 !important;
+  padding: 0;
   font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-  color: white;
+  color: #333; /* Melhor contraste */
 }
 
-.selected-trail-card h3 {
-  margin: 5px 0;
-  font-size: 24px;
-  color: white;
-  font-weight: bold;
+h3 {
+  text-align: center;
+  margin: 0 !important;
+  padding: 0;
+  font-size: 11pt;
+  color: #222;
 }
+
