@@ -33,6 +33,14 @@ export class Step1FreeComponent implements OnInit {
 
 
 
+  /**
+   *
+   *
+   *       LISTA DE PHRSAL VERBS
+   *
+   *
+   *
+   */
 
   desafios: Desafio[] = [
 
@@ -181,8 +189,10 @@ export class Step1FreeComponent implements OnInit {
       return texto
         .toLowerCase()
         .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove acentos
+        .replace(/[.,\/#!$%^&*;:{}=\-_`~()]/g, "") // Remove pontuação
         .trim();
     };
+
 
     // Expande contrações para suas formas completas
     const expandirContracoes = (texto: string): string => {
@@ -392,6 +402,9 @@ export class Step1FreeComponent implements OnInit {
     if (resposta === this.respostaCorreta2) {
 
       this.auth.checkLevelUp(500);
+      this.auth.updateLocalUserData({writing:500})
+
+
       this.trilhaService.updateTrilhaData({ rounds_step2: 1 });
       this.playSound.playWin2();
       this.showSuccessMessage = true;

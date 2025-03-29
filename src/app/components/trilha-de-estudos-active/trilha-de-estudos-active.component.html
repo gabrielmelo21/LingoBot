@@ -38,7 +38,8 @@
   <div class="exercise-details">
     <div class="header" *ngIf="step1 == false">
       <h3>Portão 1°</h3>
-      <p>{{ this.exerciseDescrption1 }}</p>
+      <p>   <img src="assets/lingobot/icons/skills/listening.png"  width="20" height="20" style="margin:0px !important;padding: 0px !important;border-radius: 100%;"> <br> {{ this.exerciseDescrption1 }}</p>
+
     </div>
 
     <button mat-flat-button class="game-button" (click)="navigate_to_exercise(1)" *ngIf="step1==false">Iniciar Exercício</button>
@@ -77,7 +78,7 @@
   <div class="exercise-details">
     <div class="header" *ngIf="step2 == false">
       <h3>Portão 2°</h3>
-      <p>{{ this.exerciseDescrption2 }}</p>
+      <p>    <img src="assets/lingobot/icons/skills/writing.png" width="20" height="20" style="margin:0px !important;padding: 0px !important;border-radius: 100%;">     <img src="assets/lingobot/icons/skills/reading.png" width="20" height="20" style="margin:0px !important;padding: 0px !important;border-radius: 100%;"> <br> {{ this.exerciseDescrption2 }}</p>
     </div>
 
     <button mat-flat-button class="game-button" (click)="navigate_to_exercise(2)" *ngIf="step2==false">Iniciar Exercício</button>

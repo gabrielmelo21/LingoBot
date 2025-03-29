@@ -118,8 +118,10 @@ desafios: Desafio[] = [
       return texto
         .toLowerCase()
         .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove acentos
+        .replace(/[.,\/#!$%^&*;:{}=\-_`~()]/g, "") // Remove pontuação
         .trim();
     };
+
 
     // Expande contrações para suas formas completas
     const expandirContracoes = (texto: string): string => {

@@ -12,9 +12,23 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  animateImage = false; // Controla a animação
+
+  // Método que ativa a animação
+  startAnimation() {
+    this.animateImage = true; // Define animateImage como true para ativar a animação
+  }
+
+
+
+
+
+
 
 
   deferredPrompt: any;
+
+  cena: number = 0; // img static
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onBeforeInstallPrompt(event: Event) {
@@ -159,5 +173,9 @@ export class HomeComponent {
 
   goto_step4() {
     this.router.navigate(['/step4']);
+  }
+
+  goto() {
+    this.router.navigate(['/skills']);
   }
 }

@@ -1,111 +1,54 @@
+/* Vídeo de fundo */
+.background-video {
+  position: absolute;
+  top: 100px; /* Alinha o topo do vídeo com o topo do contêiner */
+  padding-bottom:50px !important;
+  left: 0; /* Alinha a esquerda do vídeo com a esquerda do contêiner */
+  width: 100%; /* Faz o vídeo ocupar 100% da largura do contêiner */
+  height: 100%; /* Faz o vídeo ocupar 100% da altura do contêiner */
+  object-fit: cover; /* Faz o vídeo cobrir toda a área do contêiner */
+  z-index: 5; /* Coloca o vídeo atrás dos outros elementos */
+
+
+}
 
 
 
-@media (max-width: 768px) {
-  .mobileConfig{
-    margin-top: 80px !important;
+
+
+
+
+
+
+
+
+/* Estilo para a imagem flutuante */
+.floating-image {
+  position: absolute;
+  bottom:  -40px; /* Coloca a imagem 20px acima da parte inferior */
+  left: 20px; /* Coloca a imagem 20px da parte esquerda */
+  z-index: 10; /* Um índice z alto para garantir que a imagem fique sobre os vídeos */
+  animation: float 3s ease-in-out infinite; /* Animação de flutuação */
+
+  /* Ajuste do tamanho da imagem */
+  width: 180px; /* Ajuste o tamanho de acordo com o necessário */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+/* Classe de animação */
+.floating-image.animate {
+  animation: moveDiagonalAndScale 4s ease-out forwards;
+}
+
+@keyframes moveDiagonalAndScale {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  50% {
+    transform: translateX(130px) translateY(130px) scale(0.6);
+  }
+  100% {
+    transform: translateX(0) translateY(0) scale(1);
   }
 }
-
-
-
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cards um pouco maiores */
-  gap: 25px;
-  padding: 25px;
-}
-
-
-.info {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(255, 255, 255, 0.2); /* Fundo translúcido */
-  backdrop-filter: blur(8px); /* Efeito de vidro */
-  padding: 8px 12px;
-  border-radius: 10px;
-  color: #fff;
-  font-weight: bold;
-  font-size: 12pt;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-
-
-
-.card {
-  padding: 25px;
-  border-radius: 15px;
-  position: relative; /* Para posicionar elementos absolutos */
-  overflow: hidden; /* Para conter o efeito shine */
-  min-height: 200px; /* Altura mínima para melhor disposição */
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-/* Efeito shine inspirado no .game-button */
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transition: left 0.7s ease-in-out;
-  pointer-events: none; /* Permite interação com o card */
-}
-
-.card:hover::before {
-  left: 100%;
-}
-
-/* Ícone no canto inferior direito */
-.card-icon {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  opacity: 0.8;
-}
-
-
-
-
-/* Tipografia e espaçamento */
-h3 {
-  margin: 0 0 15px 0;
-  font-size: 17pt;
-  color: #fff;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
-}
-
-p {
-  font-size: 12pt;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  line-height: 1.9;
-
-  max-width: 70%;
-  font-weight: bold;
-}
-
-
-/* Efeito de hover */
-.card:hover {
-  transform: scale(1.05);
-  animation: pulse 1s infinite; /* Aplicando o efeito pulse */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Aumentando a sombra no hover */
-}
-
-
-
 

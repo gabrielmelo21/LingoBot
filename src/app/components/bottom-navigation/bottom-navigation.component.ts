@@ -21,6 +21,9 @@ export class BottomNavigationComponent  {
       case 'home':
         this._router.navigate(['/home']);
         break;
+      case 'skills':
+        this._router.navigate(['/skills']);
+        break;
       case 'missoes-diarias':
         this._router.navigate(['/missoes-diarias']);
         break;

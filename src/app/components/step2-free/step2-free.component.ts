@@ -33,7 +33,14 @@ export class Step2FreeComponent implements OnInit {
     window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
   }
 
-
+  /**
+   *
+   *
+   *       LISTA DE PHRSAL VERBS
+   *
+   *
+   *
+   */
 
 
   desafios: Desafio[] = [
@@ -154,8 +161,10 @@ export class Step2FreeComponent implements OnInit {
       return texto
         .toLowerCase()
         .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove acentos
+        .replace(/[.,\/#!$%^&*;:{}=\-_`~()]/g, "") // Remove pontuação
         .trim();
     };
+
 
     // Expande contrações para suas formas completas
     const expandirContracoes = (texto: string): string => {

@@ -61,8 +61,8 @@ export class TrilhaDeEstudosActiveComponent implements OnInit {
     if (this.trilhaAtual == "Level 1") {
        //atualize o 6 para true automaticamente
 
-      this.exerciseDescrption1 = "Listening personalizado";
-      this.exerciseDescrption2 = "Aprenda novas palavras";
+      this.exerciseDescrption1 = "Orbes de Listening";
+      this.exerciseDescrption2 = "Orbes de Writing & Reading";
       this.exerciseDescrption3 = "Aprenda Phrasal verbs";
       this.exerciseDescrption4 = "Aprenda Expressões";
       this.exerciseDescrption5 = "Aprenda e pratique";
@@ -95,9 +95,9 @@ export class TrilhaDeEstudosActiveComponent implements OnInit {
 
     switch (number) {
       case 1:
-        // step1 = listening personalizado   -> vai ter no free
+        // listening personalizado
         this.playSound.playCleanSound2();
-        this.router.navigate(['/step1']);
+        this.router.navigate(['/listening_exercise1']);
         break;
       case 2:
         // step1_free = traduzir vice-versa palavras em ingles      -> vai ter no free

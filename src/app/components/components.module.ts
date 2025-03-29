@@ -30,13 +30,18 @@ import { BugReportComponent } from './bug-report/bug-report.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { TrilhaDeEstudosComponent } from './trilha-de-estudos/trilha-de-estudos.component';
 import { TrilhaDeEstudosActiveComponent } from './trilha-de-estudos-active/trilha-de-estudos-active.component';
-import { Step1Component } from './step1/step1.component';
 import { Step2Component } from './step2/step2.component';
 import { Step3Component } from './step3/step3.component';
 import { Step4Component } from './step4/step4.component';
 import { Step1FreeComponent } from './step1-free/step1-free.component';
 import { Step2FreeComponent } from './step2-free/step2-free.component';
 import { Step3FreeComponent } from './step3-free/step3-free.component';
+import { ZExerciseListening1Component } from './z-exercise-listening1/z-exercise-listening1.component';
+import { ZExerciseWriting1Component } from './z-exercise-writing1/z-exercise-writing1.component';
+import { ZExerciseReading1Component } from './z-exercise-reading1/z-exercise-reading1.component';
+import { ZExerciseSpeaking1Component } from './z-exercise-speaking1/z-exercise-speaking1.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { SkillsComponent } from './skills/skills.component';
 
 
 
@@ -60,13 +65,18 @@ import { Step3FreeComponent } from './step3-free/step3-free.component';
     RankingComponent,
     TrilhaDeEstudosComponent,
     TrilhaDeEstudosActiveComponent,
-    Step1Component,
     Step2Component,
     Step3Component,
     Step4Component,
     Step1FreeComponent,
     Step2FreeComponent,
     Step3FreeComponent,
+    ZExerciseListening1Component,
+    ZExerciseWriting1Component,
+    ZExerciseReading1Component,
+    ZExerciseSpeaking1Component,
+    AccountSettingsComponent,
+    SkillsComponent,
 
   ],
     exports: [
