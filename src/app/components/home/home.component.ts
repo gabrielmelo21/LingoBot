@@ -12,23 +12,10 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  animateImage = false; // Controla a animação
 
-  // Método que ativa a animação
-  startAnimation() {
-    this.animateImage = true; // Define animateImage como true para ativar a animação
-  }
-
-
-
-
-
-
-
-
+  cena: number = 1; // img static
   deferredPrompt: any;
 
-  cena: number = 0; // img static
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onBeforeInstallPrompt(event: Event) {
@@ -51,6 +38,7 @@ export class HomeComponent {
   }
 
   constructor(private playSound: PlaySoundService,  private router: Router, private auth: AuthService) {
+      this.cena = 1;
   }
 
 

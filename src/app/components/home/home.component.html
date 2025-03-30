@@ -1,50 +1,17 @@
 <div class="container" style="margin-bottom: 200px !important;">
+  <video *ngIf="cena == 1" muted playsinline class="background-video">
+    <source src="assets/lingobot/home/waiting.mp4" type="video/mp4">
+  </video>
+
+  <!-- indo para a torre-->
+  <video *ngIf="cena == 2" muted playsinline class="background-video">
+    <source src="assets/lingobot/home/entrando_na_torre.mp4" type="video/mp4">
+  </video>
+
+  <!-- indo para outro andar -->
   <video *ngIf="cena == 3" muted playsinline class="background-video">
-    <source src="assets/lingobot/home/torre_parada_aumentar_tempo.mp4" type="video/mp4">
+    <source src="assets/lingobot/home/subindo_torre.mp4" type="video/mp4">
   </video>
-
-  <video *ngIf="cena == 2" autoplay muted playsinline class="background-video">
-    <source src="assets/lingobot/home/proximo_andar.mp4" type="video/mp4">
-  </video>
-
-
-  <!-- Lockar o scroll vertical nesse momento -->
-  <video *ngIf="cena == 0" autoplay muted playsinline class="background-video">
-    <source src="assets/lingobot/home/abrindo_portao_entrando.mp4" type="video/mp4">
-  </video>
-
-  <video *ngIf="cena == 4" autoplay muted playsinline class="background-video">
-    <source src="assets/lingobot/home/fazer%20reverse%20-%20voltando%20de%20um%20andar.mp4" type="video/mp4">
-  </video>
-
-  <div class="container" style="height: 100%; background: #1e1e1e; width: 100%;">
-    <video *ngIf="cena == 5" muted playsinline class="background-video">
-      <source src="assets/lingobot/home/torre_parada_aumentar_tempo.mp4" type="video/mp4">
-    </video>
-
-
-
-    <video  *ngIf="cena == 2" autoplay muted playsinline class="background-video">
-      <source src="assets/lingobot/home/proximo_andar.mp4" type="video/mp4">
-    </video>
-<!--
-    <img
-      src="assets/lingobot/home/lingobot-mug-floating.png"
-      class="floating-image"
-    >
--->
-    <img
-      src="assets/lingobot/home/lingobot-mug-fly.png"
-      [ngClass]="{ 'animate': animateImage }"
-      class="floating-image"
-    >
-
-    <button
-      style="position: absolute; left: 10px; bottom: 80px; z-index: 999999"
-      (click)="startAnimation()">Iniciar Animação
-    </button>
-  </div>
-
 
 </div>
 

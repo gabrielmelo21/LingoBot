@@ -21,34 +21,3 @@
 
 
 
-
-/* Estilo para a imagem flutuante */
-.floating-image {
-  position: absolute;
-  bottom:  -40px; /* Coloca a imagem 20px acima da parte inferior */
-  left: 20px; /* Coloca a imagem 20px da parte esquerda */
-  z-index: 10; /* Um índice z alto para garantir que a imagem fique sobre os vídeos */
-  animation: float 3s ease-in-out infinite; /* Animação de flutuação */
-
-  /* Ajuste do tamanho da imagem */
-  width: 180px; /* Ajuste o tamanho de acordo com o necessário */
-  height: auto; /* Mantém a proporção da imagem */
-}
-
-/* Classe de animação */
-.floating-image.animate {
-  animation: moveDiagonalAndScale 4s ease-out forwards;
-}
-
-@keyframes moveDiagonalAndScale {
-  0% {
-    transform: translateX(0) translateY(0) scale(1);
-  }
-  50% {
-    transform: translateX(130px) translateY(130px) scale(0.6);
-  }
-  100% {
-    transform: translateX(0) translateY(0) scale(1);
-  }
-}
-
