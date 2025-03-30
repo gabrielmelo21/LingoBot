@@ -43,7 +43,32 @@
 <button class="floating-button image-button" (click)=" toggleLingoBot()" *ngIf="!isFlashcardsRoute  && !isLoginRoute">
   <img src="assets/lingobot/lingobot-button-icon.png" alt="Lingobot Photo">
 </button>
+
+
+(click)=" toggleLingoBot()"
 -->
+
+<button class="floating-button image-button" (click)="openTools()" *ngIf="!isLoginRoute">
+  <img src="assets/lingobot/menu-icons/powers/bag-icon.png" alt="Bag Photo">
+</button>
+
+
+<button class="floating-button image-button2" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
+  <img src="assets/lingobot/menu-icons/powers/mug-tradutor-power1.jpg" alt="Bag Photo" style="border-radius: 20px !important;">
+</button>
+
+
+<button class="floating-button image-button3" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
+  <img src="assets/lingobot/menu-icons/powers/flashcards-power2.jpg" alt="Bag Photo" style="border-radius: 20px !important;">
+</button>
+
+
+
+<button class="floating-button image-button4" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
+  <img src="assets/lingobot/menu-icons/powers/cavalo_preto.png" alt="Bag Photo" style="border-radius: 20px !important;">
+</button>
+
+
 
 
 <app-bottom-navigation *ngIf="!isLoginRoute" ></app-bottom-navigation>

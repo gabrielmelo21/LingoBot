@@ -308,11 +308,13 @@
 
 /* Novo botão com imagem (abaixo do de Flashcard) */
 .image-button {
-  bottom: 60px;
-  right: 15px;
-  background: white;
+  top: 110px;
+  right: 5px;
+  background: transparent;
+  border: none !important;
+  box-shadow: none !important;
   padding: 5px;
-  background: linear-gradient(145deg, #007bff, #6f42c1);
+
 }
 
 .image-button img {
@@ -320,17 +322,59 @@
   height: 40px;
 }
 
-.image-button:hover {
-  background: #f0f0f0;
+.image-button2{
+  top: 170px !important;
+  right: 5px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 5px;
+  border-radius: 20px !important;
+}
+
+
+.image-button2 img {
+  width: 40px;
+  height: 40px;
 }
 
 
 
+.image-button3{
+  top: 230px !important;
+  right: 5px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 5px;
+  border-radius: 20px !important;
+}
+
+
+.image-button3 img {
+  width: 40px;
+  height: 40px;
+
+}
 
 
 
+.image-button4{
+  top: 290px !important;
+  right: 5px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 5px;
+  border-radius: 20px !important;
+}
 
 
+.image-button4 img {
+  width: 40px;
+  height: 40px;
+
+}
 
 
 

@@ -10,12 +10,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-/**  background: linear-gradient(to top, #f8f8f8, #ffffff);**/
-  background: transparent;
+  background: linear-gradient(90deg, #1E3A4D 50%, #0066CC 100%);
+
   padding: 3px 0;
   border-top: 1px solid #ccc;
   position: fixed;
-  bottom: 0;
+  bottom: -1px !important;
   width: 100%;
   height: 40px; /* Mais fina */
   z-index: 1000;

@@ -23,6 +23,7 @@ export class AppComponent implements OnInit{
   isFlashcardsRoute = false;
   showLingoBotModal = false;
   showFlashcardModal = false;
+  showOpenTools = false;
 
 
 
@@ -138,6 +139,11 @@ this.router.events.subscribe(event => {
   toggleLingoBot() {
     this.playSound.playCleanSound2();
     this.showLingoBotModal = !this.showLingoBotModal;
+  }
+
+  openTools() {
+    this.playSound.playCleanSound2();
+    this.showOpenTools = !this.showOpenTools;
   }
 
 }
