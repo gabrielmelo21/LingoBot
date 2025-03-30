@@ -1,17 +1,30 @@
 <div class="container" style="margin-bottom: 200px !important;">
-  <video *ngIf="cena == 1" muted playsinline class="background-video">
-    <source src="assets/lingobot/home/waiting.mp4" type="video/mp4">
+  <video *ngIf="cena == 1" autoplay muted loop class="background-video">
+    <source src="assets/lingobot/home/waiting_edited.mp4" type="video/mp4">
+    <!-- waiting_animation.mp4 -->
   </video>
 
   <!-- indo para a torre-->
-  <video *ngIf="cena == 2" muted playsinline class="background-video">
+  <video #videoPlayer *ngIf="cena == 1" autoplay muted playsinline class="background-video" (timeupdate)="checkTime(videoPlayer)">
     <source src="assets/lingobot/home/entrando_na_torre.mp4" type="video/mp4">
   </video>
 
-  <!-- indo para outro andar -->
-  <video *ngIf="cena == 3" muted playsinline class="background-video">
+
+  <!-- indo para outro andar <img src="assets/lingobot/home/board.jpg"  style="">-->
+  <video *ngIf="cena == 3" autoplay muted playsinline class="background-video">
     <source src="assets/lingobot/home/subindo_torre.mp4" type="video/mp4">
   </video>
+
+
+  <img src="assets/lingobot/home/placa_de_madeira.png" style="z-index:1000;position: absolute;left: -10px;top: 100px;width: 50%;height: auto;border-radius: 20px;">
+  <h3 style="color: white;z-index:1001;position: absolute;left:  50px;top: 133px;font-size: 25pt !important;font-weight: bold"> N° 0</h3>
+
+  <div class="background-video" style="display:inline-block; background-image: url('assets/lingobot/home/testar_pergaminho.jpg'); margin-top: 90%;background-size: contain;">
+    <h3 style="text-align: center">Ações</h3>
+    <img src="assets/lingobot/poses/lingobot-running.png" style="width: 30%;height: auto">
+    <img src="assets/lingobot/poses/lingobot_apontando_pra_cima.png" style="width: 24%;height: auto">
+    <img src="assets/lingobot/poses/lingobot_apontando_pra_baixo.png" style="width: 24%;height: auto">
+  </div>
 
 </div>
 

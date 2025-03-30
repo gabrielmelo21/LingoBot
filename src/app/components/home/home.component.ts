@@ -166,4 +166,15 @@ export class HomeComponent {
   goto() {
     this.router.navigate(['/skills']);
   }
+
+  checkTime(video: HTMLVideoElement) {
+    const fadeDuration = 0.5; // Tempo em segundos para o fade-out
+    if (video.currentTime >= video.duration - fadeDuration) {
+      // Calcula a opacidade conforme o tempo restante para o final do vídeo
+      video.style.opacity = `${1 - (video.currentTime - (video.duration - fadeDuration)) / fadeDuration}`;
+    } else {
+      video.style.opacity = "1";
+    }
+  }
+
 }

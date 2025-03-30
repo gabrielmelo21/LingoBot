@@ -34,16 +34,16 @@
   </div>
 </div>
 
-<!-- Botão de Flashcard -->
+<!-- Botão de Flashcard
 <button class="floating-button flashcard-button" (click)="toggleFlashcardModal()" *ngIf="isFlashcardsRoute && !isLoginRoute">
   <mat-icon>{{ showFlashcardModal ? 'close' : 'edit' }}</mat-icon>
 </button>
 
-<!-- Novo botão com imagem -->
+
 <button class="floating-button image-button" (click)=" toggleLingoBot()" *ngIf="!isFlashcardsRoute  && !isLoginRoute">
   <img src="assets/lingobot/lingobot-button-icon.png" alt="Lingobot Photo">
 </button>
-
+-->
 
 
 <app-bottom-navigation *ngIf="!isLoginRoute" ></app-bottom-navigation>
