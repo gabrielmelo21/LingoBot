@@ -48,23 +48,23 @@
 (click)=" toggleLingoBot()"
 -->
 
-<button class="floating-button image-button" (click)="openTools()" *ngIf="!isLoginRoute">
+<button   style="z-index: 999999999999999999" class="floating-button image-button" (touchstart)="openTools()" *ngIf="!isLoginRoute">
   <img src="assets/lingobot/menu-icons/powers/bag-icon.png" alt="Bag Photo">
 </button>
 
 
-<button class="floating-button image-button2" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
+<button    style="z-index: 999999999999999999" class="floating-button image-button2" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
   <img src="assets/lingobot/menu-icons/powers/mug-tradutor-power1.jpg" alt="Bag Photo" style="border-radius: 20px !important;">
 </button>
 
 
-<button class="floating-button image-button3" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
+<button    style="z-index: 999999999999999999" class="floating-button image-button3" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
   <img src="assets/lingobot/menu-icons/powers/flashcards-power2.jpg" alt="Bag Photo" style="border-radius: 20px !important;">
 </button>
 
 
 
-<button class="floating-button image-button4" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
+<button   style="z-index: 999999999999999999" class="floating-button image-button4" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
   <img src="assets/lingobot/menu-icons/powers/cavalo_preto.png" alt="Bag Photo" style="border-radius: 20px !important;">
 </button>
 
@@ -72,16 +72,24 @@
 
 
 <!-- OPÇÕES DE MENU -->
-<button class="floating-button image-button5" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute">
+<button      style="z-index: 999999999999999999" class="floating-button image-button5"  (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute">
   <img src="assets/lingobot/menu-icons/skills.png" alt="Bag Photo" style="border-radius: 20px !important;">
 </button>
-<button class="floating-button image-button6" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute">
+<button     style="z-index: 999999999999999999" class="floating-button image-button6"  (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute">
   <img src="assets/lingobot/menu-icons/icone-ranking.png" alt="Bag Photo" style="border-radius: 20px !important;">
 </button>
 
-<button class="floating-button image-button7" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute">
+<button    style="z-index: 999999999999999999"  class="floating-button image-button7" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute">
   <img src="assets/lingobot/menu-icons/pilha_de_moedas.png" alt="Bag Photo" style="border-radius: 20px !important;">
 </button>
+
+<!-- PLACA DO ANDAR -->
+<img src="assets/lingobot/home/placa_de_madeira.png" style=" transform: rotate(180deg);z-index: 999999999999999999;position: absolute;right: -20px;bottom: 230px;width: 40%;height: auto;border-radius: 20px;">
+<h3 style="color: white;z-index: 999999999999999999;position: absolute;right:9%;bottom: 240px;font-size: 17pt !important;font-weight: bold">N° {{this.andarAtual}}</h3>
+
+
+
+
 
 
 <app-bottom-navigation *ngIf="!isLoginRoute" ></app-bottom-navigation>

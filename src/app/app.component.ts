@@ -3,6 +3,7 @@ import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from "@angular/r
 import {AuthService} from "./services/auth.service";
 import {PlaySoundService} from "./services/play-sound.service";
 import {TrilhaService} from "./services/trilha.service";
+import {Subscription} from "rxjs";
 
 
 
@@ -32,7 +33,7 @@ export class AppComponent implements OnInit{
 
 
 
-  constructor(  private trilha: TrilhaService,
+  constructor(   private trilhaService: TrilhaService,
                 private router: Router,
                 private auth: AuthService,
                 private playSound: PlaySoundService
@@ -78,15 +79,42 @@ this.router.events.subscribe(event => {
   }
 
 
+
+
+
+
+
+
+
+  torreSubscription!: Subscription;
+  andarAtual: number = 0; // Variável para armazenar o andar atual
+  andar_inicial_conjunto: number = 0;
+  andar_final_conjunto: number = 0;
+
+
   ngOnInit() {
 
 
-    if (!this.trilha.getTorreData()) {
+    //INICIALIZA JSON TORRE
+    if (!this.trilhaService.getTorreData()) {
      console.log("trilha iniciada");
-      this.trilha.initializeTorreData();
+      this.trilhaService.initializeTorreData();
     }else{
      console.log("torre base ja foi iniciada - " + localStorage.getItem("torreData"))
     }
+
+
+
+    // PEGA DADOS TORRE
+    this.torreSubscription = this.trilhaService.torre$.subscribe((torre) => {
+      // Atualize as variáveis com os dados da torre
+      this.andarAtual = torre.andar_atual;
+      this.andar_inicial_conjunto = torre.andar_inicial_conjunto;
+      this.andar_final_conjunto = torre.andar_final_conjunto;
+
+
+    });
+
 
 
 
@@ -137,11 +165,13 @@ this.router.events.subscribe(event => {
   }
 
   toggleLingoBot() {
+
     this.playSound.playCleanSound2();
     this.showLingoBotModal = !this.showLingoBotModal;
   }
 
   openTools() {
+
     this.playSound.playCleanSound2();
     this.showOpenTools = !this.showOpenTools;
   }
