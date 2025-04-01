@@ -52,16 +52,30 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   ]
 })
 export class HomeComponent implements OnInit {
-  cena: number = 1;
+
   constructor(private playSound: PlaySoundService,
               private router: Router,
               private auth: AuthService,
               private trilhaService: TrilhaService) {
     window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
-    this.cena = 1;
+
+    setTimeout(() => {
+        this.mudarCena(1)
+    }, 50);
   }
 
+  cena: number = 1; // Cena atual
+  mostrarImagem: boolean = false; // Controla a exibição da imagem
 
+  // Função para mudar de cena
+  mudarCena(novaCena: number) {
+    this.mostrarImagem = true; // Exibe a imagem antes de trocar o vídeo
+
+    setTimeout(() => {
+      this.cena = novaCena; // Altera a cena após um pequeno delay
+      this.mostrarImagem = false; // Remove a imagem após o vídeo ser carregado
+    }, 100); // Tempo suficiente para evitar o flash branco (ajuste conforme necessário)
+  }
 
   torreSubscription!: Subscription;
   andarAtual: number = 0; // Variável para armazenar o andar atual
@@ -76,7 +90,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.cena = 1;
+    this.mudarCena(1)
 
     // Se inscreve no observable para atualizar automaticamente
     this.torreSubscription = this.trilhaService.torre$.subscribe((torre) => {
@@ -88,29 +102,27 @@ export class HomeComponent implements OnInit {
       this.exercise2 = torre.exercise2;
 
 
-      // Você pode fazer mais ações aqui, como alterar `cena` ou outros dados
-      if (this.andarAtual === 5) {
-        this.cena = 2;  // Alterando o valor de cena, exemplo
-      }
+
     });
 
   }
 
 
+
   // Lógica para determinar qual imagem exibir
-  getImagemPorAndar(): string {
+  getTextoPorAndar(): string {
     // Calcula a posição do andar dentro do conjunto de 4
     const andarNoConjunto = (this.andarAtual - 1) % 4;  // Faz a divisão inteira para achar o resto
 
     switch (andarNoConjunto) {
       case 0:
-        return "assets/lingobot/icons/skills/writing.png";  // Andar 1, 5, 9, 13, ...
+        return "Writing";  // Andar 1, 5, 9, 13, ...
       case 1:
-        return "assets/lingobot/icons/skills/reading.png";  // Andar 2, 6, 10, 14, ...
+        return "Reading";  // Andar 2, 6, 10, 14, ...
       case 2:
-        return "assets/lingobot/icons/skills/listening.png";  // Andar 3, 7, 11, 15, ...
+        return "Listening";  // Andar 3, 7, 11, 15, ...
       case 3:
-        return "assets/lingobot/icons/skills/speaking.png";  // Andar 4, 8, 12, 16, ...
+        return "Speaking";  // Andar 4, 8, 12, 16, ...
       default:
         return "";  // Caso não encontre
     }
@@ -317,7 +329,9 @@ export class HomeComponent implements OnInit {
      this.playSound.playCleanSound();
 
      if (cmd == 'up') {
-       this.cena = 3;
+       this.mudarCena(3)
+
+
 
 
        setTimeout(() => {
@@ -334,7 +348,7 @@ export class HomeComponent implements OnInit {
          this.trilhaService.updateTorreData({andar_atual: 1})
 
          // troca pra cena 1
-         this.cena = 1
+         this.mudarCena(1)
          this.orbView = true;
        }, 5000);
 
@@ -342,7 +356,7 @@ export class HomeComponent implements OnInit {
      }
 
     if (cmd == 'in') {
-      this.cena = 2;
+      this.mudarCena(2)
 
     }
 
@@ -361,13 +375,13 @@ export class HomeComponent implements OnInit {
         setTimeout(() => {
           //cena dencendo
           this.trilhaService.updateTorreData({andar_atual: -1})
-          this.cena = 4;
+          this.mudarCena(4)
         }, 3000);
 
 
         setTimeout(() => {
 
-          this.cena = 1;
+          this.mudarCena(1)
         }, 7000);
 
 

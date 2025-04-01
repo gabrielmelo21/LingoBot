@@ -1,25 +1,28 @@
+
 <div class="container" style="margin-bottom: 200px !important;">
 
 
-  <video *ngIf="cena == 1" autoplay muted loop class="background-video">
+  <!-- Imagem estática -->
+  <img   src="assets/lingobot/home/lingobot-cenario.png" class="background-image">
+  <img *ngIf="mostrarImagem" src="assets/lingobot/home/lingobot-cenario.png" class="background-image">
+
+  <!-- Vídeo 1 -->
+  <video *ngIf="cena == 1 && !mostrarImagem" autoplay muted loop class="background-video">
     <source src="assets/lingobot/home/waiting_edited.mp4" type="video/mp4">
-    <!-- waiting_animation.mp4 -->
   </video>
 
-  <!-- indo para a torre-->
-  <video   *ngIf="cena == 2" autoplay muted playsinline class="background-video">
+  <!-- Vídeo 2 -->
+  <video *ngIf="cena == 2 && !mostrarImagem" autoplay muted playsinline class="background-video">
     <source src="assets/lingobot/home/entrando_na_torre.mp4" type="video/mp4">
   </video>
 
-
-  <!-- indo para outro andar <img src="assets/lingobot/home/board.jpg"  style="">-->
-  <video *ngIf="cena == 3" autoplay muted playsinline class="background-video">
+  <!-- Vídeo 3 -->
+  <video *ngIf="cena == 3 && !mostrarImagem" autoplay muted playsinline class="background-video">
     <source src="assets/lingobot/home/subindo_torre.mp4" type="video/mp4">
   </video>
 
-
-  <!-- indo para outro andar <img src="assets/lingobot/home/board.jpg"  style="">-->
-  <video *ngIf="cena == 4" autoplay muted playsinline class="background-video">
+  <!-- Vídeo 4 -->
+  <video *ngIf="cena == 4 && !mostrarImagem" autoplay muted playsinline class="background-video">
     <source src="assets/lingobot/home/descendo_da_torre.mp4" type="video/mp4">
   </video>
 
@@ -34,19 +37,13 @@
   </div>
 
 
+  <div class="tabua">
+    <!-- Imagem -->
+    <img src="assets/lingobot/home/tabua.png">
 
-
-  <!-- PLACA DO ANDAR
-  <img src="assets/lingobot/home/placa_de_madeira.png" style=" transform: rotate(180deg);z-index:500;position: absolute;right: -20px;bottom: 230px;width: 40%;height: auto;border-radius: 20px;">
-  <h3 style="color: white;z-index:500;position: absolute;right:9%;bottom: 240px;font-size: 17pt !important;font-weight: bold">N° {{this.andarAtual}}</h3>
-  -->
-
-
-  <!-- ORBE NO PORTÃO -->
-  <img [src]="getImagemPorAndar()" class="orb-gate rotate-infinite" *ngIf="orbView" >
-
-
-
+    <!-- Texto sobreposto -->
+    <h3>N° {{ andarAtual }}<br>{{ getTextoPorAndar() }}</h3>
+  </div>
 
 
   <div class="background-commands" style="display:inline-block; background-image: url('assets/lingobot/home/testar_pergaminho.jpg'); margin-top: 90%;background-size: 140%;background-position: center">
@@ -88,4 +85,32 @@
 
 
 </div>
+
+
+<style>
+
+.tabua{
+  position: absolute;
+  z-index: 500;
+  width: 40%;
+  right: -5vw;
+  bottom: 38vh;
+}
+.tabua img{
+  width: 100%; height: auto
+}
+.tabua h3{
+  font-family: 'Bebas Neue', sans-serif;
+  color: white;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6.5vw;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+</style>
 
