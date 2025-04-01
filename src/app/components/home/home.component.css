@@ -35,7 +35,7 @@
   font-size: 1.1em;
   font-weight: bold;
   margin-bottom: 5px;
-  margin-top: 10px;
+  margin-top: 20px;
   color: #1e1e1e;
 }
 
@@ -65,3 +65,91 @@
 
 
 
+
+.commands-group img {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.neon-border {
+  filter: drop-shadow(0 0 10px #80dfff) drop-shadow(0 0 20px #80dfff) drop-shadow(0 0 30px #80dfff);
+}
+
+
+
+
+
+.neon-blue {
+  filter: drop-shadow(0 0 15px #00aaff) drop-shadow(0 0 30px #00aaff) drop-shadow(0 0 45px #00aaff);
+}
+
+.neon-green {
+  filter: drop-shadow(0 0 15px #00ff00) drop-shadow(0 0 30px #00ff00) drop-shadow(0 0 45px #00ff00);
+}
+
+.neon-purple {
+  filter: drop-shadow(0 0 15px #aa00ff) drop-shadow(0 0 30px #aa00ff) drop-shadow(0 0 45px #aa00ff);
+}
+
+.neon-yellow {
+  filter: drop-shadow(0 0 15px #ffff00) drop-shadow(0 0 30px #ffff00) drop-shadow(0 0 45px #ffff00);
+}
+
+
+.rotate-infinite {
+  animation: rotateAnimation 4s linear infinite;
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.orb-gate{
+z-index:500;position: absolute;right: 167px;bottom: 320px;width: 6%;height: auto;border-radius: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nuvem-esquerda {
+  position: absolute;
+  left: 0;
+  top: 0%;
+  transform: translateX(-100%); /* Começa fora da tela */
+  z-index: 200000000;
+}
+
+.nuvem-direita {
+  position: absolute;
+  right: 0;
+  top: 0%;
+  transform: translateX(100%); /* Começa fora da tela */
+  z-index: 200000000;
+}
+
+.nuvem-esquerda img,
+.nuvem-direita img {
+  width: 250%; /* Ajuste conforme necessário */
+  height: auto;
+}

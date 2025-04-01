@@ -308,7 +308,7 @@
 
 /* Novo botão com imagem (abaixo do de Flashcard) */
 .image-button {
-  top: 110px;
+  top: 90px;
   right: 5px;
   background: transparent;
   border: none !important;
@@ -318,12 +318,12 @@
 }
 
 .image-button img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
 }
 
 .image-button2{
-  top: 170px !important;
+  top: 150px !important;
   right: 5px !important;
   background: transparent !important;
   border: none !important;
@@ -341,7 +341,7 @@
 
 
 .image-button3{
-  top: 230px !important;
+  top: 210px !important;
   right: 5px !important;
   background: transparent !important;
   border: none !important;
@@ -360,7 +360,7 @@
 
 
 .image-button4{
-  top: 290px !important;
+  top: 270px !important;
   right: 5px !important;
   background: transparent !important;
   border: none !important;
@@ -379,3 +379,62 @@
 
 
 
+
+
+
+
+
+
+.image-button5{
+  top: 90px;
+  left: -5px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 5px;
+  border-radius: 20px !important;
+}
+
+
+.image-button5 img {
+  width: 60%;
+  height: auto;
+
+}
+
+
+
+.image-button6{
+  top: 90px;
+  left: 35px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 5px;
+  border-radius: 20px !important;
+}
+
+
+.image-button6 img {
+  width: 50%;
+  height: auto;
+
+}
+
+
+.image-button7{
+  top: 90px;
+  left: 75px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 5px;
+  border-radius: 20px !important;
+}
+
+
+.image-button7 img {
+  width: 50%;
+  height: auto;
+
+}

@@ -81,11 +81,11 @@ this.router.events.subscribe(event => {
   ngOnInit() {
 
 
-    if (!this.trilha.getTrilhaData()) {
+    if (!this.trilha.getTorreData()) {
      console.log("trilha iniciada");
-      this.trilha.initializeTrilhaData();
+      this.trilha.initializeTorreData();
     }else{
-     console.log("trilha base ja foi iniciada - " + localStorage.getItem("trilhaData"))
+     console.log("torre base ja foi iniciada - " + localStorage.getItem("torreData"))
     }
 
 

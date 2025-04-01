@@ -1,7 +1,10 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {PlaySoundService} from "../../services/play-sound.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {TrilhaService} from "../../services/trilha.service";
+import {Subscription} from "rxjs";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 
 
@@ -10,10 +13,126 @@ import {AuthService} from "../../services/auth.service";
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-})
-export class HomeComponent {
+  animations: [
+    // Animação para a nuvem da esquerda
+    trigger('nuvemEsquerdaAnimation', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'translateX(-100%)' // Fora da tela à esquerda
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateX(-80%)' // No centro
+      })),
+      transition('hidden => visible', [
+        animate('2.5s ease-in') // Movimento para o centro
+      ]),
+      transition('visible => hidden', [
+        animate('2.5s ease-in') // Movimento de volta para a esquerda
+      ])
+    ]),
 
-  cena: number = 1; // img static
+    // Animação para a nuvem da direita
+    trigger('nuvemDireitaAnimation', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'translateX(100%)' // Fora da tela à direita
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateX(-25%)' // No centro
+      })),
+      transition('hidden => visible', [
+        animate('2.5s ease-in') // Movimento para o centro
+      ]),
+      transition('visible => hidden', [
+        animate('2.5s ease-in') // Movimento de volta para a direita
+      ])
+    ])
+  ]
+})
+export class HomeComponent implements OnInit {
+  cena: number = 1;
+  constructor(private playSound: PlaySoundService,
+              private router: Router,
+              private auth: AuthService,
+              private trilhaService: TrilhaService) {
+    window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
+    this.cena = 1;
+  }
+
+
+
+  torreSubscription!: Subscription;
+  andarAtual: number = 0; // Variável para armazenar o andar atual
+  exercise1: boolean = false; // Variável para o exercício 1
+  exercise2: boolean = false; // Variável para o exercício 2
+
+  andar_inicial_conjunto: number = 0;
+  andar_final_conjunto: number = 0;
+
+
+  orbView: boolean = true;
+
+
+  ngOnInit() {
+    this.cena = 1;
+
+    // Se inscreve no observable para atualizar automaticamente
+    this.torreSubscription = this.trilhaService.torre$.subscribe((torre) => {
+      // Atualize as variáveis com os dados da torre
+      this.andarAtual = torre.andar_atual;
+      this.andar_inicial_conjunto = torre.andar_inicial_conjunto;
+      this.andar_final_conjunto = torre.andar_final_conjunto;
+      this.exercise1 = torre.exercise1;
+      this.exercise2 = torre.exercise2;
+
+
+      // Você pode fazer mais ações aqui, como alterar `cena` ou outros dados
+      if (this.andarAtual === 5) {
+        this.cena = 2;  // Alterando o valor de cena, exemplo
+      }
+    });
+
+  }
+
+
+  // Lógica para determinar qual imagem exibir
+  getImagemPorAndar(): string {
+    // Calcula a posição do andar dentro do conjunto de 4
+    const andarNoConjunto = (this.andarAtual - 1) % 4;  // Faz a divisão inteira para achar o resto
+
+    switch (andarNoConjunto) {
+      case 0:
+        return "assets/lingobot/icons/skills/writing.png";  // Andar 1, 5, 9, 13, ...
+      case 1:
+        return "assets/lingobot/icons/skills/reading.png";  // Andar 2, 6, 10, 14, ...
+      case 2:
+        return "assets/lingobot/icons/skills/listening.png";  // Andar 3, 7, 11, 15, ...
+      case 3:
+        return "assets/lingobot/icons/skills/speaking.png";  // Andar 4, 8, 12, 16, ...
+      default:
+        return "";  // Caso não encontre
+    }
+  }
+
+
+
+
+
+
+  nuvemState = 'hidden'; // Estado inicial da animação
+
+  startAnimation() {
+    this.nuvemState = 'visible'; // Inicia a animação
+    setTimeout(() => {
+      this.nuvemState = 'hidden'; // Volta ao estado inicial após 3 segundos
+    }, 3000);
+  }
+
+
+
+
   deferredPrompt: any;
 
 
@@ -37,9 +156,6 @@ export class HomeComponent {
     }
   }
 
-  constructor(private playSound: PlaySoundService,  private router: Router, private auth: AuthService) {
-      this.cena = 1;
-  }
 
 
   checkLevelUp(newExp: number): void {
@@ -167,14 +283,103 @@ export class HomeComponent {
     this.router.navigate(['/skills']);
   }
 
-  checkTime(video: HTMLVideoElement) {
-    const fadeDuration = 0.5; // Tempo em segundos para o fade-out
-    if (video.currentTime >= video.duration - fadeDuration) {
-      // Calcula a opacidade conforme o tempo restante para o final do vídeo
-      video.style.opacity = `${1 - (video.currentTime - (video.duration - fadeDuration)) / fadeDuration}`;
-    } else {
-      video.style.opacity = "1";
-    }
+
+
+
+
+
+
+
+
+  // NEW
+
+
+
+  neonStates = new Set<string>(); // Mantém os estados dos botões ativados
+
+  ativarNeon(command: string) {
+    this.neonStates.add(command);
+    setTimeout(() => {
+      this.desativarNeon(command);
+    }, 5000); // Mantém o efeito por 4 segundos
   }
 
+  desativarNeon(command: string) {
+    this.neonStates.delete(command);
+  }
+
+  isNeonActive(command: string): boolean {
+    return this.neonStates.has(command);
+  }
+
+
+  command(cmd: string) {
+     this.playSound.playCleanSound();
+
+     if (cmd == 'up') {
+       this.cena = 3;
+
+
+       setTimeout(() => {
+         //some o orb
+         this.orbView = false;
+       }, 2100);
+
+       setTimeout(() => {
+         //animação nuvens
+         this.startAnimation()
+       }, 3000);
+
+       setTimeout(() => {
+         this.trilhaService.updateTorreData({andar_atual: 1})
+
+         // troca pra cena 1
+         this.cena = 1
+         this.orbView = true;
+       }, 5000);
+
+
+     }
+
+    if (cmd == 'in') {
+      this.cena = 2;
+
+    }
+
+
+    if (cmd == 'down') {
+      const t = this.trilhaService.getTorreData();
+
+
+      if (t.andar_atual  > 1){
+
+        setTimeout(() => {
+          //animação nuvens
+          this.startAnimation()
+        }, 1000);
+
+        setTimeout(() => {
+          //cena dencendo
+          this.trilhaService.updateTorreData({andar_atual: -1})
+          this.cena = 4;
+        }, 3000);
+
+
+        setTimeout(() => {
+
+          this.cena = 1;
+        }, 7000);
+
+
+      }else{
+        //msg de erro  nao pode descer abaixo de 1,
+        alert("nao pode descer abaixo de 1")
+      }
+
+
+
+    }
+
+
+  }
 }

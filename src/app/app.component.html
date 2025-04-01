@@ -71,6 +71,19 @@
 
 
 
+<!-- OPÇÕES DE MENU -->
+<button class="floating-button image-button5" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute">
+  <img src="assets/lingobot/menu-icons/skills.png" alt="Bag Photo" style="border-radius: 20px !important;">
+</button>
+<button class="floating-button image-button6" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute">
+  <img src="assets/lingobot/menu-icons/icone-ranking.png" alt="Bag Photo" style="border-radius: 20px !important;">
+</button>
+
+<button class="floating-button image-button7" (click)=" toggleLingoBot()" *ngIf="!isLoginRoute">
+  <img src="assets/lingobot/menu-icons/pilha_de_moedas.png" alt="Bag Photo" style="border-radius: 20px !important;">
+</button>
+
+
 <app-bottom-navigation *ngIf="!isLoginRoute" ></app-bottom-navigation>
 
 <app-footer-links  *ngIf="isLoginRoute"></app-footer-links>

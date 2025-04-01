@@ -1,4 +1,6 @@
 <div class="container" style="margin-bottom: 200px !important;">
+
+
   <video *ngIf="cena == 1" autoplay muted loop class="background-video">
     <source src="assets/lingobot/home/waiting_edited.mp4" type="video/mp4">
     <!-- waiting_animation.mp4 -->
@@ -16,25 +18,71 @@
   </video>
 
 
-  <img src="assets/lingobot/home/placa_de_madeira.png" style="z-index:500;position: absolute;left: -10px;top: 100px;width: 50%;height: auto;border-radius: 20px;">
-  <h3 style="color: white;z-index:500;position: absolute;left:  50px;top: 133px;font-size: 25pt !important;font-weight: bold">N° 0</h3>
+  <!-- indo para outro andar <img src="assets/lingobot/home/board.jpg"  style="">-->
+  <video *ngIf="cena == 4" autoplay muted playsinline class="background-video">
+    <source src="assets/lingobot/home/descendo_da_torre.mp4" type="video/mp4">
+  </video>
+
+
+
+  <div class="nuvem-esquerda" [@nuvemEsquerdaAnimation]="nuvemState">
+    <img src="assets/lingobot/home/clouds.png" alt="Nuvem Esquerda">
+  </div>
+
+  <div class="nuvem-direita" [@nuvemDireitaAnimation]="nuvemState">
+    <img src="assets/lingobot/home/clouds.png" alt="Nuvem Direita">
+  </div>
+
+
+
+
+  <!-- PLACA DO ANDAR -->
+  <img src="assets/lingobot/home/placa_de_madeira.png" style=" transform: rotate(180deg);z-index:500;position: absolute;right: -20px;bottom: 230px;width: 40%;height: auto;border-radius: 20px;">
+  <h3 style="color: white;z-index:500;position: absolute;right:9%;bottom: 240px;font-size: 17pt !important;font-weight: bold">N° {{this.andarAtual}}</h3>
+
+
+
+  <!-- ORBE NO PORTÃO -->
+  <img [src]="getImagemPorAndar()" class="orb-gate rotate-infinite" *ngIf="orbView">
+
+
+
+
 
   <div class="background-commands" style="display:inline-block; background-image: url('assets/lingobot/home/testar_pergaminho.jpg'); margin-top: 90%;background-size: 140%;background-position: center">
     <h3 class="actions-title">Comandos</h3>
-    <div class="commands-group" style="margin-top: -20px !important;">
-      <div class="command">
-        <img src="assets/lingobot/poses/lingobot_apontando_pra_cima.png" style="width: 80% !important;height: auto">
+    <div class="commands-group" style="margin-top: 20px !important;">
+      <div class="command" (click)="command('up')">
+        <img [class.neon-border]="isNeonActive('up')"
+             (mousedown)="ativarNeon('up')"
+             (touchstart)="ativarNeon('up')" (touchend)="desativarNeon('up')"
+             src="assets/lingobot/poses/lingobot_apontando_pra_cima.png"
+             style="width: 80% !important;height: auto">
         <p class="command-text">Subir andar</p>
       </div>
-      <div class="command">
-        <img src="assets/lingobot/poses/lingobot-running.png" style="width: 120% !important;height: auto">
+
+      <div class="command" (click)="command('in')">
+        <img [class.neon-border]="isNeonActive('in')"
+             (mousedown)="ativarNeon('in')"
+             (touchstart)="ativarNeon('in')" (touchend)="desativarNeon('in')"
+             src="assets/lingobot/poses/lingobot-running.png"
+             style="width: 120% !important;height: auto">
         <p class="command-text">Fazer missão</p>
       </div>
-      <div class="command">
-        <img src="assets/lingobot/poses/lingobot_apontando_pra_baixo.png" style="width: 100% !important;height: auto">
+
+      <div class="command" (click)="command('down')">
+        <img [class.neon-border]="isNeonActive('down')"
+             (mousedown)="ativarNeon('down')"
+             (touchstart)="ativarNeon('down')" (touchend)="desativarNeon('down')"
+             src="assets/lingobot/poses/lingobot_apontando_pra_baixo.png"
+             style="width: 100% !important;height: auto">
         <p class="command-text">Descer andar</p>
       </div>
     </div>
+
+
+
+
   </div>
 
 
