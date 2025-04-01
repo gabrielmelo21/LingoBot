@@ -318,8 +318,8 @@
 }
 
 .image-button img {
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
 }
 
 .image-button2{
@@ -397,7 +397,7 @@
 
 
 .image-button5 img {
-  width: 60%;
+  width: 80%;
   height: auto;
 
 }
@@ -406,7 +406,7 @@
 
 .image-button6{
   top: 90px;
-  left: 35px !important;
+  left: 47px !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -416,7 +416,7 @@
 
 
 .image-button6 img {
-  width: 50%;
+  width: 65%;
   height: auto;
 
 }
@@ -424,7 +424,7 @@
 
 .image-button7{
   top: 90px;
-  left: 75px !important;
+  left: 95px !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -434,7 +434,19 @@
 
 
 .image-button7 img {
-  width: 50%;
+  width: 65%;
   height: auto;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

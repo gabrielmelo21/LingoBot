@@ -25,6 +25,7 @@ export class AppComponent implements OnInit{
   showLingoBotModal = false;
   showFlashcardModal = false;
   showOpenTools = false;
+  showPedagioModal: boolean = false;
 
 
 
@@ -80,6 +81,10 @@ this.router.events.subscribe(event => {
 
 
 
+  closeModal3() {
+    this.showPedagioModal = false;
+  }
+
 
 
 
@@ -105,15 +110,6 @@ this.router.events.subscribe(event => {
 
 
 
-    // PEGA DADOS TORRE
-    this.torreSubscription = this.trilhaService.torre$.subscribe((torre) => {
-      // Atualize as variáveis com os dados da torre
-      this.andarAtual = torre.andar_atual;
-      this.andar_inicial_conjunto = torre.andar_inicial_conjunto;
-      this.andar_final_conjunto = torre.andar_final_conjunto;
-
-
-    });
 
 
 
@@ -152,8 +148,13 @@ this.router.events.subscribe(event => {
   }
 
 
+  voltarAndar(){
+
+  }
+
 
   isModalOpen = false;
+
 
 
 
@@ -165,7 +166,6 @@ this.router.events.subscribe(event => {
   }
 
   toggleLingoBot() {
-
     this.playSound.playCleanSound2();
     this.showLingoBotModal = !this.showLingoBotModal;
   }

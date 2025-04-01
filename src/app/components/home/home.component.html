@@ -4,7 +4,6 @@
 
   <!-- Imagem estática -->
   <img   src="assets/lingobot/home/lingobot-cenario.png" class="background-image">
-  <img *ngIf="mostrarImagem" src="assets/lingobot/home/lingobot-cenario.png" class="background-image">
 
   <!-- Vídeo 1 -->
   <video *ngIf="cena == 1 && !mostrarImagem" autoplay muted loop class="background-video">
@@ -44,6 +43,58 @@
     <!-- Texto sobreposto -->
     <h3>N° {{ andarAtual }}<br>{{ getTextoPorAndar() }}</h3>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+  <div *ngIf="showPedagioModal" class="pedagio-dialog" style="margin-top: -20px !important;">
+    <div  class="pedagio-content"
+          style="background-image: url('assets/lingobot/pergaminho.png');
+   background-size: 100% !important;
+   background-repeat: no-repeat;
+   height:600px !important;
+   width: 120% !important;
+   margin-top: 120px !important;
+"
+
+    >
+
+      <div style=" margin-top: 100px !important;">
+        <div style="width:200px !important;">
+          <h2 style="text-align: center">Parabéns!</h2>
+          <p>Você está indo muito bem e venceu os andares <b>1-4</b>. <br> para continuar é necessário
+            pagar com suas moedas de ouro coletadas em sua aventura, caso não tenha, volte alguns andares e continue juntando!
+          </p>
+
+
+          <div style="display: flex; align-items: center; gap: 10px;margin-left: 20%">
+            <img src="assets/lingobot/icons/LingoToken.png" style="width: 30%; height: auto;">
+            <h3 style="margin: 0;color: darkgoldenrod;font-weight: bold;font-size: 25pt !important;">100</h3>
+          </div>
+
+          <br>
+
+          <button class="game-button" (click)="closeModal()" style="margin-top: 50px !important;">Voltar</button>
+          <button class="game-button" (click)="closeModal()" style="margin-left: 20px;">Pagar</button>
+        </div>
+
+
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+
 
 
   <div class="background-commands" style="display:inline-block; background-image: url('assets/lingobot/home/testar_pergaminho.jpg'); margin-top: 90%;background-size: 140%;background-position: center">
@@ -89,7 +140,94 @@
 
 <style>
 
-.tabua{
+
+
+  .pedagio-dialog{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent !important;
+    border:none !important;
+    z-index: 999921211;
+
+  }
+
+  .pedagio-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    padding: 0;
+
+    text-align: center;
+
+    margin-top: -50px !important;
+  }
+
+
+
+
+  /** BOTÃO   ESTILO JOGO **/
+  .game-button {
+
+    margin-top: 30px !important;
+    padding: 15px;
+    font-size: 12pt  ;
+    color: white  ;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    background: linear-gradient(145deg, #007bff, #6f42c1);
+    box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease-in-out;
+  }
+
+  .game-button:active {
+    box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .game-button:hover {
+    background: linear-gradient(145deg, #1e90ff, #8a2be2);
+
+  }
+
+  .game-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.1)
+    );
+    transition: left 0.5s ease-in-out;
+  }
+
+  .game-button:hover::before {
+    left: 100%;
+  }
+
+
+
+
+
+
+
+
+  .tabua{
   position: absolute;
   z-index: 500;
   width: 40%;

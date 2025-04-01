@@ -53,6 +53,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 })
 export class HomeComponent implements OnInit {
 
+
   constructor(private playSound: PlaySoundService,
               private router: Router,
               private auth: AuthService,
@@ -69,12 +70,9 @@ export class HomeComponent implements OnInit {
 
   // Função para mudar de cena
   mudarCena(novaCena: number) {
-    this.mostrarImagem = true; // Exibe a imagem antes de trocar o vídeo
-
     setTimeout(() => {
-      this.cena = novaCena; // Altera a cena após um pequeno delay
-      this.mostrarImagem = false; // Remove a imagem após o vídeo ser carregado
-    }, 100); // Tempo suficiente para evitar o flash branco (ajuste conforme necessário)
+      this.cena = novaCena;
+    }, 100);
   }
 
   torreSubscription!: Subscription;
@@ -89,8 +87,15 @@ export class HomeComponent implements OnInit {
   orbView: boolean = true;
 
 
+
+
+
+
+
   ngOnInit() {
-    this.mudarCena(1)
+    setTimeout(() => {
+      this.mudarCena(1)
+    }, 50);
 
     // Se inscreve no observable para atualizar automaticamente
     this.torreSubscription = this.trilhaService.torre$.subscribe((torre) => {
@@ -307,6 +312,17 @@ export class HomeComponent implements OnInit {
 
 
 
+  showPedagioModal: boolean = false;
+  closeModal() {
+    this.alterarZIndex(999921211)
+    this.showPedagioModal = false;
+
+  }
+
+
+
+
+
   neonStates = new Set<string>(); // Mantém os estados dos botões ativados
 
   ativarNeon(command: string) {
@@ -325,32 +341,51 @@ export class HomeComponent implements OnInit {
   }
 
 
+
+  alterarZIndex(number: number) {
+    // Seleciona o elemento com a classe .pedagio-dialog
+    const elemento = document.querySelector('.pedagio-dialog') as HTMLElement;
+
+    // Verifica se o elemento existe antes de alterar o z-index
+    if (elemento) {
+      elemento.style.zIndex = ''+number; // Altera o z-index para 999
+    } else {
+      console.error('Elemento com a classe .pedagio-dialog não encontrado.');
+    }
+  }
+
+
   command(cmd: string) {
      this.playSound.playCleanSound();
 
      if (cmd == 'up') {
-       this.mudarCena(3)
+
+       if(this.andarAtual == this.andar_final_conjunto){
+         this.alterarZIndex(999921212)
+         this.showPedagioModal = true;
+       }else{
+
+         this.mudarCena(3)
+         setTimeout(() => {
+           //some o orb
+           this.orbView = false;
+         }, 2100);
+
+         setTimeout(() => {
+           //animação nuvens
+           this.startAnimation()
+         }, 3000);
+
+         setTimeout(() => {
+           this.trilhaService.updateTorreData({andar_atual: 1})
+
+           // troca pra cena 1
+           this.mudarCena(1)
+           this.orbView = true;
+         }, 5000);
+       } // end
 
 
-
-
-       setTimeout(() => {
-         //some o orb
-         this.orbView = false;
-       }, 2100);
-
-       setTimeout(() => {
-         //animação nuvens
-         this.startAnimation()
-       }, 3000);
-
-       setTimeout(() => {
-         this.trilhaService.updateTorreData({andar_atual: 1})
-
-         // troca pra cena 1
-         this.mudarCena(1)
-         this.orbView = true;
-       }, 5000);
 
 
      }
