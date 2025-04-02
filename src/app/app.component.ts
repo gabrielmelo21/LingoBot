@@ -4,6 +4,7 @@ import {AuthService} from "./services/auth.service";
 import {PlaySoundService} from "./services/play-sound.service";
 import {TrilhaService} from "./services/trilha.service";
 import {Subscription} from "rxjs";
+import {ModalService} from "./services/modal.service";
 
 
 
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit{
   showFlashcardModal = false;
   showOpenTools = false;
   showPedagioModal: boolean = false;
+  showCelularModal: boolean = false;
 
 
 
@@ -37,10 +39,19 @@ export class AppComponent implements OnInit{
   constructor(   private trilhaService: TrilhaService,
                 private router: Router,
                 private auth: AuthService,
-                private playSound: PlaySoundService
+                private playSound: PlaySoundService,
+                 private modalService: ModalService
   ) {
 
     //localStorage.clear();
+
+
+
+    this.modalService.showCelularModal$.subscribe(state => {
+      this.showCelularModal = state;
+    });
+
+
 
 
 this.router.events.subscribe(event => {
@@ -158,8 +169,6 @@ this.router.events.subscribe(event => {
 
 
 
-
-
   toggleFlashcardModal() {
     this.playSound.playCleanSound2();
     this.showFlashcardModal = !this.showFlashcardModal;
@@ -176,4 +185,8 @@ this.router.events.subscribe(event => {
     this.showOpenTools = !this.showOpenTools;
   }
 
+  toggleCelularModal() {
+    this.playSound.playCleanSound2();
+    this.showCelularModal = !this.showCelularModal;
+  }
 }

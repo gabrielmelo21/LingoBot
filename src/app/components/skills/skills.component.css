@@ -2,151 +2,89 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  gap: 5px;
+  padding: 5px;
+
 }
 
 .skill-card {
-  width: 250px;
-  background: linear-gradient(135deg, #4A90E2, #904E95) !important;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  text-align: center;
+  width: calc(50% - 4px);
+  padding: 2px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.skill-card:hover {
+  transform: scale(1.03);
 }
 
 .skill-image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-right: 8px;
 }
 
 .skill-image {
-  width: 50px;
-  height: 50px;
-}
-
-.skill-info {
-  font-family: Arial, sans-serif;
-}
-
-.skill-name {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.skill-level {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 10px;
-}
-
-.progress-bar-container {
-  width: 100%;
-  height: 10px;
-  background: #e0e0e0;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background: #4caf50;
-  transition: width 0.5s ease-in-out;
-}
-
-/* Contêiner para o título e descrição */
-.skills-header {
-  text-align: center;
-  padding: 20px 15px;
-  background-color: white;
-}
-
-/* Título */
-.skills-title {
-  font-size: 28px;
-  font-weight: bold;
-  color: black;
-  margin-bottom: 5px;
-}
-
-
-
-
-/* Ajuste para desktop: coloca lado a lado */
-@media (min-width: 768px) {
-  .skills-container {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* Estilização do card de skill */
-.skill-card {
-  display: flex;
-  align-items: center;
-  background: linear-gradient(145deg, #1e1e1e, #292929);
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3),
-  -5px -5px 15px rgba(255, 255, 255, 0.05);
-  transition: transform 0.2s ease-in-out;
-  cursor: pointer;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.skill-card:hover {
-  transform: scale(1.05);
-}
-
-/* Imagem da skill */
-.skill-image {
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border: 2px solid #4a90e2;
-  box-shadow: 0px 0px 8px #4a90e2;
+  border: 1px solid #4a90e2;
+  box-shadow: 0px 0px 4px #4a90e2;
 }
 
-/* Área de informações da skill */
 .skill-info {
-  margin-left: 15px;
   flex-grow: 1;
 }
 
-/* Nome e nível da skill */
 .skill-name {
-  font-size: 18px;
+  font-size:12px;
   font-weight: bold;
   color: #ffffff;
-  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.2);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+  margin: 0;
 }
 
 .skill-level {
   font-size: 14px;
   color: #ffcc00;
   font-weight: bold;
-  text-shadow: 0px 0px 5px rgba(255, 204, 0, 0.8);
+  text-shadow: 0px 0px 2px rgba(255, 204, 0, 0.8);
+  margin: 2px 0;
 }
 
-/* Barra de progresso */
 .progress-bar-container {
   width: 100%;
-  height: 12px;
+  height: 6px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
-  margin-top: 5px;
-  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 3px;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Barra interna animada */
 .progress-bar {
   height: 100%;
   background: linear-gradient(90deg, #4a90e2, #42e695);
-  border-radius: 8px;
+  border-radius: 4px;
   transition: width 0.5s ease-in-out;
-  box-shadow: 0px 0px 10px rgba(74, 144, 226, 0.8);
+  box-shadow: 0px 0px 4px rgba(74, 144, 226, 0.6);
+}
+
+.skills-header {
+  text-align: center;
+  padding: 10px 10px;
+  background-color: white;
+}
+
+.skills-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 3px;
 }

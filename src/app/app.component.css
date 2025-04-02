@@ -308,13 +308,17 @@
 
 /* Novo botão com imagem (abaixo do de Flashcard) */
 .image-button {
-  top: 90px;
+  top: 10px;
   right: 5px;
-  background: transparent;
+  background: transparent !important;
   border: none !important;
-  box-shadow: none !important;
-  padding: 5px;
 
+
+  border-radius: 50px !important;
+
+  backdrop-filter: blur(16px); /* Efeito de vidro mais leve */
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Sombra bem sutil */
 }
 
 .image-button img {
@@ -323,13 +327,16 @@
 }
 
 .image-button2{
-  top: 150px !important;
-  right: 5px !important;
+  top: 5px;
+  right: 75px !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
+
   padding: 5px;
-  border-radius: 20px !important;
+
+
+
 }
 
 
@@ -341,8 +348,8 @@
 
 
 .image-button3{
-  top: 210px !important;
-  right: 5px !important;
+  top: 60px;
+  right: 52px !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -360,8 +367,8 @@
 
 
 .image-button4{
-  top: 270px !important;
-  right: 5px !important;
+  top: 80px;
+  right: 0px !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -439,6 +446,23 @@
 
 }
 
+
+.image-button8{
+  top: 90px;
+  left: 143px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 5px;
+  border-radius: 20px !important;
+}
+
+
+.image-button8 img {
+  width: 65%;
+  height: auto;
+
+}
 
 
 

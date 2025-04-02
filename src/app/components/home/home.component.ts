@@ -355,80 +355,82 @@ export class HomeComponent implements OnInit {
   }
 
 
+
+  blockAction: boolean = false;
+
+
   command(cmd: string) {
-     this.playSound.playCleanSound();
-
-     if (cmd == 'up') {
-
-       if(this.andarAtual == this.andar_final_conjunto){
-         this.alterarZIndex(999921212)
-         this.showPedagioModal = true;
-       }else{
-
-         this.mudarCena(3)
-         setTimeout(() => {
-           //some o orb
-           this.orbView = false;
-         }, 2100);
-
-         setTimeout(() => {
-           //animação nuvens
-           this.startAnimation()
-         }, 3000);
-
-         setTimeout(() => {
-           this.trilhaService.updateTorreData({andar_atual: 1})
-
-           // troca pra cena 1
-           this.mudarCena(1)
-           this.orbView = true;
-         }, 5000);
-       } // end
-
-
-
-
-     }
-
-    if (cmd == 'in') {
-      this.mudarCena(2)
-
+    // Verifica se uma ação já está em andamento
+    if (this.blockAction) {
+      console.log("Uma ação já está em andamento. Aguarde...");
+      return; // Sai da função se blockAction for true
     }
 
+    // Bloqueia novas ações
+    this.blockAction = true;
 
-    if (cmd == 'down') {
-      const t = this.trilhaService.getTorreData();
+    // Toca o som
+    this.playSound.playCleanSound();
 
-
-      if (t.andar_atual  > 1){
+    // Lógica para cada comando
+    if (cmd === 'up') {
+      if (this.andarAtual == this.andar_final_conjunto) {
+        // Altera o z-index e mostra o modal
+        this.alterarZIndex(999921212);
+        this.showPedagioModal = true;
+        this.blockAction = false; // Libera após concluir
+      } else {
+        // Animação para subir
+        this.mudarCena(3);
 
         setTimeout(() => {
-          //animação nuvens
-          this.startAnimation()
+          // Esconde o orb
+          this.orbView = false;
+        }, 2100);
+
+        setTimeout(() => {
+          // Animação de nuvens
+          this.startAnimation();
+        }, 3000);
+
+        setTimeout(() => {
+          // Atualiza os dados da torre e volta para a cena inicial
+          this.trilhaService.updateTorreData({ andar_atual: 1 });
+          this.mudarCena(1);
+          this.blockAction = false; // Libera após concluir
+        }, 5000);
+      }
+    } else if (cmd === 'in') {
+      // Animação para entrar na missão
+      this.mudarCena(2);
+
+      setTimeout(() => {
+        this.blockAction = false; // Libera após concluir
+      }, 3000); // Ajuste o tempo conforme necessário
+    } else if (cmd === 'down') {
+      const t = this.trilhaService.getTorreData();
+
+      if (t.andar_atual > 1) {
+        setTimeout(() => {
+          // Animação de nuvens
+          this.startAnimation();
         }, 1000);
 
         setTimeout(() => {
-          //cena dencendo
-          this.trilhaService.updateTorreData({andar_atual: -1})
-          this.mudarCena(4)
+          // Atualiza os dados da torre e muda para a cena de descida
+          this.trilhaService.updateTorreData({ andar_atual: -1 });
+          this.mudarCena(4);
         }, 3000);
 
-
         setTimeout(() => {
-
-          this.mudarCena(1)
+          // Volta para a cena inicial
+          this.mudarCena(1);
+          this.blockAction = false; // Libera após concluir
         }, 7000);
-
-
-      }else{
-        //msg de erro  nao pode descer abaixo de 1,
-        alert("nao pode descer abaixo de 1")
+      } else {
+        alert("Não pode descer abaixo de 1");
+        this.blockAction = false; // Libera após exibir o alerta
       }
-
-
-
     }
-
-
   }
 }

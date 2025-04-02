@@ -36,6 +36,35 @@
 
 
 
+<div *ngIf="showCelularModal" class="pedagio-dialog" style="margin-top: -20px !important;">
+  <div  class="pedagio-content"
+        style="background-image: url('assets/lingobot/menu-icons/celular-infos.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+   height:600px !important;
+   width: 100% !important;
+   margin-top: 80px !important;
+   margin-left: 30px !important;
+"
+
+  >
+
+    <div style=" margin-top: 60px !important; width: 60% !important;margin-left: -70px !important;">
+      <!--
+      <div style="display: flex;justify-content: center;align-items: center" (click)="  toggleCelularModal()">
+        <h3>&#10006; Guardar Celular</h3>
+      </div>
+      -->
+      <app-account-settings></app-account-settings>
+
+
+    </div>
+
+
+  </div>
+</div> <!-- PEDAGIO end -->
+
+
 
 <!-- Botão de Flashcard
 <button class="floating-button flashcard-button" (click)="toggleFlashcardModal()" *ngIf="isFlashcardsRoute && !isLoginRoute">
@@ -51,17 +80,61 @@
 (click)=" toggleLingoBot()"
 -->
 
+
+
+
+<!-- OPÇÕES DE MENU
+
+
+
+
+
+
+  <button      style="z-index: 999921211" class="floating-button image-button5"  (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute">
+    <img src="assets/lingobot/menu-icons/skills.png" alt="Skills Photo" style="border-radius: 20px !important;">
+  </button>
+  <button     style="z-index: 999912111" class="floating-button image-button6"  (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute">
+    <img src="assets/lingobot/menu-icons/icone-ranking.png" alt="Ranking Photo" style="border-radius: 20px !important;">
+  </button>
+
+  <button    style="z-index: 999912111"  class="floating-button image-button7" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute">
+    <img src="assets/lingobot/menu-icons/pilha_de_moedas.png" alt="Coins Photo" style="border-radius: 20px !important;">
+  </button>
+
+
+  <button    style="z-index: 999912111"  class="floating-button image-button8" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute">
+    <img src="assets/lingobot/menu-icons/gear_icon.png" alt="Gear Photo" style="border-radius: 20px !important;">
+  </button>
+assets/lingobot/menu-icons/powers/bag-icon.png
+-->
+
+
+
+
+
+
+<!-- BAG COM PODERES
+
+
+
+<button   style="z-index: 9999112111" class="floating-button image-button" (touchstart)="toggleCelularModal()" *ngIf="!isLoginRoute">
+  <img src="assets/lingobot/menu-icons/celular_icon.png" alt="Bag Photo">
+</button>
+-->
+
 <button   style="z-index: 9999112111" class="floating-button image-button" (touchstart)="openTools()" *ngIf="!isLoginRoute">
   <img src="assets/lingobot/menu-icons/powers/bag-icon.png" alt="Bag Photo">
 </button>
 
 
-<button    style="z-index: 9999" class="floating-button image-button2" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
+
+
+<button    style="z-index: 9999" class="floating-button  image-button3" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
   <img src="assets/lingobot/menu-icons/powers/mug-tradutor-power1.jpg" alt="Bag Photo" style="border-radius: 20px !important;">
 </button>
 
 
-<button    style="z-index: 9999" class="floating-button image-button3" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
+<button    style="z-index: 9999" class="floating-button image-button2" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
   <img src="assets/lingobot/menu-icons/powers/flashcards-power2.jpg" alt="Bag Photo" style="border-radius: 20px !important;">
 </button>
 
@@ -74,20 +147,6 @@
 
 
 
-<!-- OPÇÕES DE MENU -->
-<button      style="z-index: 999921211" class="floating-button image-button5"  (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute">
-  <img src="assets/lingobot/menu-icons/skills.png" alt="Bag Photo" style="border-radius: 20px !important;">
-</button>
-<button     style="z-index: 999912111" class="floating-button image-button6"  (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute">
-  <img src="assets/lingobot/menu-icons/icone-ranking.png" alt="Bag Photo" style="border-radius: 20px !important;">
-</button>
-
-<button    style="z-index: 999912111"  class="floating-button image-button7" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute">
-  <img src="assets/lingobot/menu-icons/pilha_de_moedas.png" alt="Bag Photo" style="border-radius: 20px !important;">
-</button>
-
-
-
 
 
 
@@ -96,3 +155,37 @@
 
 <app-footer-links  *ngIf="isLoginRoute"></app-footer-links>
 
+
+
+<style>
+  .pedagio-dialog{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent !important;
+    border:none !important;
+    z-index: 999921211;
+
+  }
+
+  .pedagio-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    padding: 0;
+
+    text-align: center;
+
+    margin-top: -50px !important;
+  }
+
+
+
+</style>

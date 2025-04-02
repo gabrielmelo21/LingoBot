@@ -1,52 +1,23 @@
-
-<div  style="
-    height: 200px;
-    background: url('assets/lingobot/icons/skills/banner-skills.jpg') center/cover no-repeat;
-     background-size: 100%;
-    margin-left: -20px !important;
-    width: 120% !important;
-display: flex;
-margin-top: 80px;
-align-items: center;
-justify-content: center;"></div>
-
-<!-- Título e descrição -->
-<div class="skills-header">
-  <h2 class="skills-title">Skills</h2>
-  <p class="skills-description">
-    Aqui estão suas habilidades e seu progresso em cada uma delas.
-    Continue treinando para subir de nível!
-  </p>
-</div>
-
-
-<div class="skills-container"  >
-
-
-
+<div class="skills-container">
 
   <!-- Skill: Listening -->
   <div class="skill-card">
-    <div class="skill-image-container">
-      <img src="assets/lingobot/icons/skills/listening.png" alt="Listening" class="skill-image">
-    </div>
+    <img src="assets/lingobot/icons/skills/listening.png" alt="Listening" class="skill-image">
     <div class="skill-info">
-      <h3 class="skill-name">Listening</h3>
-      <p class="skill-level">Level {{ listening.level }}</p> <p>
+      <h4 class="skill-name">Listening</h4>
+      <p class="skill-level">Lv. {{ listening.level }}</p>
       <div class="progress-bar-container">
-      <div class="progress-bar" [style.width.%]="listening.progress"></div>
+        <div class="progress-bar" [style.width.%]="listening.progress"></div>
       </div>
     </div>
   </div>
 
   <!-- Skill: Reading -->
   <div class="skill-card">
-    <div class="skill-image-container">
-      <img src="assets/lingobot/icons/skills/reading.png" alt="Reading" class="skill-image">
-    </div>
+    <img src="assets/lingobot/icons/skills/reading.png" alt="Reading" class="skill-image">
     <div class="skill-info">
-      <h3 class="skill-name">Reading</h3>
-      <p class="skill-level">Level {{ reading.level }}</p>
+      <h4 class="skill-name">Reading</h4>
+      <p class="skill-level">Lv. {{ reading.level }}</p>
       <div class="progress-bar-container">
         <div class="progress-bar" [style.width.%]="reading.progress"></div>
       </div>
@@ -55,12 +26,10 @@ justify-content: center;"></div>
 
   <!-- Skill: Writing -->
   <div class="skill-card">
-    <div class="skill-image-container">
-      <img src="assets/lingobot/icons/skills/writing.png" alt="Writing" class="skill-image">
-    </div>
+    <img src="assets/lingobot/icons/skills/writing.png" alt="Writing" class="skill-image">
     <div class="skill-info">
-      <h3 class="skill-name">Writing</h3>
-      <p class="skill-level">Level {{ writing.level }}</p>
+      <h4 class="skill-name">Writing</h4>
+      <p class="skill-level">Lv. {{ writing.level }}</p>
       <div class="progress-bar-container">
         <div class="progress-bar" [style.width.%]="writing.progress"></div>
       </div>
@@ -69,14 +38,12 @@ justify-content: center;"></div>
 
   <!-- Skill: Speaking -->
   <div class="skill-card">
-    <div class="skill-image-container">
-      <img src="assets/lingobot/icons/skills/speaking.png" alt="Speaking" class="skill-image">
-    </div>
+    <img src="assets/lingobot/icons/skills/speaking.png" alt="Speaking" class="skill-image">
     <div class="skill-info">
-      <h3 class="skill-name">Speaking</h3>
-      <p class="skill-level">Level {{ speaking.level }}</p>
+      <h4 class="skill-name">Speaking</h4>
+      <p class="skill-level">Lv. {{ speaking.level }}</p>
       <div class="progress-bar-container">
-        <div class="progress-bar"  [style.width.%]="speaking.progress"></div>
+        <div class="progress-bar" [style.width.%]="speaking.progress"></div>
       </div>
     </div>
   </div>

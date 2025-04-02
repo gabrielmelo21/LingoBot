@@ -1,0 +1,82 @@
+.user-card {
+  display: flex;
+  flex-direction: column; /* Altera para coluna para empilhar os elementos */
+  align-items: center; /* Centraliza todos os elementos horizontalmente */
+  width: 100%;
+  padding: 20px;
+  color: white !important;
+
+
+  background: rgba(255, 255, 255, 0.05); /* Fundo bem suave */
+  backdrop-filter: blur(6px); /* Efeito de vidro mais leve */
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Sombra bem sutil */
+  border-radius: 20px !important;
+
+
+}
+
+/* Estilização para a seção centralizada (Avatar + Nome) */
+.user-info-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  gap: 5px; /* Espaçamento entre o avatar e o nome */
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  float: left !important;
+}
+
+h2 {
+  font-size: 16px;
+  margin: 0;
+  text-align: center; /* Garante que o texto fique centralizado */
+}
+
+/* Estilização para a barra de progresso */
+.level-info {
+  width: 100%; /* Ocupa 100% da largura disponível */
+  margin-top: 10px; /* Espaço entre o nome e a barra de progresso */
+}
+
+.level-bar {
+  width: 100%; /* Ocupa 100% da largura */
+  height: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: #FFD700;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.5s ease-in-out; /* Adiciona animação suave */
+}
+
+.progress-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+/* Estilização para o texto abaixo da barra de progresso */
+.level-info p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  margin-top: 10px; /* Espaço entre a barra de progresso e o texto */
+}
