@@ -1,4 +1,4 @@
-<div class="container ">
+<div class="container">
   <app-header></app-header>
   <router-outlet></router-outlet>
 </div>
@@ -36,33 +36,14 @@
 
 
 
-<div *ngIf="showCelularModal" class="pedagio-dialog" style="margin-top: -20px !important;">
-  <div  class="pedagio-content"
-        style="background-image: url('assets/lingobot/menu-icons/celular-infos.png');
-   background-size: contain;
-   background-repeat: no-repeat;
-   height:600px !important;
-   width: 100% !important;
-   margin-top: 80px !important;
-   margin-left: 30px !important;
-"
-
-  >
-
-    <div style=" margin-top: 60px !important; width: 60% !important;margin-left: -70px !important;">
-      <!--
-      <div style="display: flex;justify-content: center;align-items: center" (click)="  toggleCelularModal()">
-        <h3>&#10006; Guardar Celular</h3>
-      </div>
-      -->
+<div *ngIf="showCelularModal" class="pedagio-dialog">
+  <div class="pedagio-content">
+    <div class="modal-content">
       <app-account-settings></app-account-settings>
-
-
     </div>
-
-
   </div>
-</div> <!-- PEDAGIO end -->
+</div>
+
 
 
 
@@ -122,7 +103,7 @@ assets/lingobot/menu-icons/powers/bag-icon.png
 </button>
 -->
 
-<button   style="z-index: 9999112111" class="floating-button image-button" (touchstart)="openTools()" *ngIf="!isLoginRoute">
+<button   style="z-index: 9999112112" class="floating-button image-button" (touchstart)="openTools()" *ngIf="!isLoginRoute">
   <img src="assets/lingobot/menu-icons/powers/bag-icon.png" alt="Bag Photo">
 </button>
 
@@ -158,34 +139,41 @@ assets/lingobot/menu-icons/powers/bag-icon.png
 
 
 <style>
-  .pedagio-dialog{
-    position: fixed;
+  .pedagio-dialog {
+    position: fixed; /* Mantém o modal sempre fixo na tela */
     top: 0;
     left: 0;
-    width: 100%;
-    margin: auto;
-    height: 100vh;
+    width: 100vw; /* Ocupa 100% da largura da tela */
+    height: 100vh; /* Ocupa 100% da altura da tela */
     display: flex;
     justify-content: center;
     align-items: center;
-    background: transparent !important;
-    border:none !important;
-    z-index: 999921211;
-
+    background: rgba(0, 0, 0, 0.5); /* Fundo escurecido para destacar o modal */
+    z-index: 999921211111111112332323231 !important;
   }
 
-  .pedagio-content{
+  .pedagio-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: transparent;
-    padding: 0;
-
-    text-align: center;
-
-    margin-top: -50px !important;
+    background-image: url('assets/lingobot/menu-icons/celular-infos.png');
+    background-size: cover; /* A imagem cobrirá toda a tela */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    overflow: hidden; /* Evita rolagem */
+    z-index: 99992121111111123322312323211 !important;
   }
 
-
+  .modal-content {
+    width: 70%; /* Define uma largura para o conteúdo */
+    max-width: 600px; /* Evita que fique muito grande */
+    margin-top:40% !important;
+    padding:  0px;
+    margin-left: -40px !important;
+    border-radius: 10px;
+    text-align: center;
+  }
 
 </style>

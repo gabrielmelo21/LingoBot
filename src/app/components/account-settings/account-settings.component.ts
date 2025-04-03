@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {ModalService} from "../../services/modal.service";
+import {PlaySoundService} from "../../services/play-sound.service";
 
 @Component({
   selector: 'app-account-settings',
@@ -12,7 +14,11 @@ export class AccountSettingsComponent implements OnInit{
   expPercentage: number = 0; // Inicializa a porcentagem
   expNeeded: number = 10000; // Valor padrão inicial
   user: any;  // Variável para armazenar os dados do usuário
-  constructor(private router: Router, private auth: AuthService) {
+  constructor(private router: Router,
+              private auth: AuthService,
+              private modalService: ModalService,
+              private playSoundService: PlaySoundService,
+  ) {
     this.router.events.subscribe(() => {
       this.isLoginRoute = this.router.url === '/login';
     });
@@ -29,4 +35,8 @@ export class AccountSettingsComponent implements OnInit{
   }
 
 
+  toggleCelularModal() {
+    this.playSoundService.playCleanSound2();
+    this.modalService.toggleCelularModal();
+  }
 }
