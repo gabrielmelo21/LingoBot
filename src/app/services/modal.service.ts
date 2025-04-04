@@ -14,4 +14,13 @@ export class ModalService {
   }
 
 
+
+  private showRankingModalSubject = new BehaviorSubject<boolean>(false);
+  showRankingModal$ = this.showRankingModalSubject.asObservable();
+
+  toggleRankingModal() {
+    this.showRankingModalSubject.next(!this.showRankingModalSubject.value);
+  }
+
+
 }

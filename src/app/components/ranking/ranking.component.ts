@@ -3,6 +3,7 @@ import {PlaySoundService} from "../../services/play-sound.service";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {MainAPIService} from "../../services/main-api.service";
+import {ModalService} from "../../services/modal.service";
 
 @Component({
   selector: 'app-ranking',
@@ -14,7 +15,10 @@ export class RankingComponent implements OnInit {
   user: any;
   isLoading: boolean = false;
 
-  constructor(private mainApiService: MainAPIService, private playSoundService: PlaySoundService, private auth: AuthService, router: Router) {
+  constructor(private mainApiService: MainAPIService,
+              private playSoundService: PlaySoundService,
+              private auth: AuthService,
+              private modalService: ModalService,) {
     window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
   }
 
@@ -35,7 +39,11 @@ export class RankingComponent implements OnInit {
     this.mainApiService.getRanking().subscribe(
       (data: any[]) => {
         this.ranking = data;
+        for (let i = 0; i < 10; i++) {
+          this.ranking.push(...data);
+        }
         console.log('Ranking obtido.');
+        console.log(this.ranking);
         this.isLoading = false;
       },
       (error: any) => {
@@ -46,6 +54,10 @@ export class RankingComponent implements OnInit {
   }
 
 
+  toggleRankingModal() {
+    this.playSoundService.playCleanSound2();
+    this.modalService.toggleRankingModal();
+  }
 
 
 

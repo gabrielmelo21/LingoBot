@@ -82,13 +82,14 @@ import { SkillsComponent } from './skills/skills.component';
     SkillsComponent,
 
   ],
-  exports: [
-    HeaderComponent,
-    FooterLinksComponent,
-    CreateFlashcardComponent,
-    LingobotCardComponent,
-    AccountSettingsComponent
-  ],
+    exports: [
+        HeaderComponent,
+        FooterLinksComponent,
+        CreateFlashcardComponent,
+        LingobotCardComponent,
+        AccountSettingsComponent,
+        RankingComponent
+    ],
   imports: [
     CommonModule,
     ComponentRoutingModule,

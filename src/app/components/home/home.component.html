@@ -85,8 +85,13 @@
 
           <br>
 
-          <button class="game-button" (click)="closeModal()" style="margin-top: 50px !important;">Voltar</button>
-          <button class="game-button" (click)="closeModal()" style="margin-left: 20px;">Pagar</button>
+
+          <div class="button-container">
+            <button class="game-button" (click)="closeModal()">Voltar</button>
+            <button class="game-button" (click)="closeModal()">Pagar</button>
+          </div>
+
+
         </div>
 
 
@@ -147,7 +152,16 @@
 
 <style>
 
-   .background-commands{
+  .button-container {
+    display: flex;
+    justify-content: center; /* Alinha os itens ao centro */
+    gap: 20px; /* Espaço entre os botões */
+    margin-top: 50px;
+  }
+
+
+
+  .background-commands{
      position: fixed !important;
      bottom: 0px !important;
      display:inline-block;

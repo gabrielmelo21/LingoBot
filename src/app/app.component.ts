@@ -28,7 +28,7 @@ export class AppComponent implements OnInit{
   showOpenTools = false;
   showPedagioModal: boolean = false;
   showCelularModal: boolean = false;
-
+  showRankingModal: boolean = false;
 
 
 
@@ -51,7 +51,9 @@ export class AppComponent implements OnInit{
       this.showCelularModal = state;
     });
 
-
+    this.modalService.showRankingModal$.subscribe(state => {
+      this.showRankingModal = state;
+    });
 
 
 this.router.events.subscribe(event => {
@@ -164,7 +166,6 @@ this.router.events.subscribe(event => {
   }
 
 
-  isModalOpen = false;
 
 
 
@@ -185,8 +186,6 @@ this.router.events.subscribe(event => {
     this.showOpenTools = !this.showOpenTools;
   }
 
-  toggleCelularModal() {
-    this.playSound.playCleanSound2();
-    this.showCelularModal = !this.showCelularModal;
-  }
+
+
 }

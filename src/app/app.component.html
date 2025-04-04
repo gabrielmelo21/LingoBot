@@ -36,10 +36,28 @@
 
 
 
-<div *ngIf="showCelularModal" class="pedagio-dialog">
-  <div class="pedagio-content">
+<div *ngIf="showCelularModal" class="user-info-dialog">
+  <div class="user-info-content">
     <div class="modal-content">
       <app-account-settings></app-account-settings>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="showRankingModal" class="ranking-dialog">
+  <div class="ranking-content">
+    <div class="modal-ranking-content">
+
+
+
+      <app-ranking></app-ranking>
+
+
+
+
+
     </div>
   </div>
 </div>
@@ -139,7 +157,7 @@ assets/lingobot/menu-icons/powers/bag-icon.png
 
 
 <style>
-  .pedagio-dialog {
+  .user-info-dialog {
     position: fixed; /* Mantém o modal sempre fixo na tela */
     top: 0;
     left: 0;
@@ -149,10 +167,10 @@ assets/lingobot/menu-icons/powers/bag-icon.png
     justify-content: center;
     align-items: center;
     background: rgba(0, 0, 0, 0.5); /* Fundo escurecido para destacar o modal */
-    z-index: 999921211111111112332323231 !important;
+    z-index: 10 !important;
   }
 
-  .pedagio-content {
+  .user-info-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,8 +181,56 @@ assets/lingobot/menu-icons/powers/bag-icon.png
     width: 100vw; /* Ocupa toda a largura da tela */
     height: 100vh; /* Ocupa toda a altura da tela */
     overflow: hidden; /* Evita rolagem */
-    z-index: 99992121111111123322312323211 !important;
+    z-index: 10 !important;
   }
+
+
+
+
+
+  .ranking-dialog {
+    position: fixed; /* Mantém o modal sempre fixo na tela */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa 100% da largura da tela */
+    height: 100vh; /* Ocupa 100% da altura da tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); /* Fundo escurecido para destacar o modal */
+    z-index: 10 !important;
+  }
+
+  .ranking-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('assets/lingobot/pergaminho.png');
+    background-size: cover; /* A imagem cobrirá toda a tela */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    overflow: hidden; /* Evita rolagem */
+    z-index: 10 !important;
+  }
+
+
+
+
+
+  .modal-ranking-content {
+    width: 70%; /* Define uma largura para o conteúdo */
+    max-width: 600px; /* Evita que fique muito grande */
+    margin-top:10% !important;
+    transform: scale(0.9);
+    padding:  0px;
+    margin-left: -40px !important;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+
 
   .modal-content {
     width: 70%; /* Define uma largura para o conteúdo */

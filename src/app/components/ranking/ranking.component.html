@@ -1,17 +1,26 @@
 
+<div *ngIf="isLoading"  style="margin-top: 100% !important;margin-left: 16% !important;">
+  <div class="loading-dots"   >
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
 
-<div class="loading-dots" *ngIf="isLoading" style="margin-top: 150px !important;margin-bottom: 50px !important;">
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
+  </div>
+  <br>
+  <h1>Loading..</h1>
+
 </div>
 
 
-
-<div class="ranking-container mobileConfig" *ngIf="!isLoading">
-
+<div class="ranking-container"  *ngIf="!isLoading">
 
 
+  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <h2 style="color: darkgoldenrod;">Ranking</h2>
+    <p style="text-align: center;">
+      Para subir no ranking, suba ao andar mais alto que puder.
+    </p>
+  </div>
 
 
   <!-- Pódio -->
@@ -45,16 +54,20 @@
 </div>
 
 
+<div  *ngIf="!isLoading" class="alinhar-center" (click)="toggleRankingModal()">
+  <h3>&#10006; Fechar Ranking</h3>
+</div>
+
+
 
 <style>
-  @media (max-width: 768px) {
+
+    .alinhar-center{
+      display: flex;justify-content: center;align-items: center;margin-left: 10% !important;
+    }
     .ranking-container {
-      margin-top: 120px;
       padding: 20px;
     }
-    .mobileConfig{
-      margin-left: -20px !important;
-      width: 100% !important;
-    }
-  }
+
+
 </style>

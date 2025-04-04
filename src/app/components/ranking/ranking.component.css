@@ -1,8 +1,8 @@
 /* Container principal */
 .ranking-container {
-  width: 100%;
-  max-width: 500px;
-  margin: auto;
+
+  width: 100% !important;
+
   text-align: center;
   font-family: Arial, sans-serif;
 }
@@ -23,6 +23,7 @@
   border-radius: 10px;
   position: relative;
   text-align: center;
+  transform: scale(0.5);
 }
 
 /* Tamanhos diferentes para o pódio */
@@ -31,6 +32,7 @@
   background: linear-gradient(135deg, #ffcc00, #ffd700); /* Ouro */
   border: 3px solid gold;
   box-shadow: 0px 4px 10px rgba(255, 204, 0, 0.6);
+  border-radius: 20px;
 }
 
 .second, .third {
@@ -41,12 +43,14 @@
   background: linear-gradient(135deg, #c0c0c0, #e6e6e6); /* Prata */
   border: 3px solid silver;
   box-shadow: 0px 4px 8px rgba(192, 192, 192, 0.5);
+  border-radius: 20px;
 }
 
 .third {
   background: linear-gradient(135deg, #b87333, #cd7f32); /* Bronze */
   border: 3px solid #cd7f32;
   box-shadow: 0px 4px 8px rgba(205, 127, 50, 0.5);
+  border-radius: 20px;
 }
 
 /* Ajuste para os avatares do pódio */
@@ -92,7 +96,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  max-height: 300px; /* Limite de altura para o ranking */
+  max-height: 250px; /* Limite de altura para o ranking */
   overflow-y: scroll; /* Scroll vertical */
   padding-right: 10px; /* Ajuste para o scroll */
 }
