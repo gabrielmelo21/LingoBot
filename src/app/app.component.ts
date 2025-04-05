@@ -29,6 +29,7 @@ export class AppComponent implements OnInit{
   showPedagioModal: boolean = false;
   showCelularModal: boolean = false;
   showRankingModal: boolean = false;
+  showMugModal: boolean = false;
 
 
 
@@ -110,6 +111,7 @@ this.router.events.subscribe(event => {
   andar_final_conjunto: number = 0;
 
 
+
   ngOnInit() {
 
 
@@ -187,5 +189,8 @@ this.router.events.subscribe(event => {
   }
 
 
-
+  toggleMug() {
+    this.playSound.playCleanSound2();
+    this.showMugModal = !this.showMugModal;
+  }
 }

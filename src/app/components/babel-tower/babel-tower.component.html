@@ -1,0 +1,284 @@
+
+<div class="container">
+
+
+  <!-- Imagem estática -->
+  <img   src="assets/lingobot/cenas_on_out_tower/torre_ground.png" class="background-image">
+
+  <!-- Vídeo 1 -->
+  <video *ngIf="cena == 1 && !mostrarImagem" autoplay muted loop class="background-video">
+    <source src="assets/lingobot/cenas_on_out_tower/waiting_animation_tower.mp4" type="video/mp4">
+  </video>
+
+  <!-- Vídeo 2 -->
+  <video *ngIf="cena == 2 && !mostrarImagem" autoplay muted playsinline class="background-video">
+    <source src="assets/lingobot/cenas_on_out_tower/entrando-na-torre.mp4" type="video/mp4">
+  </video>
+
+  <!-- Vídeo 3 -->
+  <video *ngIf="cena == 3 && !mostrarImagem" autoplay muted playsinline class="background-video">
+    <source src="assets/lingobot/cenas_on_out_tower/teletransporte.mp4" type="video/mp4">
+  </video>
+
+  <!-- Vídeo 4 -->
+  <video *ngIf="cena == 4 && !mostrarImagem" autoplay muted playsinline class="background-video">
+    <source src="assets/lingobot/cenas_on_out_tower/teletransporte_back.mp4" type="video/mp4">
+  </video>
+
+
+
+  <div class="nuvem-esquerda" [@nuvemEsquerdaAnimation]="nuvemState">
+    <img src="assets/lingobot/home/clouds.png" alt="Nuvem Esquerda">
+  </div>
+
+  <div class="nuvem-direita" [@nuvemDireitaAnimation]="nuvemState">
+    <img src="assets/lingobot/home/clouds.png" alt="Nuvem Direita">
+  </div>
+
+
+  <div class="tabua">
+    <!-- Imagem -->
+    <img src="assets/lingobot/home/tabua.png">
+
+    <!-- Texto sobreposto -->
+    <h3>N° {{ andarAtual }}<br>{{ getTextoPorAndar() }}</h3>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div *ngIf="showPedagioModal" class="pedagio-dialog" style="margin-top: -20px !important;">
+    <div  class="pedagio-content"
+          style="background-image: url('assets/lingobot/pergaminho.png');
+   background-size: 100% !important;
+   background-repeat: no-repeat;
+   height:600px !important;
+   width: 120% !important;
+   margin-top: 80px !important;
+"
+
+    >
+
+      <div style=" margin-top: 100px !important;">
+        <div style="width:200px !important;">
+          <h2 style="text-align: center">Parabéns!</h2>
+          <p>Você está indo muito bem e venceu os andares <b>1-4</b>. <br> para continuar é necessário
+            pagar com suas moedas de ouro coletadas em sua aventura, caso não tenha, volte alguns andares e continue juntando!
+          </p>
+
+
+          <div style="display: flex; align-items: center; gap: 10px;margin-left: 20%">
+            <img src="assets/lingobot/icons/LingoToken.png" style="width: 30%; height: auto;">
+            <h3 style="margin: 0;color: darkgoldenrod;font-weight: bold;font-size: 25pt !important;">100</h3>
+          </div>
+
+          <br>
+
+
+          <div class="button-container">
+            <button class="game-button" (click)="closeModal()">Voltar</button>
+            <button class="game-button" (click)="closeModal()">Pagar</button>
+          </div>
+
+
+        </div>
+
+
+
+
+      </div>
+
+
+    </div>
+  </div> <!-- PEDAGIO end -->
+
+
+
+
+  <div class="background-commands">
+
+
+    <h3 class="actions-title" *ngIf="!blockAction">Comandos</h3>
+    <h3 class="actions-title" *ngIf="blockAction">Ação em andamento...</h3>
+    <div class="commands-group">
+      <div class="command" (click)="command('up')">
+        <img [class.neon-border]="isNeonActive('up')"
+             (mousedown)="ativarNeon('up')"
+             (touchstart)="ativarNeon('up')" (touchend)="desativarNeon('up')"
+             src="assets/lingobot/poses/lingobot_apontando_pra_cima.png"
+             style="width: 80% !important;height: auto">
+        <p class="command-text">Subir andar</p>
+      </div>
+
+      <div class="command" (click)="command('in')">
+        <img [class.neon-border]="isNeonActive('in')"
+             (mousedown)="ativarNeon('in')"
+             (touchstart)="ativarNeon('in')" (touchend)="desativarNeon('in')"
+             src="assets/lingobot/poses/lingobot-running.png"
+             style="width: 120% !important;height: auto">
+        <p class="command-text">Fazer missão</p>
+      </div>
+
+      <div class="command" (click)="command('down')">
+        <img [class.neon-border]="isNeonActive('down')"
+             (mousedown)="ativarNeon('down')"
+             (touchstart)="ativarNeon('down')" (touchend)="desativarNeon('down')"
+             src="assets/lingobot/poses/lingobot_apontando_pra_baixo.png"
+             style="width: 100% !important;height: auto">
+        <p class="command-text">Descer andar</p>
+      </div>
+
+    </div> <!-- commands group -->
+
+
+
+  </div> <!-- background commands -->
+
+
+
+</div>
+
+
+<style>
+
+  .button-container {
+    display: flex;
+    justify-content: center; /* Alinha os itens ao centro */
+    gap: 20px; /* Espaço entre os botões */
+    margin-top: 50px;
+  }
+
+
+
+  .background-commands{
+    position: absolute !important;
+    bottom: 0 !important;
+    display:inline-block;
+    background-image: url('assets/lingobot/home/testar_pergaminho.jpg');
+    height: 30vh !important;
+    background-size: cover;
+    background-position: top;
+    z-index: 5 !important;
+
+  }
+
+  .pedagio-dialog {
+    position: fixed; /* Mantém o modal sempre fixo na tela */
+    top: -40px !important;
+    left: 0;
+    width: 100vw; /* Ocupa 100% da largura da tela */
+    height: 100vh !important; /* Ocupa 100% da altura da tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); /* Fundo escurecido para destacar o modal */
+    z-index: 10 !important;
+  }
+
+  .pedagio-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('assets/lingobot/menu-icons/celular-infos.png');
+    background-size: cover; /* A imagem cobrirá toda a tela */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    overflow: hidden; /* Evita rolagem */
+    z-index: 10 !important;
+  }
+
+
+
+  /** BOTÃO   ESTILO JOGO **/
+  .game-button {
+
+    margin-top: 30px !important;
+    padding: 15px;
+    font-size: 12pt  ;
+    color: white  ;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    background: linear-gradient(145deg, #007bff, #6f42c1);
+    box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease-in-out;
+  }
+
+  .game-button:active {
+    box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .game-button:hover {
+    background: linear-gradient(145deg, #1e90ff, #8a2be2);
+
+  }
+
+  .game-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.1)
+    );
+    transition: left 0.5s ease-in-out;
+  }
+
+  .game-button:hover::before {
+    left: 100%;
+  }
+
+
+
+
+
+
+
+
+  .tabua{
+    position: absolute;
+    z-index: 5 !important;
+    width: 40%;
+    right: -5vw;
+    bottom: 58vh;
+
+  }
+  .tabua img{
+    width: 100%; height: auto
+  }
+  .tabua h3{
+    font-family: 'Bebas Neue', sans-serif;
+    color: white;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6.5vw;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+</style>
+

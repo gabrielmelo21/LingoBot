@@ -24,11 +24,9 @@
 }
 
 
-
 .background-commands {
   position: absolute;
-  top: 0px;
-  padding-bottom:70px !important;
+  bottom: 0px;
   left: 0;
   width: 100%;
   height: auto;
@@ -44,14 +42,14 @@
   font-size: 1.1em;
   font-weight: bold;
   margin-bottom: 5px;
-  margin-top: 10px;
+  margin-top: 0px;
   color: #1e1e1e;
 }
 
 .commands-group {
   display: flex;
   justify-content: center;
-  gap: 20px; /* Espaçamento entre os comandos */
+  gap: 1px; /* Espaçamento entre os comandos */
   align-items: center;
 }
 
@@ -86,14 +84,6 @@
 
 
 
-
-
-
-
-
-
-
-
 .nuvem-esquerda {
   position: absolute;
   left: 0;
@@ -115,3 +105,8 @@
   width: 250%; /* Ajuste conforme necessário */
   height: auto;
 }
+
+
+
+
+

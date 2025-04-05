@@ -31,6 +31,8 @@ import { RankingComponent } from './ranking/ranking.component';
 
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { SkillsComponent } from './skills/skills.component';
+import { BabelTowerComponent } from './babel-tower/babel-tower.component';
+import { MugTranslateComponent } from './mug-translate/mug-translate.component';
 
 /**
  *
@@ -80,16 +82,19 @@ import { SkillsComponent } from './skills/skills.component';
     RankingComponent,
     AccountSettingsComponent,
     SkillsComponent,
+    BabelTowerComponent,
+    MugTranslateComponent,
 
   ],
-    exports: [
-        HeaderComponent,
-        FooterLinksComponent,
-        CreateFlashcardComponent,
-        LingobotCardComponent,
-        AccountSettingsComponent,
-        RankingComponent
-    ],
+  exports: [
+    HeaderComponent,
+    FooterLinksComponent,
+    CreateFlashcardComponent,
+    LingobotCardComponent,
+    AccountSettingsComponent,
+    RankingComponent,
+    MugTranslateComponent
+  ],
   imports: [
     CommonModule,
     ComponentRoutingModule,

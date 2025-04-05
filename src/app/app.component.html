@@ -44,20 +44,22 @@
   </div>
 </div>
 
+<div *ngIf="showMugModal" class="mug-dialog">
+  <div class="mug-content">
+    <div class="modal-content">
+      <app-mug-translate></app-mug-translate>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 <div *ngIf="showRankingModal" class="ranking-dialog">
   <div class="ranking-content">
     <div class="modal-ranking-content">
-
-
-
       <app-ranking></app-ranking>
-
-
-
-
-
     </div>
   </div>
 </div>
@@ -128,7 +130,7 @@ assets/lingobot/menu-icons/powers/bag-icon.png
 
 
 
-<button    style="z-index: 9999" class="floating-button  image-button3" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
+<button    style="z-index: 9999" class="floating-button  image-button3" (touchstart)=" toggleMug()" *ngIf="!isLoginRoute &&  this.showOpenTools">
   <img src="assets/lingobot/menu-icons/powers/mug-tradutor-power1.jpg" alt="Bag Photo" style="border-radius: 20px !important;">
 </button>
 
@@ -183,6 +185,40 @@ assets/lingobot/menu-icons/powers/bag-icon.png
     overflow: hidden; /* Evita rolagem */
     z-index: 10 !important;
   }
+
+
+
+
+
+  .mug-dialog {
+    position: fixed; /* Mantém o modal sempre fixo na tela */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa 100% da largura da tela */
+    height: 100vh; /* Ocupa 100% da altura da tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); /* Fundo escurecido para destacar o modal */
+    z-index: 10 !important;
+  }
+
+  .mug-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*background-image: url('assets/lingobot/menu-icons/celular-infos.png');*/
+    background-size: cover; /* A imagem cobrirá toda a tela */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    overflow: hidden; /* Evita rolagem */
+    z-index: 10 !important;
+  }
+
+
+
 
 
 

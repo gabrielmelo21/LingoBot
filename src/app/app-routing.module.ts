@@ -25,6 +25,7 @@ import {RankingComponent} from "./components/ranking/ranking.component";
 
 
 import {SkillsComponent} from "./components/skills/skills.component";
+import {BabelTowerComponent} from "./components/babel-tower/babel-tower.component";
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule),
   },
+  { path: 'babel-tower', component: BabelTowerComponent },
   { path: 'login', component: LoginComponent },
   { path: "discoverExpressions", component: DiscoverExpressionsComponent },
   { path: "flashcards", component: FlashcardsComponent },
