@@ -1,5 +1,6 @@
 <!-- Imagem estática -->
-<img  *ngIf="cena == 1"   src="assets/lingobot/cenas_powers/mug_parado.png" class="background-image">
+<img   *ngIf="cena_static == 1"  src="assets/lingobot/cenas_powers/mug_parado.png" class="background-image">
+<img   *ngIf="cena_static == 2"  src="assets/lingobot/cenas_powers/blackboard.png" class="background-image">
 
 
 <!-- Imagem estática LOADING -->
@@ -25,7 +26,7 @@ letter-spacing: 2px;
 
 
 <!-- Vídeo 1 -->
-<video *ngIf="cena == 0" autoplay muted loop class="background-video">
+<video *ngIf="cena == 0" autoplay muted   class="background-video">
   <source src="assets/lingobot/cenas_powers/start-writing.mp4" type="video/mp4">
 </video>
 
@@ -42,13 +43,17 @@ letter-spacing: 2px;
 </video>
 
 
+
+
 <div class="background-commands">
   <h3 style="text-align: center;">Tradutor</h3>
   <p style="text-align: center;">Digite uma  palavra ou frase em inglês para o <b>Mug</b> traduzir</p>
 
     <form [formGroup]="formulario" class="commands-group">
     <textarea     formControlName="english" class="command-textarea" placeholder="Digite a palavra ou frase em inglês aqui..."></textarea>
-    <img (click)="getTranslation()"  src="assets/lingobot/icons/pencil-icon.png" alt="Perguntar" class="menu-icon">
+
+      <button (click)="getTranslation()" mat-flat-button class="game-button">   <img   src="assets/lingobot/icons/pencil-icon.png" alt="Perguntar" class="menu-icon"></button>
+
     </form>
 
 </div>
@@ -62,7 +67,8 @@ letter-spacing: 2px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #c48e4f;
+    background-image: url('assets/lingobot/home/tabua.png');
+    background-size: contain;
     border-radius: 12px;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(92, 62, 33, 0.4);
@@ -108,5 +114,61 @@ letter-spacing: 2px;
     background-position: top;
     z-index: 5 !important;
 
+  }
+
+
+
+
+
+
+
+
+
+
+
+  .game-button {
+    height: 47px !important;
+    margin-top: 0px !important;
+    padding: 15px;
+    font-size: 12pt  ;
+    color: white  ;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    background: linear-gradient(145deg, #007bff, #6f42c1);
+    box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease-in-out;
+  }
+
+  .game-button:active {
+    box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .game-button:hover {
+    background: linear-gradient(145deg, #1e90ff, #8a2be2);
+
+  }
+
+  .game-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.1)
+    );
+    transition: left 0.5s ease-in-out;
+  }
+
+  .game-button:hover::before {
+    left: 100%;
   }
 </style>
