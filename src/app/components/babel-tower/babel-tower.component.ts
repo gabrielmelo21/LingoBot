@@ -59,6 +59,7 @@ export class BabelTowerComponent  implements OnInit {
 
     setTimeout(() => {
       this.mudarCena(1)
+      this.playSound.playTowerSoundTrack()
     }, 50);
   }
 

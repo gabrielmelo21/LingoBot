@@ -67,11 +67,16 @@ letter-spacing: 2px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-image: url('assets/lingobot/home/tabua.png');
-    background-size: contain;
+
+
     border-radius: 12px;
     padding: 10px;
-    box-shadow: 0 4px 8px rgba(92, 62, 33, 0.4);
+    margin-left: 5px;
+    margin-right: 5px;
+
+    backdrop-filter: blur(16px); /* Efeito de vidro mais leve */
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Sombra bem sutil */
   }
 
   .command-textarea {
@@ -80,8 +85,8 @@ letter-spacing: 2px;
     resize: none;
     border: none;
     outline: none;
-    background-color: #fff3d1;
-    color: #5c3b1e;
+    background-color: #fff;
+    color: #000;
     border-radius: 10px;
     padding: 10px;
     font-size: 16px;

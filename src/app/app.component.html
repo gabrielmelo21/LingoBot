@@ -55,7 +55,7 @@
         class="closeMugModal"
       >
         <h3>
-          &#10006; Bye Bye Mug!
+          &#10006;
         </h3>
       </div>
 
@@ -63,6 +63,48 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+<div *ngIf="showBookModal" class="mug-dialog">
+  <div class="mug-content">
+    <div class="modal-content">
+      <app-notebook></app-notebook>
+      <div
+        (click)="toggleBook()"
+        class="closeMugModal"
+      >
+        <h3>
+          &#10006;
+        </h3>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div *ngIf="showEldersBookModal" class="mug-dialog">
+  <div class="mug-content">
+    <div class="modal-content">
+      <app-elders-notebook></app-elders-notebook>
+      <div
+        (click)="toggleEldersBook()"
+        class="closeMugModal"
+      >
+        <h3>
+          &#10006;
+        </h3>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
 
 
 
@@ -147,18 +189,18 @@ assets/lingobot/menu-icons/powers/bag-icon.png
 </button>
 
 
-<button    style="z-index: 9999" class="floating-button image-button2" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
-  <img src="assets/lingobot/menu-icons/powers/flashcards-power2.jpg" alt="Bag Photo" style="border-radius: 20px !important;">
+<button    style="z-index: 9999" class="floating-button image-button2" (touchstart)=" toggleEldersBook()" *ngIf="!isLoginRoute &&  this.showOpenTools">
+  <img src="assets/lingobot/menu-icons/powers/elders-book.png" alt="Bag Photo" style="border-radius: 20px !important;">
 </button>
 
 
 
-<button   style="z-index: 9999" class="floating-button image-button4" (touchstart)=" toggleLingoBot()" *ngIf="!isLoginRoute &&  this.showOpenTools">
-  <img src="assets/lingobot/menu-icons/powers/cavalo_preto.png" alt="Bag Photo" style="border-radius: 20px !important;">
+<button   style="z-index: 9999" class="floating-button image-button4" (touchstart)=" toggleBook()" *ngIf="!isLoginRoute &&  this.showOpenTools">
+  <img src="assets/lingobot/menu-icons/powers/book-icon.png" alt="Notebook">
 </button>
 
 
-
+<!--   <img src="assets/lingobot/menu-icons/powers/cavalo_preto.png" alt="Bag Photo" style="border-radius: 20px !important;"> -->
 
 
 
@@ -175,26 +217,25 @@ assets/lingobot/menu-icons/powers/bag-icon.png
   .closeMugModal {
     position: absolute;
     top: 10vh;       /* distancia do topo, adaptável */
-    left: 5vw;      /* distancia da esquerda, adaptável */
-    transform: none; /* remove a centralização */
-    z-index: 10;
-    backdrop-filter: blur(16px); /* Efeito de vidro mais leve */
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Sombra bem sutil */
-    border-radius: 20px !important;
-    padding: 10px 15px;
+    left: 2vw;      /* distancia da esquerda, adaptável */
 
+    z-index: 10;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 100%;
     cursor: pointer;
     text-align: center;
     max-width: 90vw;
-    height: 30px !important;
+    height: 27px !important;
+    transform: scale(0.7);
 
   }
 
   .closeMugModal h3 {
     margin: 0;
-    color: white;
-    font-size: 14px;
+    color: white !important;
+    font-size: 20px;
     font-weight: 500;
   }
 

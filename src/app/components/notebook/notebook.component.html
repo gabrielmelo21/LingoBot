@@ -1,0 +1,121 @@
+<div class="container">
+
+
+  <div class="book-container">
+    <div class="page"
+         *ngFor="let page of pages; let i = index"
+         [class.flipped]="i < currentPage"
+         [style.zIndex]="pages.length - i">
+      <div class="page-content">
+        <h2>{{ page.title }}</h2>
+        <h4>{{ page.subtitle }}</h4>
+        <p>{{ page.text }}</p>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="background-commands">
+
+  <!-- Botões posicionados nos cantos -->
+  <button class="nav-button left"
+          (click)="prevPage()"
+          [disabled]="currentPage === 0">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+
+  <!-- Botão de deletar no centro -->
+  <button mat-flat-button  class="delete-button" (click)="confirmDelete()">
+    <mat-icon>delete</mat-icon>
+    Apagar Página ({{ 3 - deleteClicks }})
+  </button>
+
+
+  <button class="nav-button right"
+          (click)="nextPage()"
+          [disabled]="currentPage >= pages.length">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+
+
+  <!-- Formulário em 3 etapas -->
+  <div class="form-container">
+
+    <!-- Etapa 1 - Título -->
+    <div *ngIf="formStep === 1">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Título</mat-label>
+        <input matInput [(ngModel)]="newPage.title" name="title" placeholder="Digite o título" />
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary" class="game-button" (click)="nextStep()">Próximo</button>
+    </div>
+
+    <!-- Etapa 2 - Subtítulo -->
+    <div *ngIf="formStep === 2">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Subtítulo</mat-label>
+        <input matInput [(ngModel)]="newPage.subtitle" name="subtitle" placeholder="Digite o subtítulo" />
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="accent" class="game-button" (click)="prevStep()">Voltar</button>
+      <button mat-flat-button color="primary" class="game-button" (click)="nextStep()">Próximo</button>
+    </div>
+
+    <!-- Etapa 3 - Texto -->
+    <div *ngIf="formStep === 3">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Texto da Página</mat-label>
+        <textarea matInput [(ngModel)]="newPage.text" name="text" placeholder="Escreva aqui..." rows="2"></textarea>
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="accent" class="game-button" (click)="prevStep()">Voltar</button>
+      <button mat-flat-button color="primary" class="game-button" (click)="createPage()">Criar Anotação</button>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+<style>
+
+
+
+.page{
+  background-image: url('assets/lingobot/cenas_powers/paper-book.jpg');
+  background-size: cover;
+}
+
+
+
+
+  .background-commands{
+    position: absolute !important;
+    bottom: 0 !important;
+    display:inline-block;
+    background-image: url('assets/lingobot/home/testar_pergaminho.jpg');
+    height: 30vh !important;
+    background-size: cover;
+    background-position: top;
+    z-index: 5 !important;
+
+  }
+
+
+</style>

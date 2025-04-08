@@ -30,7 +30,8 @@ export class AppComponent implements OnInit{
   showCelularModal: boolean = false;
   showRankingModal: boolean = false;
   showMugModal: boolean = false;
-
+  showBookModal: boolean = false;
+  showEldersBookModal: boolean = false;
 
 
 
@@ -192,5 +193,15 @@ this.router.events.subscribe(event => {
   toggleMug() {
     this.playSound.playCleanSound2();
     this.showMugModal = !this.showMugModal;
+  }
+
+  toggleBook() {
+    this.playSound.playCleanSound2();
+    this.showBookModal = !this.showBookModal;
+  }
+
+  toggleEldersBook() {
+    this.playSound.playCleanSound2();
+    this.showEldersBookModal = !this.showEldersBookModal;
   }
 }

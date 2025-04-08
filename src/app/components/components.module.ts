@@ -33,6 +33,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { SkillsComponent } from './skills/skills.component';
 import { BabelTowerComponent } from './babel-tower/babel-tower.component';
 import { MugTranslateComponent } from './mug-translate/mug-translate.component';
+import { NotebookComponent } from './notebook/notebook.component';
+import { EldersNotebookComponent } from './elders-notebook/elders-notebook.component';
 
 /**
  *
@@ -84,17 +86,21 @@ import { MugTranslateComponent } from './mug-translate/mug-translate.component';
     SkillsComponent,
     BabelTowerComponent,
     MugTranslateComponent,
+    NotebookComponent,
+    EldersNotebookComponent,
 
   ],
-  exports: [
-    HeaderComponent,
-    FooterLinksComponent,
-    CreateFlashcardComponent,
-    LingobotCardComponent,
-    AccountSettingsComponent,
-    RankingComponent,
-    MugTranslateComponent
-  ],
+    exports: [
+        HeaderComponent,
+        FooterLinksComponent,
+        CreateFlashcardComponent,
+        LingobotCardComponent,
+        AccountSettingsComponent,
+        RankingComponent,
+        MugTranslateComponent,
+        NotebookComponent,
+        EldersNotebookComponent
+    ],
   imports: [
     CommonModule,
     ComponentRoutingModule,

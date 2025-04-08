@@ -1,0 +1,101 @@
+<div class="container">
+
+
+  <div class="book-container">
+    <div class="page"
+         *ngFor="let page of pages; let i = index"
+         [class.flipped]="i < currentPage"
+         [style.zIndex]="pages.length - i">
+      <div class="page-content">
+        <h2>{{ page.title }}</h2>
+        <h4>{{ page.subtitle }}</h4>
+        <p>{{ page.text }}</p>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="background-commands">
+
+  <!-- Botões posicionados nos cantos -->
+  <button class="nav-button left"
+          (click)="prevPage()"
+          [disabled]="currentPage === 0">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+
+  <!-- Botão de deletar no centro -->
+  <button mat-flat-button  class="delete-button" (click)="confirmDelete()">
+    <mat-icon>delete</mat-icon>
+    Apagar Página ({{ 3 - deleteClicks }})
+  </button>
+
+
+  <button class="nav-button right"
+          (click)="nextPage()"
+          [disabled]="currentPage >= pages.length">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+
+
+  <!-- Formulário apenas com o campo de Título -->
+  <div class="form-container" *ngIf="!isLoading">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Qual sua dúvida de Inglês?</mat-label>
+      <input matInput [(ngModel)]="newPage.title" name="title" placeholder="Digite sua dúvida..." />
+    </mat-form-field>
+    <br>
+    <button mat-flat-button color="primary" class="game-button" (click)="createPage()">Perguntar ao Livro</button>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-container">
+    <img src="assets/lingobot/menu-icons/powers/elders-book.png" class="floating-icon" />
+    <h3>Conjurando magia...</h3>
+  </div>
+
+
+
+
+</div>
+
+<style>
+
+
+
+  .page{
+    background-image: url('assets/lingobot/cenas_powers/elders-page2.jpg');
+    background-size: 120%;
+    background-position: center;
+  }
+
+
+
+
+  .background-commands{
+    position: absolute !important;
+    bottom: 0 !important;
+    display:inline-block;
+    background-image: url('assets/lingobot/home/testar_pergaminho.jpg');
+    height: 30vh !important;
+    background-size: cover;
+    background-position: top;
+    z-index: 5 !important;
+
+  }
+
+
+</style>

@@ -78,6 +78,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.mudarCena(1)
+      this.playSound.playCitySoundTrack()
     }, 50);
 
 

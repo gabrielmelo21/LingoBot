@@ -82,6 +82,10 @@ export class MainAPIService {
     let prompt0 = '';
 
     switch (type) {
+      case "EldersBook":
+        prompt0 = `A dúvida do usuário é Explique "${prompt}" de forma resumida em pt-br e se precisar dê o exemplo em inglês`
+
+        break;
       case "ListeningChecking":
         prompt0 = `
         O usuário ouviu um áudio sobre o tema: "${prompt}". Ele forneceu a seguinte resposta: "${userText}".
