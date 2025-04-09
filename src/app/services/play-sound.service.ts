@@ -167,7 +167,7 @@ export class PlaySoundService implements OnDestroy {
 
 
      if (filename == "soundtrack/city_theme.mp3" || filename == "soundtrack/tower_theme.mp3") {
-       audio.volume = 0.03;
+       audio.volume = 0.02;
        audio.loop = true; // se for som contínuo
        console.log(`volume: ${audio.volume}`);
      }
