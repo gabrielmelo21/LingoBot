@@ -32,7 +32,7 @@
 <div class="baloon-container" style="z-index: 20 !important;" *ngIf="rightOrWrongAnswer">
   <div class="dialog-baloon">
     <p *ngIf="dialog == 5">Parabéns!! você acertou, agora vamos para próxima..</p>
-    <p *ngIf="dialog == 6">Na verdade -- Correção aqui -- vamos tentar novamente.</p>
+    <p *ngIf="dialog == 6">Na verdade a resposta é <b style="color: goldenrod">{{this.respostaCorreta}}</b>, Vamos tentar novamente.</p>
   </div>
 
 </div>
