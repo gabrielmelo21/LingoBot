@@ -1,0 +1,502 @@
+
+<!-- Imagem estática
+<img   src="assets/lingobot/cenas_on_city/default-cena.png" class="background-image">
+-->
+
+
+<!-- Vídeo 1 -->
+<video *ngIf="cena == 1" autoplay  class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/entrando_masmorra.mp4" type="video/mp4">
+</video>
+
+<!-- Cenario - blackboard -->
+ <div  class="background-image" *ngIf="cena == 2" >
+
+ </div>
+
+
+  <div class="baloon-container" *ngIf="cena == 2 && dialog!==4">
+    <div class="dialog-baloon">
+      <p *ngIf="dialog == 1">Olá, aventureiro. Eu sou o Ancião da Escrita. O que te traz aqui?</p>
+      <p *ngIf="dialog == 2">Muito bem, vou te ajudar a aumentar seu vocabulário na língua inglesa.</p>
+      <p *ngIf="dialog == 3">Irei te propor 10 desafios de inglês, você ganha 1 Moeda de Ouro por acerto e XP</p>
+    </div>
+    <img *ngIf="dialog == 1" class="character-img" src="assets/lingobot/elders/writing/parado.png">
+    <img *ngIf="dialog == 2" class="character-img" src="assets/lingobot/elders/writing/acertou.png">
+    <img *ngIf="dialog == 3" class="character-img" src="assets/lingobot/elders/writing/esperando_resposta.png">
+  </div>
+
+
+
+
+<div class="baloon-container" style="z-index: 20 !important;" *ngIf="rightOrWrongAnswer">
+  <div class="dialog-baloon">
+    <p *ngIf="dialog == 5">Parabéns!! você acertou, agora vamos para próxima..</p>
+    <p *ngIf="dialog == 6">Na verdade -- Correção aqui -- vamos tentar novamente.</p>
+  </div>
+
+</div>
+
+
+    <img
+      [class.animate]="isAnimating"
+      *ngIf="quizSession"
+      [src]="caminhoImagem"
+      alt="Imagem animada"
+      class="animated-image"
+    >
+
+
+
+
+  <div class="progress-container"  *ngIf="quizSession">
+    <div class="progress-bar" [style.width.%]="progress">
+      <span class="progress-text">{{ progress }}%</span>
+    </div>
+  </div>
+
+
+  <div class="exercise">
+    <h3>{{ enunciado }}</h3>
+    <ul>
+      <li *ngFor="let alt of alternativas; let i = index" (click)="selectOption(i)">
+        {{ letra(i) }}) {{ alt }}
+      </li>
+    </ul>
+  </div>
+
+
+
+  <!--
+  Eu quero aumentar meu vocabulário em Inglês
+  -->
+
+
+
+  <div  *ngIf="cena == 2" class="background-commands">
+
+    <h3 class="actions-title"  >Sua Resposta:</h3>
+
+
+
+    <div class="fundo"  *ngIf="dialog == 1" >
+      <ol class="respostas">
+        <li (click)="chooseOption(1);" >Eu quero aumentar meu vocabulário em Inglês </li>
+        <li (click)="chooseOption(2);">Foi um engano, estou indo embora.</li>
+      </ol>
+    </div>
+
+    <div class="fundo"  *ngIf="dialog == 2" >
+      <ol class="respostas">
+        <li (click)="chooseOption(3);" >Ok vamos lá, o que tenho que fazer?</li>
+        <li (click)="chooseOption(0);" >Voltar</li>
+      </ol>
+    </div>
+
+
+    <div class="fundo"  *ngIf="dialog == 3" >
+      <ol class="respostas">
+        <li (click)="chooseOption(4);" >I'm Ready!!</li>
+        <li (click)="chooseOption(1 );" >Voltar</li>
+      </ol>
+    </div>
+
+
+
+
+    <div class="alternativas" *ngIf="!rightOrWrongAnswer">
+
+    <div class="options" *ngIf="dialog == 4">
+      <img
+        src="assets/lingobot/cards_multchoice/a.jpg"
+        (click)="selectOption(0)"
+        [class.selected]="selectedOption === 0"
+      >
+      <img
+        src="assets/lingobot/cards_multchoice/b.png"
+        (click)="selectOption(1)"
+        [class.selected]="selectedOption === 1"
+      >
+      <img
+        src="assets/lingobot/cards_multchoice/c.png"
+        (click)="selectOption(2)"
+        [class.selected]="selectedOption === 2"
+      >
+      <img
+        src="assets/lingobot/cards_multchoice/d.png"
+        (click)="selectOption(3)"
+        [class.selected]="selectedOption === 3"
+      >
+
+
+    </div>
+    <h3 (click)="corrigir()"  class="command-button-1" *ngIf="optionIsSelected && dialog == 4">
+      Confirmar Resposta
+    </h3>
+    </div> <!-- alternativas -->
+
+    <div class="next-question" *ngIf="rightOrWrongAnswer">
+        <!-- se acertou botao next question, se errou, tentar novamente -->
+
+      <h3 (click)="newExercise()"  class="command-button-2" *ngIf="this.dialog == 5">
+        Next Question
+      </h3>
+
+      <h3 (click)="newExercise()"  class="command-button-2" *ngIf="this.dialog == 6">
+        Try Again
+      </h3>
+
+    </div>
+
+
+  </div> <!-- background commands -->
+
+
+
+
+
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+   .command-button-1{
+     font-size:15pt !important;
+     font-weight:bolder;
+     text-align: center;
+     color:#946a01;
+     margin-top: 3px !important;
+   }
+  .command-button-2{
+    font-size:25pt !important;
+    font-weight:bolder;
+    text-align: center;
+    color:#946a01;
+    margin-top: 8vh !important;
+  }
+
+
+  .animated-image {
+    position: absolute;
+    width: 70%; /* Ajuste conforme necessário */
+    height: auto;
+    right: -100px; /* Posição inicial fora da tela */
+    bottom:  8vh !important;
+    z-index: 10;
+    transform: translateY(-50%);
+    transition: none; /* Desativa transição inicial */
+  }
+
+  .animate {
+    animation: slideInOut 2s ease-in-out forwards;
+  }
+
+  @keyframes slideInOut {
+    0% {
+      right: -100px;
+      left: auto;
+      transform: translateY(-50%);
+    }
+
+    50%{
+      right: -25px;
+      left: auto;
+      transform: translateY(-50%);
+    }
+
+    100% {
+      right: -100px;
+      left: auto;
+      transform: translateY(-50%);
+    }
+  }
+
+
+/**   @keyframes slideInOut {
+    0% {
+      right: -200px;
+      left: auto;
+      transform: translateY(-50%);
+    }
+    40% {
+      right: 25%;
+      left: auto;
+      transform: translate(50%, -50%);
+    }
+    60% {
+      right: 25%;
+      left: auto;
+      transform: translate(50%, -50%);
+    }
+    100% {
+      right: -200px;
+      left: auto;
+      transform: translateY(-50%);
+    }
+  }
+**/
+
+  .exercise {
+    position: absolute;
+    top: 43vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    color: white;
+    padding: 10px 20px;
+    border-radius: 16px;
+    text-align: left;
+    width: 70%;
+    max-width: 420px;
+    font-family: 'Patrick Hand', cursive;
+  }
+
+  .exercise h3 {
+    font-weight: bolder;
+    font-size: 23px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .exercise ul {
+    list-style: none;
+    padding: 0;
+
+    margin-left: 10vw;
+  }
+
+  .exercise li {
+    font-weight: bolder;
+    padding: 6px 0;
+    margin: 4px 0;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+
+
+
+
+
+  .progress-container {
+    position: absolute;
+    bottom: 27vh; /* Ajuste conforme sua tela */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* largura total da barra */
+    height: 20px;
+    background-color: #444; /* cor da barra vazia */
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #f6d365 0%, #fda085 100%);
+    border-radius: 10px 0 0 10px;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .progress-text {
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 11;
+    pointer-events: none;
+  }
+
+
+
+
+
+  .options img {
+
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s, border 0.2s;
+    border: 2px solid transparent;
+    border-radius: 10px;
+  }
+
+  .options img.selected {
+    transform: scale(1.2);
+    border: 3px solid #87CEFA; /* azul bebê */
+    z-index: 1;
+  }
+
+  .options {
+    display: flex;
+    justify-content: center; /* centraliza as imagens no contêiner */
+    gap: 10px; /* espaço entre as imagens */
+    flex-wrap: wrap; /* quebra linha se faltar espaço (opcional) */
+    padding: 5px;
+  }
+
+  .options img {
+    width:  50px; /* ou qualquer tamanho que quiser */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border-radius: 10px;
+  }
+
+  .options img:hover {
+    transform: scale(1.05); /* animação leve ao passar o mouse */
+  }
+
+
+
+
+  .fundo {
+    position: relative;
+    width: 120%;
+    height: 100%; /* ou altura da imagem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .respostas {
+    position: absolute;
+    top: 25%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    list-style-position: inside;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.1rem;
+    color: #664400; /* ou branco, dependendo da imagem */
+  }
+  .respostas li{
+    margin-top: 1px !important;
+    padding-top: 10px !important;
+  }
+
+  /** Celular grande ajuste **/
+  @media (min-height: 700px) {
+    .background-video{
+      margin-top:  9vh;
+    }
+  }
+
+  @media (max-height:690px) {
+    .options img{
+      width:  35px;
+    }
+  }
+
+
+  .img-command{
+    width: 50%  ;
+    height: auto ;
+    margin-top: 3vh;
+  }
+
+  /** Celular pequeno **/
+  @media (max-height: 700px) {
+    .img-command{
+      width: 20% !important;
+      height: auto;
+      margin-top: 0vh;
+    }
+
+
+    .background-commands{
+      height: 20vh !important;
+    }
+
+  }
+
+
+
+
+  .background-commands{
+    position: absolute !important;
+    bottom: 0 !important;
+    display:inline-block;
+    background-image: url('assets/lingobot/home/testar_pergaminho.jpg');
+    height: 25vh  ;
+    background-size: cover;
+    background-position: top;
+    z-index: 5 !important;
+
+  }
+
+  .background-image{
+    background-image: url('assets/lingobot/cenas_na_masmorra/elders_room.jpg');
+    background-size: 120% !important;
+    background-position: center;
+    width: 100%;
+    height: 80vh  ;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .baloon-container {
+    position: absolute;
+    top: 11vh; /* Ajuste conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px; /* Ou o tamanho que preferir */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+  }
+
+  .dialog-baloon {
+    background-image: url('assets/lingobot/cenas_na_masmorra/balao_right.png');
+    background-size: 100% 100%; /* Para cobrir todo o balão */
+    background-repeat: no-repeat;
+    padding: 30px 40px; /* Ajuste conforme o design do seu balão */
+    min-width: 300px;
+    max-width: 600px;
+    min-height: 150px;
+    margin-bottom: -20px; /* Sobrepor um pouco com a imagem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .dialog-baloon p {
+    font-size: 20px; /* Tamanho grande para o texto */
+    color: #000; /* Cor do texto */
+    text-align: center;
+    margin: 0;
+    padding: 10px 20px;
+    font-weight: bold;
+    line-height: 1.4;
+  }
+
+  .character-img {
+    width: 350px; /* Ajuste conforme necessário */
+    height: auto;
+    z-index: 1;
+    position: relative;
+  }
+
+</style>

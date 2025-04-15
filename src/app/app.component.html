@@ -1,6 +1,6 @@
 <div class="container">
   <app-header></app-header>
-  <router-outlet></router-outlet>
+  <router-outlet style="background: black !important;"></router-outlet>
 </div>
 <div *ngIf="showLevelUpModal" class="level-up-modal">
   <div class="modal-content animate">
@@ -43,6 +43,17 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="showSettingsModal" class="user-info-dialog">
+  <div class="settings-content">
+    <div class="modal-content2">
+      <app-settings></app-settings>
+    </div>
+  </div>
+</div>
+
+
+
 
 <div *ngIf="showMugModal" class="mug-dialog">
   <div class="mug-content">
@@ -214,6 +225,9 @@ assets/lingobot/menu-icons/powers/bag-icon.png
 
 <style>
 
+  .container{
+     background: black !important;
+  }
   .closeMugModal {
     position: absolute;
     top: 10vh;       /* distancia do topo, adaptável */
@@ -267,6 +281,19 @@ assets/lingobot/menu-icons/powers/bag-icon.png
     z-index: 10 !important;
   }
 
+  .settings-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('assets/lingobot/home/testar_pergaminho.jpg');
+    background-size: cover; /* A imagem cobrirá toda a tela */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    overflow: hidden; /* Evita rolagem */
+    z-index: 10 !important;
+  }
 
 
 
@@ -359,4 +386,12 @@ assets/lingobot/menu-icons/powers/bag-icon.png
     text-align: center;
   }
 
+
+
+  .modal-content2 {
+    width: 100%; /* Define uma largura para o conteúdo */
+    margin-top: 30% !important;
+
+    text-align: center;
+  }
 </style>

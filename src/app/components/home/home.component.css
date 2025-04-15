@@ -26,10 +26,9 @@
 
 .background-commands {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: auto;
   object-fit: cover;
   z-index: 4;
 }

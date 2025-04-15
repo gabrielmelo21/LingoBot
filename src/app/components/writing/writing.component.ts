@@ -1,0 +1,260 @@
+import { Component } from '@angular/core';
+import {Router} from "@angular/router";
+import {PlaySoundService} from "../../services/play-sound.service";
+import {HttpClient} from "@angular/common/http";
+import {animate, state, style, transition, trigger} from "@angular/animations";
+
+
+export interface VocabEntry {
+  portugues: string;
+  ingles: string;
+}
+
+
+@Component({
+  selector: 'app-writing',
+  templateUrl: './writing.component.html',
+  styleUrls: ['./writing.component.css'],
+
+
+})
+export class WritingComponent {
+  private exercicios: VocabEntry[] = [];
+  cena: number = 1;
+  dialog: number = 1;
+  respostaCorreta: string = ''; // essa vem da chamada do `randomExercise()`
+  optionIsSelected: boolean = false;
+  selectedOption: number | null = null;
+  enunciado: any;
+  alternativas: string[] = [];
+  progress: number = 0; // de 0 a 100
+  rightOrWrongAnswer: boolean = false;
+  quizSession: boolean = false;
+  caminhoImagem: string = 'assets/lingobot/elders/writing/pensando.png';
+
+
+
+
+  constructor(private router: Router,
+               private playSoundService: PlaySoundService,
+               private http: HttpClient) {
+
+     setTimeout(() =>{
+         this.cena = 2;
+     }, 1000)
+     this.loadExercises();
+
+
+   }
+
+
+
+
+  isAnimating = false;
+
+  startAnimation() {
+    // Reseta a animação
+    this.isAnimating = false;
+
+    // Força um recálculo do DOM
+    setTimeout(() => {
+      this.isAnimating = true;
+    }, 10);
+  }
+
+
+
+
+
+
+  private loadExercises(): void {
+    this.http.get<VocabEntry[]>('assets/lingobot/json/writing_exercicios_iniciante.json')
+      .subscribe(data => {
+        this.exercicios = data;
+      });
+  }
+
+
+  public randomExercise() {
+    if (this.exercicios.length === 0) return null;
+
+    // Seleciona um item aleatório
+    const item = this.exercicios[Math.floor(Math.random() * this.exercicios.length)];
+
+    // Decide aleatoriamente se será em inglês ou português
+    const perguntaEmIngles = Math.random() < 0.5;
+
+    let enunciado = '';
+    let correta = '';
+    let alternativas: string[] = [];
+
+    if (perguntaEmIngles) {
+      enunciado = `O que significa '${item.ingles}'?`;
+      correta = item.portugues;
+
+      const opcoesErradas = this.exercicios
+        .filter(e => e.portugues !== correta)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3)
+        .map(e => e.portugues);
+
+      alternativas = [...opcoesErradas, correta];
+    } else {
+      enunciado = `Como se diz '${item.portugues}' em inglês?`;
+      correta = item.ingles;
+
+      const opcoesErradas = this.exercicios
+        .filter(e => e.ingles !== correta)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3)
+        .map(e => e.ingles);
+
+      alternativas = [...opcoesErradas, correta];
+    }
+
+    // Embaralha alternativas
+    alternativas = this.shuffleArray(alternativas);
+
+    // Retorna exercício montado
+    console.log(enunciado, alternativas, correta);
+    return {
+      enunciado,
+      alternativas,
+      correta
+    };
+  }
+
+  private shuffleArray<T>(array: T[]): T[] {
+    return array
+      .map(value => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
+  }
+
+
+
+  corrigir(): boolean {
+    if (this.selectedOption === null || !this.optionIsSelected) {
+      return false; // Nenhuma opção selecionada
+    }
+
+    this.rightOrWrongAnswer = true;
+
+    const opcaoSelecionada = this.alternativas[this.selectedOption];
+    const resultado = opcaoSelecionada === this.respostaCorreta;
+
+    console.log('Selecionada:', opcaoSelecionada);
+    console.log('Correta:', this.respostaCorreta);
+    console.log('Acertou?', resultado);
+
+    if (resultado){
+      this.playSoundService.playWin2()
+      this.progress += 10;
+      this.updateProgress(this.progress,100)
+      this.caminhoImagem = 'assets/lingobot/elders/writing/acertou.png';
+      this.dialog = 5;
+      this.startAnimation()
+
+    }else{
+      this.playSoundService.playErrorQuestion();
+      this.caminhoImagem = 'assets/lingobot/elders/writing/explicando.png';
+      this.dialog = 6;
+      this.startAnimation()
+    }
+
+    return resultado;
+  }
+
+
+
+
+
+  letra(index: number): string {
+    return ['A', 'B', 'C', 'D'][index];
+  }
+
+  estadoDoElemento = 'hidden';
+
+  mostrarElemento() {
+    this.estadoDoElemento = 'middleRight';
+
+    // Depois de alguns segundos, ele volta a sair
+    setTimeout(() => {
+      this.estadoDoElemento = 'hidden';
+    }, 4000); // tempo visível no centro-direita
+  }
+
+
+
+
+  chooseOption(number: number) {
+     this.playSoundService.playCleanSound2()
+
+
+    switch (number) {
+      case  0:
+        this.dialog = 1;
+      break;
+       case 1:
+         //Muito bem, vou te ajudar a aumentar seu vocabulário na língua inglesa.
+         this.dialog = 2;
+       break;
+       case 2:
+         // voltar
+         this.router.navigate(['/babel-tower']);
+       break;
+        case 3:
+          this.dialog = 3;
+        break;
+      case 4:
+        this.dialog = 4;
+        this.quizSession = true;
+
+         this.newExercise();
+
+
+        break;
+    }
+
+
+
+
+
+  }
+
+
+  selectOption(index: number): void {
+    this.playSoundService.playCleanSound2();
+    this.selectedOption = index;
+    this.optionIsSelected = true;
+    console.log('Selecionado:', this.alternativas[index]);
+  }
+
+
+
+  newExercise(): void {
+    this.caminhoImagem = 'assets/lingobot/elders/writing/pensando.png';
+    this.rightOrWrongAnswer = false;
+    this.dialog = 4
+    const exercicio = this.randomExercise();
+    if (exercicio && exercicio.alternativas && exercicio.correta) {
+      this.enunciado = exercicio?.enunciado;
+      this.alternativas = exercicio!.alternativas!;
+      this.respostaCorreta = exercicio!.correta!;
+
+      console.log("O cxercicio é", exercicio);
+    }
+
+  }
+
+
+
+// Você pode alterar dinamicamente com lógica de etapas, por exemplo:
+
+  updateProgress(etapa: number, total: number) {
+    this.progress = (etapa / total) * 100;
+  }
+
+
+
+}

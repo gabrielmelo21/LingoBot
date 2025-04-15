@@ -32,6 +32,7 @@ export class AppComponent implements OnInit{
   showMugModal: boolean = false;
   showBookModal: boolean = false;
   showEldersBookModal: boolean = false;
+  showSettingsModal: boolean = false;
 
 
 
@@ -55,6 +56,10 @@ export class AppComponent implements OnInit{
 
     this.modalService.showRankingModal$.subscribe(state => {
       this.showRankingModal = state;
+    });
+
+    this.modalService.showSettingsModal$.subscribe(state => {
+      this.showSettingsModal = state;
     });
 
 
@@ -113,6 +118,7 @@ this.router.events.subscribe(event => {
 
 
 
+
   ngOnInit() {
 
 
@@ -149,9 +155,9 @@ this.router.events.subscribe(event => {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      this.router.navigate(['/login']);
+     // this.router.navigate(['/login']);
     } else {
-      this.router.navigate(['/home']);
+     // this.router.navigate(['/home']);
     }
 
 

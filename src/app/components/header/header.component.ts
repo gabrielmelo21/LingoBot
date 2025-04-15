@@ -43,4 +43,9 @@ export class HeaderComponent implements OnInit{
     this.playSound.playCleanSound2();
     this.modalService.toggleRankingModal();
   }
+
+  toggleSettingsModal() {
+    this.playSound.playCleanSound2();
+    this.modalService.toggleSettingsModal()
+  }
 }

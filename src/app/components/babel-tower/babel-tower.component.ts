@@ -392,8 +392,35 @@ export class BabelTowerComponent  implements OnInit {
       this.mudarCena(2);
 
       setTimeout(() => {
+        // Animação de nuvens
+        this.startAnimation();
+      }, 2000);
+
+
+      setTimeout(() => {
         this.blockAction = false; // Libera após concluir
-      }, 3000); // Ajuste o tempo conforme necessário
+
+         switch (this.getTextoPorAndar()){
+             case "Writing":
+               this.router.navigate(['/writing']);
+             break;
+           case "Listening":
+             this.router.navigate(['/listening']);
+             break;
+           case "Reading":
+             this.router.navigate(['/reading']);
+             break;
+
+           case "Speaking":
+             this.router.navigate(['/speaking']);
+             break;
+
+         }
+
+
+      }, 5000); // Ajuste o tempo conforme necessário
+
+
     } else if (cmd === 'down') {
       const t = this.trilhaService.getTorreData();
 

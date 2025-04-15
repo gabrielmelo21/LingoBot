@@ -35,6 +35,11 @@ import { BabelTowerComponent } from './babel-tower/babel-tower.component';
 import { MugTranslateComponent } from './mug-translate/mug-translate.component';
 import { NotebookComponent } from './notebook/notebook.component';
 import { EldersNotebookComponent } from './elders-notebook/elders-notebook.component';
+import { WritingComponent } from './writing/writing.component';
+import { ReadingComponent } from './reading/reading.component';
+import { SpeakingComponent } from './speaking/speaking.component';
+import { ListeningComponent } from './listening/listening.component';
+import { SettingsComponent } from './settings/settings.component';
 
 /**
  *
@@ -88,19 +93,25 @@ import { EldersNotebookComponent } from './elders-notebook/elders-notebook.compo
     MugTranslateComponent,
     NotebookComponent,
     EldersNotebookComponent,
+    WritingComponent,
+    ReadingComponent,
+    SpeakingComponent,
+    ListeningComponent,
+    SettingsComponent,
 
   ],
-    exports: [
-        HeaderComponent,
-        FooterLinksComponent,
-        CreateFlashcardComponent,
-        LingobotCardComponent,
-        AccountSettingsComponent,
-        RankingComponent,
-        MugTranslateComponent,
-        NotebookComponent,
-        EldersNotebookComponent
-    ],
+  exports: [
+    HeaderComponent,
+    FooterLinksComponent,
+    CreateFlashcardComponent,
+    LingobotCardComponent,
+    AccountSettingsComponent,
+    RankingComponent,
+    MugTranslateComponent,
+    NotebookComponent,
+    EldersNotebookComponent,
+    SettingsComponent
+  ],
   imports: [
     CommonModule,
     ComponentRoutingModule,

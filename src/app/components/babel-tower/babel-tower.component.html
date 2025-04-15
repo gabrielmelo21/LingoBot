@@ -106,7 +106,7 @@
 
 
 
-  <div class="background-commands">
+  <div class="background-commands"  >
 
 
     <h3 class="actions-title" *ngIf="!blockAction">Comandos</h3>
@@ -117,7 +117,7 @@
              (mousedown)="ativarNeon('up')"
              (touchstart)="ativarNeon('up')" (touchend)="desativarNeon('up')"
              src="assets/lingobot/poses/lingobot_apontando_pra_cima.png"
-             style="width: 80% !important;height: auto">
+                class="img-command">
         <p class="command-text">Subir andar</p>
       </div>
 
@@ -126,7 +126,7 @@
              (mousedown)="ativarNeon('in')"
              (touchstart)="ativarNeon('in')" (touchend)="desativarNeon('in')"
              src="assets/lingobot/poses/lingobot-running.png"
-             style="width: 120% !important;height: auto">
+          class="img-command-center">
         <p class="command-text">Fazer missão</p>
       </div>
 
@@ -135,7 +135,7 @@
              (mousedown)="ativarNeon('down')"
              (touchstart)="ativarNeon('down')" (touchend)="desativarNeon('down')"
              src="assets/lingobot/poses/lingobot_apontando_pra_baixo.png"
-             style="width: 100% !important;height: auto">
+             class="img-command">
         <p class="command-text">Descer andar</p>
       </div>
 
@@ -152,6 +152,35 @@
 
 <style>
 
+  .img-command{
+    width: 80%;
+    height: auto
+  }
+  .img-command-center{
+     width: 120%;
+     height: auto;
+  }
+
+
+  /** Celular pequeno **/
+  @media (max-height: 700px) {
+    .img-command{
+      width: 30% !important;
+      height: auto
+    }
+    .img-command-center{
+      width: 50% !important;
+      height: auto;
+    }
+
+    .background-commands{
+      height: 20vh !important;
+    }
+
+  }
+
+
+
   .button-container {
     display: flex;
     justify-content: center; /* Alinha os itens ao centro */
@@ -166,7 +195,7 @@
     bottom: 0 !important;
     display:inline-block;
     background-image: url('assets/lingobot/home/testar_pergaminho.jpg');
-    height: 30vh !important;
+    height: 30vh ;
     background-size: cover;
     background-position: top;
     z-index: 5 !important;

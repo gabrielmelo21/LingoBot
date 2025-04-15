@@ -1,0 +1,146 @@
+.difficulty-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: scroll;
+  height: 450px !important;
+}
+
+.difficulty-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.difficulty-item.selected {
+  border-color: #89CFF0; /* azul bebê */
+  box-shadow: 0 0 10px rgba(137, 207, 240, 0.4);
+  background-color: #f0faff;
+}
+
+.difficulty-img {
+  width:94px;
+  height: 94px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 16px;
+}
+
+.difficulty-text h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.difficulty-text p {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.dificuldade-container {
+  position: relative;
+}
+
+.voltar-texto {
+  position: absolute;
+  top: 15vh;
+  left: 1vh;
+  font-size: 1rem;
+  color: #555;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.2s;
+}
+
+.voltar-texto:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.titulo-dificuldade {
+  margin: 10px;
+  padding: 2px;
+  text-align: center;
+  font-weight: bold;
+  color: darkgoldenrod;
+}
+
+
+
+
+
+.menu-container {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.menu-container h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.menu-container hr {
+  width: 100px;
+  margin: 0 auto 24px;
+  border: none;
+  border-top: 2px solid #ccc;
+}
+
+.menu-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-options li {
+  font-size: 1.2rem;
+  color: #000;
+  cursor: pointer;
+  padding: 12px;
+  transition: color 0.2s;
+}
+
+.menu-options li:hover {
+  color: #333;
+}
+
+.menu-options li.active {
+  color: #000;
+  font-weight: bold;
+}
+
+
+
+
+
+.personalizacao-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow-y: scroll;
+  height: 450px !important;
+}
+
+.titulo {
+  margin-bottom: 12px;
+  text-align: center;
+  font-weight: bold;
+  color: darkgoldenrod;
+}
+
+.form-campo {
+  margin-bottom: 16px;
+}
+
+.full-width {
+  width: 100%;
+}

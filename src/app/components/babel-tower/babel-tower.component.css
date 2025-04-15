@@ -111,3 +111,12 @@
   width: 250%; /* Ajuste conforme necessário */
   height: auto;
 }
+
+
+
+
+/** Celular pequeno **/
+@media (max-width: 360px) {
+
+}
+

@@ -1,0 +1,68 @@
+<div class="conteiner" style="width: 100%;">
+
+<div *ngIf="selectedOption==''">
+  <div class="menu-container">
+    <h1>Settings</h1>
+    <hr />
+
+    <ul class="menu-options">
+      <li
+        *ngFor="let option of options"
+        (click)="selectOption(option)"
+        [class.active]="selectedOption === option"
+      >
+        {{ option }}
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+  <div *ngIf="selectedOption=='Dificuldade'">
+    <span class="voltar-texto" (click)="selectedOption = ''">← Voltar</span>
+    <h3 style="margin: 10px;padding: 2px;text-align: center;font-weight: bold;color: darkgoldenrod">Alterar Dificuldade</h3>
+    <div class="difficulty-list">
+      <div
+        class="difficulty-item"
+        *ngFor="let diff of difficulties"
+        [class.selected]="selectedDifficult === diff.id"
+        (click)="changeDifficult(diff.id)"
+      >
+        <img [src]="diff.img" alt="{{ diff.title }}" class="difficulty-img" />
+        <div class="difficulty-text">
+          <h3>{{ diff.title }}</h3>
+          <p>{{ diff.description }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <div *ngIf="selectedOption === 'Personalização'" class="personalizacao-container">
+    <h3 class="titulo">Personalização</h3>
+    <span class="voltar-texto" (click)="selectedOption = ''">← Voltar</span>
+    <p>Para obter exercícios personalizados, coloque informações sobre o que você mais gosta:</p>
+
+    <div *ngFor="let campo of campos" class="form-campo">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ campo.label }}</mat-label>
+        <input
+          #inputRef
+          matInput
+          [placeholder]="campo.exemplo"
+          (blur)="salvarPreferencia(inputRef.value, campo.key)"
+          [value]="preferencias[campo.key]?.join(', ') || ''"
+        />
+
+      </mat-form-field>
+    </div>
+  </div>
+
+
+
+</div>
+
+

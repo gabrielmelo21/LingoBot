@@ -23,4 +23,11 @@ export class ModalService {
   }
 
 
+  private showSettingsModalSubject = new BehaviorSubject<boolean>(false);
+  showSettingsModal$ = this.showSettingsModalSubject.asObservable();
+
+  toggleSettingsModal() {
+    this.showSettingsModalSubject.next(!this.showSettingsModalSubject.value);
+  }
+
 }
