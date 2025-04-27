@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PlaySoundService} from "../../services/play-sound.service";
 import {ModalService} from "../../services/modal.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-settings',
@@ -8,10 +9,11 @@ import {ModalService} from "../../services/modal.service";
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  selectedDifficult: number = 0;
   selectedOption: string = '';
+  selectedDifficult: string = '';
+  user: any;
 //'Conta',
-  options = [ 'Dificuldade', 'Personalização', 'Fechar Settings'];
+  options = [ 'Dificuldade', 'Fechar Settings'];
   campos = [
     { key: 'comida', label: 'Comida favorita', exemplo: 'Pizza, Sushi, Feijoada' },
     { key: 'filme', label: 'Filme favorito', exemplo: 'Toy Story, Vingadores, Carros' },
@@ -27,7 +29,9 @@ export class SettingsComponent implements OnInit {
 
   preferencias: { [key: string]: string[] } = {};
 
-  constructor(private playSound: PlaySoundService, private modalService: ModalService) {
+  constructor(private playSound: PlaySoundService,
+              private modalService: ModalService,
+              private authService: AuthService) {
   }
 
 
@@ -36,6 +40,20 @@ export class SettingsComponent implements OnInit {
     if (dados) {
       this.preferencias = JSON.parse(dados);
     }
+
+    this.authService.user$.subscribe(userData => {
+      if (!userData) return;
+      this.user = userData;
+
+
+      // Define a dificuldade atual do usuário como selecionada inicialmente
+      this.selectedDifficult = userData.difficulty;
+
+
+  });
+
+
+
   }
 
   salvarPreferencia(valor: string, key: string): void {
@@ -62,20 +80,43 @@ export class SettingsComponent implements OnInit {
 
   }
 
+
+
   difficulties = [
-    { id: 1, img: 'assets/lingobot/dificuldades/baby_bot.png', title: 'Baby Bot', description: 'Ideal para iniciantes, exercícios com inglês básico.' },
-    { id: 2, img: 'assets/lingobot/dificuldades/young_bot.png', title: 'Young Bot', description: 'Um bom desafio. exercícios com inglês nível médio.' },
-    { id: 3,  img: 'assets/lingobot/dificuldades/adult_bot.png' , title: 'Adult Bot', description: 'Requer habilidade. exercícios com inglês intermediário e expressões' },
-    { id: 4, img: 'assets/lingobot/dificuldades/elder_bot.png' , title: 'Elder Bot', description: 'Apenas para os Anciões. exercícios com inglês nátivo.' },
+    {
+      id: 'easy',
+      img: 'assets/lingobot/dificuldades/baby_bot.png',
+      title: 'Baby Bot',
+      description: 'Ideal para iniciantes, exercícios com inglês básico.'
+    },
+    {
+      id: 'medium',
+      img: 'assets/lingobot/dificuldades/young_bot.png',
+      title: 'Young Bot',
+      description: 'Um bom desafio. exercícios com inglês nível médio.'
+    },
+    {
+      id: 'hard',
+      img: 'assets/lingobot/dificuldades/adult_bot.png',
+      title: 'Adult Bot',
+      description: 'Requer habilidade. exercícios com inglês intermediário e expressões'
+    },
+    {
+      id: 'elder',
+      img: 'assets/lingobot/dificuldades/elder_bot.png',
+      title: 'Elder Bot',
+      description: 'Apenas para os Anciões. exercícios com inglês nativo.'
+    },
   ];
 
 
 
-
-  changeDifficult(level: number) {
+  changeDifficult(newDifficulty: string) {
+    this.selectedDifficult = newDifficulty;
     this.playSound.playCleanSound()
-    this.selectedDifficult = level;
-    console.log('Dificuldade selecionada:', level);
+    console.log('Dificuldade selecionada:', newDifficulty);
+    this.authService.updateLocalUserData({ difficulty : newDifficulty})
+
   }
 
 

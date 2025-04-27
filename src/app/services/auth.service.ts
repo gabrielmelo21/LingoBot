@@ -79,8 +79,42 @@ export class AuthService {
   }
 
 
+  // logica do sistema de ranking
+  // esse metodo é para verificar o andar atual do usuario e colocar o ranking com o andar mais alto que ele atingiu
+  // por exemplo se o usuario atingiu um novo andar, deve atualizar, pq ele nunca esteve nesse novo andar
+  // e o ranking sempre vai pegar o ultimo andar mais alto que o usuario conseguiu chegar
+  // resultado é , se o andar mais alto que o usuario atingiu foi 30, o ranking é 30
 
 
+
+  getRanking(){
+    const userData = this.getUserData();
+    return  userData.ranking;
+  }
+
+  getDifficulty(){
+    const userData = this.getUserData();
+    return  userData.difficulty;
+  }
+
+  checkAndUpdateRanking(novoAndar: number) {
+    const userData = this.getUserData();
+
+    console.log("Novo andar:", novoAndar);
+    console.log("Ranking atual:", userData.ranking);
+
+    // Se não tiver ranking definido, já inicia com o novoAndar
+    if (!userData || typeof userData.ranking !== 'number') {
+      this.updateLocalUserData({ ranking: novoAndar });
+      return;
+    }
+
+    // Só atualiza se o novoAndar for maior que o ranking atual
+    if (novoAndar > userData.ranking) {
+      this.updateLocalUserData({ ranking: novoAndar });
+    }
+
+  }
 
 
 
@@ -109,23 +143,27 @@ export class AuthService {
     const userData = this.getUserData();
     if (!userData) return;
 
-    // Aplica as mudanças ao JSON do usuário, somando os valores numéricos
     const updatedUser = {
       ...userData,
       ...Object.keys(changes).reduce((acc, key) => {
-        acc[key] =
-          typeof changes[key] === "number" && typeof userData[key] === "number"
-            ? userData[key] + changes[key] // Soma os valores numéricos
-            : changes[key]; // Substitui os demais valores normalmente
+        const isRankingKey = key === "ranking";
+        const isNum = typeof changes[key] === "number"
+          && typeof userData[key] === "number";
+
+        if (isNum && !isRankingKey) {
+          acc[key] = userData[key] + changes[key];
+        } else {
+          acc[key] = changes[key];
+        }
         return acc;
       }, {} as any),
     };
 
-    // Salva no localStorage
     localStorage.setItem(this.userKey, JSON.stringify(updatedUser));
-    this.userSubject.next(updatedUser); // Atualiza o BehaviorSubject
-   // console.log("userKey foi atualizado -> " + localStorage.getItem(this.userKey));
+    this.userSubject.next(updatedUser);
+    console.log("userKey foi atualizado -> " + localStorage.getItem(this.userKey));
   }
+
 
 
 
@@ -270,7 +308,6 @@ export class AuthService {
 
   checkLevelUp(newExp: number): void {
     this.updateLocalUserData({ LingoEXP: newExp });
-    this.updateLocalUserData({ ranking: newExp });
 
 
     let userData = this.getUserData();

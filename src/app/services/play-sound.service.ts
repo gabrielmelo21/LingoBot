@@ -13,10 +13,21 @@ export class PlaySoundService implements OnDestroy {
   playCitySoundTrack() {
     this.playAudio("soundtrack/city_theme.mp3", false);
   }
+  playReadingTheme(){
+    this.playAudio("soundtrack/reading_theme.mp3", false);
+  }
   playTowerSoundTrack() {
     this.playAudio("soundtrack/tower_theme.mp3", false);
   }
 
+  playPuzzleSolve() {
+    this.playAudio("soundtrack/puzzle_solving.mp3", false);
+  }
+
+
+  playPadlockLocked(){
+    this.playAudio("padlock-locked.mp3", true);
+  }
 
   playDiscoverExpression() {
     this.playAudio("discover-expression.mp3", false);
@@ -136,6 +147,13 @@ export class PlaySoundService implements OnDestroy {
     this.playAudio('swipe.mp3', true);
   }
 
+  playOpenChest(){
+     this.playAudio('open-chest.mp3', false);
+  }
+  playChestWin(){
+     this.playAudio('chest-win.mp3', true);
+  }
+
   setVolume(value: number): void {
     if (typeof value === 'number' && isFinite(value)) {
       this.volume = Math.max(0, Math.min(1, value)); // garante que fique entre 0 e 1
@@ -166,8 +184,14 @@ export class PlaySoundService implements OnDestroy {
     console.log(`volume from ${filename}: ${audio.volume}`);
 
 
-     if (filename == "soundtrack/city_theme.mp3" || filename == "soundtrack/tower_theme.mp3") {
+     if (filename == "soundtrack/city_theme.mp3"
+       || filename == "soundtrack/tower_theme.mp3") {
        audio.volume = 0.02;
+       audio.loop = true; // se for som contínuo
+       console.log(`volume: ${audio.volume}`);
+     }
+     if ( filename == "soundtrack/puzzle_solving.mp3" || filename == "soundtrack/reading_theme.mp3"  ) {
+       audio.volume = 0.13;
        audio.loop = true; // se for som contínuo
        console.log(`volume: ${audio.volume}`);
      }

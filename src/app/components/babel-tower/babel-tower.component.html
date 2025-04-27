@@ -1,30 +1,28 @@
 
 <div class="container">
 
-
   <!-- Imagem estática -->
-  <img   src="assets/lingobot/cenas_on_out_tower/torre_ground.png" class="background-image">
+  <img [src]="staticSceneSrc" class="background-image">
 
   <!-- Vídeo 1 -->
-  <video *ngIf="cena == 1 && !mostrarImagem" autoplay muted loop class="background-video">
-    <source src="assets/lingobot/cenas_on_out_tower/waiting_animation_tower.mp4" type="video/mp4">
+  <video *ngIf="cena == 1" autoplay muted loop class="background-video">
+    <source [src]="video1Src" type="video/mp4">
   </video>
 
   <!-- Vídeo 2 -->
-  <video *ngIf="cena == 2 && !mostrarImagem" autoplay muted playsinline class="background-video">
-    <source src="assets/lingobot/cenas_on_out_tower/entrando-na-torre.mp4" type="video/mp4">
+  <video *ngIf="cena == 2" autoplay muted playsinline class="background-video">
+    <source [src]="video2Src" type="video/mp4">
   </video>
 
   <!-- Vídeo 3 -->
-  <video *ngIf="cena == 3 && !mostrarImagem" autoplay muted playsinline class="background-video">
-    <source src="assets/lingobot/cenas_on_out_tower/teletransporte.mp4" type="video/mp4">
+  <video *ngIf="cena == 3" autoplay muted playsinline class="background-video">
+    <source [src]="video3Src" type="video/mp4">
   </video>
 
   <!-- Vídeo 4 -->
-  <video *ngIf="cena == 4 && !mostrarImagem" autoplay muted playsinline class="background-video">
-    <source src="assets/lingobot/cenas_on_out_tower/teletransporte_back.mp4" type="video/mp4">
+  <video *ngIf="cena == 4" autoplay muted playsinline class="background-video">
+    <source [src]="video4Src" type="video/mp4">
   </video>
-
 
 
   <div class="nuvem-esquerda" [@nuvemEsquerdaAnimation]="nuvemState">

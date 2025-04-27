@@ -1,0 +1,452 @@
+[
+  {
+    "text": "Clara enjoys rainy days. She sits by the window, reading with a cup of tea. The sound of drops makes her feel calm.",
+    "password": "rainy",
+    "tip": "What kind of days does Clara enjoy?",
+    "translate": "Clara gosta de dias chuvosos. Ela se senta perto da janela, lendo com uma xícara de chá. O som das gotas a acalma."
+  },
+  {
+    "text": "Leo visits the museum every weekend. He loves ancient sculptures and detailed paintings from history.",
+    "password": "museum",
+    "tip": "Where does Leo go to see art and history?",
+    "translate": "Leo visita o museu todo fim de semana. Ele adora esculturas antigas e pinturas detalhadas da história."
+  },
+  {
+    "text": "Mia planted several seeds in her garden. After a few weeks, tiny green sprouts began to appear.",
+    "password": "sprouts",
+    "tip": "What appeared after Mia planted the seeds?",
+    "translate": "Mia plantou várias sementes em seu jardim. Após algumas semanas, pequenos brotos verdes começaram a aparecer."
+  },
+  {
+    "text": "Owen always brings his notebook to the forest. He writes poems about nature and the silence between trees.",
+    "password": "notebook",
+    "tip": "What does Owen use to write poems?",
+    "translate": "Owen sempre leva seu caderno para a floresta. Ele escreve poemas sobre a natureza e o silêncio entre as árvores."
+  },
+  {
+    "text": "Sophie stargazes at night. She knows the names of many constellations and enjoys the quiet sky.",
+    "password": "constellations",
+    "tip": "What star patterns does Sophie know?",
+    "translate": "Sophie observa as estrelas à noite. Ela sabe os nomes de muitas constelações e gosta do céu silencioso."
+  },
+  {
+    "text": "Victor enjoys collecting old coins. Each coin tells a story from a different era and place in the world.",
+    "password": "coins",
+    "tip": "What does Victor collect that tells stories from the past?",
+    "translate": "Victor gosta de colecionar moedas antigas. Cada moeda conta uma história de uma era e lugar diferentes no mundo."
+  },
+  {
+    "text": "Nina watched the candle slowly melt. The soft light flickered and made shadows dance across the walls.",
+    "password": "candle",
+    "tip": "What object melted while giving off light?",
+    "translate": "Nina observou a vela derreter lentamente. A luz suave tremeluzia e fazia sombras dançarem pelas paredes."
+  },
+  {
+    "text": "Alan heard the thunder before he saw the lightning. He quickly closed all the windows.",
+    "password": "thunder",
+    "tip": "What did Alan hear before the lightning?",
+    "translate": "Alan ouviu o trovão antes de ver o relâmpago. Ele rapidamente fechou todas as janelas."
+  },
+  {
+    "text": "Isla visits her grandmother in the countryside. She loves the smell of fresh bread and the silence of the fields.",
+    "password": "countryside",
+    "tip": "Where does Isla go to enjoy peace and homemade food?",
+    "translate": "Isla visita sua avó no campo. Ela adora o cheiro de pão fresco e o silêncio dos campos."
+  },
+  {
+    "text": "Marcus lost track of time while solving a puzzle. He didn’t notice the sun had already set.",
+    "password": "puzzle",
+    "tip": "What activity made Marcus forget the time?",
+    "translate": "Marcus perdeu a noção do tempo enquanto resolvia um quebra-cabeça. Ele não percebeu que o sol já havia se posto."
+  },
+  {
+    "text": "Hannah loves to explore old libraries. She finds rare books with stories from forgotten times.",
+    "password": "libraries",
+    "tip": "Where does Hannah go to find rare books?",
+    "translate": "Hannah adora explorar bibliotecas antigas. Ela encontra livros raros com histórias de tempos esquecidos."
+  },
+  {
+    "text": "Jack noticed a small bird perched on the tree branch. It chirped softly before flying away into the sky.",
+    "password": "bird",
+    "tip": "What animal perched on the tree and flew away?",
+    "translate": "Jack notou um pequeno pássaro pousado no galho da árvore. Ele cantou suavemente antes de voar para o céu."
+  },
+  {
+    "text": "Eva enjoys long walks along the beach. She collects seashells and listens to the sound of the waves crashing.",
+    "password": "beach",
+    "tip": "Where does Eva go for walks and to collect seashells?",
+    "translate": "Eva adora caminhadas longas pela praia. Ela coleta conchas e escuta o som das ondas quebrando."
+  },
+  {
+    "text": "Oliver sat by the campfire, watching the flames dance in the night. The warmth spread through his body.",
+    "password": "campfire",
+    "tip": "What did Oliver watch while sitting by the fire?",
+    "translate": "Oliver sentou-se perto da fogueira, observando as chamas dançando à noite. O calor se espalhou pelo seu corpo."
+  },
+  {
+    "text": "Sophia always visits the park in the morning. She enjoys the calm atmosphere and the fresh air.",
+    "password": "park",
+    "tip": "Where does Sophia go in the morning to enjoy fresh air?",
+    "translate": "Sophia sempre visita o parque pela manhã. Ela gosta da atmosfera calma e do ar fresco."
+  },
+  {
+    "text": "Ella enjoys painting landscapes. She uses a variety of colors to capture the beauty of nature.",
+    "password": "landscapes",
+    "tip": "What does Ella paint to show the beauty of nature?",
+    "translate": "Ella gosta de pintar paisagens. Ela usa uma variedade de cores para capturar a beleza da natureza."
+  },
+  {
+    "text": "Tom often visits the mountain to observe the stars. He loves the peaceful feeling of being far from the city lights.",
+    "password": "mountain",
+    "tip": "Where does Tom go to observe the stars away from city lights?",
+    "translate": "Tom frequentemente visita a montanha para observar as estrelas. Ele adora a sensação de paz de estar longe das luzes da cidade."
+  },
+  {
+    "text": "Charlotte sat by the window, reading her favorite novel. She lost herself in the story, forgetting about the time.",
+    "password": "novel",
+    "tip": "What was Charlotte reading when she lost track of time?",
+    "translate": "Charlotte sentou-se perto da janela, lendo seu romance favorito. Ela se perdeu na história, esquecendo-se do tempo."
+  },
+  {
+    "text": "Alex went to the forest with a camera. He took pictures of the wildlife and the tall trees.",
+    "password": "camera",
+    "tip": "What did Alex use to take pictures in the forest?",
+    "translate": "Alex foi para a floresta com uma câmera. Ele tirou fotos da vida selvagem e das árvores altas."
+  },
+  {
+    "text": "Lily enjoys listening to classical music in the evening. The soft melodies help her relax after a busy day.",
+    "password": "classical",
+    "tip": "What type of music does Lily listen to in the evening to relax?",
+    "translate": "Lily gosta de ouvir música clássica à noite. As melodias suaves a ajudam a relaxar depois de um dia agitado."
+  },
+  {
+    "text": "Julia loves visiting art galleries. She admires paintings that express deep emotions and tell untold stories.",
+    "password": "galleries",
+    "tip": "Where does Julia go to admire emotional and expressive paintings?",
+    "translate": "Julia adora visitar galerias de arte. Ela admira pinturas que expressam emoções profundas e contam histórias não contadas."
+  },
+  {
+    "text": "Benjamin prefers reading books by the fireplace. The warmth of the fire and the quiet atmosphere make the experience special.",
+    "password": "fireplace",
+    "tip": "Where does Benjamin read books to enjoy warmth and quiet?",
+    "translate": "Benjamin prefere ler livros perto da lareira. O calor do fogo e a atmosfera silenciosa tornam a experiência especial."
+  },
+  {
+    "text": "Amelia has a small garden behind her house. She grows flowers and herbs, enjoying the process of nurturing life.",
+    "password": "garden",
+    "tip": "Where does Amelia grow flowers and herbs?",
+    "translate": "Amelia tem um pequeno jardim atrás de sua casa. Ela cultiva flores e ervas, apreciando o processo de nutrir a vida."
+  },
+  {
+    "text": "Samuel enjoys walking through the old streets of the city. The cobblestone roads and historic buildings fascinate him.",
+    "password": "streets",
+    "tip": "Where does Samuel walk to admire cobblestone roads and old buildings?",
+    "translate": "Samuel gosta de caminhar pelas antigas ruas da cidade. As ruas de paralelepípedos e os edifícios históricos o fascinam."
+  },
+  {
+    "text": "Rachel spends her weekends hiking in the mountains. She loves the challenge and the breathtaking views from the top.",
+    "password": "hiking",
+    "tip": "What activity does Rachel do on weekends to enjoy the mountains?",
+    "translate": "Rachel passa os fins de semana fazendo trilhas nas montanhas. Ela adora o desafio e as vistas deslumbrantes do topo."
+  },
+  {
+    "text": "Henry enjoys watching documentaries about the ocean. He is fascinated by the creatures that live in the deep sea.",
+    "password": "documentaries",
+    "tip": "What type of shows does Henry watch to learn about ocean creatures?",
+    "translate": "Henry gosta de assistir documentários sobre o oceano. Ele é fascinado pelas criaturas que vivem no fundo do mar."
+  },
+  {
+    "text": "Clara loves to explore ancient ruins. She finds the history behind them fascinating and often imagines the lives of the people who lived there.",
+    "password": "ruins",
+    "tip": "What does Clara explore to discover the history of ancient civilizations?",
+    "translate": "Clara adora explorar ruínas antigas. Ela acha fascinante a história por trás delas e frequentemente imagina as vidas das pessoas que viveram ali."
+  },
+  {
+    "text": "Max enjoys cooking traditional dishes. He spends hours perfecting recipes passed down through generations in his family.",
+    "password": "cooking",
+    "tip": "What activity does Max spend hours doing to perfect family recipes?",
+    "translate": "Max gosta de cozinhar pratos tradicionais. Ele passa horas aperfeiçoando receitas transmitidas através das gerações em sua família."
+  },
+  {
+    "text": "Vera loves the sound of rain tapping against the window. It helps her relax and think clearly.",
+    "password": "rain",
+    "tip": "What sound does Vera enjoy that helps her relax and think?",
+    "translate": "Vera adora o som da chuva batendo contra a janela. Isso a ajuda a relaxar e a pensar claramente."
+  },
+  {
+    "text": "Ethan enjoys writing short stories. He often draws inspiration from his dreams and the world around him.",
+    "password": "stories",
+    "tip": "What does Ethan write that is inspired by his dreams and his surroundings?",
+    "translate": "Ethan gosta de escrever contos. Ele frequentemente se inspira em seus sonhos e no mundo ao seu redor."
+  },
+  {
+    "text": "Liam enjoys visiting historical museums. He is particularly interested in ancient civilizations and their way of life.",
+    "password": "museums",
+    "tip": "Where does Liam go to learn about ancient civilizations?",
+    "translate": "Liam gosta de visitar museus históricos. Ele se interessa particularmente por civilizações antigas e seu modo de vida."
+  },
+  {
+    "text": "Grace loves sailing on the open sea. The feeling of freedom and the vast horizon make her feel alive.",
+    "password": "sailing",
+    "tip": "What activity does Grace enjoy that gives her a sense of freedom on the sea?",
+    "translate": "Grace adora velejar no mar aberto. A sensação de liberdade e o horizonte vasto fazem ela se sentir viva."
+  },
+  {
+    "text": "Jack loves photography. He spends hours capturing moments of nature, particularly the play of light at sunrise and sunset.",
+    "password": "photography",
+    "tip": "What does Jack do to capture moments of nature, especially at sunrise and sunset?",
+    "translate": "Jack adora fotografia. Ele passa horas capturando momentos da natureza, especialmente o jogo de luz no nascer e pôr do sol."
+  },
+  {
+    "text": "Sophia is passionate about astronomy. She spends clear nights stargazing, fascinated by the mysteries of the universe.",
+    "password": "astronomy",
+    "tip": "What subject is Sophia passionate about that involves stargazing and the universe?",
+    "translate": "Sophia é apaixonada por astronomia. Ela passa noites claras observando as estrelas, fascinada pelos mistérios do universo."
+  },
+  {
+    "text": "George enjoys long walks in the forest. He loves the fresh air and the sound of leaves rustling under his feet.",
+    "password": "forest",
+    "tip": "Where does George go to enjoy fresh air and the sound of rustling leaves?",
+    "translate": "George gosta de caminhadas longas na floresta. Ele adora o ar fresco e o som das folhas farfalhando sob seus pés."
+  },
+  {
+    "text": "Oliver enjoys watching plays at the theater. He finds the live performances and the emotions expressed on stage captivating.",
+    "password": "theater",
+    "tip": "Where does Oliver go to watch live performances and experience emotions on stage?",
+    "translate": "Oliver gosta de assistir peças no teatro. Ele acha as performances ao vivo e as emoções expressas no palco cativantes."
+  },
+  {
+    "text": "Isabelle spends her afternoons reading poetry. She admires the beauty of words and how they convey deep emotions and thoughts.",
+    "password": "poetry",
+    "tip": "What type of literature does Isabelle enjoy that conveys deep emotions through words?",
+    "translate": "Isabelle passa suas tardes lendo poesia. Ela admira a beleza das palavras e como elas transmitem emoções e pensamentos profundos."
+  },
+  {
+    "text": "Daniel enjoys experimenting with new recipes in the kitchen. He loves trying new ingredients and creating unique dishes.",
+    "password": "recipes",
+    "tip": "What does Daniel do in the kitchen that involves trying new ingredients?",
+    "translate": "Daniel gosta de experimentar novas receitas na cozinha. Ele adora tentar novos ingredientes e criar pratos únicos."
+  },
+  {
+    "text": "Emma loves going on long hikes in the mountains. She enjoys the challenge of reaching the summit and the peace of being in nature.",
+    "password": "hikes",
+    "tip": "What activity does Emma do in the mountains that involves a challenge and a connection to nature?",
+    "translate": "Emma adora fazer caminhadas longas nas montanhas. Ela gosta do desafio de alcançar o topo e da paz de estar na natureza."
+  },
+  {
+    "text": "Ryan is fascinated by architecture. He enjoys studying buildings from different cultures and how they reflect the values and history of their creators.",
+    "password": "architecture",
+    "tip": "What subject does Ryan study that involves the design and history of buildings from different cultures?",
+    "translate": "Ryan é fascinado por arquitetura. Ele gosta de estudar edifícios de diferentes culturas e como eles refletem os valores e a história de seus criadores."
+  },
+  {
+    "text": "Aiden enjoys exploring new cities. He loves discovering hidden gems, like small cafes and quiet parks, that are not in guidebooks.",
+    "password": "cities",
+    "tip": "What places does Aiden enjoy exploring that are not typically in guidebooks?",
+    "translate": "Aiden adora explorar novas cidades. Ele gosta de descobrir joias escondidas, como pequenos cafés e parques tranquilos, que não estão nos guias de viagem."
+  },
+  {
+    "text": "Charlotte finds joy in gardening. She spends hours planting different types of flowers and watching them grow throughout the seasons.",
+    "password": "gardening",
+    "tip": "What activity does Charlotte enjoy that involves planting flowers and observing their growth?",
+    "translate": "Charlotte encontra alegria na jardinagem. Ela passa horas plantando diferentes tipos de flores e observando seu crescimento ao longo das estações."
+  },
+  {
+    "text": "Matthew enjoys studying history. He is particularly fascinated by the ancient civilizations of Egypt and Greece, and their impact on the modern world.",
+    "password": "history",
+    "tip": "What subject does Matthew study that focuses on ancient civilizations and their influence on today’s world?",
+    "translate": "Matthew gosta de estudar história. Ele é particularmente fascinado pelas civilizações antigas do Egito e da Grécia, e seu impacto no mundo moderno."
+  },
+  {
+    "text": "Isabel loves photography, especially capturing moments of everyday life. She finds beauty in the simplicity of small, fleeting moments.",
+    "password": "photography",
+    "tip": "What hobby does Isabel enjoy that involves capturing simple, everyday moments?",
+    "translate": "Isabel adora fotografia, especialmente capturar momentos da vida cotidiana. Ela encontra beleza na simplicidade de pequenos momentos passageiros."
+  },
+  {
+    "text": "Lucas enjoys writing about his travels. He keeps a journal where he reflects on the places he visits and the people he meets.",
+    "password": "writing",
+    "tip": "What activity does Lucas do to reflect on his travels and the people he meets?",
+    "translate": "Lucas gosta de escrever sobre suas viagens. Ele mantém um diário onde reflete sobre os lugares que visita e as pessoas que conhece."
+  },
+  {
+    "text": "Zoe is passionate about marine biology. She loves studying the ecosystems of coral reefs and the creatures that inhabit them.",
+    "password": "biology",
+    "tip": "What field of science does Zoe study that focuses on ocean life and coral reefs?",
+    "translate": "Zoe é apaixonada por biologia marinha. Ela adora estudar os ecossistemas dos recifes de corais e as criaturas que os habitam."
+  },
+  {
+    "text": "Evelyn is fascinated by the concept of time travel. She spends hours reading science fiction books that explore the possibilities of traveling through time.",
+    "password": "time travel",
+    "tip": "What concept does Evelyn find fascinating that involves traveling to different points in time?",
+    "translate": "Evelyn é fascinada pelo conceito de viagem no tempo. Ela passa horas lendo livros de ficção científica que exploram as possibilidades de viajar através do tempo."
+  },
+  {
+    "text": "Owen loves attending art galleries. He enjoys the experience of observing paintings and sculptures, interpreting the emotions and messages the artists are trying to convey.",
+    "password": "art galleries",
+    "tip": "Where does Owen go to experience and interpret works of art, like paintings and sculptures?",
+    "translate": "Owen adora frequentar galerias de arte. Ele gosta da experiência de observar pinturas e esculturas, interpretando as emoções e as mensagens que os artistas tentam transmitir."
+  },
+  {
+    "text": "Lily loves astronomy and dreams of becoming an astronaut. She spends her nights stargazing, hoping to one day explore the vastness of space.",
+    "password": "astronaut",
+    "tip": "What profession does Lily dream of pursuing, related to space exploration?",
+    "translate": "Lily adora astronomia e sonha em se tornar astronauta. Ela passa suas noites observando as estrelas, esperando um dia explorar a vastidão do espaço."
+  },
+  {
+    "text": "Daniel is an avid collector of rare books. He spends his weekends searching for antique bookstores, looking for first editions of classic novels.",
+    "password": "collector",
+    "tip": "What hobby does Daniel have that involves finding rare editions of books?",
+    "translate": "Daniel é um ávido colecionador de livros raros. Ele passa seus fins de semana procurando livrarias de antiguidades, à procura de primeiras edições de romances clássicos."
+  },
+  {
+    "text": "Mia is a passionate historian. She enjoys visiting ancient ruins and studying the remains of civilizations that once thrived.",
+    "password": "historian",
+    "tip": "What profession does Mia have that involves studying the remains of ancient civilizations?",
+    "translate": "Mia é uma historiadora apaixonada. Ela gosta de visitar ruínas antigas e estudar os restos de civilizações que um dia floresceram."
+  },
+  {
+    "text": "Ethan loves solving complex puzzles. He often spends hours working on intricate crossword puzzles and logic games to challenge his mind.",
+    "password": "puzzles",
+    "tip": "What activity does Ethan enjoy that involves solving intricate and challenging problems?",
+    "translate": "Ethan adora resolver quebra-cabeças complexos. Ele frequentemente passa horas trabalhando em palavras cruzadas complicadas e jogos de lógica para desafiar sua mente."
+  },
+  {
+    "text": "Sophia loves exploring new technology. She enjoys experimenting with the latest gadgets and understanding how they can make life easier.",
+    "password": "technology",
+    "tip": "What area does Sophia explore that involves experimenting with gadgets and innovations?",
+    "translate": "Sophia adora explorar novas tecnologias. Ela gosta de experimentar os mais recentes dispositivos e entender como eles podem tornar a vida mais fácil."
+  },
+  {
+    "text": "James has a deep interest in philosophy. He enjoys reading the works of ancient philosophers and reflecting on their ideas about life, knowledge, and morality.",
+    "password": "philosophy",
+    "tip": "What subject does James study that involves deep thoughts about life, knowledge, and morality?",
+    "translate": "James tem um profundo interesse por filosofia. Ele gosta de ler as obras dos filósofos antigos e refletir sobre suas ideias sobre a vida, o conhecimento e a moralidade."
+  },
+  {
+    "text": "Charlotte loves cooking and experimenting with flavors. She enjoys creating new dishes by combining ingredients from different cuisines around the world.",
+    "password": "cooking",
+    "tip": "What activity does Charlotte enjoy that involves creating new dishes by combining various ingredients?",
+    "translate": "Charlotte adora cozinhar e experimentar sabores. Ela gosta de criar novos pratos combinando ingredientes de diferentes cozinhas ao redor do mundo."
+  },
+  {
+    "text": "Amelia is passionate about environmental conservation. She volunteers at local wildlife reserves and participates in clean-up efforts to protect natural habitats.",
+    "password": "conservation",
+    "tip": "What activity does Amelia engage in to protect natural environments and wildlife?",
+    "translate": "Amelia é apaixonada pela conservação ambiental. Ela se voluntaria em reservas locais de vida selvagem e participa de esforços de limpeza para proteger habitats naturais."
+  },
+  {
+    "text": "Sebastian enjoys playing chess, especially against skilled opponents. He spends hours studying different strategies and tactics to improve his game.",
+    "password": "chess",
+    "tip": "What game does Sebastian play that involves strategic thinking and challenging opponents?",
+    "translate": "Sebastian gosta de jogar xadrez, especialmente contra oponentes habilidosos. Ele passa horas estudando diferentes estratégias e táticas para melhorar seu jogo."
+  },
+  {
+    "text": "Olivia is a passionate linguist. She is fluent in multiple languages and enjoys learning about the structure and evolution of different languages.",
+    "password": "linguist",
+    "tip": "What profession does Olivia have that involves studying and speaking multiple languages?",
+    "translate": "Olivia é uma linguista apaixonada. Ela é fluente em várias línguas e gosta de aprender sobre a estrutura e a evolução de diferentes idiomas."
+  },
+  {
+    "text": "Henry has a keen interest in astronomy. He spends clear nights observing the stars and planets through his telescope, fascinated by the vastness of the universe.",
+    "password": "astronomy",
+    "tip": "What field of science does Henry study that involves observing stars and planets?",
+    "translate": "Henry tem grande interesse por astronomia. Ele passa as noites claras observando as estrelas e planetas através de seu telescópio, fascinado pela vastidão do universo."
+  },
+  {
+    "text": "Lena is an accomplished musician. She plays several instruments and enjoys composing her own music, experimenting with different genres and sounds.",
+    "password": "musician",
+    "tip": "What profession does Lena have that involves playing instruments and composing music?",
+    "translate": "Lena é uma musicista talentosa. Ela toca vários instrumentos e gosta de compor sua própria música, experimentando diferentes gêneros e sons."
+  },
+  {
+    "text": "Grace is an expert in ancient architecture. She loves studying the design and construction of historical buildings, especially the Roman aqueducts and Greek temples.",
+    "password": "architecture",
+    "tip": "What field does Grace specialize in, which involves the study of historical buildings and their design?",
+    "translate": "Grace é especialista em arquitetura antiga. Ela adora estudar o design e a construção de edifícios históricos, especialmente os aquedutos romanos e templos gregos."
+  },
+  {
+    "text": "Nathan is an avid birdwatcher. He enjoys traveling to remote locations to observe rare species of birds and document their behavior.",
+    "password": "birdwatching",
+    "tip": "What hobby does Nathan pursue that involves traveling to observe and document birds?",
+    "translate": "Nathan é um observador de aves ávido. Ele gosta de viajar para locais remotos para observar espécies raras de aves e documentar seu comportamento."
+  },
+  {
+    "text": "Ella is passionate about sustainable fashion. She designs clothing using eco-friendly materials and promotes a lifestyle of reducing waste in the fashion industry.",
+    "password": "fashion",
+    "tip": "What field does Ella work in that focuses on eco-friendly materials and sustainable practices?",
+    "translate": "Ella é apaixonada por moda sustentável. Ela desenha roupas usando materiais ecológicos e promove um estilo de vida que reduz o desperdício na indústria da moda."
+  },
+  {
+    "text": "Lucas has a strong interest in space exploration. He is fascinated by the idea of humans visiting distant planets and hopes to contribute to future missions to Mars.",
+    "password": "space",
+    "tip": "What subject does Lucas find fascinating, involving the exploration of distant planets like Mars?",
+    "translate": "Lucas tem grande interesse pela exploração espacial. Ele é fascinado pela ideia de humanos visitando planetas distantes e espera contribuir para futuras missões a Marte."
+  },
+  {
+    "text": "Sophie enjoys studying marine ecosystems. She conducts research on the effects of climate change on coral reefs and the species that depend on them.",
+    "password": "ecosystems",
+    "tip": "What area of study does Sophie focus on that involves researching the effects of climate change on marine life?",
+    "translate": "Sophie gosta de estudar ecossistemas marinhos. Ela realiza pesquisas sobre os efeitos das mudanças climáticas nos recifes de corais e nas espécies que deles dependem."
+  },
+  {
+    "text": "Daniel is a robotics engineer. He designs robots that can perform complex tasks autonomously, focusing on improving efficiency in industries like manufacturing and healthcare.",
+    "password": "robotics",
+    "tip": "What field does Daniel work in, which involves designing robots to perform tasks autonomously?",
+    "translate": "Daniel é engenheiro de robótica. Ele projeta robôs que podem realizar tarefas complexas de forma autônoma, com foco na melhoria da eficiência em indústrias como a manufatura e a saúde."
+  },
+  {
+    "text": "Lily is a conservation biologist. She studies the effects of human activity on wildlife and works to develop strategies for protecting endangered species.",
+    "password": "biology",
+    "tip": "What field does Lily work in that involves studying the impact of humans on wildlife and protecting endangered species?",
+    "translate": "Lily é bióloga de conservação. Ela estuda os efeitos das atividades humanas sobre a vida selvagem e trabalha para desenvolver estratégias para proteger espécies ameaçadas."
+  },
+  {
+    "text": "Zach enjoys analyzing complex data sets. As a data scientist, he uses statistical models and algorithms to find patterns and insights that help businesses make informed decisions.",
+    "password": "data",
+    "tip": "What profession does Zach have, which involves analyzing complex data to extract valuable insights?",
+    "translate": "Zach gosta de analisar conjuntos de dados complexos. Como cientista de dados, ele usa modelos estatísticos e algoritmos para encontrar padrões e insights que ajudam as empresas a tomar decisões informadas."
+  },
+  {
+    "text": "Victoria is a cognitive neuroscientist. She studies how the brain processes information and how neural networks are involved in learning and memory.",
+    "password": "neuroscience",
+    "tip": "What field does Victoria specialize in, which involves studying the brain and how it processes information?",
+    "translate": "Victoria é neurocientista cognitiva. Ela estuda como o cérebro processa informações e como as redes neurais estão envolvidas no aprendizado e na memória."
+  },
+  {
+    "text": "Ethan is passionate about sustainable urban development. He works on projects that aim to create environmentally friendly cities with efficient public transportation and green spaces.",
+    "password": "urban",
+    "tip": "What field does Ethan focus on, which involves creating environmentally friendly cities with efficient infrastructure?",
+    "translate": "Ethan é apaixonado pelo desenvolvimento urbano sustentável. Ele trabalha em projetos que visam criar cidades ecologicamente amigáveis, com transporte público eficiente e espaços verdes."
+  },
+  {
+    "text": "Sophia is an expert in artificial intelligence. She develops machine learning algorithms that enable computers to analyze vast amounts of data and make predictions based on patterns.",
+    "password": "intelligence",
+    "tip": "What field does Sophia work in, focusing on creating algorithms that allow computers to learn from data?",
+    "translate": "Sophia é especialista em inteligência artificial. Ela desenvolve algoritmos de aprendizado de máquina que permitem que os computadores analisem grandes quantidades de dados e façam previsões com base em padrões."
+  },
+  {
+    "text": "Oliver is an urban planner. He designs cities that balance the needs of their residents with environmental sustainability, ensuring that urban growth is both efficient and eco-friendly.",
+    "password": "planning",
+    "tip": "What profession does Oliver have, which involves designing cities to be sustainable and efficient?",
+    "translate": "Oliver é planejador urbano. Ele projeta cidades que equilibram as necessidades de seus moradores com a sustentabilidade ambiental, garantindo que o crescimento urbano seja eficiente e ecologicamente correto."
+  },
+  {
+    "text": "Emma is a marine biologist. She conducts research on the behavior and migration patterns of marine animals, especially focusing on the impact of pollution on ocean life.",
+    "password": "marine",
+    "tip": "What field does Emma work in, focusing on studying marine animals and the effects of pollution on the oceans?",
+    "translate": "Emma é bióloga marinha. Ela realiza pesquisas sobre o comportamento e os padrões de migração de animais marinhos, com foco especial no impacto da poluição sobre a vida no oceano."
+  },
+  {
+    "text": "James is an astronomer. He observes celestial bodies through powerful telescopes and uses his findings to understand more about the origins and evolution of the universe.",
+    "password": "astronomy",
+    "tip": "What profession does James have, which involves studying celestial bodies and the universe?",
+    "translate": "James é astrônomo. Ele observa corpos celestes através de telescópios poderosos e usa suas descobertas para entender mais sobre as origens e a evolução do universo."
+  },
+  {
+    "text": "Charlotte is a software engineer. She specializes in developing mobile applications that provide users with innovative solutions for everyday tasks, such as organizing schedules and managing finances.",
+    "password": "software",
+    "tip": "What field does Charlotte work in, focusing on creating mobile applications for everyday tasks?",
+    "translate": "Charlotte é engenheira de software. Ela se especializa no desenvolvimento de aplicativos móveis que oferecem aos usuários soluções inovadoras para tarefas cotidianas, como organizar agendas e gerenciar finanças."
+  }
+]

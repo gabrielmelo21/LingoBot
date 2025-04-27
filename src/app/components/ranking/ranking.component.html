@@ -16,7 +16,7 @@
 
 
   <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <h2 style="color: darkgoldenrod;">Ranking</h2>
+    <h2 style="color: black;">Ranking</h2>
     <p style="text-align: center;">
       Para subir no ranking, suba ao andar mais alto que puder.
     </p>
@@ -28,17 +28,17 @@
     <div class="rank third podium-item">
       <img [src]="ranking[2]?.avatar" alt="Avatar" />
       <div class="name">{{ ranking[2]?.nome }}</div>
-      <div class="score">{{ ranking[2]?.LingoEXP }} LXP</div>
+      <div class="score">{{ ranking[2]?.ranking }}°</div>
     </div>
     <div class="rank first podium-item">
       <img [src]="ranking[0]?.avatar" alt="Avatar" />
       <div class="name">{{ ranking[0]?.nome }}</div>
-      <div class="score">{{ ranking[0]?.LingoEXP }} LXP</div>
+      <div class="score">{{ ranking[0]?.ranking }}°</div>
     </div>
     <div class="rank second podium-item">
       <img [src]="ranking[1]?.avatar" alt="Avatar" />
       <div class="name">{{ ranking[1]?.nome }}</div>
-      <div class="score">{{ ranking[1]?.LingoEXP }} LXP</div>
+      <div class="score">{{ ranking[1]?.ranking}}°</div>
     </div>
   </div>
 
@@ -48,7 +48,7 @@
       <img [src]="player.avatar" class="ranking-avatar" alt="Avatar" />
       <div class="ranking-position">{{ i + 4 }}&deg;</div> <!-- Posição numérica começa do 4 -->
       <div class="ranking-name">{{ player.nome }}</div>
-      <div class="ranking-score">{{ player.LingoEXP }} LXP</div>
+      <div class="ranking-score">{{ player.ranking }}º Andar</div>
     </div>
   </div>
 </div>

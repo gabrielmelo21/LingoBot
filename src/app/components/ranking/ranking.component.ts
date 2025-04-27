@@ -39,9 +39,13 @@ export class RankingComponent implements OnInit {
     this.mainApiService.getRanking().subscribe(
       (data: any[]) => {
         this.ranking = data;
+
+
         for (let i = 0; i < 10; i++) {
           this.ranking.push(...data);
         }
+
+
         console.log('Ranking obtido.');
         console.log(this.ranking);
         this.isLoading = false;

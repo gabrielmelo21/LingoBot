@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
 import {HttpClient} from "@angular/common/http";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {AuthService} from "../../services/auth.service";
 
 
 export interface VocabEntry {
@@ -31,21 +32,120 @@ export class WritingComponent {
   rightOrWrongAnswer: boolean = false;
   quizSession: boolean = false;
   caminhoImagem: string = 'assets/lingobot/elders/writing/pensando.png';
+  postMission: boolean = false;
+  questionTitle: string = '';
+  srcExercises: string = '';
+  finalGoldReward: number = 10;
+  finalXpReward: number = 10000;
+  maxHp: number = 100;
+  currentHp: number = 100;
+  hpPercent: number = 100;
 
 
 
 
   constructor(private router: Router,
                private playSoundService: PlaySoundService,
-               private http: HttpClient) {
+               private http: HttpClient,
+              private authService: AuthService) {
 
      setTimeout(() =>{
          this.cena = 2;
-     }, 1000)
-     this.loadExercises();
+       this.playSoundService.playPuzzleSolve()
+     }, 10) // 13000
 
 
-   }
+    this.setupHpByDifficulty();
+    this.updateHpBar();
+
+
+
+
+    console.log(this.authService.getDifficulty())
+
+    switch (this.authService.getDifficulty()) {
+      case 'easy':
+        this.srcExercises = 'assets/lingobot/json/writing/easy.json';
+        this.finalGoldReward = 10;
+        this.finalXpReward = 10000;
+        break;
+
+      case 'medium':
+        this.srcExercises = 'assets/lingobot/json/writing/medium.json';
+        // Recompensa 1,5× da easy
+        this.finalGoldReward = 15;
+        this.finalXpReward = 15000;
+        break;
+
+      case 'hard':
+        this.srcExercises = 'assets/lingobot/json/writing/hard.json';
+        // Recompensa 2× da easy
+        this.finalGoldReward = 20;
+        this.finalXpReward = 20000;
+        break;
+
+      case 'elder':
+        this.srcExercises = 'assets/lingobot/json/writing/elder.json';
+        // Recompensa 3× da easy
+        this.finalGoldReward = 30;
+        this.finalXpReward = 30000;
+        break;
+
+      default:
+        // Fallback caso o valor seja inesperado
+        console.warn(`Dificuldade desconhecida: ${this.authService.getDifficulty()}`);
+        this.srcExercises = 'assets/lingobot/json/writing/easy.json';
+        this.finalGoldReward = 10;
+        this.finalXpReward = 10000;
+        break;
+    }
+
+
+   console.log(this.srcExercises);
+    this.loadExercises();
+
+
+   } // end constructor
+
+
+
+
+  private setupHpByDifficulty() {
+    switch (this.authService.getDifficulty()) {
+      case 'easy':
+        this.maxHp = 9; break;
+      case 'medium':
+        this.maxHp = 7; break;
+      case 'hard':
+        this.maxHp = 5; break;
+      case 'elder':
+        this.maxHp = 3; break;
+      default:
+        this.maxHp = 5; break;
+    }
+    this.currentHp = this.maxHp;
+  }
+
+
+
+  private updateHpBar() {
+    this.hpPercent = (this.currentHp / this.maxHp) * 100;
+  }
+
+  onWrongAnswer() {
+    if (this.currentHp > 0) {
+      this.currentHp--;
+      this.updateHpBar();
+      if (this.currentHp === 0) {
+        this.handleDeath();
+      }
+    }
+  }
+
+  handleDeath() {
+    // lógica de “game over”
+    this.router.navigate(['/babel-tower']);
+  }
 
 
 
@@ -68,7 +168,7 @@ export class WritingComponent {
 
 
   private loadExercises(): void {
-    this.http.get<VocabEntry[]>('assets/lingobot/json/writing_exercicios_iniciante.json')
+    this.http.get<VocabEntry[]>(this.srcExercises)
       .subscribe(data => {
         this.exercicios = data;
       });
@@ -89,7 +189,8 @@ export class WritingComponent {
     let alternativas: string[] = [];
 
     if (perguntaEmIngles) {
-      enunciado = `O que significa '${item.ingles}'?`;
+      this. questionTitle = "O que significa:";
+      enunciado = `'${item.ingles}'`;
       correta = item.portugues;
 
       const opcoesErradas = this.exercicios
@@ -100,7 +201,8 @@ export class WritingComponent {
 
       alternativas = [...opcoesErradas, correta];
     } else {
-      enunciado = `Como se diz '${item.portugues}' em inglês?`;
+      this. questionTitle = "Como se diz:";
+      enunciado = `'${item.portugues}'`;
       correta = item.ingles;
 
       const opcoesErradas = this.exercicios
@@ -156,6 +258,7 @@ export class WritingComponent {
       this.startAnimation()
 
     }else{
+      this.onWrongAnswer()
       this.playSoundService.playErrorQuestion();
       this.caminhoImagem = 'assets/lingobot/elders/writing/explicando.png';
       this.dialog = 6;
@@ -194,6 +297,7 @@ export class WritingComponent {
     switch (number) {
       case  0:
         this.dialog = 1;
+
       break;
        case 1:
          //Muito bem, vou te ajudar a aumentar seu vocabulário na língua inglesa.
@@ -233,6 +337,17 @@ export class WritingComponent {
 
 
   newExercise(): void {
+    if(this.progress >= 100) {
+      this.startAnimation();
+      this.playSoundService.playWinSound()
+      this.postMission = true;
+      this.dialog = 7
+      this.caminhoImagem = 'assets/lingobot/elders/writing/finish.png';
+
+      this.authService.checkLevelUp(this.finalXpReward)
+      this.authService.updateLocalUserData( { tokens: this.finalGoldReward})
+
+    }else{
     this.caminhoImagem = 'assets/lingobot/elders/writing/pensando.png';
     this.rightOrWrongAnswer = false;
     this.dialog = 4
@@ -244,6 +359,8 @@ export class WritingComponent {
 
       console.log("O cxercicio é", exercicio);
     }
+  }
+
 
   }
 
@@ -253,6 +370,12 @@ export class WritingComponent {
 
   updateProgress(etapa: number, total: number) {
     this.progress = (etapa / total) * 100;
+  }
+
+
+  goHome() {
+    this.playSoundService.playCleanSound()
+    this.router.navigate(['/babel-tower']);
   }
 
 

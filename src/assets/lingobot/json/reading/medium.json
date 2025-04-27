@@ -1,0 +1,393 @@
+[
+  {
+    "text": "Tom has a small dog. The dog is happy and loves to play. Every day, Tom says: \"You are my best friend.\" The dog jumps when he hears the word friend.",
+    "password": "friend",
+    "tip": "What word makes the dog jump? It shows a strong connection.",
+    "translate": "Tom tem um cachorro pequeno. O cachorro é feliz e adora brincar. Todos os dias, Tom diz: \"Você é meu melhor amigo.\" O cachorro pula quando ouve a palavra 'amigo'."
+  },
+  {
+    "text": "Lucy has a red apple. She likes the color red. Her backpack, her shoes, and her hat are all red. Red is her favorite color.",
+    "password": "red",
+    "tip": "What color does Lucy love?",
+    "translate": "Lucy tem uma maçã vermelha. Ela gosta da cor vermelha. Sua mochila, seus sapatos e seu chapéu são todos vermelhos. Vermelho é sua cor favorita."
+  },
+
+
+  {
+    "text": "Ben wakes up early. He eats, brushes his teeth, and goes to school. At school, he loves to read. His favorite place is the library.",
+    "password": "library",
+    "tip": "Where does Ben love to read?",
+    "translate": "Ben acorda cedo. Ele come, escova os dentes e vai para a escola. Na escola, ele adora ler. Seu lugar favorito é a biblioteca."
+  },
+
+  {
+    "text": "Emma loves chocolate ice cream. Every afternoon she visits the corner shop and buys her favorite cone. Chocolate is always her choice.",
+    "password": "chocolate",
+    "tip": "What flavor does Emma always choose?",
+    "translate": "Emma gosta de sorvete de chocolate. Toda tarde ela visita a sorveteria da esquina e compra sua casquinha preferida. Chocolate é sempre sua escolha."
+  },
+  {
+    "text": "Carlos jogs in the park every morning. He puts on his comfortable sneakers, runs three laps, and then stretches. The park is where he stays healthy.",
+    "password": "park",
+    "tip": "Where does Carlos exercise each morning?",
+    "translate": "Carlos corre no parque todas as manhãs. Ele calça seus tênis confortáveis, corre três voltas e depois faz alongamentos. O parque é onde ele se mantém saudável."
+  },
+  {
+    "text": "Sofia loves to draw. In her room there are pencils, colored pens, and many sheets of paper scattered around. Whenever she has free time, she grabs a pencil and sketches something new.",
+    "password": "draw",
+    "tip": "What activity does Sofia enjoy doing in her free time?",
+    "translate": "Sofia adora desenhar. Em seu quarto há lápis, canetas coloridas e muitas folhas de papel espalhadas. Sempre que ela tem tempo livre, pega um lápis e faz um novo esboço."
+  },
+  {
+    "text": "Miguel plays the guitar every night. He learns a new song each week and practices different chords. Music helps him relax before going to sleep.",
+    "password": "guitar",
+    "tip": "Which instrument does Miguel play nightly?",
+    "translate": "Miguel toca violão todas as noites. Ele aprende uma nova música a cada semana e pratica acordes diferentes. A música o ajuda a relaxar antes de dormir."
+  },
+  {
+    "text": "Anna plants flowers in her garden. She waters the roses, fertilizes the daisies, and picks sunflowers. The flowers make the backyard colorful and fragrant.",
+    "password": "flowers",
+    "tip": "What does Anna grow in her garden?",
+    "translate": "Anna planta flores em seu jardim. Ela rega as rosas, aduba as margaridas e colhe girassóis. As flores deixam o quintal colorido e perfumado."
+  },
+
+
+  {
+    "text": "James rides his blue bicycle to school every day. He wears his helmet, rings the bell, and pedals down the quiet street. The bicycle ride wakes him up for class.",
+    "password": "bicycle",
+    "tip": "What does James ride to school every day?",
+    "translate": "James vai de bicicleta azul para a escola todos os dias. Ele usa o capacete, toca a buzina e pedala pela rua tranquila. O passeio de bicicleta o desperta para as aulas."
+  },
+  {
+    "text": "Lily reads a mystery book by the fireplace each evening. She turns page after page, following every clue and twist. The fireplace keeps her warm while she reads.",
+    "password": "mystery",
+    "tip": "What type of book does Lily read by the fireplace?",
+    "translate": "Lily lê um livro de mistério perto da lareira todas as noites. Ela vira página após página, seguindo cada pista e reviravolta. A lareira a mantém aquecida enquanto ela lê."
+  },
+  {
+    "text": "Mark cooks spaghetti for dinner on Fridays. He boils the pasta, heats the sauce, and sprinkles cheese on top. Friday spaghetti is a family tradition.",
+    "password": "spaghetti",
+    "tip": "What dish does Mark cook every Friday?",
+    "translate": "Mark cozinha espaguete para o jantar às sextas-feiras. Ele cozinha a massa, aquece o molho e polvilha queijo por cima. Espaguete de sexta é uma tradição familiar."
+  },
+  {
+    "text": "Sara waters her indoor plants every morning. She checks the soil, fills the watering can, and gently pours water over each pot. The green leaves brighten her home.",
+    "password": "plants",
+    "tip": "What does Sara water every morning?",
+    "translate": "Sara rega suas plantas de interior todas as manhãs. Ela verifica a terra, enche o regador e despeja água gentilmente em cada vaso. As folhas verdes iluminam sua casa."
+  },
+  {
+    "text": "Tommy practices basketball in the driveway after school. He dribbles the ball, shoots hoops, and counts every basket he makes. Scoring ten baskets is his daily goal.",
+    "password": "baskets",
+    "tip": "What does Tommy count when he shoots hoops?",
+    "translate": "Tommy pratica basquete na entrada de casa depois da escola. Ele dribla a bola, faz arremessos e conta cada cesta que faz. Fazer dez cestas é sua meta diária."
+  },
+
+  {
+    "text": "Olivia walks her brown dog every evening at sunset. They follow the path by the lake, and her dog sniffs every tree. The walk helps them both unwind.",
+    "password": "lake",
+    "tip": "Where do Olivia and her dog walk by?",
+    "translate": "Olivia passeia com seu cachorro marrom todas as noites ao pôr do sol. Eles seguem o caminho junto ao lago, e seu cachorro cheira cada árvore. A caminhada os ajuda a relaxar."
+  },
+  {
+    "text": "Daniel plays chess with his grandfather on Sundays. They set up the board, move the pieces slowly, and discuss each strategy. Chess games teach Daniel patience.",
+    "password": "chess",
+    "tip": "Which game does Daniel play with his grandfather?",
+    "translate": "Daniel joga xadrez com seu avô aos domingos. Eles montam o tabuleiro, movem as peças lentamente e discutem cada estratégia. As partidas de xadrez ensinam paciência a Daniel."
+  },
+  {
+    "text": "Emily bakes chocolate chip cookies every Saturday morning. She mixes flour, sugar, and butter, then folds in the chocolate chips. The warm cookies fill the kitchen with a sweet aroma.",
+    "password": "cookies",
+    "tip": "What does Emily bake on Saturday mornings?",
+    "translate": "Emily assa cookies com gotas de chocolate todo sábado de manhã. Ela mistura farinha, açúcar e manteiga, depois adiciona as gotas de chocolate. Os cookies quentes deixam a cozinha perfumada."
+  },
+  {
+    "text": "Ryan studies French for thirty minutes each day. He listens to audio lessons, repeats new words, and writes sentences in his notebook. Learning French excites him.",
+    "password": "French",
+    "tip": "What language does Ryan study daily?",
+    "translate": "Ryan estuda francês por trinta minutos todos os dias. Ele escuta lições em áudio, repete palavras novas e escreve frases em seu caderno. Aprender francês o entusiasma."
+  },
+  {
+    "text": "Grace waters her vegetable garden every weekend. She checks the tomatoes, peppers, and cucumbers, then prunes any dead leaves. Fresh vegetables are her reward.",
+    "password": "vegetables",
+    "tip": "What does Grace grow in her garden?",
+    "translate": "Grace rega sua horta todo fim de semana. Ela verifica os tomates, pimentões e pepinos, depois poda as folhas mortas. Vegetais frescos são sua recompensa."
+  },
+
+
+  {
+    "text": "Ethan collects seashells on the beach every morning. He walks along the shore, inspects each shell, and places the prettiest ones in his bucket. The collection grows daily.",
+    "password": "seashells",
+    "tip": "What does Ethan collect on the beach?",
+    "translate": "Ethan coleta conchas na praia todas as manhãs. Ele caminha pela beira, inspeciona cada concha e coloca as mais bonitas em seu balde. A coleção cresce diariamente."
+  },
+  {
+    "text": "Ava practices yoga in her living room at sunrise. She stretches, holds poses, and breathes deeply. Yoga gives her energy for the day ahead.",
+    "password": "yoga",
+    "tip": "What activity does Ava do at sunrise?",
+    "translate": "Ava pratica ioga na sala de estar ao nascer do sol. Ela se alonga, mantém posturas e respira profundamente. A ioga lhe dá energia para o dia que vem."
+  },
+  {
+    "text": "Noah waters the community garden each afternoon. He fills the hose, waters the vegetables, and chats with neighbors. The garden brings everyone together.",
+    "password": "garden",
+    "tip": "What does Noah water each afternoon?",
+    "translate": "Noah rega a horta comunitária todas as tardes. Ele enche a mangueira, rega os vegetais e conversa com os vizinhos. A horta reúne a todos."
+  },
+  {
+    "text": "Mia writes in her journal before bedtime. She recalls her day, notes her feelings, and sets goals for tomorrow. Writing helps her clear her mind.",
+    "password": "journal",
+    "tip": "What does Mia write in before sleeping?",
+    "translate": "Mia escreve em seu diário antes de dormir. Ela lembra do dia, anota seus sentimentos e define metas para amanhã. Escrever a ajuda a clarear a mente."
+  },
+  {
+    "text": "Liam plays video games for one hour after homework. He chooses his favorite character, battles online opponents, and earns points. Gaming is his daily reward.",
+    "password": "points",
+    "tip": "What does Liam earn when he plays?",
+    "translate": "Liam joga videogame por uma hora depois da lição de casa. Ele escolhe seu personagem favorito, enfrenta adversários online e ganha pontos. Jogar é sua recompensa diária."
+  },
+  {
+    "text": "Sophia feeds the birds in her backyard every morning. She fills the feeder with seeds and watches the birds arrive. Her favorite bird is the blue one.",
+    "password": "birds",
+    "tip": "What does Sophia feed every morning?",
+    "translate": "Sophia alimenta os pássaros no quintal todas as manhãs. Ela enche o comedouro com sementes e observa os pássaros chegarem. Seu pássaro favorito é o azul."
+  },
+  {
+    "text": "Jack loves to draw superheroes. He uses pencils, markers, and colorful paper. His drawings cover the walls of his room.",
+    "password": "superheroes",
+    "tip": "What kind of characters does Jack love to draw?",
+    "translate": "Jack adora desenhar super-heróis. Ele usa lápis, canetinhas e papéis coloridos. Seus desenhos cobrem as paredes do quarto."
+  },
+  {
+    "text": "Emma drinks a glass of orange juice with her breakfast. She says it gives her energy and helps her feel fresh. She never skips her juice.",
+    "password": "juice",
+    "tip": "What drink does Emma always have with breakfast?",
+    "translate": "Emma bebe um copo de suco de laranja no café da manhã. Ela diz que isso lhe dá energia e a faz se sentir renovada. Ela nunca deixa de tomar seu suco."
+  },
+  {
+    "text": "Lucas builds tall towers with his toy blocks. He stacks them carefully, one on top of another, and smiles when the tower stands strong.",
+    "password": "blocks",
+    "tip": "What toys does Lucas use to build towers?",
+    "translate": "Lucas constrói torres altas com seus blocos de brinquedo. Ele os empilha com cuidado, um sobre o outro, e sorri quando a torre fica firme."
+  },
+  {
+    "text": "Chloe listens to music while doing her homework. She puts on her headphones and plays soft piano tunes. The music helps her concentrate.",
+    "password": "music",
+    "tip": "What does Chloe listen to while studying?",
+    "translate": "Chloe ouve música enquanto faz a lição de casa. Ela coloca os fones de ouvido e toca músicas suaves de piano. A música a ajuda a se concentrar."
+  },
+
+  {
+    "text": "Aiden has a garden in his backyard. He grows tomatoes, carrots, and lettuce. Every day, he waters the plants and checks their growth.",
+    "password": "garden",
+    "tip": "Where does Aiden grow tomatoes, carrots, and lettuce?",
+    "translate": "Aiden tem um jardim no quintal. Ele cultiva tomates, cenouras e alface. Todos os dias, ele rega as plantas e verifica o crescimento delas."
+  },
+  {
+    "text": "Olivia loves to bake cookies. She mixes flour, sugar, and chocolate chips. After baking, she enjoys sharing the cookies with her friends and family.",
+    "password": "cookies",
+    "tip": "What does Olivia bake and share with others?",
+    "translate": "Olivia adora assar biscoitos. Ela mistura farinha, açúcar e gotas de chocolate. Depois de assar, ela gosta de compartilhar os biscoitos com seus amigos e família."
+  },
+  {
+    "text": "Noah plays soccer every weekend. He practices dribbling and shooting goals. His favorite team is Barcelona, and he watches their matches on TV.",
+    "password": "soccer",
+    "tip": "What sport does Noah play every weekend?",
+    "translate": "Noah joga futebol todo fim de semana. Ele pratica dribles e chutes a gol. Seu time favorito é o Barcelona, e ele assiste aos jogos deles na TV."
+  },
+  {
+    "text": "Sophia collects stamps from different countries. She has a special album where she organizes them by country and year. Her favorite stamp is from Italy.",
+    "password": "stamps",
+    "tip": "What does Sophia collect and organize in an album?",
+    "translate": "Sophia coleciona selos de diferentes países. Ela tem um álbum especial onde os organiza por país e ano. Seu selo favorito é da Itália."
+  },
+  {
+    "text": "Ethan loves to watch movies on the weekend. He enjoys action films and comedies. He always makes popcorn to enjoy while watching the movie.",
+    "password": "movies",
+    "tip": "What does Ethan enjoy watching on the weekend?",
+    "translate": "Ethan adora assistir filmes no fim de semana. Ele gosta de filmes de ação e comédias. Ele sempre faz pipoca para saborear enquanto assiste ao filme."
+  },
+
+  {
+    "text": "Lily has a collection of postcards from all over the world. She loves to receive postcards from her friends when they travel. Her favorite postcard is from Paris.",
+    "password": "postcards",
+    "tip": "What does Lily collect from all over the world?",
+    "translate": "Lily tem uma coleção de cartões postais de todo o mundo. Ela adora receber cartões postais de seus amigos quando viajam. Seu cartão postal favorito é de Paris."
+  },
+  {
+    "text": "Evan likes to go fishing on weekends. He wakes up early, takes his fishing rod, and goes to the lake. He hopes to catch a big fish every time.",
+    "password": "fishing",
+    "tip": "What does Evan like to do on weekends, involving a rod and a lake?",
+    "translate": "Evan gosta de pescar nos fins de semana. Ele acorda cedo, pega sua vara de pescar e vai ao lago. Ele espera pegar um peixe grande toda vez."
+  },
+  {
+    "text": "Zoe loves animals, especially cats. She has two cats at home, named Milo and Bella. She takes care of them and makes sure they have enough food and water.",
+    "password": "cats",
+    "tip": "What animals does Zoe love, and has two of them at home?",
+    "translate": "Zoe adora animais, especialmente gatos. Ela tem dois gatos em casa, chamados Milo e Bella. Ela cuida deles e garante que tenham comida e água suficientes."
+  },
+  {
+    "text": "Benjamin enjoys reading books about history. He likes to learn about ancient civilizations and important historical events. His favorite book is about ancient Egypt.",
+    "password": "history",
+    "tip": "What type of books does Benjamin enjoy reading, about the past?",
+    "translate": "Benjamin gosta de ler livros sobre história. Ele gosta de aprender sobre civilizações antigas e eventos históricos importantes. Seu livro favorito é sobre o antigo Egito."
+  },
+  {
+    "text": "Mia likes to paint in her free time. She paints landscapes, flowers, and sometimes animals. Her paintings are colorful and bright, and she often exhibits them in art shows.",
+    "password": "paintings",
+    "tip": "What does Mia create in her free time that are colorful and bright?",
+    "translate": "Mia gosta de pintar no seu tempo livre. Ela pinta paisagens, flores e às vezes animais. Suas pinturas são coloridas e brilhantes, e ela frequentemente as exibe em exposições de arte."
+  },
+  {
+    "text": "Ava enjoys gardening in her backyard. She plants flowers, vegetables, and herbs. Her favorite flower is the sunflower, and she loves to watch them grow.",
+    "password": "gardening",
+    "tip": "What hobby does Ava enjoy in her backyard, involving plants and flowers?",
+    "translate": "Ava gosta de jardinagem no seu quintal. Ela planta flores, vegetais e ervas. Sua flor favorita é o girassol, e ela adora ver elas crescerem."
+  },
+  {
+    "text": "Jackson plays the guitar in his free time. He practices new songs and enjoys playing with his friends. He dreams of becoming a famous musician one day.",
+    "password": "guitar",
+    "tip": "What instrument does Jackson play in his free time?",
+    "translate": "Jackson toca guitarra no seu tempo livre. Ele pratica novas músicas e gosta de tocar com seus amigos. Ele sonha em se tornar um músico famoso algum dia."
+  },
+  {
+    "text": "Isabella likes to take long walks in the park. She enjoys the fresh air and watching the birds. Sometimes, she brings her dog along to play.",
+    "password": "walks",
+    "tip": "What activity does Isabella enjoy doing in the park, involving fresh air and her dog?",
+    "translate": "Isabella gosta de dar longas caminhadas no parque. Ela aprecia o ar fresco e observa os pássaros. Às vezes, ela leva seu cachorro para brincar."
+  },
+  {
+    "text": "Leo likes to play video games with his friends after school. He enjoys adventure games and racing games the most. He often competes against his friends online.",
+    "password": "video games",
+    "tip": "What does Leo enjoy playing after school, often with his friends?",
+    "translate": "Leo gosta de jogar videogame com seus amigos depois da escola. Ele mais gosta de jogos de aventura e de corrida. Ele frequentemente compete contra seus amigos online."
+  },
+  {
+    "text": "Chloe loves baking cakes. She experiments with different flavors and decorations. Her friends love to taste her cakes at the birthday parties she organizes.",
+    "password": "cakes",
+    "tip": "What does Chloe love to bake, especially for birthday parties?",
+    "translate": "Chloe adora assar bolos. Ela experimenta diferentes sabores e decorações. Seus amigos adoram provar seus bolos nas festas de aniversário que ela organiza."
+  },
+  {
+    "text": "Olivia enjoys hiking in the mountains on weekends. She loves the challenge of climbing steep trails and reaching the top. The view from the summit is always worth the effort.",
+    "password": "hiking",
+    "tip": "What activity does Olivia enjoy doing in the mountains, involving climbing and trails?",
+    "translate": "Olivia gosta de fazer trilhas nas montanhas aos fins de semana. Ela adora o desafio de subir trilhas íngremes e chegar ao topo. A vista do cume sempre vale o esforço."
+  },
+  {
+    "text": "Ethan loves to watch movies in the evening. He enjoys action films and comedies the most. His favorite movie is about a superhero who saves the world.",
+    "password": "movies",
+    "tip": "What does Ethan love to watch in the evening, especially action films?",
+    "translate": "Ethan adora assistir filmes à noite. Ele mais gosta de filmes de ação e comédias. Seu filme favorito é sobre um super-herói que salva o mundo."
+  },
+  {
+    "text": "Liam loves to cook for his family. He often makes pasta, salads, and soups. His family loves his cooking, and they always ask for seconds.",
+    "password": "cooking",
+    "tip": "What does Liam enjoy doing for his family, especially making pasta and soups?",
+    "translate": "Liam adora cozinhar para sua família. Ele frequentemente faz massas, saladas e sopas. Sua família adora sua comida, e eles sempre pedem mais."
+  },
+  {
+    "text": "Sophia loves photography. She carries her camera everywhere and takes pictures of landscapes, people, and animals. She dreams of becoming a professional photographer.",
+    "password": "photography",
+    "tip": "What hobby does Sophia enjoy that involves taking pictures of landscapes and animals?",
+    "translate": "Sophia adora fotografia. Ela leva sua câmera para todo lugar e tira fotos de paisagens, pessoas e animais. Ela sonha em se tornar uma fotógrafa profissional."
+  },
+  {
+    "text": "Mason enjoys playing basketball with his friends at the park. He practices shooting hoops and improving his dribbling skills. His dream is to play on a professional team one day.",
+    "password": "basketball",
+    "tip": "What sport does Mason enjoy playing with his friends at the park, involving shooting hoops?",
+    "translate": "Mason gosta de jogar basquete com seus amigos no parque. Ele pratica arremessar a bola e melhorar suas habilidades de drible. Seu sonho é jogar em uma equipe profissional algum dia."
+  },
+  {
+    "text": "Aiden enjoys fishing at the lake on weekends. He brings his fishing rod, some bait, and a book to relax. He loves the quiet and peaceful atmosphere.",
+    "password": "fishing",
+    "tip": "What activity does Aiden enjoy at the lake, involving a rod and bait?",
+    "translate": "Aiden gosta de pescar no lago aos fins de semana. Ele leva sua vara de pescar, algumas iscas e um livro para relaxar. Ele adora a atmosfera tranquila e pacífica."
+  },
+  {
+    "text": "Grace enjoys painting in her studio. She uses oil paints to create beautiful landscapes and portraits. Her favorite subject is nature, especially trees and mountains.",
+    "password": "painting",
+    "tip": "What hobby does Grace enjoy in her studio, involving oil paints and landscapes?",
+    "translate": "Grace gosta de pintar em seu estúdio. Ela usa tintas a óleo para criar lindas paisagens e retratos. Seu assunto favorito é a natureza, especialmente árvores e montanhas."
+  },
+  {
+    "text": "Noah loves to read adventure books. He enjoys stories about explorers, treasure hunts, and faraway lands. His favorite book is about a pirate searching for treasure.",
+    "password": "books",
+    "tip": "What does Noah love to read, especially stories about pirates and treasure hunts?",
+    "translate": "Noah adora ler livros de aventura. Ele gosta de histórias sobre exploradores, caças ao tesouro e terras distantes. Seu livro favorito é sobre um pirata à procura de um tesouro."
+  },
+  {
+    "text": "Amelia likes to take care of her plants. She waters them every day and makes sure they get enough sunlight. Her favorite plant is a small cactus she has on her windowsill.",
+    "password": "plants",
+    "tip": "What does Amelia take care of every day, involving watering and sunlight?",
+    "translate": "Amelia gosta de cuidar das suas plantas. Ela as rega todos os dias e se certifica de que elas recebam luz solar suficiente. Sua planta favorita é um pequeno cacto que ela tem na janela."
+  },
+  {
+    "text": "Benjamin enjoys cycling around the city. He likes to explore new neighborhoods and parks on his bike. He often rides with his friends on the weekends.",
+    "password": "cycling",
+    "tip": "What activity does Benjamin enjoy in the city, involving riding a bike and exploring?",
+    "translate": "Benjamin gosta de andar de bicicleta pela cidade. Ele gosta de explorar novos bairros e parques com sua bicicleta. Ele frequentemente anda com seus amigos nos fins de semana."
+  },
+  {
+    "text": "Charlotte loves to bake cookies in the kitchen. She uses flour, sugar, and chocolate chips to make her favorite treats. Her family loves when she bakes, especially the chocolate chip cookies.",
+    "password": "cookies",
+    "tip": "What does Charlotte bake in the kitchen, using chocolate chips?",
+    "translate": "Charlotte adora assar biscoitos na cozinha. Ela usa farinha, açúcar e gotas de chocolate para fazer suas guloseimas favoritas. Sua família adora quando ela assa, especialmente os biscoitos de gotas de chocolate."
+  },
+  {
+    "text": "Oliver enjoys playing the guitar in his free time. He practices playing his favorite songs and dreams of performing in front of an audience one day. His guitar is a gift from his uncle.",
+    "password": "guitar",
+    "tip": "What instrument does Oliver play in his free time, especially his favorite songs?",
+    "translate": "Oliver gosta de tocar guitarra no seu tempo livre. Ele pratica tocar suas músicas favoritas e sonha em se apresentar para uma plateia algum dia. Sua guitarra é um presente de seu tio."
+  },
+  {
+    "text": "Lily loves visiting the beach during the summer. She enjoys the sound of the waves, building sandcastles, and swimming in the ocean. Her favorite part is watching the sunset over the water.",
+    "password": "beach",
+    "tip": "Where does Lily love to visit in the summer, especially for swimming and sandcastles?",
+    "translate": "Lily adora visitar a praia durante o verão. Ela gosta do som das ondas, construir castelos de areia e nadar no oceano. Sua parte favorita é assistir ao pôr do sol sobre o mar."
+  },
+  {
+    "text": "Jack enjoys playing soccer with his friends after school. He practices his dribbling and shooting skills. His dream is to play for his local soccer team in the future.",
+    "password": "soccer",
+    "tip": "What sport does Jack enjoy playing with his friends, involving dribbling and shooting?",
+    "translate": "Jack gosta de jogar futebol com seus amigos depois da escola. Ele pratica suas habilidades de drible e chute. Seu sonho é jogar pelo time local de futebol no futuro."
+  },
+  {
+    "text": "Emma enjoys gardening in her backyard. She plants flowers, vegetables, and herbs. Her favorite part is seeing the plants grow and bloom over time.",
+    "password": "gardening",
+    "tip": "What hobby does Emma enjoy in her backyard, involving planting flowers and vegetables?",
+    "translate": "Emma gosta de jardinagem no seu quintal. Ela planta flores, vegetais e ervas. Sua parte favorita é ver as plantas crescerem e florescerem com o tempo."
+  },
+  {
+    "text": "Henry likes to go hiking in the mountains with his friends. He enjoys the fresh air, beautiful views, and the challenge of climbing steep paths. He always takes a camera to capture the scenery.",
+    "password": "hiking",
+    "tip": "What activity does Henry enjoy in the mountains, especially involving climbing and fresh air?",
+    "translate": "Henry gosta de fazer trilhas nas montanhas com seus amigos. Ele gosta do ar fresco, das belas vistas e do desafio de subir trilhas íngremes. Ele sempre leva uma câmera para capturar a paisagem."
+  },
+  {
+    "text": "Sarah loves to watch movies at the cinema. She enjoys all types of films, from action to drama. Her favorite part is eating popcorn during the movie.",
+    "password": "movies",
+    "tip": "What does Sarah enjoy watching at the cinema, especially with popcorn?",
+    "translate": "Sarah adora assistir filmes no cinema. Ela gosta de todos os tipos de filmes, de ação a drama. Sua parte favorita é comer pipoca durante o filme."
+  },
+  {
+    "text": "James enjoys playing chess with his grandfather. They play every Sunday afternoon. James loves the strategy of the game and the challenge of thinking ahead.",
+    "password": "chess",
+    "tip": "What game does James play with his grandfather every Sunday, involving strategy and thinking ahead?",
+    "translate": "James gosta de jogar xadrez com seu avô. Eles jogam todo domingo à tarde. James adora a estratégia do jogo e o desafio de pensar à frente."
+  },
+  {
+    "text": "Mia enjoys cooking new recipes in her kitchen. She loves experimenting with different ingredients to create unique dishes. Her specialty is making Italian pasta.",
+    "password": "cooking",
+    "tip": "What hobby does Mia enjoy in her kitchen, especially involving new recipes and ingredients?",
+    "translate": "Mia gosta de cozinhar novas receitas na sua cozinha. Ela adora experimentar com diferentes ingredientes para criar pratos únicos. Sua especialidade é fazer massa italiana."
+  },
+  {
+    "text": "Lucas spends his afternoons painting pictures of animals. He loves using different colors and brushes to make his art look lifelike. His favorite animal to paint is the tiger.",
+    "password": "painting",
+    "tip": "What activity does Lucas enjoy in the afternoons, especially involving animals and colors?",
+    "translate": "Lucas passa suas tardes pintando imagens de animais. Ele adora usar diferentes cores e pincéis para fazer sua arte parecer realista. Seu animal favorito para pintar é o tigre."
+  }
+
+
+
+]

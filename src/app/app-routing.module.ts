@@ -27,6 +27,8 @@ import {RankingComponent} from "./components/ranking/ranking.component";
 import {SkillsComponent} from "./components/skills/skills.component";
 import {BabelTowerComponent} from "./components/babel-tower/babel-tower.component";
 import {WritingComponent} from "./components/writing/writing.component";
+import {ReadingComponent} from "./components/reading/reading.component";
+import {ListeningComponent} from "./components/listening/listening.component";
 
 
 const routes: Routes = [
@@ -59,6 +61,8 @@ const routes: Routes = [
 
   { path: "skills", component: SkillsComponent  },
   { path: "writing", component: WritingComponent  },
+  { path: "reading", component: ReadingComponent },
+  { path: "listening", component: ListeningComponent },
 
  // { path: "listening_exercise1", component: ZExerciseListening1Component  },
 

@@ -49,7 +49,13 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   ]
 })
 export class BabelTowerComponent  implements OnInit {
-
+  cena: number = 1;
+  userDifficulty: string = '';
+  staticSceneSrc: string = '';
+  video1Src: string = '';
+  video2Src: string = '';
+  video3Src: string = '';
+  video4Src: string = '';
 
   constructor(private playSound: PlaySoundService,
               private router: Router,
@@ -61,10 +67,12 @@ export class BabelTowerComponent  implements OnInit {
       this.mudarCena(1)
       this.playSound.playTowerSoundTrack()
     }, 50);
+
+
   }
 
-  cena: number = 1; // Cena atual
-  mostrarImagem: boolean = false; // Controla a exibição da imagem
+
+
 
   // Função para mudar de cena
   mudarCena(novaCena: number) {
@@ -91,24 +99,99 @@ export class BabelTowerComponent  implements OnInit {
 
 
   ngOnInit() {
+
+    this.auth.user$.subscribe(userData => {
+      if (!userData) return;
+
+      this.userDifficulty = userData.difficulty;
+      this.setTowerSceneSources();
+    });
+
+
     setTimeout(() => {
       this.mudarCena(1)
     }, 50);
 
     // Se inscreve no observable para atualizar automaticamente
     this.torreSubscription = this.trilhaService.torre$.subscribe((torre) => {
-      // Atualize as variáveis com os dados da torre
+
       this.andarAtual = torre.andar_atual;
       this.andar_inicial_conjunto = torre.andar_inicial_conjunto;
       this.andar_final_conjunto = torre.andar_final_conjunto;
       this.exercise1 = torre.exercise1;
       this.exercise2 = torre.exercise2;
 
-
+      this.auth.checkAndUpdateRanking(this.andarAtual);
 
     });
 
   }
+
+
+  setTowerSceneSources(): void {
+    switch (this.userDifficulty) {
+      case 'easy':
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_out_tower/torre_ground.png';
+        this.video1Src = 'assets/lingobot/cenas_on_out_tower/waiting_animation_tower.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_out_tower/entrando-na-torre.mp4';
+        this.video3Src = 'assets/lingobot/cenas_on_out_tower/teletransporte.mp4';
+        this.video4Src = 'assets/lingobot/cenas_on_out_tower/teletransporte_back.mp4';
+        break;
+
+      case 'medium':
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_out_tower/medium-static.png';
+        this.video1Src = 'assets/lingobot/cenas_on_out_tower/medium/waiting_animation_tower.mp4'; // não tem
+        this.video2Src = 'assets/lingobot/cenas_on_out_tower/medium-scene-2.mp4'; // temos
+        this.video3Src = 'assets/lingobot/cenas_on_out_tower/medium/teletransporte.mp4'; //nao tem
+        this.video4Src = 'assets/lingobot/cenas_on_out_tower/medium/teletransporte_back.mp4'; // nao tem
+        break;
+
+      case 'hard':
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_out_tower/hard-static.png';
+        this.video1Src = 'assets/lingobot/cenas_on_out_tower/hard/waiting_animation_tower.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_out_tower/hard-scene.mp4';
+        this.video3Src = 'assets/lingobot/cenas_on_out_tower/hard/teletransporte.mp4';
+        this.video4Src = 'assets/lingobot/cenas_on_out_tower/hard/teletransporte_back.mp4';
+        break;
+
+      case 'elder':
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_out_tower/elder-static.png';
+        this.video1Src = 'assets/lingobot/cenas_on_out_tower/elder/waiting_animation_tower.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_out_tower/elder-scene.mp4';
+        this.video3Src = 'assets/lingobot/cenas_on_out_tower/elder/teletransporte.mp4';
+        this.video4Src = 'assets/lingobot/cenas_on_out_tower/elder/teletransporte_back.mp4';
+        break;
+
+      default:
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_out_tower/torre_ground.png';
+        this.video1Src = 'assets/lingobot/cenas_on_out_tower/waiting_animation_tower.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_out_tower/entrando-na-torre.mp4';
+        this.video3Src = 'assets/lingobot/cenas_on_out_tower/teletransporte.mp4';
+        this.video4Src = 'assets/lingobot/cenas_on_out_tower/teletransporte_back.mp4';
+        break;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -230,86 +313,6 @@ export class BabelTowerComponent  implements OnInit {
 
 
 
-
-  onMouseEnter() {
-    this.playSound.playCleanSound();
-  }
-
-
-  appFeatures = [
-    {
-      title: 'Desvendar expressões, girías, contrações etc.',
-      details: 'Tire dúvidas con LingoBot sobre expressões em inglês que não tem tradução direta',
-      icon: 'assets/lingobot/lingobot-desafios.png'
-    },
-    {
-      title: 'Desafios do LingoBot',
-      details: 'Resolva desafios propostos pelo LingoBot e acumule LingoEXP',
-      icon: 'assets/lingobot/lingobot-livro-na-mao.png'
-    },
-    {
-      title: 'Estudar com Vídeos',
-      details: 'Estude com vídeos de canais recomendados e crie Flashcards e descubra expressões e significados.',
-      icon: 'assets/lingobot/lingobot-assistindo.png'
-    },
-    {
-      title: 'Meus Flashcards (Coming Soon)',
-      details: 'Crie e salve flashcards de novas expressões que você aprender',
-      icon: 'assets/lingobot/lingobot-flashcards.png'
-    },
-    {
-      title: 'Ranking (Coming Soon)',
-      details: 'Acumule LingoEXP e suba no Ranking Global',
-      icon: 'assets/lingobot/lingobot-competindo.png'
-    },
-    {
-      title: 'Check-In Diário',
-      details: 'Visite o LingoBot diáriamente e ganhe LXP e LingoTokens',
-      icon: 'assets/lingobot/lingobot-calendario.png'
-    }
-  ];
-
-  /**
-   *  Mais opções que deve ter
-   *  Configurações de conta
-   *  Assinatura - se é a versão free
-   */
-
-  tirarMoedas() {
-    //this.auth.decreseToken(1000)
-    this.auth.decreaseLocalUserData({ tokens: 1000 });
-    this.auth.checkTokens()
-
-  }
-
-  colocarMoedas() {
-    this.auth.updateLocalUserData({ tokens: 1000 });
-  }
-
-  goto_step3() {
-    this.router.navigate(['/step3']);
-  }
-
-  goto_step4() {
-    this.router.navigate(['/step4']);
-  }
-
-  goto() {
-    this.router.navigate(['/skills']);
-  }
-
-
-
-
-
-
-
-
-
-  // NEW
-
-
-
   showPedagioModal: boolean = false;
   closeModal() {
 
@@ -360,6 +363,9 @@ export class BabelTowerComponent  implements OnInit {
 
     // Lógica para cada comando
     if (cmd === 'up') {
+      this.auth.checkAndUpdateRanking(this.andarAtual);
+
+
       if (this.andarAtual == this.andar_final_conjunto) {
 
         this.showPedagioModal = true;
@@ -369,23 +375,47 @@ export class BabelTowerComponent  implements OnInit {
         this.mudarCena(3);
 
 
-        setTimeout(() => {
-          // Animação de nuvens
-          this.startAnimation();
-        }, 3000);
+        if (this.userDifficulty == "easy"){
+          setTimeout(() => {
+            // Animação de nuvens
+            this.startAnimation();
+          }, 3000);
 
 
-        setTimeout(() => {
-          this.mudarCena(4);
-        }, 5000);
+          setTimeout(() => {
+            this.mudarCena(4);
+          }, 5000);
 
 
-        setTimeout(() => {
-          // Atualiza os dados da torre e volta para a cena inicial
-          this.trilhaService.updateTorreData({ andar_atual: 1 });
-          this.mudarCena(1);
-          this.blockAction = false; // Libera após concluir
-        }, 9000);
+          setTimeout(() => {
+            // Atualiza os dados da torre e volta para a cena inicial
+            this.trilhaService.updateTorreData({ andar_atual: 1 });
+            this.mudarCena(1);
+            this.blockAction = false; // Libera após concluir
+          }, 9000);
+        }else{
+
+            // Animação de nuvens
+            this.startAnimation();
+
+
+          setTimeout(() => {
+            // Atualiza os dados da torre e volta para a cena inicial
+            this.trilhaService.updateTorreData({ andar_atual: 1 });
+            this.mudarCena(1);
+            this.blockAction = false; // Libera após concluir
+          }, 4000);
+
+
+        }
+
+
+
+
+
+
+
+
       }
     } else if (cmd === 'in') {
       // Animação para entrar na missão
@@ -430,26 +460,51 @@ export class BabelTowerComponent  implements OnInit {
         this.mudarCena(3);
 
 
-        setTimeout(() => {
+
+        if (this.userDifficulty == "easy"){
+          setTimeout(() => {
+            // Animação de nuvens
+            this.startAnimation();
+          }, 3000);
+
+
+          setTimeout(() => {
+            this.mudarCena(4);
+          }, 5000);
+
+          setTimeout(() => {
+            // Atualiza os dados da torre e muda para a cena de descida
+            this.trilhaService.updateTorreData({ andar_atual: -1 });
+            this.mudarCena(1);
+            this.blockAction = false; // Libera após concluir
+          }, 9000);
+        }else{
+
+
           // Animação de nuvens
           this.startAnimation();
-        }, 3000);
 
 
-        setTimeout(() => {
-          this.mudarCena(4);
-        }, 5000);
+          setTimeout(() => {
+            // Atualiza os dados da torre e volta para a cena inicial
+            this.trilhaService.updateTorreData({ andar_atual: -1 });
+            this.mudarCena(1);
+            this.blockAction = false; // Libera após concluir
+          }, 4000);
 
-        setTimeout(() => {
-          // Atualiza os dados da torre e muda para a cena de descida
-          this.trilhaService.updateTorreData({ andar_atual: -1 });
-          this.mudarCena(1);
-          this.blockAction = false; // Libera após concluir
-        }, 9000);
+
+        }
+
+
+
+
+
+
+
 
 
       } else {
-        alert("Não pode descer abaixo de 1");
+        alert("Não é possível descer abaixo do primeiro andar.");
         this.blockAction = false; // Libera após exibir o alerta
       }
     }

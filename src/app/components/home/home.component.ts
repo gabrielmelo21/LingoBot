@@ -53,6 +53,16 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 })
 export class HomeComponent implements OnInit {
 
+  user: any;
+  userDifficulty: any;
+
+  // Variáveis para os caminhos dos arquivos
+  staticSceneSrc: string = '';
+  video1Src: string = '';
+  video2Src: string = '';
+
+
+
 
   constructor(private playSound: PlaySoundService,
               private router: Router,
@@ -63,6 +73,8 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
         this.mudarCena(1)
     }, 50);
+
+
   }
 
   cena: number = 1; // Cena atual
@@ -83,7 +95,62 @@ export class HomeComponent implements OnInit {
 
 
 
+
+
+      this.auth.user$.subscribe(userData => {
+        if (!userData) return;
+        this.user = userData;
+        this.userDifficulty = userData.difficulty;
+        this.setSceneSources();
+      });
+
+
+
   }
+
+
+
+
+  setSceneSources(): void {
+    switch (this.userDifficulty) {
+      case 'easy':
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_city/default-cena.png';
+        this.video1Src = 'assets/lingobot/cenas_on_city/city-waiting-animation.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_city/animation-going-to-tower.mp4';
+        break;
+
+      case 'medium':
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_city/medium-static.png';
+        this.video1Src = 'assets/lingobot/cenas_on_city/medium-scene-1.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_city/medium-scene-2.mp4';
+        break;
+
+      case 'hard':
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_city/hard-static.png';
+        this.video1Src = 'assets/lingobot/cenas_on_city/hard-scene-1.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_city/hard-scene-2.mp4';
+        break;
+
+      case 'elder':
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_city/elder-static.png';
+        this.video1Src = 'assets/lingobot/cenas_on_city/elder-scene-1.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_city/elder-scene-2.mp4';
+        break;
+
+      default:
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_city/default-cena.png';
+        this.video1Src = 'assets/lingobot/cenas_on_city/city-waiting-animation.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_city/animation-going-to-tower.mp4';
+    }
+
+
+  }
+
+
+
+
+
+
 
 
 

@@ -1,1 +1,408 @@
-<p>reading works!</p>
+<video *ngIf="cena == 2" autoplay  class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/open_chest.mp4" type="video/mp4">
+</video>
+
+<img
+  class="character-img"
+  [class.glow-effect]="glowActive"
+  [src]="elder"
+  *ngIf="!readingScroll"
+  (click)="askTip()"
+>
+
+
+<div class="baloon-container" *ngIf="this.dialog !== 6" >
+  <div class="dialog-baloon">
+    <p *ngIf="dialog == 0">Olá, aventureiro. Eu sou o Ancião da Leitura. Ainda bem que chegou, preciso de sua Ajuda.</p>
+    <p *ngIf="dialog == 1">Em minha sala, tenho baús misteriosos, que para serem abertos é necessário <b>desvendar seu segredo.</b></p>
+    <p *ngIf="dialog == 3">Para abrir esse baú é necessário ler o texto desse <b>Pergaminho</b> e descobrir a palavra-passe, que está nesse texto</p>
+    <p *ngIf="dialog == 4">O texto está em inglês então você precisa estuda-lo, toque nas palavras e será mostrado a tradução.</p>
+    <p *ngIf="dialog == 5">A resposta é apenas uma palavra em inglês, descubra ela e ganhe <b style="color: goldenrod"> {{ this.finalGoldReward }} Gold Coins</b> & <b style="color: blueviolet">{{ this.finalXpReward }} LXP</b></p>
+
+    <p *ngIf="dialog == 10">Parabéns! você descobriu o segredo do báu, e você recebeu <b style="color: goldenrod"> {{ this.finalGoldReward }} Gold Coins</b> & <b style="color: blueviolet">{{ this.finalXpReward }} LXP</b> </p>
+
+    <p *ngIf="dialog == 15">Aqui vai uma dica é: "{{ this.currentTip }}" </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- Cenario -->
+<!-- Imagem estática -->
+<img  *ngIf="cena == 1" src="assets/lingobot/cenas_na_masmorra/chest_with_padlock.jpg" class="background-image">
+
+<img *ngIf="cena === 1"
+     src="assets/lingobot/cenas_na_masmorra/padlock.png"
+     class="padlock"
+     [ngClass]="{ 'shake-animation': isShaking }">
+
+<img *ngIf="cena === 1 && dialog == 6"
+     src="assets/lingobot/cenas_na_masmorra/pergaminho.png"  class="pergaminho floating" (click)="mudarCena(3)" >
+
+
+<img  *ngIf="cena == 3" src="assets/lingobot/cenas_powers/elders-page2.jpg" class="background-image">
+
+
+<div *ngIf="cena == 3" style="font-weight:bold;position: absolute;width: 60%;top: 20vh;left: 10vh;z-index: 10;font-size: 15pt;height: 300px;overflow: auto">
+  <div *ngFor="let pair of sentencePairs; let i = index">
+    <p (click)="toggleTranslation(i)" style="cursor: pointer;">
+      {{ pair.en }}
+    </p>
+    <p *ngIf="pair.show" style="color: gray; margin-left: 10px;">
+      {{ pair.pt }}
+    </p>
+  </div>
+
+</div>
+
+
+
+<div class="background-commands">
+
+  <h3 class="actions-title"  >Sua Resposta:</h3>
+<!--
+   <button (click)="mudarCena(1);">mudar cena</button>
+  <button (click)="shakePadlock()">Tremer cadeado</button>
+  <button (click)="mudarCena(3)">Texto</button>
+-->
+
+
+  <div class="fundo"  *ngIf="dialog == 0" >
+    <ol class="respostas">
+      <li (click)="chooseOption(1);" >Em que posso ajuda-lo? </li>
+      <li (click)="chooseOption(6);" >Pular diálogo</li>
+      <li (click)="chooseOption(2);">Foi um engano, estou indo embora.</li>
+    </ol>
+  </div>
+
+  <div class="fundo"  *ngIf="dialog == 1" >
+    <ol class="respostas">
+      <li (click)="chooseOption(3);" >Interessante, e como posso desvendar esse mistério?</li>
+    </ol>
+  </div>
+
+  <div class="fundo"  *ngIf="dialog == 3" >
+    <ol class="respostas">
+      <li (click)="chooseOption(4);" >Ler o Pergaminho e descobrir a palavra passe, certo...</li>
+    </ol>
+  </div>
+
+
+  <div class="fundo"  *ngIf="dialog == 4" >
+    <ol class="respostas">
+      <li (click)="chooseOption(5);" >Muito bem, isso vai ser útil</li>
+    </ol>
+  </div>
+
+  <div class="fundo"  *ngIf="dialog == 5" >
+    <ol class="respostas">
+      <li (click)="chooseOption(6);" >Ok, então vamos lá, I'm Ready!</li>
+    </ol>
+  </div>
+
+  <div class="fundo"  *ngIf="dialog == 10" >
+    <ol class="respostas">
+      <li (click)="chooseOption(10);" >Sair</li>
+    </ol>
+  </div>
+
+  <div class="fundo"  *ngIf="dialog == 15" >
+    <ol class="respostas">
+      <li (click)="chooseOption(6);" >Fechar Dica</li>
+    </ol>
+  </div>
+
+
+
+  <div  *ngIf="dialog == 6 && !readingScroll" >
+    <form class="commands-group">
+      <textarea #textoInput class="command-textarea" placeholder="Digite a palavra passe aqui..."></textarea>
+      <button (click)="enviarResposta(textoInput.value)" mat-flat-button class="game-button">
+        <img src="assets/lingobot/icons/pencil-icon.png" alt="Perguntar" class="menu-icon">
+      </button>
+    </form>
+  </div>
+
+  <div class="fundo"  *ngIf="readingScroll" >
+    <ol class="respostas">
+      <li (click)="mudarCena(1);" >Fechar Pergaminho</li>
+    </ol>
+  </div>
+
+
+
+</div> <!-- background commands -->
+
+
+
+<style>
+  /** Celular pequeno **/
+  @media (max-height: 700px) {
+
+
+    .padlock{
+      position:absolute;
+      height: auto;
+      width: 37% !important;
+      top: 37vh !important;
+      right: 17vh !important;
+      z-index: 10
+    }
+
+  }
+
+  .padlock{
+    position:absolute;
+    height: auto;
+    width: 34%;
+    top: 31vh;
+    right: 15vh;
+    z-index: 10
+  }
+
+  .pergaminho{
+    position:absolute;
+    height: auto;
+    width: 34%;
+    top: 55vh;
+    left: 5vh;
+    z-index: 10
+  }
+
+  /* No seu styles.css global ou no componente */
+  @keyframes shake {
+    0% { transform: translate(0); }
+    20% { transform: translate(-5px); }
+    40% { transform: translate(5px); }
+    60% { transform: translate(-5px); }
+    80% { transform: translate(5px); }
+    100% { transform: translate(0); }
+  }
+
+  .shake-animation {
+    animation: shake 0.5s;
+  }
+
+  @keyframes floating {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .floating {
+    animation: floating 2s ease-in-out infinite;
+  }
+
+
+
+  .menu-icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .menu-icon:hover {
+    transform: scale(1.1);
+  }
+
+
+
+  .character-img {
+    width: 80%;
+    height: auto;
+    z-index: 10;
+    position: absolute;
+    bottom: 25vh;
+    right: -15vh;
+    transition: filter 0.3s ease;
+  }
+
+  /* Glow pulsando */
+  .glow-effect {
+    animation: neonPulse 1.2s infinite alternate;
+  }
+
+  /* Definindo o neon pulsante */
+  @keyframes neonPulse {
+    0% {
+      filter: drop-shadow(0 0 5px gold) drop-shadow(0 0 10px gold) drop-shadow(0 0 20px gold);
+    }
+    100% {
+      filter: drop-shadow(0 0 15px gold) drop-shadow(0 0 30px gold) drop-shadow(0 0 45px gold);
+    }
+  }
+
+  .fundo {
+    position: relative;
+    width: 120%;
+    height: 100%; /* ou altura da imagem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .respostas {
+    position: absolute;
+    top: 25%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    list-style-position: inside;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.1rem;
+    color: #664400; /* ou branco, dependendo da imagem */
+  }
+  .respostas li{
+    margin-top: 1px !important;
+    padding-top: 10px !important;
+  }
+
+
+
+
+
+  .background-commands{
+    position: absolute !important;
+    bottom: 0 !important;
+    display:inline-block;
+    background-image: url('assets/lingobot/home/testar_pergaminho.jpg');
+    height: 25vh  ;
+    background-size: cover;
+    background-position: top;
+    z-index: 5 !important;
+
+  }
+
+  .background-image{
+    background-image: url('assets/lingobot/cenas_na_masmorra/reading_room.jpg');
+  }
+
+
+
+
+
+
+  .baloon-container {
+    position: absolute;
+    top: 11vh; /* Ajuste conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px; /* Ou o tamanho que preferir */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 15;
+  }
+
+  .dialog-baloon {
+    background-image: url('assets/lingobot/cenas_na_masmorra/balao_right.png');
+    background-size: 100% 100%; /* Para cobrir todo o balão */
+    background-repeat: no-repeat;
+    padding: 30px 40px; /* Ajuste conforme o design do seu balão */
+    min-width: 300px;
+    max-width: 600px;
+    min-height: 150px;
+    margin-bottom: -20px; /* Sobrepor um pouco com a imagem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .dialog-baloon p {
+    font-size: 20px; /* Tamanho grande para o texto */
+    color: #000; /* Cor do texto */
+    text-align: center;
+    margin: 0;
+    padding: 10px 20px;
+    font-weight: bold;
+    line-height: 1.4;
+  }
+
+  .command-textarea {
+    text-align: center;
+    flex: 1;
+    resize: none;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    min-height: 40px;
+    margin-right: 10px;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+  }
+
+
+
+
+  .game-button {
+    height: 47px !important;
+    margin-top: 0px !important;
+    padding: 15px;
+    font-size: 12pt  ;
+    color: white  ;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    background: linear-gradient(145deg, #007bff, #6f42c1);
+    box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease-in-out;
+  }
+
+  .game-button:active {
+    box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .game-button:hover {
+    background: linear-gradient(145deg, #1e90ff, #8a2be2);
+
+  }
+
+  .game-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.1)
+    );
+    transition: left 0.5s ease-in-out;
+  }
+
+  .game-button:hover::before {
+    left: 100%;
+  }
+
+  .commands-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    border-radius: 12px;
+    padding: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    backdrop-filter: blur(16px); /* Efeito de vidro mais leve */
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Sombra bem sutil */
+  }
+</style>

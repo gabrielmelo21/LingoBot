@@ -1,0 +1,242 @@
+[
+  {
+    "text": "Catherine is an avid traveler who’s spent the last decade hopping between countries. Her favorite place? A remote village in the Swiss Alps, where the air is crisp, and the mountain views never fail to leave her in awe. She always says that no matter how many places she visits, nothing compares to the tranquility of those snow-capped peaks.",
+    "password": "Alps",
+    "tip": "Where does Catherine feel the most at peace, surrounded by snow-capped peaks?",
+    "translate": "Catherine é uma viajante ávida que passou a última década pulando de país em país. O lugar favorito dela? Uma aldeia remota nos Alpes suíços, onde o ar é fresco e as vistas das montanhas nunca deixam de deixá-la maravilhada. Ela sempre diz que, por mais lugares que visite, nada se compara à tranquilidade daquelas montanhas cobertas de neve."
+  },
+  {
+    "text": "Samuel enjoys reading obscure literature, often diving into forgotten novels from the early 20th century. He’s the type of person who gets lost in the pages of a book for hours, especially when it comes to works that aren't mainstream. His latest obsession? A long-lost novel by an author who only published one book and then disappeared from the literary scene.",
+    "password": "literature",
+    "tip": "What does Samuel spend hours immersing himself in, often with obscure and forgotten works?",
+    "translate": "Samuel gosta de ler literatura obscura, frequentemente mergulhando em romances esquecidos do início do século 20. Ele é o tipo de pessoa que se perde nas páginas de um livro por horas, especialmente quando se trata de obras que não são populares. Sua última obsessão? Um romance perdido de um autor que publicou apenas um livro e depois desapareceu da cena literária."
+  },
+  {
+    "text": "Vera has always had an affinity for vintage fashion. You’ll often catch her at flea markets, hunting for retro clothes that tell a story. Her wardrobe is a collection of pieces from different eras, each one carefully chosen for its unique style. She believes that fashion is more than just clothing; it’s an art form, and every outfit is a statement.",
+    "password": "fashion",
+    "tip": "What is Vera passionate about, often hunting for unique and vintage pieces at flea markets?",
+    "translate": "Vera sempre teve uma afinidade pela moda vintage. Você frequentemente a encontra em mercados de pulgas, caçando roupas retrô que contam uma história. Seu guarda-roupa é uma coleção de peças de diferentes épocas, cada uma cuidadosamente escolhida por seu estilo único. Ela acredita que a moda é mais do que apenas roupas; é uma forma de arte, e cada conjunto é uma declaração."
+  },
+  {
+    "text": "Elliot is a connoisseur of fine wines, with an uncanny ability to identify the subtle notes in a bottle. He can tell you the region, year, and sometimes even the vineyard just by tasting a glass. His friends often joke that he could make a career out of wine tasting, though he’s more interested in the experience of savoring a good bottle with friends on a warm summer evening.",
+    "password": "wine",
+    "tip": "What is Elliot passionate about, especially identifying subtle notes and enjoying it with friends?",
+    "translate": "Elliot é um conhecedor de vinhos finos, com uma habilidade incrível de identificar as notas sutis de uma garrafa. Ele pode te dizer a região, o ano, e às vezes até o vinhedo só de provar um copo. Seus amigos costumam brincar dizendo que ele poderia fazer carreira como degustador de vinhos, embora ele esteja mais interessado na experiência de saborear uma boa garrafa com amigos em uma noite quente de verão."
+  },
+  {
+    "text": "Martha has always been drawn to the arts, but not the mainstream ones. She’s fascinated by the forgotten art of calligraphy, often spending hours practicing with ink and quill. She believes that handwriting is an extension of the soul, and every letter should be crafted with care, as though writing is a sacred act.",
+    "password": "calligraphy",
+    "tip": "What ancient art form does Martha practice, believing it to be a sacred act?",
+    "translate": "Martha sempre foi atraída pelas artes, mas não pelas mais populares. Ela é fascinada pela arte esquecida da caligrafia, frequentemente passando horas praticando com tinta e pena. Ela acredita que a caligrafia é uma extensão da alma, e que cada letra deve ser criada com cuidado, como se escrever fosse um ato sagrado."
+  },
+  {
+    "text": "Adrian’s fascination with classic cinema knows no bounds. He’s the type of person who can recite entire monologues from films released decades ago, his voice echoing with the same gravitas as the original actors. His favorite director, Alfred Hitchcock, is a name he speaks with reverence, often analyzing scenes frame by frame to uncover hidden nuances only true cinephiles would appreciate.",
+    "password": "Hitchcock",
+    "tip": "Which famous director does Adrian hold in the highest regard, often analyzing his films in depth?",
+    "translate": "A fascinação de Adrian pelo cinema clássico não tem limites. Ele é o tipo de pessoa que pode recitar monólogos inteiros de filmes lançados há décadas, sua voz ecoando com a mesma gravidade dos atores originais. Seu diretor favorito, Alfred Hitchcock, é um nome que ele pronuncia com reverência, frequentemente analisando cenas quadro a quadro para descobrir nuances escondidas que apenas verdadeiros cinéfilos apreciariam."
+  },
+  {
+    "text": "Sophia’s evenings are reserved for quiet contemplation and classical music. She sits by the window, listening to Chopin’s nocturnes, her thoughts drifting like the delicate melody that fills the room. For her, there is no greater peace than the stillness of night, accompanied by the sound of a piano played softly in the background.",
+    "password": "Chopin",
+    "tip": "Which composer’s nocturnes does Sophia listen to as she contemplates the night?",
+    "translate": "As noites de Sophia são reservadas para contemplação tranquila e música clássica. Ela se senta perto da janela, ouvindo as noturnas de Chopin, seus pensamentos flutuando como a delicada melodia que preenche o ambiente. Para ela, não há maior paz do que a quietude da noite, acompanhada pelo som de um piano tocado suavemente ao fundo."
+  },
+  {
+    "text": "Julian is an aficionado of rare books, the kind that can be found only in obscure antique stores or auction houses. He’s been known to spend hours thumbing through the pages of a first edition, savoring the musty smell of aged paper and the weight of history in his hands. For Julian, there’s a certain thrill in owning a piece of literary history that few people even know exists.",
+    "password": "books",
+    "tip": "What rare items does Julian spend hours looking for, often in antique stores or auction houses?",
+    "translate": "Julian é um aficionado por livros raros, aqueles que podem ser encontrados apenas em obscurecidas lojas de antiguidades ou casas de leilões. Ele é conhecido por passar horas folheando as páginas de uma primeira edição, saboreando o cheiro mofado do papel envelhecido e o peso da história em suas mãos. Para Julian, há uma certa emoção em possuir um pedaço da história literária que poucas pessoas sequer sabem que existe."
+  },
+  {
+    "text": "Eleanor’s garden is her sanctuary. She tends to each plant with the care of a devoted gardener, her fingers moving delicately over petals and leaves. The garden is a blend of wildflowers, ancient roses, and fragrant herbs, a place where time seems to slow down, and the outside world fades away. Eleanor finds solace in the rhythm of planting and pruning, a simple yet profound connection to nature.",
+    "password": "garden",
+    "tip": "What is Eleanor’s sanctuary, where she finds peace in the rhythm of planting and pruning?",
+    "translate": "O jardim de Eleanor é seu santuário. Ela cuida de cada planta com a dedicação de uma jardineira apaixonada, seus dedos se movendo delicadamente sobre pétalas e folhas. O jardim é uma mistura de flores silvestres, rosas antigas e ervas aromáticas, um lugar onde o tempo parece desacelerar e o mundo exterior desaparece. Eleanor encontra consolo no ritmo de plantar e podar, uma conexão simples, porém profunda, com a natureza."
+  },
+  {
+    "text": "Oliver is a lover of the sea, spending his weekends sailing on the open water. The smell of salt in the air, the sound of the waves crashing against the hull, and the sensation of the boat cutting through the water bring him a sense of freedom that nothing else can match. For him, the sea is both a refuge and a challenge, a place where he can lose himself and find clarity at the same time.",
+    "password": "sea",
+    "tip": "What does Oliver love to do on weekends, often feeling a sense of freedom and clarity?",
+    "translate": "Oliver é um amante do mar, passando seus finais de semana velejando nas águas abertas. O cheiro de sal no ar, o som das ondas batendo contra o casco e a sensação do barco cortando as águas lhe trazem uma sensação de liberdade que nada mais pode igualar. Para ele, o mar é tanto um refúgio quanto um desafio, um lugar onde ele pode se perder e encontrar clareza ao mesmo tempo."
+  },
+  {
+    "text": "Beatrice’s library is a treasure trove of ancient texts, each book a portal to a different time and place. She spends hours lost in the pages of forgotten novels, tracing the delicate lines of prose with her finger. Her favorite is a tattered collection of Victorian poetry, its pages yellowed with age but still pulsing with the rhythm of words long past. For Beatrice, literature is not merely a hobby; it’s a way of time traveling.",
+    "password": "literature",
+    "tip": "What does Beatrice consider a way of time traveling, involving ancient texts and forgotten novels?",
+    "translate": "A biblioteca de Beatrice é um tesouro de textos antigos, cada livro um portal para um tempo e lugar diferentes. Ela passa horas perdida nas páginas de romances esquecidos, seguindo as delicadas linhas da prosa com o dedo. Seu favorito é uma coleção surrada de poesia vitoriana, cujas páginas amareladas pelo tempo ainda pulsas com o ritmo de palavras de um tempo longínquo. Para Beatrice, a literatura não é apenas um passatempo; é uma forma de viajar no tempo."
+  },
+  {
+    "text": "Henry, a lifelong devotee of art, is particularly captivated by the works of the Renaissance masters. He can spend an entire afternoon lost in the chiaroscuro of a Caravaggio or marvel at the delicate brushstrokes of a da Vinci. For him, every piece of art tells a story, and the history encapsulated within each frame is more than just paint on canvas—it’s a testament to the human experience.",
+    "password": "art",
+    "tip": "What subject does Henry devote his life to, focusing on Renaissance masters like Caravaggio and da Vinci?",
+    "translate": "Henry, um devoto lifelong da arte, é particularmente cativado pelas obras dos mestres do Renascimento. Ele pode passar uma tarde inteira perdido no claroscuro de um Caravaggio ou se maravilhar com as delicadas pinceladas de um da Vinci. Para ele, cada obra de arte conta uma história, e a história encapsulada em cada quadro é mais do que apenas tinta na tela—é um testemunho da experiência humana."
+  },
+  {
+    "text": "Clarence is an aficionado of antique clocks, each one a marvel of craftsmanship and precision. He spends his weekends restoring timepieces from centuries past, carefully cleaning each gear and polishing the wooden frames until they shine like new. To Clarence, time is not just a measurement but a tangible connection to the past, preserved in the delicate tick-tock of every clock he repairs.",
+    "password": "clocks",
+    "tip": "What is Clarence passionate about, often restoring timepieces from centuries ago?",
+    "translate": "Clarence é um aficionado por relógios antigos, cada um uma maravilha de habilidade e precisão. Ele passa seus finais de semana restaurando peças de relógios de séculos passados, limpando cuidadosamente cada engrenagem e polindo as molduras de madeira até que brilhem como novas. Para Clarence, o tempo não é apenas uma medida, mas uma conexão tangível com o passado, preservada no delicado tique-taque de cada relógio que ele conserta."
+  },
+  {
+    "text": "Lucinda’s garden is a sanctuary for rare and exotic plants. She’s cultivated a collection of orchids that most gardeners would consider too delicate to grow, each bloom a work of art in itself. The way the petals unfold under her tender care is nothing short of miraculous. For Lucinda, gardening is an act of reverence—an art form that demands patience, attention, and a deep understanding of nature’s intricate rhythms.",
+    "password": "orchids",
+    "tip": "What rare plants does Lucinda cultivate in her garden, often considered too delicate for many gardeners?",
+    "translate": "O jardim de Lucinda é um santuário de plantas raras e exóticas. Ela cultivou uma coleção de orquídeas que a maioria dos jardineiros consideraria muito delicada para cultivar, cada flor uma obra de arte em si mesma. O modo como as pétalas se desdobram sob seus cuidados delicados é nada menos que milagroso. Para Lucinda, a jardinagem é um ato de reverência—uma forma de arte que exige paciência, atenção e um profundo entendimento dos intrincados ritmos da natureza."
+  },
+  {
+    "text": "Theodore’s passion for astronomy is matched only by his reverence for the vastness of the cosmos. He spends clear nights gazing through his telescope, marveling at the distant stars and planets, some of which have not been seen by human eyes in centuries. For him, each constellation tells a story, and the stars themselves are like ancient storytellers, sharing secrets of the universe from a time long before humans walked the Earth.",
+    "password": "astronomy",
+    "tip": "What subject does Theodore passionately study, often gazing through a telescope to uncover the secrets of the stars?",
+    "translate": "A paixão de Theodore pela astronomia só é igualada pela sua reverência pela vastidão do cosmos. Ele passa as noites claras olhando através de seu telescópio, maravilhado com as distantes estrelas e planetas, alguns dos quais não foram vistos pelos olhos humanos há séculos. Para ele, cada constelação conta uma história, e as estrelas em si são como contadores de histórias antigas, compartilhando segredos do universo de um tempo muito antes dos humanos caminharem pela Terra."
+  },
+  {
+    "text": "Seraphina often finds herself lost in the pages of old journals, written by explorers who ventured into unknown lands long before modern maps existed. The detailed accounts of their journeys, fraught with peril and discovery, fascinate her. For Seraphina, reading these tales is like stepping into a time machine, each word a bridge to a forgotten era. Her favorite part is always the moments of triumph, where the explorers' perseverance shines through the trials they face.",
+    "password": "explorers",
+    "tip": "What does Seraphina read about, often being captivated by the stories of peril and discovery?",
+    "translate": "Seraphina frequentemente se perde nas páginas de diários antigos, escritos por exploradores que viajaram para terras desconhecidas muito antes de existirem mapas modernos. Os relatos detalhados de suas jornadas, repletos de perigos e descobertas, a fascinam. Para Seraphina, ler essas histórias é como entrar em uma máquina do tempo, cada palavra uma ponte para uma era esquecida. Sua parte favorita sempre são os momentos de triunfo, onde a perseverança dos exploradores brilha através das dificuldades que enfrentam."
+  },
+  {
+    "text": "Cedric’s passion for music transcends the simple act of listening. He can spend hours analyzing the intricate layers of a symphony, marveling at the way each instrument weaves into the next. It’s as though every note, every crescendo, and every rest tells a story of its own, an emotional narrative unfolding in perfect harmony. For Cedric, music is not just sound—it’s a conversation between the composer and the listener, a dialogue that speaks to the very soul.",
+    "password": "symphony",
+    "tip": "What does Cedric spend hours analyzing, marvelling at the layers and harmony of each instrument?",
+    "translate": "A paixão de Cedric pela música vai além do simples ato de ouvir. Ele pode passar horas analisando as camadas intricadas de uma sinfonia, maravilhando-se com a forma como cada instrumento se entrelaça com o próximo. É como se cada nota, cada crescendo e cada pausa contassem uma história própria, uma narrativa emocional se desenrolando em perfeita harmonia. Para Cedric, a música não é apenas som—é uma conversa entre o compositor e o ouvinte, um diálogo que fala à alma."
+  },
+  {
+    "text": "Alistair’s fascination with the ocean is profound, a deep connection he has felt since childhood. He finds peace in the rhythm of the waves, the way the sea constantly shifts and changes, yet remains a constant presence. To him, the ocean is a living entity, a vast, untamed force that commands both respect and admiration. He often contemplates the mysteries that lie beneath its surface, pondering the creatures that call the depths their home, untouched by human hands.",
+    "password": "ocean",
+    "tip": "What is Alistair deeply fascinated by, considering it a living entity with mysteries beneath its surface?",
+    "translate": "A fascinação de Alistair pelo oceano é profunda, uma conexão intensa que ele sente desde a infância. Ele encontra paz no ritmo das ondas, a forma como o mar constantemente se move e muda, mas continua sendo uma presença constante. Para ele, o oceano é uma entidade viva, uma força vasta e selvagem que exige tanto respeito quanto admiração. Ele frequentemente contempla os mistérios que estão abaixo de sua superfície, refletindo sobre as criaturas que chamam as profundezas de seu lar, intocadas pelas mãos humanas."
+  },
+  {
+    "text": "Margaret’s garden is an expression of her love for nature, a place where each plant seems to have its own personality. She knows exactly when to prune the roses, when to let the lilies bloom, and when the ivy needs to be trimmed. There is an art to gardening that Margaret has mastered over the years, a balance of patience and knowledge. She believes that every garden, like every person, has its own rhythm, its own way of growing and evolving.",
+    "password": "garden",
+    "tip": "What does Margaret consider an expression of her love for nature, where she cultivates plants with a deep understanding of their rhythms?",
+    "translate": "O jardim de Margaret é uma expressão de seu amor pela natureza, um lugar onde cada planta parece ter sua própria personalidade. Ela sabe exatamente quando podar as rosas, quando deixar as lírios florescerem e quando a hera precisa ser aparada. Existe uma arte na jardinagem que Margaret dominou ao longo dos anos, um equilíbrio de paciência e conhecimento. Ela acredita que todo jardim, como toda pessoa, tem seu próprio ritmo, sua própria maneira de crescer e evoluir."
+  },
+  {
+    "text": "Eleanor’s love for history is reflected in her extensive collection of artifacts, each piece a tangible connection to the past. She’s amassed an impressive array of ancient coins, war medals, and old letters, each with its own story to tell. Eleanor believes that history is more than dates and events; it’s the personal experiences of individuals, preserved in the objects they leave behind. For her, each artifact is a key to understanding the lives of those who came before.",
+    "password": "history",
+    "tip": "What is Eleanor passionate about, collecting artifacts that tell personal stories from the past?",
+    "translate": "O amor de Eleanor pela história se reflete em sua extensa coleção de artefatos, cada peça uma conexão tangível com o passado. Ela acumulou uma impressionante variedade de moedas antigas, medalhas de guerra e cartas antigas, cada uma com sua própria história para contar. Eleanor acredita que história é mais do que datas e eventos; são as experiências pessoais de indivíduos, preservadas nos objetos que eles deixam para trás. Para ela, cada artefato é uma chave para entender as vidas daqueles que vieram antes."
+  },
+  {
+    "text": "The faint, golden light of dusk often casts a nostalgic glow over Adrian’s old study, where he spends hours leafing through the pages of ancient manuscripts. The smell of old parchment and the distant sound of wind rattling the windows evoke a sense of timelessness. Adrian’s fascination with the written word has never waned, and he considers every page, every ink stroke, as a thread connecting him to the minds of those long gone. To him, history is not just a collection of events but a living, breathing conversation between generations.",
+    "password": "manuscripts",
+    "tip": "What does Adrian spend hours with, considering each page a connection to past minds?",
+    "translate": "A suave luz dourada do crepúsculo frequentemente lança um brilho nostálgico sobre o antigo escritório de Adrian, onde ele passa horas folheando as páginas de manuscritos antigos. O cheiro do papel envelhecido e o som distante do vento batendo nas janelas evocam uma sensação de atemporalidade. A fascinação de Adrian pela palavra escrita nunca diminuiu, e ele considera cada página, cada traço de tinta, como um fio que o conecta às mentes daqueles que se foram. Para ele, a história não é apenas uma coleção de eventos, mas uma conversa viva entre gerações."
+  },
+  {
+    "text": "Beneath the towering peaks of the Himalayan mountains, Julia finds herself captivated by the raw beauty of nature, where the air is thin and the world feels suspended in a perpetual state of awe. The ancient monasteries scattered across the rugged terrain seem to hold secrets, their stone walls echoing with the wisdom of centuries past. Julia, an avid traveler and seeker of the unknown, believes that some places, like the Himalayas, carry a certain energy—an intangible essence that calls to the soul and lingers long after one has left.",
+    "password": "Himalayas",
+    "tip": "What place does Julia find captivating, believing it carries a certain energy that calls to the soul?",
+    "translate": "Sob os picos imponentes das montanhas Himalaias, Julia se vê cativada pela beleza crua da natureza, onde o ar é rarefeito e o mundo parece suspenso em um estado perpétuo de admiração. Os antigos mosteiros espalhados pelo terreno acidentado parecem guardar segredos, suas paredes de pedra ecoando com a sabedoria de séculos passados. Julia, uma viajante ávida e buscadora do desconhecido, acredita que alguns lugares, como os Himalaias, carregam uma certa energia—uma essência intangível que chama à alma e permanece muito tempo depois de se partir."
+  },
+  {
+    "text": "In the quiet of her study, Marguerite often reflects on the transient nature of time. The clocks in her room tick relentlessly, yet she never feels the pressure of time’s passage. Instead, she cherishes each moment, as though it were an opportunity to understand the intricacies of the world around her. Marguerite, a lover of philosophy and the fleeting beauty of life, has come to view time not as an enemy, but as a gentle river that carries her along, urging her to savor each fleeting second.",
+    "password": "time",
+    "tip": "What does Marguerite reflect on, seeing it not as an enemy but as a gentle force that urges her to cherish each moment?",
+    "translate": "No silêncio de seu escritório, Marguerite frequentemente reflete sobre a natureza transitória do tempo. Os relógios em sua sala tic-tac incessantemente, mas ela nunca sente a pressão da passagem do tempo. Em vez disso, ela valoriza cada momento, como se fosse uma oportunidade para entender as complexidades do mundo ao seu redor. Marguerite, amante da filosofia e da beleza efêmera da vida, passou a ver o tempo não como um inimigo, mas como um rio suave que a carrega, instando-a a saborear cada segundo fugaz."
+  },
+  {
+    "text": "By the flickering candlelight, Samuel sips his tea, lost in thought. He has always been drawn to the complexities of human nature, often pondering why people act the way they do, driven by desires, fears, and motivations they may not fully understand themselves. Samuel believes that every interaction, every conversation, is a puzzle, a reflection of the inner workings of the mind. He is not content with surface-level explanations, always seeking to delve deeper into the reasons behind a person’s actions.",
+    "password": "human nature",
+    "tip": "What aspect of life does Samuel contemplate, often pondering why people act the way they do?",
+    "translate": "À luz tremeluzente das velas, Samuel toma seu chá, perdido em pensamentos. Ele sempre se sentiu atraído pelas complexidades da natureza humana, frequentemente refletindo sobre por que as pessoas agem como agem, impulsionadas por desejos, medos e motivações que podem não entender completamente. Samuel acredita que toda interação, toda conversa, é um quebra-cabeça, um reflexo dos mecanismos internos da mente. Ele não se contenta com explicações superficiais, sempre buscando aprofundar-se nas razões por trás das ações de uma pessoa."
+  },
+  {
+    "text": "Lydia often finds solace in the pages of her beloved novels, where the characters live lives she can only dream of. The stories transport her to distant lands, filled with adventure and intrigue, where every twist of fate brings new challenges. As she turns each page, Lydia becomes part of the narrative, experiencing the triumphs and heartbreaks of the characters as though they were her own. For her, reading is more than just an escape—it’s a way of living vicariously, of experiencing lives she could never live.",
+    "password": "novels",
+    "tip": "What does Lydia immerse herself in, becoming part of the story and experiencing the triumphs and heartbreaks of the characters?",
+    "translate": "Lydia frequentemente encontra consolo nas páginas de seus amados romances, onde os personagens vivem vidas que ela só pode sonhar. As histórias a transportam para terras distantes, repletas de aventura e mistério, onde cada reviravolta do destino traz novos desafios. À medida que vira cada página, Lydia se torna parte da narrativa, experimentando os triunfos e as desilusões dos personagens como se fossem seus. Para ela, ler é mais do que apenas uma fuga—é uma maneira de viver vicariosamente, de experimentar vidas que ela nunca poderia viver."
+  },
+  {
+    "text": "Amid the quiet chaos of the bustling city, Margaret finds herself seeking solace in the intricacies of architecture. The sharp angles of modern skyscrapers juxtaposed against the delicate curves of ancient cathedrals never fail to stir her imagination. To her, each building tells a story, not only of its design but of the people who shaped it, of the era it was born from, and of the hands that raised it into the sky. Margaret marvels at the seamless union of art and engineering, an everlasting testament to humanity's ceaseless pursuit of beauty and innovation.",
+    "password": "architecture",
+    "tip": "What does Margaret find solace in, appreciating the stories behind buildings and their designs?",
+    "translate": "Em meio ao caos silencioso da cidade movimentada, Margaret encontra consolo nas complexidades da arquitetura. Os ângulos agudos dos modernos arranha-céus, contrastando com as delicadas curvas das antigas catedrais, nunca deixam de agitar sua imaginação. Para ela, cada edifício conta uma história, não apenas de seu design, mas das pessoas que o moldaram, da era da qual ele nasceu e das mãos que o ergueram até o céu. Margaret se maravilha com a união perfeita de arte e engenharia, um testemunho eterno da busca incessante da humanidade pela beleza e inovação."
+  },
+  {
+    "text": "As the mist rolled in over the river, David sat in quiet contemplation, the soft murmurs of the water providing a gentle soundtrack to his thoughts. He often wondered if the river, with its eternal flow, knew more about life than anyone could ever hope to understand. There was a profound stillness in the way it meandered, never rushing yet never stagnant, its course determined by the invisible forces of nature. David likened it to the passage of time: unhurried, inevitable, and yet impossibly elusive. In that moment, the river became more than just a body of water—it became a mirror of the human experience.",
+    "password": "river",
+    "tip": "What did David compare to the passage of time, seeing it as unhurried, inevitable, and elusive?",
+    "translate": "Enquanto a névoa se estendia sobre o rio, David se sentou em quieta contemplação, os suaves murmúrios da água oferecendo uma trilha sonora suave para seus pensamentos. Ele frequentemente se perguntava se o rio, com seu fluxo eterno, sabia mais sobre a vida do que qualquer um poderia esperar entender. Havia uma tranquilidade profunda na maneira como ele serpenteava, nunca apressado, mas também nunca estagnado, seu curso determinado pelas forças invisíveis da natureza. David comparava isso à passagem do tempo: sem pressa, inevitável, e ainda assim impossivelmente elusivo. Naquele momento, o rio tornou-se mais do que apenas um corpo de água—ele se tornou um espelho da experiência humana."
+  },
+  {
+    "text": "Elena walked slowly through the overgrown garden, where wildflowers had reclaimed their territory. She marveled at how nature always had a way of taking over, no matter how much humans tried to impose their will. The untamed beauty of the garden seemed to whisper a message: that life, in all its complexity and unpredictability, would always find a way to thrive, to evolve. Elena’s mind wandered to the question of humanity’s place in the world—whether, like the wildflowers, people were destined to endure and flourish, or whether they, too, would be overtaken by the inexorable forces of time.",
+    "password": "garden",
+    "tip": "What did Elena marvel at, seeing it as a symbol of life’s complexity and adaptability?",
+    "translate": "Elena caminhava lentamente pelo jardim coberto de ervas, onde as flores silvestres haviam retomado seu território. Ela se maravilhava com o modo como a natureza sempre soube tomar conta, não importando o quanto os humanos tentassem impor sua vontade. A beleza indomada do jardim parecia sussurrar uma mensagem: que a vida, em toda sua complexidade e imprevisibilidade, sempre encontraria uma maneira de prosperar, de evoluir. A mente de Elena divagava para a questão do lugar da humanidade no mundo—se, como as flores silvestres, as pessoas estavam destinadas a resistir e florescer, ou se elas, também, seriam superadas pelas forças inexoráveis do tempo."
+  },
+  {
+    "text": "Sebastian spent his evenings in the dimly lit library, the scent of old books filling the air, as he delved into texts that spanned centuries of human thought. He believed that true wisdom wasn’t to be found in the fleeting trends of modern life, but in the timeless ideas of those who had pondered the great questions of existence long before him. The words of philosophers, poets, and scientists resonated deeply within him, as though the ink on the pages had a life of its own, echoing across time. For Sebastian, the pursuit of knowledge was not just an intellectual exercise—it was a way of connecting with the past, of understanding the forces that had shaped the present.",
+    "password": "knowledge",
+    "tip": "What does Sebastian believe true wisdom is found in, seeing it as a connection with the past?",
+    "translate": "Sebastian passava suas noites na biblioteca fracamente iluminada, o cheiro de livros antigos preenchendo o ar, enquanto se aprofundava em textos que abrangiam séculos de pensamento humano. Ele acreditava que a verdadeira sabedoria não estava nas efêmeras tendências da vida moderna, mas nas ideias atemporais daqueles que haviam ponderado as grandes questões da existência muito antes dele. As palavras de filósofos, poetas e cientistas ressoavam profundamente dentro dele, como se a tinta nas páginas tivesse uma vida própria, ecoando através do tempo. Para Sebastian, a busca pelo conhecimento não era apenas um exercício intelectual—era uma maneira de se conectar com o passado, de entender as forças que haviam moldado o presente."
+  },
+  {
+    "text": "Catherine gazed out over the vast expanse of the ocean, the rhythmic sound of the waves crashing against the shore mirroring the steady beat of her heart. She had always been drawn to the sea, to its boundless horizon that seemed to stretch infinitely, as though it contained the mysteries of the universe. To her, the ocean represented both the vastness and the vulnerability of life—its depths unknown, its surface calm yet unpredictable. Catherine often wondered if, like the ocean, people were driven by forces beyond their understanding, caught between the pull of destiny and the freedom of choice.",
+    "password": "ocean",
+    "tip": "What does Catherine see the ocean as a symbol of, reflecting both vastness and vulnerability?",
+    "translate": "Catherine olhava para a vasta extensão do oceano, o som rítmico das ondas quebrando contra a costa espelhando o batimento constante de seu coração. Ela sempre se sentiu atraída pelo mar, pelo seu horizonte sem limites que parecia se estender infinitamente, como se contivesse os mistérios do universo. Para ela, o oceano representava tanto a vastidão quanto a vulnerabilidade da vida—suas profundezas desconhecidas, sua superfície calma, mas imprevisível. Catherine frequentemente se perguntava se, como o oceano, as pessoas eram impulsionadas por forças além de sua compreensão, presas entre a força do destino e a liberdade de escolha."
+  },
+  {
+    "text": "Under the soft glow of the evening sun, Amelia sat on the porch, a cup of tea in hand, her mind drifting between the present and memories of days long past. Time, she thought, was an elusive thing, never quite allowing anyone to grasp it. It flowed in its own rhythm, unworried by human concerns. As the wind rustled the leaves of the trees, she wondered if the true nature of life wasn’t about trying to control time, but rather learning to live in harmony with it, accepting both its fleeting moments and its eternal continuities.",
+    "password": "time",
+    "tip": "What did Amelia reflect on while sitting on the porch, contemplating the nature of time?",
+    "translate": "Sob o suave brilho do sol da tarde, Amelia sentou-se na varanda, uma xícara de chá nas mãos, sua mente vagando entre o presente e as memórias de dias longos passados. O tempo, ela pensava, era uma coisa elusiva, nunca permitindo que alguém o agarrasse. Ele fluía em seu próprio ritmo, sem se preocupar com as questões humanas. Enquanto o vento agitava as folhas das árvores, ela se perguntou se a verdadeira natureza da vida não era tentar controlar o tempo, mas aprender a viver em harmonia com ele, aceitando tanto seus momentos fugazes quanto suas eternas continuidades."
+  },
+  {
+    "text": "The vast expanse of the desert stretched endlessly before Thomas, the heat waves rising from the sand like an ancient mirage. He had always been fascinated by the desert’s paradox—the way it was both barren and full of life. In the harshest of conditions, life found a way to survive, whether it was the resilient cactus or the elusive desert fox. It made him think about the human condition—how, in times of adversity, people often discover hidden strengths and resilience they never knew they had. The desert, in its simplicity, mirrored the complexities of life.",
+    "password": "desert",
+    "tip": "What paradox did Thomas find in the desert, considering it both barren and full of life?",
+    "translate": "A vasta extensão do deserto se estendia infinitamente diante de Thomas, as ondas de calor subindo da areia como uma miragem antiga. Ele sempre foi fascinado pelo paradoxo do deserto—o modo como ele era ao mesmo tempo árido e cheio de vida. Nas condições mais severas, a vida encontrava uma maneira de sobreviver, fosse o resiliente cacto ou a esquiva raposa do deserto. Isso o fez pensar sobre a condição humana—como, em tempos de adversidade, as pessoas frequentemente descobrem forças ocultas e resiliência que nunca souberam que possuíam. O deserto, em sua simplicidade, refletia as complexidades da vida."
+  },
+  {
+    "text": "Catherine’s fingers hovered over the old piano keys, the dust of years past clinging to their surfaces. She was not in a rush, for the music was not something to be hurried. With each note, she could almost hear the voices of those who had played before her, their emotions embedded in the melody. Music, she believed, was more than just sound—it was a language that transcended time, connecting generations and hearts. As the melody flowed from her hands, Catherine felt an unspoken bond with the countless musicians who had poured their souls into this very instrument.",
+    "password": "music",
+    "tip": "What did Catherine believe music to be, seeing it as a language that transcends time?",
+    "translate": "Os dedos de Catherine pairaram sobre as antigas teclas do piano, a poeira de anos passados aderindo às suas superfícies. Ela não estava com pressa, pois a música não era algo para ser apressado. A cada nota, ela quase podia ouvir as vozes daqueles que haviam tocado antes dela, suas emoções incorporadas na melodia. A música, ela acreditava, era mais do que apenas som—era uma linguagem que transcende o tempo, conectando gerações e corações. À medida que a melodia fluía de suas mãos, Catherine sentia uma ligação não falada com os inúmeros músicos que haviam derramado suas almas neste mesmo instrumento."
+  },
+  {
+    "text": "As the storm clouds gathered above the horizon, Edward stood at the edge of the cliff, looking out over the ocean. The winds were fierce, tugging at his coat, but he stood firm, his gaze unwavering. The storm, he thought, was much like the challenges in life—unpredictable, powerful, and often overwhelming. But it was also necessary. The storm cleansed the air, nourished the earth, and brought new life. Edward realized that life, too, had its storms, and though they could be terrifying, they were also the catalysts for growth and change.",
+    "password": "storm",
+    "tip": "What did Edward compare the storm to, recognizing its role in life as a catalyst for growth?",
+    "translate": "Enquanto as nuvens de tempestade se reuniam no horizonte, Edward estava na beira do penhasco, olhando para o oceano. Os ventos estavam ferozes, puxando seu casaco, mas ele permanecia firme, seu olhar inabalável. A tempestade, ele pensou, era muito parecida com os desafios da vida—imprevisível, poderosa e frequentemente avassaladora. Mas também era necessária. A tempestade purificava o ar, nutria a terra e trazia nova vida. Edward percebeu que a vida também tem suas tempestades, e embora possam ser aterradoras, também são catalisadoras do crescimento e da mudança."
+  },
+  {
+    "text": "In the quiet of the evening, when the world seemed to slow down, Clara often found herself contemplating the stars. Their distant light, journeying across the universe for millions of years, reminded her of the fleeting nature of human life. Yet, there was something profoundly comforting in knowing that, just like the stars, we too were part of something vast, something timeless. Clara believed that in the grand scheme of things, the struggles and challenges of daily life were but small moments in a much greater story, a story that stretched across time and space, weaving together the past, present, and future.",
+    "password": "stars",
+    "tip": "What did Clara find comforting about the stars, seeing them as part of something vast and timeless?",
+    "translate": "No silêncio da noite, quando o mundo parecia desacelerar, Clara frequentemente se via contemplando as estrelas. Sua luz distante, viajando pelo universo há milhões de anos, lembrava-a da natureza fugaz da vida humana. No entanto, havia algo profundamente reconfortante em saber que, assim como as estrelas, nós também fazíamos parte de algo vasto, algo atemporal. Clara acreditava que, no grande esquema das coisas, as lutas e desafios da vida cotidiana eram apenas pequenos momentos em uma história muito maior, uma história que se estendia através do tempo e do espaço, entrelaçando passado, presente e futuro."
+  },
+  {
+    "text": "As the last rays of the setting sun painted the sky in hues of amber and gold, Samuel stood at the edge of the lake, his thoughts drifting like the gentle ripples across the water. It struck him how life, like the lake, could appear calm on the surface while hiding an entire world of currents beneath. We often go about our days, focused on the visible, yet it’s the unseen forces—our emotions, our hidden desires—that truly guide us. Samuel wondered if, just like the lake, we too needed to embrace both the calm and the turbulent to truly understand ourselves.",
+    "password": "lake",
+    "tip": "What did Samuel reflect on while standing by the lake, thinking about the unseen forces of life?",
+    "translate": "Enquanto os últimos raios do sol poente pintavam o céu em tons de âmbar e ouro, Samuel estava na beira do lago, seus pensamentos se movendo como as suaves ondas na água. Ele percebeu como a vida, assim como o lago, poderia parecer calma na superfície, enquanto escondia um mundo inteiro de correntes abaixo. Frequentemente seguimos nossos dias, focados no visível, mas são as forças invisíveis—nossas emoções, nossos desejos ocultos—que realmente nos guiam. Samuel se perguntou se, assim como o lago, também precisaríamos abraçar tanto o calmo quanto o turbulento para entender verdadeiramente a nós mesmos."
+  },
+  {
+    "text": "In the midst of the bustling city, where the sounds of traffic and chatter never ceased, Arthur found solace in the quiet moments of the early morning. Before the world awoke, before the rush of daily life began, there was a brief pause, a silence that spoke volumes. It was in those fleeting moments, when the city was still and the sky was painted with the first light of dawn, that Arthur felt most alive. He had come to understand that life wasn’t about the noise, the chaos, or the speed—it was about finding peace in the stillness, even in the heart of the storm.",
+    "password": "peace",
+    "tip": "What did Arthur realize about life, finding peace in the quiet moments before the city woke up?",
+    "translate": "No meio da cidade movimentada, onde os sons do tráfego e das conversas nunca cessavam, Arthur encontrou consolo nos momentos tranquilos da manhã cedo. Antes que o mundo acordasse, antes que a correria da vida cotidiana começasse, havia uma breve pausa, um silêncio que dizia muito. Foi nesses momentos fugazes, quando a cidade estava quieta e o céu era pintado com a primeira luz do amanhecer, que Arthur se sentia mais vivo. Ele havia entendido que a vida não era sobre o barulho, o caos ou a velocidade—era sobre encontrar paz na quietude, mesmo no coração da tempestade."
+  },
+  {
+    "text": "Eleanor gazed out over the horizon, where the sea met the sky in a seamless blend of blue. She had always been drawn to the ocean, not just for its beauty, but for the sense of infinity it imparted. The ocean, vast and ever-changing, seemed to mirror the complexities of the human heart—deep, unpredictable, and full of mysteries. Eleanor had come to realize that life, much like the ocean, was about embracing both the calm and the storm, for it was in the tension between the two that true growth occurred.",
+    "password": "ocean",
+    "tip": "What did Eleanor find fascinating about the ocean, and how did it relate to life and personal growth?",
+    "translate": "Eleanor olhava para o horizonte, onde o mar encontrava o céu em uma mistura sem emendas de azul. Ela sempre foi atraída pelo oceano, não apenas pela sua beleza, mas pela sensação de infinito que ele transmitia. O oceano, vasto e sempre em mudança, parecia refletir as complexidades do coração humano—profundo, imprevisível e cheio de mistérios. Eleanor havia percebido que a vida, assim como o oceano, era sobre abraçar tanto a calmaria quanto a tempestade, pois era na tensão entre os dois que ocorria o verdadeiro crescimento."
+  },
+  {
+    "text": "The old library, with its towering shelves of dusty books and the faint scent of aged paper, had always been Clara’s sanctuary. There, amidst the silence, she found herself lost in words—stories of faraway lands, of distant pasts, and of future possibilities. As she turned the pages of an old leather-bound novel, she marveled at how stories, in their essence, were timeless. They transcended eras, cultures, and languages, uniting humanity through shared experiences and emotions. Clara realized that in a world of constant change, stories remained a constant, a thread connecting the past with the present, and the present with the future.",
+    "password": "stories",
+    "tip": "What did Clara find timeless about stories, and how did they connect humanity across time?",
+    "translate": "A antiga biblioteca, com suas prateleiras imponentes de livros empoeirados e o leve cheiro de papel envelhecido, sempre foi o santuário de Clara. Ali, no meio do silêncio, ela se via perdida nas palavras—histórias de terras distantes, de passados remotos e de possibilidades futuras. Ao virar as páginas de um velho romance encadernado em couro, ela se maravilhava com o quanto as histórias, em sua essência, eram atemporais. Elas transcendiam épocas, culturas e línguas, unindo a humanidade por meio de experiências e emoções compartilhadas. Clara percebeu que, em um mundo de mudanças constantes, as histórias permaneciam como um fio constante, conectando o passado com o presente, e o presente com o futuro."
+  },
+  {
+    "text": "In the quiet solitude of the forest, Jonathan felt a profound connection to the earth beneath his feet. The trees, with their ancient wisdom, seemed to whisper secrets to him in the language of the wind. He had always believed that nature, in its raw form, held the answers to the greatest mysteries of life. There, among the towering oaks and the rustling leaves, Jonathan found peace, for he understood that life was not about controlling every moment, but about learning to flow with the natural rhythms of the world around him.",
+    "password": "nature",
+    "tip": "What did Jonathan learn from nature, and how did it change his perspective on life?",
+    "translate": "Na quietude solitária da floresta, Jonathan sentia uma profunda conexão com a terra sob seus pés. As árvores, com sua sabedoria ancestral, pareciam sussurrar segredos para ele na linguagem do vento. Ele sempre acreditou que a natureza, em sua forma mais pura, guardava as respostas para os maiores mistérios da vida. Ali, entre os imponentes carvalhos e as folhas farfalhantes, Jonathan encontrou paz, pois entendeu que a vida não era sobre controlar cada momento, mas sobre aprender a fluir com os ritmos naturais do mundo ao seu redor."
+  }
+]

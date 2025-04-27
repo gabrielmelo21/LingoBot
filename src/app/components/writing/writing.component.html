@@ -19,20 +19,21 @@
     <div class="dialog-baloon">
       <p *ngIf="dialog == 1">Olá, aventureiro. Eu sou o Ancião da Escrita. O que te traz aqui?</p>
       <p *ngIf="dialog == 2">Muito bem, vou te ajudar a aumentar seu vocabulário na língua inglesa.</p>
-      <p *ngIf="dialog == 3">Irei te propor 10 desafios de inglês, você ganha 1 Moeda de Ouro por acerto e XP</p>
+      <p *ngIf="dialog == 3">Irei te propor 10 desafios de inglês, e no fim eu te dou <b style="color: goldenrod"> {{ this.finalGoldReward }} Gold Coins</b> & <b style="color: blueviolet">{{ this.finalXpReward }} LXP</b></p>
     </div>
     <img *ngIf="dialog == 1" class="character-img" src="assets/lingobot/elders/writing/parado.png">
     <img *ngIf="dialog == 2" class="character-img" src="assets/lingobot/elders/writing/acertou.png">
-    <img *ngIf="dialog == 3" class="character-img" src="assets/lingobot/elders/writing/esperando_resposta.png">
+    <img *ngIf="dialog == 3" class="character-img" src="assets/lingobot/elders/writing/parado.png">
   </div>
 
 
 
 
-<div class="baloon-container" style="z-index: 20 !important;" *ngIf="rightOrWrongAnswer">
+<div class="baloon-container" style="z-index: 11 !important;" *ngIf="rightOrWrongAnswer">
   <div class="dialog-baloon">
     <p *ngIf="dialog == 5">Parabéns!! você acertou, agora vamos para próxima..</p>
     <p *ngIf="dialog == 6">Na verdade a resposta é <b style="color: goldenrod">{{this.respostaCorreta}}</b>, Vamos tentar novamente.</p>
+    <p *ngIf="dialog == 7">Muito bem, você venceu meu desafio, aqui está seu prêmio, <b style="color: goldenrod"> {{ this.finalGoldReward }} Gold Coins</b> & <b style="color: blueviolet">{{ this.finalXpReward }} LXP</b></p>
   </div>
 
 </div>
@@ -49,15 +50,22 @@
 
 
 
+<div class="hp-container" *ngIf="quizSession">
+  <div class="hp-bar" [style.width.%]="hpPercent"></div>
+  <span class="hp-text">{{ currentHp }} / {{ maxHp }}</span>
+</div>
+
+
+
   <div class="progress-container"  *ngIf="quizSession">
     <div class="progress-bar" [style.width.%]="progress">
-      <span class="progress-text">{{ progress }}%</span>
     </div>
   </div>
 
 
   <div class="exercise">
-    <h3>{{ enunciado }}</h3>
+    <h3>{{  this. questionTitle }}</h3>
+    <h3 style="color: gold !important;width:100%;font-size: 15pt !important;font-weight: bolder">{{ enunciado }}</h3>
     <ul>
       <li *ngFor="let alt of alternativas; let i = index" (click)="selectOption(i)">
         {{ letra(i) }}) {{ alt }}
@@ -146,6 +154,10 @@
         Try Again
       </h3>
 
+      <h3 (click)="goHome()"  class="command-button-2" *ngIf="this.dialog == 7">
+        Finalizar
+      </h3>
+
     </div>
 
 
@@ -157,9 +169,47 @@
 
 <style>
 
-  @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
-   .command-button-1{
+
+
+
+  .hp-container {
+    position: absolute;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 20px;
+    background-color: #900;         /* fundo vermelho escuro */
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+  }
+
+  .hp-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #a8e063 0%, #56ab2f 100%);
+    border-radius: 10px 0 0 10px;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .hp-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    pointer-events: none;
+    font-size: 0.9rem;
+  }
+
+
+
+
+  .command-button-1{
      font-size:15pt !important;
      font-weight:bolder;
      text-align: center;
@@ -238,22 +288,22 @@
   .exercise {
     position: absolute;
     top: 43vh;
-    left: 50%;
+    left: 37%;
     transform: translate(-50%, -50%);
     z-index: 10;
 
     color: white;
-    padding: 10px 20px;
+    padding: 13px 23px;
     border-radius: 16px;
     text-align: left;
-    width: 70%;
+    width: 65%;
     max-width: 420px;
     font-family: 'Patrick Hand', cursive;
   }
 
   .exercise h3 {
     font-weight: bolder;
-    font-size: 23px;
+    font-size: 15px;
     margin-bottom: 12px;
     text-align: center;
   }
@@ -261,15 +311,14 @@
   .exercise ul {
     list-style: none;
     padding: 0;
-
-    margin-left: 10vw;
+    margin-left: 2vw;
   }
 
   .exercise li {
     font-weight: bolder;
     padding: 6px 0;
     margin: 4px 0;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
   }
 
@@ -428,9 +477,9 @@
 
   .background-image{
     background-image: url('assets/lingobot/cenas_na_masmorra/elders_room.jpg');
-    background-size: 120% !important;
-    background-position: center;
-    width: 100%;
+    background-size: 130% !important;
+    background-position: right;
+
     height: 80vh  ;
   }
 

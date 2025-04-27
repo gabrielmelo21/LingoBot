@@ -1,19 +1,16 @@
 
 
 <!-- Imagem estática -->
-<img   src="assets/lingobot/cenas_on_city/default-cena.png" class="background-image">
-
-
+<img [src]="staticSceneSrc" class="background-image" />
 
 <!-- Vídeo 1 -->
 <video *ngIf="cena == 1" autoplay muted loop class="background-video">
-  <source src="assets/lingobot/cenas_on_city/city-waiting-animation.mp4" type="video/mp4">
+  <source [src]="video1Src" type="video/mp4" />
 </video>
-
 
 <!-- Vídeo 2 -->
 <video *ngIf="cena == 2" autoplay muted loop class="background-video">
-  <source src="assets/lingobot/cenas_on_city/animation-going-to-tower.mp4" type="video/mp4">
+  <source [src]="video2Src" type="video/mp4" />
 </video>
 
 

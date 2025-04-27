@@ -1,0 +1,304 @@
+[
+  {
+    "text": "Anna has a cat. The cat is white. The cat sleeps a lot.",
+    "password": "cat",
+    "tip": "What animal does Anna have?",
+    "translate": "Anna tem um gato. O gato é branco. O gato dorme muito."
+  },
+  {
+    "text": "Tom drinks water. He is thirsty. Water is cold.",
+    "password": "water",
+    "tip": "What does Tom drink?",
+    "translate": "Tom bebe água. Ele está com sede. A água está fria."
+  },
+  {
+    "text": "Lucy has a red ball. She plays with the ball. The ball is round.",
+    "password": "ball",
+    "tip": "What does Lucy play with?",
+    "translate": "Lucy tem uma bola vermelha. Ela brinca com a bola. A bola é redonda."
+  },
+  {
+    "text": "Ben sees the sun. The sun is big. The sun is yellow.",
+    "password": "sun",
+    "tip": "What does Ben see in the sky?",
+    "translate": "Ben vê o sol. O sol é grande. O sol é amarelo."
+  },
+  {
+    "text": "Sara eats an apple. The apple is red. It is sweet.",
+    "password": "apple",
+    "tip": "What fruit does Sara eat?",
+    "translate": "Sara come uma maçã. A maçã é vermelha. Ela é doce."
+  },
+    {
+      "text": "Leo has a dog. The dog runs fast. The dog is brown.",
+      "password": "dog",
+      "tip": "What animal runs fast?",
+      "translate": "Leo tem um cachorro. O cachorro corre rápido. O cachorro é marrom."
+    },
+    {
+      "text": "Mia reads a book. The book is blue. She likes the book.",
+      "password": "book",
+      "tip": "What does Mia read?",
+      "translate": "Mia lê um livro. O livro é azul. Ela gosta do livro."
+    },
+    {
+      "text": "Sam eats rice. The rice is hot. He eats it with a spoon.",
+      "password": "rice",
+      "tip": "What food does Sam eat?",
+      "translate": "Sam come arroz. O arroz está quente. Ele come com uma colher."
+    },
+    {
+      "text": "Emma sees a bird. The bird is small. It can fly.",
+      "password": "bird",
+      "tip": "What animal can fly?",
+      "translate": "Emma vê um pássaro. O pássaro é pequeno. Ele pode voar."
+    },
+    {
+      "text": "John has a car. The car is black. He drives it to school.",
+      "password": "car",
+      "tip": "What does John drive?",
+      "translate": "John tem um carro. O carro é preto. Ele dirige para a escola."
+    },
+  {
+    "text": "Nina has a doll. The doll wears a red dress. Nina plays with the doll.",
+    "password": "doll",
+    "tip": "What toy does Nina play with?",
+    "translate": "Nina tem uma boneca. A boneca usa um vestido vermelho. Nina brinca com a boneca."
+  },
+  {
+    "text": "Owen sees a fish. The fish swims in the water. It is orange and fast.",
+    "password": "fish",
+    "tip": "What animal swims in the water?",
+    "translate": "Owen vê um peixe. O peixe nada na água. Ele é laranja e rápido."
+  },
+  {
+    "text": "Eva draws a sun. The sun is big and yellow. She uses a crayon.",
+    "password": "sun",
+    "tip": "What does Eva draw that is yellow?",
+    "translate": "Eva desenha um sol. O sol é grande e amarelo. Ela usa um giz de cera."
+  },
+  {
+    "text": "Leo kicks a ball. The ball is green. He plays in the park.",
+    "password": "ball",
+    "tip": "What does Leo kick?",
+    "translate": "Leo chuta uma bola. A bola é verde. Ele brinca no parque."
+  },
+  {
+    "text": "Isla sees a frog. The frog is small and green. It jumps a lot.",
+    "password": "frog",
+    "tip": "What animal jumps and is green?",
+    "translate": "Isla vê um sapo. O sapo é pequeno e verde. Ele pula muito."
+  },
+  {
+    "text": "Jack has a bike. The bike is blue. He rides it every day.",
+    "password": "bike",
+    "tip": "What does Jack ride?",
+    "translate": "Jack tem uma bicicleta. A bicicleta é azul. Ele anda nela todo dia."
+  },
+  {
+    "text": "Emma eats a cookie. The cookie is sweet. She is happy.",
+    "password": "cookie",
+    "tip": "What sweet thing does Emma eat?",
+    "translate": "Emma come um biscoito. O biscoito é doce. Ela está feliz."
+  },
+  {
+    "text": "Liam sees a tree. The tree is tall and green. A bird is in the tree.",
+    "password": "tree",
+    "tip": "What is tall and has green leaves?",
+    "translate": "Liam vê uma árvore. A árvore é alta e verde. Um pássaro está na árvore."
+  },
+  {
+    "text": "Ava has a toy car. The toy car is red. It goes very fast.",
+    "password": "car",
+    "tip": "What toy goes fast?",
+    "translate": "Ava tem um carrinho de brinquedo. O carrinho é vermelho. Ele vai muito rápido."
+  },
+  {
+    "text": "Ethan sees the moon. The moon is white. It shines at night.",
+    "password": "moon",
+    "tip": "What shines at night?",
+    "translate": "Ethan vê a lua. A lua é branca. Ela brilha à noite."
+  },
+  {
+    "text": "Luna has a cat. The cat is black. It sleeps on her bed.",
+    "password": "cat",
+    "tip": "What animal sleeps on Luna's bed?",
+    "translate": "Luna tem um gato. O gato é preto. Ele dorme na cama dela."
+  },
+  {
+    "text": "Tom drinks water. The water is cold. He drinks it after a run.",
+    "password": "water",
+    "tip": "What does Tom drink after a run?",
+    "translate": "Tom bebe água. A água está fria. Ele bebe depois de correr."
+  },
+  {
+    "text": "Sara sees a star. The star is in the sky. It is very bright.",
+    "password": "star",
+    "tip": "What does Sara see in the sky?",
+    "translate": "Sara vê uma estrela. A estrela está no céu. Ela é muito brilhante."
+  },
+  {
+    "text": "Ben has a ball. The ball is red and round. He plays with it.",
+    "password": "ball",
+    "tip": "What does Ben play with?",
+    "translate": "Ben tem uma bola. A bola é vermelha e redonda. Ele brinca com ela."
+  },
+  {
+    "text": "Anna eats a pear. The pear is green. It is soft and tasty.",
+    "password": "pear",
+    "tip": "What green fruit does Anna eat?",
+    "translate": "Anna come uma pêra. A pêra é verde. Ela é macia e saborosa."
+  },
+  {
+    "text": "Jake has a dog. The dog runs fast. It likes to play.",
+    "password": "dog",
+    "tip": "What animal runs fast and likes to play?",
+    "translate": "Jake tem um cachorro. O cachorro corre rápido. Ele gosta de brincar."
+  },
+  {
+    "text": "Mia sees a bird. The bird is blue. It sings in the tree.",
+    "password": "bird",
+    "tip": "What sings in the tree?",
+    "translate": "Mia vê um pássaro. O pássaro é azul. Ele canta na árvore."
+  },
+  {
+    "text": "Zoe has a yellow bag. She takes it to school every day.",
+    "password": "bag",
+    "tip": "What does Zoe take to school?",
+    "translate": "Zoe tem uma bolsa amarela. Ela leva para a escola todos os dias."
+  },
+  {
+    "text": "Leo eats an apple. The apple is red and crunchy.",
+    "password": "apple",
+    "tip": "What fruit is red and crunchy?",
+    "translate": "Leo come uma maçã. A maçã é vermelha e crocante."
+  },
+  {
+    "text": "Nina sees a cloud. The cloud is white and soft.",
+    "password": "cloud",
+    "tip": "What is white and soft in the sky?",
+    "translate": "Nina vê uma nuvem. A nuvem é branca e macia."
+  },
+  {
+    "text": "Tom has a hat. The hat is big and blue. He wears it in the sun.",
+    "password": "hat",
+    "tip": "What does Tom wear on his head?",
+    "translate": "Tom tem um chapéu. O chapéu é grande e azul. Ele usa no sol."
+  },
+  {
+    "text": "Lily drinks milk. The milk is cold. She drinks it with cookies.",
+    "password": "milk",
+    "tip": "What does Lily drink with cookies?",
+    "translate": "Lily bebe leite. O leite está frio. Ela bebe com biscoitos."
+  },
+  {
+    "text": "Noah sees a duck. The duck is in the pond. It makes a funny sound.",
+    "password": "duck",
+    "tip": "What animal is in the pond?",
+    "translate": "Noah vê um pato. O pato está no lago. Ele faz um som engraçado."
+  },
+  {
+    "text": "Ella reads a book. The book has big pictures. She likes it a lot.",
+    "password": "book",
+    "tip": "What does Ella read?",
+    "translate": "Ella lê um livro. O livro tem figuras grandes. Ela gosta muito."
+  },
+  {
+    "text": "Sam eats rice. The rice is white and hot. He eats it for lunch.",
+    "password": "rice",
+    "tip": "What white food does Sam eat for lunch?",
+    "translate": "Sam come arroz. O arroz é branco e quente. Ele come no almoço."
+  },
+  {
+    "text": "Amy has a fish. The fish is orange. It swims in a bowl.",
+    "password": "fish",
+    "tip": "What swims in a bowl?",
+    "translate": "Amy tem um peixe. O peixe é laranja. Ele nada em uma tigela."
+  },
+  {
+    "text": "Mark sees the sun. The sun is hot and yellow. It is in the sky.",
+    "password": "sun",
+    "tip": "What is hot and yellow in the sky?",
+    "translate": "Mark vê o sol. O sol é quente e amarelo. Ele está no céu."
+  },
+  {
+    "text": "Emma has a doll. The doll has a pink dress. Emma hugs it.",
+    "password": "doll",
+    "tip": "What toy wears a pink dress?",
+    "translate": "Emma tem uma boneca. A boneca tem um vestido rosa. Emma a abraça."
+  },
+  {
+    "text": "Lucas eats a banana. The banana is yellow and soft.",
+    "password": "banana",
+    "tip": "What fruit is yellow and soft?",
+    "translate": "Lucas come uma banana. A banana é amarela e macia."
+  },
+  {
+    "text": "Sophie has a chair. The chair is small and red. She sits on it.",
+    "password": "chair",
+    "tip": "What does Sophie sit on?",
+    "translate": "Sophie tem uma cadeira. A cadeira é pequena e vermelha. Ela senta nela."
+  },
+  {
+    "text": "Jack has a bike. The bike is green. He rides it to the park.",
+    "password": "bike",
+    "tip": "What does Jack ride to the park?",
+    "translate": "Jack tem uma bicicleta. A bicicleta é verde. Ele anda com ela até o parque."
+  },
+  {
+    "text": "Emma eats soup. The soup is hot. She eats it with a spoon.",
+    "password": "soup",
+    "tip": "What hot food does Emma eat?",
+    "translate": "Emma come sopa. A sopa está quente. Ela come com uma colher."
+  },
+  {
+    "text": "Liam sees a frog. The frog is green and jumps high.",
+    "password": "frog",
+    "tip": "What green animal jumps?",
+    "translate": "Liam vê um sapo. O sapo é verde e pula alto."
+  },
+  {
+    "text": "Olivia has a kite. The kite is flying in the sky. It is red and blue.",
+    "password": "kite",
+    "tip": "What flies in the sky and is a toy?",
+    "translate": "Olivia tem uma pipa. A pipa está voando no céu. Ela é vermelha e azul."
+  },
+  {
+    "text": "Ethan drinks juice. The juice is orange. It is cold and sweet.",
+    "password": "juice",
+    "tip": "What cold drink is orange and sweet?",
+    "translate": "Ethan bebe suco. O suco é laranja. Ele está gelado e é doce."
+  },
+  {
+    "text": "Anna has a cat. The cat is white. It sleeps on the bed.",
+    "password": "cat",
+    "tip": "What animal sleeps on the bed?",
+    "translate": "Anna tem um gato. O gato é branco. Ele dorme na cama."
+  },
+  {
+    "text": "Ben eats bread. The bread is warm. He puts butter on it.",
+    "password": "bread",
+    "tip": "What food does Ben eat with butter?",
+    "translate": "Ben come pão. O pão está quente. Ele passa manteiga nele."
+  },
+  {
+    "text": "Lily wears a dress. The dress is purple. She wears it to a party.",
+    "password": "dress",
+    "tip": "What does Lily wear to the party?",
+    "translate": "Lily usa um vestido. O vestido é roxo. Ela usa na festa."
+  },
+  {
+    "text": "Tom sees the moon. The moon is big and white. It is in the night sky.",
+    "password": "moon",
+    "tip": "What is white and in the night sky?",
+    "translate": "Tom vê a lua. A lua é grande e branca. Ela está no céu da noite."
+  },
+  {
+    "text": "Sara has a pen. The pen is black. She writes her name with it.",
+    "password": "pen",
+    "tip": "What does Sara use to write?",
+    "translate": "Sara tem uma caneta. A caneta é preta. Ela escreve seu nome com ela."
+  }
+
+
+]

@@ -12,7 +12,7 @@
 
     <div class="item-container">
       <img src="assets/lingobot/menu-icons/icone-home.png" alt="Token" class="token-icon">
-      <span class="token-text">23°</span>
+      <span class="token-text">{{  this.ranking }}°</span>
     </div>
 
     <div class="item-container">
@@ -44,16 +44,22 @@
 <app-skills></app-skills>
   <br>
 
-  <div class="difficulty-container">
-    <h4 style="font-size: 15pt !important; font-weight: bold; color: goldenrod; margin: 0px !important;text-align: center">Dificuldade</h4>
+  <div class="difficulty-container" *ngIf="selectedDifficulty">
+    <h4 style="font-size: 15pt !important; font-weight: bold; color: goldenrod; margin: 0px !important; text-align: center">
+      Dificuldade
+    </h4>
     <div class="image-text-container">
-      <img src="assets/lingobot/poses/lingobot-waiting.png" alt="Lingobot" class="difficulty-image">
+      <img [src]="selectedDifficulty.img" alt="Lingobot" class="difficulty-image">
       <div class="text-container">
         <p>Você está jogando na dificuldade:</p>
-        <h4>Baby bot</h4>
+        <h4>{{ selectedDifficulty.title }}</h4>
+        <!-- Descomenta abaixo se quiser mostrar a descrição -->
+        <!-- <p>{{ selectedDifficulty.description }}</p> -->
       </div>
     </div>
   </div>
+
+
 
   <br>
 
