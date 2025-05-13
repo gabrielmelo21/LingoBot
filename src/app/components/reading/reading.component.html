@@ -1,5 +1,5 @@
 <video *ngIf="cena == 2" autoplay  class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/open_chest.mp4" type="video/mp4">
+  <source src="assets/lingobot/cenas_na_masmorra/reading/open-chest.mp4" type="video/mp4">
 </video>
 
 <img
@@ -31,10 +31,10 @@
 
 <!-- Cenario -->
 <!-- Imagem estática -->
-<img  *ngIf="cena == 1" src="assets/lingobot/cenas_na_masmorra/chest_with_padlock.jpg" class="background-image">
+<img  *ngIf="cena == 1" src="assets/lingobot/cenas_na_masmorra/reading/cenario.png" class="background-image">
 
-<img *ngIf="cena === 1"
-     src="assets/lingobot/cenas_na_masmorra/padlock.png"
+<img *ngIf="!readingScroll"
+     [src]="padlock"
      class="padlock"
      [ngClass]="{ 'shake-animation': isShaking }">
 
@@ -145,9 +145,18 @@
     .padlock{
       position:absolute;
       height: auto;
-      width: 37% !important;
-      top: 37vh !important;
-      right: 17vh !important;
+      width: 12% !important;
+      top: 55vh !important;
+      right: 25vh !important;
+      z-index: 6 !important;
+    }
+
+    .pergaminho{
+      position:absolute;
+      height: auto;
+      width: 24% !important;
+      top: 55vh !important;
+      left: 5vh !important;
       z-index: 10
     }
 
@@ -156,10 +165,10 @@
   .padlock{
     position:absolute;
     height: auto;
-    width: 34%;
-    top: 31vh;
-    right: 15vh;
-    z-index: 10
+    width: 17%;
+    top: 45vh;
+    right: 20vh;
+    z-index: 6 !important;
   }
 
   .pergaminho{
@@ -276,9 +285,7 @@
 
   }
 
-  .background-image{
-    background-image: url('assets/lingobot/cenas_na_masmorra/reading_room.jpg');
-  }
+
 
 
 
@@ -295,7 +302,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 15;
+    z-index: 5;
   }
 
   .dialog-baloon {

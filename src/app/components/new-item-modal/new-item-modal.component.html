@@ -1,0 +1,20 @@
+<img [src]="this.itemImgUrl" class="background-image" >
+<div class="item-modal">
+  <h4 class="subtitle">Você ganhou:</h4>
+  <h2 class="item-name">{{ item.itemName }}</h2>
+
+  <img [src]="item.itemSrc" alt="Item" class="item-image">
+
+  <h4 class="subtitle">Raridade:</h4>
+  <h3 [ngClass]="item.rarity?.toLowerCase()" class="rarity-text">{{ item.rarity?.toUpperCase() }} </h3>
+  <p class="drop-rate">Drop Rate: {{ getDropRate(item.dropRate) }}</p>
+</div>
+
+<!-- Feito nao precisa mexer-->
+<div class="background-commands">
+    <h3 (click)="close_modal()"  class="command-button-2" >
+      Continuar
+    </h3>
+</div>
+
+

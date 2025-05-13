@@ -30,4 +30,43 @@ export class ModalService {
     this.showSettingsModalSubject.next(!this.showSettingsModalSubject.value);
   }
 
+
+  private showItensModalSubject = new BehaviorSubject<boolean>(false);
+  showItensModal$ = this.showItensModalSubject.asObservable();
+
+  toggleItensModal() {
+    this.showItensModalSubject.next(!this.showItensModalSubject.value);
+  }
+
+
+
+  private showLevelUpSubject = new BehaviorSubject<boolean>(false);
+  showLevelUpModal$ = this.showLevelUpSubject.asObservable();
+
+  toggleLevelUpModal() {
+    this.showLevelUpSubject.next(!this.showLevelUpSubject.value);
+  }
+
+
+
+
+
+
+  private showNewItemsSubject = new BehaviorSubject<boolean>(false);
+  showNewItemsModal$ = this.showNewItemsSubject.asObservable();
+
+  private newItemSubject = new BehaviorSubject<any | null>(null);
+  newItem$ = this.newItemSubject.asObservable();
+
+  toggleNewItemsModal(show: boolean, item?: any) {
+    this.showNewItemsSubject.next(show);
+    if (item) this.newItemSubject.next(item);
+  }
+
+  closeNewItemsModal() {
+    this.showNewItemsSubject.next(false);
+  }
+
+
+
 }

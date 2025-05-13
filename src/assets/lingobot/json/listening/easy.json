@@ -1,0 +1,62 @@
+[
+  {
+    "phrase": "She is my friend",
+    "translate": "Ela é minha amiga",
+    "p1": "She is",
+    "p2": "My friend"
+  },
+  {
+    "phrase": "I like pizza",
+    "translate": "Eu gosto de pizza",
+    "p1": "I like",
+    "p2": "Pizza"
+  },
+  {
+    "phrase": "This is a book",
+    "translate": "Isso é um livro",
+    "p1": "This is",
+    "p2": "A book"
+  },
+  {
+    "phrase": "You are happy",
+    "translate": "Você está feliz",
+    "p1": "You are",
+    "p2": "Happy"
+  },
+  {
+    "phrase": "It is a cat",
+    "translate": "É um gato",
+    "p1": "It is",
+    "p2": "A cat"
+  },
+  {
+    "phrase": "I am learning English",
+    "translate": "Eu estou aprendendo inglês",
+    "p1": "I am",
+    "p2": "Learning English"
+  },
+  {
+    "phrase": "She likes music",
+    "translate": "Ela gosta de música",
+    "p1": "She likes",
+    "p2": "Music"
+  },
+  {
+    "phrase": "We are at home",
+    "translate": "Nós estamos em casa",
+    "p1": "We are",
+    "p2": "At home"
+  },
+  {
+    "phrase": "They are students",
+    "translate": "Eles são estudantes",
+    "p1": "They are",
+    "p2": "Students"
+  },
+  {
+    "phrase": "I want water",
+    "translate": "Eu quero água",
+    "p1": "I want",
+    "p2": "Water"
+  }
+]

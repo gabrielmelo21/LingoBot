@@ -10,6 +10,11 @@ export class PlaySoundService implements OnDestroy {
   constructor() { }
 
 
+  playBossFight() {
+    this.playAudio("soundtrack/boss_fight.mp3", false);
+  }
+
+
   playCitySoundTrack() {
     this.playAudio("soundtrack/city_theme.mp3", false);
   }
@@ -22,6 +27,10 @@ export class PlaySoundService implements OnDestroy {
 
   playPuzzleSolve() {
     this.playAudio("soundtrack/puzzle_solving.mp3", false);
+  }
+
+  playListeningSoundTrack() {
+    this.playAudio("soundtrack/listening_soundtrack.mp3", false);
   }
 
 
@@ -65,7 +74,9 @@ export class PlaySoundService implements OnDestroy {
 
 
 
-
+  playItemDrop(){
+    this.playAudio("item-drop.mp3", false);
+  }
 
 
 
@@ -185,16 +196,18 @@ export class PlaySoundService implements OnDestroy {
 
 
      if (filename == "soundtrack/city_theme.mp3"
-       || filename == "soundtrack/tower_theme.mp3") {
+       || filename == "soundtrack/tower_theme.mp3" ||
+       filename == "soundtrack/listening_soundtrack.mp3") {
        audio.volume = 0.02;
        audio.loop = true; // se for som contínuo
        console.log(`volume: ${audio.volume}`);
      }
-     if ( filename == "soundtrack/puzzle_solving.mp3" || filename == "soundtrack/reading_theme.mp3"  ) {
+     if ( filename == "soundtrack/puzzle_solving.mp3" || filename == "soundtrack/reading_theme.mp3") {
        audio.volume = 0.13;
        audio.loop = true; // se for som contínuo
        console.log(`volume: ${audio.volume}`);
      }
+
 
 
 

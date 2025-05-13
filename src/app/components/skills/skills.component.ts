@@ -8,6 +8,11 @@ import {AuthService} from "../../services/auth.service";
 })
 export class SkillsComponent implements OnInit {
   user: any;
+  listening: any;
+  reading: any;
+  writing: any;
+  speaking: any;
+
 
   constructor(private auth: AuthService) {}
 
@@ -15,31 +20,14 @@ export class SkillsComponent implements OnInit {
     this.auth.user$.subscribe(userData => {
       if (userData) {
         this.user = userData;
+        this.listening = userData.listening;
+        this.reading = userData.reading;
+        this.speaking = userData.speaking;
+        this.writing = userData.writing;
       }
     });
   }
 
-  getLevelAndProgress(xp: number) {
-    const level = Math.floor(xp / 1000) + 1;  // Calcula o nível
-    const progress = (xp % 1000) / 10; // Calcula a porcentagem de progresso
 
-    return { level, progress };
-  }
-
-  get listening() {
-    return this.user ? this.getLevelAndProgress(this.user.listening) : { level: 0, progress: 0 };
-  }
-
-  get reading() {
-    return this.user ? this.getLevelAndProgress(this.user.reading) : { level: 0, progress: 0 };
-  }
-
-  get writing() {
-    return this.user ? this.getLevelAndProgress(this.user.writing) : { level: 0, progress: 0 };
-  }
-
-  get speaking() {
-    return this.user ? this.getLevelAndProgress(this.user.speaking) : { level: 0, progress: 0 };
-  }
 }
 

@@ -1,0 +1,371 @@
+
+/* Imagem de fundo */
+.background-image {
+  position: absolute;
+  top: 8vh; /* Mesma posição do vídeo */
+  left: 0;
+  width: 100%; /* Mesma largura do vídeo */
+  background-position: center;
+  height: auto; /* Altura proporcional */
+  object-fit: cover; /* Cobrir a área como o vídeo */
+  z-index: 5; /* Mesmo z-index do vídeo */
+}
+
+
+.background-commands {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  z-index: 4;
+}
+
+
+
+
+.actions-title {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 0px;
+  color: #1e1e1e;
+}
+
+.commands-group {
+  display: flex;
+  justify-content: center;
+  gap: 1px; /* Espaçamento entre os comandos */
+  align-items: center;
+}
+
+.command {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.command-text {
+  margin-top: 8px;
+  font-size: 1.0em;
+  font-weight: bold;
+  color: #222; /* Cor um pouco mais escura para melhor contraste */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Pequeno sombreamento para destaque */
+}
+
+
+.commands-group img {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+.descricao{
+  font-size: 10pt !important;
+  font-weight: bold;
+}
+
+
+
+.commands-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+
+  border-radius: 12px;
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  backdrop-filter: blur(16px); /* Efeito de vidro mais leve */
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Sombra bem sutil */
+}
+
+.command-textarea {
+  text-align: center;
+  flex: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  min-height: 40px;
+  margin-right: 10px;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+
+.menu-icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.menu-icon:hover {
+  transform: scale(1.1);
+}
+
+
+.background-commands{
+  position: absolute !important;
+  bottom: 0 !important;
+  display:inline-block;
+  background-image: url('/assets/lingobot/home/testar_pergaminho.jpg');
+  height: 30vh !important;
+  background-size: cover;
+  background-position: top;
+  z-index: 5 !important;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.inventory-container {
+  position: absolute;
+  top: 25vh;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+  gap: 5px;
+  width: 50%;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 5px;
+  z-index: 9999;
+}
+
+
+
+.inventory-container::-webkit-scrollbar {
+  width: 6px;
+}
+.inventory-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+
+.inventory-slot {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+
+  width:90%;
+  height: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.inventory-slot.selected {
+  background: linear-gradient(145deg, #c2e9fb, #a1c4fd); /* azul bebê -> azul claro */
+  border: 2px solid #a1c4fd;
+  box-shadow: 0 0 10px #a1c4fd;
+}
+
+
+.item-image {
+  width: 50%;
+  height: auto;
+  object-fit: contain;
+}
+
+
+
+.item-details {
+  position: absolute;
+  top: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 340px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  background-size: cover;
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #3b230e;
+  text-shadow: 0.5px 0.5px #fff;
+  z-index: 1000;
+}
+
+.item-left {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.0;
+  margin-top: -15px !important;
+}
+
+.item-left p {
+  margin: 6px 0;
+}
+
+.icon {
+  margin-right: 4px;
+}
+
+.item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: 110px;
+}
+
+.item-img {
+  width: 64px;
+  height: auto;
+  border-radius: 10px;
+
+}
+
+.item-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #1c1c1c;
+}
+
+.sell-button {
+  background: linear-gradient(to bottom, #ffbe5c, #ffa726);
+  border: 2px solid #d68b00;
+  border-radius: 16px;
+  padding: 6px 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease;
+  width: 50% !important;
+}
+
+.sell-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to bottom, #ff9900, #ffcc33);
+}
+
+
+
+
+.common {
+  color: dimgray !important; /* Neutral and discreet, great for common items */
+}
+
+.uncommon {
+  color: #3cb371 !important; /* Medium green: stands out more than gray */
+  /* Alternative: #2ecc71 (more vivid and modern green) */
+}
+
+.rare {
+  color: #1e90ff !important; /* Vibrant blue (DodgerBlue) */
+  /* Alternative: #00bfff (Deep Sky Blue) */
+}
+
+.epic {
+  color: #8E24AA !important; /* Perfect to represent epic items */
+  font-weight: bold !important;
+  text-shadow: 0 0 5px mediumpurple !important;
+}
+
+.legendary {
+  color: darkgoldenrod !important; /* Strong gold for legendary items */
+  font-weight: bold !important;
+  text-shadow: 0 0 5px orange !important;
+}
+
+
+.drop-rate {
+  font-size: 0.9rem;
+  color: white;
+  margin-top: 0.4rem;
+  text-shadow: 0 0 4px black;
+}
+
+
+
+.centered-text {
+  text-align: center;
+  font-size: 1.5em !important;
+  font-weight: bold;
+  color: #4FC3F7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.gem-image {
+  width: 20%;
+  height: auto;
+  font-weight: bold;
+  font-size: 15pt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gold{
+  padding-top: 10px !important;
+  color: darkgoldenrod;
+  font-weight: bold;
+  font-size: 15pt !important;
+}
+.gemas{
+  padding-top: 10px !important;
+  color: #4FC3F7 !important;
+  font-weight: bold;
+  font-size: 15pt !important;
+}
+
+.command-button-2{
+  font-size:25pt !important;
+  font-weight:bolder;
+  text-align: center;
+  color:#946a01;
+  margin-top: 8vh !important;
+}

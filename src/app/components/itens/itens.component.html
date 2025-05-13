@@ -1,0 +1,96 @@
+<img    src="assets/lingobot/itens/invetario.png" class="background-image">
+
+
+
+
+
+
+<div class="inventory-container"  >
+
+  <div class="inventory-slot">
+    <img src="assets/lingobot/itens/gold.png" alt="Item 1" class="item-image">
+    <span class="item-quantidade gold">{{ this.goldCoins }}</span>
+  </div>
+  <div class="inventory-slot">
+    <img src="assets/lingobot/itens/gemas.png" alt="Item 2" class="item-image" style="width: 45% !important;">
+    <span class="item-quantidade gemas">{{this.gemsCoins}}</span>
+  </div>
+
+
+<!-- Itens de Poder-->
+
+
+
+
+<!-- Itens colecionaveis -->
+  <div
+    class="inventory-slot"
+    *ngFor="let item of itens; let i = index"
+    [class.selected]="selectedIndex === i"
+    (click)="selectItem(i)"
+  >
+    <img [src]="item.itemSrc" alt="Item" class="item-image">
+    <span class="item-quantidade">x{{ item.quant }}</span>
+  </div>
+</div>
+
+
+
+
+<div class="background-commands">
+  <h3 style="text-align: center;">Detalhe do Item</h3>
+
+  <!--
+  <button (click)="addItem()" >ADD ITEM ALEATORIO</button>
+  -->
+
+  <div class="show-quest-infos" *ngIf="!selectedItem">
+    <div class="next-question"  >
+      <h3   class="command-button-2"  >
+        Select a Item
+      </h3>
+    </div>
+  </div>
+
+
+  <div *ngIf="selectedItem" class="item-details">
+    <div class="item-left">
+
+
+      <p>
+        <span style="font-size: 15pt" [ngClass]="selectedItem.rarity.toLowerCase()" >
+ {{ selectedItem.rarity.charAt(0).toUpperCase() + selectedItem.rarity.slice(1).toLowerCase() }}
+        </span><br>
+        <span style="font-size: 9pt !important;">
+  ({{ selectedItem.dropRate * 100 | number: '1.0-2' }}% DropRate)
+</span>
+      </p>
+
+
+      <p *ngIf="selectedItem.gemsValue" class="centered-text"
+         [ngStyle]="{
+     'color': isCommonToRare(selectedItem.rarity) ? 'darkgoldenrod' : '#4FC3F7'
+   }">
+        <img [src]="getGemImage(selectedItem.rarity)" alt="Gema" class="gem-image">
+        {{ selectedItem.gemsValue }}
+      </p>
+
+      <p class="descricao"> {{ selectedItem.describe || 'Um item misterioso e valioso.' }}</p>
+
+      <button class="sell-button" (click)="sellItem(selectedItem)">
+        Sell
+      </button>
+
+    </div>
+
+    <div class="item-right">
+      <img class="item-img" [src]="selectedItem.itemSrc" alt="{{ selectedItem.itemName }}">
+      <h3 class="item-title">{{ selectedItem.itemName }}</h3>
+    </div>
+  </div>
+
+
+
+
+
+</div>

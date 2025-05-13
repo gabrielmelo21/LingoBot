@@ -343,9 +343,14 @@ export class WritingComponent {
       this.postMission = true;
       this.dialog = 7
       this.caminhoImagem = 'assets/lingobot/elders/writing/finish.png';
-
       this.authService.checkLevelUp(this.finalXpReward)
       this.authService.updateLocalUserData( { tokens: this.finalGoldReward})
+      this.authService.addXpSkills('writing');
+
+      setTimeout(() => {
+           this.playSoundService.playItemDrop()
+           this.authService.addRandomItemToUser();
+      }, 2000)
 
     }else{
     this.caminhoImagem = 'assets/lingobot/elders/writing/pensando.png';

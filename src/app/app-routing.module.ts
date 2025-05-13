@@ -7,7 +7,6 @@ import {QuestsComponent} from "./components/quests/quests.component";
 import {PlanosComponent} from "./components/planos/planos.component";
 import {MissoesDiariasComponent} from "./components/missoes-diarias/missoes-diarias.component";
 import {ReferralComponent} from "./components/referral/referral.component";
-import {DesafiosInicianteComponent} from "./components/desafios-iniciante/desafios-iniciante.component";
 import {RankingComponent} from "./components/ranking/ranking.component";
 
 /**
@@ -29,6 +28,7 @@ import {BabelTowerComponent} from "./components/babel-tower/babel-tower.componen
 import {WritingComponent} from "./components/writing/writing.component";
 import {ReadingComponent} from "./components/reading/reading.component";
 import {ListeningComponent} from "./components/listening/listening.component";
+import {SpeakingComponent} from "./components/speaking/speaking.component";
 
 
 const routes: Routes = [
@@ -45,7 +45,6 @@ const routes: Routes = [
   { path: "planos", component: PlanosComponent },
   { path: "missoes-diarias", component: MissoesDiariasComponent },
   { path: "referral", component: ReferralComponent },
-  { path: "desafios-iniciante", component: DesafiosInicianteComponent },
   { path: "ranking", component: RankingComponent },
   /**
    *   { path: "trilha", component: TrilhaDeEstudosComponent },
@@ -63,8 +62,9 @@ const routes: Routes = [
   { path: "writing", component: WritingComponent  },
   { path: "reading", component: ReadingComponent },
   { path: "listening", component: ListeningComponent },
+  { path: "speaking", component: SpeakingComponent },
 
- // { path: "listening_exercise1", component: ZExerciseListening1Component  },
+
 
 
 ];

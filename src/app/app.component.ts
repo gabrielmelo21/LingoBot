@@ -17,7 +17,8 @@ export class AppComponent implements OnInit{
   title = 'LingoBot';
   user: any;  // Variável para armazenar os dados do usuário
   showLevelUpModal = false;
-  showTokensModal = false;
+
+
   isLoginRoute: any;
   referralCode: string = '';
 
@@ -33,6 +34,10 @@ export class AppComponent implements OnInit{
   showBookModal: boolean = false;
   showEldersBookModal: boolean = false;
   showSettingsModal: boolean = false;
+  showItensModal: boolean = false; //bolsa com itens do usuario
+  showNewItemModal = false; // quando ganha um novo item
+  userLevel: any;
+  newItem: any;
 
 
 
@@ -63,6 +68,22 @@ export class AppComponent implements OnInit{
     });
 
 
+    this.modalService.showItensModal$.subscribe(state => {
+      this.showItensModal = state;
+    });
+
+
+    this.modalService.showLevelUpModal$.subscribe(state => {
+      this.showLevelUpModal = state;
+    });
+
+
+    this.modalService.showNewItemsModal$.subscribe(state => {
+      this.showNewItemModal = state;
+    });
+
+
+
 this.router.events.subscribe(event => {
   if (event instanceof NavigationStart) {
   this.playSound.stopAudio(); // Para qualquer som em execução ao mudar de página
@@ -79,36 +100,22 @@ this.router.events.subscribe(event => {
 
 
 
+
+    /**
     this.auth.levelUpEvent.subscribe(() => {
       this.showLevelUpModal = true;
     });
 
+
+
     this.auth.tokenEvent.subscribe(() => {
       this.showTokensModal = true;
     });
+      **/
 
 
 
   }
-  closeModal() {
-    this.showLevelUpModal = false;
-  }
-  closeModal2() {
-    this.showTokensModal = false;
-    //redirecionar para o planos
-    this.router.navigate(['/planos']);
-  }
-
-
-
-  closeModal3() {
-    this.showPedagioModal = false;
-  }
-
-
-
-
-
 
 
   torreSubscription!: Subscription;
@@ -120,6 +127,14 @@ this.router.events.subscribe(event => {
 
 
   ngOnInit() {
+
+    this.modalService.showNewItemsModal$.subscribe(state => {
+      this.showNewItemModal = state;
+    });
+
+    this.modalService.newItem$.subscribe(item => {
+      this.newItem = item;
+    });
 
 
     //INICIALIZA JSON TORRE
@@ -165,17 +180,12 @@ this.router.events.subscribe(event => {
     this.auth.user$.subscribe(userData => {
       this.user = userData;
       //  console.log(JSON.stringify(this.user));
+
+      this.userLevel = userData.Level;
+
     });
 
   }
-
-
-  voltarAndar(){
-
-  }
-
-
-
 
 
 
@@ -190,9 +200,9 @@ this.router.events.subscribe(event => {
   }
 
   openTools() {
-
     this.playSound.playCleanSound2();
-    this.showOpenTools = !this.showOpenTools;
+    this.showItensModal = !this.showItensModal;
+   // this.showOpenTools = !this.showOpenTools;
   }
 
 
@@ -209,5 +219,17 @@ this.router.events.subscribe(event => {
   toggleEldersBook() {
     this.playSound.playCleanSound2();
     this.showEldersBookModal = !this.showEldersBookModal;
+  }
+
+  toggleItens() {
+    this.playSound.playCleanSound2();
+    this.showItensModal = !this.showItensModal;
+  }
+
+  mages: boolean = false;
+  mage() {
+    this.playSound.playCleanSound2();
+    this.mages = !this.mages;
+    console.log(this.mages);
   }
 }

@@ -36,6 +36,7 @@ export class ReadingComponent {
   sentencePairs: SentencePair[] = [];
   dialog: number = 0 ;
   elder: string = "assets/lingobot/elders/reading/parado.png";
+  padlock: string = "assets/lingobot/cenas_na_masmorra/reading/padlock.png";
   readingScroll: boolean = false;
   srcExercises: string = '';
   finalGoldReward: number = 10;
@@ -249,6 +250,7 @@ export class ReadingComponent {
 
     if (texto.toLowerCase() === this.currentPassword.toLowerCase()) {
       // Senha correta, independente de maiúsculas/minúsculase3
+      this.padlock = "assets/lingobot/cenas_na_masmorra/reading/padlock-open.png"
 
        this.playSoundService.playOpenChest()
       this.cena = 2;
@@ -261,6 +263,7 @@ export class ReadingComponent {
         console.log("Moedas de ouro ganho: ", this.finalGoldReward);
         this.authService.updateLocalUserData({ tokens :this.finalGoldReward });
         this.authService.checkLevelUp(this.finalXpReward)
+        this.authService.addXpSkills('reading');
 
       },3000)
 

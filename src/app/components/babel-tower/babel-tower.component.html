@@ -46,6 +46,46 @@
 
 
 
+  <div class="battery-bars">
+
+    <img [src]="energyImagePath" class="battery-icon" (click)="rechargeBattery();" >
+
+    <div class="battery-bar-container">
+      <img *ngFor="let bar of batteryArray; let i = index"
+           [src]="i < currentBattery ? 'assets/lingobot/menu-icons/battery-on.png' : 'assets/lingobot/menu-icons/battery-off.png'"
+           class="battery-bar-img">
+    </div>
+  </div>
+
+
+
+
+  <!-- Recharge banner -->
+  <app-recharge *ngIf="rechargeModal && currentBattery < 1" ></app-recharge>
+  <app-charged *ngIf="rechargeModal && currentBattery >= 1" ></app-charged>
+
+
+  <!-- quest paper -->
+  <img (click)="checkQuest()" src="assets/lingobot/menu-icons/quests.png" class="quests-button"  *ngIf="!rechargeModal">
+
+
+
+
+
+ <img src="assets/lingobot/quest-check/quest-check.png" class="quest-check" *ngIf="checkQuestModal">
+
+
+  <div class="quest-check-text"  *ngIf="checkQuestModal">
+    <p style="text-align: center;"><b style="color: darkgoldenrod">Mission</b><br>Move from floor {{  this.andar_final_conjunto }} to {{ this.andar_final_conjunto + 1}}, the following is required</p>
+  </div>
+
+
+  <div *ngIf="checkQuestModal" class="quest-check-infos">
+    <div *ngFor="let requisito of resultadoPedagio.requisitos; let i = index" class="requisito-item" [class.riscado]="requisito.completo">
+      <img class="requisito-icon" [src]="getRequisitoIcon(i)" alt="ícone">
+      <span>{{ requisito.nome }}</span>
+    </div>
+  </div>
 
 
 
@@ -58,31 +98,16 @@
 
   <div *ngIf="showPedagioModal" class="pedagio-dialog" style="margin-top: -20px !important;">
     <div  class="pedagio-content"
-          style="background-image: url('assets/lingobot/pergaminho.png');
-   background-size: 100% !important;
-   background-repeat: no-repeat;
-   height:600px !important;
-   width: 120% !important;
-   margin-top: 80px !important;
-"
 
     >
 
       <div style=" margin-top: 100px !important;">
         <div style="width:200px !important;">
-          <h2 style="text-align: center">Parabéns!</h2>
-          <p>Você está indo muito bem e venceu os andares <b>1-4</b>. <br> para continuar é necessário
-            pagar com suas moedas de ouro coletadas em sua aventura, caso não tenha, volte alguns andares e continue juntando!
-          </p>
 
 
-          <div style="display: flex; align-items: center; gap: 10px;margin-left: 20%">
-            <img src="assets/lingobot/icons/LingoToken.png" style="width: 30%; height: auto;">
-            <h3 style="margin: 0;color: darkgoldenrod;font-weight: bold;font-size: 25pt !important;">100</h3>
-          </div>
 
-          <br>
 
+          <button (click)="verificarPedagio()">Verificar Pedágio</button>
 
           <div class="button-container">
             <button class="game-button" (click)="closeModal()">Voltar</button>
@@ -104,10 +129,60 @@
 
 
 
+
   <div class="background-commands"  >
 
 
     <h3 class="actions-title" *ngIf="!blockAction">Comandos</h3>
+
+
+
+    <div class="show-quest-infos" *ngIf="checkQuestModal">
+      <div class="next-question"  >
+        <h3 (click)="closeQuestModal();" class="command-button-2"  >
+          Close
+        </h3>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="commands-group" *ngIf="rechargeModal && !checkQuestModal" style="margin-top: 20px !important;">
+
+      <div  class="command" (click)="rechargeBattery()" style="width: 33% !important;margin-top: 2vh;">
+        <img src="assets/lingobot/poses/lingobot-running.png"  style="width: 80%;height: auto" class="flipped">
+      </div>
+
+      <div  (click)=" addBattery()" class="command" style="width: 33% !important;margin-top: 3vh;" *ngIf="currentBattery !== 10">
+        <img src="assets/lingobot/menu-icons/battery-on.png"  style="width: 30%;height: auto" >
+        <h4 style="font-weight: bolder">Recharge</h4>
+        <div class="recharge-gem">
+          <h3>1</h3>
+          <img src="assets/lingobot/itens/gemas.png" class="gema-icon">
+        </div>
+      </div>
+
+      <div (click)="rechargeAll()" class="command" style="width: 33% !important;margin-top: 3vh;" *ngIf="currentBattery !== 10">
+        <img src="assets/lingobot/menu-icons/recharge_all.png"  style="width:80%;height: auto">
+        <h4  style="font-weight: bolder">Recharge All</h4>
+        <div class="recharge-gem">
+          <h3>{{  rechargeValue }}</h3>
+          <img src="assets/lingobot/itens/gemas.png" class="gema-icon">
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="main-commands" *ngIf="!rechargeModal && !checkQuestModal">
+
+
     <h3 class="actions-title" *ngIf="blockAction">Ação em andamento...</h3>
     <div class="commands-group">
       <div class="command" (click)="command('up')">
@@ -125,7 +200,15 @@
              (touchstart)="ativarNeon('in')" (touchend)="desativarNeon('in')"
              src="assets/lingobot/poses/lingobot-running.png"
           class="img-command-center">
-        <p class="command-text">Fazer missão</p>
+
+        <div class="battery-consuming" style="margin-left: 5vh">
+          <p class="battery-text">-1</p>
+          <img class="battery-icon" src="assets/lingobot/menu-icons/battery-on.png">
+        </div>
+
+
+
+
       </div>
 
       <div class="command" (click)="command('down')">
@@ -141,6 +224,9 @@
 
 
 
+
+    </div>
+
   </div> <!-- background commands -->
 
 
@@ -150,12 +236,80 @@
 
 <style>
 
+  .riscado {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+
+  .quest-check{
+     position: absolute;
+     top: 0;
+     left: 0;
+     z-index: 999999;
+     width: 100%;
+    height: auto;
+  }
+
+   .quest-check-text{
+     position: absolute;
+     top:23vh;
+     left: 11vh;
+     z-index: 999999;
+     font-weight: bolder;
+     width: 50%;
+   }
+  .quest-check-infos{
+    position: absolute;
+    top:30vh;
+    left: 10vh;
+    z-index: 999999;
+    width: 50%;
+    height: 20vh;
+    overflow: auto;
+  }
+
+  .quest-check-infos {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .requisito-item {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff3d1;
+    background-color: transparent;
+    border: 2px solid rgba(255, 243, 209, 0.2);
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px #000;
+    transition: all 0.2s ease;
+  }
+
+  .requisito-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+
+  .riscado {
+    opacity: 0.6;
+    text-decoration: line-through;
+  }
+
+
   .img-command{
-    width: 80%;
+    width: 60%;
     height: auto
   }
   .img-command-center{
-     width: 120%;
+     width: 100%;
      height: auto;
   }
 
@@ -177,6 +331,13 @@
 
   }
 
+
+
+
+  img-command-recharge{
+    width: 10% !important;
+    height: auto !important;
+  }
 
 
   .button-container {
@@ -217,12 +378,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('assets/lingobot/menu-icons/celular-infos.png');
-    background-size: cover; /* A imagem cobrirá toda a tela */
-    background-position: center;
+    background-image: url('assets/lingobot/pergaminho.png');
+    background-size: 100% !important;
     background-repeat: no-repeat;
-    width: 100vw; /* Ocupa toda a largura da tela */
-    height: 100vh; /* Ocupa toda a altura da tela */
+    height:600px !important;
+    width: 120% !important;
+    margin-top: 80px !important;
     overflow: hidden; /* Evita rolagem */
     z-index: 10 !important;
   }

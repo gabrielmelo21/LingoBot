@@ -56,10 +56,35 @@ export class BabelTowerComponent  implements OnInit {
   video2Src: string = '';
   video3Src: string = '';
   video4Src: string = '';
+  pedagioStatus: any;
+  checkQuestModal: boolean = false;
+
+
+
+  blockAction: boolean = false;
+  resultadoPedagio: {
+    precisaPagar: boolean;
+    podeSubir: boolean;
+    mensagem: string;
+    requisitos: { nome: string; completo: boolean }[];
+  } = {
+    precisaPagar: false,
+    podeSubir: false,
+    mensagem: '',
+    requisitos: []
+  };
+
+
+
+  currentBattery: number = 0;
+  batteryArray = Array(10).fill(0);
+  energyImagePath: string = '';
+  rechargeModal: boolean = false ;
+
 
   constructor(private playSound: PlaySoundService,
               private router: Router,
-              private auth: AuthService,
+              protected auth: AuthService,
               private trilhaService: TrilhaService) {
     window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
 
@@ -71,7 +96,12 @@ export class BabelTowerComponent  implements OnInit {
 
   }
 
+  verificarPedagio() {
 
+
+
+
+  }
 
 
   // Função para mudar de cena
@@ -90,12 +120,80 @@ export class BabelTowerComponent  implements OnInit {
   andar_final_conjunto: number = 0;
 
 
-  orbView: boolean = true;
+
+
+
+  pagarPedagio() {
+    // Deduzir os valores e avançar o andar
+   // this.auth.pagarPedagio(); // você pode criar esse método depois
+    this.closeModal();
+  }
+
+
+checkQuest(){
+  this.resultadoPedagio = this.auth.checkQuest(8);
+  this.checkQuestModal = !this.checkQuestModal;
+}
+
+  closeQuestModal() {
+    this.checkQuestModal = !this.checkQuestModal;
+  }
+
+  rechargeBattery() {
+     this.rechargeModal = !this.rechargeModal;
+  }
+
+
+
+
+  getRequisitoIcon(index: number): string {
+    const icons = [
+      'assets/lingobot/itens/gemas.png',
+      'assets/lingobot/itens/gold.png',
+      'assets/lingobot/menu-icons/level.png',
+      'assets/lingobot/skills/listening.png',
+      'assets/lingobot/skills/speaking.png',
+      'assets/lingobot/skills/reading.png',
+      'assets/lingobot/skills/writing.png'
+    ];
+    return icons[index];
+  }
 
 
 
 
 
+  setEnergyImage() {
+    this.energyImagePath = this.currentBattery > 0
+      ? 'assets/lingobot/menu-icons/lingobot-energy-on.png'
+      : 'assets/lingobot/menu-icons/lingobot-energy-off.png';
+  }
+
+  loadBattery() {
+    this.currentBattery = this.auth.getBattery();
+    this.setEnergyImage();
+    this.rechargeValue = Math.abs(this.currentBattery - 10);
+  }
+
+  // Exemplo: chamada após consumir ou recarregar
+  addBattery() {
+    this.playSound.playCleanSound2()
+    this.auth.addBatteryEnergy(1);
+    this.auth.decreaseLocalUserData( {gemas: 1 });
+    this.loadBattery();
+  }
+  rechargeValue: number = 0;
+  rechargeAll(){
+    this.playSound.playCleanSound2()
+    this.auth.addBatteryEnergy(this.rechargeValue);
+    this.auth.decreaseLocalUserData( {gemas: this.rechargeValue });
+    this.loadBattery();
+  }
+
+  removeBattery() {
+    this.auth.removeBatteryEnergy();
+    this.loadBattery();
+  }
 
 
   ngOnInit() {
@@ -106,6 +204,11 @@ export class BabelTowerComponent  implements OnInit {
       this.userDifficulty = userData.difficulty;
       this.setTowerSceneSources();
     });
+
+
+    this.loadBattery();
+
+
 
 
     setTimeout(() => {
@@ -121,7 +224,12 @@ export class BabelTowerComponent  implements OnInit {
       this.exercise1 = torre.exercise1;
       this.exercise2 = torre.exercise2;
 
+      // tem que ter feito o exercicio 1 2 3 4 do conjunto , vao ser marcados com true e false
+
       this.auth.checkAndUpdateRanking(this.andarAtual);
+
+
+
 
     });
 
@@ -175,26 +283,6 @@ export class BabelTowerComponent  implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // Lógica para determinar qual imagem exibir
   getTextoPorAndar(): string {
     // Calcula a posição do andar dentro do conjunto de 4
@@ -229,90 +317,6 @@ export class BabelTowerComponent  implements OnInit {
   }
 
 
-
-
-  deferredPrompt: any;
-
-
-  @HostListener('window:beforeinstallprompt', ['$event'])
-  onBeforeInstallPrompt(event: Event) {
-    event.preventDefault();
-    this.deferredPrompt = event;
-  }
-
-  installPWA() {
-    if (this.deferredPrompt) {
-      this.deferredPrompt.prompt();
-      this.deferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('Usuário aceitou a instalação');
-        } else {
-          console.log('Usuário recusou a instalação');
-        }
-        this.deferredPrompt = null;
-      });
-    }
-  }
-
-
-
-  checkLevelUp(newExp: number): void {
-    this.auth.checkLevelUp(newExp);
-    this.auth.getExpPercentage();
-  }
-
-
-  navigate_to(number: number) { // Certificar que é number
-    this.playSound.playCleanNavigationSound()
-
-    switch (number) {
-      case 0: // Ajustado para começar do 0
-        this.router.navigate(['/discoverExpressions']);
-        break;
-      case 1:
-        this.router.navigate(['/quests']);
-
-        break;
-      case 2:
-        this.router.navigate(['/videos']);
-        break;
-      case 31:
-        this.router.navigate(['/flashcards']);
-        break;
-      case 4:
-        this.router.navigate(['/ranking']);
-        break;
-      case 5:
-        this.router.navigate(['/check-in']);
-        break;
-      case 6:
-        this.router.navigate(['/planos']);
-        break;
-      case 71:
-        this.router.navigate(['/referral']);
-        break;
-      case 8:
-        this.router.navigate(['/settings']);
-        break;
-      case 81:
-        this.router.navigate(['/missoes-diarias']);
-        break;
-      case 132:
-        this.router.navigate(['/desafios-iniciante']);
-        break;
-      case 432:
-        this.router.navigate(['/trilha']);
-        break;
-
-
-      default:
-        console.warn("Nenhuma rota definida para este índice:", number);
-    }
-  }
-
-
-
-
   showPedagioModal: boolean = false;
   closeModal() {
 
@@ -345,7 +349,7 @@ export class BabelTowerComponent  implements OnInit {
 
 
 
-  blockAction: boolean = false;
+
 
 
   command(cmd: string) {
@@ -367,7 +371,7 @@ export class BabelTowerComponent  implements OnInit {
 
 
       if (this.andarAtual == this.andar_final_conjunto) {
-
+         this. verificarPedagio()
         this.showPedagioModal = true;
         this.blockAction = false; // Libera após concluir
       } else {
@@ -418,18 +422,16 @@ export class BabelTowerComponent  implements OnInit {
 
       }
     } else if (cmd === 'in') {
+      if(this.currentBattery > 0){
       // Animação para entrar na missão
       this.mudarCena(2);
-
+      this.removeBattery();
       setTimeout(() => {
         // Animação de nuvens
         this.startAnimation();
       }, 2000);
-
-
       setTimeout(() => {
         this.blockAction = false; // Libera após concluir
-
          switch (this.getTextoPorAndar()){
              case "Writing":
                this.router.navigate(['/writing']);
@@ -440,16 +442,17 @@ export class BabelTowerComponent  implements OnInit {
            case "Reading":
              this.router.navigate(['/reading']);
              break;
-
            case "Speaking":
              this.router.navigate(['/speaking']);
              break;
-
          }
-
-
       }, 5000); // Ajuste o tempo conforme necessário
+    }else{
+        // Bloqueia novas ações
+        this.blockAction = false;
+        this.  rechargeBattery()
 
+      }
 
     } else if (cmd === 'down') {
       const t = this.trilhaService.getTorreData();
@@ -509,4 +512,6 @@ export class BabelTowerComponent  implements OnInit {
       }
     }
   }
+
+
 }

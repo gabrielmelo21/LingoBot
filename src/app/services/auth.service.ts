@@ -3,6 +3,20 @@ import {jwtDecode} from "jwt-decode";
 import {BehaviorSubject, catchError, Observable, Subject, tap, throwError} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {PlaySoundService} from "./play-sound.service";
+import {ModalService} from "./modal.service";
+
+
+export interface UserItem {
+  itemName: string;
+  dropRate: number;
+  gemsValue: number;
+  quant: number;
+  rarity: string;
+  itemSrc: string;
+  describe: string;
+}
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +43,7 @@ export class AuthService {
   };
 
 
-  constructor(private http: HttpClient, private playSound: PlaySoundService) {
+  constructor(private http: HttpClient, private playSound: PlaySoundService, private modalService: ModalService) {
 
       this.startAutoRefresh();
 
@@ -87,14 +101,14 @@ export class AuthService {
 
 
 
-  getRanking(){
-    const userData = this.getUserData();
-    return  userData.ranking;
-  }
-
   getDifficulty(){
     const userData = this.getUserData();
     return  userData.difficulty;
+  }
+
+  getAndarUser(){
+    const userData = this.getUserData();
+    return  userData.ranking
   }
 
   checkAndUpdateRanking(novoAndar: number) {
@@ -192,6 +206,232 @@ export class AuthService {
 
 
 
+
+
+  getUserItems(): UserItem[] {
+    const userData = this.getUserData();
+
+    if (!userData || !userData.items) {
+      return [];
+    }
+
+    try {
+      // Faz o parse da string JSON
+      const items: UserItem[] = JSON.parse(userData.items);
+      return items;
+    } catch (e) {
+      console.error('Erro ao parsear os itens do usuário:', e);
+      return [];
+    }
+  }
+
+
+
+
+  sellUserItem(itemToSell: UserItem): boolean {
+    const userData = this.getUserData();
+
+    if (!userData || !userData.items) return false;
+
+    try {
+      const items: UserItem[] = JSON.parse(userData.items);
+
+      const index = items.findIndex(i =>
+        i.itemName === itemToSell.itemName &&
+        i.rarity === itemToSell.rarity &&
+        i.itemSrc === itemToSell.itemSrc
+      );
+
+      if (index === -1 || items[index].quant <= 0) return false;
+
+      // Reduz 1 da quantidade
+      items[index].quant -= 1;
+
+      // Remove se acabou
+      if (items[index].quant === 0) {
+        items.splice(index, 1);
+      }
+
+      // Define o valor com base na raridade
+      const reward = itemToSell.gemsValue || itemToSell || 0;
+
+      if (['common', 'uncommon', 'rare'].includes(itemToSell.rarity)) {
+        this.updateLocalUserData({ tokens: reward });
+      } else if (['epic', 'legendary'].includes(itemToSell.rarity)) {
+        this.updateLocalUserData({ gemas: reward });
+      }
+
+      // Atualiza o localStorage
+      userData.items = JSON.stringify(items);
+      // Salva os itens atualizados
+      this.updateLocalUserData({ items: JSON.stringify(items) });
+
+      return true;
+
+    } catch (e) {
+      console.error('Erro ao vender item:', e);
+      return false;
+    }
+  }
+
+
+
+
+  addRandomItemToUser(): void {
+    this.http.get<any[]>('assets/lingobot/json/itens/itens.json').subscribe((itemPool) => {
+      const userData = this.getUserData();
+      if (!userData) return;
+
+      const totalRate = itemPool.reduce((sum, item) => sum + item.dropRate, 0);
+      const rand = Math.random() * totalRate;
+
+      let cumulative = 0;
+      let selectedItem = itemPool[0];
+      for (let item of itemPool) {
+        cumulative += item.dropRate;
+        if (rand <= cumulative) {
+          selectedItem = item;
+          break;
+        }
+      }
+
+      const currentItems: any[] = userData.items ? JSON.parse(userData.items) : [];
+      const index = currentItems.findIndex(i =>
+        i.itemName === selectedItem.itemName &&
+        i.rarity === selectedItem.rarity &&
+        i.itemSrc === selectedItem.itemSrc
+      );
+
+      if (index !== -1) {
+        currentItems[index].quant += 1;
+      } else {
+        currentItems.push({ ...selectedItem, quant: 1 });
+      }
+
+      this.updateLocalUserData({ items: JSON.stringify(currentItems) });
+
+      console.log("Item adicionado ao inventário:", selectedItem.itemName);
+
+      // MOSTRA O MODAL COM O ITEM
+      this.modalService.toggleNewItemsModal(true, selectedItem);
+    });
+  }
+
+
+
+
+
+
+  checkQuest(andar: number): any {
+    console.log('[checkQuest] Andar:', andar);
+
+    const userData = this.getUserData();
+
+    const precisaPagar = andar % 4 === 0;
+
+    console.log('[checkQuest] precisaPagar:', precisaPagar);
+
+    if (!precisaPagar) {
+      console.log('[checkQuest] Nenhum pedágio necessário.');
+      return {
+        precisaPagar: false,
+        mensagem: 'Nenhum pedágio necessário neste andar.',
+      };
+    }
+
+    const indexPedagio = Math.floor((andar - 1) / 4);
+    console.log('[checkQuest] indexPedagio:', indexPedagio);
+
+    const base = {
+      tokens: 100,
+      gemas: 20,
+      level: 10,
+      skills: 5,
+      multiplicador: 1.5
+    };
+
+    const custoTokens = Math.floor(base.tokens * Math.pow(base.multiplicador, indexPedagio));
+    const custoGemas = Math.floor(base.gemas * Math.pow(base.multiplicador, indexPedagio));
+    const levelMinimo = base.level + indexPedagio * 5;
+    const skillsMinimas = base.skills + indexPedagio;
+
+    console.log('[checkQuest] Custos:', {
+      custoTokens,
+      custoGemas,
+      levelMinimo,
+      skillsMinimas
+    });
+
+    const requisitos = [
+      {
+        nome: `Ter ${custoGemas} gemas`,
+        completo: userData.gemas >= custoGemas
+      },
+      {
+        nome: `Ter ${custoTokens} gold coins`,
+        completo: userData.tokens >= custoTokens
+      },
+      {
+        nome: `Level ${levelMinimo}`,
+        completo: userData.Level >= levelMinimo
+      },
+      {
+        nome: `Level ${skillsMinimas} em Listening`,
+        completo: userData.listening >= skillsMinimas
+      },
+      {
+        nome: `Level ${skillsMinimas} em Speaking`,
+        completo: userData.speaking >= skillsMinimas
+      },
+      {
+        nome: `Level ${skillsMinimas} em Reading`,
+        completo: userData.reading >= skillsMinimas
+      },
+      {
+        nome: `Level ${skillsMinimas} em Writing`,
+        completo: userData.writing >= skillsMinimas
+      }
+    ];
+
+    requisitos.forEach((r, i) => {
+      console.log(`[checkQuest] Requisito ${i + 1}: ${r.nome} - ${r.completo ? 'OK' : 'FALHOU'}`);
+    });
+
+    const podeSubir = requisitos.every(r => r.completo);
+    console.log('[checkQuest] podeSubir:', podeSubir);
+
+    return {
+      precisaPagar: true,
+      podeSubir,
+      mensagem: podeSubir
+        ? 'Você pode subir para o próximo andar!'
+        : 'Você não possui os recursos suficientes para subir.',
+      requisitos
+    };
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   updateMetaUser(changes: Record<string, boolean>): void {
     const userData = this.getUserData();
     if (!userData || !userData.metasDiarias) return;
@@ -271,6 +511,42 @@ export class AuthService {
 
 
 
+/**  BATTERY **/
+  getBattery(){
+    const userData = this.getUserData();
+    return userData.battery;
+  }
+  addBatteryEnergy(number: number){
+    this.updateLocalUserData({ battery : number})
+  }
+  removeBatteryEnergy(){
+    this.decreaseLocalUserData({ battery : 1 })
+  }
+
+
+
+
+
+
+
+  addXpSkills(skill: string){
+    switch (skill) {
+       case 'reading':
+         this.updateLocalUserData({ reading: 1 });
+         break;
+       case 'speaking':
+         this.updateLocalUserData({ speaking: 1 });
+         break;
+       case 'listening':
+         this.updateLocalUserData({ listening: 1 });
+         break;
+       case 'writing':
+         this.updateLocalUserData({ writing: 1 });
+         break;
+     }
+  }
+
+
 
 
 
@@ -324,7 +600,9 @@ export class AuthService {
         this.updateLocalUserData({ LingoEXP: excessExp }); // Adiciona o XP excedente
       }
 
-      this.levelUpEvent.next();
+      //this.levelUpEvent.next();
+      this.modalService.toggleLevelUpModal();
+
       this.playSound.playLevelUp();
 
       // Atualiza os dados para a próxima iteração do loop

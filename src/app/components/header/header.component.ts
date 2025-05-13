@@ -48,4 +48,8 @@ export class HeaderComponent implements OnInit{
     this.playSound.playCleanSound2();
     this.modalService.toggleSettingsModal()
   }
+
+  commingSoon() {
+    alert("Coming soon");
+  }
 }

@@ -89,7 +89,6 @@
 
 
 
-
 .nuvem-esquerda {
   position: absolute;
   left: 0;
@@ -113,10 +112,155 @@
 }
 
 
+.quests-button {
+  position: absolute;
+  z-index: 6;
+  right: 3vh;
+  bottom: 35vh;
+  width: 13%;
+  height: auto;
 
-
-/** Celular pequeno **/
-@media (max-width: 360px) {
-
+  /* animação de flutuação */
+  animation: float 3s ease-in-out infinite;
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* sobe */
+  }
+  100% {
+    transform: translateY(0); /* volta */
+  }
+}
+
+
+
+
+.battery-bars {
+  position: absolute;
+  top: 10vh;
+  left: 5%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 2vh;
+  z-index: 10;
+}
+
+.battery-icon {
+  height: 60px;
+  width: auto;
+}
+
+.battery-bar-container {
+  display: flex;
+  gap: 0.5vh;
+  flex: 1;
+  align-items: center;
+  justify-content: start;
+}
+
+.battery-bar-img {
+  height: 36px;
+  width: auto;
+  transition: transform 0.2s ease;
+}
+
+.battery-bar-img:hover {
+  transform: scale(1.1);
+}
+
+
+.battery-consuming {
+  display: flex;
+  align-items: center; /* Alinha verticalmente */
+  gap: 8px; /* Espaçamento opcional entre o texto e o ícone */
+}
+
+.battery-text {
+  color: red;
+  margin: 0; /* Remove margens padrão */
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+.battery-icon {
+  width: 16%;
+  height: auto;
+}
+
+
+
+
+
+.recharge {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.recharge-command-button {
+  padding: 10px;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 160px;
+  background: none;
+  border: none;
+}
+
+.recharge-command-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(79, 195, 247, 0.4);
+}
+
+.recharge-img {
+  width: 40%;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto 8px auto;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.recharge-gem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.recharge-gem h3 {
+  color: #4FC3F7;
+  font-weight: bolder;
+  margin: 0;
+}
+
+.gema-icon {
+  width: 18px;
+  height: 18px;
+}
+
+
+
+
+
+.command-button-2{
+  font-size:25pt !important;
+  font-weight:bolder;
+  text-align: center;
+  color:#946a01;
+  margin-top: 8vh !important;
+}

@@ -2,12 +2,19 @@
   <app-header></app-header>
   <router-outlet style="background: black !important;"></router-outlet>
 </div>
-<div *ngIf="showLevelUpModal" class="level-up-modal">
-  <div class="modal-content animate">
-    <img src="assets/lingobot/lingobot-level-up.png" alt="Level Up" class="level-up-image">
+
+
+<!--
+<div  class="level-up-modal"  >
+  <div class="modal-content animate"  style="background-color: red !important;">
+    <img src="assets/lingobot/lingobot-level-up.png" alt="Level Up" class="level-up-image" style="width: 100%;height: 100%">
     <button class="game-button" (click)="closeModal()">Continuar</button>
   </div>
 </div>
+
+
+
+
 
 
 <div *ngIf="showTokensModal" class="level-up-modal">
@@ -16,7 +23,7 @@
     <button class="game-button" (click)="closeModal2()">Continuar</button>
   </div>
 </div>
-
+-->
 
 
 
@@ -97,6 +104,14 @@
 </div>
 
 
+
+
+
+
+
+
+
+
 <div *ngIf="showEldersBookModal" class="mug-dialog">
   <div class="mug-content">
     <div class="modal-content">
@@ -128,6 +143,59 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+<div *ngIf="showItensModal" class="mug-dialog">
+  <div class="mug-content">
+    <div class="modal-content">
+      <app-itens></app-itens>
+      <div
+        (click)="toggleItens()"
+        class="closeMugModal"
+      >
+        <h3>
+          &#10006;
+        </h3>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<div   *ngIf="showLevelUpModal" class="mug-dialog" style="z-index: 999999999">
+  <div class="mug-content">
+    <div class="modal-content">
+        <app-level-up></app-level-up>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<div *ngIf="showNewItemModal" class="mug-dialog">
+  <div class="mug-content">
+    <div class="modal-content">
+      <app-new-item-modal [item]="newItem"></app-new-item-modal>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 
@@ -189,26 +257,45 @@ assets/lingobot/menu-icons/powers/bag-icon.png
 -->
 
 <button   style="z-index: 9999112112" class="floating-button image-button" (touchstart)="openTools()" *ngIf="!isLoginRoute">
-  <img src="assets/lingobot/menu-icons/powers/bag-icon.png" alt="Bag Photo">
+  <img src="assets/lingobot/menu-icons/bag-icon.png" alt="Bag Photo">
 </button>
 
 
 
 
-<button    style="z-index: 9999" class="floating-button  image-button3" (touchstart)=" toggleMug()" *ngIf="!isLoginRoute &&  this.showOpenTools">
-  <img src="assets/lingobot/menu-icons/powers/mug-tradutor-power1.jpg" alt="Bag Photo" style="border-radius: 20px !important;">
+<button   style="z-index: 9999112112" class="floating-button image-button-mage" (touchstart)="mage()" *ngIf="!isLoginRoute">
+  <img src="assets/lingobot/powers/icon.png" alt="Bag Photo">
 </button>
 
 
-<button    style="z-index: 9999" class="floating-button image-button2" (touchstart)=" toggleEldersBook()" *ngIf="!isLoginRoute &&  this.showOpenTools">
-  <img src="assets/lingobot/menu-icons/powers/elders-book.png" alt="Bag Photo" style="border-radius: 20px !important;">
-</button>
+<div *ngIf="mages" class="mages"  >
+  <button class=" image-button" (touchstart)="toggleMug()" *ngIf="!isLoginRoute && mages">
+    <img src="assets/lingobot/powers/mug.png" >
+  </button>
+
+  <!-- Livro comum (libera no nível 10) -->
+  <button
+    style="z-index: 9933399"
+    class="image-button"
+    (touchstart)="userLevel >= 10 && toggleBook()"
+    *ngIf="!isLoginRoute && mages">
+    <img [src]="userLevel >= 10 ? 'assets/lingobot/powers/book-icon.png' : 'assets/lingobot/powers/unlock10.png'">
+  </button>
+
+  <!-- Livro dos anciões (libera no nível 30) -->
+  <button
+    style="z-index: 9933399"
+    class="image-button"
+    (touchstart)="userLevel >= 30 && toggleEldersBook()"
+    *ngIf="!isLoginRoute && mages">
+    <img [src]="userLevel >= 30 ? 'assets/lingobot/powers/elders-book.png' : 'assets/lingobot/powers/unlock30.png'">
+  </button>
+
+
+</div>
 
 
 
-<button   style="z-index: 9999" class="floating-button image-button4" (touchstart)=" toggleBook()" *ngIf="!isLoginRoute &&  this.showOpenTools">
-  <img src="assets/lingobot/menu-icons/powers/book-icon.png" alt="Notebook">
-</button>
 
 
 <!--   <img src="assets/lingobot/menu-icons/powers/cavalo_preto.png" alt="Bag Photo" style="border-radius: 20px !important;"> -->
@@ -224,6 +311,7 @@ assets/lingobot/menu-icons/powers/bag-icon.png
 
 
 <style>
+
 
   .container{
      background: black !important;

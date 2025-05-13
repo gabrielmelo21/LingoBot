@@ -1,1 +1,146 @@
-<p>listening works!</p>
+
+<video *ngIf="cenarioFinal && !finalChestAnimation" autoplay  class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/listening/abrir-portao-listening-watermark.mp4" type="video/mp4">
+</video>
+
+
+<video *ngIf="!cenarioFinal && finalChestAnimation" autoplay  class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/listening/listening_winner.mp4" type="video/mp4">
+</video>
+
+
+
+<!-- Cenario -->
+<!-- Imagem estática -->
+<img [src]="cenario" class="background-image" *ngIf="!cenarioFinal && !finalChestAnimation">
+
+
+
+<div class="baloon-container" *ngIf="this.dialog !== 6" >
+  <div class="dialog-baloon">
+    <p *ngIf="dialog == 0">Olá, aventureiro. Eu sou o Ancião da Compreensão Auditiva, ou Listening Elder, e preciso da sua ajuda.</p>
+    <p *ngIf="dialog == 1">Através daquele portão existe um tesouro, que acredito conter muitas moedas de ouro.</p>
+    <p *ngIf="dialog == 2">Perceba que há 7 espaços vazios. Para abrir o portão, é preciso preenchê-los com as esferas de poder.</p>
+    <p *ngIf="dialog == 3">Porém, para isso, é necessário descobrir o que a Vitrola diz — e ela só fala em inglês.</p>
+    <p *ngIf="dialog == 4">Cada palavra que ela disser, você deve entender e responder o que ouviu.</p>
+    <p *ngIf="dialog == 5">Ao final, terá a palavra-passe que coloca uma esfera de poder. Repita até o portão se abrir.</p>
+    <p *ngIf="dialog == 7">Parabéns! você descobriu abriu o Portão e recebeu <b style="color: goldenrod"> {{ this.finalGoldReward }} Gold Coins</b> & <b style="color: blueviolet">{{ this.finalXpReward }} LXP</b> </p>
+
+  </div>
+
+</div>
+
+
+
+<img
+  class="character-img"
+  [src]="elder"
+>
+
+<img
+  [src]="isPlaying ? 'assets/lingobot/cenas_na_masmorra/listening/vitrola-on.png' : 'assets/lingobot/cenas_na_masmorra/listening/vitrola-off.png'"
+  alt="Tocar áudio"
+  (click)="playAudio()"
+  [class.pulse]="isPlaying"
+  class="vitrola"
+  style="cursor: pointer;"
+  *ngIf="cenarioCount < 7"
+/>
+
+
+
+<!-- ETAPA ATUAL E TRADUÇÃO (opcional) -->
+<div class="status-text" *ngIf="dialog===6 && cenarioCount < 7">
+  <p *ngIf="currentStep === 0"><span class="darkgold">Passo 1 de 3:</span><br> Escreva a primeira parte</p>
+  <p *ngIf="currentStep === 1"><span class="darkgold">Passo 2 de 3:</span><br> Escreva a segunda </p>
+  <p *ngIf="currentStep === 2"><span class="darkgold">Passo 3 de 3:</span><br> Escreva a frase em inglês</p>
+  <p *ngIf="currentStep === 2">Tradução: <strong class="darkgold">{{ currentExercise.translate }}</strong>
+  </p>
+</div>
+
+
+<div class="background-commands">
+
+  <h3 class="actions-title"  >Sua Resposta:</h3>
+
+  <p *ngIf="dialog===6"  style="margin-top:10px;margin: 5px;text-align: center">*Toque na vitrola para ouvir o aúdio novamente</p>
+  <!--
+     <button (click)="mudarCena(1);">mudar cena</button>
+    <button (click)="shakePadlock()">Tremer cadeado</button>
+    <button (click)="mudarCena(3)">Texto</button>
+
+      <div *ngIf="audioUrl" style="text-align: center;">  </div>    <p style="font-size: 10px; color: gray; margin-top: 5px;">Toque para ouvir novamente.</p>
+  -->
+
+
+
+
+
+  <div  *ngIf="dialog == 6" >
+    <!-- FORMULÁRIO DE RESPOSTA -->
+    <form class="commands-group" (submit)="enviarResposta(textoInput.value, textoInput); $event.preventDefault();">
+  <textarea
+    #textoInput
+    class="command-textarea"
+    placeholder="Digite o que ouviu aqui..."
+    rows="2"
+    autofocus
+  ></textarea>
+
+      <button type="submit" mat-flat-button class="game-button">
+        <img src="assets/lingobot/icons/pencil-icon.png" alt="Enviar" class="menu-icon" />
+      </button>
+    </form>
+
+
+
+  </div>
+
+  <div class="fundo"  *ngIf="dialog == 0" >
+    <ol class="respostas">
+      <li (click)="chooseOption(1);" >Em que posso ajuda-lo? </li>
+      <li (click)="chooseOption(6);" >Pular diálogo</li>
+      <li (click)="chooseOption(2);">Foi um engano, estou indo embora.</li>
+    </ol>
+  </div>
+
+
+
+
+  <div class="fundo"  *ngIf="dialog == 1" >
+    <ol class="respostas">
+      <li (click)="chooseOption(3);" >Intessante, eu estou atrás de Moedas de Ouro </li>
+    </ol>
+  </div>
+
+  <div class="fundo"  *ngIf="dialog == 3" >
+    <ol class="respostas">
+      <li (click)="chooseOption(4);" >Hmm.. continue</li>
+    </ol>
+  </div>
+  <div class="fundo"  *ngIf="dialog == 4" >
+    <ol class="respostas">
+      <li (click)="chooseOption(5);" >Ok, certo</li>
+    </ol>
+  </div>
+
+  <div class="fundo"  *ngIf="dialog == 5" >
+    <ol class="respostas">
+      <li (click)="chooseOption(6);" >Entendido, vamos começar.</li>
+    </ol>
+  </div>
+
+
+  <div class="fundo"  *ngIf="dialog == 7" >
+    <ol class="respostas">
+      <li (click)="chooseOption(7);" >Sair</li>
+    </ol>
+  </div>
+
+
+
+
+</div> <!-- background commands -->
+
+
+

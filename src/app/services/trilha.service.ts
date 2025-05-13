@@ -60,12 +60,13 @@ export class TrilhaService {
   }
 
 
-// Método para resetar os dados da torre
+/**
   resetTorreData(): void {
     localStorage.removeItem(this.torreKey);
     const torreInicial = this.initializeTorreData();
     this.torreSubject.next(torreInicial); // Atualiza o BehaviorSubject com os dados iniciais
   }
 
+**/
 
 }

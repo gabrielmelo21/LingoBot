@@ -82,11 +82,6 @@
   }
 
 
-  // O PROXIMO PASSO SERIA FAZER O UPLOAD DO AUDIO PARA O PYTHON
-
-  /** teste **/
-
-
 
 <div>
   <button (click)="startRecording()" [disabled]="isRecording">Gravar Áudio</button>

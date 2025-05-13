@@ -21,6 +21,7 @@
   height: auto; /* Altura proporcional */
   object-fit: cover; /* Cobrir a área como o vídeo */
   z-index: 5; /* Mesmo z-index do vídeo */
+  background-image: url('/assets/lingobot/cenas_na_masmorra/reading/cenario.png') !important;
 }
 
 

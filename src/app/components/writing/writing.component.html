@@ -15,6 +15,18 @@
  </div>
 
 
+<!-- Cenario - blackboard -->
+<div  class="background-image" *ngIf="cena == 2" >
+
+</div>
+
+
+
+
+
+
+
+
   <div class="baloon-container" *ngIf="cena == 2 && dialog!==4">
     <div class="dialog-baloon">
       <p *ngIf="dialog == 1">Olá, aventureiro. Eu sou o Ancião da Escrita. O que te traz aqui?</p>
@@ -29,7 +41,7 @@
 
 
 
-<div class="baloon-container" style="z-index: 11 !important;" *ngIf="rightOrWrongAnswer">
+<div class="baloon-container" style="z-index: 6 !important;" *ngIf="rightOrWrongAnswer">
   <div class="dialog-baloon">
     <p *ngIf="dialog == 5">Parabéns!! você acertou, agora vamos para próxima..</p>
     <p *ngIf="dialog == 6">Na verdade a resposta é <b style="color: goldenrod">{{this.respostaCorreta}}</b>, Vamos tentar novamente.</p>

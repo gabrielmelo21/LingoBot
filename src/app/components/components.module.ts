@@ -25,7 +25,7 @@ import { PlanosComponent } from './planos/planos.component';
 import { CreateFlashcardComponent } from './create-flashcard/create-flashcard.component';
 import { MissoesDiariasComponent } from './missoes-diarias/missoes-diarias.component';
 import { ReferralComponent } from './referral/referral.component';
-import { DesafiosInicianteComponent } from './desafios-iniciante/desafios-iniciante.component';
+
 import { BugReportComponent } from './bug-report/bug-report.component';
 import { RankingComponent } from './ranking/ranking.component';
 
@@ -40,6 +40,11 @@ import { ReadingComponent } from './reading/reading.component';
 import { SpeakingComponent } from './speaking/speaking.component';
 import { ListeningComponent } from './listening/listening.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ItensComponent } from './itens/itens.component';
+import { LevelUpComponent } from './level-up/level-up.component';
+import { NewItemModalComponent } from './new-item-modal/new-item-modal.component';
+import { RechargeComponent } from './recharge/recharge.component';
+import { ChargedComponent } from './charged/charged.component';
 
 /**
  *
@@ -84,7 +89,7 @@ import { SettingsComponent } from './settings/settings.component';
     CreateFlashcardComponent,
     MissoesDiariasComponent,
     ReferralComponent,
-    DesafiosInicianteComponent,
+
     BugReportComponent,
     RankingComponent,
     AccountSettingsComponent,
@@ -98,6 +103,11 @@ import { SettingsComponent } from './settings/settings.component';
     SpeakingComponent,
     ListeningComponent,
     SettingsComponent,
+    ItensComponent,
+    LevelUpComponent,
+    NewItemModalComponent,
+    RechargeComponent,
+    ChargedComponent,
 
   ],
   exports: [
@@ -110,7 +120,10 @@ import { SettingsComponent } from './settings/settings.component';
     MugTranslateComponent,
     NotebookComponent,
     EldersNotebookComponent,
-    SettingsComponent
+    SettingsComponent,
+    ItensComponent,
+    LevelUpComponent,
+    NewItemModalComponent
   ],
   imports: [
     CommonModule,
