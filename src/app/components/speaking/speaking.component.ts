@@ -38,10 +38,7 @@ export class SpeakingComponent {
   skill2: string = '';
   skill3: string = '';
   skill4: string = '';
-  isRecording: boolean = false;
-  transcriptionText: string = '';
-  showResult = false;
-  userResponse: boolean = false;
+
 
 
   constructor(private http: HttpClient,
@@ -223,7 +220,6 @@ export class SpeakingComponent {
 
 
 
-
   mediaRecorder: MediaRecorder | null = null;
   recordedChunks: Blob[] = [];
   recordedAudioUrl: string | null = null;
@@ -238,11 +234,17 @@ export class SpeakingComponent {
   showCountdown: boolean = false;
   transcriptionResult: string = '';
   isProcessing: boolean = false;
+  isRecording: boolean = false;
+  transcriptionText: string = '';
+  showResult = false;
+  userResponse: boolean = false;
+  countdownValue = 3;
+
 
 
   startAudioRecording() {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      console.error('Navegador não suporta getUserMedia');
+      this.logToMobileConsole('❌ Navegador não suporta getUserMedia');
       return;
     }
 
@@ -257,15 +259,15 @@ export class SpeakingComponent {
         this.isPaused = false;
         this.elapsedTime = 0;
 
-        this.recordStatus = '🎙️ Gravação iniciada (0/10s)';
-        console.log('🎙️ Gravação iniciada');
+        this.recordStatus = '🎙️ Gravação iniciada (0s/7s)';
+        this.logToMobileConsole('🎙️ Gravação iniciada');
 
-        // Inicia o timer para contar o tempo
         this.recordingTimer = setInterval(() => {
           this.elapsedTime++;
           this.recordStatus = `🎙️ Gravando (${this.elapsedTime}s/${this.maxRecordingTime}s)`;
 
-          // Para a gravação automaticamente quando atingir o tempo máximo
+          this.logToMobileConsole(`⌛ Tempo: ${this.elapsedTime}s`);
+
           if (this.elapsedTime >= this.maxRecordingTime) {
             this.stopAudioRecording();
           }
@@ -273,10 +275,10 @@ export class SpeakingComponent {
 
         this.mediaRecorder.ondataavailable = (event) => {
           this.recordedChunks.push(event.data);
+          this.logToMobileConsole('🔹 Chunk gravado');
         };
 
         this.mediaRecorder.onstop = () => {
-          // Limpa o timer
           clearInterval(this.recordingTimer);
 
           const audioBlob = new Blob(this.recordedChunks, { type: 'audio/wav' });
@@ -287,19 +289,14 @@ export class SpeakingComponent {
           this.isPaused = false;
 
           this.recordStatus = '🛑 Enviando gravação...';
+          this.logToMobileConsole('🛑 Gravação parada e enviada');
 
-          // Prévia automática do áudio gravado
           this.audioUrl = URL.createObjectURL(audioBlob);
           const previewAudio = new Audio(this.audioUrl);
           previewAudio.play();
 
-          console.log('🛑 Enviando gravação...');
-
-          // Enviar o áudio para a API
           this.sendAudioToAPI(audioBlob);
 
-
-          // Para todas as tracks do stream
           stream.getTracks().forEach(track => track.stop());
         };
 
@@ -307,40 +304,36 @@ export class SpeakingComponent {
           this.buttonEffect = false;
           this.isPaused = true;
           this.recordStatus = '⏸️ Gravação pausada';
-          console.log('⏸️ Gravação pausada');
+          this.logToMobileConsole('⏸️ Gravação pausada');
         };
 
         this.mediaRecorder.onresume = () => {
           this.buttonEffect = true;
           this.isPaused = false;
           this.recordStatus = '▶️ Gravação retomada';
-          console.log('▶️ Gravação retomada');
+          this.logToMobileConsole('▶️ Gravação retomada');
         };
       })
       .catch(error => {
         this.buttonEffect = false;
-        console.error('Erro ao acessar o microfone:', error);
+        this.logToMobileConsole('❌ Erro ao acessar microfone: ' + error.message);
       });
   }
 
   stopAudioRecording() {
     this.buttonEffect = false;
     if (this.mediaRecorder && this.isRecording) {
-      // Limpa o timer se estiver ativo
       if (this.recordingTimer) {
         clearInterval(this.recordingTimer);
       }
       this.mediaRecorder.stop();
+      this.logToMobileConsole('📥 stopAudioRecording() chamado');
     }
   }
 
-
-
-  countdownValue = 3;
-
-
   handleMicClick() {
     if (!this.isRecording) {
+      this.logToMobileConsole('🎬 Iniciando contagem regressiva');
       this.startCountdown();
     }
   }
@@ -351,71 +344,61 @@ export class SpeakingComponent {
 
     const countdownInterval = setInterval(() => {
       this.countdownValue--;
+      this.logToMobileConsole(`⏳ Countdown: ${this.countdownValue}`);
 
-      // Inicia gravação 1 segundo antes do final
       if (this.countdownValue === 1) {
-        this.startAudioRecording(); // inicia um pouco antes do "Fale!"
+        this.startAudioRecording();
       }
 
       if (this.countdownValue < 0) {
         clearInterval(countdownInterval);
         this.showCountdown = false;
+        this.logToMobileConsole('✅ Fim do countdown');
       }
     }, 1000);
   }
 
-
-
-
-  // Novo método para enviar o áudio
   sendAudioToAPI(audioBlob: Blob) {
     const formData = new FormData();
     formData.append('file', audioBlob, 'recording.wav');
 
     this.isProcessing = true;
     this.transcriptionResult = '';
-    this.recordStatus = '⏳ Processando...'; // ou use imagem
-
-
-
+    this.recordStatus = '⏳ Processando...';
+    this.logToMobileConsole('📤 Enviando áudio para API...');
 
     this.mainAPIService.uploadAudio(formData).subscribe({
       next: (response: { text: any; }) => {
-
         this.recordStatus = '✅ Transcrição recebida';
         this.transcriptionText = response.text || '⚠️ Sem texto detectado.';
+        this.logToMobileConsole('✅ Resposta da API: ' + this.transcriptionText);
+
         this.checkUserResponse();
 
-        // Aguarda alguns segundos e esconde o feedback
         setTimeout(() => {
           this.isProcessing = false;
           this.showResult = true;
 
-          // Oculta o feedback após 3 segundos e reseta
           setTimeout(() => {
             this.showResult = false;
             this.transcriptionText = '';
           }, 3000);
-        }, 1000); // Tempo de "processando"
-
-
+        }, 1000);
       },
       error: (error: any) => {
         this.isProcessing = false;
         this.recordStatus = '❌ Erro na transcrição';
-        console.error('Erro ao enviar áudio:', error);
+        this.logToMobileConsole('❌ Erro ao enviar áudio: ' + error.message);
       }
     });
   }
 
-
-
   normalizeText(text: string): string {
     return text
       .toLowerCase()
-      .normalize("NFD")                      // Remove acentos
-      .replace(/[\u0300-\u036f]/g, "")      // Remove marcas de acento
-      .replace(/[^a-z0-9 ]/g, "")           // Remove pontuação
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9 ]/g, "")
       .trim();
   }
 
@@ -424,10 +407,32 @@ export class SpeakingComponent {
     const correct = this.normalizeText(this.skill_phrase);
     this.userResponse = user === correct;
 
+    this.logToMobileConsole(`🧠 Checando resposta do usuário: ${user} vs ${correct}`);
+    this.logToMobileConsole(this.userResponse ? '✅ Correto!' : '❌ Incorreto.');
   }
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+  logMessages: string[] = [];
+
+  logToMobileConsole(message: string) {
+    this.logMessages.push(`[${new Date().toLocaleTimeString()}] ${message}`);
+    const consoleDiv = document.getElementById('mobile-console');
+    if (consoleDiv) {
+      consoleDiv.innerText = this.logMessages.slice(-20).join('\n'); // Últimas 20 mensagens
+    }
+  }
 
 }
