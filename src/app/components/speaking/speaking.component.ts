@@ -49,6 +49,9 @@ export class SpeakingComponent {
           //     this.playSoundService.playBossFight();
 
 
+    this.logToMobileConsole(`VERSÃO 19:37`);
+
+
 
     switch (this.authService.getDifficulty()) {
       case 'easy':
