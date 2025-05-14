@@ -92,37 +92,41 @@
 
   <!-- MIC IMAGE COM COUNTDOWN -->
   <div class="mic-container" *ngIf="skill_selected">
+
     <!-- TRANSCRIÇÃO -->
     <div *ngIf="transcriptionText" class="transcription-box">
       {{ transcriptionText }}
     </div>
 
-    <ng-container *ngIf="!showCountdown">
-      <img
-        src="assets/lingobot/skills/speaking.png"
-        class="mic"
-        [ngClass]="{ 'pulse-animation': buttonEffect }"
-        (click)="handleMicClick()"
-      />
+    <!-- MIC ou COUNTDOWN ou PROCESSANDO -->
+    <ng-container *ngIf="!isProcessing">
+      <ng-container *ngIf="!showCountdown">
+        <img
+          src="assets/lingobot/skills/speaking.png"
+          class="mic"
+          [ngClass]="{ 'pulse-animation': buttonEffect }"
+          (click)="handleMicClick()"
+        />
+      </ng-container>
+
+      <!-- COUNTDOWN -->
+      <div *ngIf="showCountdown" class="countdown-text">
+        <p *ngIf="countdownValue > 0">{{ countdownValue }}</p>
+        <p *ngIf="countdownValue === 0">🎤 Fale!</p>
+      </div>
     </ng-container>
 
-    <!-- COUNTDOWN -->
-    <div *ngIf="showCountdown" class="countdown-text">
-      <p *ngIf="countdownValue > 0">{{ countdownValue }}</p>
-      <p *ngIf="countdownValue === 0">🎤 Fale!</p>
+    <!-- PROCESSANDO -->
+    <div *ngIf="isProcessing" class="processing-box">
+      <img
+        src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png"
+        class="book-icon"
+        alt="Processando..."
+      />
+      <p class="processing-text">O livro está reagindo ao seu conjuramento. Aguarde...</p>
     </div>
   </div>
 
-
-
-
-  <!-- PROCESSAMENTO (flutuando no centro) -->
-  <div *ngIf="isProcessing" class="processing-overlay">
-    <img
-      src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png"
-      alt="Processando..."
-    />
-  </div>
 
 
 
@@ -133,6 +137,31 @@
 </div>
 
   <style>
+
+    .processing-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .book-icon {
+      width: 100px;
+      height: auto;
+      margin-bottom: 12px;
+      animation: pulse 1s infinite;
+    }
+
+    .processing-text {
+      color: #fff;
+      font-size: 1rem;
+      text-align: center;
+      max-width: 220px;
+    }
+
+
+
     .elders-magic-book-title{
       color: darkgoldenrod;
       font-weight: bolder;
