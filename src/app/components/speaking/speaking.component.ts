@@ -423,6 +423,7 @@ export class SpeakingComponent {
     const user = this.normalizeText(this.transcriptionText);
     const correct = this.normalizeText(this.skill_phrase);
     this.userResponse = user === correct;
+
   }
 
 
