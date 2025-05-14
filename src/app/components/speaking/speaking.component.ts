@@ -333,24 +333,32 @@ export class SpeakingComponent {
     }
   }
 
-  handleMicClick() {
-    this.startCountdown();
-  }
 
+
+  countdownValue = 3;
+
+
+  handleMicClick() {
+    if (!this.isRecording) {
+      this.startCountdown();
+    }
+  }
 
   startCountdown() {
     this.showCountdown = true;
-    this.countdown = 3;
-    this.recordStatus = '';
+    this.countdownValue = 3;
 
     const countdownInterval = setInterval(() => {
-      this.countdown--;
+      this.countdownValue--;
 
-      if (this.countdown === 0) {
+      // Inicia gravação 1 segundo antes do final
+      if (this.countdownValue === 1) {
+        this.startAudioRecording(); // inicia um pouco antes do "Fale!"
+      }
+
+      if (this.countdownValue < 0) {
         clearInterval(countdownInterval);
-        this.recordStatus = '🎤 Fale!';
         this.showCountdown = false;
-        this.startAudioRecording(); // grava automaticamente após countdown
       }
     }, 1000);
   }
