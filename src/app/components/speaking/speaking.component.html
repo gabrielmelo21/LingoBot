@@ -94,11 +94,11 @@
     <p>{{ this.recordStatus }}</p>
     <img
       src="assets/lingobot/skills/speaking.png"
-      class="mic pulse"
-      (click)="onMicClick()"
-      [class.recording]="isRecording"
-      alt="Gravar áudio"
+      class="mic"
+      [ngClass]="{ 'pulse-animation':   buttonEffect  }"
+      (click)="handleMicClick()"
     />
+
 
   </div>
 

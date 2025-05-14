@@ -239,7 +239,7 @@ export class ReadingComponent {
     if (texto != this.currentPassword){
       this.shakePadlock()
       this.tipCounts++;
-      console.log(this.tipCounts);
+      //console.log(this.tipCounts);
 
       if (this.tipCounts >= this.tipLimit) {
          this.toggleGlow()
@@ -266,6 +266,12 @@ export class ReadingComponent {
         this.authService.addXpSkills('reading');
 
       },3000)
+
+      setTimeout(() => {
+        this.playSoundService.playItemDrop()
+        this.authService.addRandomItemToUser();
+      }, 5000)
+
 
 
 

@@ -93,16 +93,18 @@ export class ListeningComponent {
 
 
 
+
+
   }
 
 
-  private loadExercises(): void {
+  loadExercises(): void {
     this.http.get<ListeningExercise[]>(this.srcExercises).subscribe(data => {
       this.exercises = data;
       this.getRandomExercise();
     });
   }
-  private getRandomExercise(): void {
+  getRandomExercise(): void {
     if (!this.exercises || this.exercises.length === 0) return;
 
     const randomIndex = Math.floor(Math.random() * this.exercises.length);

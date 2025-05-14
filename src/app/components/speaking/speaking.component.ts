@@ -227,9 +227,11 @@ export class SpeakingComponent {
   recordedChunks: Blob[] = [];
   recordedAudioUrl: string | null = null;
   recordStatus: string = '';
+  buttonEffect: boolean = false;
 
   isMicActive = false;
   isPaused = false;
+
 
   startAudioRecording() {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -242,7 +244,7 @@ export class SpeakingComponent {
         this.mediaRecorder = new MediaRecorder(stream);
         this.recordedChunks = [];
         this.mediaRecorder.start();
-
+        this.buttonEffect = true;
         this.isRecording = true;
         this.isMicActive = true;
         this.isPaused = false;
@@ -257,7 +259,7 @@ export class SpeakingComponent {
         this.mediaRecorder.onstop = () => {
           const audioBlob = new Blob(this.recordedChunks, { type: 'audio/wav' });
           this.recordedAudioUrl = URL.createObjectURL(audioBlob);
-
+          this.buttonEffect = false;
           this.isRecording = false;
           this.isMicActive = false;
           this.isPaused = false;
@@ -274,33 +276,41 @@ export class SpeakingComponent {
         };
 
         this.mediaRecorder.onpause = () => {
+          this.buttonEffect = false;
           this.isPaused = true;
           this.recordStatus = '⏸️ Gravação pausada';
           console.log('⏸️ Gravação pausada');
         };
 
         this.mediaRecorder.onresume = () => {
+          this.buttonEffect = true;
           this.isPaused = false;
           this.recordStatus = '▶️ Gravação retomada';
           console.log('▶️ Gravação retomada');
         };
       })
       .catch(error => {
+        this.buttonEffect = false;
         console.error('Erro ao acessar o microfone:', error);
       });
   }
 
   stopAudioRecording() {
+    this.buttonEffect = false;
     if (this.mediaRecorder && this.isRecording) {
       this.mediaRecorder.stop();
     }
-  }onMicClick() {
-    if (this.isRecording) {
-      this.stopAudioRecording();
-    } else {
+  }
+
+  handleMicClick() {
+    if (!this.isRecording) {
       this.startAudioRecording();
+    } else {
+      this.stopAudioRecording();
     }
   }
+
+
 
 
 
