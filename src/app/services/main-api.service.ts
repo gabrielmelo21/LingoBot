@@ -22,15 +22,6 @@ interface UserData {
 })
 export class MainAPIService {
   private readonly API = 'https://lingobot-api.onrender.com';
- // private readonly API = "http://127.0.0.1:5000"
-
-  /**
-   * http://localhost:8085/gpt
-   *   private readonly API = 'https://flashcards-ai-java-api.onrender.com/api';
-   *   private readonly API2 = "https://flashcards-ai-java-api.onrender.com/frequency"
-   *
-   * @param http
-   */
   constructor(private http: HttpClient) { }
 
 
@@ -43,20 +34,11 @@ export class MainAPIService {
 
 
 
-
-
-
   // Método para criar o usuário
   criarUsuario(usuario: any): Observable<any> {
     return this.http.post(this.API + "/usuarios", usuario);
   }
 
-
-
-  getTemas(): Observable<any> {
-  const jsonUrl = 'assets/lingobot/json/temas.json';
-    return this.http.get<any>(jsonUrl);
-  }
 
 
   login(email: string, password: string) {
@@ -265,9 +247,6 @@ Gere apenas o JSON como resposta.`;
 
 
 
-
-
-
   //gerar texto para audio
   getTTS(text: string) {
     return this.http.post(`${this.API}/tts`, { text }, { responseType: 'blob' });
@@ -283,118 +262,6 @@ Gere apenas o JSON como resposta.`;
   // Método para obter o ranking
   getRanking(): Observable<any> {
     return this.http.get<any>(`${this.API}/ranking`);
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  public transalateWithGPT(prompt: any){
-    const prompt1 = "apenas Traduza para pt-br: '" + prompt + "'";
-    const data = {
-      "prompt": prompt1
-    };
-
-    return this.http.post(this.API, data, { responseType: 'text' as 'json' });
-  }
-
-
-  public talkWithGPT(prompt: any) {
-    const prompt1 = "(English) " + prompt + "";
-    const data = {
-      "prompt": prompt1
-    };
-
-    return this.http.post(this.API, data, { responseType: 'text' as 'json' });
-  }
-
-
-
-  public phrasalVerbWithGPT(){
-    const prompt1 = "Me ensine um Phrsal Verb";
-    const data = {
-      "prompt": prompt1
-    };
-
-    return this.http.post(this.API, data, { responseType: 'text' as 'json' });
-  }
-
-
-
-
-  public listAllWords(uuid: string){ //parametro ID do user
-    return this.http.get<any>(this.API+"/smartcards_owner/"+uuid);
-
-  }
-
-  public updateMemo(id: number){
-    return this.http.put(this.API + "/updateMemo/"+id, '');
-  }
-
-  public deleteSmartcard(id: number){
-     return this.http.delete(this.API +"/"+ id, { responseType: 'text' as 'json' });
-  }
-
-
-  public addWords(data: any) {
-    return this.http.post<any>(this.API, data);
-  }
-
-
-  /**
-  public update(){
-   return this.http.put<any>(this.API2, '')
-  }
-
-  **/
-
-  public random(){
-    return this.http.get(this.API + "/random/"+localStorage.getItem("UserId"))
-  }
-
-
-
-
-
-
-
-  public getUserInfoById(id: string) : Observable<UserData>{
-     return this.http.get<UserData>(this.API + "/users/"+id)
-  }
-
-
-  public saveNewUser(data: any){
-    return this.http.post<any>(this.API+"/users", data,  { responseType: 'text' as 'json' });
-  }
-
-
-  updateUserData(id: string) {
-    this.getUserInfoById(id).pipe(
-      map((userInfo: UserData) => {
-        if (userInfo) {
-          // Armazenando os dados no localStorage, verificando se cada propriedade existe
-           localStorage.setItem('nome', userInfo.nome);
-           localStorage.setItem('sobrenome', userInfo.sobrenome);
-           localStorage.setItem('email', userInfo.email);
-           localStorage.setItem('picture', userInfo.picture);
-           localStorage.setItem('credits', userInfo.credits.toString());
-           localStorage.setItem('vip', JSON.stringify(userInfo.vip));
-           localStorage.setItem('checkin', JSON.stringify(userInfo.checkin));
-           localStorage.setItem('password', userInfo.password);
-        }
-
-      })
-    ).subscribe();
   }
 
 

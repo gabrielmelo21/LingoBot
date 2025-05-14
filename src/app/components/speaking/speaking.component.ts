@@ -39,7 +39,7 @@ export class SpeakingComponent {
   skill3: string = '';
   skill4: string = '';
   isRecording: boolean = false;
-
+  transcription: string = '';
 
 
 
@@ -47,7 +47,7 @@ export class SpeakingComponent {
              private router: Router,
              private playSoundService: PlaySoundService,
               private authService: AuthService,
-              private apiService: MainAPIService) {
+              private mainAPIService: MainAPIService) {
           //     this.playSoundService.playBossFight();
 
 
@@ -183,7 +183,7 @@ export class SpeakingComponent {
   getAudioTTS(text: string) {
     this.isLoading = true;
 
-    this.apiService.getTTS(text).subscribe({
+    this.mainAPIService.getTTS(text).subscribe({
       next: (audioBlob) => {
         try {
           this.audioUrl = URL.createObjectURL(audioBlob);
@@ -280,14 +280,18 @@ export class SpeakingComponent {
           this.isMicActive = false;
           this.isPaused = false;
 
-          this.recordStatus = '🛑 Gravação finalizada';
+          this.recordStatus = '🛑 Enviando gravação...';
 
           // Prévia automática do áudio gravado
           this.audioUrl = URL.createObjectURL(audioBlob);
           const previewAudio = new Audio(this.audioUrl);
           previewAudio.play();
 
-          console.log('🛑 Gravação finalizada');
+          console.log('🛑 Enviando gravação...');
+
+          // Enviar o áudio para a API
+          this.sendAudioToAPI(audioBlob);
+
 
           // Para todas as tracks do stream
           stream.getTracks().forEach(track => track.stop());
@@ -331,6 +335,27 @@ export class SpeakingComponent {
       this.stopAudioRecording();
     }
   }
+
+
+  // Novo método para enviar o áudio
+  sendAudioToAPI(audioBlob: Blob) {
+    const formData = new FormData();
+    formData.append('audio', audioBlob, 'recording.wav');
+
+    this.mainAPIService.uploadAudio(formData).subscribe({
+      next: (response: { text: any; }) => {
+        this.recordStatus = '✅ Transcrição recebida';
+        console.log('Transcrição:', response.text);
+        // Aqui você pode fazer algo com a transcrição, como exibir na tela
+        // Exemplo: this.transcription = response.text;
+      },
+      error: (error: any) => {
+        this.recordStatus = '❌ Erro na transcrição';
+        console.error('Erro ao enviar áudio:', error);
+      }
+    });
+  }
+
 
 
 }

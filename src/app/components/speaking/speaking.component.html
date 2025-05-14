@@ -92,12 +92,18 @@
 
   <div class="fundo"  *ngIf="skill_selected" >
     <p>{{ this.recordStatus }}</p>
+    <!-- Adicione isso para exibir a transcrição -->
+    <div *ngIf="transcription" class="transcription-box">
+      <h3>Transcrição:</h3>
+      <p>{{ transcription }}</p>
+    </div>
     <img
       src="assets/lingobot/skills/speaking.png"
       class="mic"
       [ngClass]="{ 'pulse-animation':   buttonEffect  }"
       (click)="handleMicClick()"
     />
+
 
   </div>
 
