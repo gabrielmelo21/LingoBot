@@ -340,7 +340,8 @@ export class SpeakingComponent {
   // Novo método para enviar o áudio
   sendAudioToAPI(audioBlob: Blob) {
     const formData = new FormData();
-    formData.append('audio', audioBlob, 'recording.wav');
+    formData.append('file', audioBlob, 'recording.wav');
+
 
     this.mainAPIService.uploadAudio(formData).subscribe({
       next: (response: { text: any; }) => {
