@@ -13,7 +13,7 @@ button:focus, a:focus, input:focus, textarea:focus {
   outline: none !important;
 }
 
-html, body { height: 100%;  background: #000;  }
+html, body { height: 100%;  background-image: url('/assets/lingobot/home/testar_pergaminho.jpg'); background-size: 200%; background-position: center  }
 body { margin: 0;    overflow-y: scroll;overflow-x: hidden; }
 
 

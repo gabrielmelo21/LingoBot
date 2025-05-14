@@ -228,10 +228,11 @@ export class SpeakingComponent {
   recordedAudioUrl: string | null = null;
   recordStatus: string = '';
   buttonEffect: boolean = false;
-
   isMicActive = false;
   isPaused = false;
-
+  recordingTimer: any = null;
+  elapsedTime: number = 0;
+  maxRecordingTime: number = 10; // 10 segundos
 
   startAudioRecording() {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -248,15 +249,30 @@ export class SpeakingComponent {
         this.isRecording = true;
         this.isMicActive = true;
         this.isPaused = false;
+        this.elapsedTime = 0;
 
-        this.recordStatus = '🎙️ Gravação iniciada';
+        this.recordStatus = '🎙️ Gravação iniciada (0/10s)';
         console.log('🎙️ Gravação iniciada');
+
+        // Inicia o timer para contar o tempo
+        this.recordingTimer = setInterval(() => {
+          this.elapsedTime++;
+          this.recordStatus = `🎙️ Gravando (${this.elapsedTime}s/${this.maxRecordingTime}s)`;
+
+          // Para a gravação automaticamente quando atingir o tempo máximo
+          if (this.elapsedTime >= this.maxRecordingTime) {
+            this.stopAudioRecording();
+          }
+        }, 1000);
 
         this.mediaRecorder.ondataavailable = (event) => {
           this.recordedChunks.push(event.data);
         };
 
         this.mediaRecorder.onstop = () => {
+          // Limpa o timer
+          clearInterval(this.recordingTimer);
+
           const audioBlob = new Blob(this.recordedChunks, { type: 'audio/wav' });
           this.recordedAudioUrl = URL.createObjectURL(audioBlob);
           this.buttonEffect = false;
@@ -271,8 +287,10 @@ export class SpeakingComponent {
           const previewAudio = new Audio(this.audioUrl);
           previewAudio.play();
 
-
           console.log('🛑 Gravação finalizada');
+
+          // Para todas as tracks do stream
+          stream.getTracks().forEach(track => track.stop());
         };
 
         this.mediaRecorder.onpause = () => {
@@ -298,6 +316,10 @@ export class SpeakingComponent {
   stopAudioRecording() {
     this.buttonEffect = false;
     if (this.mediaRecorder && this.isRecording) {
+      // Limpa o timer se estiver ativo
+      if (this.recordingTimer) {
+        clearInterval(this.recordingTimer);
+      }
       this.mediaRecorder.stop();
     }
   }
@@ -309,9 +331,6 @@ export class SpeakingComponent {
       this.stopAudioRecording();
     }
   }
-
-
-
 
 
 }
