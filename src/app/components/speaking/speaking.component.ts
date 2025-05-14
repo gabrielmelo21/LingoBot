@@ -232,7 +232,12 @@ export class SpeakingComponent {
   isPaused = false;
   recordingTimer: any = null;
   elapsedTime: number = 0;
-  maxRecordingTime: number = 10; // 10 segundos
+  maxRecordingTime = 7;
+  countdown: number = 3;
+  showCountdown: boolean = false;
+  transcriptionResult: string = '';
+  isProcessing: boolean = false;
+
 
   startAudioRecording() {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -329,12 +334,28 @@ export class SpeakingComponent {
   }
 
   handleMicClick() {
-    if (!this.isRecording) {
-      this.startAudioRecording();
-    } else {
-      this.stopAudioRecording();
-    }
+    this.startCountdown();
   }
+
+
+  startCountdown() {
+    this.showCountdown = true;
+    this.countdown = 3;
+    this.recordStatus = '';
+
+    const countdownInterval = setInterval(() => {
+      this.countdown--;
+
+      if (this.countdown === 0) {
+        clearInterval(countdownInterval);
+        this.recordStatus = '🎤 Fale!';
+        this.showCountdown = false;
+        this.startAudioRecording(); // grava automaticamente após countdown
+      }
+    }, 1000);
+  }
+
+
 
 
   // Novo método para enviar o áudio
@@ -342,14 +363,22 @@ export class SpeakingComponent {
     const formData = new FormData();
     formData.append('file', audioBlob, 'recording.wav');
 
+    this.isProcessing = true;
+    this.transcriptionResult = '';
+    this.recordStatus = '⏳ Processando...'; // ou use imagem
+
+
+
 
     this.mainAPIService.uploadAudio(formData).subscribe({
       next: (response: { text: any; }) => {
+        this.isProcessing = false;
         this.recordStatus = '✅ Transcrição recebida';
-        console.log('Transcrição:', response.text);
-         this.transcription = response.text;
+        this.transcriptionResult = response.text;
+
       },
       error: (error: any) => {
+        this.isProcessing = false;
         this.recordStatus = '❌ Erro na transcrição';
         console.error('Erro ao enviar áudio:', error);
       }

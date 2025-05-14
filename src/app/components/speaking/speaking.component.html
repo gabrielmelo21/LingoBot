@@ -91,18 +91,35 @@
 <div   class="background-commands">
 
   <div class="fundo"  *ngIf="skill_selected" >
-    <p>{{ this.recordStatus }}</p>
-    <!-- Adicione isso para exibir a transcrição -->
-    <div *ngIf="transcription" class="transcription-box">
-      <h3>Transcrição:</h3>
-      <p>{{ transcription }}</p>
+    <div *ngIf="showCountdown" class="countdown">
+      <h2 *ngIf="countdown > 0">{{ countdown }}</h2>
+      <h2 *ngIf="countdown === 0">🎤 Fale!</h2>
     </div>
-    <img
-      src="assets/lingobot/skills/speaking.png"
-      class="mic"
-      [ngClass]="{ 'pulse-animation':   buttonEffect  }"
-      (click)="handleMicClick()"
-    />
+
+    <button *ngIf="!isRecording && !showCountdown && !isProcessing" (click)="handleMicClick()">
+      🎤 Gravar áudio
+    </button>
+
+    <div *ngIf="isProcessing">
+      <img style="  animation: float 2s ease-in-out infinite;" src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png"  alt="Processando..." />
+    </div>
+    <style>
+
+      /* animação de flutuação suave */
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+      }
+    </style>
+
+    <div *ngIf="transcriptionResult">
+      <h3>📝 Transcrição:</h3>
+      <p>{{ transcriptionResult }}</p>
+    </div>
+
+    <p>{{ recordStatus }}</p>
+
 
 
   </div>
