@@ -347,8 +347,7 @@ export class SpeakingComponent {
       next: (response: { text: any; }) => {
         this.recordStatus = '✅ Transcrição recebida';
         console.log('Transcrição:', response.text);
-        // Aqui você pode fazer algo com a transcrição, como exibir na tela
-        // Exemplo: this.transcription = response.text;
+         this.transcription = response.text;
       },
       error: (error: any) => {
         this.recordStatus = '❌ Erro na transcrição';
