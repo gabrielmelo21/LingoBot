@@ -39,7 +39,7 @@ export class SpeakingComponent {
   skill3: string = '';
   skill4: string = '';
   isRecording: boolean = false;
-  transcription: string = '';
+  transcriptionText: string | null = null;
 
 
 
@@ -382,7 +382,7 @@ export class SpeakingComponent {
       next: (response: { text: any; }) => {
         this.isProcessing = false;
         this.recordStatus = '✅ Transcrição recebida';
-        this.transcriptionResult = response.text;
+        this.transcriptionText = response.text || '⚠️ Sem texto detectado.';
 
       },
       error: (error: any) => {
