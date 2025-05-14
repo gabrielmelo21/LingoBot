@@ -39,8 +39,9 @@ export class SpeakingComponent {
   skill3: string = '';
   skill4: string = '';
   isRecording: boolean = false;
-  transcriptionText: string | null = null;
-
+  transcriptionText: string = '';
+  showResult = false;
+  userResponse: boolean = false;
 
 
   constructor(private http: HttpClient,
@@ -380,9 +381,23 @@ export class SpeakingComponent {
 
     this.mainAPIService.uploadAudio(formData).subscribe({
       next: (response: { text: any; }) => {
-        this.isProcessing = false;
+
         this.recordStatus = '✅ Transcrição recebida';
         this.transcriptionText = response.text || '⚠️ Sem texto detectado.';
+        this.checkUserResponse();
+
+        // Aguarda alguns segundos e esconde o feedback
+        setTimeout(() => {
+          this.isProcessing = false;
+          this.showResult = true;
+
+          // Oculta o feedback após 3 segundos e reseta
+          setTimeout(() => {
+            this.showResult = false;
+            this.transcriptionText = '';
+          }, 3000);
+        }, 1000); // Tempo de "processando"
+
 
       },
       error: (error: any) => {
@@ -392,6 +407,25 @@ export class SpeakingComponent {
       }
     });
   }
+
+
+
+  normalizeText(text: string): string {
+    return text
+      .toLowerCase()
+      .normalize("NFD")                      // Remove acentos
+      .replace(/[\u0300-\u036f]/g, "")      // Remove marcas de acento
+      .replace(/[^a-z0-9 ]/g, "")           // Remove pontuação
+      .trim();
+  }
+
+  checkUserResponse(): void {
+    const user = this.normalizeText(this.transcriptionText);
+    const correct = this.normalizeText(this.skill_phrase);
+    this.userResponse = user === correct;
+  }
+
+
 
 
 

@@ -117,14 +117,31 @@
     </ng-container>
 
     <!-- PROCESSANDO -->
-    <div *ngIf="isProcessing" class="processing-box">
-      <img
-        src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png"
-        class="book-icon"
-        alt="Processando..."
-      />
-      <p class="processing-text">O livro está reagindo ao seu conjuramento. Aguarde...</p>
+    <div class="processing-box">
+      <ng-container *ngIf="isProcessing">
+        <img
+          src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png"
+          class="book-icon"
+          alt="Processando..."
+        />
+        <p class="processing-text">O livro está reagindo ao seu conjuramento. Aguarde...</p>
+      </ng-container>
+
+      <ng-container *ngIf="showResult">
+        <img
+          [src]="userResponse ? 'assets/lingobot/cenas_na_masmorra/speaking/check.png' : 'assets/lingobot/cenas_na_masmorra/speaking/error.png'"
+          class="book-icon"
+          alt="Resultado"
+        />
+        <p class="processing-text">
+          {{ userResponse ? 'Feitiço pronunciado corretamente!' : 'Palavras incorretas... tente novamente!' }}
+        </p>
+      </ng-container>
     </div>
+
+
+
+
   </div>
 
 
@@ -154,7 +171,8 @@
     }
 
     .processing-text {
-      color: #fff;
+      color: darkgoldenrod;
+      font-weight: bold;
       font-size: 1rem;
       text-align: center;
       max-width: 220px;
