@@ -420,14 +420,12 @@ export class SpeakingComponent {
     this.logToMobileConsole(this.userResponse ? '✅ Correto!' : '❌ Incorreto.');
 
       if (this.userResponse) {
-        this.logToMobileConsole("Modal status 1: magic_book  -> " + this.magic_book)
-        this.openMagicBook();
-        this.logToMobileConsole("Modal status 2: magic_book -> " + this.magic_book)
-        this.logToMobileConsole("Skill phrase var -> " + this.skill_phrase)
+        this.skill_selected = false;
         this.logToMobileConsole("Skill Selected var  (deve ser false) -> " + this.skill_selected)
-        setTimeout(() => {
+
+
           this.cena = 2;
-        },1)
+
 
         setTimeout(() => {
           this.cena = 1;

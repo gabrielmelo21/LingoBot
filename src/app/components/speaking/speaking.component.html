@@ -28,7 +28,7 @@
 </video>
 
 
-<video *ngIf="cena==2" autoplay  class="background-video">
+<video *ngIf="cena==2" autoplay  loop class="background-video">
   <source src="assets/lingobot/cenas_na_masmorra/speaking/eletric-thunder.mp4" type="video/mp4">
 </video>
 
@@ -117,7 +117,7 @@
 
 
     <!-- MIC ou COUNTDOWN ou PROCESSANDO -->
-    <ng-container *ngIf="!isProcessing">
+    <ng-container *ngIf="!isProcessing && !showResult">
       <ng-container *ngIf="!showCountdown">
         <img
           src="assets/lingobot/skills/speaking.png"
