@@ -432,13 +432,12 @@ export class SpeakingComponent {
         this.skill_selected = false; // faz aparecer o botão de abrir modal
         this.logToMobileConsole("Skill Selected var  (deve ser false) -> " + this.skill_selected)
 
-
-
-          this.cena = 2;
-
+        this.cena = 2;
+        this.logToMobileConsole("Cena atual " + this.cena);
 
         setTimeout(() => {
           this.cena = 1;
+          this.logToMobileConsole("Cena atual " + this.cena);
         },4400)
 
       }
