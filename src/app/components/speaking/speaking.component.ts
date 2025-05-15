@@ -21,15 +21,10 @@ export interface SpeakingExercise {
   styleUrls: ['./speaking.component.css']
 })
 export class SpeakingComponent {
-  cena: number = 1;
-  magic_book: boolean = false;
+
+
   currentBattery: number = 5;
   batteryArray = Array(7).fill(0);
-  skill_selected: boolean = false;
-  skill_selected_src: string = '';
-  skill_selected_title: string = '';
-  skill_selected_description: string = '';
-  skill_phrase: string = '';
   srcExercises: string = '';
   finalGoldReward: number = 0;
   finalXpReward: number = 0;
@@ -233,7 +228,13 @@ export class SpeakingComponent {
 
 
 
-
+  skill_selected: boolean = false;
+  skill_selected_src: string = '';
+  skill_selected_title: string = '';
+  skill_selected_description: string = '';
+  skill_phrase: string = '';
+  cena: number = 1;
+  magic_book: boolean = false;
   mediaRecorder: MediaRecorder | null = null;
   recordedChunks: Blob[] = [];
   recordedAudioUrl: string | null = null;
@@ -244,7 +245,6 @@ export class SpeakingComponent {
   recordingTimer: any = null;
   elapsedTime: number = 0;
   maxRecordingTime = 7;
-  countdown: number = 3;
   showCountdown: boolean = false;
   transcriptionResult: string = '';
   isProcessing: boolean = false;
@@ -428,26 +428,24 @@ export class SpeakingComponent {
     this.logToMobileConsole(`🧠 Checando resposta do usuário: ${user} vs ${correct}`);
     this.logToMobileConsole(this.userResponse ? '✅ Correto!' : '❌ Incorreto.');
 
+    if (this.userResponse) {
+      this.openMagicBook(); // fecha o livro
+      this.skill_selected = false;
+      this.logToMobileConsole("Skill Selected var  (deve ser false) -> " + this.skill_selected);
+      this.cena = 2;
+      this.logToMobileConsole("Cena atual " + this.cena);
 
-
-
-
-      if (this.userResponse) {
-        this.openMagicBook(); // muda para false, para fechar o modal
-        this.logToMobileConsole("Magic Book: " + this.magic_book)
-
-        this.skill_selected = false; // faz aparecer o botão de abrir modal
-        this.logToMobileConsole("Skill Selected var  (deve ser false) -> " + this.skill_selected)
-
-        this.cena = 2;
+      setTimeout(() => {
+        this.cena = 1;
         this.logToMobileConsole("Cena atual " + this.cena);
 
-        setTimeout(() => {
-          this.cena = 1;
-          this.logToMobileConsole("Cena atual " + this.cena);
-        },4400)
-
-      }
+        this.resetAll(); // 🔁 Reset após a animação
+        this.logToMobileConsole("Reset all. (No Acerto)")
+      }, 4400);
+    } else {
+      this.resetAll(); // 🔁 Reset imediato no erro
+      this.logToMobileConsole("Reset all. (No Erro)")
+    }
   }
 
 
@@ -460,6 +458,37 @@ export class SpeakingComponent {
 
 
 
+
+  resetAll() {
+    this.skill_selected = false;
+    this.skill_selected_src = '';
+    this.skill_selected_title = '';
+    this.skill_selected_description = '';
+    this.skill_phrase = '';
+    this.cena = 1;
+    this.magic_book = false;
+    this.mediaRecorder = null;
+    this.recordedChunks = [];
+    this.recordedAudioUrl = null;
+    this.recordStatus = '';
+    this.buttonEffect = false;
+    this.isMicActive = false;
+    this.isPaused = false;
+    this.isRecording = false;
+    this.elapsedTime = 0;
+    this.recordingTimer && clearInterval(this.recordingTimer);
+    this.recordingTimer = null;
+    this.showCountdown = false;
+    this.transcriptionResult = '';
+    this.transcriptionText = '';
+    this.isProcessing = false;
+    this.showResult = false;
+    this.userResponse = false;
+    this.countdownValue = 3;
+
+    this.logToMobileConsole('🔄 Estado geral resetado');
+    this.cdr.detectChanges(); // Atualiza a view se necessário
+  }
 
 
 
