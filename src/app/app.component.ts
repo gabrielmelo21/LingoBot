@@ -38,7 +38,7 @@ export class AppComponent implements OnInit{
   showNewItemModal = false; // quando ganha um novo item
   userLevel: any;
   newItem: any;
-
+  isLoading: boolean = true;
 
 
 
@@ -52,6 +52,11 @@ export class AppComponent implements OnInit{
   ) {
 
     //localStorage.clear();
+
+
+    setTimeout(() =>{
+          this.isLoading = false;
+    },2000)
 
 
 
@@ -227,6 +232,7 @@ this.router.events.subscribe(event => {
   }
 
   mages: boolean = false;
+
   mage() {
     this.playSound.playCleanSound2();
     this.mages = !this.mages;
