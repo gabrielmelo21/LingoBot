@@ -139,6 +139,7 @@ export class SpeakingComponent {
     this.skill_selected_title = '';
     this.skill_selected_description = '';
     this.skill_phrase = '';
+    this.cdr.detectChanges(); // se necessário
   }
 
   chooseSkill(number: number): void {
@@ -175,7 +176,10 @@ export class SpeakingComponent {
       default:
         console.warn('Habilidade inválida:', number);
         break;
+
     }
+
+    this.cdr.detectChanges(); // se necessário
   }
 
 
