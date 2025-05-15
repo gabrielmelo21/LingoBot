@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
@@ -45,7 +45,8 @@ export class SpeakingComponent {
              private router: Router,
              private playSoundService: PlaySoundService,
               private authService: AuthService,
-              private mainAPIService: MainAPIService) {
+              private mainAPIService: MainAPIService,
+              private cdr: ChangeDetectorRef) {
           //     this.playSoundService.playBossFight();
 
 
@@ -370,24 +371,28 @@ export class SpeakingComponent {
     this.transcriptionResult = '';
     this.recordStatus = '⏳ Processando...';
     this.logToMobileConsole('📤 Enviando áudio para API...');
-
+    const minProcessingTime = 1000;
+    const startTime = Date.now();
     this.mainAPIService.uploadAudio(formData).subscribe({
-      next: (response: { text: any; }) => {
-        this.recordStatus = '✅ Transcrição recebida';
-        this.transcriptionText = response.text || '⚠️ Sem texto detectado.';
-        this.logToMobileConsole('✅ Resposta da API: ' + this.transcriptionText);
-
-        this.checkUserResponse();
+      next: (response) => {
+        const elapsed = Date.now() - startTime;
+        const waitTime = Math.max(0, minProcessingTime - elapsed);
 
         setTimeout(() => {
           this.isProcessing = false;
+          this.cdr.detectChanges();
+
+          this.transcriptionText = response.text || '⚠️ Sem texto detectado.';
+          this.checkUserResponse();
+
           this.showResult = true;
+          this.cdr.detectChanges();
 
           setTimeout(() => {
             this.showResult = false;
             this.transcriptionText = '';
           }, 3000);
-        }, 1000);
+        }, waitTime);
       },
       error: (error: any) => {
         this.isProcessing = false;
