@@ -148,6 +148,7 @@ export class SpeakingComponent {
 
         break;
       case 2:
+
         this.skill_selected_src = 'assets/lingobot/cenas_na_masmorra/speaking/eletric-atack2.png';
         this.skill_selected_title = 'Thunder Strike';
         this.skill_selected_description = 'Unleash a wave of energy that stuns foes.';
@@ -413,7 +414,11 @@ export class SpeakingComponent {
     this.logToMobileConsole(`🧠 Checando resposta do usuário: ${user} vs ${correct}`);
     this.logToMobileConsole(this.userResponse ? '✅ Correto!' : '❌ Incorreto.');
 
-    this.chooseSkill(2)
+      if (this.userResponse) {
+        this.skill_selected = false;
+        this.cena = 2;
+
+      }
   }
 
 
