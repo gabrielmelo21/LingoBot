@@ -412,6 +412,8 @@ export class SpeakingComponent {
 
     this.logToMobileConsole(`🧠 Checando resposta do usuário: ${user} vs ${correct}`);
     this.logToMobileConsole(this.userResponse ? '✅ Correto!' : '❌ Incorreto.');
+
+    this.chooseSkill(2)
   }
 
 

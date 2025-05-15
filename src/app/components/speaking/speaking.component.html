@@ -5,7 +5,7 @@
   top: 5vh;
   left: 1vw;
   width: 80%;
-  height: 300px;
+  height:100px;
   overflow-y: auto;
   background-color: black;
   color: white;
@@ -115,10 +115,6 @@
   <!-- MIC IMAGE COM COUNTDOWN -->
   <div class="mic-container" *ngIf="skill_selected">
 
-    <!-- TRANSCRIÇÃO -->
-    <div *ngIf="transcriptionText" class="transcription-box">
-      {{ transcriptionText }}
-    </div>
 
     <!-- MIC ou COUNTDOWN ou PROCESSANDO -->
     <ng-container *ngIf="!isProcessing">
@@ -147,6 +143,32 @@
       />
       <p class="processing-text">O livro está reagindo ao seu conjuramento. Aguarde...</p>
     </div>
+
+    <!-- ✅ RESPOSTA CORRETA -->
+    <div *ngIf="showResult && userResponse" class="processing-box">
+      <img
+        src="assets/lingobot/cenas_na_masmorra/speaking/check.png"
+        class="book-icon"
+        alt="Resposta correta"
+      />
+      <p class="processing-text">Conjurando poder</p>
+    </div>
+
+    <!-- ❌ RESPOSTA INCORRETA -->
+    <div *ngIf="showResult && !userResponse" class="processing-box">
+      <img
+        src="assets/lingobot/cenas_na_masmorra/speaking/error.png"
+        class="book-icon"
+        alt="Resposta incorreta"
+      />
+      <p class="processing-text">
+        Você disse: "{{ transcriptionText }}" e o correto é: "{{ skill_phrase }}"
+      </p>
+    </div>
+
+
+
+
   </div>
 
 
@@ -166,6 +188,7 @@
       align-items: center;
       justify-content: center;
       animation: fadeIn 0.4s ease-in-out;
+      margin-top: -10px !important;
     }
 
     .book-icon {
@@ -235,18 +258,6 @@
       to { opacity: 1; }
     }
 
-    .processing-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
 
     .processing-overlay img {
       width: 120px;
