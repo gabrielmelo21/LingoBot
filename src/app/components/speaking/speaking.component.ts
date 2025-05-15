@@ -121,10 +121,13 @@ export class SpeakingComponent {
   }
 
   openMagicBook() {
+    this.playSoundService.playCleanSound2();
 
-    this.playSoundService.playCleanSound2()
-    this.magic_book = !this.magic_book;
-    this.logToMobileConsole("Magic Book: " + this.magic_book)
+    setTimeout(() => {
+      this.magic_book = !this.magic_book;
+      this.logToMobileConsole("Magic Book: " + this.magic_book);
+      this.cdr.detectChanges(); // se necessário
+    });
   }
 
 
