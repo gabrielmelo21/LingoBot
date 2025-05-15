@@ -257,6 +257,7 @@ export class SpeakingComponent {
 
 
   startAudioRecording() {
+    this.cdr.detectChanges();
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       this.logToMobileConsole('❌ Navegador não suporta getUserMedia');
       return;
@@ -275,7 +276,7 @@ export class SpeakingComponent {
 
         this.recordStatus = '🎙️ Gravação iniciada (0s/7s)';
         this.logToMobileConsole('🎙️ Gravação iniciada');
-
+        this.cdr.detectChanges();
         this.recordingTimer = setInterval(() => {
           this.elapsedTime++;
           this.recordStatus = `🎙️ Gravando (${this.elapsedTime}s/${this.maxRecordingTime}s)`;
@@ -350,9 +351,11 @@ export class SpeakingComponent {
       this.logToMobileConsole('🎬 Iniciando contagem regressiva');
       this.startCountdown();
     }
+    this.cdr.detectChanges();
   }
 
   startCountdown() {
+    this.cdr.detectChanges();
     this.showCountdown = true;
     this.countdownValue = 3;
 
@@ -370,6 +373,7 @@ export class SpeakingComponent {
         this.logToMobileConsole('✅ Fim do countdown');
       }
     }, 1000);
+    this.cdr.detectChanges();
   }
 
   sendAudioToAPI(audioBlob: Blob) {
