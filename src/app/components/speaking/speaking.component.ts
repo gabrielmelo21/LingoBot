@@ -257,8 +257,6 @@ export class SpeakingComponent {
 
 
   startAudioRecording() {
-    this.resetAll(); // <-- Começa já limpando tudo
-    this.cdr.detectChanges();
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       this.logToMobileConsole('❌ Navegador não suporta getUserMedia');
       return;
@@ -277,7 +275,7 @@ export class SpeakingComponent {
 
         this.recordStatus = '🎙️ Gravação iniciada (0s/7s)';
         this.logToMobileConsole('🎙️ Gravação iniciada');
-        this.cdr.detectChanges();
+
         this.recordingTimer = setInterval(() => {
           this.elapsedTime++;
           this.recordStatus = `🎙️ Gravando (${this.elapsedTime}s/${this.maxRecordingTime}s)`;
@@ -352,11 +350,9 @@ export class SpeakingComponent {
       this.logToMobileConsole('🎬 Iniciando contagem regressiva');
       this.startCountdown();
     }
-    this.cdr.detectChanges();
   }
 
   startCountdown() {
-    this.cdr.detectChanges();
     this.showCountdown = true;
     this.countdownValue = 3;
 
@@ -374,7 +370,6 @@ export class SpeakingComponent {
         this.logToMobileConsole('✅ Fim do countdown');
       }
     }, 1000);
-    this.cdr.detectChanges();
   }
 
   sendAudioToAPI(audioBlob: Blob) {
@@ -409,10 +404,9 @@ export class SpeakingComponent {
         }, waitTime);
       },
       error: (error: any) => {
-        this.logToMobileConsole('❌ Erro ao enviar áudio: ' + error.message);
-        this.recordStatus = '❌ Erro na transcrição';
         this.isProcessing = false;
-        this.resetAll();
+        this.recordStatus = '❌ Erro na transcrição';
+        this.logToMobileConsole('❌ Erro ao enviar áudio: ' + error.message);
       }
     });
   }
@@ -435,18 +429,20 @@ export class SpeakingComponent {
     this.logToMobileConsole(this.userResponse ? '✅ Correto!' : '❌ Incorreto.');
 
     if (this.userResponse) {
-      this.logToMobileConsole("✅ Resposta correta, iniciando reset...");
-      this.resetAll();
-
-      // Animação e transição de cena depois de reset
-      this.magic_book = true;
+      this.openMagicBook(); // fecha o livro
       this.skill_selected = false;
+      this.logToMobileConsole("Skill Selected var  (deve ser false) -> " + this.skill_selected);
       this.cena = 2;
+      this.logToMobileConsole("Cena atual " + this.cena);
 
       setTimeout(() => {
         this.cena = 1;
+        this.logToMobileConsole("Cena atual " + this.cena);
+
+        this.resetAll(); // 🔁 Reset após a animação
+        this.logToMobileConsole("Reset all. (No Acerto)")
       }, 4400);
-    }else {
+    } else {
       this.resetAll(); // 🔁 Reset imediato no erro
       this.logToMobileConsole("Reset all. (No Erro)")
     }
@@ -460,7 +456,11 @@ export class SpeakingComponent {
 
 
 
+
+
+
   resetAll() {
+
     // Limpa gravação, timers e estados
     if (this.mediaRecorder && this.isRecording) {
       this.mediaRecorder.stop();
@@ -471,35 +471,35 @@ export class SpeakingComponent {
       this.recordingTimer = null;
     }
 
-    this.mediaRecorder = null;
-    this.recordedChunks = [];
-    this.recordedAudioUrl = null;
-    this.audioUrl = null;
-    this.recordStatus = '';
-    this.isMicActive = false;
-    this.isPaused = false;
-    this.isRecording = false;
-    this.elapsedTime = 0;
 
-    // Reset da lógica
     this.skill_selected = false;
     this.skill_selected_src = '';
     this.skill_selected_title = '';
     this.skill_selected_description = '';
     this.skill_phrase = '';
+    this.cena = 1;
+    this.magic_book = false;
+    this.mediaRecorder = null;
+    this.recordedChunks = [];
+    this.recordedAudioUrl = null;
+    this.recordStatus = '';
+    this.buttonEffect = false;
+    this.isMicActive = false;
+    this.isPaused = false;
+    this.isRecording = false;
+    this.elapsedTime = 0;
+    this.recordingTimer && clearInterval(this.recordingTimer);
+    this.recordingTimer = null;
+    this.showCountdown = false;
     this.transcriptionResult = '';
     this.transcriptionText = '';
+    this.isProcessing = false;
     this.showResult = false;
     this.userResponse = false;
-    this.buttonEffect = false;
-    this.isProcessing = false;
-    this.showCountdown = false;
     this.countdownValue = 3;
-    this.magic_book = false;
-    this.cena = 1;
 
-    this.logToMobileConsole('🔁 resetAll() executado.');
-    this.cdr.detectChanges();
+    this.logToMobileConsole('🔄 Estado geral resetado');
+    this.cdr.detectChanges(); // Atualiza a view se necessário
   }
 
 
