@@ -419,9 +419,17 @@ export class SpeakingComponent {
     this.logToMobileConsole(`🧠 Checando resposta do usuário: ${user} vs ${correct}`);
     this.logToMobileConsole(this.userResponse ? '✅ Correto!' : '❌ Incorreto.');
 
+
+
+
+
       if (this.userResponse) {
-        this.skill_selected = false;
+        this.openMagicBook(); // muda para false, para fechar o modal
+        this.logToMobileConsole("Magic Book: " + this.magic_book)
+
+        this.skill_selected = false; // faz aparecer o botão de abrir modal
         this.logToMobileConsole("Skill Selected var  (deve ser false) -> " + this.skill_selected)
+
 
 
           this.cena = 2;
