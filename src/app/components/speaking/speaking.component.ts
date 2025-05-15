@@ -121,6 +121,7 @@ export class SpeakingComponent {
   }
 
   openMagicBook() {
+    this.logToMobileConsole("Magic Book: " + this.magic_book)
     this.playSoundService.playCleanSound2()
     this.magic_book = !this.magic_book;
   }
