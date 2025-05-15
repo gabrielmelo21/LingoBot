@@ -13,9 +13,38 @@ button:focus, a:focus, input:focus, textarea:focus {
   outline: none !important;
 }
 
-html, body { height: 100%;  background-image: url('/assets/lingobot/home/testar_pergaminho.jpg'); background-size: 200%; background-position: center  }
-body { margin: 0;    overflow-y: scroll;overflow-x: hidden; }
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-image: url('/assets/lingobot/home/testar_pergaminho.jpg');
+  background-size: cover; /* Melhor que 200% se quiser cobrir tudo */
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
 
+/* Spinner container fixo no centro da tela */
+.loading-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border: 10px solid rgba(255, 255, 255, 0.3);
+  border-top: 10px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Animação giratória */
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
 
 
 
