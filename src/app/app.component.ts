@@ -54,9 +54,7 @@ export class AppComponent implements OnInit{
     //localStorage.clear();
 
 
-    setTimeout(() =>{
-          this.isLoading = false;
-    },2000)
+
 
 
 

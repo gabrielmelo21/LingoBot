@@ -420,9 +420,13 @@ export class SpeakingComponent {
     this.logToMobileConsole(this.userResponse ? '✅ Correto!' : '❌ Incorreto.');
 
       if (this.userResponse) {
-        this.magic_book = false;
-        this.skill_selected = false;
+        this.openMagicBook();
+        this.chooseAnotherSkill()
+
         this.cena = 2;
+        setTimeout(() => {
+          this.cena = 1;
+        },4400)
 
       }
   }
