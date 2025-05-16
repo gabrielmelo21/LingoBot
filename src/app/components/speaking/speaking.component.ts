@@ -277,35 +277,40 @@ export class SpeakingComponent implements OnInit {
   private countdownTimer: any;
 
   startCountdown() {
-    this.sumirMic(); // esconde o mic
+    this.sumirMic();
     this.countdownValue = 3;
     this.showCountdown = true;
-    this.renderizar(); // força renderização inicial para exibir o 3
+    this.renderizar();
     this.logToMobileConsole(`⏳ Countdown: ${this.countdownValue}`);
 
     if (this.countdownTimer) {
-      clearInterval(this.countdownTimer); // evita múltiplos timers
+      clearInterval(this.countdownTimer);
     }
 
     this.countdownTimer = setInterval(() => {
       this.countdownValue--;
-      this.renderizar(); // força atualização do número no HTML
+      this.renderizar();
+
+      if (this.countdownValue === 1) {
+        // Começa a gravar 1 segundo antes de "Fale!"
+        this.logToMobileConsole('🎙️ Iniciando gravação (1s antes do "Fale!")');
+        this.startAudioRecording();
+      }
 
       if (this.countdownValue > 0) {
         this.logToMobileConsole(`⏳ Countdown: ${this.countdownValue}`);
       } else {
         clearInterval(this.countdownTimer);
         this.countdownValue = 0;
-        this.renderizar(); // força mostrar "🎤 Fale!"
+        this.renderizar();
         this.logToMobileConsole('🎤 Comece a falar!');
 
-        this.startAudioRecording();
-
+        // Depois de mostrar "Fale!", aguarda 1s e some com o contador
         setTimeout(() => {
-          this.aparcerMic(); // exibe o ícone do mic
-          this.micPulsing() // efeito pulsing no mic
+          this.aparcerMic();
+          this.micPulsing();
           this.showCountdown = false;
-          this.renderizar(); // força sumir o countdown
+          this.renderizar();
         }, 1000);
       }
     }, 1000);
@@ -486,6 +491,7 @@ export class SpeakingComponent implements OnInit {
 
           this.stop_api_loading();
           // aparecer errado, ou o certo
+
           //this.showCorrect()
           this.showError()
           this.logToMobileConsole("transcrisção - " + this.transcriptionText);
