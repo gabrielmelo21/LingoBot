@@ -5,6 +5,7 @@ import {PlaySoundService} from "../../services/play-sound.service";
 import {AuthService} from "../../services/auth.service";
 import {MainAPIService} from "../../services/main-api.service";
 import {interval, map, startWith, take, tap} from "rxjs";
+import { get as levenshtein } from 'fast-levenshtein';
 
 
 export interface SpeakingExercise {
@@ -330,12 +331,6 @@ export class SpeakingComponent implements OnInit {
 
 
 
-
-
-
-
-
-
   mediaRecorder: MediaRecorder | null = null;
   recordedChunks: Blob[] = [];
   elapsedTime: number = 0;
@@ -492,9 +487,9 @@ export class SpeakingComponent implements OnInit {
           this.stop_api_loading();
           // aparecer errado, ou o certo
 
-          //this.showCorrect()
-          this.showError()
-          this.logToMobileConsole("transcrisção - " + this.transcriptionText);
+            this.checkUserResponse();
+
+
           this.renderizar()
 
 
@@ -505,6 +500,63 @@ export class SpeakingComponent implements OnInit {
       }
     });
   }
+
+
+
+
+
+
+
+
+userResponse: any;
+
+
+  normalizeText(text: string): string {
+    const stopwords = ['o', 'a', 'os', 'as', 'um', 'uma', 'de', 'do', 'da', 'e'];
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9 ]/g, '')
+      .split(' ')
+      .filter(word => word && !stopwords.includes(word))
+      .join(' ')
+      .trim();
+  }
+
+  checkUserResponse(): void {
+    const user = this.normalizeText(this.transcriptionText);
+    const correct = this.normalizeText(this.skill_phrase);
+
+    // Levenshtein
+    const levenshteinDistance = levenshtein(user, correct);
+    const levenshteinSimilarity = 1 - levenshteinDistance / Math.max(user.length, correct.length);
+
+    // Palavra por palavra
+    const userWords = new Set(user.split(' '));
+    const correctWords = correct.split(' ');
+    const matchedWords = correctWords.filter(word => userWords.has(word)).length;
+    const wordSimilarity = matchedWords / correctWords.length;
+
+    // Lógicas de aprovação
+    const passedLevenshtein = levenshteinSimilarity >= 0.8;
+    const passedWords = wordSimilarity >= 0.7;
+
+    this.userResponse = passedLevenshtein || passedWords;
+
+    // Log detalhado
+    this.logToMobileConsole(`🧠 Checando resposta do usuário: "${user}" vs "${correct}"`);
+    this.logToMobileConsole(`✂️ Similaridade Levenshtein: ${(levenshteinSimilarity * 100).toFixed(1)}%`);
+    this.logToMobileConsole(`📊 Palavras corretas: ${matchedWords}/${correctWords.length} (${(wordSimilarity * 100).toFixed(1)}%)`);
+    this.logToMobileConsole(this.userResponse ? '✅ Correto!' : '❌ Incorreto.');
+
+    if (this.userResponse) {
+      this.showCorrect();
+    } else {
+      this.showError();
+    }
+  }
+
 
 
 

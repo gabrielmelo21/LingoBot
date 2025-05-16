@@ -140,53 +140,8 @@ handleMicClick() {
 
 
 
-sendAudioToAPI(audioBlob: Blob) {
-  const formData = new FormData();
-  formData.append('file', audioBlob, 'recording.wav');
 
-  this.isProcessing = true;
-  this.transcriptionResult = '';
-  this.recordStatus = '⏳ Processando...';
-  this.logToMobileConsole('📤 Enviando áudio para API...');
-  const minProcessingTime = 1000;
-  const startTime = Date.now();
-  this.mainAPIService.uploadAudio(formData).subscribe({
-    next: (response) => {
-      const elapsed = Date.now() - startTime;
-      const waitTime = Math.max(0, minProcessingTime - elapsed);
 
-      setTimeout(() => {
-        this.isProcessing = false;
-        this.cdr.detectChanges();
-
-        this.transcriptionText = response.text || '⚠️ Sem texto detectado.';
-        this.checkUserResponse();
-
-        this.showResult = true;
-        this.cdr.detectChanges();
-
-        setTimeout(() => {
-          this.showResult = false;
-          this.transcriptionText = '';
-        }, 3000);
-      }, waitTime);
-    },
-    error: (error: any) => {
-      this.isProcessing = false;
-      this.recordStatus = '❌ Erro na transcrição';
-      this.logToMobileConsole('❌ Erro ao enviar áudio: ' + error.message);
-    }
-  });
-}
-
-normalizeText(text: string): string {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9 ]/g, "")
-    .trim();
-}
 
 checkUserResponse(): void {
   const user = this.normalizeText(this.transcriptionText);
