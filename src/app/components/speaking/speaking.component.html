@@ -1,5 +1,5 @@
 
-
+<!--
 <div id="mobile-console" style="
   position: absolute;
   top: 5vh;
@@ -16,7 +16,7 @@
   z-index: 9999 !important;
   white-space: pre-wrap;
 "></div>
-
+-->
 
 
 
@@ -31,6 +31,13 @@
 <video *ngIf="cena==2" autoplay class="background-video">
   <source src="assets/lingobot/cenas_na_masmorra/speaking/eletric-thunder.mp4" type="video/mp4">
 </video>
+
+
+<!-- ELDER ATTACK -->
+<video *ngIf="cena==3" autoplay class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/speaking/elder_atack.mp4" type="video/mp4">
+</video>
+
 
 
 <!-- VIDA DO LINGOBOT -->
@@ -58,8 +65,8 @@
 
 
 <!-- MAGIC BOOK -->
-<div class="magic-book" *ngIf="magic_book">
-  {{ logToMobileConsole('renderizou magic book') }}
+<div class="magic-book" *ngIf="magic_book_modal">
+
 
   <!-- Skill Preview Section -->
   <div *ngIf="skill_selected" class="skill-preview">
@@ -117,26 +124,19 @@
   <div class="mic-container" *ngIf="skill_selected">
 
 
-    <!-- MIC ou COUNTDOWN ou PROCESSANDO -->
-    <ng-container *ngIf="!isProcessing && !showResult">
-      <ng-container *ngIf="!showCountdown">
-        <img
-          src="assets/lingobot/skills/speaking.png"
-          class="mic"
-          [ngClass]="{ 'pulse-animation': buttonEffect }"
-          (click)="handleMicClick()"
-        />
-      </ng-container>
+    <div *ngIf="!apiLoading && userResponseStatus==''">
+    <img
+      *ngIf="mic"
+      src="assets/lingobot/skills/speaking.png"
+      class="mic"
+      [ngClass]="{ 'pulse-animation': buttonEffect }"
+      (click)="iniciarGracavaoContagem()"
+    />
+    <p>{{this.recordStatus}}</p>
+    </div>
 
-      <!-- COUNTDOWN -->
-      <div *ngIf="showCountdown" class="countdown-text">
-        <p *ngIf="countdownValue > 0">{{ countdownValue }}</p>
-        <p *ngIf="countdownValue === 0">🎤 Fale!</p>
-      </div>
-    </ng-container>
 
-    <!-- PROCESSANDO -->
-    <div *ngIf="isProcessing" class="processing-box">
+    <div *ngIf="apiLoading && userResponseStatus==''" class="processing-box">
       <img
         src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png"
         class="book-icon"
@@ -145,8 +145,18 @@
       <p class="processing-text">O livro está reagindo ao seu conjuramento. Aguarde...</p>
     </div>
 
+
+
+
+    <div *ngIf="showCountdown" class="countdown-text">
+      <p *ngIf="countdownValue > 0">{{ countdownValue }}</p>
+      <p *ngIf="countdownValue === 0">🎤 Fale!</p>
+    </div>
+
+
+
     <!-- ✅ RESPOSTA CORRETA -->
-    <div *ngIf="showResult && userResponse" class="processing-box">
+    <div *ngIf="userResponseStatus=='correct'" class="processing-box">
       <img
         src="assets/lingobot/cenas_na_masmorra/speaking/check.png"
         class="book-icon"
@@ -155,7 +165,72 @@
       <p class="processing-text">Conjurando poder</p>
     </div>
 
+
     <!-- ❌ RESPOSTA INCORRETA -->
+  <div *ngIf="userResponseStatus=='error'" class="processing-box">
+    <img
+      src="assets/lingobot/cenas_na_masmorra/speaking/error.png"
+      class="book-icon"
+      alt="Resposta incorreta"
+    />
+    <p class="processing-text">
+      Você disse:
+      "<b class="error-phrase">{{ transcriptionText }}</b>"
+      Correto é: <b class="correct-phrase">"{{ skill_phrase }}"</b>   </p>
+  </div>
+    <style>
+        .error-phrase{
+          color: red;
+        }
+        .correct-phrase{
+          color:mediumseagreen;
+        }
+    </style>
+
+
+
+
+  <!-- MIC ou COUNTDOWN ou PROCESSANDO
+  <ng-container *ngIf="!isProcessing && !showResult">
+    <ng-container *ngIf="!showCountdown">
+      <img
+        src="assets/lingobot/skills/speaking.png"
+        class="mic"
+        [ngClass]="{ 'pulse-animation': buttonEffect }"
+        (click)="handleMicClick()"
+      />
+    </ng-container>
+    -->
+
+      <!-- COUNTDOWN
+      <div *ngIf="showCountdown" class="countdown-text">
+        <p *ngIf="countdownValue > 0">{{ countdownValue }}</p>
+        <p *ngIf="countdownValue === 0">🎤 Fale!</p>
+      </div>
+
+    </ng-container>      -->
+
+    <!-- PROCESSANDO
+    <div *ngIf="isProcessing" class="processing-box">
+      <img
+        src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png"
+        class="book-icon"
+        alt="Processando..."
+      />
+      <p class="processing-text">O livro está reagindo ao seu conjuramento. Aguarde...</p>
+    </div>
+    -->
+    <!-- ✅ RESPOSTA CORRETA
+    <div *ngIf="showResult && userResponse" class="processing-box">
+      <img
+        src="assets/lingobot/cenas_na_masmorra/speaking/check.png"
+        class="book-icon"
+        alt="Resposta correta"
+      />
+      <p class="processing-text">Conjurando poder</p>
+    </div>
+    -->
+    <!-- ❌ RESPOSTA INCORRETA
     <div *ngIf="showResult && !userResponse" class="processing-box">
       <img
         src="assets/lingobot/cenas_na_masmorra/speaking/error.png"
@@ -167,7 +242,7 @@
       </p>
     </div>
 
-
+    -->
 
 
   </div>
@@ -181,99 +256,10 @@
      <h3 class="elders-magic-book-title">Elders' Magic Book</h3>
 </div>
 
-  <style>
-
-    .processing-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      animation: fadeIn 0.4s ease-in-out;
-      margin-top: -10px !important;
-    }
-
-    .book-icon {
-      width: 100px;
-      height: auto;
-      margin-bottom: 12px;
-      animation: pulse 1s infinite;
-    }
-
-    .processing-text {
-      color: darkgoldenrod;
-      font-weight: bold;
-      font-size: 1rem;
-      text-align: center;
-      max-width: 220px;
-    }
+</div>  <!-- background commands end -->
 
 
 
-    .elders-magic-book-title{
-      color: darkgoldenrod;
-      font-weight: bolder;
-      font-family: 'Bangers', cursive;
-      font-size: 15pt;
-    }
-    .magic-book-icon{
-       width: 30%;
-       height: auto;
-    }
-
-
-
-    .mic-container {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top:7vh !important;
-    }
-
-    .mic {
-      width: 100px;
-      cursor: pointer;
-    }
-
-    .pulse-animation {
-      animation: pulse 1s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.1); opacity: 0.7; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    .countdown-text {
-      font-size: 3rem;
-      font-weight: bold;
-      color: darkgoldenrod;
-      text-align: center;
-      animation: fadeIn 0.5s ease-in-out;
-      margin-top:6vh !important;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-
-    .processing-overlay img {
-      width: 120px;
-      animation: float 2s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
-
-  </style>
-
-</div>
 
 
 

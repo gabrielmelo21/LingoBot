@@ -192,7 +192,7 @@ export class PlaySoundService implements OnDestroy {
     }
 
     const audio = new Audio(`assets/lingobot/audio-pack/${filename}`);
-    console.log(`volume from ${filename}: ${audio.volume}`);
+    //console.log(`volume from ${filename}: ${audio.volume}`);
 
 
      if (filename == "soundtrack/city_theme.mp3"
@@ -200,12 +200,12 @@ export class PlaySoundService implements OnDestroy {
        filename == "soundtrack/listening_soundtrack.mp3") {
        audio.volume = 0.02;
        audio.loop = true; // se for som contínuo
-       console.log(`volume: ${audio.volume}`);
+       //console.log(`volume: ${audio.volume}`);
      }
      if ( filename == "soundtrack/puzzle_solving.mp3" || filename == "soundtrack/reading_theme.mp3") {
        audio.volume = 0.13;
        audio.loop = true; // se for som contínuo
-       console.log(`volume: ${audio.volume}`);
+       //console.log(`volume: ${audio.volume}`);
      }
 
 

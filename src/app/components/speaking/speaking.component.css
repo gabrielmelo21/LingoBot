@@ -592,3 +592,136 @@
   animation: fadeIn 0.6s ease-in-out;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.processing-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease-in-out;
+  margin-top: -10px !important;
+}
+
+.book-icon {
+  width: 100px;
+  height: auto;
+  margin-bottom: 12px;
+  animation: pulse 1s infinite;
+}
+
+.processing-text {
+  color: darkgoldenrod;
+  font-weight: bold;
+  font-size: 10pt;
+  text-align: center;
+  max-width: 220px;
+}
+
+
+
+.elders-magic-book-title{
+  color: darkgoldenrod;
+  font-weight: bolder;
+  font-family: 'Bangers', cursive;
+  font-size: 15pt;
+}
+.magic-book-icon{
+  width: 20%;
+  height: auto;
+}
+
+
+
+.mic-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:7vh !important;
+}
+
+.mic {
+  width: 100px;
+  cursor: pointer;
+}
+
+.pulse-animation {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.countdown-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: darkgoldenrod;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+  margin-top:6vh !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+.processing-overlay img {
+  width: 120px;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+
+
+
+
+
+
+
+
+
+.countdown-text p {
+  font-size: 3rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: pop 0.3s;
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
