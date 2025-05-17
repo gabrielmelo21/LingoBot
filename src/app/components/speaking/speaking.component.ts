@@ -168,6 +168,7 @@ export class SpeakingComponent implements OnInit {
         break;
     }
     this.loadExercises();
+    this.mudarCena(1);
   } // END CONSTRUCTOR
 
   ngOnInit() {
