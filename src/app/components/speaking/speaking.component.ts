@@ -54,6 +54,15 @@ export class SpeakingComponent implements OnInit {
 
 
 
+ // CONSUMO DE VIDA
+ // ROUNDS
+ // COLDDOWN DE HABILIDADES
+ // TROCA DE FRASES
+
+
+
+
+
 
   constructor(private http: HttpClient,
              private router: Router,
@@ -579,6 +588,7 @@ userResponse: any;
 
 
 
+  animationExecutionTime: number = 1000;
 
   showCorrect(){
    this.userResponseStatus = 'correct';
@@ -590,16 +600,20 @@ userResponse: any;
 
     switch (this.skill_selected_title){
       case 'Electric Attack':
+        this.animationExecutionTime = 5000;
         this.mudarCena(4);
       break;
       case 'Thunder Strike':
+        this.animationExecutionTime = 5000;
         this.mudarCena(2);
       break;
       case 'Healing Light':
+        this.animationExecutionTime = 7000;
         this.mudarCena(5);
         break;
       case 'Quick Dodge':
         // ativar aviso de dodge ativado
+        this.playSoundService.playItemDrop()
         this.dodgeActive()
         break;
     }
@@ -610,7 +624,7 @@ userResponse: any;
         this.mudarCena(1)
         this.chooseAnotherSkill()
         this.resetAll()
-    },5000)
+    }, this.animationExecutionTime)
 
   }
   showError(){
