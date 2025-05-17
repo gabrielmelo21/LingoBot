@@ -263,6 +263,9 @@ export class SpeakingComponent implements OnInit {
 
   iniciarGracavaoContagem() {
    this.renderizar()
+   this.playSoundService.stopAllAudio();
+
+
     if ( this.buttonEffect ) { // Mic pulsing = gravando
       this.logToMobileConsole('⚠️ Já está gravando ou contando, clique ignorado');
       return;
@@ -659,6 +662,7 @@ userResponse: any;
 
 
   resetAll() {
+    this.playSoundService.playBossFight()
 
     // Limpa gravação, timers e estados
     if (this.mediaRecorder) {

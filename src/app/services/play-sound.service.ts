@@ -5,6 +5,7 @@ import {Injectable, OnDestroy} from '@angular/core';
 })
 export class PlaySoundService implements OnDestroy {
   private currentAudio: HTMLAudioElement | null = null; // Mantém referência ao áudio longo
+  private activeAudios: HTMLAudioElement[] = [];
 
 
   constructor() { }
@@ -188,45 +189,54 @@ export class PlaySoundService implements OnDestroy {
   private volume: number = 0.5; // ajuste aqui o volume padrão entre 0.0 e 1.0
 
   private playAudio(filename: string, allowOverlap: boolean): void {
-
     if (!allowOverlap && this.currentAudio) {
       this.currentAudio.pause();
       this.currentAudio.currentTime = 0;
     }
 
     const audio = new Audio(`assets/lingobot/audio-pack/${filename}`);
-    //console.log(`volume from ${filename}: ${audio.volume}`);
 
-
-     if (filename == "soundtrack/city_theme.mp3"
-       || filename == "soundtrack/tower_theme.mp3" ||
-       filename == "soundtrack/listening_soundtrack.mp3") {
-       audio.volume = 0.02;
-       audio.loop = true; // se for som contínuo
-       //console.log(`volume: ${audio.volume}`);
-     }
-     if ( filename == "soundtrack/puzzle_solving.mp3" || filename == "soundtrack/reading_theme.mp3") {
-       audio.volume = 0.13;
-       audio.loop = true; // se for som contínuo
-       //console.log(`volume: ${audio.volume}`);
-     }
-
-
-
-
-    if ( filename == "soundtrack/boss_fight2.mp3") {
+    if (filename === "soundtrack/city_theme.mp3"
+      || filename === "soundtrack/tower_theme.mp3"
+      || filename === "soundtrack/listening_soundtrack.mp3") {
+      audio.volume = 0.02;
+      audio.loop = true;
+    } else if (filename === "soundtrack/puzzle_solving.mp3"
+      || filename === "soundtrack/reading_theme.mp3") {
+      audio.volume = 0.13;
+      audio.loop = true;
+    } else if (filename === "soundtrack/boss_fight2.mp3") {
       audio.volume = 0.10;
-      audio.loop = true; // se for som contínuo
-      //console.log(`volume: ${audio.volume}`);
+      audio.loop = true;
+    } else {
+      audio.volume = this.volume;
     }
 
+    // Armazena o áudio para parar depois
+    this.activeAudios.push(audio);
 
-
+    // Define currentAudio apenas se não permite sobreposição
     if (!allowOverlap) {
       this.currentAudio = audio;
     }
 
+    // Remove da lista quando o áudio termina (se não for loop)
+    if (!audio.loop) {
+      audio.addEventListener('ended', () => {
+        this.activeAudios = this.activeAudios.filter(a => a !== audio);
+      });
+    }
+
     audio.play().catch(error => console.error('Erro ao tocar som:', error));
+  }
+
+  stopAllAudio(): void {
+    this.activeAudios.forEach(audio => {
+      audio.pause();
+      audio.currentTime = 0;
+    });
+    this.activeAudios = [];
+    this.currentAudio = null;
   }
 
 
