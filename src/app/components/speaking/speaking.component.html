@@ -21,41 +21,9 @@
 
 
 
-
-<!-- Vídeo 1 -->
-<video *ngIf="cena==1" autoplay loop class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/waiting-attack.mp4" type="video/mp4">
+<video #videoPlayer autoplay [loop]="loop" class="background-video">
+  <source [src]="currentSrc" type="video/mp4">
 </video>
-
-
-<!-- THUNDER ATTACK -->
-<video *ngIf="cena==2" autoplay class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/eletric-thunder.mp4" type="video/mp4">
-</video>
-
-<!-- ELETRIC ATTACK -->
-<video *ngIf="cena==4" autoplay class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/eletric-atack-new.mp4" type="video/mp4">
-</video>
-
-<!-- ELDER ATTACK -->
-<video *ngIf="cena==3" autoplay class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/elder_atack.mp4" type="video/mp4">
-</video>
-
-
-
-<!-- HEAL -->
-<video *ngIf="cena==5" autoplay class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/heal.mp4" type="video/mp4">
-</video>
-
-
-<!-- DODGE -->
-<video *ngIf="cena==6" autoplay class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/dodge.mp4" type="video/mp4">
-</video>
-
 
 <!-- DODGE ACTIVE SYMBOL -->
 <img src="assets/lingobot/cenas_na_masmorra/speaking/dodge.png" class="dodge-symbol" *ngIf="dodgeStatus">
@@ -80,6 +48,17 @@
          class="battery-bar-img">
   </div>
   <img src="assets/lingobot/cenas_na_masmorra/speaking/elder.png" class="battery-icon"  >
+</div>
+
+
+<!-- LETREIRO  -->
+<div
+  class="letreiro"
+  *ngIf="imagemAtual"
+  [@bounce]="animacaoEstado"
+  (@bounce.done)="quandoAnimacaoTerminar()"
+>
+  <img [src]="imagemAtual" />
 </div>
 
 
@@ -140,7 +119,10 @@
 
 
 <div   class="background-commands">
-
+  <button (click)="mostrarLetreiro('defeat')">Mostrar Defeat</button>
+  <button (click)="mostrarLetreiro('victory')">Mostrar Vitória</button>
+  <button (click)="mostrarLetreiro('your_turn')">your turn</button>
+  <button (click)="mostrarLetreiro('elders_turn')">elder's turn</button>
   <!-- MIC IMAGE COM COUNTDOWN -->
   <div class="mic-container" *ngIf="skill_selected">
 

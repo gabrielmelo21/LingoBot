@@ -19,10 +19,10 @@ html, body {
   overflow-y: scroll;
   overflow-x: hidden;
   background-image: url('/assets/lingobot/loading-bg/loading.jpg');
-  background-color: #D8C18F;
+  background-color: darkgoldenrod;
   background-size: contain; /* Melhor que 200% se quiser cobrir tudo */
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   position: relative;
 }
 

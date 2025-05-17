@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
@@ -6,6 +6,7 @@ import {AuthService} from "../../services/auth.service";
 import {MainAPIService} from "../../services/main-api.service";
 import {interval, map, startWith, take, tap} from "rxjs";
 import { get as levenshtein } from 'fast-levenshtein';
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 
 export interface SpeakingExercise {
@@ -20,11 +21,25 @@ export interface SpeakingExercise {
 @Component({
   selector: 'app-speaking',
   templateUrl: './speaking.component.html',
-  styleUrls: ['./speaking.component.css']
+  styleUrls: ['./speaking.component.css'],
+  animations: [
+    trigger('bounce', [
+      state('ativo', style({ opacity: 1, transform: 'translate(-50%, -50%) scale(1)' })),
+      transition('void => ativo', [
+        style({ opacity: 0, transform: 'translate(-50%, -50%) scale(0.3)' }),
+        animate('500ms cubic-bezier(.68,-0.55,.27,1.55)')
+      ]),
+      transition('ativo => void', [
+        animate('500ms ease-in', style({ opacity: 0, transform: 'translate(-50%, -50%) scale(0.3)' }))
+      ])
+    ])
+  ]
 })
 export class SpeakingComponent implements OnInit {
-
-   cena = 1;
+  @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
+  cena: number = 1;
+  currentSrc: string = '';
+  loop = true;
 
   currentBattery: number = 5;
   batteryArray = Array(7).fill(0);
@@ -53,6 +68,59 @@ export class SpeakingComponent implements OnInit {
   dodgeStatus: boolean = false;
 
 
+
+  imagemAtual: string | null = null;
+  animacaoEstado = 'ativo';
+
+
+
+
+  mostrarLetreiro(nome: string) {
+    const caminhoBase = 'assets/lingobot/cenas_na_masmorra/speaking/';
+    let nomeArquivo = '';
+
+    switch (nome) {
+      case 'elders_turn':
+        this.playSoundService.playSwipe()
+        nomeArquivo = 'elders_turn.png';
+
+        // Oculta após 2 segundos
+        setTimeout(() => {
+          this.imagemAtual = null;
+        }, 2000);
+
+        break;
+      case 'victory':
+        this.playSoundService.playWin2()
+        nomeArquivo = 'victory.png';
+        break;
+      case 'defeat':
+        this.playSoundService.playError();
+        nomeArquivo = 'defeat.png';
+        break;
+      case 'your_turn':
+        this.playSoundService.playSwipe()
+        nomeArquivo = 'your_turn.png';
+
+        // Oculta após 2 segundos
+        setTimeout(() => {
+          this.imagemAtual = null;
+        }, 2000);
+
+
+        break;
+      default:
+        return;
+    }
+
+    this.imagemAtual = caminhoBase + nomeArquivo;
+
+
+  }
+
+  quandoAnimacaoTerminar() {
+    // Opcional: lidar com fim da animação
+  }
 
  // CONSUMO DE VIDA
  // ROUNDS
@@ -117,9 +185,43 @@ export class SpeakingComponent implements OnInit {
       consoleDiv.innerText = this.logMessages.slice(-20).join('\n'); // Últimas 20 mensagens
     }
   }
-   mudarCena(number: number) {
-      this.cena = number;
-      this.renderizar()
+  mudarCena(cena: number) {
+    this.fadeOutIn(() => {
+      this.cena = cena;
+      const [src, shouldLoop] = this.getVideoData(cena);
+      this.currentSrc = src;
+      this.loop = shouldLoop;
+
+      this.cdr.detectChanges(); // atualiza o src e o loop no template
+
+      const video = this.videoPlayer.nativeElement;
+      video.load();
+      video.play();
+    });
+  }
+
+  fadeOutIn(callback: () => void) {
+    const video = this.videoPlayer.nativeElement;
+    video.classList.add('hidden');
+
+    setTimeout(() => {
+      callback(); // executa a troca do vídeo
+      setTimeout(() => {
+        video.classList.remove('hidden');
+      }, 50); // pequeno atraso pra garantir transição
+    }, 500); // tempo do fade-out
+  }
+
+  private getVideoData(cena: number): [string, boolean] {
+    switch (cena) {
+      case 1: return ['assets/lingobot/cenas_na_masmorra/speaking/waiting-attack.mp4', true];
+      case 2: return ['assets/lingobot/cenas_na_masmorra/speaking/eletric-thunder.mp4', false];
+      case 3: return ['assets/lingobot/cenas_na_masmorra/speaking/elder_atack.mp4', false];
+      case 4: return ['assets/lingobot/cenas_na_masmorra/speaking/eletric-atack-new.mp4', false];
+      case 5: return ['assets/lingobot/cenas_na_masmorra/speaking/heal.mp4', false];
+      case 6: return ['assets/lingobot/cenas_na_masmorra/speaking/dodge.mp4', false];
+      default: return ['', false];
+    }
   }
    renderizar(){
     this.cdr.detectChanges();
