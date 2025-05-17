@@ -725,3 +725,29 @@
     transform: scale(1);
   }
 }
+
+
+
+
+
+
+
+
+
+
+.dodge-symbol{
+  position: absolute;
+  z-index: 10;
+  width: 17%;
+  height: auto;
+  top: 20vh;
+  left: 1vh;
+}
+.error-phrase{
+  color: red;
+}
+.correct-phrase{
+  color:mediumseagreen;
+}
+
+

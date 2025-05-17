@@ -28,16 +28,37 @@
 </video>
 
 
+<!-- THUNDER ATTACK -->
 <video *ngIf="cena==2" autoplay class="background-video">
   <source src="assets/lingobot/cenas_na_masmorra/speaking/eletric-thunder.mp4" type="video/mp4">
 </video>
 
+<!-- ELETRIC ATTACK -->
+<video *ngIf="cena==4" autoplay class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/speaking/eletric-atack-new.mp4" type="video/mp4">
+</video>
 
 <!-- ELDER ATTACK -->
 <video *ngIf="cena==3" autoplay class="background-video">
   <source src="assets/lingobot/cenas_na_masmorra/speaking/elder_atack.mp4" type="video/mp4">
 </video>
 
+
+
+<!-- HEAL -->
+<video *ngIf="cena==5" autoplay class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/speaking/heal.mp4" type="video/mp4">
+</video>
+
+
+<!-- DODGE -->
+<video *ngIf="cena==6" autoplay class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/speaking/dodge.mp4" type="video/mp4">
+</video>
+
+
+<!-- DODGE ACTIVE SYMBOL -->
+<img src="assets/lingobot/cenas_na_masmorra/speaking/dodge.png" class="dodge-symbol" *ngIf="dodgeStatus">
 
 
 <!-- VIDA DO LINGOBOT -->
@@ -178,14 +199,7 @@
       "<b class="error-phrase">{{ transcriptionText }}</b>"
       Correto é: <b class="correct-phrase">"{{ skill_phrase }}"</b>   </p>
   </div>
-    <style>
-        .error-phrase{
-          color: red;
-        }
-        .correct-phrase{
-          color:mediumseagreen;
-        }
-    </style>
+
 
 
 

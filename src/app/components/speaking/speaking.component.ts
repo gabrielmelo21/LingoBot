@@ -50,6 +50,8 @@ export class SpeakingComponent implements OnInit {
   transcriptionText: string = "Walking around the world";
   userResponseStatus: string = "";
 
+  dodgeStatus: boolean = false;
+
 
 
 
@@ -186,6 +188,8 @@ export class SpeakingComponent implements OnInit {
 
         this.skill_phrase = this.skill1;
         this.logToMobileConsole("skill_phrase: " + this.skill_phrase);
+
+
         break;
 
       case 2:
@@ -579,13 +583,31 @@ userResponse: any;
    // fechar o modal , e executar uma animação
     this.openMagicBook();
 
-    this.mudarCena(2);
+
+
+    switch (this.skill_selected_title){
+      case 'Electric Attack':
+        this.mudarCena(4);
+      break;
+      case 'Thunder Strike':
+        this.mudarCena(2);
+      break;
+      case 'Healing Light':
+        this.mudarCena(5);
+        break;
+      case 'Quick Dodge':
+        // ativar aviso de dodge ativado
+        this.dodgeActive()
+        break;
+    }
+
+
 
     setTimeout(() =>{
         this.mudarCena(1)
         this.chooseAnotherSkill()
         this.resetAll()
-    },4400)
+    },5000)
 
   }
   showError(){
@@ -596,17 +618,42 @@ userResponse: any;
     // fechar o modal , e executar uma animação
     this.openMagicBook();
 
-    this.mudarCena(3);
+    if (!this.dodgeStatus){
+      this.mudarCena(3);
+    }else{
+       this.mudarCena(6); // MUDA PRA CENA DO DODGE E NAO LEVA DANO
+       this.desativarDodge();
+    }
+
+    // this.mudarCena(6);     -> se o usuario errar, e tiver dodge ativado
 
     setTimeout(() =>{
       this.mudarCena(1)
       this.chooseAnotherSkill()
       this.resetAll()
-    },4400)
+    },5000)
 
 
 
   }
+
+
+
+ dodgeActive(){
+     this.playSoundService.playCleanSound2();
+     this.dodgeStatus = true;
+     this.renderizar();
+ }
+ desativarDodge(){
+   this.playSoundService.playCleanSound2();
+   this.dodgeStatus = false;
+   this.renderizar();
+ }
+
+
+
+
+
 
 
 
