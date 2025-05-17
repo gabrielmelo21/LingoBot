@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
@@ -35,7 +35,7 @@ export interface SpeakingExercise {
     ])
   ]
 })
-export class SpeakingComponent implements OnInit {
+export class SpeakingComponent implements AfterViewInit {
   @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
   cena: number = 1;
   currentSrc: string = '';
@@ -168,12 +168,14 @@ export class SpeakingComponent implements OnInit {
         break;
     }
     this.loadExercises();
-    this.mudarCena(1);
   } // END CONSTRUCTOR
 
-  ngOnInit() {
-     this.mudarCena(1);
+
+
+  ngAfterViewInit() {
+    this.mudarCena(1);
   }
+
 
 
   // METODO PARA DEBUG
@@ -187,30 +189,17 @@ export class SpeakingComponent implements OnInit {
     }
   }
   mudarCena(cena: number) {
-    this.fadeOutIn(() => {
-      this.cena = cena;
-      const [src, shouldLoop] = this.getVideoData(cena);
-      this.currentSrc = src;
-      this.loop = shouldLoop;
+    this.cena = cena;
+    const [src, shouldLoop] = this.getVideoData(cena);
+    this.currentSrc = src;
+    this.loop = shouldLoop;
 
-      this.cdr.detectChanges(); // atualiza o src e o loop no template
+    this.cdr.detectChanges(); // força Angular a atualizar binding antes de manipular o vídeo
 
-      const video = this.videoPlayer.nativeElement;
-      video.load();
-      video.play();
-    });
-  }
-
-  fadeOutIn(callback: () => void) {
+    // Reinicia a reprodução
     const video = this.videoPlayer.nativeElement;
-    video.classList.add('hidden');
-
-    setTimeout(() => {
-      callback(); // executa a troca do vídeo
-      setTimeout(() => {
-        video.classList.remove('hidden');
-      }, 50); // pequeno atraso pra garantir transição
-    }, 500); // tempo do fade-out
+    video.load(); // força recarregar o vídeo
+    video.play(); // começa a tocar
   }
 
   private getVideoData(cena: number): [string, boolean] {

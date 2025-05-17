@@ -8,17 +8,9 @@
   height: auto; /* Faz o vídeo ocupar 100% da altura do contêiner */
   object-fit: cover; /* Faz o vídeo cobrir toda a área do contêiner */
   z-index: 5; /* Coloca o vídeo atrás dos outros elementos */
-  transition: opacity 0.5s ease-in-out;
+
 
 }
-
-
-
-
-
-
-
-
 
 /* Imagem de fundo */
 .background-image {
