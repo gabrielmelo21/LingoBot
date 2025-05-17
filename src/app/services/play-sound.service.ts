@@ -11,7 +11,10 @@ export class PlaySoundService implements OnDestroy {
 
 
   playBossFight() {
-    this.playAudio("soundtrack/boss_fight.mp3", false);
+    this.playAudio("soundtrack/boss_fight2.mp3", false);
+  }
+  playBossFight2() {
+    this.playAudio("soundtrack/boss_fight1.mp3", false);
   }
 
 
@@ -209,6 +212,13 @@ export class PlaySoundService implements OnDestroy {
      }
 
 
+
+
+    if ( filename == "soundtrack/boss_fight2.mp3") {
+      audio.volume = 0.10;
+      audio.loop = true; // se for som contínuo
+      //console.log(`volume: ${audio.volume}`);
+    }
 
 
 

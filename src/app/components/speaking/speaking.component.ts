@@ -61,7 +61,7 @@ export class SpeakingComponent implements OnInit {
               private authService: AuthService,
               private mainAPIService: MainAPIService,
               private cdr: ChangeDetectorRef) {
-          //     this.playSoundService.playBossFight();
+              this.playSoundService.playBossFight();
     switch (this.authService.getDifficulty()) {
       case 'easy':
         this.srcExercises = 'assets/lingobot/json/speaking/easy.json';
