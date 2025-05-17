@@ -20,7 +20,7 @@ html, body {
   overflow-x: hidden;
   background-image: url('/assets/lingobot/loading-bg/loading.jpg');
   background-color: #D8C18F;
-  background-size: cover; /* Melhor que 200% se quiser cobrir tudo */
+  background-size: contain; /* Melhor que 200% se quiser cobrir tudo */
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
