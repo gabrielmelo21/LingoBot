@@ -56,7 +56,6 @@
   class="letreiro"
   *ngIf="imagemAtual"
   [@bounce]="animacaoEstado"
-  (@bounce.done)="quandoAnimacaoTerminar()"
 >
   <img [src]="imagemAtual" />
 </div>
@@ -119,10 +118,10 @@
 
 
 <div   class="background-commands">
-  <button (click)="mostrarLetreiro('defeat')">Mostrar Defeat</button>
-  <button (click)="mostrarLetreiro('victory')">Mostrar Vitória</button>
-  <button (click)="mostrarLetreiro('your_turn')">your turn</button>
-  <button (click)="mostrarLetreiro('elders_turn')">elder's turn</button>
+
+
+
+
   <!-- MIC IMAGE COM COUNTDOWN -->
   <div class="mic-container" *ngIf="skill_selected">
 
@@ -182,75 +181,27 @@
       Correto é: <b class="correct-phrase">"{{ skill_phrase }}"</b>   </p>
   </div>
 
-
-
-
-
-  <!-- MIC ou COUNTDOWN ou PROCESSANDO
-  <ng-container *ngIf="!isProcessing && !showResult">
-    <ng-container *ngIf="!showCountdown">
-      <img
-        src="assets/lingobot/skills/speaking.png"
-        class="mic"
-        [ngClass]="{ 'pulse-animation': buttonEffect }"
-        (click)="handleMicClick()"
-      />
-    </ng-container>
-    -->
-
-      <!-- COUNTDOWN
-      <div *ngIf="showCountdown" class="countdown-text">
-        <p *ngIf="countdownValue > 0">{{ countdownValue }}</p>
-        <p *ngIf="countdownValue === 0">🎤 Fale!</p>
-      </div>
-
-    </ng-container>      -->
-
-    <!-- PROCESSANDO
-    <div *ngIf="isProcessing" class="processing-box">
-      <img
-        src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png"
-        class="book-icon"
-        alt="Processando..."
-      />
-      <p class="processing-text">O livro está reagindo ao seu conjuramento. Aguarde...</p>
-    </div>
-    -->
-    <!-- ✅ RESPOSTA CORRETA
-    <div *ngIf="showResult && userResponse" class="processing-box">
-      <img
-        src="assets/lingobot/cenas_na_masmorra/speaking/check.png"
-        class="book-icon"
-        alt="Resposta correta"
-      />
-      <p class="processing-text">Conjurando poder</p>
-    </div>
-    -->
-    <!-- ❌ RESPOSTA INCORRETA
-    <div *ngIf="showResult && !userResponse" class="processing-box">
-      <img
-        src="assets/lingobot/cenas_na_masmorra/speaking/error.png"
-        class="book-icon"
-        alt="Resposta incorreta"
-      />
-      <p class="processing-text">
-        Você disse: "{{ transcriptionText }}" e o correto é: "{{ skill_phrase }}"
-      </p>
-    </div>
-
-    -->
-
-
   </div>
 
 
 
 
-<div class="fundo" (click)="openMagicBook();"   *ngIf="!skill_selected">
+<div class="fundo" (click)="openMagicBook();"   *ngIf="!skill_selected && currentTurn!=='elders_turn'">
     <img src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png" class="magic-book-icon">
   <br>
      <h3 class="elders-magic-book-title">Elders' Magic Book</h3>
 </div>
+
+
+
+
+
+  <ng-template  *ngIf="currentTurn=='elders_turn'">
+
+    <img src="assets/lingobot/cenas_na_masmorra/speaking/elders_turn.png" style="width: 30%;height: auto">
+  </ng-template>
+
+
 
 </div>  <!-- background commands end -->
 

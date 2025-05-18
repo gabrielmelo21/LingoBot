@@ -72,55 +72,10 @@ export class SpeakingComponent implements AfterViewInit {
   imagemAtual: string | null = null;
   animacaoEstado = 'ativo';
 
+  currentTurn: string = 'your_turn';
 
 
 
-  mostrarLetreiro(nome: string) {
-    const caminhoBase = 'assets/lingobot/cenas_na_masmorra/speaking/';
-    let nomeArquivo = '';
-
-    switch (nome) {
-      case 'elders_turn':
-        this.playSoundService.playSwipe()
-        nomeArquivo = 'elders_turn.png';
-
-        // Oculta após 2 segundos
-        setTimeout(() => {
-          this.imagemAtual = null;
-        }, 2000);
-
-        break;
-      case 'victory':
-        this.playSoundService.playWin2()
-        nomeArquivo = 'victory.png';
-        break;
-      case 'defeat':
-        this.playSoundService.playError();
-        nomeArquivo = 'defeat.png';
-        break;
-      case 'your_turn':
-        this.playSoundService.playSwipe()
-        nomeArquivo = 'your_turn.png';
-
-        // Oculta após 2 segundos
-        setTimeout(() => {
-          this.imagemAtual = null;
-        }, 2000);
-
-
-        break;
-      default:
-        return;
-    }
-
-    this.imagemAtual = caminhoBase + nomeArquivo;
-
-
-  }
-
-  quandoAnimacaoTerminar() {
-    // Opcional: lidar com fim da animação
-  }
 
  // CONSUMO DE VIDA
  // ROUNDS
@@ -174,7 +129,90 @@ export class SpeakingComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.mudarCena(1);
+    this.changeTurn("your_turn");
+    //this.changeTurn("elders_turn");
   }
+
+
+
+
+  changeTurn(turn: string){
+    this.currentTurn = turn;
+    this.mostrarLetreiro(turn)
+
+    if (this.currentTurn == 'elders_turn') {
+      // se for elders turn, espera o letreiro, e ele executa o ataque
+      setTimeout(() => {
+       this.eldersAttack()  // elder's attack
+      },2000)
+    }
+
+
+  }
+
+
+
+
+
+  mostrarLetreiro(nome: string) {
+    const caminhoBase = 'assets/lingobot/cenas_na_masmorra/speaking/';
+    let nomeArquivo = '';
+
+    switch (nome) {
+      case 'elders_turn':
+        this.playSoundService.playSwipe()
+        nomeArquivo = 'elders_turn.png';
+
+        // Oculta após 2 segundos
+        setTimeout(() => {
+          this.imagemAtual = null;
+        }, 2000);
+
+        break;
+      case 'victory':
+        this.playSoundService.playWin2()
+        nomeArquivo = 'victory.png';
+        break;
+      case 'defeat':
+        this.playSoundService.playError();
+        nomeArquivo = 'defeat.png';
+        break;
+      case 'your_turn':
+        this.playSoundService.playSwipe()
+        nomeArquivo = 'your_turn.png';
+
+        // Oculta após 2 segundos
+        setTimeout(() => {
+          this.imagemAtual = null;
+        }, 2000);
+
+
+        break;
+      default:
+        return;
+    }
+
+    this.imagemAtual = caminhoBase + nomeArquivo;
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -716,6 +754,7 @@ userResponse: any;
         this.mudarCena(1)
         this.chooseAnotherSkill()
         this.resetAll()
+        this.changeTurn("elders_turn");
     }, this.animationExecutionTime)
 
   }
@@ -740,11 +779,26 @@ userResponse: any;
       this.mudarCena(1)
       this.chooseAnotherSkill()
       this.resetAll()
+      this.changeTurn("your_turn");
     },5000)
 
-
-
   }
+
+  eldersAttack(){
+    if (!this.dodgeStatus){
+      this.mudarCena(3); // ELDERS ATTACK
+    }else{
+      this.mudarCena(6); // MUDA PRA CENA DO DODGE E NAO LEVA DANO
+      this.desativarDodge();
+    }
+    setTimeout(() =>{
+      this.mudarCena(1)
+      this.resetAll()
+      this.changeTurn("your_turn");
+    },5000)
+  }
+
+
 
 
 
