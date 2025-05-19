@@ -270,17 +270,22 @@ export class SpeakingComponent implements AfterViewInit {
     if(this.elderBattery <= 0 ){
       this.mostrarLetreiro("victory");
 
+
+      setTimeout(() => {
+        this.mostrarLetreiro('')
+        this.mudarCena(7);
+        this.renderizar();
+      },4000)
+
+
       setTimeout( () => {
         this.playSoundService.stopAllAudio()
         this.playSoundService.playElderTalkFinal()
         this.renderizar();
-      }, 3000 )
+      }, 5000 )
 
 
-      setTimeout(() => {
-        this.mudarCena(7);
-        this.renderizar();
-      },5000)
+
       this.disableOptions = true;
     }
     this.renderizar();
@@ -1114,6 +1119,6 @@ userResponse: any;
 
   sair() {
     this.playSoundService.playCleanSound2();
-    this.router.navigate(["/babel-tour"])
+    this.router.navigate(["/babel-tower"])
   }
 }
