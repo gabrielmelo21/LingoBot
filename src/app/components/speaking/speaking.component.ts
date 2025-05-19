@@ -132,11 +132,19 @@ export class SpeakingComponent implements AfterViewInit {
   }
 
 
+   renderTime(number:number){
+       setTimeout(() => {
+         this.renderizar();
+       }, number)
+   }
 
 
   changeTurn(turn: string){
     this.currentTurn = turn;
     this.mostrarLetreiro(turn)
+
+    this.renderTime(100);
+
 
     if (this.currentTurn == 'elders_turn') {
       // se for elders turn, espera o letreiro, e ele executa o ataque
@@ -145,7 +153,7 @@ export class SpeakingComponent implements AfterViewInit {
       },2000)
     }
 
-
+    this.renderizar();
   }
 
 
@@ -169,6 +177,7 @@ export class SpeakingComponent implements AfterViewInit {
     if (this.lingobotBattery < this.maxBattery) {
       this.lingobotBattery++;
     }
+    this.renderizar();
   }
 
   removeLifeLingobot() {
@@ -179,6 +188,7 @@ export class SpeakingComponent implements AfterViewInit {
     if (this.lingobotBattery <= 0 ){
        this.mostrarLetreiro("defeat");
     }
+    this.renderizar();
   }
 
   // Métodos do Elder
@@ -190,6 +200,7 @@ export class SpeakingComponent implements AfterViewInit {
     if(this.elderBattery <= 0 ){
       this.mostrarLetreiro("victory");
     }
+    this.renderizar();
   }
 
   lingobotTookDamage = false;
@@ -246,6 +257,7 @@ export class SpeakingComponent implements AfterViewInit {
           this.imagemAtual = null;
         }, 2000);
 
+        this.renderTime(1000);
 
         break;
       default:
@@ -792,11 +804,13 @@ userResponse: any;
       case 'Electric Attack':
         this.animationExecutionTime = 5000;
         this.mudarCena(4);
+        this.renderTime(5000);
         this.triggerElderDamage();
       break;
       case 'Thunder Strike':
         this.animationExecutionTime = 5000;
         this.mudarCena(2);
+        this.renderTime(5000);
         this.triggerElderDamage();
       break;
       case 'Healing Light':
@@ -846,6 +860,8 @@ userResponse: any;
       this.changeTurn("your_turn");
     },5000)
 
+    this.renderTime(1000);
+
   }
 
   eldersAttack(){
@@ -861,6 +877,7 @@ userResponse: any;
       this.resetAll()
       this.changeTurn("your_turn");
     },5000)
+    this.renderTime(1000);
   }
 
 
