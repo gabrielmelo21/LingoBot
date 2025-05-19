@@ -270,9 +270,10 @@ export class SpeakingComponent implements AfterViewInit {
     if(this.elderBattery <= 0 ){
       this.mostrarLetreiro("victory");
 
-      this.mudarCena(7);
+
 
       setTimeout(() => {
+        this.mudarCena(7);
         this.playSoundService.stopAllAudio()
         this.playSoundService.playElderTalkFinal()
         this.renderizar();
