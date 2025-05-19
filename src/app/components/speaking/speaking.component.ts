@@ -92,6 +92,10 @@ export class SpeakingComponent implements AfterViewInit {
               private mainAPIService: MainAPIService,
               private cdr: ChangeDetectorRef) {
               this.playSoundService.playBossFight();
+
+
+
+
     switch (this.authService.getDifficulty()) {
       case 'easy':
         this.srcExercises = 'assets/lingobot/json/speaking/easy.json';
@@ -129,10 +133,65 @@ export class SpeakingComponent implements AfterViewInit {
     this.mudarCena(1);
     this.changeTurn("your_turn");
     //this.changeTurn("elders_turn");
+    setTimeout(() =>{
+      this.playSoundService.playElderTalk0()
+    },5000)
+
   }
 
 
-   renderTime(number:number){
+
+  getLingobotRandomTalk() {
+    const randomIndex = Math.floor(Math.random() * 6) + 1; // 1 a 6
+
+    switch (randomIndex) {
+      case 1:
+        this.playSoundService.playLingobotTalk1();
+        break;
+      case 2:
+        this.playSoundService.playLingobotTalk2();
+        break;
+      case 3:
+        this.playSoundService.playLingobotTalk3();
+        break;
+      case 4:
+        this.playSoundService.playLingobotTalk4();
+        break;
+      case 5:
+        this.playSoundService.playLingobotTalk5();
+        break;
+      case 6:
+        this.playSoundService.playLingobotTalk6();
+        break;
+    }
+  }
+
+  getElderRandomTalk() {
+    const randomIndex = Math.floor(Math.random() * 5) + 1; // 1 a 5
+
+    switch (randomIndex) {
+      case 1:
+        this.playSoundService.playElderTalk1();
+        break;
+      case 2:
+        this.playSoundService.playElderTalk2();
+        break;
+      case 3:
+        this.playSoundService.playElderTalk3();
+        break;
+      case 4:
+        this.playSoundService.playElderTalk4();
+        break;
+      case 5:
+        this.playSoundService.playElderTalk5();
+        break;
+    }
+  }
+
+
+
+
+  renderTime(number:number){
        setTimeout(() => {
          this.renderizar();
        }, number)
@@ -241,7 +300,7 @@ export class SpeakingComponent implements AfterViewInit {
 
     switch (nome) {
       case 'elders_turn':
-        this.playSoundService.playSwipe()
+        this.playSoundService.playSessionEldersTurn()
         nomeArquivo = 'elders_turn.png';
 
         // Oculta após 2 segundos
@@ -252,14 +311,17 @@ export class SpeakingComponent implements AfterViewInit {
         break;
       case 'victory':
         this.playSoundService.playWin2()
+        this.playSoundService.playSessionVictory();
         nomeArquivo = 'victory.png';
         break;
       case 'defeat':
         this.playSoundService.playError();
+        this.playSoundService.playSessionDefeat()
         nomeArquivo = 'defeat.png';
         break;
       case 'your_turn':
         this.playSoundService.playSwipe()
+        this.playSoundService.playSessionYourTurn()
         nomeArquivo = 'your_turn.png';
 
         // Oculta após 2 segundos
@@ -818,14 +880,24 @@ userResponse: any;
       case 'Electric Attack':
         this.animationExecutionTime = 5000;
         this.mudarCena(4);
+
+        setTimeout(() =>{
+          this.getLingobotRandomTalk()
+          this.triggerElderDamage();
+        }, 2000)
+
         this.renderTime(5000);
-        this.triggerElderDamage();
+
       break;
       case 'Thunder Strike':
         this.animationExecutionTime = 5000;
         this.mudarCena(2);
+        setTimeout(() =>{
+          this.getLingobotRandomTalk()
+          this.triggerElderDamage();
+        }, 2000)
         this.renderTime(5000);
-        this.triggerElderDamage();
+
       break;
       case 'Healing Light':
         this.animationExecutionTime = 7000;
@@ -864,7 +936,11 @@ userResponse: any;
 
       if (!this.dodgeStatus) {
         this.mudarCena(3);
-        this.triggerLingobotDamage();
+
+        setTimeout(() =>{
+          this.triggerLingobotDamage();
+          this.getElderRandomTalk()
+        }, 2000)
       } else {
         this.mudarCena(6); // MUDA PRA CENA DO DODGE E NAO LEVA DANO
         this.desativarDodge();
@@ -892,7 +968,10 @@ userResponse: any;
 
       if (!this.dodgeStatus) {
         this.mudarCena(3); // ELDERS ATTACK
-        this.triggerLingobotDamage();
+        setTimeout(() =>{
+          this.triggerLingobotDamage();
+          this.getElderRandomTalk()
+        }, 2000)
       } else {
         this.mudarCena(6); // MUDA PRA CENA DO DODGE E NAO LEVA DANO
         this.desativarDodge();
