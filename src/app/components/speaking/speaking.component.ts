@@ -74,8 +74,8 @@ export class SpeakingComponent implements AfterViewInit {
 
 
 
+ //AO VENCER, NAO PODE TROCAR ROUND
 
- // CONSUMO DE VIDA
  // ROUNDS
  // COLDDOWN DE HABILIDADES
  // TROCA DE FRASES
@@ -140,18 +140,26 @@ export class SpeakingComponent implements AfterViewInit {
 
 
   changeTurn(turn: string){
-    this.currentTurn = turn;
-    this.mostrarLetreiro(turn)
 
-    this.renderTime(100);
+    if(this.elderBattery <= 0 || this.lingobotBattery <= 0) {
+      return;
+    }else{
+
+      this.currentTurn = turn;
+      this.mostrarLetreiro(turn)
+
+      this.renderTime(100);
 
 
-    if (this.currentTurn == 'elders_turn') {
-      // se for elders turn, espera o letreiro, e ele executa o ataque
-      setTimeout(() => {
-       this.eldersAttack()  // elder's attack
-      },2000)
+      if (this.currentTurn == 'elders_turn') {
+        // se for elders turn, espera o letreiro, e ele executa o ataque
+        setTimeout(() => {
+          this.eldersAttack()  // elder's attack
+        },2000)
+      }
     }
+
+
 
     this.renderizar();
   }
