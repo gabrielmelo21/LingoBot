@@ -172,10 +172,12 @@ export class SpeakingComponent implements AfterViewInit {
   elderBattery: number = this.maxBattery;
   elderBatteryArray = Array(this.maxBattery).fill(0);
 
+
+
   // Métodos do Lingobot
   addLifeLingobot() {
     if (this.lingobotBattery < this.maxBattery) {
-      this.lingobotBattery++;
+      this.lingobotBattery+=2;
     }
     this.renderizar();
   }
@@ -237,7 +239,7 @@ export class SpeakingComponent implements AfterViewInit {
         // Oculta após 2 segundos
         setTimeout(() => {
           this.imagemAtual = null;
-        }, 2000);
+        }, 1500);
 
         break;
       case 'victory':
@@ -255,9 +257,7 @@ export class SpeakingComponent implements AfterViewInit {
         // Oculta após 2 segundos
         setTimeout(() => {
           this.imagemAtual = null;
-        }, 2000);
-
-        this.renderTime(1000);
+        }, 1500);
 
         break;
       default:
@@ -266,7 +266,7 @@ export class SpeakingComponent implements AfterViewInit {
 
     this.imagemAtual = caminhoBase + nomeArquivo;
 
-
+    this.renderTime(500);
   }
 
 
@@ -310,6 +310,7 @@ export class SpeakingComponent implements AfterViewInit {
     const video = this.videoPlayer.nativeElement;
     video.load(); // força recarregar o vídeo
     video.play(); // começa a tocar
+    this.renderTime(100);
   }
 
   private getVideoData(cena: number): [string, boolean] {
@@ -793,6 +794,11 @@ userResponse: any;
   animationExecutionTime: number = 1000;
 
   showCorrect(){
+
+    if(this.elderBattery <= 0 || this.lingobotBattery <= 0 ) {
+      return;
+    }
+
    this.userResponseStatus = 'correct';
 
    // fechar o modal , e executar uma animação
@@ -832,51 +838,66 @@ userResponse: any;
         this.chooseAnotherSkill()
         this.resetAll()
         this.changeTurn("elders_turn");
+        this.loadExercises();
     }, this.animationExecutionTime)
 
   }
   showError(){
-   this.userResponseStatus = 'error';
-
-   // aparecer a messagem de erro, e depois ativar animação de elder atack
-
-    // fechar o modal , e executar uma animação
-    this.openMagicBook();
-
-    if (!this.dodgeStatus){
-      this.mudarCena(3);
-       this.triggerLingobotDamage();
-    }else{
-       this.mudarCena(6); // MUDA PRA CENA DO DODGE E NAO LEVA DANO
-       this.desativarDodge();
+    if(this.elderBattery <= 0 || this.lingobotBattery <= 0 ) {
+      return;
     }
 
-    // this.mudarCena(6);     -> se o usuario errar, e tiver dodge ativado
+      this.userResponseStatus = 'error';
 
-    setTimeout(() =>{
-      this.mudarCena(1)
-      this.chooseAnotherSkill()
-      this.resetAll()
-      this.changeTurn("your_turn");
-    },5000)
+      // aparecer a messagem de erro, e depois ativar animação de elder atack
 
+      // fechar o modal , e executar uma animação
+      this.openMagicBook();
+
+      if (!this.dodgeStatus) {
+        this.mudarCena(3);
+        this.triggerLingobotDamage();
+      } else {
+        this.mudarCena(6); // MUDA PRA CENA DO DODGE E NAO LEVA DANO
+        this.desativarDodge();
+      }
+
+      // this.mudarCena(6);     -> se o usuario errar, e tiver dodge ativado
+
+      setTimeout(() => {
+        this.mudarCena(1)
+        this.chooseAnotherSkill()
+        this.resetAll()
+        this.changeTurn("your_turn");
+      }, 5000)
+
+    this.loadExercises();
     this.renderTime(1000);
 
   }
 
   eldersAttack(){
-    if (!this.dodgeStatus){
-      this.mudarCena(3); // ELDERS ATTACK
-      this.triggerLingobotDamage();
-    }else{
-      this.mudarCena(6); // MUDA PRA CENA DO DODGE E NAO LEVA DANO
-      this.desativarDodge();
+    if(this.elderBattery <= 0 || this.lingobotBattery <= 0 ) {
+      return;
     }
-    setTimeout(() =>{
-      this.mudarCena(1)
-      this.resetAll()
-      this.changeTurn("your_turn");
-    },5000)
+
+
+      if (!this.dodgeStatus) {
+        this.mudarCena(3); // ELDERS ATTACK
+        this.triggerLingobotDamage();
+      } else {
+        this.mudarCena(6); // MUDA PRA CENA DO DODGE E NAO LEVA DANO
+        this.desativarDodge();
+      }
+      setTimeout(() => {
+        this.mudarCena(1)
+        this.resetAll()
+        this.changeTurn("your_turn");
+      }, 5000)
+
+
+
+    this.loadExercises();
     this.renderTime(1000);
   }
 
