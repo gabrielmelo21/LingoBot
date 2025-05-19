@@ -31,24 +31,34 @@
 
 <!-- VIDA DO LINGOBOT -->
 <div class="battery-bars">
-  <img src="assets/lingobot/cenas_na_masmorra/speaking/lingobot.png" class="battery-icon"  >
+  <img
+    src="assets/lingobot/cenas_na_masmorra/speaking/lingobot.png"
+    class="battery-icon"
+    [class.damage-animation]="lingobotTookDamage">
+
+
   <div class="battery-bar-container">
-    <img *ngFor="let bar of batteryArray; let i = index"
-         [src]="i < currentBattery ? 'assets/lingobot/menu-icons/battery-on.png' : 'assets/lingobot/menu-icons/battery-off.png'"
+    <img *ngFor="let bar of lingobotBatteryArray; let i = index"
+         [src]="i < lingobotBattery ? 'assets/lingobot/menu-icons/battery-on.png' : 'assets/lingobot/menu-icons/battery-off.png'"
          class="battery-bar-img">
   </div>
 </div>
 
 
-<!-- VIDA DO ELDER-->
+<!-- VIDA DO ELDER -->
 <div class="battery-bars-elder">
   <div class="battery-bar-container">
-    <img *ngFor="let bar of batteryArray; let i = index"
-         [src]="i < currentBattery ? 'assets/lingobot/cenas_na_masmorra/speaking/elder-life.png' : 'assets/lingobot/cenas_na_masmorra/speaking/elder-life-off.png'"
+    <img *ngFor="let bar of elderBatteryArray; let i = index"
+         [src]="i < elderBattery ? 'assets/lingobot/cenas_na_masmorra/speaking/elder-life.png' : 'assets/lingobot/cenas_na_masmorra/speaking/elder-life-off.png'"
          class="battery-bar-img">
   </div>
-  <img src="assets/lingobot/cenas_na_masmorra/speaking/elder.png" class="battery-icon"  >
+  <img
+    src="assets/lingobot/cenas_na_masmorra/speaking/elder.png"
+    class="battery-icon"
+    [class.damage-animation]="elderTookDamage">
+
 </div>
+
 
 
 <!-- LETREIRO  -->
@@ -118,6 +128,10 @@
 
 
 <div   class="background-commands">
+
+  <!-- Botões para testar -->
+  <button (click)="triggerLingobotDamage()">Dano no Lingobot</button>
+  <button (click)="triggerElderDamage()">Dano no Elder</button>
 
 
 

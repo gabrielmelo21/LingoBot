@@ -41,8 +41,6 @@ export class SpeakingComponent implements AfterViewInit {
   currentSrc: string = '';
   loop = true;
 
-  currentBattery: number = 5;
-  batteryArray = Array(7).fill(0);
   srcExercises: string = '';
   finalGoldReward: number = 0;
   finalXpReward: number = 0;
@@ -149,6 +147,68 @@ export class SpeakingComponent implements AfterViewInit {
 
 
   }
+
+
+
+
+
+
+
+  maxBattery = 7;
+
+  // Vida do Lingobot
+  lingobotBattery: number = this.maxBattery;
+  lingobotBatteryArray = Array(this.maxBattery).fill(0);
+
+  // Vida do Elder
+  elderBattery: number = this.maxBattery;
+  elderBatteryArray = Array(this.maxBattery).fill(0);
+
+  // Métodos do Lingobot
+  addLifeLingobot() {
+    if (this.lingobotBattery < this.maxBattery) {
+      this.lingobotBattery++;
+    }
+  }
+
+  removeLifeLingobot() {
+    if (this.lingobotBattery > 0) {
+      this.playSoundService.playPunch();
+      this.lingobotBattery--;
+    }
+    if (this.lingobotBattery <= 0 ){
+       this.mostrarLetreiro("defeat");
+    }
+  }
+
+  // Métodos do Elder
+  removeLifeElder() {
+    if (this.elderBattery > 0) {
+      this.playSoundService.playPunch();
+      this.elderBattery--;
+    }
+    if(this.elderBattery <= 0 ){
+      this.mostrarLetreiro("victory");
+    }
+  }
+
+  lingobotTookDamage = false;
+  elderTookDamage = false;
+
+  triggerLingobotDamage() {
+    this.lingobotTookDamage = true;
+    setTimeout(() => this.lingobotTookDamage = false, 500); // Duração da animação
+    this.removeLifeLingobot();
+  }
+
+  triggerElderDamage() {
+    this.elderTookDamage = true;
+    setTimeout(() => this.elderTookDamage = false, 500);
+    this.removeLifeElder();
+  }
+
+
+
 
 
 
@@ -732,14 +792,17 @@ userResponse: any;
       case 'Electric Attack':
         this.animationExecutionTime = 5000;
         this.mudarCena(4);
+        this.triggerElderDamage();
       break;
       case 'Thunder Strike':
         this.animationExecutionTime = 5000;
         this.mudarCena(2);
+        this.triggerElderDamage();
       break;
       case 'Healing Light':
         this.animationExecutionTime = 7000;
         this.mudarCena(5);
+        this.addLifeLingobot();
         break;
       case 'Quick Dodge':
         // ativar aviso de dodge ativado
@@ -768,6 +831,7 @@ userResponse: any;
 
     if (!this.dodgeStatus){
       this.mudarCena(3);
+       this.triggerLingobotDamage();
     }else{
        this.mudarCena(6); // MUDA PRA CENA DO DODGE E NAO LEVA DANO
        this.desativarDodge();
@@ -787,6 +851,7 @@ userResponse: any;
   eldersAttack(){
     if (!this.dodgeStatus){
       this.mudarCena(3); // ELDERS ATTACK
+      this.triggerLingobotDamage();
     }else{
       this.mudarCena(6); // MUDA PRA CENA DO DODGE E NAO LEVA DANO
       this.desativarDodge();

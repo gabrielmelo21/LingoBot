@@ -38,6 +38,7 @@ export class PlaySoundService implements OnDestroy {
   }
 
 
+
   playPadlockLocked(){
     this.playAudio("padlock-locked.mp3", true);
   }
@@ -95,6 +96,11 @@ export class PlaySoundService implements OnDestroy {
 
   playMagic(): void {
     this.playAudio('magic-sound-effect.mp3', true);
+  }
+
+
+  playPunch(): void {
+    this.playAudio('punch.mp3', true);
   }
 
 
