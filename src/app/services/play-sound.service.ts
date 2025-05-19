@@ -141,6 +141,9 @@ export class PlaySoundService implements OnDestroy {
 
 
 //ELDERS TALK
+  playElderTalkFinal(){
+    this.playAudio("talks/elders_talks/finish_talk.mp3", true);
+  }
   playElderTalk0(){
      this.playAudio("talks/elders_talks/do_you_wanna_fight.mp3", true);
   }

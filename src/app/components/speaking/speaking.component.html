@@ -200,12 +200,15 @@
 
 
 
-<div class="fundo" (click)="openMagicBook();"   *ngIf="!skill_selected && currentTurn!=='elders_turn'">
+<div class="fundo" (click)="openMagicBook();"   *ngIf="!skill_selected && currentTurn!=='elders_turn' && !disableOptions">
     <img src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png" class="magic-book-icon">
   <br>
      <h3 class="elders-magic-book-title">Elders' Magic Book</h3>
 </div>
 
+  <div class="fundo" (click)="sair()"   *ngIf="disableOptions">
+    <h3 class="elders-magic-book-title">Sair da Arena</h3>
+  </div>
 
 
 

@@ -135,7 +135,7 @@ export class SpeakingComponent implements AfterViewInit {
     //this.changeTurn("elders_turn");
     setTimeout(() =>{
       this.playSoundService.playElderTalk0()
-    },5000)
+    },4000)
 
   }
 
@@ -261,6 +261,7 @@ export class SpeakingComponent implements AfterViewInit {
   }
 
   // Métodos do Elder
+  disableOptions:boolean = false;
   removeLifeElder() {
     if (this.elderBattery > 0) {
       this.playSoundService.playPunch();
@@ -268,6 +269,11 @@ export class SpeakingComponent implements AfterViewInit {
     }
     if(this.elderBattery <= 0 ){
       this.mostrarLetreiro("victory");
+      this.mudarCena(7);
+      setTimeout(() => {
+        this.playSoundService.playElderTalkFinal()
+      },3000)
+      this.disableOptions = true;
     }
     this.renderizar();
   }
@@ -391,6 +397,7 @@ export class SpeakingComponent implements AfterViewInit {
       case 4: return ['assets/lingobot/cenas_na_masmorra/speaking/eletric-atack-new.mp4', false];
       case 5: return ['assets/lingobot/cenas_na_masmorra/speaking/heal.mp4', false];
       case 6: return ['assets/lingobot/cenas_na_masmorra/speaking/dodge.mp4', false];
+      case 7: return ['assets/lingobot/cenas_na_masmorra/speaking/elder_defeat.mp4', false]
       default: return ['', false];
     }
   }
@@ -1097,4 +1104,8 @@ userResponse: any;
   }
 
 
+  sair() {
+    this.playSoundService.playCleanSound2();
+    this.router.navigate(["/babel-tour"])
+  }
 }
