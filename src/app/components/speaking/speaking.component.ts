@@ -272,19 +272,11 @@ export class SpeakingComponent implements AfterViewInit {
 
 
       setTimeout(() => {
-        this.mostrarLetreiro('')
-        this.mudarCena(7);
-        this.renderizar();
-      },4000)
-
-
-      setTimeout( () => {
         this.playSoundService.stopAllAudio()
+        this.mudarCena(7);
         this.playSoundService.playElderTalkFinal()
         this.renderizar();
-      }, 5000 )
-
-
+      },6000)
 
       this.disableOptions = true;
     }
@@ -332,6 +324,12 @@ export class SpeakingComponent implements AfterViewInit {
         this.playSoundService.playWin2()
         this.playSoundService.playSessionVictory();
         nomeArquivo = 'victory.png';
+
+        // Oculta após 2 segundos
+        setTimeout(() => {
+          this.imagemAtual = null;
+        }, 1500);
+
         break;
       case 'defeat':
         this.playSoundService.playError();
