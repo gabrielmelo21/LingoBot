@@ -961,6 +961,9 @@ userResponse: any;
         }, 2000)
       } else {
         this.mudarCena(6); // MUDA PRA CENA DO DODGE E NAO LEVA DANO
+        setTimeout(() =>{
+           this.playSoundService.playLingobotTalkToSlow()
+        },2000)
         this.desativarDodge();
       }
 

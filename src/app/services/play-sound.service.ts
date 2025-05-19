@@ -26,7 +26,7 @@ export class PlaySoundService implements OnDestroy {
     this.playAudio("soundtrack/reading_theme.mp3", false);
   }
   playTowerSoundTrack() {
-    this.playAudio("soundtrack/tower_theme.mp3", false);
+    this.playAudio("soundtrack/tower_theme2.mp3", false);
   }
 
   playPuzzleSolve() {
@@ -110,6 +110,9 @@ export class PlaySoundService implements OnDestroy {
 
   // LINGOBOT TALK
 
+   playLingobotTalkToSlow(){
+     this.playAudio("talks/lingobot/too_slow.mp3", true);
+   }
 
   playLingobotTalk1() {
     this.playAudio("talks/lingobot/boom_take_that.mp3", true);
@@ -178,7 +181,7 @@ export class PlaySoundService implements OnDestroy {
   }
 
   playSessionVictory() {
-    this.playAudio("talks/session/victory.mp3", true);
+    this.playAudio("talks/session/victory2.mp3", true);
   }
 
   playSessionYourTurn() {
@@ -289,7 +292,7 @@ export class PlaySoundService implements OnDestroy {
     const audio = new Audio(`assets/lingobot/audio-pack/${filename}`);
 
     if (filename === "soundtrack/city_theme.mp3"
-      || filename === "soundtrack/tower_theme.mp3"
+      || filename === "soundtrack/tower_theme2.mp3"
       || filename === "soundtrack/listening_soundtrack.mp3") {
       audio.volume = 0.02;
       audio.loop = true;
