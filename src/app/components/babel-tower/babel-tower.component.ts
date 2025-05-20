@@ -96,9 +96,10 @@ export class BabelTowerComponent  implements OnInit {
 
   }
 
+
+
+
   verificarPedagio() {
-
-
 
 
   }

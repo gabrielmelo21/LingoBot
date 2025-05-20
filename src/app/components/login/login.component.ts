@@ -6,6 +6,7 @@ import {PlaySoundService} from "../../services/play-sound.service";
 import {AuthService} from "../../services/auth.service";
 
 import * as bcrypt from 'bcryptjs';
+import {RenderService} from "../../services/render.service";
 
 
 
@@ -131,10 +132,15 @@ export class LoginComponent {
     this.isModalOpen = false;
   }
 
-  constructor(private route: ActivatedRoute, private auth: AuthService ,private playSound: PlaySoundService, private fb: FormBuilder, private mainAPI: MainAPIService, private router: Router) {
+  constructor(
+    private route: ActivatedRoute,
+    private auth: AuthService ,
+    private playSound: PlaySoundService,
+    private fb: FormBuilder,
+    private mainAPI: MainAPIService,
+    private router: Router) {
 
-        this.rotateFeatures();
-
+    this.playSound.playTowerSoundTrack();
 
 
     // Criar o formulário com as validações PARA CRIAR CONTA
@@ -179,6 +185,9 @@ export class LoginComponent {
   onSubmit() {
     if (this.signupForm.valid) {
       this.isLoading = true;
+      this.loadingDance = true;
+
+
 
       const usuario = {
         nome: this.signupForm.value.nome,
@@ -198,9 +207,13 @@ export class LoginComponent {
       this.mainAPI.criarUsuario(usuario).subscribe(
         (response) => {
           this.isLoading = false;
-          this.successImg = true;
-          this.modalType = "";
-          console.log(response)
+          setTimeout(() => {
+            this.successImg = true;
+            this.modalType = "";
+            console.log(response)
+            this.loadingDance = false;
+          }, 5000)
+
         },
         (error) => {
           this.isLoading = false;
@@ -213,31 +226,14 @@ export class LoginComponent {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// this.router.navigate(['/redirect']);
-
   loginErrorMsg = ""
+  loadingDance: boolean = false;
 
 
   onLogin(email: string, password: string): void {
     this.loginIsLoading = true;
+
+
 
     this.mainAPI.login(email, password).subscribe(
       (response) => {

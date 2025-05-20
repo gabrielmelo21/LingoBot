@@ -291,8 +291,12 @@ export class PlaySoundService implements OnDestroy {
 
     const audio = new Audio(`assets/lingobot/audio-pack/${filename}`);
 
+    if (filename === "soundtrack/tower_theme2.mp3") {
+      audio.volume = 0.15;
+      audio.loop = true;
+    }
+
     if (filename === "soundtrack/city_theme.mp3"
-      || filename === "soundtrack/tower_theme2.mp3"
       || filename === "soundtrack/listening_soundtrack.mp3") {
       audio.volume = 0.02;
       audio.loop = true;
