@@ -5,9 +5,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
 import {AuthService} from "../../services/auth.service";
 
-import * as bcrypt from 'bcryptjs';
-import {RenderService} from "../../services/render.service";
-
 
 
 
@@ -200,7 +197,8 @@ export class LoginComponent {
         device_type: this.signupForm.value.device_type,
         screen_resolution: this.signupForm.value.screen_resolution,
         language: this.signupForm.value.language,
-        timezone: this.signupForm.value.timezone
+        timezone: this.signupForm.value.timezone,
+        battery: 10
       };
 
       // Chamada para a API com a senha em texto puro
@@ -217,6 +215,7 @@ export class LoginComponent {
         },
         (error) => {
           this.isLoading = false;
+          this.loadingDance = false;
           this.failImg = true;
           console.log(error);
           this.modalType = "";

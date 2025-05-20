@@ -1,6 +1,4 @@
-
 <div class="container">
-
   <!-- Imagem estática -->
   <img [src]="staticSceneSrc" class="background-image">
 
@@ -34,18 +32,16 @@
   </div>
 
 
+  <!-- INDICADOR DO ANDAR ATUAL -->
   <div class="tabua">
     <!-- Imagem -->
     <img src="assets/lingobot/home/tabua.png">
-
     <!-- Texto sobreposto -->
     <h3>N° {{ andarAtual }}<br>{{ getTextoPorAndar() }}</h3>
   </div>
 
 
-
-
-
+  <!-- BATTERY BARS -->
   <div class="battery-bars">
 
     <img [src]="energyImagePath" class="battery-icon" (click)="rechargeBattery();" >
@@ -58,23 +54,19 @@
   </div>
 
 
-
-
   <!-- Recharge banner -->
   <app-recharge *ngIf="rechargeModal && currentBattery < 1" ></app-recharge>
   <app-charged *ngIf="rechargeModal && currentBattery >= 1" ></app-charged>
 
 
-  <!-- quest paper -->
+  <!-- quest paper FLUTUANTE -->
   <img (click)="checkQuest()" src="assets/lingobot/menu-icons/quests.png" class="quests-button"  *ngIf="!rechargeModal">
 
 
 
 
-
- <img src="assets/lingobot/quest-check/quest-check.png" class="quest-check" *ngIf="checkQuestModal">
-
-
+<!-- QUEST MODAL -->
+ <img src="assets/lingobot/paper.png" class="quest-check" *ngIf="checkQuestModal">
   <div class="quest-check-text"  *ngIf="checkQuestModal">
     <p style="text-align: center;"><b style="color: darkgoldenrod">Mission</b><br>Move from floor {{  this.andar_final_conjunto }} to {{ this.andar_final_conjunto + 1}}, the following is required</p>
   </div>
@@ -87,6 +79,7 @@
     </div>
   </div>
 
+  <!-- QUEST MODAL END -->
 
 
 
@@ -95,48 +88,28 @@
 
 
 
-
+<!-- LOGO IREI TRABALHAR NELE -->
   <div *ngIf="showPedagioModal" class="pedagio-dialog" style="margin-top: -20px !important;">
     <div  class="pedagio-content"
 
     >
-
       <div style=" margin-top: 100px !important;">
         <div style="width:200px !important;">
-
-
-
-
           <button (click)="verificarPedagio()">Verificar Pedágio</button>
 
           <div class="button-container">
             <button class="game-button" (click)="closeModal()">Voltar</button>
             <button class="game-button" (click)="closeModal()">Pagar</button>
           </div>
-
-
         </div>
-
-
-
-
       </div>
-
-
     </div>
   </div> <!-- PEDAGIO end -->
 
 
-
-
-
+  <!-- COMMANDOS -->
   <div class="background-commands"  >
-
-
     <h3 class="actions-title" *ngIf="!blockAction">Comandos</h3>
-
-
-
     <div class="show-quest-infos" *ngIf="checkQuestModal">
       <div class="next-question"  >
         <h3 (click)="closeQuestModal();" class="command-button-2"  >
@@ -144,17 +117,7 @@
         </h3>
     </div>
     </div>
-
-
-
-
-
-
-
-
-
     <div class="commands-group" *ngIf="rechargeModal && !checkQuestModal" style="margin-top: 20px !important;">
-
       <div  class="command" (click)="rechargeBattery()" style="width: 33% !important;margin-top: 2vh;">
         <img src="assets/lingobot/poses/lingobot-running.png"  style="width: 80%;height: auto" class="flipped">
       </div>
@@ -177,12 +140,7 @@
         </div>
       </div>
     </div>
-
-
-
     <div class="main-commands" *ngIf="!rechargeModal && !checkQuestModal">
-
-
     <h3 class="actions-title" *ngIf="blockAction">Ação em andamento...</h3>
     <div class="commands-group">
       <div class="command" (click)="command('up')">
@@ -193,24 +151,17 @@
                 class="img-command">
         <p class="command-text">Subir andar</p>
       </div>
-
       <div class="command" (click)="command('in')">
         <img [class.neon-border]="isNeonActive('in')"
              (mousedown)="ativarNeon('in')"
              (touchstart)="ativarNeon('in')" (touchend)="desativarNeon('in')"
              src="assets/lingobot/poses/lingobot-running.png"
           class="img-command-center">
-
         <div class="battery-consuming" style="margin-left: 5vh">
           <p class="battery-text">-1</p>
           <img class="battery-icon" src="assets/lingobot/menu-icons/battery-on.png">
         </div>
-
-
-
-
       </div>
-
       <div class="command" (click)="command('down')">
         <img [class.neon-border]="isNeonActive('down')"
              (mousedown)="ativarNeon('down')"
@@ -219,19 +170,13 @@
              class="img-command">
         <p class="command-text">Descer andar</p>
       </div>
-
     </div> <!-- commands group -->
-
-
-
-
     </div>
-
   </div> <!-- background commands -->
 
 
 
-</div>
+</div> <!-- CONTAINER -->
 
 
 <style>
@@ -244,7 +189,7 @@
 
   .quest-check{
      position: absolute;
-     top: 0;
+     top: 17vh;
      left: 0;
      z-index: 999999;
      width: 100%;
@@ -253,19 +198,26 @@
 
    .quest-check-text{
      position: absolute;
-     top:23vh;
-     left: 11vh;
+
+
+
+     top: 25vh;
+     left: 50%;
+     transform: translate(-50%, -50%);
+
+
      z-index: 999999;
      font-weight: bolder;
-     width: 50%;
+     width: 70%;
    }
   .quest-check-infos{
     position: absolute;
-    top:30vh;
-    left: 10vh;
+    top:45vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 999999;
-    width: 50%;
-    height: 20vh;
+    width: 70%;
+    height: 25vh;
     overflow: auto;
   }
 

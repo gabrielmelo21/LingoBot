@@ -173,9 +173,9 @@ this.router.events.subscribe(event => {
     const token = localStorage.getItem('token');
 
     if (!token) {
-     // this.router.navigate(['/login']);
+      this.router.navigate(['/login']);
     } else {
-     // this.router.navigate(['/home']);
+     this.router.navigate(['/home']);
     }
 
 

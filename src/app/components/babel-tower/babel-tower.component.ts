@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
 import {PlaySoundService} from "../../services/play-sound.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
@@ -58,7 +58,7 @@ export class BabelTowerComponent  implements OnInit {
   video4Src: string = '';
   pedagioStatus: any;
   checkQuestModal: boolean = false;
-
+  rechargeValue: number = 0;
 
 
   blockAction: boolean = false;
@@ -85,7 +85,8 @@ export class BabelTowerComponent  implements OnInit {
   constructor(private playSound: PlaySoundService,
               private router: Router,
               protected auth: AuthService,
-              private trilhaService: TrilhaService) {
+              private trilhaService: TrilhaService,
+              private cdr: ChangeDetectorRef) {
     window.scrollTo(0, 0); // Faz o scroll para o topo ao carregar o componente
 
     setTimeout(() => {
@@ -105,10 +106,17 @@ export class BabelTowerComponent  implements OnInit {
   }
 
 
+  renderizar(){
+    this.cdr.detectChanges();
+  }
+
+
+
   // Função para mudar de cena
   mudarCena(novaCena: number) {
     setTimeout(() => {
       this.cena = novaCena;
+      this.renderizar();
     }, 100);
   }
 
@@ -132,16 +140,24 @@ export class BabelTowerComponent  implements OnInit {
 
 
 checkQuest(){
-  this.resultadoPedagio = this.auth.checkQuest(8);
+  this.resultadoPedagio = this.auth.checkQuest(4);
   this.checkQuestModal = !this.checkQuestModal;
+  this.renderizar();
 }
 
   closeQuestModal() {
     this.checkQuestModal = !this.checkQuestModal;
+    this.renderizar();
   }
 
   rechargeBattery() {
+
      this.rechargeModal = !this.rechargeModal;
+     this.loadBattery()
+     this.renderizar();
+     console.log(this.rechargeValue);
+
+
   }
 
 
@@ -171,9 +187,9 @@ checkQuest(){
   }
 
   loadBattery() {
-    this.currentBattery = this.auth.getBattery();
     this.setEnergyImage();
     this.rechargeValue = Math.abs(this.currentBattery - 10);
+    this.renderizar()
   }
 
   // Exemplo: chamada após consumir ou recarregar
@@ -183,7 +199,8 @@ checkQuest(){
     this.auth.decreaseLocalUserData( {gemas: 1 });
     this.loadBattery();
   }
-  rechargeValue: number = 0;
+
+
   rechargeAll(){
     this.playSound.playCleanSound2()
     this.auth.addBatteryEnergy(this.rechargeValue);
@@ -198,16 +215,19 @@ checkQuest(){
 
 
   ngOnInit() {
+    this.loadBattery();
 
     this.auth.user$.subscribe(userData => {
       if (!userData) return;
 
       this.userDifficulty = userData.difficulty;
+      this.currentBattery = userData.battery;
+      console.log("Currenty battery -> ", this.currentBattery);
       this.setTowerSceneSources();
     });
 
 
-    this.loadBattery();
+
 
 
 

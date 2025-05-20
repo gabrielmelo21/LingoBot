@@ -29,10 +29,19 @@ export class ItensComponent implements OnInit {
   gemsCoins: any;
   userItems: UserItem[] = [];
 
-  constructor(private authService: AuthService, private playSoundService: PlaySoundService, private cdr: ChangeDetectorRef) {
+  constructor(private authService: AuthService,
+              private playSoundService: PlaySoundService,
+              private cdr: ChangeDetectorRef) {
 
 
   }
+
+  renderizar(){
+    this.cdr.detectChanges();
+  }
+
+
+
 
   ngOnInit() {
     this.itens = this.authService.getUserItems();
@@ -69,9 +78,11 @@ export class ItensComponent implements OnInit {
     this.playSoundService.playCleanSound()
     this.selectedIndex = index;
     this.selectedItem = this.itens[index];
+    this.renderizar();
   }
 
   sellItem(item: UserItem): void {
+    console.log(item);
     if (item.quant > 0) {
       const success = this.authService.sellUserItem(item);
 
@@ -100,6 +111,8 @@ export class ItensComponent implements OnInit {
     } else {
      // alert("Você não possui mais este item!");
     }
+
+    this.renderizar();
   }
 
 
