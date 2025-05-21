@@ -178,7 +178,7 @@ export class WritingComponent {
       .subscribe(data => {
         this.exercicios = data;
       });
-    this.renderizar();
+
   }
 
 
@@ -330,7 +330,6 @@ export class WritingComponent {
 
 
 
-    this.renderizar();
 
   }
 
@@ -340,7 +339,7 @@ export class WritingComponent {
     this.selectedOption = index;
     this.optionIsSelected = true;
     //console.log('Selecionado:', this.alternativas[index]);
-    this.renderizar();
+
   }
 
 
