@@ -3,24 +3,26 @@
   <img [src]="staticSceneSrc" class="background-image">
 
   <!-- Vídeo 1 -->
-  <video [hidden]="cena !== 1" autoplay muted loop preload="auto" class="background-video">
-    <source [src]="video1Src" type="video/mp4">
+  <video #video [hidden]="cena !== 1" autoplay muted loop preload="auto" class="background-video">
+    <source [src]="video1Src" type="video/mp4" />
   </video>
 
   <!-- Vídeo 2 -->
-  <video [hidden]="cena !== 2" autoplay muted playsinline preload="auto" class="background-video">
-    <source [src]="video2Src" type="video/mp4">
+  <video #video [hidden]="cena !== 2" autoplay muted preload="auto" class="background-video">
+    <source [src]="video2Src" type="video/mp4" />
   </video>
 
   <!-- Vídeo 3 -->
-  <video [hidden]="cena !== 3" autoplay muted playsinline preload="auto" class="background-video">
-    <source [src]="video3Src" type="video/mp4">
+  <video #video [hidden]="cena !== 3" autoplay muted preload="auto" class="background-video">
+    <source [src]="video3Src" type="video/mp4" />
   </video>
 
   <!-- Vídeo 4 -->
-  <video [hidden]="cena !== 4" autoplay muted playsinline preload="auto" class="background-video">
-    <source [src]="video4Src" type="video/mp4">
+  <video #video [hidden]="cena !== 4" autoplay muted preload="auto" class="background-video">
+    <source [src]="video4Src" type="video/mp4" />
   </video>
+
+
 
 
   <div class="nuvem-esquerda" [@nuvemEsquerdaAnimation]="nuvemState">

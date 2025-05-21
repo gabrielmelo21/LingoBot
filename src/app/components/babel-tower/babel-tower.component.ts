@@ -1,4 +1,12 @@
-import {ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component, ElementRef,
+  HostListener,
+  OnInit,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
 import {PlaySoundService} from "../../services/play-sound.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
@@ -48,7 +56,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
     ])
   ]
 })
-export class BabelTowerComponent  implements OnInit {
+export class BabelTowerComponent  implements OnInit, AfterViewInit  {
   cena: number = 1;
   userDifficulty: string = '';
   staticSceneSrc: string = '';
@@ -112,13 +120,6 @@ export class BabelTowerComponent  implements OnInit {
 
 
 
-  // Função para mudar de cena
-  mudarCena(novaCena: number) {
-    setTimeout(() => {
-      this.cena = novaCena;
-      this.renderizar();
-    }, 100);
-  }
 
   torreSubscription!: Subscription;
   andarAtual: number = 0; // Variável para armazenar o andar atual
@@ -534,5 +535,66 @@ checkQuest(){
     }
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @ViewChildren('video')
+  videosRefs!: QueryList<ElementRef<HTMLVideoElement>>;
+
+  ngAfterViewInit(): void {
+    // Pausa e reseta todos os vídeos no início
+    this.videosRefs.forEach(videoRef => {
+      const vid = videoRef.nativeElement;
+      vid.pause();
+      vid.currentTime = 0;
+    });
+  }
+
+  mudarCena(novaCena: number) {
+    // Pausa e reseta todos os vídeos
+    this.videosRefs.forEach(videoRef => {
+      const vid = videoRef.nativeElement;
+      vid.pause();
+      vid.currentTime = 0;
+      vid.muted = true;
+    });
+
+    this.cena = novaCena;
+
+    setTimeout(() => {
+      const index = novaCena - 1;
+      const videoRef = this.videosRefs.get(index);
+      if (videoRef) {
+        const video = videoRef.nativeElement;
+        video.muted = false; // controle de som
+        video.play();
+      }
+    }, 50);
+  }
 
 }
