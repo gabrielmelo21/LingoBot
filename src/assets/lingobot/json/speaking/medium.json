@@ -1,32 +1,846 @@
 [
   {
-    "skill1": "I feel the energy",
-    "skill2": "The thunder is near",
-    "skill3": "I am healing now",
-    "skill4": "I moved in time"
+    "skill1": "I’m ready to start",
+    "skill2": "The wind is growing",
+    "skill3": "My strength returns",
+    "skill4": "I move with focus"
   },
   {
-    "skill1": "There is power here",
-    "skill2": "I hear the thunder",
-    "skill3": "I feel better now",
-    "skill4": "You cannot hit me"
+    "skill1": "I face the challenge",
+    "skill2": "Dark clouds appear",
+    "skill3": "My wounds are healing",
+    "skill4": "I dodge with skill"
   },
   {
-    "skill1": "My hands have light",
-    "skill2": "Lightning is coming",
-    "skill3": "Rest is good for me",
-    "skill4": "I moved very fast"
+    "skill1": "I feel the power rise",
+    "skill2": "Thunder breaks loud",
+    "skill3": "I regain my health",
+    "skill4": "I react so fast"
   },
   {
-    "skill1": "That was strong power",
-    "skill2": "The storm is here",
-    "skill3": "My health is back",
-    "skill4": "I did a fast move"
+    "skill1": "I keep my balance",
+    "skill2": "The storm approaches",
+    "skill3": "Energy flows back",
+    "skill4": "I step out quick"
   },
   {
-    "skill1": "Energy is in me now",
-    "skill2": "Thunder is in the sky",
-    "skill3": "I feel more strong",
-    "skill4": "That was almost a hit"
+    "skill1": "I push through pain",
+    "skill2": "Lightning strikes close",
+    "skill3": "Healing fills me",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I prepare to fight",
+    "skill2": "The sky roars strong",
+    "skill3": "Strength fills my veins",
+    "skill4": "I dodge with ease"
+  },
+  {
+    "skill1": "I stand my ground",
+    "skill2": "The thunder rolls near",
+    "skill3": "I feel restored now",
+    "skill4": "I move with speed"
+  },
+  {
+    "skill1": "I summon my will",
+    "skill2": "The storm grows fierce",
+    "skill3": "Health returns fast",
+    "skill4": "I jump with power"
+  },
+  {
+    "skill1": "I brace for impact",
+    "skill2": "Dark thunder cracks",
+    "skill3": "My body repairs",
+    "skill4": "I react with skill"
+  },
+  {
+    "skill1": "I take a strong stance",
+    "skill2": "Lightning fills the air",
+    "skill3": "Energy restores me",
+    "skill4": "I move so swift"
+  },
+  {
+    "skill1": "I gather my strength",
+    "skill2": "The wind howls loud",
+    "skill3": "Healing takes hold",
+    "skill4": "I dodge with focus"
+  },
+  {
+    "skill1": "I face the storm",
+    "skill2": "Thunder strikes near",
+    "skill3": "My wounds close fast",
+    "skill4": "I move with speed"
+  },
+  {
+    "skill1": "I summon the power",
+    "skill2": "Dark clouds gather",
+    "skill3": "Health flows within",
+    "skill4": "I step with grace"
+  },
+  {
+    "skill1": "I stand firm now",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Strength fills my heart",
+    "skill4": "I jump so quick"
+  },
+  {
+    "skill1": "I take control here",
+    "skill2": "Storm rages above",
+    "skill3": "Energy heals me",
+    "skill4": "I react with skill"
+  },
+  {
+    "skill1": "I ready my mind",
+    "skill2": "The thunder crashes",
+    "skill3": "Health returns strong",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I push past fear",
+    "skill2": "The sky darkens fast",
+    "skill3": "Healing fills me",
+    "skill4": "I dodge with speed"
+  },
+  {
+    "skill1": "I hold my ground",
+    "skill2": "Lightning strikes hard",
+    "skill3": "My strength returns",
+    "skill4": "I move so fast"
+  },
+  {
+    "skill1": "I summon my will",
+    "skill2": "Storm clouds gather",
+    "skill3": "Health comes quickly",
+    "skill4": "I jump with power"
+  },
+  {
+    "skill1": "I brace for the fight",
+    "skill2": "Thunder rolls loud",
+    "skill3": "Energy restores",
+    "skill4": "I step out quick"
+  },
+  {
+    "skill1": "I focus my energy",
+    "skill2": "The wind picks up",
+    "skill3": "My wounds mend fast",
+    "skill4": "I react with speed"
+  },
+  {
+    "skill1": "I face the challenge",
+    "skill2": "Dark skies gather",
+    "skill3": "Healing flows strong",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I gather my power",
+    "skill2": "Thunder breaks near",
+    "skill3": "Strength fills my soul",
+    "skill4": "I dodge with grace"
+  },
+  {
+    "skill1": "I stand strong now",
+    "skill2": "Lightning flashes close",
+    "skill3": "Energy fills me",
+    "skill4": "I jump so quick"
+  },
+  {
+    "skill1": "I prepare to act",
+    "skill2": "Storm roars loud",
+    "skill3": "Health returns fast",
+    "skill4": "I move with focus"
+  },
+  {
+    "skill1": "I hold my stance",
+    "skill2": "Thunder crashes near",
+    "skill3": "Healing takes hold",
+    "skill4": "I react so fast"
+  },
+  {
+    "skill1": "I summon my strength",
+    "skill2": "The sky darkens",
+    "skill3": "My wounds close quick",
+    "skill4": "I dodge with speed"
+  },
+  {
+    "skill1": "I keep my focus",
+    "skill2": "Lightning strikes bright",
+    "skill3": "Energy flows back",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I brace for battle",
+    "skill2": "Storm clouds gather",
+    "skill3": "Health flows strong",
+    "skill4": "I jump with power"
+  },
+  {
+    "skill1": "I stand my ground",
+    "skill2": "Thunder rolls loud",
+    "skill3": "Strength returns fast",
+    "skill4": "I move so quick"
+  },
+  {
+    "skill1": "I gather my focus",
+    "skill2": "The wind blows strong",
+    "skill3": "My strength heals fast",
+    "skill4": "I dodge with care"
+  },
+  {
+    "skill1": "I face the storm head on",
+    "skill2": "Lightning cracks near",
+    "skill3": "Energy fills my body",
+    "skill4": "I move with precision"
+  },
+  {
+    "skill1": "I summon my power within",
+    "skill2": "Dark clouds roll in",
+    "skill3": "Healing spreads quick",
+    "skill4": "I step with speed"
+  },
+  {
+    "skill1": "I hold steady now",
+    "skill2": "Thunder rumbles loud",
+    "skill3": "Strength returns strong",
+    "skill4": "I react with grace"
+  },
+  {
+    "skill1": "I prepare for battle",
+    "skill2": "Storm gathers fast",
+    "skill3": "Health flows inside",
+    "skill4": "I jump with skill"
+  },
+  {
+    "skill1": "I stand firm and ready",
+    "skill2": "The sky grows dark",
+    "skill3": "Healing comes quick",
+    "skill4": "I move so fast"
+  },
+  {
+    "skill1": "I focus my mind",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Energy heals me now",
+    "skill4": "I dodge with speed"
+  },
+  {
+    "skill1": "I brace myself now",
+    "skill2": "Thunder shakes the ground",
+    "skill3": "Strength returns quickly",
+    "skill4": "I step with power"
+  },
+  {
+    "skill1": "I gather all my strength",
+    "skill2": "Storm breaks overhead",
+    "skill3": "Health returns fast",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I stand strong and tall",
+    "skill2": "The wind roars loud",
+    "skill3": "Healing flows inside",
+    "skill4": "I jump so quick"
+  },
+  {
+    "skill1": "I clear my mind",
+    "skill2": "The sky is dark",
+    "skill3": "My wounds close fast",
+    "skill4": "I move with speed"
+  },
+  {
+    "skill1": "I take a deep breath",
+    "skill2": "Thunder rolls near",
+    "skill3": "Energy fills me",
+    "skill4": "I react with skill"
+  },
+  {
+    "skill1": "I gather my courage",
+    "skill2": "Lightning strikes close",
+    "skill3": "Healing spreads quick",
+    "skill4": "I dodge with grace"
+  },
+  {
+    "skill1": "I stand firm and calm",
+    "skill2": "Storm clouds gather",
+    "skill3": "Strength fills my body",
+    "skill4": "I jump with power"
+  },
+  {
+    "skill1": "I focus and prepare",
+    "skill2": "The wind blows hard",
+    "skill3": "Health returns fast",
+    "skill4": "I step with care"
+  },
+  {
+    "skill1": "I ready my spirit",
+    "skill2": "Thunder cracks loud",
+    "skill3": "Healing comes strong",
+    "skill4": "I move so quick"
+  },
+  {
+    "skill1": "I gather my will",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Energy flows fast",
+    "skill4": "I dodge with speed"
+  },
+  {
+    "skill1": "I brace for impact",
+    "skill2": "Storm rumbles close",
+    "skill3": "Strength returns quick",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I hold my ground firm",
+    "skill2": "The sky roars loud",
+    "skill3": "Healing spreads fast",
+    "skill4": "I jump so fast"
+  },
+  {
+    "skill1": "I focus on the fight",
+    "skill2": "Thunder shakes the air",
+    "skill3": "Health comes quickly",
+    "skill4": "I react with skill"
+  },
+  {
+    "skill1": "I calm my thoughts",
+    "skill2": "The clouds move fast",
+    "skill3": "My energy grows",
+    "skill4": "I step out quick"
+  },
+  {
+    "skill1": "I take steady breaths",
+    "skill2": "Lightning splits the sky",
+    "skill3": "Healing works now",
+    "skill4": "I dodge with focus"
+  },
+  {
+    "skill1": "I build my strength",
+    "skill2": "Thunder shakes near",
+    "skill3": "Health returns strong",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I steady my stance",
+    "skill2": "Storm rolls in",
+    "skill3": "Energy fills me",
+    "skill4": "I jump so fast"
+  },
+  {
+    "skill1": "I prepare my mind",
+    "skill2": "The wind howls loud",
+    "skill3": "Strength heals quick",
+    "skill4": "I react with speed"
+  },
+  {
+    "skill1": "I gather calm focus",
+    "skill2": "Lightning strikes near",
+    "skill3": "Healing flows fast",
+    "skill4": "I step with care"
+  },
+  {
+    "skill1": "I stand ready now",
+    "skill2": "Thunder crashes hard",
+    "skill3": "Health comes quick",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I hold my breath",
+    "skill2": "Storm clouds gather",
+    "skill3": "Energy heals fast",
+    "skill4": "I dodge with grace"
+  },
+  {
+    "skill1": "I focus my will",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Strength returns quick",
+    "skill4": "I jump with power"
+  },
+  {
+    "skill1": "I brace for the strike",
+    "skill2": "Thunder roars close",
+    "skill3": "Healing spreads quick",
+    "skill4": "I move with speed"
+  },
+  {
+    "skill1": "I clear my thoughts",
+    "skill2": "The wind roars loud",
+    "skill3": "My strength returns",
+    "skill4": "I dodge with skill"
+  },
+  {
+    "skill1": "I focus my breath",
+    "skill2": "Lightning breaks near",
+    "skill3": "Healing fills me",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I stand calm and strong",
+    "skill2": "Thunder shakes the air",
+    "skill3": "Energy flows fast",
+    "skill4": "I step so quick"
+  },
+  {
+    "skill1": "I prepare my spirit",
+    "skill2": "Storm clouds gather",
+    "skill3": "Health returns quick",
+    "skill4": "I jump with power"
+  },
+  {
+    "skill1": "I steady my mind",
+    "skill2": "The sky is dark",
+    "skill3": "Strength heals fast",
+    "skill4": "I react with speed"
+  },
+  {
+    "skill1": "I gather my focus",
+    "skill2": "Thunder rolls near",
+    "skill3": "Healing spreads quick",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I stand firm now",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Energy fills my soul",
+    "skill4": "I dodge with care"
+  },
+  {
+    "skill1": "I brace myself strong",
+    "skill2": "Storm breaks loud",
+    "skill3": "Health comes fast",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I focus and steady",
+    "skill2": "The wind howls near",
+    "skill3": "Strength returns quick",
+    "skill4": "I jump so fast"
+  },
+  {
+    "skill1": "I ready my will",
+    "skill2": "Thunder crashes close",
+    "skill3": "Healing flows fast",
+    "skill4": "I step with power"
+  },
+  {
+    "skill1": "I calm my mind",
+    "skill2": "The clouds gather",
+    "skill3": "My wounds heal fast",
+    "skill4": "I move with speed"
+  },
+  {
+    "skill1": "I take a deep breath",
+    "skill2": "Lightning strikes near",
+    "skill3": "Energy fills me",
+    "skill4": "I dodge with skill"
+  },
+  {
+    "skill1": "I build my focus",
+    "skill2": "Thunder roars loud",
+    "skill3": "Health returns quick",
+    "skill4": "I step with care"
+  },
+  {
+    "skill1": "I steady my stance",
+    "skill2": "Storm rolls in",
+    "skill3": "Strength flows inside",
+    "skill4": "I jump so fast"
+  },
+  {
+    "skill1": "I prepare myself",
+    "skill2": "The wind blows hard",
+    "skill3": "Healing comes strong",
+    "skill4": "I react with grace"
+  },
+  {
+    "skill1": "I gather my will",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Energy heals fast",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I brace for impact",
+    "skill2": "Thunder crashes near",
+    "skill3": "Health comes quick",
+    "skill4": "I dodge with speed"
+  },
+  {
+    "skill1": "I hold my ground firm",
+    "skill2": "Storm clouds gather",
+    "skill3": "Strength returns fast",
+    "skill4": "I jump with power"
+  },
+  {
+    "skill1": "I focus my spirit",
+    "skill2": "The sky grows dark",
+    "skill3": "Healing flows fast",
+    "skill4": "I move with care"
+  },
+  {
+    "skill1": "I stand ready now",
+    "skill2": "Thunder shakes the air",
+    "skill3": "Energy spreads quick",
+    "skill4": "I react with speed"
+  },
+  {
+    "skill1": "I clear my focus",
+    "skill2": "The storm approaches",
+    "skill3": "My strength is rising",
+    "skill4": "I step aside fast"
+  },
+  {
+    "skill1": "I breathe steady now",
+    "skill2": "Lightning strikes fast",
+    "skill3": "Healing spreads wide",
+    "skill4": "I dodge with care"
+  },
+  {
+    "skill1": "I steady my breath",
+    "skill2": "Thunder rolls through",
+    "skill3": "Energy flows strong",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I gather my calm",
+    "skill2": "Storm clouds darken",
+    "skill3": "Health returns quick",
+    "skill4": "I jump with speed"
+  },
+  {
+    "skill1": "I focus my will",
+    "skill2": "The wind blows cold",
+    "skill3": "Strength heals fast",
+    "skill4": "I react with skill"
+  },
+  {
+    "skill1": "I stand firm and calm",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Healing comes quick",
+    "skill4": "I move with power"
+  },
+  {
+    "skill1": "I brace for the strike",
+    "skill2": "Thunder crashes loud",
+    "skill3": "Energy heals fast",
+    "skill4": "I dodge with speed"
+  },
+  {
+    "skill1": "I ready my spirit",
+    "skill2": "Storm rumbles near",
+    "skill3": "Health spreads quick",
+    "skill4": "I step with grace"
+  },
+  {
+    "skill1": "I hold my breath",
+    "skill2": "The sky is dark",
+    "skill3": "Strength returns fast",
+    "skill4": "I jump so quick"
+  },
+  {
+    "skill1": "I focus and prepare",
+    "skill2": "Thunder shakes close",
+    "skill3": "Healing flows wide",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I steady my mind",
+    "skill2": "The storm nears fast",
+    "skill3": "My wounds mend quick",
+    "skill4": "I dodge with ease"
+  },
+  {
+    "skill1": "I take calm breaths",
+    "skill2": "Lightning strikes clear",
+    "skill3": "Energy fills strong",
+    "skill4": "I move with speed"
+  },
+  {
+    "skill1": "I build my focus",
+    "skill2": "Thunder rumbles near",
+    "skill3": "Healing flows quick",
+    "skill4": "I step with grace"
+  },
+  {
+    "skill1": "I prepare my spirit",
+    "skill2": "Storm clouds gather fast",
+    "skill3": "Health comes strong",
+    "skill4": "I jump with power"
+  },
+  {
+    "skill1": "I gather calm will",
+    "skill2": "The wind howls loud",
+    "skill3": "Strength returns quick",
+    "skill4": "I react with skill"
+  },
+  {
+    "skill1": "I stand firm now",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Healing spreads fast",
+    "skill4": "I move with care"
+  },
+  {
+    "skill1": "I brace for impact",
+    "skill2": "Thunder crashes loud",
+    "skill3": "Energy heals fast",
+    "skill4": "I dodge with grace"
+  },
+  {
+    "skill1": "I focus my breath",
+    "skill2": "Storm rumbles near",
+    "skill3": "Health returns quick",
+    "skill4": "I step with power"
+  },
+  {
+    "skill1": "I hold my ground firm",
+    "skill2": "The sky darkens now",
+    "skill3": "Strength heals fast",
+    "skill4": "I jump so quick"
+  },
+  {
+    "skill1": "I ready my mind",
+    "skill2": "Thunder shakes close",
+    "skill3": "Healing flows strong",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I calm my spirit",
+    "skill2": "The wind blows strong",
+    "skill3": "My body heals fast",
+    "skill4": "I move with speed"
+  },
+  {
+    "skill1": "I clear my thoughts",
+    "skill2": "Lightning strikes near",
+    "skill3": "Energy flows quick",
+    "skill4": "I dodge with care"
+  },
+  {
+    "skill1": "I focus my mind",
+    "skill2": "Thunder rolls loud",
+    "skill3": "Health returns strong",
+    "skill4": "I jump with grace"
+  },
+  {
+    "skill1": "I steady my breath",
+    "skill2": "Storm clouds gather",
+    "skill3": "Strength heals fast",
+    "skill4": "I react with power"
+  },
+  {
+    "skill1": "I prepare my will",
+    "skill2": "The sky grows dark",
+    "skill3": "Healing spreads wide",
+    "skill4": "I step with speed"
+  },
+  {
+    "skill1": "I gather my focus",
+    "skill2": "Thunder crashes close",
+    "skill3": "Energy heals quick",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I stand firm now",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Health flows strong",
+    "skill4": "I dodge with grace"
+  },
+  {
+    "skill1": "I brace for the storm",
+    "skill2": "Thunder shakes near",
+    "skill3": "Strength returns quick",
+    "skill4": "I jump with care"
+  },
+  {
+    "skill1": "I ready my spirit",
+    "skill2": "Storm rumbles loud",
+    "skill3": "Healing comes fast",
+    "skill4": "I move with power"
+  },
+  {
+    "skill1": "I hold my breath",
+    "skill2": "The wind howls near",
+    "skill3": "Energy flows wide",
+    "skill4": "I step with skill"
+  },
+  {
+    "skill1": "I clear my head",
+    "skill2": "The clouds move fast",
+    "skill3": "My strength grows strong",
+    "skill4": "I dodge with speed"
+  },
+  {
+    "skill1": "I breathe deep now",
+    "skill2": "Lightning lights sky",
+    "skill3": "Healing works quick",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I focus my will",
+    "skill2": "Thunder sounds close",
+    "skill3": "Health comes back fast",
+    "skill4": "I jump with skill"
+  },
+  {
+    "skill1": "I steady my stance",
+    "skill2": "Storm rumbles loud",
+    "skill3": "Energy flows strong",
+    "skill4": "I react with speed"
+  },
+  {
+    "skill1": "I prepare myself",
+    "skill2": "The sky grows dark",
+    "skill3": "Strength heals quick",
+    "skill4": "I step with power"
+  },
+  {
+    "skill1": "I gather my strength",
+    "skill2": "Thunder crashes near",
+    "skill3": "Healing spreads fast",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I stand strong now",
+    "skill2": "Lightning strikes fast",
+    "skill3": "Health returns quick",
+    "skill4": "I dodge with care"
+  },
+  {
+    "skill1": "I brace for impact",
+    "skill2": "Storm shakes the sky",
+    "skill3": "Energy heals fast",
+    "skill4": "I jump with grace"
+  },
+  {
+    "skill1": "I focus my spirit",
+    "skill2": "The wind blows loud",
+    "skill3": "Strength returns strong",
+    "skill4": "I move with power"
+  },
+  {
+    "skill1": "I ready my mind",
+    "skill2": "Thunder roars near",
+    "skill3": "Healing flows quick",
+    "skill4": "I step with skill"
+  },
+  {
+    "skill1": "I calm my mind",
+    "skill2": "The storm draws near",
+    "skill3": "My wounds heal quick",
+    "skill4": "I dodge with speed"
+  },
+  {
+    "skill1": "I take steady breaths",
+    "skill2": "Lightning strikes clear",
+    "skill3": "Energy fills me",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I focus and prepare",
+    "skill2": "Thunder rumbles loud",
+    "skill3": "Health comes back fast",
+    "skill4": "I jump with skill"
+  },
+  {
+    "skill1": "I gather my strength",
+    "skill2": "Storm clouds gather",
+    "skill3": "Strength heals fast",
+    "skill4": "I react with power"
+  },
+  {
+    "skill1": "I steady my spirit",
+    "skill2": "The sky darkens now",
+    "skill3": "Healing spreads wide",
+    "skill4": "I step with speed"
+  },
+  {
+    "skill1": "I prepare my breath",
+    "skill2": "Thunder crashes near",
+    "skill3": "Energy heals quick",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I stand firm now",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Health flows strong",
+    "skill4": "I dodge with grace"
+  },
+  {
+    "skill1": "I brace for the storm",
+    "skill2": "Thunder shakes near",
+    "skill3": "Strength returns quick",
+    "skill4": "I jump with care"
+  },
+  {
+    "skill1": "I ready my spirit",
+    "skill2": "Storm rumbles loud",
+    "skill3": "Healing comes fast",
+    "skill4": "I move with power"
+  },
+  {
+    "skill1": "I hold my breath",
+    "skill2": "The wind howls near",
+    "skill3": "Energy flows wide",
+    "skill4": "I step with skill"
+  },
+  {
+    "skill1": "I focus on now",
+    "skill2": "The sky is dark",
+    "skill3": "My strength returns",
+    "skill4": "I move with care"
+  },
+  {
+    "skill1": "I steady my hands",
+    "skill2": "Thunder rolls close",
+    "skill3": "Healing feels strong",
+    "skill4": "I jump with speed"
+  },
+  {
+    "skill1": "I calm my breath",
+    "skill2": "Lightning strikes fast",
+    "skill3": "Energy fills quick",
+    "skill4": "I dodge with skill"
+  },
+  {
+    "skill1": "I gather my will",
+    "skill2": "Storm draws near",
+    "skill3": "Health heals quick",
+    "skill4": "I react with grace"
+  },
+  {
+    "skill1": "I prepare my mind",
+    "skill2": "The wind blows loud",
+    "skill3": "Strength returns fast",
+    "skill4": "I move with power"
+  },
+  {
+    "skill1": "I hold my spirit",
+    "skill2": "Thunder shakes close",
+    "skill3": "Healing flows wide",
+    "skill4": "I step with skill"
+  },
+  {
+    "skill1": "I ready my stance",
+    "skill2": "Lightning lights sky",
+    "skill3": "Energy heals strong",
+    "skill4": "I dodge with speed"
+  },
+  {
+    "skill1": "I brace for impact",
+    "skill2": "Storm rumbles loud",
+    "skill3": "Health returns fast",
+    "skill4": "I jump with care"
+  },
+  {
+    "skill1": "I focus my soul",
+    "skill2": "The clouds move fast",
+    "skill3": "Strength heals quick",
+    "skill4": "I move with skill"
+  },
+  {
+    "skill1": "I steady my breath",
+    "skill2": "Thunder roars near",
+    "skill3": "Healing spreads wide",
+    "skill4": "I step with grace"
   }
+
+
+
+
 ]

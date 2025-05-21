@@ -1,0 +1,549 @@
+[
+  {
+    "phrase": "They had been watching TV for hours before the power went out",
+    "translate": "Eles estavam assistindo TV por horas antes da luz acabar",
+    "p1": "They had been watching",
+    "p2": "TV for hours before the power went out"
+  },
+  {
+    "phrase": "I will have fixed the bike by the time you arrive",
+    "translate": "Eu já terei consertado a bicicleta quando você chegar",
+    "p1": "I will have fixed",
+    "p2": "The bike by the time you arrive"
+  },
+  {
+    "phrase": "You might have been reading books when I called you",
+    "translate": "Você talvez estivesse lendo livros quando eu te liguei",
+    "p1": "You might have been reading",
+    "p2": "Books when I called you"
+  },
+  {
+    "phrase": "He has been buying food every weekend to prepare meals",
+    "translate": "Ele tem comprado comida todo fim de semana para preparar refeições",
+    "p1": "He has been buying",
+    "p2": "Food every weekend to prepare meals"
+  },
+  {
+    "phrase": "We will have been listening to music for three hours by midnight",
+    "translate": "Nós teremos estado ouvindo música por três horas até meia-noite",
+    "p1": "We will have been listening to",
+    "p2": "Music for three hours by midnight"
+  },
+  {
+    "phrase": "She had opened all the windows before the guests arrived",
+    "translate": "Ela havia aberto todas as janelas antes dos convidados chegarem",
+    "p1": "She had opened",
+    "p2": "All the windows before the guests arrived"
+  },
+  {
+    "phrase": "It might have been raining when you left the house",
+    "translate": "Pode ter estado chovendo quando você saiu de casa",
+    "p1": "It might have been raining",
+    "p2": "When you left the house"
+  },
+  {
+    "phrase": "They should have cleaned the rooms before the inspection started",
+    "translate": "Eles deveriam ter limpado os quartos antes da inspeção começar",
+    "p1": "They should have cleaned",
+    "p2": "The rooms before the inspection started"
+  },
+  {
+    "phrase": "You must have been calling your friends all afternoon",
+    "translate": "Você deve ter ficado ligando para seus amigos a tarde toda",
+    "p1": "You must have been calling",
+    "p2": "Your friends all afternoon"
+  },
+  {
+    "phrase": "I would have painted the walls if I had more time last weekend",
+    "translate": "Eu teria pintado as paredes se tivesse tido mais tempo no fim de semana passado",
+    "p1": "I would have painted",
+    "p2": "The walls if I had more time last weekend"
+  },
+  {
+    "phrase": "They might have been watching TV when the phone rang unexpectedly",
+    "translate": "Eles podem ter estado assistindo TV quando o telefone tocou inesperadamente",
+    "p1": "They might have been watching",
+    "p2": "TV when the phone rang unexpectedly"
+  },
+  {
+    "phrase": "I will have fixed the bike by the end of this week if I find the parts",
+    "translate": "Eu terei consertado a bicicleta até o final desta semana se eu encontrar as peças",
+    "p1": "I will have fixed",
+    "p2": "The bike by the end of this week if I find the parts"
+  },
+  {
+    "phrase": "You could have been reading books instead of watching TV all day",
+    "translate": "Você poderia ter estado lendo livros em vez de assistir TV o dia todo",
+    "p1": "You could have been reading",
+    "p2": "Books instead of watching TV all day"
+  },
+  {
+    "phrase": "He must have been buying food for the party last night",
+    "translate": "Ele deve ter comprado comida para a festa ontem à noite",
+    "p1": "He must have been buying",
+    "p2": "Food for the party last night"
+  },
+  {
+    "phrase": "We should have been listening to music more often to relax",
+    "translate": "Nós deveríamos ter ouvido música com mais frequência para relaxar",
+    "p1": "We should have been listening to",
+    "p2": "Music more often to relax"
+  },
+  {
+    "phrase": "She might have opened the windows to let some fresh air inside",
+    "translate": "Ela pode ter aberto as janelas para deixar entrar um pouco de ar fresco",
+    "p1": "She might have opened",
+    "p2": "The windows to let some fresh air inside"
+  },
+  {
+    "phrase": "It could have been raining all morning while we were asleep",
+    "translate": "Pode ter estado chovendo a manhã toda enquanto estávamos dormindo",
+    "p1": "It could have been raining",
+    "p2": "All morning while we were asleep"
+  },
+  {
+    "phrase": "They would have cleaned the rooms if they had more time yesterday",
+    "translate": "Eles teriam limpado os quartos se tivessem tido mais tempo ontem",
+    "p1": "They would have cleaned",
+    "p2": "The rooms if they had more time yesterday"
+  },
+  {
+    "phrase": "You must have been calling your friends to organize the surprise party",
+    "translate": "Você deve ter ficado ligando para seus amigos para organizar a festa surpresa",
+    "p1": "You must have been calling",
+    "p2": "Your friends to organize the surprise party"
+  },
+  {
+    "phrase": "I would have painted the walls if the weather had been better last weekend",
+    "translate": "Eu teria pintado as paredes se o tempo tivesse estado melhor no fim de semana passado",
+    "p1": "I would have painted",
+    "p2": "The walls if the weather had been better last weekend"
+  },
+  {
+    "phrase": "They had been watching TV when the power suddenly went out",
+    "translate": "Eles estavam assistindo TV quando a energia de repente acabou",
+    "p1": "They had been watching",
+    "p2": "TV when the power suddenly went out"
+  },
+  {
+    "phrase": "I will have fixed the bike by tomorrow morning if I get the parts today",
+    "translate": "Eu terei consertado a bicicleta até amanhã de manhã se eu conseguir as peças hoje",
+    "p1": "I will have fixed",
+    "p2": "The bike by tomorrow morning if I get the parts today"
+  },
+  {
+    "phrase": "You might have been reading books instead of watching movies all afternoon",
+    "translate": "Você pode ter estado lendo livros em vez de assistir filmes a tarde toda",
+    "p1": "You might have been reading",
+    "p2": "Books instead of watching movies all afternoon"
+  },
+  {
+    "phrase": "He has been buying food regularly for the weekly family gatherings",
+    "translate": "Ele tem comprado comida regularmente para os encontros familiares semanais",
+    "p1": "He has been buying",
+    "p2": "Food regularly for the weekly family gatherings"
+  },
+  {
+    "phrase": "We should have been listening to music more often to reduce stress",
+    "translate": "Nós deveríamos ouvir música com mais frequência para reduzir o estresse",
+    "p1": "We should have been listening to",
+    "p2": "Music more often to reduce stress"
+  },
+  {
+    "phrase": "She might have opened the windows to air out the room after the party",
+    "translate": "Ela pode ter aberto as janelas para arejar o quarto depois da festa",
+    "p1": "She might have opened",
+    "p2": "The windows to air out the room after the party"
+  },
+  {
+    "phrase": "It could have been raining when you left, so take an umbrella just in case",
+    "translate": "Pode ter estado chovendo quando você saiu, então leve um guarda-chuva para garantir",
+    "p1": "It could have been raining",
+    "p2": "When you left, so take an umbrella just in case"
+  },
+  {
+    "phrase": "They would have cleaned the rooms if they hadn’t been so busy yesterday",
+    "translate": "Eles teriam limpado os quartos se não estivessem tão ocupados ontem",
+    "p1": "They would have cleaned",
+    "p2": "The rooms if they hadn’t been so busy yesterday"
+  },
+  {
+    "phrase": "You must have been calling your friends all evening to plan the event",
+    "translate": "Você deve ter ficado ligando para seus amigos a noite toda para planejar o evento",
+    "p1": "You must have been calling",
+    "p2": "Your friends all evening to plan the event"
+  },
+  {
+    "phrase": "I would have painted the walls if I had known about the weather forecast",
+    "translate": "Eu teria pintado as paredes se soubesse da previsão do tempo",
+    "p1": "I would have painted",
+    "p2": "The walls if I had known about the weather forecast"
+  },
+  {
+    "phrase": "They could have been watching the documentary when the power outage happened",
+    "translate": "Eles poderiam estar assistindo ao documentário quando a queda de energia aconteceu",
+    "p1": "They could have been watching",
+    "p2": "The documentary when the power outage happened"
+  },
+  {
+    "phrase": "I might have fixed the bike already if the mechanic had arrived earlier",
+    "translate": "Eu poderia já ter consertado a bicicleta se o mecânico tivesse chegado mais cedo",
+    "p1": "I might have fixed",
+    "p2": "The bike already if the mechanic had arrived earlier"
+  },
+  {
+    "phrase": "You should have been reading the instructions before assembling the furniture",
+    "translate": "Você deveria ter lido as instruções antes de montar os móveis",
+    "p1": "You should have been reading",
+    "p2": "The instructions before assembling the furniture"
+  },
+  {
+    "phrase": "He must have been buying groceries when we called him last night",
+    "translate": "Ele devia estar comprando mantimentos quando nós ligamos para ele ontem à noite",
+    "p1": "He must have been buying",
+    "p2": "Groceries when we called him last night"
+  },
+  {
+    "phrase": "We would have been listening to the new album if the internet had worked properly",
+    "translate": "Nós estaríamos ouvindo o álbum novo se a internet tivesse funcionado direito",
+    "p1": "We would have been listening to",
+    "p2": "The new album if the internet had worked properly"
+  },
+  {
+    "phrase": "She could have opened the windows if she wanted to let fresh air inside",
+    "translate": "Ela poderia ter aberto as janelas se quisesse deixar o ar fresco entrar",
+    "p1": "She could have opened",
+    "p2": "The windows if she wanted to let fresh air inside"
+  },
+  {
+    "phrase": "It must have been raining heavily when you left the house earlier",
+    "translate": "Deve ter estado chovendo muito quando você saiu de casa mais cedo",
+    "p1": "It must have been raining",
+    "p2": "Heavily when you left the house earlier"
+  },
+  {
+    "phrase": "They should have cleaned the rooms before the guests arrived",
+    "translate": "Eles deveriam ter limpado os quartos antes dos convidados chegarem",
+    "p1": "They should have cleaned",
+    "p2": "The rooms before the guests arrived"
+  },
+  {
+    "phrase": "You might have been calling your friends all afternoon to arrange the meeting",
+    "translate": "Você pode ter ficado ligando para seus amigos a tarde toda para combinar o encontro",
+    "p1": "You might have been calling",
+    "p2": "Your friends all afternoon to arrange the meeting"
+  },
+  {
+    "phrase": "I would have painted the walls if I had more time last weekend",
+    "translate": "Eu teria pintado as paredes se tivesse mais tempo no fim de semana passado",
+    "p1": "I would have painted",
+    "p2": "The walls if I had more time last weekend"
+  },
+  {
+    "phrase": "They might have been watching the series for hours without realizing the time",
+    "translate": "Eles podem ter estado assistindo à série por horas sem perceber o tempo",
+    "p1": "They might have been watching",
+    "p2": "The series for hours without realizing the time"
+  },
+  {
+    "phrase": "I will have fixed the bike by the time you arrive at the workshop",
+    "translate": "Eu terei consertado a bicicleta quando você chegar à oficina",
+    "p1": "I will have fixed",
+    "p2": "The bike by the time you arrive at the workshop"
+  },
+  {
+    "phrase": "You should have been reading the guidelines carefully before starting the project",
+    "translate": "Você deveria ter lido as diretrizes cuidadosamente antes de começar o projeto",
+    "p1": "You should have been reading",
+    "p2": "The guidelines carefully before starting the project"
+  },
+  {
+    "phrase": "He must have been buying supplies for the event all morning",
+    "translate": "Ele deve ter estado comprando suprimentos para o evento a manhã toda",
+    "p1": "He must have been buying",
+    "p2": "Supplies for the event all morning"
+  },
+  {
+    "phrase": "We would have been listening to music if the speakers hadn’t stopped working",
+    "translate": "Nós estaríamos ouvindo música se os alto-falantes não tivessem parado de funcionar",
+    "p1": "We would have been listening to",
+    "p2": "Music if the speakers hadn’t stopped working"
+  },
+  {
+    "phrase": "She could have opened the windows earlier to let the fresh air in",
+    "translate": "Ela poderia ter aberto as janelas mais cedo para deixar o ar fresco entrar",
+    "p1": "She could have opened",
+    "p2": "The windows earlier to let the fresh air in"
+  },
+  {
+    "phrase": "It might have been raining heavily when the match was canceled",
+    "translate": "Pode ter estado chovendo muito quando a partida foi cancelada",
+    "p1": "It might have been raining",
+    "p2": "Heavily when the match was canceled"
+  },
+  {
+    "phrase": "They should have cleaned the rooms thoroughly before the inspection",
+    "translate": "Eles deveriam ter limpado os quartos cuidadosamente antes da inspeção",
+    "p1": "They should have cleaned",
+    "p2": "The rooms thoroughly before the inspection"
+  },
+  {
+    "phrase": "You might have been calling your friends repeatedly to confirm the plans",
+    "translate": "Você pode ter ficado ligando para seus amigos repetidamente para confirmar os planos",
+    "p1": "You might have been calling",
+    "p2": "Your friends repeatedly to confirm the plans"
+  },
+  {
+    "phrase": "I would have painted the walls if the weather had been better last weekend",
+    "translate": "Eu teria pintado as paredes se o tempo tivesse estado melhor no fim de semana passado",
+    "p1": "I would have painted",
+    "p2": "The walls if the weather had been better last weekend"
+  },
+  {
+    "phrase": "They must have been watching the documentary when the alarm suddenly went off",
+    "translate": "Eles devem ter estado assistindo ao documentário quando o alarme disparou de repente",
+    "p1": "They must have been watching",
+    "p2": "The documentary when the alarm suddenly went off"
+  },
+  {
+    "phrase": "I might have fixed the bike by now if I had started earlier this morning",
+    "translate": "Eu poderia já ter consertado a bicicleta se tivesse começado mais cedo esta manhã",
+    "p1": "I might have fixed",
+    "p2": "The bike by now if I had started earlier this morning"
+  },
+  {
+    "phrase": "You should have been reading the manual thoroughly before attempting to repair it",
+    "translate": "Você deveria ter lido o manual completamente antes de tentar consertar",
+    "p1": "You should have been reading",
+    "p2": "The manual thoroughly before attempting to repair it"
+  },
+  {
+    "phrase": "He could have been buying groceries when the phone rang unexpectedly",
+    "translate": "Ele poderia estar comprando mantimentos quando o telefone tocou inesperadamente",
+    "p1": "He could have been buying",
+    "p2": "Groceries when the phone rang unexpectedly"
+  },
+  {
+    "phrase": "We would have been listening to classical music if the internet connection was stable",
+    "translate": "Nós estaríamos ouvindo música clássica se a conexão de internet estivesse estável",
+    "p1": "We would have been listening to",
+    "p2": "Classical music if the internet connection was stable"
+  },
+  {
+    "phrase": "She might have opened the windows to cool down the room before the guests arrived",
+    "translate": "Ela pode ter aberto as janelas para refrescar o quarto antes dos convidados chegarem",
+    "p1": "She might have opened",
+    "p2": "The windows to cool down the room before the guests arrived"
+  },
+  {
+    "phrase": "It could have been raining all day, which is why the streets are flooded now",
+    "translate": "Pode ter estado chovendo o dia todo, por isso as ruas estão alagadas agora",
+    "p1": "It could have been raining",
+    "p2": "All day, which is why the streets are flooded now"
+  },
+  {
+    "phrase": "They should have cleaned the rooms more carefully to avoid complaints from guests",
+    "translate": "Eles deveriam ter limpado os quartos com mais cuidado para evitar reclamações dos hóspedes",
+    "p1": "They should have cleaned",
+    "p2": "The rooms more carefully to avoid complaints from guests"
+  },
+  {
+    "phrase": "You must have been calling your friends all morning to organize the surprise party",
+    "translate": "Você deve ter ficado ligando para seus amigos a manhã toda para organizar a festa surpresa",
+    "p1": "You must have been calling",
+    "p2": "Your friends all morning to organize the surprise party"
+  },
+  {
+    "phrase": "I would have painted the walls by now if the paint had arrived earlier this week",
+    "translate": "Eu teria pintado as paredes até agora se a tinta tivesse chegado mais cedo esta semana",
+    "p1": "I would have painted",
+    "p2": "The walls by now if the paint had arrived earlier this week"
+  },
+  {
+    "phrase": "They might have been watching the entire series when the power outage occurred",
+    "translate": "Eles podem ter estado assistindo a série inteira quando ocorreu a queda de energia",
+    "p1": "They might have been watching",
+    "p2": "The entire series when the power outage occurred"
+  },
+  {
+    "phrase": "I will have fixed the bike by the time you get back from the store",
+    "translate": "Eu terei consertado a bicicleta quando você voltar da loja",
+    "p1": "I will have fixed",
+    "p2": "The bike by the time you get back from the store"
+  },
+  {
+    "phrase": "You should have been reading the entire book before the exam day",
+    "translate": "Você deveria ter lido o livro inteiro antes do dia do exame",
+    "p1": "You should have been reading",
+    "p2": "The entire book before the exam day"
+  },
+  {
+    "phrase": "He must have been buying gifts for the party all afternoon",
+    "translate": "Ele deve ter estado comprando presentes para a festa a tarde toda",
+    "p1": "He must have been buying",
+    "p2": "Gifts for the party all afternoon"
+  },
+  {
+    "phrase": "We would have been listening to jazz if the concert hadn’t been canceled",
+    "translate": "Nós estaríamos ouvindo jazz se o show não tivesse sido cancelado",
+    "p1": "We would have been listening to",
+    "p2": "Jazz if the concert hadn’t been canceled"
+  },
+  {
+    "phrase": "She could have opened the windows to let the breeze flow through the room",
+    "translate": "Ela poderia ter aberto as janelas para deixar a brisa entrar no quarto",
+    "p1": "She could have opened",
+    "p2": "The windows to let the breeze flow through the room"
+  },
+  {
+    "phrase": "It might have been raining heavily throughout the night",
+    "translate": "Pode ter estado chovendo forte durante toda a noite",
+    "p1": "It might have been raining",
+    "p2": "Heavily throughout the night"
+  },
+  {
+    "phrase": "They should have cleaned the rooms before the guests arrived early in the morning",
+    "translate": "Eles deveriam ter limpado os quartos antes dos hóspedes chegarem de manhã cedo",
+    "p1": "They should have cleaned",
+    "p2": "The rooms before the guests arrived early in the morning"
+  },
+  {
+    "phrase": "You might have been calling your friends to confirm the meeting location",
+    "translate": "Você pode ter ficado ligando para seus amigos para confirmar o local do encontro",
+    "p1": "You might have been calling",
+    "p2": "Your friends to confirm the meeting location"
+  },
+  {
+    "phrase": "I would have painted the walls if I hadn’t been so busy last weekend",
+    "translate": "Eu teria pintado as paredes se não tivesse estado tão ocupado no fim de semana passado",
+    "p1": "I would have painted",
+    "p2": "The walls if I hadn’t been so busy last weekend"
+  },
+  {
+    "phrase": "They might have been watching the sunrise when the birds started singing",
+    "translate": "Eles podem ter estado assistindo ao nascer do sol quando os pássaros começaram a cantar",
+    "p1": "They might have been watching",
+    "p2": "The sunrise when the birds started singing"
+  },
+  {
+    "phrase": "I will have fixed the broken fence before the guests arrive tomorrow",
+    "translate": "Eu terei consertado a cerca quebrada antes dos convidados chegarem amanhã",
+    "p1": "I will have fixed",
+    "p2": "The broken fence before the guests arrive tomorrow"
+  },
+  {
+    "phrase": "You should have been reading the instructions carefully to avoid mistakes",
+    "translate": "Você deveria ter lido as instruções cuidadosamente para evitar erros",
+    "p1": "You should have been reading",
+    "p2": "The instructions carefully to avoid mistakes"
+  },
+  {
+    "phrase": "He must have been buying supplies for the renovation all week",
+    "translate": "Ele deve ter estado comprando suprimentos para a reforma a semana toda",
+    "p1": "He must have been buying",
+    "p2": "Supplies for the renovation all week"
+  },
+  {
+    "phrase": "We would have been listening to the lecture if the internet hadn’t disconnected",
+    "translate": "Nós estaríamos ouvindo a palestra se a internet não tivesse desconectado",
+    "p1": "We would have been listening to",
+    "p2": "The lecture if the internet hadn’t disconnected"
+  },
+  {
+    "phrase": "She could have opened the door quietly to avoid waking the baby",
+    "translate": "Ela poderia ter aberto a porta silenciosamente para não acordar o bebê",
+    "p1": "She could have opened",
+    "p2": "The door quietly to avoid waking the baby"
+  },
+  {
+    "phrase": "It might have been raining intermittently throughout the afternoon",
+    "translate": "Pode ter estado chovendo intermitentemente durante a tarde toda",
+    "p1": "It might have been raining",
+    "p2": "Intermittently throughout the afternoon"
+  },
+  {
+    "phrase": "They should have cleaned the kitchen thoroughly before the party started",
+    "translate": "Eles deveriam ter limpado a cozinha completamente antes da festa começar",
+    "p1": "They should have cleaned",
+    "p2": "The kitchen thoroughly before the party started"
+  },
+  {
+    "phrase": "You must have been calling your friends non-stop to organize the trip",
+    "translate": "Você deve ter ficado ligando para seus amigos sem parar para organizar a viagem",
+    "p1": "You must have been calling",
+    "p2": "Your friends non-stop to organize the trip"
+  },
+  {
+    "phrase": "I would have painted the fence if I had bought the paint earlier",
+    "translate": "Eu teria pintado a cerca se tivesse comprado a tinta mais cedo",
+    "p1": "I would have painted",
+    "p2": "The fence if I had bought the paint earlier"
+  },
+  {
+    "phrase": "They must have been watching the movie when the power suddenly went out",
+    "translate": "Eles devem ter estado assistindo ao filme quando a energia acabou de repente",
+    "p1": "They must have been watching",
+    "p2": "The movie when the power suddenly went out"
+  },
+  {
+    "phrase": "I might have fixed the engine if I had had the right tools",
+    "translate": "Eu poderia ter consertado o motor se tivesse tido as ferramentas certas",
+    "p1": "I might have fixed",
+    "p2": "The engine if I had had the right tools"
+  },
+  {
+    "phrase": "You should have been reading the report before the meeting started",
+    "translate": "Você deveria ter lido o relatório antes da reunião começar",
+    "p1": "You should have been reading",
+    "p2": "The report before the meeting started"
+  },
+  {
+    "phrase": "He could have been buying tickets when the show was canceled",
+    "translate": "Ele poderia estar comprando ingressos quando o show foi cancelado",
+    "p1": "He could have been buying",
+    "p2": "Tickets when the show was canceled"
+  },
+  {
+    "phrase": "We would have been listening to the radio if the storm hadn’t interrupted the broadcast",
+    "translate": "Nós estaríamos ouvindo o rádio se a tempestade não tivesse interrompido a transmissão",
+    "p1": "We would have been listening to",
+    "p2": "The radio if the storm hadn’t interrupted the broadcast"
+  },
+  {
+    "phrase": "She might have opened the envelope before realizing it was the wrong letter",
+    "translate": "Ela pode ter aberto o envelope antes de perceber que era a carta errada",
+    "p1": "She might have opened",
+    "p2": "The envelope before realizing it was the wrong letter"
+  },
+  {
+    "phrase": "It could have been raining so heavily that the roads became dangerous",
+    "translate": "Pode ter estado chovendo tão forte que as estradas ficaram perigosas",
+    "p1": "It could have been raining",
+    "p2": "So heavily that the roads became dangerous"
+  },
+  {
+    "phrase": "They should have cleaned the windows to let more light into the room",
+    "translate": "Eles deveriam ter limpado as janelas para deixar mais luz entrar no quarto",
+    "p1": "They should have cleaned",
+    "p2": "The windows to let more light into the room"
+  },
+  {
+    "phrase": "You must have been calling your friends to confirm the party details",
+    "translate": "Você deve ter ficado ligando para seus amigos para confirmar os detalhes da festa",
+    "p1": "You must have been calling",
+    "p2": "Your friends to confirm the party details"
+  },
+  {
+    "phrase": "I would have painted the room if I hadn’t been so tired after work",
+    "translate": "Eu teria pintado o quarto se não tivesse estado tão cansado depois do trabalho",
+    "p1": "I would have painted",
+    "p2": "The room if I hadn’t been so tired after work"
+  }
+
+
+
+
+
+
+
+]

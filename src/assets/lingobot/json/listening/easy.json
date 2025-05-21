@@ -58,5 +58,365 @@
     "translate": "Eu quero água",
     "p1": "I want",
     "p2": "Water"
+  },
+  {
+    "phrase": "He is a doctor",
+    "translate": "Ele é um médico",
+    "p1": "He is",
+    "p2": "A doctor"
+  },
+  {
+    "phrase": "They like chocolate",
+    "translate": "Eles gostam de chocolate",
+    "p1": "They like",
+    "p2": "Chocolate"
+  },
+  {
+    "phrase": "We want to play",
+    "translate": "Nós queremos jogar",
+    "p1": "We want",
+    "p2": "To play"
+  },
+  {
+    "phrase": "You are beautiful",
+    "translate": "Você é bonita",
+    "p1": "You are",
+    "p2": "Beautiful"
+  },
+  {
+    "phrase": "She has a car",
+    "translate": "Ela tem um carro",
+    "p1": "She has",
+    "p2": "A car"
+  },
+  {
+    "phrase": "He plays soccer",
+    "translate": "Ele joga futebol",
+    "p1": "He plays",
+    "p2": "Soccer"
+  },
+  {
+    "phrase": "We are ready",
+    "translate": "Nós estamos prontos",
+    "p1": "We are",
+    "p2": "Ready"
+  },
+  {
+    "phrase": "I need help",
+    "translate": "Eu preciso de ajuda",
+    "p1": "I need",
+    "p2": "Help"
+  },
+  {
+    "phrase": "It is raining",
+    "translate": "Está chovendo",
+    "p1": "It is",
+    "p2": "Raining"
+  },
+  {
+    "phrase": "They are working",
+    "translate": "Eles estão trabalhando",
+    "p1": "They are",
+    "p2": "Working"
+  },
+  {
+    "phrase": "He is a doctor",
+    "translate": "Ele é um médico",
+    "p1": "He is",
+    "p2": "A doctor"
+  },
+  {
+    "phrase": "They like chocolate",
+    "translate": "Eles gostam de chocolate",
+    "p1": "They like",
+    "p2": "Chocolate"
+  },
+  {
+    "phrase": "We want to play",
+    "translate": "Nós queremos jogar",
+    "p1": "We want",
+    "p2": "To play"
+  },
+  {
+    "phrase": "You are beautiful",
+    "translate": "Você é bonita",
+    "p1": "You are",
+    "p2": "Beautiful"
+  },
+  {
+    "phrase": "She has a car",
+    "translate": "Ela tem um carro",
+    "p1": "She has",
+    "p2": "A car"
+  },
+  {
+    "phrase": "He plays soccer",
+    "translate": "Ele joga futebol",
+    "p1": "He plays",
+    "p2": "Soccer"
+  },
+  {
+    "phrase": "We are ready",
+    "translate": "Nós estamos prontos",
+    "p1": "We are",
+    "p2": "Ready"
+  },
+  {
+    "phrase": "I need help",
+    "translate": "Eu preciso de ajuda",
+    "p1": "I need",
+    "p2": "Help"
+  },
+  {
+    "phrase": "It is raining",
+    "translate": "Está chovendo",
+    "p1": "It is",
+    "p2": "Raining"
+  },
+  {
+    "phrase": "They are working",
+    "translate": "Eles estão trabalhando",
+    "p1": "They are",
+    "p2": "Working"
+  },
+  {
+    "phrase": "You have a dog",
+    "translate": "Você tem um cachorro",
+    "p1": "You have",
+    "p2": "A dog"
+  },
+  {
+    "phrase": "I see a bird",
+    "translate": "Eu vejo um pássaro",
+    "p1": "I see",
+    "p2": "A bird"
+  },
+  {
+    "phrase": "He needs money",
+    "translate": "Ele precisa de dinheiro",
+    "p1": "He needs",
+    "p2": "Money"
+  },
+  {
+    "phrase": "She is dancing",
+    "translate": "Ela está dançando",
+    "p1": "She is",
+    "p2": "Dancing"
+  },
+  {
+    "phrase": "We have time",
+    "translate": "Nós temos tempo",
+    "p1": "We have",
+    "p2": "Time"
+  },
+  {
+    "phrase": "It looks good",
+    "translate": "Parece bom",
+    "p1": "It looks",
+    "p2": "Good"
+  },
+  {
+    "phrase": "They live here",
+    "translate": "Eles moram aqui",
+    "p1": "They live",
+    "p2": "Here"
+  },
+  {
+    "phrase": "I hear music",
+    "translate": "Eu ouço música",
+    "p1": "I hear",
+    "p2": "Music"
+  },
+  {
+    "phrase": "She wants juice",
+    "translate": "Ela quer suco",
+    "p1": "She wants",
+    "p2": "Juice"
+  },
+  {
+    "phrase": "You look tired",
+    "translate": "Você parece cansado",
+    "p1": "You look",
+    "p2": "Tired"
+  },
+  {
+    "phrase": "He is sleeping",
+    "translate": "Ele está dormindo",
+    "p1": "He is",
+    "p2": "Sleeping"
+  },
+  {
+    "phrase": "We love movies",
+    "translate": "Nós amamos filmes",
+    "p1": "We love",
+    "p2": "Movies"
+  },
+  {
+    "phrase": "I found money",
+    "translate": "Eu encontrei dinheiro",
+    "p1": "I found",
+    "p2": "Money"
+  },
+  {
+    "phrase": "She is reading",
+    "translate": "Ela está lendo",
+    "p1": "She is",
+    "p2": "Reading"
+  },
+  {
+    "phrase": "They are singing",
+    "translate": "Eles estão cantando",
+    "p1": "They are",
+    "p2": "Singing"
+  },
+  {
+    "phrase": "It tastes good",
+    "translate": "Está com gosto bom",
+    "p1": "It tastes",
+    "p2": "Good"
+  },
+  {
+    "phrase": "You made lunch",
+    "translate": "Você fez o almoço",
+    "p1": "You made",
+    "p2": "Lunch"
+  },
+  {
+    "phrase": "I opened the door",
+    "translate": "Eu abri a porta",
+    "p1": "I opened",
+    "p2": "The door"
+  },
+  {
+    "phrase": "He draws well",
+    "translate": "Ele desenha bem",
+    "p1": "He draws",
+    "p2": "Well"
+  },
+  {
+    "phrase": "We need money",
+    "translate": "Nós precisamos de dinheiro",
+    "p1": "We need",
+    "p2": "Money"
+  },
+  {
+    "phrase": "She speaks English",
+    "translate": "Ela fala inglês",
+    "p1": "She speaks",
+    "p2": "English"
+  },
+  {
+    "phrase": "He drinks coffee",
+    "translate": "Ele bebe café",
+    "p1": "He drinks",
+    "p2": "Coffee"
+  },
+  {
+    "phrase": "I write stories",
+    "translate": "Eu escrevo histórias",
+    "p1": "I write",
+    "p2": "Stories"
+  },
+  {
+    "phrase": "They play games",
+    "translate": "Eles jogam jogos",
+    "p1": "They play",
+    "p2": "Games"
+  },
+  {
+    "phrase": "You cook well",
+    "translate": "Você cozinha bem",
+    "p1": "You cook",
+    "p2": "Well"
+  },
+  {
+    "phrase": "It sounds strange",
+    "translate": "Parece estranho",
+    "p1": "It sounds",
+    "p2": "Strange"
+  },
+  {
+    "phrase": "We travel together",
+    "translate": "Nós viajamos juntos",
+    "p1": "We travel",
+    "p2": "Together"
+  },
+  {
+    "phrase": "He drives fast",
+    "translate": "Ele dirige rápido",
+    "p1": "He drives",
+    "p2": "Fast"
+  },
+  {
+    "phrase": "She studies math",
+    "translate": "Ela estuda matemática",
+    "p1": "She studies",
+    "p2": "Math"
+  },
+  {
+    "phrase": "I clean the house",
+    "translate": "Eu limpo a casa",
+    "p1": "I clean",
+    "p2": "The house"
+  },
+  {
+    "phrase": "They watch TV",
+    "translate": "Eles assistem TV",
+    "p1": "They watch",
+    "p2": "TV"
+  },
+  {
+    "phrase": "I fix bikes",
+    "translate": "Eu conserto bicicletas",
+    "p1": "I fix",
+    "p2": "Bikes"
+  },
+  {
+    "phrase": "You read books",
+    "translate": "Você lê livros",
+    "p1": "You read",
+    "p2": "Books"
+  },
+  {
+    "phrase": "He buys food",
+    "translate": "Ele compra comida",
+    "p1": "He buys",
+    "p2": "Food"
+  },
+  {
+    "phrase": "We listen music",
+    "translate": "Nós ouvimos música",
+    "p1": "We listen",
+    "p2": "Music"
+  },
+  {
+    "phrase": "She opens windows",
+    "translate": "Ela abre janelas",
+    "p1": "She opens",
+    "p2": "Windows"
+  },
+  {
+    "phrase": "It rains today",
+    "translate": "Está chovendo hoje",
+    "p1": "It rains",
+    "p2": "Today"
+  },
+  {
+    "phrase": "They clean rooms",
+    "translate": "Eles limpam quartos",
+    "p1": "They clean",
+    "p2": "Rooms"
+  },
+  {
+    "phrase": "You call friends",
+    "translate": "Você liga para amigos",
+    "p1": "You call",
+    "p2": "Friends"
+  },
+  {
+    "phrase": "I paint walls",
+    "translate": "Eu pinto paredes",
+    "p1": "I paint",
+    "p2": "Walls"
   }
 ]

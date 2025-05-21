@@ -1,0 +1,607 @@
+[
+  {
+    "phrase": "Had they known about the traffic jam earlier, they would have taken a different route to avoid being late",
+    "translate": "Se eles tivessem sabido sobre o engarrafamento antes, teriam pegado uma rota diferente para evitar o atraso",
+    "p1": "Had they known about the traffic jam earlier",
+    "p2": "They would have taken a different route to avoid being late"
+  },
+  {
+    "phrase": "Despite having finished the project ahead of schedule, the team continued refining the details to ensure maximum quality",
+    "translate": "Apesar de terem terminado o projeto antes do prazo, a equipe continuou refinando os detalhes para garantir a máxima qualidade",
+    "p1": "Despite having finished the project ahead of schedule",
+    "p2": "The team continued refining the details to ensure maximum quality"
+  },
+  {
+    "phrase": "No sooner had I arrived at the station than the train departed, leaving me stranded for an hour",
+    "translate": "Mal tinha chegado na estação quando o trem partiu, me deixando parado por uma hora",
+    "p1": "No sooner had I arrived at the station",
+    "p2": "Than the train departed, leaving me stranded for an hour"
+  },
+  {
+    "phrase": "By the time she realized the importance of the event, all tickets had been sold out, disappointing her greatly",
+    "translate": "Quando ela percebeu a importância do evento, todos os ingressos já tinham se esgotado, deixando-a muito desapontada",
+    "p1": "By the time she realized the importance of the event",
+    "p2": "All tickets had been sold out, disappointing her greatly"
+  },
+  {
+    "phrase": "If he had taken the opportunity to study abroad, his career might have taken a completely different trajectory",
+    "translate": "Se ele tivesse aproveitado a oportunidade de estudar no exterior, a carreira dele poderia ter seguido um caminho completamente diferente",
+    "p1": "If he had taken the opportunity to study abroad",
+    "p2": "His career might have taken a completely different trajectory"
+  },
+  {
+    "phrase": "Having been exposed to various cultures during his travels, he developed a unique perspective on global issues",
+    "translate": "Tendo sido exposto a várias culturas durante suas viagens, ele desenvolveu uma perspectiva única sobre questões globais",
+    "p1": "Having been exposed to various cultures during his travels",
+    "p2": "He developed a unique perspective on global issues"
+  },
+  {
+    "phrase": "Seldom do we appreciate the small moments in life until they become distant memories",
+    "translate": "Raramente apreciamos os pequenos momentos da vida até que eles se tornem memórias distantes",
+    "p1": "Seldom do we appreciate the small moments in life",
+    "p2": "Until they become distant memories"
+  },
+  {
+    "phrase": "The more you practice complex sentence structures, the easier it becomes to express nuanced ideas fluently",
+    "translate": "Quanto mais você pratica estruturas complexas de frases, mais fácil fica expressar ideias nuançadas fluentemente",
+    "p1": "The more you practice complex sentence structures",
+    "p2": "The easier it becomes to express nuanced ideas fluently"
+  },
+  {
+    "phrase": "While many focus on technical skills, developing emotional intelligence is equally vital for effective leadership",
+    "translate": "Enquanto muitos focam nas habilidades técnicas, desenvolver inteligência emocional é igualmente vital para uma liderança eficaz",
+    "p1": "While many focus on technical skills",
+    "p2": "Developing emotional intelligence is equally vital for effective leadership"
+  },
+  {
+    "phrase": "Had I not encountered such adversity early on, I might never have discovered my true strengths and resilience",
+    "translate": "Se eu não tivesse enfrentado tanta adversidade cedo, talvez nunca tivesse descoberto minhas verdadeiras forças e resiliência",
+    "p1": "Had I not encountered such adversity early on",
+    "p2": "I might never have discovered my true strengths and resilience"
+  },
+  {
+    "phrase": "Not only did she master several languages, but she also became an expert in cultural diplomacy",
+    "translate": "Ela não só dominou várias línguas, como também se tornou uma especialista em diplomacia cultural",
+    "p1": "Not only did she master several languages",
+    "p2": "But she also became an expert in cultural diplomacy"
+  },
+  {
+    "phrase": "Rarely have I witnessed such a profound transformation in someone’s attitude toward life",
+    "translate": "Raramente presenciei uma transformação tão profunda na atitude de alguém em relação à vida",
+    "p1": "Rarely have I witnessed such a profound transformation",
+    "p2": "In someone’s attitude toward life"
+  },
+  {
+    "phrase": "If you had informed me earlier about the deadline, I would have prioritized the tasks differently",
+    "translate": "Se você tivesse me informado antes sobre o prazo, eu teria priorizado as tarefas de forma diferente",
+    "p1": "If you had informed me earlier about the deadline",
+    "p2": "I would have prioritized the tasks differently"
+  },
+  {
+    "phrase": "Having worked in several industries, he gained invaluable insights into diverse business models",
+    "translate": "Tendo trabalhado em várias indústrias, ele adquiriu percepções inestimáveis sobre diversos modelos de negócios",
+    "p1": "Having worked in several industries",
+    "p2": "He gained invaluable insights into diverse business models"
+  },
+  {
+    "phrase": "The more one understands history, the better equipped they are to avoid repeating past mistakes",
+    "translate": "Quanto mais alguém entende a história, mais preparado fica para evitar repetir erros do passado",
+    "p1": "The more one understands history",
+    "p2": "The better equipped they are to avoid repeating past mistakes"
+  },
+  {
+    "phrase": "Despite the challenges faced, the team succeeded in launching the product ahead of time",
+    "translate": "Apesar dos desafios enfrentados, a equipe conseguiu lançar o produto antes do prazo",
+    "p1": "Despite the challenges faced",
+    "p2": "The team succeeded in launching the product ahead of time"
+  },
+  {
+    "phrase": "Had they anticipated the consequences, they might have reconsidered their decision",
+    "translate": "Se eles tivessem previsto as consequências, talvez tivessem reconsiderado a decisão",
+    "p1": "Had they anticipated the consequences",
+    "p2": "They might have reconsidered their decision"
+  },
+  {
+    "phrase": "Only by embracing change can we truly grow both personally and professionally",
+    "translate": "Só abraçando a mudança é que podemos realmente crescer pessoal e profissionalmente",
+    "p1": "Only by embracing change",
+    "p2": "Can we truly grow both personally and professionally"
+  },
+  {
+    "phrase": "No matter how skilled you are, continuous learning is essential to stay relevant in today’s world",
+    "translate": "Não importa quão habilidoso você seja, o aprendizado contínuo é essencial para se manter relevante no mundo de hoje",
+    "p1": "No matter how skilled you are",
+    "p2": "Continuous learning is essential to stay relevant in today’s world"
+  },
+  {
+    "phrase": "By the time the negotiations concluded, both parties had reached a mutually beneficial agreement",
+    "translate": "Quando as negociações terminaram, ambas as partes tinham chegado a um acordo mutuamente benéfico",
+    "p1": "By the time the negotiations concluded",
+    "p2": "Both parties had reached a mutually beneficial agreement"
+  },
+  {
+    "phrase": "Seldom do we realize the impact of our daily choices on the environment until it’s too late",
+    "translate": "Raramente percebemos o impacto das nossas escolhas diárias no meio ambiente até que seja tarde demais",
+    "p1": "Seldom do we realize the impact of our daily choices",
+    "p2": "On the environment until it’s too late"
+  },
+  {
+    "phrase": "Had I been informed about the policy changes, I would have adjusted my plans accordingly",
+    "translate": "Se eu tivesse sido informado sobre as mudanças na política, teria ajustado meus planos de acordo",
+    "p1": "Had I been informed about the policy changes",
+    "p2": "I would have adjusted my plans accordingly"
+  },
+  {
+    "phrase": "The more diverse your skill set, the greater your opportunities for career advancement",
+    "translate": "Quanto mais diversificado for seu conjunto de habilidades, maiores serão suas oportunidades de avanço na carreira",
+    "p1": "The more diverse your skill set",
+    "p2": "The greater your opportunities for career advancement"
+  },
+  {
+    "phrase": "Despite the criticism, she remained steadfast in pursuing her innovative ideas",
+    "translate": "Apesar das críticas, ela permaneceu firme em perseguir suas ideias inovadoras",
+    "p1": "Despite the criticism",
+    "p2": "She remained steadfast in pursuing her innovative ideas"
+  },
+  {
+    "phrase": "If only I had listened more carefully, the outcome might have been different",
+    "translate": "Se ao menos eu tivesse escutado com mais atenção, o resultado poderia ter sido diferente",
+    "p1": "If only I had listened more carefully",
+    "p2": "The outcome might have been different"
+  },
+  {
+    "phrase": "Having completed the course, students are expected to apply their knowledge in real-world scenarios",
+    "translate": "Tendo concluído o curso, espera-se que os alunos apliquem seu conhecimento em cenários reais",
+    "p1": "Having completed the course",
+    "p2": "Students are expected to apply their knowledge in real-world scenarios"
+  },
+  {
+    "phrase": "No sooner had the meeting started than a technical issue disrupted the proceedings",
+    "translate": "Mal a reunião tinha começado quando um problema técnico interrompeu os trabalhos",
+    "p1": "No sooner had the meeting started",
+    "p2": "A technical issue disrupted the proceedings"
+  },
+  {
+    "phrase": "Only through persistent effort can one achieve mastery in any field",
+    "translate": "Só através de esforço persistente alguém pode alcançar a maestria em qualquer área",
+    "p1": "Only through persistent effort",
+    "p2": "Can one achieve mastery in any field"
+  },
+  {
+    "phrase": "By the time the report was published, many of the findings were already outdated",
+    "translate": "Quando o relatório foi publicado, muitas das conclusões já estavam desatualizadas",
+    "p1": "By the time the report was published",
+    "p2": "Many of the findings were already outdated"
+  },
+  {
+    "phrase": "Had we not invested in research, the company would have fallen behind its competitors",
+    "translate": "Se não tivéssemos investido em pesquisa, a empresa teria ficado atrás dos concorrentes",
+    "p1": "Had we not invested in research",
+    "p2": "The company would have fallen behind its competitors"
+  },
+  {
+    "phrase": "Scarcely had she arrived at the conference when the keynote speaker began his presentation",
+    "translate": "Mal ela chegou à conferência quando o palestrante principal começou sua apresentação",
+    "p1": "Scarcely had she arrived at the conference",
+    "p2": "When the keynote speaker began his presentation"
+  },
+  {
+    "phrase": "If we are to succeed, we must embrace innovation and adapt to changing circumstances",
+    "translate": "Se quisermos ter sucesso, devemos abraçar a inovação e nos adaptar às circunstâncias que mudam",
+    "p1": "If we are to succeed",
+    "p2": "We must embrace innovation and adapt to changing circumstances"
+  },
+  {
+    "phrase": "Having faced numerous setbacks, the team finally achieved a breakthrough in their project",
+    "translate": "Tendo enfrentado inúmeros contratempos, a equipe finalmente conseguiu um avanço em seu projeto",
+    "p1": "Having faced numerous setbacks",
+    "p2": "The team finally achieved a breakthrough in their project"
+  },
+  {
+    "phrase": "The sooner we address these issues, the better our chances of preventing further complications",
+    "translate": "Quanto antes abordarmos esses problemas, maiores as chances de evitar complicações adicionais",
+    "p1": "The sooner we address these issues",
+    "p2": "The better our chances of preventing further complications"
+  },
+  {
+    "phrase": "No matter how difficult the challenge, perseverance often leads to eventual success",
+    "translate": "Não importa quão difícil seja o desafio, a perseverança frequentemente leva ao sucesso eventual",
+    "p1": "No matter how difficult the challenge",
+    "p2": "Perseverance often leads to eventual success"
+  },
+  {
+    "phrase": "Had the government implemented stricter regulations earlier, environmental damage could have been minimized",
+    "translate": "Se o governo tivesse implementado regulações mais rígidas antes, os danos ambientais poderiam ter sido minimizados",
+    "p1": "Had the government implemented stricter regulations earlier",
+    "p2": "Environmental damage could have been minimized"
+  },
+  {
+    "phrase": "Only by fostering collaboration between departments can the organization achieve its strategic goals",
+    "translate": "Só promovendo a colaboração entre os departamentos a organização pode alcançar seus objetivos estratégicos",
+    "p1": "Only by fostering collaboration between departments",
+    "p2": "Can the organization achieve its strategic goals"
+  },
+  {
+    "phrase": "By the time the guests arrived, the preparations had already been completed flawlessly",
+    "translate": "Quando os convidados chegaram, os preparativos já haviam sido concluídos perfeitamente",
+    "p1": "By the time the guests arrived",
+    "p2": "The preparations had already been completed flawlessly"
+  },
+  {
+    "phrase": "Despite numerous obstacles, the researcher persisted until the experiment yielded conclusive results",
+    "translate": "Apesar dos inúmeros obstáculos, o pesquisador persistiu até que o experimento produzisse resultados conclusivos",
+    "p1": "Despite numerous obstacles",
+    "p2": "The researcher persisted until the experiment yielded conclusive results"
+  },
+  {
+    "phrase": "If she had trusted her instincts, she might have avoided the costly mistake",
+    "translate": "Se ela tivesse confiado em seus instintos, poderia ter evitado o erro caro",
+    "p1": "If she had trusted her instincts",
+    "p2": "She might have avoided the costly mistake"
+  },
+  {
+    "phrase": "Rarely do we encounter opportunities that challenge our creativity to such an extent",
+    "translate": "Raramente encontramos oportunidades que desafiam nossa criatividade a tal ponto",
+    "p1": "Rarely do we encounter opportunities",
+    "p2": "That challenge our creativity to such an extent"
+  },
+  {
+    "phrase": "Had the team communicated more effectively, the project deadline could have been met without issues",
+    "translate": "Se a equipe tivesse se comunicado melhor, o prazo do projeto poderia ter sido cumprido sem problemas",
+    "p1": "Had the team communicated more effectively",
+    "p2": "The project deadline could have been met without issues"
+  },
+  {
+    "phrase": "The complexity of the problem necessitates a multifaceted approach involving various experts",
+    "translate": "A complexidade do problema exige uma abordagem multifacetada envolvendo vários especialistas",
+    "p1": "The complexity of the problem necessitates a multifaceted approach",
+    "p2": "Involving various experts"
+  },
+  {
+    "phrase": "Only through meticulous planning can we ensure the success of such a large-scale event",
+    "translate": "Só através de um planejamento meticuloso podemos garantir o sucesso de um evento em grande escala",
+    "p1": "Only through meticulous planning",
+    "p2": "Can we ensure the success of such a large-scale event"
+  },
+  {
+    "phrase": "By the time the investigation concluded, substantial evidence had already been gathered",
+    "translate": "Quando a investigação terminou, evidências substanciais já haviam sido reunidas",
+    "p1": "By the time the investigation concluded",
+    "p2": "Substantial evidence had already been gathered"
+  },
+  {
+    "phrase": "Despite initial skepticism, the new methodology has proven remarkably effective",
+    "translate": "Apesar do ceticismo inicial, a nova metodologia provou ser notavelmente eficaz",
+    "p1": "Despite initial skepticism",
+    "p2": "The new methodology has proven remarkably effective"
+  },
+  {
+    "phrase": "If we had anticipated the market trends, our investment strategy would have been more successful",
+    "translate": "Se tivéssemos antecipado as tendências do mercado, nossa estratégia de investimento teria sido mais bem-sucedida",
+    "p1": "If we had anticipated the market trends",
+    "p2": "Our investment strategy would have been more successful"
+  },
+  {
+    "phrase": "The advancement of technology has reshaped how businesses operate on a global scale",
+    "translate": "O avanço da tecnologia remodelou a forma como as empresas operam em escala global",
+    "p1": "The advancement of technology",
+    "p2": "Has reshaped how businesses operate on a global scale"
+  },
+  {
+    "phrase": "No sooner had the announcement been made than the stock prices began to fluctuate wildly",
+    "translate": "Mal o anúncio foi feito e os preços das ações começaram a flutuar intensamente",
+    "p1": "No sooner had the announcement been made",
+    "p2": "The stock prices began to fluctuate wildly"
+  },
+  {
+    "phrase": "Only by embracing change can organizations remain competitive in an ever-evolving market",
+    "translate": "Só abraçando a mudança as organizações podem permanecer competitivas em um mercado em constante evolução",
+    "p1": "Only by embracing change",
+    "p2": "Can organizations remain competitive in an ever-evolving market"
+  },
+  {
+    "phrase": "Seldom do we realize the true impact of our decisions until much later",
+    "translate": "Raramente percebemos o verdadeiro impacto de nossas decisões até muito depois",
+    "p1": "Seldom do we realize",
+    "p2": "The true impact of our decisions until much later"
+  },
+  {
+    "phrase": "Had I known about the changes, I would have prepared accordingly",
+    "translate": "Se eu soubesse das mudanças, teria me preparado adequadamente",
+    "p1": "Had I known about the changes",
+    "p2": "I would have prepared accordingly"
+  },
+  {
+    "phrase": "The novel explores themes of identity and belonging in a rapidly changing world",
+    "translate": "O romance explora temas de identidade e pertencimento em um mundo que muda rapidamente",
+    "p1": "The novel explores themes of identity and belonging",
+    "p2": "In a rapidly changing world"
+  },
+  {
+    "phrase": "Only after extensive research can we draw reliable conclusions",
+    "translate": "Só depois de uma pesquisa extensa podemos tirar conclusões confiáveis",
+    "p1": "Only after extensive research",
+    "p2": "Can we draw reliable conclusions"
+  },
+  {
+    "phrase": "Despite the challenges, the expedition team remained resolute and determined",
+    "translate": "Apesar dos desafios, a equipe da expedição permaneceu resoluta e determinada",
+    "p1": "Despite the challenges",
+    "p2": "The expedition team remained resolute and determined"
+  },
+  {
+    "phrase": "If the proposal is accepted, it will significantly improve community services",
+    "translate": "Se a proposta for aceita, melhorará significativamente os serviços comunitários",
+    "p1": "If the proposal is accepted",
+    "p2": "It will significantly improve community services"
+  },
+  {
+    "phrase": "The influence of social media on public opinion cannot be underestimated",
+    "translate": "A influência das redes sociais na opinião pública não pode ser subestimada",
+    "p1": "The influence of social media",
+    "p2": "On public opinion cannot be underestimated"
+  },
+  {
+    "phrase": "No matter how hard the task, dedication and effort are essential for success",
+    "translate": "Não importa quão difícil seja a tarefa, dedicação e esforço são essenciais para o sucesso",
+    "p1": "No matter how hard the task",
+    "p2": "Dedication and effort are essential for success"
+  },
+  {
+    "phrase": "By the time we arrived, the ceremony had already begun",
+    "translate": "Quando chegamos, a cerimônia já havia começado",
+    "p1": "By the time we arrived",
+    "p2": "The ceremony had already begun"
+  },
+  {
+    "phrase": "Only through collaboration can innovative solutions be developed effectively",
+    "translate": "Só através da colaboração soluções inovadoras podem ser desenvolvidas eficazmente",
+    "p1": "Only through collaboration",
+    "p2": "Can innovative solutions be developed effectively"
+  },
+  {
+    "phrase": "Rarely have scientists witnessed such a rapid evolution in technology",
+    "translate": "Raramente os cientistas testemunham uma evolução tão rápida na tecnologia",
+    "p1": "Rarely have scientists witnessed",
+    "p2": "Such a rapid evolution in technology"
+  },
+  {
+    "phrase": "Had she accepted the offer, her career trajectory might have changed dramatically",
+    "translate": "Se ela tivesse aceitado a oferta, a trajetória da carreira dela poderia ter mudado drasticamente",
+    "p1": "Had she accepted the offer",
+    "p2": "Her career trajectory might have changed dramatically"
+  },
+  {
+    "phrase": "The novel’s intricate plot requires readers to pay close attention to detail",
+    "translate": "A trama intrincada do romance exige que os leitores prestem muita atenção aos detalhes",
+    "p1": "The novel’s intricate plot requires readers",
+    "p2": "To pay close attention to detail"
+  },
+  {
+    "phrase": "Only by analyzing the data thoroughly can researchers confirm the hypothesis",
+    "translate": "Só analisando os dados cuidadosamente é que os pesquisadores podem confirmar a hipótese",
+    "p1": "Only by analyzing the data thoroughly",
+    "p2": "Can researchers confirm the hypothesis"
+  },
+  {
+    "phrase": "Despite economic downturns, the company managed to maintain steady growth",
+    "translate": "Apesar das recessões econômicas, a empresa conseguiu manter um crescimento constante",
+    "p1": "Despite economic downturns",
+    "p2": "The company managed to maintain steady growth"
+  },
+  {
+    "phrase": "If they had anticipated the demand, production would not have fallen short",
+    "translate": "Se eles tivessem antecipado a demanda, a produção não teria ficado aquém",
+    "p1": "If they had anticipated the demand",
+    "p2": "Production would not have fallen short"
+  },
+  {
+    "phrase": "The widespread adoption of renewable energy is critical for sustainable development",
+    "translate": "A adoção generalizada de energia renovável é crítica para o desenvolvimento sustentável",
+    "p1": "The widespread adoption of renewable energy",
+    "p2": "Is critical for sustainable development"
+  },
+  {
+    "phrase": "No sooner had the meeting ended than new challenges arose unexpectedly",
+    "translate": "Mal a reunião terminou e novos desafios surgiram inesperadamente",
+    "p1": "No sooner had the meeting ended",
+    "p2": "New challenges arose unexpectedly"
+  },
+  {
+    "phrase": "Only by fostering a culture of innovation can organizations thrive in the long term",
+    "translate": "Só fomentando uma cultura de inovação as organizações podem prosperar a longo prazo",
+    "p1": "Only by fostering a culture of innovation",
+    "p2": "Can organizations thrive in the long term"
+  },
+  {
+    "phrase": "Had the government implemented stricter policies, environmental degradation could have been minimized",
+    "translate": "Se o governo tivesse implementado políticas mais rigorosas, a degradação ambiental poderia ter sido minimizada",
+    "p1": "Had the government implemented stricter policies",
+    "p2": "Environmental degradation could have been minimized"
+  },
+  {
+    "phrase": "Scarcely had the sun set when the temperature began to drop drastically",
+    "translate": "Mal o sol se pôs quando a temperatura começou a cair drasticamente",
+    "p1": "Scarcely had the sun set",
+    "p2": "When the temperature began to drop drastically"
+  },
+  {
+    "phrase": "Had I anticipated the consequences, I would have acted differently",
+    "translate": "Se eu tivesse previsto as consequências, teria agido de forma diferente",
+    "p1": "Had I anticipated the consequences",
+    "p2": "I would have acted differently"
+  },
+  {
+    "phrase": "The documentary sheds light on the complex relationship between culture and identity",
+    "translate": "O documentário esclarece a relação complexa entre cultura e identidade",
+    "p1": "The documentary sheds light",
+    "p2": "On the complex relationship between culture and identity"
+  },
+  {
+    "phrase": "Only after thorough examination can the authenticity of the artifact be verified",
+    "translate": "Só após um exame minucioso pode-se verificar a autenticidade do artefato",
+    "p1": "Only after thorough examination",
+    "p2": "Can the authenticity of the artifact be verified"
+  },
+  {
+    "phrase": "Despite overwhelming odds, the team persevered and secured a historic victory",
+    "translate": "Apesar das probabilidades esmagadoras, a equipe perseverou e conquistou uma vitória histórica",
+    "p1": "Despite overwhelming odds",
+    "p2": "The team persevered and secured a historic victory"
+  },
+  {
+    "phrase": "If the proposal had been implemented earlier, many issues could have been avoided",
+    "translate": "Se a proposta tivesse sido implementada antes, muitos problemas poderiam ter sido evitados",
+    "p1": "If the proposal had been implemented earlier",
+    "p2": "Many issues could have been avoided"
+  },
+  {
+    "phrase": "The rapid advancement of artificial intelligence presents both opportunities and challenges",
+    "translate": "O avanço rápido da inteligência artificial apresenta tanto oportunidades quanto desafios",
+    "p1": "The rapid advancement of artificial intelligence",
+    "p2": "Presents both opportunities and challenges"
+  },
+  {
+    "phrase": "No sooner had she spoken than the crowd erupted into applause",
+    "translate": "Mal ela falou e a multidão explodiu em aplausos",
+    "p1": "No sooner had she spoken",
+    "p2": "Than the crowd erupted into applause"
+  },
+  {
+    "phrase": "Only by embracing change can organizations remain competitive in a dynamic market",
+    "translate": "Só abraçando a mudança as organizações podem permanecer competitivas em um mercado dinâmico",
+    "p1": "Only by embracing change",
+    "p2": "Can organizations remain competitive in a dynamic market"
+  },
+  {
+    "phrase": "Had the researchers collaborated more closely, the project might have yielded better results",
+    "translate": "Se os pesquisadores tivessem colaborado mais de perto, o projeto poderia ter produzido melhores resultados",
+    "p1": "Had the researchers collaborated more closely",
+    "p2": "The project might have yielded better results"
+  },
+  {
+    "phrase": "Rarely do we encounter such profound insights in everyday conversations",
+    "translate": "Raramente encontramos insights tão profundos em conversas do dia a dia",
+    "p1": "Rarely do we encounter",
+    "p2": "Such profound insights in everyday conversations"
+  },
+  {
+    "phrase": "Had they anticipated the repercussions, they might have reconsidered their decision",
+    "translate": "Se eles tivessem previsto as repercussões, poderiam ter reconsiderado sua decisão",
+    "p1": "Had they anticipated the repercussions",
+    "p2": "They might have reconsidered their decision"
+  },
+  {
+    "phrase": "The symposium provided an excellent platform for exchanging innovative ideas",
+    "translate": "O simpósio ofereceu uma excelente plataforma para a troca de ideias inovadoras",
+    "p1": "The symposium provided an excellent platform",
+    "p2": "For exchanging innovative ideas"
+  },
+  {
+    "phrase": "Only through persistent effort can one achieve mastery in any discipline",
+    "translate": "Só através de esforço persistente se pode alcançar maestria em qualquer disciplina",
+    "p1": "Only through persistent effort",
+    "p2": "Can one achieve mastery in any discipline"
+  },
+  {
+    "phrase": "Despite facing numerous setbacks, the initiative ultimately succeeded",
+    "translate": "Apesar de enfrentar inúmeros contratempos, a iniciativa acabou tendo sucesso",
+    "p1": "Despite facing numerous setbacks",
+    "p2": "The initiative ultimately succeeded"
+  },
+  {
+    "phrase": "If the regulations had been enforced strictly, many violations could have been prevented",
+    "translate": "Se as regulamentações tivessem sido aplicadas rigorosamente, muitas violações poderiam ter sido prevenidas",
+    "p1": "If the regulations had been enforced strictly",
+    "p2": "Many violations could have been prevented"
+  },
+  {
+    "phrase": "The increasing reliance on digital technologies reshapes the way we communicate",
+    "translate": "A crescente dependência das tecnologias digitais está transformando a forma como nos comunicamos",
+    "p1": "The increasing reliance on digital technologies",
+    "p2": "Reshapes the way we communicate"
+  },
+  {
+    "phrase": "No sooner had the announcement been made than speculation began to spread",
+    "translate": "Mal o anúncio foi feito e as especulações começaram a se espalhar",
+    "p1": "No sooner had the announcement been made",
+    "p2": "Than speculation began to spread"
+  },
+  {
+    "phrase": "Only by fostering collaboration can complex challenges be effectively addressed",
+    "translate": "Só fomentando a colaboração os desafios complexos podem ser efetivamente enfrentados",
+    "p1": "Only by fostering collaboration",
+    "p2": "Can complex challenges be effectively addressed"
+  },
+  {
+    "phrase": "Had the team communicated more effectively, the project’s outcome might have improved",
+    "translate": "Se a equipe tivesse se comunicado de forma mais eficaz, o resultado do projeto poderia ter melhorado",
+    "p1": "Had the team communicated more effectively",
+    "p2": "The project’s outcome might have improved"
+  },
+  {
+    "phrase": "Seldom have I witnessed such dedication and perseverance in a single individual",
+    "translate": "Raramente presenciei tanta dedicação e perseverança em um único indivíduo",
+    "p1": "Seldom have I witnessed",
+    "p2": "Such dedication and perseverance in a single individual"
+  },
+  {
+    "phrase": "Had the government implemented the reforms earlier, economic growth could have accelerated",
+    "translate": "Se o governo tivesse implementado as reformas antes, o crescimento econômico poderia ter acelerado",
+    "p1": "Had the government implemented the reforms earlier",
+    "p2": "Economic growth could have accelerated"
+  },
+  {
+    "phrase": "The novel explores the intricacies of human emotions in a profound manner",
+    "translate": "O romance explora as complexidades das emoções humanas de forma profunda",
+    "p1": "The novel explores the intricacies",
+    "p2": "Of human emotions in a profound manner"
+  },
+  {
+    "phrase": "Only by addressing root causes can lasting solutions be achieved",
+    "translate": "Só ao abordar as causas raiz é que soluções duradouras podem ser alcançadas",
+    "p1": "Only by addressing root causes",
+    "p2": "Can lasting solutions be achieved"
+  },
+  {
+    "phrase": "Despite the complexity of the problem, a consensus was eventually reached",
+    "translate": "Apesar da complexidade do problema, um consenso foi eventualmente alcançado",
+    "p1": "Despite the complexity of the problem",
+    "p2": "A consensus was eventually reached"
+  },
+  {
+    "phrase": "If the scientists had collaborated more, breakthroughs might have occurred sooner",
+    "translate": "Se os cientistas tivessem colaborado mais, avanços poderiam ter ocorrido mais cedo",
+    "p1": "If the scientists had collaborated more",
+    "p2": "Breakthroughs might have occurred sooner"
+  },
+  {
+    "phrase": "The rapid urbanization has significantly altered the cultural landscape",
+    "translate": "A rápida urbanização alterou significativamente o panorama cultural",
+    "p1": "The rapid urbanization",
+    "p2": "Has significantly altered the cultural landscape"
+  },
+  {
+    "phrase": "No sooner had the meeting started than unexpected issues were raised",
+    "translate": "Mal a reunião começou e questões inesperadas foram levantadas",
+    "p1": "No sooner had the meeting started",
+    "p2": "Than unexpected issues were raised"
+  },
+  {
+    "phrase": "Only through critical thinking can one navigate the complexities of modern life",
+    "translate": "Só através do pensamento crítico se pode navegar pelas complexidades da vida moderna",
+    "p1": "Only through critical thinking",
+    "p2": "Can one navigate the complexities of modern life"
+  },
+  {
+    "phrase": "Had she expressed her concerns earlier, misunderstandings might have been avoided",
+    "translate": "Se ela tivesse expressado suas preocupações antes, mal-entendidos poderiam ter sido evitados",
+    "p1": "Had she expressed her concerns earlier",
+    "p2": "Misunderstandings might have been avoided"
+  }
+
+
+
+
+
+]

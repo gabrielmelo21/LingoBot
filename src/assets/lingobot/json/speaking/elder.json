@@ -1,32 +1,489 @@
 [
   {
-    "skill1": "I feel the energy",
-    "skill2": "The thunder is near",
-    "skill3": "I am healing now",
-    "skill4": "I moved in time"
+    "skill1": "I steel my resolve",
+    "skill2": "Lightning splits the heavens",
+    "skill3": "I mend with fierce focus",
+    "skill4": "I slip past with ease"
   },
   {
-    "skill1": "There is power here",
-    "skill2": "I hear the thunder",
-    "skill3": "I feel better now",
-    "skill4": "You cannot hit me"
+    "skill1": "I ground myself in will",
+    "skill2": "The sky rips with thunder",
+    "skill3": "I channel swift renewal",
+    "skill4": "I move like a whisper"
   },
   {
-    "skill1": "My hands have light",
-    "skill2": "Lightning is coming",
-    "skill3": "Rest is good for me",
-    "skill4": "I moved very fast"
+    "skill1": "I lock into pure intent",
+    "skill2": "Electric fury erupts above",
+    "skill3": "My strength returns in waves",
+    "skill4": "I weave through the danger"
   },
   {
-    "skill1": "That was strong power",
-    "skill2": "The storm is here",
-    "skill3": "My health is back",
-    "skill4": "I did a fast move"
+    "skill1": "I brace my spirit tight",
+    "skill2": "The storm lashes out",
+    "skill3": "Power floods back fast",
+    "skill4": "I dodge in perfect rhythm"
   },
   {
-    "skill1": "Energy is in me now",
-    "skill2": "Thunder is in the sky",
-    "skill3": "I feel more strong",
-    "skill4": "That was almost a hit"
+    "skill1": "I forge my inner flame",
+    "skill2": "Skyfire tears the clouds",
+    "skill3": "Energy flows like fire",
+    "skill4": "I vanish between strikes"
+  },
+  {
+    "skill1": "I center all my power",
+    "skill2": "A bolt screams down",
+    "skill3": "Wounds close in seconds",
+    "skill4": "I blur past the threat"
+  },
+  {
+    "skill1": "I bind my focus tight",
+    "skill2": "Lightning cuts the dark",
+    "skill3": "Life surges through me",
+    "skill4": "I slip out clean"
+  },
+  {
+    "skill1": "I burn with silent fury",
+    "skill2": "Thunder hammers the earth",
+    "skill3": "Healing comes like instinct",
+    "skill4": "I dodge without thought"
+  },
+  {
+    "skill1": "I channel raw purpose",
+    "skill2": "Stormlight shatters silence",
+    "skill3": "Strength returns in full",
+    "skill4": "I ghost through the strike"
+  },
+  {
+    "skill1": "I lock into the flow",
+    "skill2": "The sky cracks wide open",
+    "skill3": "My core pulses with life",
+    "skill4": "I pivot just in time"
+  },
+    {
+      "skill1": "I’m locked in, no flinch",
+      "skill2": "Sky’s crackin’—I’m lit",
+      "skill3": "Patchin’ up, quick n’ clean",
+      "skill4": "Slipped right past ‘em"
+    },
+    {
+      "skill1": "Braced up, heart steady",
+      "skill2": "Lightning don’t ask twice",
+      "skill3": "Back in the game, fast",
+      "skill4": "Gone before they blinked"
+    },
+    {
+      "skill1": "Ain’t breakin’ today",
+      "skill2": "Storm’s got teeth—I bite back",
+      "skill3": "Heal it, seal it, move on",
+      "skill4": "Whoosh—I’m smoke"
+    },
+    {
+      "skill1": "Built different—holdin’ firm",
+      "skill2": "Boom—sky said enough",
+      "skill3": "Snapped back like nothin’",
+      "skill4": "They swing, I vanish"
+    },
+    {
+      "skill1": "I eat pressure for breakfast",
+      "skill2": "Sky’s throwin’ hands now",
+      "skill3": "Fix it up, good as new",
+      "skill4": "Too slick to catch"
+    },
+    {
+      "skill1": "Steady hands, sharp mind",
+      "skill2": "Heard that crack? That’s me",
+      "skill3": "Healin’ like it’s reflex",
+      "skill4": "Slidin’ right through it"
+    },
+    {
+      "skill1": "Nerves? Nah—I’m ice",
+      "skill2": "Bolt hit? I’m still standin’",
+      "skill3": "Back in one breath",
+      "skill4": "I dipped clean out"
+    },
+    {
+      "skill1": "Ain’t movin’, not now",
+      "skill2": "Sky lit up—I answered",
+      "skill3": "Quick patch, back in it",
+      "skill4": "In, out, gone"
+    },
+    {
+      "skill1": "I stand—storm don’t scare me",
+      "skill2": "Flash! That all you got?",
+      "skill3": "No break, just bounce back",
+      "skill4": "Slipped right under"
+    },
+    {
+      "skill1": "I got grit in my veins",
+      "skill2": "The sky’s spittin’ rage",
+      "skill3": "One breath, all better",
+      "skill4": "I ghosted the hit"
+    },
+  {
+    "skill1": "Ain’t budgin’, not an inch",
+    "skill2": "Sky lit—so did I",
+    "skill3": "Patched up on instinct",
+    "skill4": "I was gone before the echo"
+  },
+  {
+    "skill1": "Rock solid, zero shake",
+    "skill2": "Crack boom—right on cue",
+    "skill3": "Zip zap, all healed",
+    "skill4": "They blinked—I dipped"
+  },
+  {
+    "skill1": "Pressure? That’s breakfast",
+    "skill2": "Sky screamed—I smiled",
+    "skill3": "Wrap it, tag it, done",
+    "skill4": "Outta sight, just like that"
+  },
+  {
+    "skill1": "Didn’t flinch, didn’t fade",
+    "skill2": "Storm clapped—I clapped back",
+    "skill3": "Touch-up mid-fight? Easy",
+    "skill4": "Vanish, clean as wind"
+  },
+  {
+    "skill1": "Steel nerves, baby",
+    "skill2": "Thunder talkin’ big",
+    "skill3": "Fixed fast, stayed sharp",
+    "skill4": "Dodged that like a whisper"
+  },
+  {
+    "skill1": "Locked in, stone cold",
+    "skill2": "Flash popped—I’m cooler",
+    "skill3": "Hit me? Watch me fix it",
+    "skill4": "Poof—nothin’ but shadows"
+  },
+  {
+    "skill1": "Solid as the silence",
+    "skill2": "Whole sky’s on fire",
+    "skill3": "Quick heal, no fuss",
+    "skill4": "Slid out like silk"
+  },
+  {
+    "skill1": "Took it, tanked it, chillin’",
+    "skill2": "Sky’s mad? Cute.",
+    "skill3": "Zip-patched and rollin’",
+    "skill4": "Gone in the wind"
+  },
+  {
+    "skill1": "Didn’t even blink",
+    "skill2": "Boom’s here—so am I",
+    "skill3": "Healin’ while movin’",
+    "skill4": "Evaded smooth like jazz"
+  },
+  {
+    "skill1": "I hold, storm folds",
+    "skill2": "Sky roared—I smirked",
+    "skill3": "Healed up mid-chaos",
+    "skill4": "Slipped out slick"
+  },
+  {
+    "skill1": "Didn’t budge, not once",
+    "skill2": "Sky cracked—I grinned",
+    "skill3": "Patched mid-spin, no sweat",
+    "skill4": "Ghosted clean, no trace"
+  },
+  {
+    "skill1": "Held tight, no shake",
+    "skill2": "Flash hit—I didn’t flinch",
+    "skill3": "Heal on the fly, done",
+    "skill4": "Gone like I was never there"
+  },
+  {
+    "skill1": "Cool as stone, still as night",
+    "skill2": "Sky popped—I kept walkin’",
+    "skill3": "Fixed up mid-mess",
+    "skill4": "Vanish slick, not a sound"
+  },
+  {
+    "skill1": "No fear, no flinch",
+    "skill2": "Thunder tried—I tried harder",
+    "skill3": "Snap-heal, right on beat",
+    "skill4": "Moved out like smoke"
+  },
+  {
+    "skill1": "Chill held, never cracked",
+    "skill2": "Sky lit—I didn’t blink",
+    "skill3": "Quick fix, still standin’",
+    "skill4": "Slipped past clean"
+  },
+  {
+    "skill1": "Hard lock, no cracks",
+    "skill2": "Light popped—I didn’t move",
+    "skill3": "Zip fix—back at it",
+    "skill4": "Evade clean, real quiet"
+  },
+  {
+    "skill1": "Didn’t shake, didn’t stutter",
+    "skill2": "Sky screamed—I laughed",
+    "skill3": "Taped up fast",
+    "skill4": "Out before they saw"
+  },
+  {
+    "skill1": "Stone still, no doubt",
+    "skill2": "Storm flashed—I stared back",
+    "skill3": "Healed up like nothin’",
+    "skill4": "Ghosted mid-move"
+  },
+  {
+    "skill1": "Zero sway, full steel",
+    "skill2": "Boom dropped—I stayed",
+    "skill3": "Snap patch, go again",
+    "skill4": "Gone with the flick"
+  },
+  {
+    "skill1": "Didn’t fold, not once",
+    "skill2": "Flash hit—eyes open",
+    "skill3": "Fast fix, faster hands",
+    "skill4": "Slid out in silence"
+  },
+  {
+    "skill1": "Didn’t blink, not once",
+    "skill2": "Sky blew—I stood tall",
+    "skill3": "Slapped a patch mid-run",
+    "skill4": "Vanished smooth, no echo"
+  },
+  {
+    "skill1": "Stone cold, start to end",
+    "skill2": "Boom came—I didn’t flinch",
+    "skill3": "Healed on instinct",
+    "skill4": "Gone like I was smoke"
+  },
+  {
+    "skill1": "Still as a shadow",
+    "skill2": "Lightning cracked—I smirked",
+    "skill3": "Quick patch, no pause",
+    "skill4": "Dipped out clean"
+  },
+  {
+    "skill1": "Didn’t move, didn’t care",
+    "skill2": "Storm hit—I stayed cool",
+    "skill3": "Mid-fight fix—easy",
+    "skill4": "Evaded like wind"
+  },
+  {
+    "skill1": "Locked in, eyes dry",
+    "skill2": "Flash hit—I breathed steady",
+    "skill3": "One-touch fix",
+    "skill4": "Slid out, gone ghost"
+  },
+  {
+    "skill1": "No twitch, no tell",
+    "skill2": "Thunder screamed—I didn’t",
+    "skill3": "Hands healed before I thought",
+    "skill4": "Moved like mist"
+  },
+  {
+    "skill1": "Didn’t flinch, not built for that",
+    "skill2": "Sky tore—I stood still",
+    "skill3": "Fast patch, clean work",
+    "skill4": "Out quiet, no trail"
+  },
+  {
+    "skill1": "Full calm, no cracks",
+    "skill2": "Flash snapped—I grinned",
+    "skill3": "Repaired mid-stride",
+    "skill4": "Gone before the dust"
+  },
+  {
+    "skill1": "Zero panic, all focus",
+    "skill2": "Sky lit—I didn’t care",
+    "skill3": "Snap fix, back up",
+    "skill4": "Ghost exit, real slick"
+  },
+  {
+    "skill1": "Solid spine, steady breath",
+    "skill2": "Storm tried—I didn’t budge",
+    "skill3": "Quick hands, clean patch",
+    "skill4": "Evaded like nothin’"
+  },
+  {
+    "skill1": "Didn’t blink, just watched",
+    "skill2": "Sky cracked—I grinned back",
+    "skill3": "Hands moved on their own",
+    "skill4": "Slipped out, no trace"
+  },
+  {
+    "skill1": "Didn’t flinch, wasn’t new",
+    "skill2": "Flash hit—I didn’t care",
+    "skill3": "Fixed it mid-dodge",
+    "skill4": "Out like smoke in wind"
+  },
+  {
+    "skill1": "Held steady, like always",
+    "skill2": "Storm yelled—I stayed cold",
+    "skill3": "Patch done before breath",
+    "skill4": "Vanished clean, no print"
+  },
+  {
+    "skill1": "Dead calm, no shift",
+    "skill2": "Boom came—I blinked slow",
+    "skill3": "Quick heal, no stall",
+    "skill4": "Slid out like oil"
+  },
+  {
+    "skill1": "Still as glass",
+    "skill2": "Thunder hit—I stood bored",
+    "skill3": "Repaired mid-roll",
+    "skill4": "Gone like a ghost’s breath"
+  },
+  {
+    "skill1": "Didn’t move—what for?",
+    "skill2": "Flash popped—I kept talkin’",
+    "skill3": "Stitched up mid-slide",
+    "skill4": "Gone before you noticed"
+  },
+  {
+    "skill1": "Didn’t even twitch",
+    "skill2": "Sky screamed—I just smiled",
+    "skill3": "Patched on reflex",
+    "skill4": "Gone, not a whisper"
+  },
+  {
+    "skill1": "Kept my cool—always do",
+    "skill2": "Crash hit—I just blinked",
+    "skill3": "Healed fast, no thought",
+    "skill4": "Vanished like mist"
+  },
+  {
+    "skill1": "Didn’t budge, not once",
+    "skill2": "Flash came—I stayed steady",
+    "skill3": "Clean fix on instinct",
+    "skill4": "Evaporated quiet"
+  },
+  {
+    "skill1": "Flat calm, locked in",
+    "skill2": "Blast popped—I didn’t care",
+    "skill3": "Touched up mid-run",
+    "skill4": "Gone, like I was never there"
+  },
+  {
+    "skill1": "Didn’t blink—clocked it all",
+    "skill2": "Light flashed—I smirked",
+    "skill3": "Patched mid-stride",
+    "skill4": "Out, no sound"
+  },
+  {
+    "skill1": "Chill face, hot zone",
+    "skill2": "Bang came—I exhaled",
+    "skill3": "Fixed it clean",
+    "skill4": "Ghosted out smooth"
+  },
+  {
+    "skill1": "Didn’t shift an inch",
+    "skill2": "Flash cracked—I grinned",
+    "skill3": "Repaired on the move",
+    "skill4": "Gone ‘fore they looked"
+  },
+  {
+    "skill1": "Eyes locked—no flinch",
+    "skill2": "Crash hit—I barely cared",
+    "skill3": "Healed while runnin’",
+    "skill4": "Vanished slick"
+  },
+  {
+    "skill1": "Stood still—storm passed",
+    "skill2": "Noise hit—I just stared",
+    "skill3": "Did it in stride",
+    "skill4": "Slipped through clean"
+  },
+  {
+    "skill1": "Didn’t freeze, didn’t care",
+    "skill2": "Flash screamed—I didn’t",
+    "skill3": "Mid-dodge patch",
+    "skill4": "Gone, air-tight"
+  },
+  {
+    "skill1": "Solid—storm or not",
+    "skill2": "Sky blew—I exhaled",
+    "skill3": "Quick fix, no talk",
+    "skill4": "Out, soft steps"
+  },
+  {
+    "skill1": "Didn’t twitch—not built for that",
+    "skill2": "Thunder cracked—I blinked slow",
+    "skill3": "Fixed while falling",
+    "skill4": "Gone like static"
+  },
+  {
+    "skill1": "Steady breath, cold look",
+    "skill2": "Blast came—I yawned",
+    "skill3": "Touch-and-go patch",
+    "skill4": "Gone before echo"
+  },
+  {
+    "skill1": "Still eyes, sharp hands",
+    "skill2": "Flash popped—I smirked",
+    "skill3": "Heal mid-run, no lag",
+    "skill4": "Ghosted between beats"
+  },
+  {
+    "skill1": "Didn’t flinch, just watched",
+    "skill2": "It hit—I shrugged",
+    "skill3": "Patched mid-flip",
+    "skill4": "Slid out quiet"
+  },
+  {
+    "skill1": "Eyes steady, breath thin",
+    "skill2": "Boom? I was chill",
+    "skill3": "Quick patch, no pause",
+    "skill4": "Gone, no trace"
+  },
+  {
+    "skill1": "Storm hit—I grinned",
+    "skill2": "Didn’t blink, didn’t care",
+    "skill3": "Fixed mid-leap",
+    "skill4": "Ghosted clean"
+  },
+  {
+    "skill1": "Calm in the chaos",
+    "skill2": "Crash landed—I kept movin’",
+    "skill3": "Slick fix, no words",
+    "skill4": "Slipped out like smoke"
+  },
+  {
+    "skill1": "Still as stone",
+    "skill2": "Sound burst—I didn’t budge",
+    "skill3": "Heal on the fly",
+    "skill4": "Gone ‘fore they noticed"
+  },
+  {
+    "skill1": "No twitch, no fear",
+    "skill2": "Flash came—I cracked a joke",
+    "skill3": "Patched while runnin’",
+    "skill4": "Vanished clean"
+  },
+  {
+    "skill1": "Didn’t move, didn’t flinch",
+    "skill2": "Pop went—I barely blinked",
+    "skill3": "Mid-action patch",
+    "skill4": "Out slick"
+  },
+  {
+    "skill1": "Chill face, fast hands",
+    "skill2": "Sound hit—I exhaled slow",
+    "skill3": "Fix fast, talk later",
+    "skill4": "Gone like wind"
+  },
+  {
+    "skill1": "Didn’t freeze—was ready",
+    "skill2": "Boom snapped—I grinned",
+    "skill3": "Quick patch mid-slide",
+    "skill4": "Ghost step, no echo"
+  },
+  {
+    "skill1": "Unshaken, locked in",
+    "skill2": "Flash roared—I smirked",
+    "skill3": "Clean patch, full speed",
+    "skill4": "Vanished cool"
   }
+
+
+
+
+
+
+
 ]

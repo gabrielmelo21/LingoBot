@@ -1,0 +1,602 @@
+[
+  {
+    "phrase": "They are watching TV now",
+    "translate": "Eles estão assistindo TV agora",
+    "p1": "They are watching",
+    "p2": "TV now"
+  },
+  {
+    "phrase": "I have fixed my bike",
+    "translate": "Eu consertei minha bicicleta",
+    "p1": "I have fixed",
+    "p2": "My bike"
+  },
+  {
+    "phrase": "You are reading an interesting book",
+    "translate": "Você está lendo um livro interessante",
+    "p1": "You are reading",
+    "p2": "An interesting book"
+  },
+  {
+    "phrase": "He is buying fresh food",
+    "translate": "Ele está comprando comida fresca",
+    "p1": "He is buying",
+    "p2": "Fresh food"
+  },
+  {
+    "phrase": "We are listening to music",
+    "translate": "Nós estamos ouvindo música",
+    "p1": "We are listening",
+    "p2": "To music"
+  },
+  {
+    "phrase": "She has opened all the windows",
+    "translate": "Ela abriu todas as janelas",
+    "p1": "She has opened",
+    "p2": "All the windows"
+  },
+  {
+    "phrase": "It has been raining since morning",
+    "translate": "Está chovendo desde a manhã",
+    "p1": "It has been raining",
+    "p2": "Since morning"
+  },
+  {
+    "phrase": "They have cleaned the whole house",
+    "translate": "Eles limparam a casa toda",
+    "p1": "They have cleaned",
+    "p2": "The whole house"
+  },
+  {
+    "phrase": "You have called all your friends",
+    "translate": "Você ligou para todos os seus amigos",
+    "p1": "You have called",
+    "p2": "All your friends"
+  },
+  {
+    "phrase": "I was painting the wall yesterday",
+    "translate": "Eu estava pintando a parede ontem",
+    "p1": "I was painting",
+    "p2": "The wall yesterday"
+  },
+  {
+    "phrase": "They were watching a movie",
+    "translate": "Eles estavam assistindo a um filme",
+    "p1": "They were watching",
+    "p2": "A movie"
+  },
+  {
+    "phrase": "I have been fixing bikes all day",
+    "translate": "Eu estive consertando bicicletas o dia todo",
+    "p1": "I have been fixing",
+    "p2": "Bikes all day"
+  },
+  {
+    "phrase": "You are always reading something new",
+    "translate": "Você está sempre lendo algo novo",
+    "p1": "You are always reading",
+    "p2": "Something new"
+  },
+  {
+    "phrase": "He will buy healthy food tomorrow",
+    "translate": "Ele comprará comida saudável amanhã",
+    "p1": "He will buy",
+    "p2": "Healthy food tomorrow"
+  },
+  {
+    "phrase": "We were listening to that song yesterday",
+    "translate": "Nós estávamos ouvindo aquela música ontem",
+    "p1": "We were listening",
+    "p2": "To that song yesterday"
+  },
+  {
+    "phrase": "She was opening the window when I arrived",
+    "translate": "Ela estava abrindo a janela quando eu cheguei",
+    "p1": "She was opening",
+    "p2": "The window when I arrived"
+  },
+  {
+    "phrase": "It will rain later in the afternoon",
+    "translate": "Vai chover mais tarde à tarde",
+    "p1": "It will rain",
+    "p2": "Later in the afternoon"
+  },
+  {
+    "phrase": "They had cleaned the room before dinner",
+    "translate": "Eles tinham limpado o quarto antes do jantar",
+    "p1": "They had cleaned",
+    "p2": "The room before dinner"
+  },
+  {
+    "phrase": "You will call them after the meeting",
+    "translate": "Você vai ligar para eles depois da reunião",
+    "p1": "You will call",
+    "p2": "Them after the meeting"
+  },
+  {
+    "phrase": "I had painted the wall before you came",
+    "translate": "Eu tinha pintado a parede antes de você chegar",
+    "p1": "I had painted",
+    "p2": "The wall before you came"
+  },
+  {
+    "phrase": "They have been watching TV since 6 PM",
+    "translate": "Eles estão assistindo TV desde as 18h",
+    "p1": "They have been watching",
+    "p2": "TV since 6 PM"
+  },
+  {
+    "phrase": "I was fixing my bike when it started raining",
+    "translate": "Eu estava consertando minha bicicleta quando começou a chover",
+    "p1": "I was fixing",
+    "p2": "My bike when it started raining"
+  },
+  {
+    "phrase": "You should read more technical books",
+    "translate": "Você deveria ler mais livros técnicos",
+    "p1": "You should read",
+    "p2": "More technical books"
+  },
+  {
+    "phrase": "He has been buying organic food lately",
+    "translate": "Ele tem comprado comida orgânica ultimamente",
+    "p1": "He has been buying",
+    "p2": "Organic food lately"
+  },
+  {
+    "phrase": "We had been listening to the radio all morning",
+    "translate": "Nós estávamos ouvindo rádio a manhã toda",
+    "p1": "We had been listening",
+    "p2": "To the radio all morning"
+  },
+  {
+    "phrase": "She might open the windows later",
+    "translate": "Ela talvez abra as janelas mais tarde",
+    "p1": "She might open",
+    "p2": "The windows later"
+  },
+  {
+    "phrase": "It could rain during the night",
+    "translate": "Pode chover durante a noite",
+    "p1": "It could rain",
+    "p2": "During the night"
+  },
+  {
+    "phrase": "They would clean the house every weekend",
+    "translate": "Eles limpavam a casa todo fim de semana",
+    "p1": "They would clean",
+    "p2": "The house every weekend"
+  },
+  {
+    "phrase": "You must call your friends before leaving",
+    "translate": "Você deve ligar para seus amigos antes de sair",
+    "p1": "You must call",
+    "p2": "Your friends before leaving"
+  },
+  {
+    "phrase": "I am going to paint the wall tomorrow",
+    "translate": "Eu vou pintar a parede amanhã",
+    "p1": "I am going to paint",
+    "p2": "The wall tomorrow"
+  },
+  {
+    "phrase": "They are watching a documentary about space",
+    "translate": "Eles estão assistindo a um documentário sobre o espaço",
+    "p1": "They are watching",
+    "p2": "A documentary about space"
+  },
+  {
+    "phrase": "I would fix your bike if I had the tools",
+    "translate": "Eu consertaria sua bicicleta se eu tivesse as ferramentas",
+    "p1": "I would fix",
+    "p2": "Your bike if I had the tools"
+  },
+  {
+    "phrase": "You were reading a very interesting article",
+    "translate": "Você estava lendo um artigo muito interessante",
+    "p1": "You were reading",
+    "p2": "A very interesting article"
+  },
+  {
+    "phrase": "He has bought new food for his dog",
+    "translate": "Ele comprou comida nova para o cachorro dele",
+    "p1": "He has bought",
+    "p2": "New food for his dog"
+  },
+  {
+    "phrase": "We will be listening to the presentation soon",
+    "translate": "Nós estaremos ouvindo a apresentação em breve",
+    "p1": "We will be listening",
+    "p2": "To the presentation soon"
+  },
+  {
+    "phrase": "She had already opened the windows before I arrived",
+    "translate": "Ela já tinha aberto as janelas antes de eu chegar",
+    "p1": "She had already opened",
+    "p2": "The windows before I arrived"
+  },
+  {
+    "phrase": "It has been raining since early morning",
+    "translate": "Está chovendo desde o começo da manhã",
+    "p1": "It has been raining",
+    "p2": "Since early morning"
+  },
+  {
+    "phrase": "They might have cleaned the room by now",
+    "translate": "Eles talvez já tenham limpado o quarto",
+    "p1": "They might have cleaned",
+    "p2": "The room by now"
+  },
+  {
+    "phrase": "You are going to call your best friend tonight",
+    "translate": "Você vai ligar para seu melhor amigo hoje à noite",
+    "p1": "You are going to call",
+    "p2": "Your best friend tonight"
+  },
+  {
+    "phrase": "I was painting the wall when the power went out",
+    "translate": "Eu estava pintando a parede quando a luz acabou",
+    "p1": "I was painting",
+    "p2": "The wall when the power went out"
+  },
+  {
+    "phrase": "They have been watching the news for an hour",
+    "translate": "Eles estão assistindo ao noticiário há uma hora",
+    "p1": "They have been watching",
+    "p2": "The news for an hour"
+  },
+  {
+    "phrase": "I would have fixed the bike if I had time",
+    "translate": "Eu teria consertado a bicicleta se tivesse tempo",
+    "p1": "I would have fixed",
+    "p2": "The bike if I had time"
+  },
+  {
+    "phrase": "You should have read the instructions carefully",
+    "translate": "Você deveria ter lido as instruções com atenção",
+    "p1": "You should have read",
+    "p2": "The instructions carefully"
+  },
+  {
+    "phrase": "He might be buying groceries at the moment",
+    "translate": "Ele pode estar comprando mantimentos no momento",
+    "p1": "He might be buying",
+    "p2": "Groceries at the moment"
+  },
+  {
+    "phrase": "We will have listened to the entire album by tomorrow",
+    "translate": "Nós teremos ouvido o álbum inteiro até amanhã",
+    "p1": "We will have listened",
+    "p2": "To the entire album by tomorrow"
+  },
+  {
+    "phrase": "She has already opened all the windows",
+    "translate": "Ela já abriu todas as janelas",
+    "p1": "She has already opened",
+    "p2": "All the windows"
+  },
+  {
+    "phrase": "It was raining when they arrived",
+    "translate": "Estava chovendo quando eles chegaram",
+    "p1": "It was raining",
+    "p2": "When they arrived"
+  },
+  {
+    "phrase": "They would have cleaned the rooms if they had more time",
+    "translate": "Eles teriam limpado os quartos se tivessem mais tempo",
+    "p1": "They would have cleaned",
+    "p2": "The rooms if they had more time"
+  },
+  {
+    "phrase": "You must have called your friends by now",
+    "translate": "Você deve ter ligado para seus amigos até agora",
+    "p1": "You must have called",
+    "p2": "Your friends by now"
+  },
+  {
+    "phrase": "I am going to be painting the walls all day tomorrow",
+    "translate": "Eu vou estar pintando as paredes o dia todo amanhã",
+    "p1": "I am going to be painting",
+    "p2": "The walls all day tomorrow"
+  },
+  {
+    "phrase": "They had been watching TV before dinner",
+    "translate": "Eles estavam assistindo TV antes do jantar",
+    "p1": "They had been watching",
+    "p2": "TV before dinner"
+  },
+  {
+    "phrase": "I might fix the bike this weekend if I have time",
+    "translate": "Eu talvez conserte a bicicleta neste fim de semana se eu tiver tempo",
+    "p1": "I might fix",
+    "p2": "The bike this weekend if I have time"
+  },
+  {
+    "phrase": "You were reading books when I called",
+    "translate": "Você estava lendo livros quando eu liguei",
+    "p1": "You were reading",
+    "p2": "Books when I called"
+  },
+  {
+    "phrase": "He should have bought fresh food yesterday",
+    "translate": "Ele deveria ter comprado comida fresca ontem",
+    "p1": "He should have bought",
+    "p2": "Fresh food yesterday"
+  },
+  {
+    "phrase": "We have been listening to that album all day",
+    "translate": "Nós estamos ouvindo aquele álbum o dia todo",
+    "p1": "We have been listening to",
+    "p2": "That album all day"
+  },
+  {
+    "phrase": "She will open the windows as soon as she arrives",
+    "translate": "Ela vai abrir as janelas assim que ela chegar",
+    "p1": "She will open",
+    "p2": "The windows as soon as she arrives"
+  },
+  {
+    "phrase": "It has been raining heavily since last night",
+    "translate": "Está chovendo muito desde a noite passada",
+    "p1": "It has been raining heavily",
+    "p2": "Since last night"
+  },
+  {
+    "phrase": "They would clean the rooms if they weren’t so tired",
+    "translate": "Eles limparem os quartos se não estivessem tão cansados",
+    "p1": "They would clean",
+    "p2": "The rooms if they weren’t so tired"
+  },
+  {
+    "phrase": "You must have called your friends earlier today",
+    "translate": "Você deve ter ligado para seus amigos mais cedo hoje",
+    "p1": "You must have called",
+    "p2": "Your friends earlier today"
+  },
+  {
+    "phrase": "I am going to paint the walls after lunch",
+    "translate": "Eu vou pintar as paredes depois do almoço",
+    "p1": "I am going to paint",
+    "p2": "The walls after lunch"
+  },
+  {
+    "phrase": "They had already been watching TV when I arrived",
+    "translate": "Eles já estavam assistindo TV quando eu cheguei",
+    "p1": "They had already been watching",
+    "p2": "TV when I arrived"
+  },
+  {
+    "phrase": "I could fix the bike if I knew how",
+    "translate": "Eu poderia consertar a bicicleta se soubesse como",
+    "p1": "I could fix",
+    "p2": "The bike if I knew how"
+  },
+  {
+    "phrase": "You have been reading that book for days",
+    "translate": "Você está lendo aquele livro há dias",
+    "p1": "You have been reading",
+    "p2": "That book for days"
+  },
+  {
+    "phrase": "He might have bought food at the market",
+    "translate": "Ele pode ter comprado comida no mercado",
+    "p1": "He might have bought",
+    "p2": "Food at the market"
+  },
+  {
+    "phrase": "We will have been listening to music for hours by then",
+    "translate": "Nós teremos estado ouvindo música por horas até lá",
+    "p1": "We will have been listening to",
+    "p2": "Music for hours by then"
+  },
+  {
+    "phrase": "She was opening the windows when the phone rang",
+    "translate": "Ela estava abrindo as janelas quando o telefone tocou",
+    "p1": "She was opening",
+    "p2": "The windows when the phone rang"
+  },
+  {
+    "phrase": "It should be raining soon according to the forecast",
+    "translate": "Deveria estar chovendo em breve, segundo a previsão",
+    "p1": "It should be raining",
+    "p2": "Soon according to the forecast"
+  },
+  {
+    "phrase": "They could have cleaned the rooms before the guests arrived",
+    "translate": "Eles poderiam ter limpado os quartos antes dos convidados chegarem",
+    "p1": "They could have cleaned",
+    "p2": "The rooms before the guests arrived"
+  },
+  {
+    "phrase": "You must be calling your friends right now",
+    "translate": "Você deve estar ligando para seus amigos agora mesmo",
+    "p1": "You must be calling",
+    "p2": "Your friends right now"
+  },
+  {
+    "phrase": "I was going to paint the walls, but it started raining",
+    "translate": "Eu ia pintar as paredes, mas começou a chover",
+    "p1": "I was going to paint",
+    "p2": "The walls, but it started raining"
+  },
+  {
+    "phrase": "They have been watching TV since this morning",
+    "translate": "Eles estão assistindo TV desde esta manhã",
+    "p1": "They have been watching",
+    "p2": "TV since this morning"
+  },
+  {
+    "phrase": "I will fix the bike as soon as I get the tools",
+    "translate": "Eu vou consertar a bicicleta assim que pegar as ferramentas",
+    "p1": "I will fix",
+    "p2": "The bike as soon as I get the tools"
+  },
+  {
+    "phrase": "You were reading books when the power went out",
+    "translate": "Você estava lendo livros quando acabou a luz",
+    "p1": "You were reading",
+    "p2": "Books when the power went out"
+  },
+  {
+    "phrase": "He has bought food for the party",
+    "translate": "Ele comprou comida para a festa",
+    "p1": "He has bought",
+    "p2": "Food for the party"
+  },
+  {
+    "phrase": "We will listen to music after dinner",
+    "translate": "Nós vamos ouvir música depois do jantar",
+    "p1": "We will listen",
+    "p2": "To music after dinner"
+  },
+  {
+    "phrase": "She opens windows every morning",
+    "translate": "Ela abre janelas toda manhã",
+    "p1": "She opens",
+    "p2": "Windows every morning"
+  },
+  {
+    "phrase": "It is raining heavily outside",
+    "translate": "Está chovendo forte lá fora",
+    "p1": "It is raining",
+    "p2": "Heavily outside"
+  },
+  {
+    "phrase": "They cleaned the rooms before noon",
+    "translate": "Eles limparam os quartos antes do meio-dia",
+    "p1": "They cleaned",
+    "p2": "The rooms before noon"
+  },
+  {
+    "phrase": "You called your friends yesterday",
+    "translate": "Você ligou para seus amigos ontem",
+    "p1": "You called",
+    "p2": "Your friends yesterday"
+  },
+  {
+    "phrase": "I painted the walls last weekend",
+    "translate": "Eu pintei as paredes no fim de semana passado",
+    "p1": "I painted",
+    "p2": "The walls last weekend"
+  },
+  {
+    "phrase": "They have been watching TV for several hours",
+    "translate": "Eles estão assistindo TV há várias horas",
+    "p1": "They have been watching",
+    "p2": "TV for several hours"
+  },
+  {
+    "phrase": "I might fix the bike if the parts arrive tomorrow",
+    "translate": "Eu talvez conserte a bicicleta se as peças chegarem amanhã",
+    "p1": "I might fix",
+    "p2": "The bike if the parts arrive tomorrow"
+  },
+  {
+    "phrase": "You were reading books when I knocked on the door",
+    "translate": "Você estava lendo livros quando eu bati na porta",
+    "p1": "You were reading",
+    "p2": "Books when I knocked on the door"
+  },
+  {
+    "phrase": "He has bought food from the new supermarket",
+    "translate": "Ele comprou comida do supermercado novo",
+    "p1": "He has bought",
+    "p2": "Food from the new supermarket"
+  },
+  {
+    "phrase": "We will be listening to music during the road trip",
+    "translate": "Nós estaremos ouvindo música durante a viagem de carro",
+    "p1": "We will be listening to",
+    "p2": "Music during the road trip"
+  },
+  {
+    "phrase": "She was opening the windows when the guests arrived",
+    "translate": "Ela estava abrindo as janelas quando os convidados chegaram",
+    "p1": "She was opening",
+    "p2": "The windows when the guests arrived"
+  },
+  {
+    "phrase": "It should rain tomorrow according to the forecast",
+    "translate": "Deve chover amanhã segundo a previsão",
+    "p1": "It should rain",
+    "p2": "Tomorrow according to the forecast"
+  },
+  {
+    "phrase": "They could have cleaned the rooms before the event started",
+    "translate": "Eles poderiam ter limpado os quartos antes do evento começar",
+    "p1": "They could have cleaned",
+    "p2": "The rooms before the event started"
+  },
+  {
+    "phrase": "You must be calling your friends right now",
+    "translate": "Você deve estar ligando para seus amigos agora mesmo",
+    "p1": "You must be calling",
+    "p2": "Your friends right now"
+  },
+  {
+    "phrase": "I was going to paint the walls, but I ran out of paint",
+    "translate": "Eu ia pintar as paredes, mas fiquei sem tinta",
+    "p1": "I was going to paint",
+    "p2": "The walls, but I ran out of paint"
+  },
+  {
+    "phrase": "They have been watching TV since the afternoon",
+    "translate": "Eles estão assistindo TV desde a tarde",
+    "p1": "They have been watching",
+    "p2": "TV since the afternoon"
+  },
+  {
+    "phrase": "I will fix the bike when I get the chance",
+    "translate": "Eu vou consertar a bicicleta quando tiver oportunidade",
+    "p1": "I will fix",
+    "p2": "The bike when I get the chance"
+  },
+  {
+    "phrase": "You had been reading books before you fell asleep",
+    "translate": "Você estava lendo livros antes de dormir",
+    "p1": "You had been reading",
+    "p2": "Books before you fell asleep"
+  },
+  {
+    "phrase": "He might buy food if he goes to the market",
+    "translate": "Ele pode comprar comida se for ao mercado",
+    "p1": "He might buy",
+    "p2": "Food if he goes to the market"
+  },
+  {
+    "phrase": "We were listening to music when the power went out",
+    "translate": "Nós estávamos ouvindo música quando acabou a luz",
+    "p1": "We were listening to",
+    "p2": "Music when the power went out"
+  },
+  {
+    "phrase": "She has opened the windows to let fresh air in",
+    "translate": "Ela abriu as janelas para deixar entrar ar fresco",
+    "p1": "She has opened",
+    "p2": "The windows to let fresh air in"
+  },
+  {
+    "phrase": "It was raining when I left the house",
+    "translate": "Estava chovendo quando saí de casa",
+    "p1": "It was raining",
+    "p2": "When I left the house"
+  },
+  {
+    "phrase": "They have cleaned the rooms before the guests arrived",
+    "translate": "Eles limparam os quartos antes dos convidados chegarem",
+    "p1": "They have cleaned",
+    "p2": "The rooms before the guests arrived"
+  },
+  {
+    "phrase": "You will call your friends after the meeting",
+    "translate": "Você vai ligar para seus amigos depois da reunião",
+    "p1": "You will call",
+    "p2": "Your friends after the meeting"
+  },
+  {
+    "phrase": "I am painting the walls this weekend",
+    "translate": "Eu estou pintando as paredes neste fim de semana",
+    "p1": "I am painting",
+    "p2": "The walls this weekend"
+  }
+]

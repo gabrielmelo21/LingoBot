@@ -1,32 +1,604 @@
 [
   {
-    "skill1": "I feel the energy",
-    "skill2": "The thunder is near",
-    "skill3": "I am healing now",
-    "skill4": "I moved in time"
+    "skill1": "I harness inner power",
+    "skill2": "The tempest approaches fast",
+    "skill3": "My wounds mend swiftly",
+    "skill4": "I evade with precision"
   },
   {
-    "skill1": "There is power here",
-    "skill2": "I hear the thunder",
-    "skill3": "I feel better now",
-    "skill4": "You cannot hit me"
+    "skill1": "I channel focused energy",
+    "skill2": "Lightning fractures the sky",
+    "skill3": "Vitality surges within",
+    "skill4": "I react with agility"
   },
   {
-    "skill1": "My hands have light",
-    "skill2": "Lightning is coming",
-    "skill3": "Rest is good for me",
-    "skill4": "I moved very fast"
+    "skill1": "I steady my resolve",
+    "skill2": "Thunder cracks sharply",
+    "skill3": "Healing flows deeply",
+    "skill4": "I move with finesse"
   },
   {
-    "skill1": "That was strong power",
-    "skill2": "The storm is here",
-    "skill3": "My health is back",
-    "skill4": "I did a fast move"
+    "skill1": "I summon strength within",
+    "skill2": "Storm clouds gather swiftly",
+    "skill3": "My health restores fast",
+    "skill4": "I dodge with expertise"
   },
   {
-    "skill1": "Energy is in me now",
-    "skill2": "Thunder is in the sky",
-    "skill3": "I feel more strong",
-    "skill4": "That was almost a hit"
+    "skill1": "I prepare my spirit fully",
+    "skill2": "The sky rumbles fiercely",
+    "skill3": "Energy replenishes quickly",
+    "skill4": "I step with accuracy"
+  },
+  {
+    "skill1": "I focus my entire mind",
+    "skill2": "Lightning strikes violently",
+    "skill3": "Healing power intensifies",
+    "skill4": "I move with exactness"
+  },
+  {
+    "skill1": "I command my inner force",
+    "skill2": "Thunder roars intensely",
+    "skill3": "Vital strength returns swiftly",
+    "skill4": "I evade with sharpness"
+  },
+  {
+    "skill1": "I brace against the tempest",
+    "skill2": "Storm rages overhead",
+    "skill3": "Health regenerates strongly",
+    "skill4": "I react with skillfulness"
+  },
+  {
+    "skill1": "I summon all my will",
+    "skill2": "The tempest strikes hard",
+    "skill3": "Healing surges deeply",
+    "skill4": "I dodge with quickness"
+  },
+  {
+    "skill1": "I channel focused strength",
+    "skill2": "Lightning flashes brightly",
+    "skill3": "Energy floods my body",
+    "skill4": "I move with sharp reflexes"
+  },
+  {
+    "skill1": "I gather relentless focus",
+    "skill2": "Thunder shakes the heavens",
+    "skill3": "My wounds close rapidly",
+    "skill4": "I slip through attacks"
+  },
+  {
+    "skill1": "I ignite my inner fire",
+    "skill2": "Storm clouds swirl violently",
+    "skill3": "Vitality flows deeply",
+    "skill4": "I dodge with sharp reflexes"
+  },
+  {
+    "skill1": "I draw power from within",
+    "skill2": "Lightning cleaves the air",
+    "skill3": "Healing surges through me",
+    "skill4": "I move with swift precision"
+  },
+  {
+    "skill1": "I steady my burning spirit",
+    "skill2": "Thunder crashes relentlessly",
+    "skill3": "Energy restores quickly",
+    "skill4": "I evade with grace"
+  },
+  {
+    "skill1": "I command my focused mind",
+    "skill2": "The storm unleashes fury",
+    "skill3": "Health regenerates fast",
+    "skill4": "I react with keen senses"
+  },
+  {
+    "skill1": "I summon unyielding strength",
+    "skill2": "Lightning splits the sky",
+    "skill3": "Healing power floods in",
+    "skill4": "I dodge with expert skill"
+  },
+  {
+    "skill1": "I channel intense focus",
+    "skill2": "Thunder roars with might",
+    "skill3": "Vital energy returns",
+    "skill4": "I move with perfect timing"
+  },
+  {
+    "skill1": "I brace for incoming force",
+    "skill2": "Storm rages fiercely",
+    "skill3": "Health mends swiftly",
+    "skill4": "I slip through danger"
+  },
+  {
+    "skill1": "I focus with unwavering will",
+    "skill2": "Lightning flashes sharply",
+    "skill3": "Energy replenishes fast",
+    "skill4": "I react with precision"
+  },
+  {
+    "skill1": "I summon fierce resolve",
+    "skill2": "Thunder shakes the ground",
+    "skill3": "Healing surges powerfully",
+    "skill4": "I dodge with fluid grace"
+  },
+  {
+    "skill1": "I invoke my deepest strength",
+    "skill2": "The tempest roars loudly",
+    "skill3": "Vitality floods my veins",
+    "skill4": "I maneuver with finesse"
+  },
+  {
+    "skill1": "I gather unbreakable focus",
+    "skill2": "Lightning tears the clouds",
+    "skill3": "Healing power restores swiftly",
+    "skill4": "I evade with sharp reflexes"
+  },
+  {
+    "skill1": "I steady my mind fully",
+    "skill2": "Thunder cracks with force",
+    "skill3": "Energy courses through me",
+    "skill4": "I move with sharp precision"
+  },
+  {
+    "skill1": "I summon relentless will",
+    "skill2": "Storm strikes with fury",
+    "skill3": "Health renews rapidly",
+    "skill4": "I dodge with expert skill"
+  },
+  {
+    "skill1": "I focus all my power",
+    "skill2": "Lightning flashes violently",
+    "skill3": "Healing surges deeply",
+    "skill4": "I react with swift grace"
+  },
+  {
+    "skill1": "I brace against the storm",
+    "skill2": "Thunder roars intensely",
+    "skill3": "Vital strength returns fast",
+    "skill4": "I move with keen senses"
+  },
+  {
+    "skill1": "I channel fierce energy",
+    "skill2": "The tempest crashes near",
+    "skill3": "Health restores strongly",
+    "skill4": "I evade with fluid motion"
+  },
+  {
+    "skill1": "I prepare my spirit fully",
+    "skill2": "Lightning strikes sharply",
+    "skill3": "Healing power flows quick",
+    "skill4": "I dodge with precise timing"
+  },
+  {
+    "skill1": "I command unwavering focus",
+    "skill2": "Storm rumbles fiercely",
+    "skill3": "Energy floods my body",
+    "skill4": "I move with exactness"
+  },
+  {
+    "skill1": "I summon power within",
+    "skill2": "Thunder shakes the earth",
+    "skill3": "Vitality returns swiftly",
+    "skill4": "I react with sharp reflexes"
+  },
+  {
+    "skill1": "I master my inner force",
+    "skill2": "Lightning strikes with power",
+    "skill3": "My wounds heal deeply",
+    "skill4": "I evade with swift grace"
+  },
+  {
+    "skill1": "I focus with clear intent",
+    "skill2": "Thunder crashes loudly",
+    "skill3": "Energy restores quickly",
+    "skill4": "I move with keen precision"
+  },
+  {
+    "skill1": "I gather strength calmly",
+    "skill2": "Storm approaches fast",
+    "skill3": "Healing flows strongly",
+    "skill4": "I dodge with smooth moves"
+  },
+  {
+    "skill1": "I channel relentless will",
+    "skill2": "The tempest strikes hard",
+    "skill3": "Vitality returns fast",
+    "skill4": "I react with sharp speed"
+  },
+  {
+    "skill1": "I summon focused energy",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Health mends rapidly",
+    "skill4": "I slip through attacks"
+  },
+  {
+    "skill1": "I steady my burning spirit",
+    "skill2": "Thunder roars fiercely",
+    "skill3": "Energy floods my veins",
+    "skill4": "I move with perfect timing"
+  },
+  {
+    "skill1": "I brace for incoming storm",
+    "skill2": "Storm rumbles loudly",
+    "skill3": "Healing surges deeply",
+    "skill4": "I evade with sharp reflexes"
+  },
+  {
+    "skill1": "I command inner focus",
+    "skill2": "Lightning splits the sky",
+    "skill3": "Vital energy flows strong",
+    "skill4": "I dodge with expert skill"
+  },
+  {
+    "skill1": "I prepare my mind fully",
+    "skill2": "Thunder cracks sharply",
+    "skill3": "Health returns quickly",
+    "skill4": "I move with fluid grace"
+  },
+  {
+    "skill1": "I summon unyielding strength",
+    "skill2": "The tempest rages near",
+    "skill3": "Energy heals deeply",
+    "skill4": "I react with keen senses"
+  },
+  {
+    "skill1": "I summon focused power",
+    "skill2": "Lightning crashes loud",
+    "skill3": "My wounds close fast",
+    "skill4": "I dodge with sharp skill"
+  },
+  {
+    "skill1": "I gather calm resolve",
+    "skill2": "Thunder strikes with force",
+    "skill3": "Energy fills my soul",
+    "skill4": "I move with quick reflex"
+  },
+  {
+    "skill1": "I channel inner strength",
+    "skill2": "Storm sweeps the land",
+    "skill3": "Healing flows like tide",
+    "skill4": "I evade with smooth moves"
+  },
+  {
+    "skill1": "I brace for the lightning",
+    "skill2": "Thunder shakes the air",
+    "skill3": "Vitality returns fast",
+    "skill4": "I slip through attacks"
+  },
+  {
+    "skill1": "I focus my energy now",
+    "skill2": "Storm clouds gather near",
+    "skill3": "Health recovers swiftly",
+    "skill4": "I react with sharpness"
+  },
+  {
+    "skill1": "I summon strength within",
+    "skill2": "Lightning splits the sky",
+    "skill3": "Healing power restores",
+    "skill4": "I dodge with great skill"
+  },
+  {
+    "skill1": "I steady my burning will",
+    "skill2": "Thunder rolls fiercely",
+    "skill3": "Energy surges deeply",
+    "skill4": "I move with precision"
+  },
+  {
+    "skill1": "I command my spirit now",
+    "skill2": "The tempest roars close",
+    "skill3": "Health returns strong",
+    "skill4": "I evade with finesse"
+  },
+  {
+    "skill1": "I gather focused might",
+    "skill2": "Storm rumbles loudly",
+    "skill3": "Vitality floods in",
+    "skill4": "I move with quickness"
+  },
+  {
+    "skill1": "I channel inner fire",
+    "skill2": "Lightning strikes sharply",
+    "skill3": "Healing flows swiftly",
+    "skill4": "I react with sharp moves"
+  },
+  {
+    "skill1": "I focus all my power",
+    "skill2": "Thunder shakes the ground",
+    "skill3": "Energy heals quickly",
+    "skill4": "I dodge with quick reflex"
+  },
+  {
+    "skill1": "I summon strength inside",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Health restores deeply",
+    "skill4": "I move with sharp grace"
+  },
+  {
+    "skill1": "I gather calm energy",
+    "skill2": "Storm rolls through fast",
+    "skill3": "Healing flows strong",
+    "skill4": "I evade with smooth moves"
+  },
+  {
+    "skill1": "I brace for incoming force",
+    "skill2": "Thunder crashes near",
+    "skill3": "Vitality returns fast",
+    "skill4": "I slip through danger"
+  },
+  {
+    "skill1": "I channel fierce focus",
+    "skill2": "Lightning strikes hard",
+    "skill3": "Energy floods my veins",
+    "skill4": "I react with keen speed"
+  },
+  {
+    "skill1": "I steady my inner will",
+    "skill2": "Storm rumbles loudly",
+    "skill3": "Health mends quickly",
+    "skill4": "I dodge with expert skill"
+  },
+  {
+    "skill1": "I summon my true strength",
+    "skill2": "Thunder roars fiercely",
+    "skill3": "Healing surges deep",
+    "skill4": "I move with fluid grace"
+  },
+  {
+    "skill1": "I focus my sharp mind",
+    "skill2": "Lightning flashes near",
+    "skill3": "Vital energy returns",
+    "skill4": "I evade with perfect timing"
+  },
+  {
+    "skill1": "I gather relentless power",
+    "skill2": "Storm shakes the sky",
+    "skill3": "Energy heals deeply",
+    "skill4": "I react with sharp reflexes"
+  },
+  {
+    "skill1": "I brace my spirit firm",
+    "skill2": "Thunder cracks with might",
+    "skill3": "Health returns quickly",
+    "skill4": "I dodge with swift moves"
+  },
+  {
+    "skill1": "I harness my full strength",
+    "skill2": "Lightning splits the clouds",
+    "skill3": "Healing energy flows",
+    "skill4": "I evade with sharp focus"
+  },
+  {
+    "skill1": "I focus my inner power",
+    "skill2": "Thunder shakes the earth",
+    "skill3": "Vitality fills my veins",
+    "skill4": "I move with quick precision"
+  },
+  {
+    "skill1": "I gather steady resolve",
+    "skill2": "Storm rumbles nearby",
+    "skill3": "Energy mends my wounds",
+    "skill4": "I dodge with smooth agility"
+  },
+  {
+    "skill1": "I brace against the storm",
+    "skill2": "Lightning strikes fast",
+    "skill3": "Health recovers strongly",
+    "skill4": "I slip through attacks swiftly"
+  },
+  {
+    "skill1": "I summon focused will",
+    "skill2": "Thunder rolls with force",
+    "skill3": "Healing powers surge",
+    "skill4": "I react with sharp moves"
+  },
+  {
+    "skill1": "I steady my burning spirit",
+    "skill2": "Storm crashes loudly",
+    "skill3": "Vital energy flows",
+    "skill4": "I evade with expert skill"
+  },
+  {
+    "skill1": "I command strength within",
+    "skill2": "Lightning flashes bright",
+    "skill3": "Energy flows deep",
+    "skill4": "I move with fluid grace"
+  },
+  {
+    "skill1": "I gather relentless focus",
+    "skill2": "Thunder shakes the sky",
+    "skill3": "Health returns quickly",
+    "skill4": "I dodge with perfect timing"
+  },
+  {
+    "skill1": "I channel my true power",
+    "skill2": "Storm rumbles near",
+    "skill3": "Healing surges fast",
+    "skill4": "I react with keen senses"
+  },
+  {
+    "skill1": "I prepare my spirit strong",
+    "skill2": "Lightning strikes sharp",
+    "skill3": "Vitality returns deep",
+    "skill4": "I evade with swift moves"
+  },
+  {
+    "skill1": "I summon enduring power",
+    "skill2": "Thunder cracks the sky",
+    "skill3": "Healing light restores",
+    "skill4": "I dodge with keen focus"
+  },
+  {
+    "skill1": "I focus with steady mind",
+    "skill2": "Lightning flashes near",
+    "skill3": "Energy fills my soul",
+    "skill4": "I move with swift grace"
+  },
+  {
+    "skill1": "I gather inner strength",
+    "skill2": "Storm rumbles fiercely",
+    "skill3": "Health returns quickly",
+    "skill4": "I evade with sharp reflex"
+  },
+  {
+    "skill1": "I brace for the tempest",
+    "skill2": "Thunder roars loudly",
+    "skill3": "Vitality surges deep",
+    "skill4": "I slip through attacks"
+  },
+  {
+    "skill1": "I channel fierce will",
+    "skill2": "Lightning strikes fast",
+    "skill3": "Healing flows strongly",
+    "skill4": "I react with expert skill"
+  },
+  {
+    "skill1": "I steady my spirit firm",
+    "skill2": "Storm crashes near",
+    "skill3": "Energy mends my wounds",
+    "skill4": "I dodge with fluid moves"
+  },
+  {
+    "skill1": "I command my true strength",
+    "skill2": "Thunder shakes the earth",
+    "skill3": "Health returns fast",
+    "skill4": "I move with sharp precision"
+  },
+  {
+    "skill1": "I gather relentless power",
+    "skill2": "Lightning splits the clouds",
+    "skill3": "Healing surges deep",
+    "skill4": "I evade with quick reflex"
+  },
+  {
+    "skill1": "I prepare my mind fully",
+    "skill2": "Storm rumbles nearby",
+    "skill3": "Vital energy flows",
+    "skill4": "I dodge with expert timing"
+  },
+  {
+    "skill1": "I summon steady focus",
+    "skill2": "Thunder cracks with might",
+    "skill3": "Energy heals swiftly",
+    "skill4": "I react with sharp moves"
+  },
+  {
+    "skill1": "I harness unwavering resolve",
+    "skill2": "Lightning dances across the sky",
+    "skill3": "Healing light flows fast",
+    "skill4": "I evade with perfect grace"
+  },
+  {
+    "skill1": "I summon fierce inner fire",
+    "skill2": "Thunder echoes through the storm",
+    "skill3": "Vitality pulses strong",
+    "skill4": "I dodge with swift accuracy"
+  },
+  {
+    "skill1": "I gather strength from within",
+    "skill2": "The tempest howls around me",
+    "skill3": "Energy rushes to restore",
+    "skill4": "I move with flawless precision"
+  },
+  {
+    "skill1": "I focus my blazing will",
+    "skill2": "Lightning cuts through night",
+    "skill3": "Healing flows like a river",
+    "skill4": "I react with lightning speed"
+  },
+  {
+    "skill1": "I channel the storm’s might",
+    "skill2": "Thunder crashes above",
+    "skill3": "Vital strength surges in",
+    "skill4": "I slip through danger swiftly"
+  },
+  {
+    "skill1": "I brace with iron spirit",
+    "skill2": "Storm winds rise fast",
+    "skill3": "Energy heals my core",
+    "skill4": "I evade with clean movement"
+  },
+  {
+    "skill1": "I command absolute focus",
+    "skill2": "Lightning rips the clouds",
+    "skill3": "My wounds mend instantly",
+    "skill4": "I dodge with swift control"
+  },
+  {
+    "skill1": "I ignite unwavering courage",
+    "skill2": "Thunder rolls without end",
+    "skill3": "Healing restores deeply",
+    "skill4": "I react with clear instinct"
+  },
+  {
+    "skill1": "I summon bold determination",
+    "skill2": "The tempest spirals in",
+    "skill3": "Energy floods in waves",
+    "skill4": "I move with quick mastery"
+  },
+  {
+    "skill1": "I harness focused energy",
+    "skill2": "Storm flashes all around",
+    "skill3": "Vitality flows swiftly",
+    "skill4": "I evade with perfect rhythm"
+  },
+  {
+    "skill1": "I ignite my inner strength",
+    "skill2": "Lightning dances across the sky",
+    "skill3": "Healing flows with force",
+    "skill4": "I dodge with fluid motion"
+  },
+  {
+    "skill1": "I focus my spirit deeply",
+    "skill2": "Thunder crashes above me",
+    "skill3": "Vitality restores fast",
+    "skill4": "I evade with swift grace"
+  },
+  {
+    "skill1": "I summon unwavering power",
+    "skill2": "Storm clouds spiral high",
+    "skill3": "Energy pulses through me",
+    "skill4": "I react with perfect precision"
+  },
+  {
+    "skill1": "I gather my fierce will",
+    "skill2": "Lightning arcs violently",
+    "skill3": "Health returns with speed",
+    "skill4": "I move with sharpened instinct"
+  },
+  {
+    "skill1": "I channel steady energy",
+    "skill2": "Thunder echoes across the land",
+    "skill3": "Healing light fills me",
+    "skill4": "I dodge with perfect grace"
+  },
+  {
+    "skill1": "I draw from deep resolve",
+    "skill2": "The tempest howls near",
+    "skill3": "Vital energy rushes in",
+    "skill4": "I slip through with finesse"
+  },
+  {
+    "skill1": "I harness burning focus",
+    "skill2": "Lightning cracks the sky",
+    "skill3": "Energy surges through me",
+    "skill4": "I evade with smooth steps"
+  },
+  {
+    "skill1": "I command the fire within",
+    "skill2": "Storm winds scream loudly",
+    "skill3": "Healing comes swiftly",
+    "skill4": "I react with clean precision"
+  },
+  {
+    "skill1": "I gather full concentration",
+    "skill2": "Thunder roars over head",
+    "skill3": "Health restores with power",
+    "skill4": "I dodge with agile motion"
+  },
+  {
+    "skill1": "I channel my pure intent",
+    "skill2": "The sky breaks with lightning",
+    "skill3": "Vitality flows strong",
+    "skill4": "I move with expert timing"
   }
+
+
 ]

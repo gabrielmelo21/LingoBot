@@ -28,5 +28,396 @@
     "skill2": "Thunder is in the sky",
     "skill3": "I feel more strong",
     "skill4": "That was almost a hit"
+  },
+    {
+      "skill1": "I like to learn",
+      "skill2": "The sun is bright",
+      "skill3": "I feel good today",
+      "skill4": "I walk very fast"
+    },
+    {
+      "skill1": "This is my time",
+      "skill2": "The sky is blue",
+      "skill3": "I need some rest",
+      "skill4": "I run every day"
+    },
+    {
+      "skill1": "I see the light",
+      "skill2": "The wind is cold",
+      "skill3": "I am feeling well",
+      "skill4": "I jump very high"
+    },
+    {
+      "skill1": "I hear the sound",
+      "skill2": "The rain is soft",
+      "skill3": "I want to sleep",
+      "skill4": "I move with care"
+    },
+    {
+      "skill1": "I like this game",
+      "skill2": "The night is calm",
+      "skill3": "I feel very strong",
+      "skill4": "I step so quick"
+    },
+  {
+    "skill1": "I like to learn",
+    "skill2": "The sun is bright",
+    "skill3": "I feel good today",
+    "skill4": "I walk very fast"
+  },
+  {
+    "skill1": "This is my time",
+    "skill2": "The sky is blue",
+    "skill3": "I need some rest",
+    "skill4": "I run every day"
+  },
+  {
+    "skill1": "I see the light",
+    "skill2": "The wind is cold",
+    "skill3": "I am feeling well",
+    "skill4": "I jump very high"
+  },
+  {
+    "skill1": "I hear the sound",
+    "skill2": "The rain is soft",
+    "skill3": "I want to sleep",
+    "skill4": "I move with care"
+  },
+  {
+    "skill1": "I like this game",
+    "skill2": "The night is calm",
+    "skill3": "I feel very strong",
+    "skill4": "I step so quick"
+  },
+  {
+    "skill1": "I read a book",
+    "skill2": "The stars shine",
+    "skill3": "I rest my mind",
+    "skill4": "I run so fast"
+  },
+  {
+    "skill1": "I love this song",
+    "skill2": "The air is fresh",
+    "skill3": "I feel happy",
+    "skill4": "I walk with care"
+  },
+  {
+    "skill1": "I see my goal",
+    "skill2": "The sky is clear",
+    "skill3": "I heal today",
+    "skill4": "I jump with joy"
+  },
+  {
+    "skill1": "I feel the breeze",
+    "skill2": "The clouds move",
+    "skill3": "I rest well",
+    "skill4": "I move quickly"
+  },
+  {
+    "skill1": "I learn every day",
+    "skill2": "The sun is warm",
+    "skill3": "I get stronger",
+    "skill4": "I step lightly"
+  },
+  {
+    "skill1": "I like my job",
+    "skill2": "The air feels cool",
+    "skill3": "I rest every night",
+    "skill4": "I move with speed"
+  },
+  {
+    "skill1": "I work each day",
+    "skill2": "The sky is bright",
+    "skill3": "I feel calm now",
+    "skill4": "I run very fast"
+  },
+  {
+    "skill1": "I see the stars",
+    "skill2": "The wind is strong",
+    "skill3": "I feel so good",
+    "skill4": "I jump so far"
+  },
+  {
+    "skill1": "I walk with pride",
+    "skill2": "The clouds are white",
+    "skill3": "I heal with rest",
+    "skill4": "I step very light"
+  },
+  {
+    "skill1": "I love to read",
+    "skill2": "The night is dark",
+    "skill3": "I feel my strength",
+    "skill4": "I dodge so well"
+  },
+  {
+    "skill1": "I learn new words",
+    "skill2": "The sun feels warm",
+    "skill3": "I get well soon",
+    "skill4": "I move so quick"
+  },
+  {
+    "skill1": "I like to smile",
+    "skill2": "The rain feels soft",
+    "skill3": "I rest my body",
+    "skill4": "I jump so high"
+  },
+  {
+    "skill1": "I see the moon",
+    "skill2": "The air is fresh",
+    "skill3": "I heal my mind",
+    "skill4": "I run with joy"
+  },
+  {
+    "skill1": "I feel the sun",
+    "skill2": "The sky is clear",
+    "skill3": "I rest every day",
+    "skill4": "I step so fast"
+  },
+  {
+    "skill1": "I like this place",
+    "skill2": "The stars are bright",
+    "skill3": "I feel strong now",
+    "skill4": "I move with care"
+  },
+  {
+    "skill1": "I start my day",
+    "skill2": "The breeze is cool",
+    "skill3": "I take a break",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I watch the birds",
+    "skill2": "The sky is clear",
+    "skill3": "I feel refreshed",
+    "skill4": "I jump with ease"
+  },
+  {
+    "skill1": "I love the rain",
+    "skill2": "The sun is warm",
+    "skill3": "I rest my soul",
+    "skill4": "I run so quick"
+  },
+  {
+    "skill1": "I read each day",
+    "skill2": "The stars shine bright",
+    "skill3": "I heal my heart",
+    "skill4": "I step so light"
+  },
+  {
+    "skill1": "I smile today",
+    "skill2": "The air is fresh",
+    "skill3": "I feel so calm",
+    "skill4": "I move so fast"
+  },
+  {
+    "skill1": "I learn a lot",
+    "skill2": "The clouds are white",
+    "skill3": "I rest well now",
+    "skill4": "I dodge with skill"
+  },
+  {
+    "skill1": "I walk with joy",
+    "skill2": "The wind feels cool",
+    "skill3": "I feel so good",
+    "skill4": "I jump very high"
+  },
+  {
+    "skill1": "I like to run",
+    "skill2": "The sky is blue",
+    "skill3": "I heal today",
+    "skill4": "I move with care"
+  },
+  {
+    "skill1": "I see the moon",
+    "skill2": "The night is calm",
+    "skill3": "I rest my mind",
+    "skill4": "I step so quick"
+  },
+  {
+    "skill1": "I feel the wind",
+    "skill2": "The sun is bright",
+    "skill3": "I get stronger",
+    "skill4": "I run with joy"
+  },
+  {
+    "skill1": "I open the door",
+    "skill2": "The air smells fresh",
+    "skill3": "I take a deep breath",
+    "skill4": "I move with ease"
+  },
+  {
+    "skill1": "I watch the sky",
+    "skill2": "The clouds drift slow",
+    "skill3": "I feel calm now",
+    "skill4": "I jump so high"
+  },
+  {
+    "skill1": "I enjoy the sun",
+    "skill2": "The night is cool",
+    "skill3": "I rest my eyes",
+    "skill4": "I run very fast"
+  },
+  {
+    "skill1": "I read a story",
+    "skill2": "The stars shine bright",
+    "skill3": "I heal my soul",
+    "skill4": "I step with care"
+  },
+  {
+    "skill1": "I like my friends",
+    "skill2": "The breeze is soft",
+    "skill3": "I feel strong now",
+    "skill4": "I dodge with speed"
+  },
+  {
+    "skill1": "I learn new things",
+    "skill2": "The sun feels warm",
+    "skill3": "I rest my body",
+    "skill4": "I move quickly"
+  },
+  {
+    "skill1": "I smile today",
+    "skill2": "The rain is light",
+    "skill3": "I feel happy",
+    "skill4": "I jump with joy"
+  },
+  {
+    "skill1": "I see the moon",
+    "skill2": "The sky is clear",
+    "skill3": "I heal today",
+    "skill4": "I run with care"
+  },
+  {
+    "skill1": "I feel the breeze",
+    "skill2": "The clouds move fast",
+    "skill3": "I rest well now",
+    "skill4": "I step so light"
+  },
+  {
+    "skill1": "I love to read",
+    "skill2": "The night is calm",
+    "skill3": "I get stronger",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I start to learn",
+    "skill2": "The air is fresh",
+    "skill3": "I take my time",
+    "skill4": "I move so smooth"
+  },
+  {
+    "skill1": "I see the birds",
+    "skill2": "The sky is bright",
+    "skill3": "I feel at peace",
+    "skill4": "I jump so far"
+  },
+  {
+    "skill1": "I like to walk",
+    "skill2": "The wind is soft",
+    "skill3": "I rest my mind",
+    "skill4": "I run very fast"
+  },
+  {
+    "skill1": "I read books now",
+    "skill2": "The stars are bright",
+    "skill3": "I heal my heart",
+    "skill4": "I step with care"
+  },
+  {
+    "skill1": "I smile a lot",
+    "skill2": "The clouds are white",
+    "skill3": "I feel so calm",
+    "skill4": "I dodge with skill"
+  },
+  {
+    "skill1": "I learn each day",
+    "skill2": "The sun is warm",
+    "skill3": "I rest my body",
+    "skill4": "I move so quick"
+  },
+  {
+    "skill1": "I love to run",
+    "skill2": "The rain feels soft",
+    "skill3": "I feel better now",
+    "skill4": "I jump so high"
+  },
+  {
+    "skill1": "I see the moon",
+    "skill2": "The night is calm",
+    "skill3": "I heal my soul",
+    "skill4": "I run with joy"
+  },
+  {
+    "skill1": "I feel the sun",
+    "skill2": "The sky is clear",
+    "skill3": "I rest every day",
+    "skill4": "I step so fast"
+  },
+  {
+    "skill1": "I like this place",
+    "skill2": "The stars are bright",
+    "skill3": "I feel strong now",
+    "skill4": "I move with care"
+  },
+  {
+    "skill1": "I open my book",
+    "skill2": "The air feels light",
+    "skill3": "I take a breath",
+    "skill4": "I move with speed"
+  },
+  {
+    "skill1": "I watch the trees",
+    "skill2": "The sky is clear",
+    "skill3": "I feel refreshed",
+    "skill4": "I jump so far"
+  },
+  {
+    "skill1": "I like the sun",
+    "skill2": "The night is calm",
+    "skill3": "I rest my mind",
+    "skill4": "I run very fast"
+  },
+  {
+    "skill1": "I read with joy",
+    "skill2": "The stars shine bright",
+    "skill3": "I heal my soul",
+    "skill4": "I step so light"
+  },
+  {
+    "skill1": "I smile today",
+    "skill2": "The breeze is cool",
+    "skill3": "I feel so calm",
+    "skill4": "I move with grace"
+  },
+  {
+    "skill1": "I learn new words",
+    "skill2": "The clouds move slow",
+    "skill3": "I rest well now",
+    "skill4": "I dodge with skill"
+  },
+  {
+    "skill1": "I walk with pride",
+    "skill2": "The sun feels warm",
+    "skill3": "I feel better now",
+    "skill4": "I jump with joy"
+  },
+  {
+    "skill1": "I like to run",
+    "skill2": "The rain is soft",
+    "skill3": "I heal today",
+    "skill4": "I move so fast"
+  },
+  {
+    "skill1": "I see the moon",
+    "skill2": "The sky is blue",
+    "skill3": "I rest my body",
+    "skill4": "I run with care"
+  },
+  {
+    "skill1": "I feel the breeze",
+    "skill2": "The clouds are white",
+    "skill3": "I get stronger",
+    "skill4": "I step so quick"
   }
+
 ]
