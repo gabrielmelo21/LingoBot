@@ -317,6 +317,7 @@ export class ReadingComponent implements AfterViewInit{
       this.readingScroll = false;
       this.cena = 1;
     }
+    this.renderizar()
   }
 
 
