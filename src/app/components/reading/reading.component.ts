@@ -310,10 +310,12 @@ export class ReadingComponent implements AfterViewInit{
 
 
   openPergaminho(number: number) {
+    this.cena = 3;
     if (number===3){
       this.readingScroll = true;
     }else{
       this.readingScroll = false;
+      this.cena = 1;
     }
   }
 
