@@ -1,0 +1,25 @@
+
+  @ViewChild('video2') video2Ref!: ElementRef<HTMLVideoElement>;
+  // adicione outros vídeos conforme necessário
+  mudarCena(novaCena: number) {
+    this.cena = novaCena;
+
+    // Pare todos os vídeos
+    this.video2Ref.nativeElement.pause();
+    this.video2Ref.nativeElement.currentTime = 0;
+
+    // Aguarde um pouco para o Angular atualizar o DOM
+    setTimeout(() => {
+      switch (novaCena) {
+        case 2:
+          const v2 = this.video2Ref.nativeElement;
+          v2.currentTime = 0;
+          v2.muted = false; // ou true, se quiser continuar sem som
+          v2.play();
+          break;
+        // adicione os outros vídeos aqui
+      }
+    }, 50);
+  }
+
+

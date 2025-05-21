@@ -253,9 +253,9 @@ export class ReadingComponent implements AfterViewInit{
     if (texto.toLowerCase() === this.currentPassword.toLowerCase()) {
       // Senha correta, independente de maiúsculas/minúsculase3
       this.padlock = "assets/lingobot/cenas_na_masmorra/reading/padlock-open.png"
-
-       this.playSoundService.playOpenChest()
-      this.cena = 2;
+      this.mudarCena(2)
+      this.playSoundService.playOpenChest()
+      this.renderizar();
        this.elder = "assets/lingobot/elders/reading/opening_the_chest.png"
       setTimeout(() => {
         this.playSoundService. playChestWin()
@@ -309,6 +309,15 @@ export class ReadingComponent implements AfterViewInit{
 
 
 
+  openPergaminho(number: number) {
+    if (number===3){
+      this.readingScroll = true;
+    }else{
+      this.readingScroll = false;
+    }
+  }
+
+
   @ViewChild('video2') video2Ref!: ElementRef<HTMLVideoElement>;
   // adicione outros vídeos conforme necessário
   mudarCena(novaCena: number) {
@@ -331,8 +340,6 @@ export class ReadingComponent implements AfterViewInit{
       }
     }, 50);
   }
-
-
 
 
 }
