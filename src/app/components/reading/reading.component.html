@@ -1,6 +1,13 @@
-<video [hidden]="cena !== 2" autoplay class="background-video" preload="auto">
+<video
+  #video2
+  [hidden]="cena !== 2"
+  [muted]="true"
+  preload="auto"
+  class="background-video"
+>
   <source src="assets/lingobot/cenas_na_masmorra/reading/open-chest.mp4" type="video/mp4">
 </video>
+
 
 <img
   class="character-img"

@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild} from '@angular/core';
 import {PlaySoundService} from "../../services/play-sound.service";
 import {HttpClient} from "@angular/common/http";
 import {VocabEntry} from "../writing/writing.component";
@@ -25,7 +25,7 @@ interface SentencePair {
   templateUrl: './reading.component.html',
   styleUrls: ['./reading.component.css']
 })
-export class ReadingComponent {
+export class ReadingComponent implements AfterViewInit{
   cena: number = 1;
   isShaking = false;
   puzzleText: PuzzelText[] = [];
@@ -218,16 +218,8 @@ export class ReadingComponent {
 
 
 
-  mudarCena(number: number): void {
-    this.playSoundService.playCleanSound2()
-    this.cena = number;
 
-    if (number===3){
-      this.readingScroll = true;
-    }else{
-       this.readingScroll = false;
-    }
-  }
+
 
 
   askTip(){
@@ -291,5 +283,56 @@ export class ReadingComponent {
 
 
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ngAfterViewInit() {
+    // opcional: pause todos os vídeos inicialmente
+    this.video2Ref.nativeElement.pause();
+  }
+
+
+
+  @ViewChild('video2') video2Ref!: ElementRef<HTMLVideoElement>;
+  // adicione outros vídeos conforme necessário
+  mudarCena(novaCena: number) {
+    this.cena = novaCena;
+
+    // Pare todos os vídeos
+    this.video2Ref.nativeElement.pause();
+    this.video2Ref.nativeElement.currentTime = 0;
+
+    // Aguarde um pouco para o Angular atualizar o DOM
+    setTimeout(() => {
+      switch (novaCena) {
+        case 2:
+          const v2 = this.video2Ref.nativeElement;
+          v2.currentTime = 0;
+          v2.muted = false; // ou true, se quiser continuar sem som
+          v2.play();
+          break;
+        // adicione os outros vídeos aqui
+      }
+    }, 50);
+  }
+
+
+
 
 }
