@@ -155,7 +155,6 @@ checkQuest(){
      this.rechargeModal = !this.rechargeModal;
      this.loadBattery()
      this.renderizar();
-     console.log(this.rechargeValue);
 
 
   }
@@ -224,6 +223,7 @@ checkQuest(){
       this.currentBattery = userData.battery;
       console.log("Currenty battery -> ", this.currentBattery);
       this.setTowerSceneSources();
+      this.  setEnergyImage()
     });
 
 

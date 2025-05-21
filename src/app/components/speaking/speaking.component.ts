@@ -386,33 +386,18 @@ export class SpeakingComponent implements AfterViewInit {
       consoleDiv.innerText = this.logMessages.slice(-20).join('\n'); // Últimas 20 mensagens
     }
   }
+
   mudarCena(cena: number) {
     this.cena = cena;
-    const [src, shouldLoop] = this.getVideoData(cena);
-    this.currentSrc = src;
-    this.loop = shouldLoop;
-
-    this.cdr.detectChanges(); // força Angular a atualizar binding antes de manipular o vídeo
-
-    // Reinicia a reprodução
-    const video = this.videoPlayer.nativeElement;
-    video.load(); // força recarregar o vídeo
-    video.play(); // começa a tocar
-    this.renderTime(100);
+    this.renderizar();
   }
 
-  private getVideoData(cena: number): [string, boolean] {
-    switch (cena) {
-      case 1: return ['assets/lingobot/cenas_na_masmorra/speaking/waiting-attack.mp4', true];
-      case 2: return ['assets/lingobot/cenas_na_masmorra/speaking/eletric-thunder.mp4', false];
-      case 3: return ['assets/lingobot/cenas_na_masmorra/speaking/elder_atack.mp4', false];
-      case 4: return ['assets/lingobot/cenas_na_masmorra/speaking/eletric-atack-new.mp4', false];
-      case 5: return ['assets/lingobot/cenas_na_masmorra/speaking/heal.mp4', false];
-      case 6: return ['assets/lingobot/cenas_na_masmorra/speaking/dodge.mp4', false];
-      case 7: return ['assets/lingobot/cenas_na_masmorra/speaking/elder_defeat.mp4', false]
-      default: return ['', false];
-    }
-  }
+
+
+
+
+
+
    renderizar(){
     this.cdr.detectChanges();
   }

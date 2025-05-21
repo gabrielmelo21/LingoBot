@@ -81,3 +81,88 @@
   filter: drop-shadow(0 0 10px #00aaff) drop-shadow(0 0 20px #00aaff) drop-shadow(0 0 30px #00aaff);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.battery-bars {
+  position: absolute;
+  top: 10vh;
+  left: 5%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 2vh;
+  z-index: 10;
+}
+
+.battery-icon {
+  height: 60px;
+  width: auto;
+  border-radius: 50%;
+}
+
+.battery-bar-container {
+  display: flex;
+  gap: 0.5vh;
+  flex: 1;
+  align-items: center;
+  justify-content: start;
+}
+
+.battery-bar-img {
+  height: 36px;
+  width: auto;
+  transition: transform 0.2s ease;
+}
+
+.battery-bar-img:hover {
+  transform: scale(1.1);
+}
+
+
+.battery-consuming {
+  display: flex;
+  align-items: center; /* Alinha verticalmente */
+  gap: 8px; /* Espaçamento opcional entre o texto e o ícone */
+}
+
+.battery-text {
+  color: red;
+  margin: 0; /* Remove margens padrão */
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+.battery-icon {
+  width: 16%;
+  height: auto;
+}
+
+
+

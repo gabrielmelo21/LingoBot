@@ -62,10 +62,20 @@
 
 
 
-<div class="hp-container" *ngIf="quizSession">
-  <div class="hp-bar" [style.width.%]="hpPercent"></div>
-  <span class="hp-text">{{ currentHp }} / {{ maxHp }}</span>
+<div class="battery-bars" *ngIf="quizSession">
+  <img src="assets/lingobot/cenas_na_masmorra/speaking/lingobot.png" class="battery-icon">
+
+  <div class="battery-bar-container">
+    <img *ngFor="let bar of hpArray; let i = index"
+         [src]="i < currentHp
+           ? 'assets/lingobot/menu-icons/battery-on.png'
+           : 'assets/lingobot/menu-icons/battery-off.png'"
+         class="battery-bar-img">
+  </div>
 </div>
+
+
+
 
 
 

@@ -175,7 +175,7 @@ export class AuthService {
 
     localStorage.setItem(this.userKey, JSON.stringify(updatedUser));
     this.userSubject.next(updatedUser);
-    console.log("userKey foi atualizado -> " + localStorage.getItem(this.userKey));
+   // console.log("userKey foi atualizado -> " + localStorage.getItem(this.userKey));
   }
 
 
@@ -466,7 +466,7 @@ export class AuthService {
     localStorage.setItem(this.userKey, JSON.stringify(updatedUser));
     this.userSubject.next(updatedUser); // Atualiza o BehaviorSubject
 
-    console.log("MetasDiarias atualizadas ->", updatedMetas);
+    //console.log("MetasDiarias atualizadas ->", updatedMetas);
   }
 
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
 import {HttpClient} from "@angular/common/http";
@@ -37,17 +37,18 @@ export class WritingComponent {
   srcExercises: string = '';
   finalGoldReward: number = 10;
   finalXpReward: number = 10000;
-  maxHp: number = 100;
-  currentHp: number = 100;
-  hpPercent: number = 100;
-
+  maxHp: number = 5;
+  currentHp: number = 5;
+  hpArray: number[] = [];
 
 
 
   constructor(private router: Router,
                private playSoundService: PlaySoundService,
                private http: HttpClient,
-              private authService: AuthService) {
+               private authService: AuthService,
+              private cdr: ChangeDetectorRef
+  ) {
 
      setTimeout(() =>{
          this.cena = 2;
@@ -56,7 +57,6 @@ export class WritingComponent {
 
 
     this.setupHpByDifficulty();
-    this.updateHpBar();
 
 
 
@@ -101,12 +101,18 @@ export class WritingComponent {
     }
 
 
-   console.log(this.srcExercises);
+  // console.log(this.srcExercises);
     this.loadExercises();
 
 
    } // end constructor
 
+
+
+
+  renderizar(){
+    this.cdr.detectChanges();
+  }
 
 
 
@@ -124,17 +130,17 @@ export class WritingComponent {
         this.maxHp = 5; break;
     }
     this.currentHp = this.maxHp;
+    this.hpArray = Array(this.maxHp).fill(0);
   }
 
 
 
   private updateHpBar() {
-    this.hpPercent = (this.currentHp / this.maxHp) * 100;
+    this.currentHp = Math.max(this.currentHp - 1, 0);
   }
 
   onWrongAnswer() {
     if (this.currentHp > 0) {
-      this.currentHp--;
       this.updateHpBar();
       if (this.currentHp === 0) {
         this.handleDeath();
@@ -172,6 +178,7 @@ export class WritingComponent {
       .subscribe(data => {
         this.exercicios = data;
       });
+    this.renderizar();
   }
 
 
@@ -265,6 +272,7 @@ export class WritingComponent {
       this.startAnimation()
     }
 
+    this.renderizar();
     return resultado;
   }
 
@@ -322,7 +330,7 @@ export class WritingComponent {
 
 
 
-
+    this.renderizar();
 
   }
 
@@ -331,7 +339,8 @@ export class WritingComponent {
     this.playSoundService.playCleanSound2();
     this.selectedOption = index;
     this.optionIsSelected = true;
-    console.log('Selecionado:', this.alternativas[index]);
+    //console.log('Selecionado:', this.alternativas[index]);
+    this.renderizar();
   }
 
 
@@ -366,7 +375,7 @@ export class WritingComponent {
     }
   }
 
-
+    this.renderizar();
   }
 
 

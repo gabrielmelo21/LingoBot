@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {PlaySoundService} from "../../services/play-sound.service";
 import {HttpClient} from "@angular/common/http";
 import {VocabEntry} from "../writing/writing.component";
@@ -51,7 +51,8 @@ export class ReadingComponent {
   constructor(private playSoundService: PlaySoundService,
               private http: HttpClient,
               private router: Router,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private cdr: ChangeDetectorRef) {
 
     this.playSoundService.playReadingTheme()
 
@@ -107,6 +108,13 @@ export class ReadingComponent {
   }
 
 
+
+  renderizar(){
+    this.cdr.detectChanges();
+  }
+
+
+
   private loadExercises(): void {
     this.http.get<PuzzelText[]>(this.srcExercises)
       .subscribe(data => {
@@ -157,6 +165,7 @@ export class ReadingComponent {
     setTimeout(() => {
       this.isShaking = false;
     }, 500); // mesma duração da animação
+    this.renderizar();
   }
 
   glowActive: boolean = false;
@@ -227,6 +236,7 @@ export class ReadingComponent {
        this.dialog = 15;
        this.glowActive = false;
        this.tipCounts = 0;
+       this.renderizar();
     }
   }
 

@@ -23,7 +23,7 @@ export class PlaySoundService implements OnDestroy {
     this.playAudio("soundtrack/city_theme.mp3", false);
   }
   playReadingTheme(){
-    this.playAudio("soundtrack/reading_theme.mp3", false);
+    this.playAudio("soundtrack/reading_theme2.mp3", false);
   }
   playTowerSoundTrack() {
     this.playAudio("soundtrack/tower_theme2.mp3", false);
@@ -301,7 +301,7 @@ export class PlaySoundService implements OnDestroy {
       audio.volume = 0.02;
       audio.loop = true;
     } else if (filename === "soundtrack/puzzle_solving.mp3"
-      || filename === "soundtrack/reading_theme.mp3") {
+      || filename === "soundtrack/reading_theme2.mp3") {
       audio.volume = 0.13;
       audio.loop = true;
     } else if (filename === "soundtrack/boss_fight2.mp3") {

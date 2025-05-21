@@ -1,4 +1,4 @@
-<video *ngIf="cena == 2" autoplay  class="background-video">
+<video [hidden]="cena !== 2" autoplay class="background-video" preload="auto">
   <source src="assets/lingobot/cenas_na_masmorra/reading/open-chest.mp4" type="video/mp4">
 </video>
 
@@ -26,6 +26,13 @@
   </div>
 
 </div>
+
+<div class="baloon-container" *ngIf="dialog == 15" style="z-index: 99999;">
+  <div class="dialog-baloon">
+    <p>Aqui vai uma dica é: "{{ this.currentTip }}" </p>
+  </div>
+</div>
+
 
 
 
