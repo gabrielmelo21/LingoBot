@@ -23,71 +23,39 @@
 
 
 <!-- Cena 1 - waiting-attack.mp4 (loop: true) -->
-<video
-  [hidden]="cena !== 1"
-  preload="auto"
-  src="assets/lingobot/cenas_na_masmorra/speaking/waiting-attack.mp4"
-  autoplay
-  loop
-></video>
+<video #video1 [hidden]="cena !== 1" preload="auto" autoplay loop muted class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/speaking/waiting-attack.mp4" type="video/mp4" />
+</video>
 
-<!-- Cena 2 - eletric-thunder.mp4 (loop: false) -->
-<video
-  [hidden]="cena !== 2"
-  preload="auto"
-  src="assets/lingobot/cenas_na_masmorra/speaking/eletric-thunder.mp4"
-  autoplay
+<!-- Cena 2 -->
+<video #video2 [hidden]="cena !== 2" preload="auto" autoplay muted class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/speaking/eletric-thunder.mp4" type="video/mp4" />
+</video>
 
-></video>
+<!-- Cena 3 -->
+<video #video3 [hidden]="cena !== 3" preload="auto" autoplay muted class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/speaking/elder_atack.mp4" type="video/mp4" />
+</video>
 
-<!-- Cena 3 - elder_atack.mp4 (loop: false) -->
-<video
-  [hidden]="cena !== 3"
-  preload="auto"
-  src="assets/lingobot/cenas_na_masmorra/speaking/elder_atack.mp4"
-  autoplay
+<!-- Cena 4 -->
+<video #video4 [hidden]="cena !== 4" preload="auto" autoplay muted class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/speaking/eletric-atack-new.mp4" type="video/mp4" />
+</video>
 
-></video>
+<!-- Cena 5 -->
+<video #video5 [hidden]="cena !== 5" preload="auto" autoplay muted class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/speaking/heal.mp4" type="video/mp4" />
+</video>
 
-<!-- Cena 4 - eletric-atack-new.mp4 (loop: false) -->
-<video
-  [hidden]="cena !== 4"
-  preload="auto"
-  src="assets/lingobot/cenas_na_masmorra/speaking/eletric-atack-new.mp4"
-  autoplay
+<!-- Cena 6 -->
+<video #video6 [hidden]="cena !== 6" preload="auto" autoplay muted class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/speaking/dodge.mp4" type="video/mp4" />
+</video>
 
-></video>
-
-<!-- Cena 5 - heal.mp4 (loop: false) -->
-<video
-  [hidden]="cena !== 5"
-  preload="auto"
-  src="assets/lingobot/cenas_na_masmorra/speaking/heal.mp4"
-  autoplay
-
-></video>
-
-<!-- Cena 6 - dodge.mp4 (loop: false) -->
-<video
-  [hidden]="cena !== 6"
-  preload="auto"
-  src="assets/lingobot/cenas_na_masmorra/speaking/dodge.mp4"
-  autoplay
-
-></video>
-
-<!-- Cena 7 - elder_defeat.mp4 (loop: false) -->
-<video
-  [hidden]="cena !== 7"
-  preload="auto"
-  src="assets/lingobot/cenas_na_masmorra/speaking/elder_defeat.mp4"
-  autoplay
-
-></video>
-
-
-
-
+<!-- Cena 7 -->
+<video #video7 [hidden]="cena !== 7" preload="auto" autoplay muted class="background-video">
+  <source src="assets/lingobot/cenas_na_masmorra/speaking/elder_defeat.mp4" type="video/mp4" />
+</video>
 
 
 

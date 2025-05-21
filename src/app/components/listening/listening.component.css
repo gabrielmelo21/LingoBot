@@ -133,7 +133,6 @@
 }
 
 
-
 .character-img {
   width: 80%;
   height: auto;
@@ -141,18 +140,40 @@
   position: absolute;
   bottom: 25vh;
   right: -15vh;
-  transition: filter 0.3s ease;
+  transition: filter 0.3s ease, transform 0.3s ease, bottom 0.3s ease, right 0.3s ease;
 }
 
+.character-img2 {
+  width: 80%;
+  height: auto;
+  z-index: 10;
+  position: absolute;
+  bottom: 25vh;
+  left: -15vh;
+  transform: scaleX(-1); /* inverte a imagem horizontalmente */
+  transition: filter 0.3s ease, transform 0.3s ease, bottom 0.3s ease, left 0.3s ease;
+}
 
-.vitrola{
-  position:absolute;
+.vitrola {
+  position: absolute;
   height: auto;
   width: 24% !important;
   top: 50vh !important;
   left: 5vh !important;
-  z-index: 10
+  z-index: 10;
+  transition: all 0.3s ease;
 }
+
+.vitrola2 {
+  position: absolute;
+  height: auto;
+  width: 24% !important;
+  top: 50vh !important;  /* novo posicionamento */
+  right: 5vh !important; /* movida para o lado direito */
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
 
 .darkgold{
   color: gold;

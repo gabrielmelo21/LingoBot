@@ -27,22 +27,31 @@
     <p *ngIf="dialog == 7">Parabéns! você descobriu abriu o Portão e recebeu <b style="color: goldenrod"> {{ this.finalGoldReward }} Gold Coins</b> & <b style="color: blueviolet">{{ this.finalXpReward }} LXP</b> </p>
 
   </div>
+</div>
 
+
+<div class="baloon-container" *ngIf="this.tipsCount >= this.tipsMax" >
+  <div class="dialog-baloon">
+    <p >Tente escrever: <b style="color: darkgoldenrod">"{{this.currentExercise.phrase}}"</b></p>
+  </div>
 </div>
 
 
 
+
+
 <img
-  class="character-img"
   [src]="elder"
+  [ngClass]="cenarioCount >= 5 ? 'character-img2' : 'character-img'"
 >
+
 
 <img
   [src]="isPlaying ? 'assets/lingobot/cenas_na_masmorra/listening/vitrola-on.png' : 'assets/lingobot/cenas_na_masmorra/listening/vitrola-off.png'"
   alt="Tocar áudio"
   (click)="playAudio()"
   [class.pulse]="isPlaying"
-  class="vitrola"
+  [ngClass]="cenarioCount >= 5 ? 'vitrola2' : 'vitrola'"
   style="cursor: pointer;"
   *ngIf="cenarioCount < 7"
 />
@@ -57,6 +66,8 @@
   <p *ngIf="currentStep === 2">Tradução: <strong class="darkgold">{{ currentExercise.translate }}</strong>
   </p>
 </div>
+
+
 
 
 <div class="background-commands">
@@ -76,7 +87,7 @@
 
 
 
-  <div  *ngIf="dialog == 6" >
+  <div  *ngIf="dialog == 6 && this.tipsCount < this.tipsMax" >
     <!-- FORMULÁRIO DE RESPOSTA -->
     <form class="commands-group" (submit)="enviarResposta(textoInput.value, textoInput); $event.preventDefault();">
   <textarea
@@ -92,9 +103,11 @@
       </button>
     </form>
 
+  </div> <!-- CAIXA DE TEXTO RESPONDER END -->
 
 
-  </div>
+
+
 
   <div class="fundo"  *ngIf="dialog == 0" >
     <ol class="respostas">
@@ -136,6 +149,13 @@
       <li (click)="chooseOption(7);" >Sair</li>
     </ol>
   </div>
+
+  <div class="fundo"     *ngIf="this.tipsCount >= this.tipsMax" >
+    <ol class="respostas">
+      <li (click)="closeElderTip();" >Fechar Dica</li>
+    </ol>
+  </div>
+
 
 
 

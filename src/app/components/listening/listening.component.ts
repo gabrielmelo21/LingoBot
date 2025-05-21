@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {PlaySoundService} from "../../services/play-sound.service";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -20,7 +20,7 @@ export interface ListeningExercise {
   templateUrl: './listening.component.html',
   styleUrls: ['./listening.component.css']
 })
-export class ListeningComponent {
+export class ListeningComponent implements AfterViewInit {
   dialog: number = 0;
   cena: number = 1;
   cenario: string = "assets/lingobot/cenas_na_masmorra/listening/listening_gate0.jpg";
@@ -39,6 +39,8 @@ export class ListeningComponent {
   currentExercise!: ListeningExercise;
   currentStep: number = 0; // 0 = p1, 1 = p2, 2 = phrase
   playCount: number = 0;
+  tipsCount: number = 0;
+  tipsMax: number = 0;
 
 
   constructor(private playSoundService: PlaySoundService,
@@ -57,29 +59,33 @@ export class ListeningComponent {
     switch (this.authService.getDifficulty()) {
       case 'easy':
         this.srcExercises = 'assets/lingobot/json/listening/easy.json';
-        this.finalGoldReward = 15;
-        this.finalXpReward = 10000;
+        this.finalGoldReward = 25;
+        this.finalXpReward = 20000;
+        this.tipsMax = 3;
         break;
 
       case 'medium':
         this.srcExercises = 'assets/lingobot/json/listening/medium.json';
         // Recompensa 1,5× da easy
-        this.finalGoldReward = 20;
-        this.finalXpReward = 15000;
+        this.finalGoldReward = 30;
+        this.finalXpReward = 25000;
+        this.tipsMax = 4;
         break;
 
       case 'hard':
         this.srcExercises = 'assets/lingobot/json/listening/hard.json';
         // Recompensa 2× da easy
-        this.finalGoldReward = 25;
-        this.finalXpReward = 20000;
+        this.finalGoldReward = 35;
+        this.finalXpReward = 30000;
+        this.tipsMax = 6;
         break;
 
       case 'elder':
         this.srcExercises = 'assets/lingobot/json/listening/elder.json';
         // Recompensa 3× da easy
-        this.finalGoldReward = 35;
-        this.finalXpReward = 30000;
+        this.finalGoldReward = 40;
+        this.finalXpReward = 35000;
+        this.tipsMax = 10;
         break;
 
       default:
@@ -182,47 +188,48 @@ export class ListeningComponent {
 
           setTimeout(() => this.getRandomExercise(), 2000); // espera 2s e gera novo
         }else{
-          // ação final abrir portao  e animação de win é após abrir o portão e o ancição impressionado com bau de ouro
-          this.playSoundService.playOpenChest()
-          this.cenarioFinal = true;
-          this.elder = "assets/lingobot/elders/listening/opening-chest.png";
 
-          setTimeout(() => {
-            this.playSoundService. playChestWin()
-            this.cenarioFinal = false;
-            this.finalChestAnimation = true;
-            this.elder = "assets/lingobot/elders/listening/win.png";
-          },5000)
+          this.iniciarSequenciaFinal()
 
+           // premio final
           setTimeout(() =>  {
-               // velho flaando e dando o premio
-
             this.dialog = 7;
             console.log("Moedas de ouro ganho: ", this.finalGoldReward);
             this.authService.updateLocalUserData({ tokens :this.finalGoldReward });
             this.authService.checkLevelUp(this.finalXpReward)
             this.authService.addXpSkills('listening');
-
-
           }, 7000);
 
 
-        }
+        }// END cenarios
 
 
 
       }
     } else {
+      this.tipsCount++;
+
       this.playSoundService.playErrorQuestion()
       this.elder = "assets/lingobot/elders/listening/error.png";
 
-      setTimeout(() => {
-        this.elder = "assets/lingobot/elders/listening/focado.png";
-      },1500)
+      if (this.tipsCount < this.tipsMax){
+        setTimeout(() => {
+          this.elder = "assets/lingobot/elders/listening/focado.png";
+        },1500)
+      }else{
+        this.elder = "assets/lingobot/elders/listening/explicando.png";
+      }
+
+
 
 
       console.log("❌ Resposta incorreta.");
     }
+  }
+
+  closeElderTip(){
+    this.elder = "assets/lingobot/elders/listening/focado.png";
+    this.tipsCount = 0;
   }
 
 
@@ -323,5 +330,73 @@ export class ListeningComponent {
 
 
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // Referências dos vídeos
+  @ViewChild('videoFinal1') videoFinal1Ref!: ElementRef<HTMLVideoElement>;
+  @ViewChild('videoFinal2') videoFinal2Ref!: ElementRef<HTMLVideoElement>;
+
+
+
+  ngAfterViewInit(): void {
+    // Garante que ambos os vídeos fiquem pausados e no início.
+    this.videoFinal1Ref.nativeElement.pause();
+    this.videoFinal1Ref.nativeElement.currentTime = 0;
+    this.videoFinal2Ref.nativeElement.pause();
+    this.videoFinal2Ref.nativeElement.currentTime = 0;
+  }
+
+
+
+// Método para iniciar a sequência dos vídeos
+  iniciarSequenciaFinal(): void {
+    // Aciona o som e exibe o primeiro cenário
+    this.playSoundService.playOpenChest();
+    this.cenarioFinal = true;
+    this.finalChestAnimation = false;
+    this.elder = 'assets/lingobot/elders/listening/opening-chest.png';
+
+    // Aguarda um curto delay para o Angular atualizar o DOM,
+    // depois toca o primeiro vídeo:
+    setTimeout(() => {
+      const video1 = this.videoFinal1Ref.nativeElement;
+      video1.currentTime = 0;
+      // Se desejar reativar o som, altere o muted para false
+      video1.muted = false;
+      video1.play();
+    }, 50);
+
+    // Após 5 segundos, muda o cenário e toca o segundo vídeo:
+    setTimeout(() => {
+      // Aciona o som de vitória, muda as flags e a imagem do elder
+      this.playSoundService.playChestWin();
+      this.cenarioFinal = false;
+      this.finalChestAnimation = true;
+      this.elder = 'assets/lingobot/elders/listening/win.png';
+
+      // Aguarda a atualização do DOM para tocar o segundo vídeo:
+      setTimeout(() => {
+        const video2 = this.videoFinal2Ref.nativeElement;
+        video2.currentTime = 0;
+        // Se necessário, desmutar para tocar som
+        video2.muted = false;
+        video2.play();
+      }, 50);
+    }, 5000);
+  }
+
+
 
 }

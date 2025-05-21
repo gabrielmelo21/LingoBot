@@ -129,15 +129,7 @@ export class SpeakingComponent implements AfterViewInit {
 
 
 
-  ngAfterViewInit() {
-    this.mudarCena(1);
-    this.changeTurn("your_turn");
-    //this.changeTurn("elders_turn");
-    setTimeout(() =>{
-      this.playSoundService.playElderTalk0()
-    },4000)
 
-  }
 
 
 
@@ -386,16 +378,6 @@ export class SpeakingComponent implements AfterViewInit {
       consoleDiv.innerText = this.logMessages.slice(-20).join('\n'); // Últimas 20 mensagens
     }
   }
-
-  mudarCena(cena: number) {
-    this.cena = cena;
-    this.renderizar();
-  }
-
-
-
-
-
 
 
    renderizar(){
@@ -1108,4 +1090,60 @@ userResponse: any;
     this.playSoundService.playCleanSound2();
     this.router.navigate(["/babel-tower"])
   }
+
+
+
+
+  @ViewChild('video1') video1Ref!: ElementRef<HTMLVideoElement>;
+  @ViewChild('video2') video2Ref!: ElementRef<HTMLVideoElement>;
+  @ViewChild('video3') video3Ref!: ElementRef<HTMLVideoElement>;
+  @ViewChild('video4') video4Ref!: ElementRef<HTMLVideoElement>;
+  @ViewChild('video5') video5Ref!: ElementRef<HTMLVideoElement>;
+  @ViewChild('video6') video6Ref!: ElementRef<HTMLVideoElement>;
+  @ViewChild('video7') video7Ref!: ElementRef<HTMLVideoElement>;
+
+  mudarCena(novaCena: number) {
+    this.cena = novaCena;
+
+    const refs = [
+      this.video1Ref,
+      this.video2Ref,
+      this.video3Ref,
+      this.video4Ref,
+      this.video5Ref,
+      this.video6Ref,
+      this.video7Ref
+    ];
+
+    // Para e reseta todos os vídeos
+    refs.forEach(ref => {
+      const el = ref?.nativeElement;
+      if (el) {
+        el.pause();
+        el.currentTime = 0;
+      }
+    });
+
+    // Aguarda o DOM atualizar a nova cena visível
+    setTimeout(() => {
+      const ref = refs[novaCena - 1]; // índice da cena
+      if (ref) {
+        const el = ref.nativeElement;
+        el.currentTime = 0;
+        el.play().catch(() => {}); // ignora erros
+      }
+    }, 50);
+  }
+
+  ngAfterViewInit() {
+    this.mudarCena(1);
+
+    this.changeTurn("your_turn");
+    //this.changeTurn("elders_turn");
+    setTimeout(() =>{
+      this.playSoundService.playElderTalk0()
+    },4000)
+
+  }
+
 }
