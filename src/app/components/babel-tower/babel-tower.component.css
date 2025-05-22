@@ -264,3 +264,43 @@
   color:#946a01;
   margin-top: 8vh !important;
 }
+
+
+
+
+
+
+
+.elder-writing{
+  position: absolute;
+  z-index: 5;
+  width: 40%;
+  height: auto;
+  bottom:35vh;
+  left:9vh;
+}
+.elder-reading{
+  position: absolute;
+  z-index: 5;
+  width: 40%;
+  height: auto;
+  bottom:35vh;
+  right:9vh;
+}
+.elder-speaking{
+  position: absolute;
+  z-index: 5;
+  width: 30%;
+  height: auto;
+  bottom: 40vh;
+  right:7vh;
+}
+.elder-listening{
+  position: absolute;
+  z-index: 5;
+  width: 50%;
+  height: auto;
+  bottom:40vh;
+  right:7vh;
+}
+

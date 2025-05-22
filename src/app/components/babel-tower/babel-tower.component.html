@@ -1,27 +1,72 @@
 <div class="container">
-  <!-- Imagem estática -->
-  <img [src]="staticSceneSrc" class="background-image">
+  <!-- Imagem estática staticSceneSrc-->
+  <img [hidden]="getTextoPorAndar() !== 'Writing'" src="assets/lingobot/elders_room/writing.jpg" class="background-image">
+  <img [hidden]="getTextoPorAndar() !== 'Reading'" src="assets/lingobot/elders_room/reading.jpg" class="background-image">
+  <img [hidden]="getTextoPorAndar() !== 'Listening'" src="assets/lingobot/elders_room/listening.jpg" class="background-image">
+  <img [hidden]="getTextoPorAndar() !== 'Speaking'" src="assets/lingobot/elders_room/speaking.jpg" class="background-image">
 
-  <!-- Vídeo 1 -->
+
+  <!-- Ender posicionado -->
+  <img *ngIf="getTextoPorAndar() == 'Writing'" src="assets/lingobot/elders_room/writing-elder.png" class="elder-writing">
+  <img *ngIf="getTextoPorAndar() == 'Reading'" src="assets/lingobot/elders_room/reading-elder.png" class="elder-reading">
+  <img *ngIf="getTextoPorAndar() == 'Listening'" src="assets/lingobot/elders_room/listening-elder.png" class="elder-listening">
+  <img *ngIf="getTextoPorAndar() == 'Speaking'" src="assets/lingobot/elders_room/elder-speaking.png" class="elder-speaking">
+
+
+
+
+<style>
+   .lingobot-pose{
+     position: absolute;
+     z-index: 5;
+     width: 30%;
+     left: 1vh;
+     height: auto;
+     bottom: 30vh;
+   }
+</style>
+
+  <!-- Lingobot posicionado na tela -->
+  <img [src]=" this.lingobot" class="lingobot-pose">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Vídeo 1
+
+  staticSceneSrc
+
+
   <video #video [hidden]="cena !== 1" autoplay muted loop preload="auto" class="background-video">
     <source [src]="video1Src" type="video/mp4" />
   </video>
 
-  <!-- Vídeo 2 -->
+
   <video #video [hidden]="cena !== 2" autoplay muted preload="auto" class="background-video">
     <source [src]="video2Src" type="video/mp4" />
   </video>
 
-  <!-- Vídeo 3 -->
+
   <video #video [hidden]="cena !== 3" autoplay muted preload="auto" class="background-video">
     <source [src]="video3Src" type="video/mp4" />
   </video>
 
-  <!-- Vídeo 4 -->
   <video #video [hidden]="cena !== 4" autoplay muted preload="auto" class="background-video">
     <source [src]="video4Src" type="video/mp4" />
   </video>
 
+
+  -->
 
 
 
@@ -38,8 +83,8 @@
   <div class="tabua">
     <!-- Imagem -->
     <img src="assets/lingobot/home/tabua.png">
-    <!-- Texto sobreposto -->
-    <h3>N° {{ andarAtual }}<br>{{ getTextoPorAndar() }}</h3>
+    <!-- Texto sobreposto  {{ getTextoPorAndar() }} -->
+    <h3>Andar <br> N° {{ andarAtual }}</h3>
   </div>
 
 
@@ -236,13 +281,13 @@
     align-items: center;
     font-size: 16px;
     font-weight: bold;
-    color: #fff3d1;
+    color:  black;
     background-color: transparent;
     border: 2px solid rgba(255, 243, 209, 0.2);
     padding: 8px 12px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
-    text-shadow: 1px 1px #000;
+
     transition: all 0.2s ease;
   }
 
@@ -402,19 +447,19 @@
     position: absolute;
     z-index: 5 !important;
     width: 40%;
-    right: -5vw;
-    bottom: 58vh;
+    right: -15vw;
+    top: 17vh;
 
   }
   .tabua img{
-    width: 100%; height: auto
+    width:70%; height: auto
   }
   .tabua h3{
     font-family: 'Bebas Neue', sans-serif;
     color: white;
     position: absolute;
     top: 45%;
-    left: 50%;
+    left: 35%;
     transform: translate(-50%, -50%);
     font-size: 6.5vw;
     font-weight: bold;

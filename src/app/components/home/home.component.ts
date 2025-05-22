@@ -57,9 +57,12 @@ export class HomeComponent implements OnInit {
   userDifficulty: any;
 
   // Variáveis para os caminhos dos arquivos
+
   staticSceneSrc: string = '';
   video1Src: string = '';
   video2Src: string = '';
+  video3Src: string = '';
+  video4Src: string = '';
 
 
 
@@ -111,6 +114,47 @@ export class HomeComponent implements OnInit {
 
 
 
+
+
+
+
+  setSceneSources(): void {
+    switch (this.userDifficulty) {
+      case 'easy':
+
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_out_tower/torre_ground.png';
+        this.video1Src = 'assets/lingobot/cenas_on_out_tower/waiting_animation_tower.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_out_tower/entrando-na-torre.mp4';
+        break;
+
+      case 'medium':
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_out_tower/medium-static.png';
+        this.video1Src = 'assets/lingobot/cenas_on_out_tower/medium/waiting_animation_tower.mp4'; // não tem
+        this.video2Src = 'assets/lingobot/cenas_on_out_tower/medium-scene-2.mp4'; // temos
+        break;
+
+      case 'hard':
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_out_tower/hard-static.png';
+        this.video1Src = 'assets/lingobot/cenas_on_out_tower/hard/waiting_animation_tower.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_out_tower/hard-scene.mp4';
+        break;
+
+      case 'elder':
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_out_tower/elder-static.png';
+        this.video1Src = 'assets/lingobot/cenas_on_out_tower/elder/waiting_animation_tower.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_out_tower/elder-scene.mp4';
+        break;
+
+      default:
+
+        this.staticSceneSrc = 'assets/lingobot/cenas_on_out_tower/torre_ground.png';
+        this.video1Src = 'assets/lingobot/cenas_on_out_tower/waiting_animation_tower.mp4';
+        this.video2Src = 'assets/lingobot/cenas_on_out_tower/entrando-na-torre.mp4';
+    }
+  }
+
+
+/**
   setSceneSources(): void {
     switch (this.userDifficulty) {
       case 'easy':
@@ -142,9 +186,11 @@ export class HomeComponent implements OnInit {
         this.video1Src = 'assets/lingobot/cenas_on_city/city-waiting-animation.mp4';
         this.video2Src = 'assets/lingobot/cenas_on_city/animation-going-to-tower.mp4';
     }
-
-
   }
+
+
+
+    **/
 
 
 

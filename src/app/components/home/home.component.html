@@ -1,14 +1,15 @@
 
 
 <!-- Imagem estática -->
-<img [src]="staticSceneSrc" class="background-image" />
 
-<!-- Vídeo 1 -->
+
+
+<img [src]="staticSceneSrc" class="background-image" />
 <video *ngIf="cena == 1" autoplay muted loop class="background-video">
   <source [src]="video1Src" type="video/mp4" />
 </video>
 
-<!-- Vídeo 2 -->
+
 <video *ngIf="cena == 2" autoplay muted loop class="background-video">
   <source [src]="video2Src" type="video/mp4" />
 </video>
@@ -36,34 +37,42 @@
 
 
   <div class="commands-group">
-
     <div class="command" (click)="command('up')">
-     <img [class.neon-border]="isNeonActive('up')"
-          (mousedown)="ativarNeon('up')"
-          (touchstart)="ativarNeon('up')" (touchend)="desativarNeon('up')"
-          src="assets/lingobot/menu-icons/icone-home.png"
+      <img [class.neon-border]="isNeonActive('up')"
+           (mousedown)="ativarNeon('up')"
+           (touchstart)="ativarNeon('up')" (touchend)="desativarNeon('up')"
+           src="assets/lingobot/poses/lingobot-running.png"
            class="img-command">
-     <p class="command-text">Torre de Babel</p>
-   </div>
+      <p class="command-text">Entrar na Torre</p></div>
+
 
     <!--
-   <div class="command" (click)="command('in')">
-     <img [class.neon-border]="isNeonActive('in')"
-          (mousedown)="ativarNeon('in')"
-          (touchstart)="ativarNeon('in')" (touchend)="desativarNeon('in')"
-          src="assets/lingobot/menu-icons/elders_castle_icon.png"
-          style="width: 40% !important;height: auto">
-     <p class="command-text">Elders' Castle <br>(Coming Soon)</p>
-   </div>
-   -->
+      <div class="command" (click)="command('up')">
+       <img [class.neon-border]="isNeonActive('up')"
+            (mousedown)="ativarNeon('up')"
+            (touchstart)="ativarNeon('up')" (touchend)="desativarNeon('up')"
+            src="assets/lingobot/menu-icons/icone-home.png"
+             class="img-command">
+       <p class="command-text">Torre de Babel</p></div>
 
-    <div class="command" >
-      <img
-           src="assets/lingobot/menu-icons/elders_castle_icon.png"
-           class="img-command">
-      <p class="command-text">Elders' Castle <br>(Coming Soon)</p>
-    </div>
 
+     <div class="command" (click)="command('in')">
+       <img [class.neon-border]="isNeonActive('in')"
+            (mousedown)="ativarNeon('in')"
+            (touchstart)="ativarNeon('in')" (touchend)="desativarNeon('in')"
+            src="assets/lingobot/menu-icons/elders_castle_icon.png"
+            style="width: 40% !important;height: auto">
+       <p class="command-text">Elders' Castle <br>(Coming Soon)</p>
+     </div>
+
+
+      <div class="command" >
+        <img
+             src="assets/lingobot/menu-icons/elders_castle_icon.png"
+             class="img-command">
+        <p class="command-text">Elders' Castle <br>(Coming Soon)</p>
+      </div>
+      -->
 
 
  </div>

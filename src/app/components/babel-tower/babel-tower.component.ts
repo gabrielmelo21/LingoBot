@@ -67,6 +67,7 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit  {
   pedagioStatus: any;
   checkQuestModal: boolean = false;
   rechargeValue: number = 0;
+  lingobot: string = '';
 
 
   blockAction: boolean = false;
@@ -258,6 +259,36 @@ checkQuest(){
   }
 
 
+
+
+  setTowerSceneSources(): void {
+    switch (this.userDifficulty) {
+      case 'easy':
+        this.lingobot = 'assets/lingobot/lingobots/baby-young-pose.png';
+
+        break;
+
+      case 'medium':
+        this.lingobot = 'assets/lingobot/lingobots/baby-young-pose.png';
+
+        break;
+
+      case 'hard':
+        this.lingobot = 'assets/lingobot/lingobots/adult-pose.png';
+
+        break;
+
+      case 'elder':
+        this.lingobot = 'assets/lingobot/lingobots/elder-pose.png';
+        break;
+
+      default:
+        this.lingobot = 'assets/lingobot/lingobots/baby-young-pose.png';
+
+        break;
+    }
+  }
+/**
   setTowerSceneSources(): void {
     switch (this.userDifficulty) {
       case 'easy':
@@ -301,7 +332,7 @@ checkQuest(){
         break;
     }
   }
-
+**/
 
 
 
