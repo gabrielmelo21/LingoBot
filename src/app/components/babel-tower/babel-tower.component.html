@@ -1,20 +1,20 @@
 <div class="container">
-  <!-- Imagem estática staticSceneSrc-->
+  <!-- Imagem estática staticSceneSrc
   <img [hidden]="getTextoPorAndar() !== 'Writing'" src="assets/lingobot/elders_room/writing.jpg" class="background-image">
   <img [hidden]="getTextoPorAndar() !== 'Reading'" src="assets/lingobot/elders_room/reading.jpg" class="background-image">
   <img [hidden]="getTextoPorAndar() !== 'Listening'" src="assets/lingobot/elders_room/listening.jpg" class="background-image">
   <img [hidden]="getTextoPorAndar() !== 'Speaking'" src="assets/lingobot/elders_room/speaking.jpg" class="background-image">
+  -->
 
-
-  <!-- Ender posicionado -->
+  <!-- Ender posicionado
   <img *ngIf="getTextoPorAndar() == 'Writing'" src="assets/lingobot/elders_room/writing-elder.png" class="elder-writing">
   <img *ngIf="getTextoPorAndar() == 'Reading'" src="assets/lingobot/elders_room/reading-elder.png" class="elder-reading">
   <img *ngIf="getTextoPorAndar() == 'Listening'" src="assets/lingobot/elders_room/listening-elder.png" class="elder-listening">
-  <img *ngIf="getTextoPorAndar() == 'Speaking'" src="assets/lingobot/elders_room/elder-speaking.png" class="elder-speaking">
+  <img *ngIf="getTextoPorAndar() == 'Speaking'" src="assets/lingobot/elders_room/speaking-elder.png" class="elder-speaking">
+  -->
 
 
-
-
+<!-- DA PRA ANIMAR O BONECO e colocar sem fundo e usar
 <style>
    .lingobot-pose{
      position: absolute;
@@ -26,19 +26,80 @@
    }
 </style>
 
-  <!-- Lingobot posicionado na tela -->
+
   <img [src]=" this.lingobot" class="lingobot-pose">
+  -->
+
+
+
+
+
+  <!-- ENTRADA WRITING -->
+  <video #video [hidden]="cena !== 10" autoplay muted   preload="auto" class="background-video">
+    <source  src ="assets/lingobot/enters_animation/writing.mp4" type="video/mp4" />
+  </video>
+
+  <!-- ENTRADA READING -->
+  <video #video [hidden]="cena !== 11" autoplay muted   preload="auto" class="background-video">
+    <source  src ="assets/lingobot/enters_animation/reading.mp4" type="video/mp4" />
+  </video>
+  <!-- ENTRADA LISTENING -->
+  <video #video [hidden]="cena !== 12" autoplay muted   preload="auto" class="background-video">
+    <source  src ="assets/lingobot/enters_animation/listening.mp4" type="video/mp4" />
+  </video>
+
+  <!-- ENTRADA SPEAKING -->
+  <video #video [hidden]="cena !== 13" autoplay muted   preload="auto" class="background-video">
+    <source  src ="assets/lingobot/enters_animation/speaking.mp4" type="video/mp4" />
+  </video>
 
 
 
 
 
 
+  <!-- WRITING TO READING (INDO) -->
+  <video #video [hidden]="cena !== 2" muted preload="auto" class="background-video">
+    <source src="assets/lingobot/teleport/writing_to_reading.mp4" type="video/mp4" />
+  </video>
+
+  <!-- READING TO WRITING (VOLTANDO) -->
+  <video #video [hidden]="cena !== 3" muted preload="auto" class="background-video">
+    <source src="assets/lingobot/teleport/reading_to_writing.mp4" type="video/mp4" />
+  </video>
+
+  <!-- READING TO LISTENING (INDO) -->
+  <video #video [hidden]="cena !== 4" muted preload="auto" class="background-video">
+    <source src="assets/lingobot/teleport/reading_to_listening.mp4" type="video/mp4" />
+  </video>
+
+  <!-- LISTENING TO READING (VOLTANDO) -->
+  <video #video [hidden]="cena !== 5" muted preload="auto" class="background-video">
+    <source src="assets/lingobot/teleport/listening_to_reading.mp4" type="video/mp4" />
+  </video>
+
+
+  <!-- LISTENING TO SPEAKING (INDO) -->
+  <video #video [hidden]="cena !== 6" muted preload="auto" class="background-video">
+    <source src="assets/lingobot/teleport/listening_to_speaking.mp4" type="video/mp4" />
+  </video>
+
+  <!-- SPEAKING TO LISTENING (VOLTANDO) -->
+  <video #video [hidden]="cena !== 7" muted preload="auto" class="background-video">
+    <source src="assets/lingobot/teleport/speaking_to_listening.mp4" type="video/mp4" />
+  </video>
 
 
 
+  <!-- SPEAKING TO WRITING (VOLTANDO AO INICIO) -->
+  <video #video [hidden]="cena !== 8" muted preload="auto" class="background-video">
+    <source src="assets/lingobot/teleport/speaking_to_writing.mp4" type="video/mp4" />
+  </video>
 
-
+  <!-- WRITING TO SPEAKING (VOLTANDO) -->
+  <video #video [hidden]="cena !== 9" muted preload="auto" class="background-video">
+    <source src="assets/lingobot/teleport/writing_to_speaking.mp4" type="video/mp4" />
+  </video>
 
 
 
@@ -70,13 +131,6 @@
 
 
 
-  <div class="nuvem-esquerda" [@nuvemEsquerdaAnimation]="nuvemState">
-    <img src="assets/lingobot/home/clouds.png" alt="Nuvem Esquerda">
-  </div>
-
-  <div class="nuvem-direita" [@nuvemDireitaAnimation]="nuvemState">
-    <img src="assets/lingobot/home/clouds.png" alt="Nuvem Direita">
-  </div>
 
 
   <!-- INDICADOR DO ANDAR ATUAL -->
@@ -91,7 +145,7 @@
   <!-- BATTERY BARS -->
   <div class="battery-bars">
 
-    <img [src]="energyImagePath" class="battery-icon" (click)="rechargeBattery();" >
+    <img [src]="energyImagePath" class="battery-icon2" (click)="rechargeBattery();" >
 
     <div class="battery-bar-container">
       <img *ngFor="let bar of batteryArray; let i = index"
@@ -190,33 +244,25 @@
     <div class="main-commands" *ngIf="!rechargeModal && !checkQuestModal">
     <h3 class="actions-title" *ngIf="blockAction">Ação em andamento...</h3>
     <div class="commands-group">
-      <div class="command" (click)="command('up')">
-        <img [class.neon-border]="isNeonActive('up')"
-             (mousedown)="ativarNeon('up')"
-             (touchstart)="ativarNeon('up')" (touchend)="desativarNeon('up')"
-             src="assets/lingobot/poses/lingobot_apontando_pra_cima.png"
-                class="img-command">
-        <p class="command-text">Subir andar</p>
+
+      <div class="command" (click)="command('down')">
+        <img src="assets/lingobot/menu-icons/arrow_down.png"
+             class="img-command">
       </div>
+
       <div class="command" (click)="command('in')">
-        <img [class.neon-border]="isNeonActive('in')"
-             (mousedown)="ativarNeon('in')"
-             (touchstart)="ativarNeon('in')" (touchend)="desativarNeon('in')"
-             src="assets/lingobot/poses/lingobot-running.png"
+        <img src="assets/lingobot/poses/lingobot-running.png"
           class="img-command-center">
-        <div class="battery-consuming" style="margin-left: 5vh">
+        <div class="battery-consuming" style="margin-left: 7vh">
           <p class="battery-text">-1</p>
           <img class="battery-icon" src="assets/lingobot/menu-icons/battery-on.png">
         </div>
       </div>
-      <div class="command" (click)="command('down')">
-        <img [class.neon-border]="isNeonActive('down')"
-             (mousedown)="ativarNeon('down')"
-             (touchstart)="ativarNeon('down')" (touchend)="desativarNeon('down')"
-             src="assets/lingobot/poses/lingobot_apontando_pra_baixo.png"
-             class="img-command">
-        <p class="command-text">Descer andar</p>
+
+      <div class="command" (click)="command('up')">
+        <img src="assets/lingobot/menu-icons/arrow_up.png" class="img-command">
       </div>
+
     </div> <!-- commands group -->
     </div>
   </div> <!-- background commands -->
@@ -227,245 +273,6 @@
 
 
 <style>
-
-  .riscado {
-    text-decoration: line-through;
-    opacity: 0.6;
-  }
-
-
-  .quest-check{
-     position: absolute;
-     top: 17vh;
-     left: 0;
-     z-index: 999999;
-     width: 100%;
-    height: auto;
-  }
-
-   .quest-check-text{
-     position: absolute;
-
-
-
-     top: 25vh;
-     left: 50%;
-     transform: translate(-50%, -50%);
-
-
-     z-index: 999999;
-     font-weight: bolder;
-     width: 70%;
-   }
-  .quest-check-infos{
-    position: absolute;
-    top:45vh;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999999;
-    width: 70%;
-    height: 25vh;
-    overflow: auto;
-  }
-
-  .quest-check-infos {
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-family: 'Arial', sans-serif;
-  }
-
-  .requisito-item {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    font-weight: bold;
-    color:  black;
-    background-color: transparent;
-    border: 2px solid rgba(255, 243, 209, 0.2);
-    padding: 8px 12px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
-
-    transition: all 0.2s ease;
-  }
-
-  .requisito-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-  }
-
-  .riscado {
-    opacity: 0.6;
-    text-decoration: line-through;
-  }
-
-
-  .img-command{
-    width: 60%;
-    height: auto
-  }
-  .img-command-center{
-     width: 100%;
-     height: auto;
-  }
-
-
-  /** Celular pequeno **/
-  @media (max-height: 700px) {
-    .img-command{
-      width: 30% !important;
-      height: auto
-    }
-    .img-command-center{
-      width: 50% !important;
-      height: auto;
-    }
-
-    .background-commands{
-      height: 20vh !important;
-    }
-
-  }
-
-
-
-
-  img-command-recharge{
-    width: 10% !important;
-    height: auto !important;
-  }
-
-
-  .button-container {
-    display: flex;
-    justify-content: center; /* Alinha os itens ao centro */
-    gap: 20px; /* Espaço entre os botões */
-    margin-top: 50px;
-  }
-
-
-
-  .background-commands{
-    position: absolute !important;
-    bottom: 0 !important;
-    display:inline-block;
-    background-image: url('assets/lingobot/home/testar_pergaminho.jpg');
-    height: 27vh ;
-    background-size: cover;
-    background-position: top;
-    z-index: 5 !important;
-
-  }
-
-  .pedagio-dialog {
-    position: fixed; /* Mantém o modal sempre fixo na tela */
-    top: -40px !important;
-    left: 0;
-    width: 100vw; /* Ocupa 100% da largura da tela */
-    height: 100vh !important; /* Ocupa 100% da altura da tela */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5); /* Fundo escurecido para destacar o modal */
-    z-index: 10 !important;
-  }
-
-  .pedagio-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url('assets/lingobot/pergaminho.png');
-    background-size: 100% !important;
-    background-repeat: no-repeat;
-    height:600px !important;
-    width: 120% !important;
-    margin-top: 80px !important;
-    overflow: hidden; /* Evita rolagem */
-    z-index: 10 !important;
-  }
-
-
-
-  /** BOTÃO   ESTILO JOGO **/
-  .game-button {
-
-    margin-top: 30px !important;
-    padding: 15px;
-    font-size: 12pt  ;
-    color: white  ;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    outline: none;
-    background: linear-gradient(145deg, #007bff, #6f42c1);
-    box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3);
-    transition: all 0.1s ease-in-out;
-  }
-
-  .game-button:active {
-    box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
-  }
-
-  .game-button:hover {
-    background: linear-gradient(145deg, #1e90ff, #8a2be2);
-
-  }
-
-  .game-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.1)
-    );
-    transition: left 0.5s ease-in-out;
-  }
-
-  .game-button:hover::before {
-    left: 100%;
-  }
-
-
-
-
-
-
-
-
-  .tabua{
-    position: absolute;
-    z-index: 5 !important;
-    width: 40%;
-    right: -15vw;
-    top: 17vh;
-
-  }
-  .tabua img{
-    width:70%; height: auto
-  }
-  .tabua h3{
-    font-family: 'Bebas Neue', sans-serif;
-    color: white;
-    position: absolute;
-    top: 45%;
-    left: 35%;
-    transform: translate(-50%, -50%);
-    font-size: 6.5vw;
-    font-weight: bold;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
 
 </style>
 

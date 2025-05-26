@@ -175,8 +175,8 @@ this.router.events.subscribe(event => {
     if (!token) {
       this.router.navigate(['/login']);
     } else {
-    this.router.navigate(['/home']);
-     // this.router.navigate(['/babel-tower']);
+    //this.router.navigate(['/home']);
+      this.router.navigate(['/babel-tower']);
     }
 
 
