@@ -331,6 +331,7 @@ export class BabelTowerComponent  implements OnInit{
 
 
 
+
   @ViewChildren('video') videosRefs!: QueryList<ElementRef<HTMLVideoElement>>;
 
   cena: number = 0;

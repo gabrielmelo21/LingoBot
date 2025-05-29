@@ -29,6 +29,7 @@ import {WritingComponent} from "./components/writing/writing.component";
 import {ReadingComponent} from "./components/reading/reading.component";
 import {ListeningComponent} from "./components/listening/listening.component";
 import {SpeakingComponent} from "./components/speaking/speaking.component";
+import {TowerComponent} from "./tower/tower.component";
 
 
 const routes: Routes = [
@@ -64,6 +65,7 @@ const routes: Routes = [
   { path: "listening", component: ListeningComponent },
   { path: "speaking", component: SpeakingComponent },
 
+  { path: "tower", component: TowerComponent },
 
 
 

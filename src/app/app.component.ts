@@ -176,7 +176,7 @@ this.router.events.subscribe(event => {
       this.router.navigate(['/login']);
     } else {
     //this.router.navigate(['/home']);
-      this.router.navigate(['/babel-tower']);
+     // this.router.navigate(['/babel-tower']);
     }
 
 
