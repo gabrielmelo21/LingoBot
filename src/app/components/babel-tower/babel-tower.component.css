@@ -1,3 +1,7 @@
+.container{
+  overflow: hidden !important;
+}
+
 /* Vídeo de fundo */
 .background-video {
   position: absolute;
@@ -230,7 +234,7 @@
   font-size:25pt !important;
   font-weight:bolder;
   text-align: center;
-  color:#946a01;
+  color:#FFF;
   margin-top: 8vh !important;
 }
 
@@ -321,7 +325,7 @@
   height: auto
 }
 .img-command-center{
-  width:60%;
+  width:40%;
   height: auto;
 }
 
@@ -339,6 +343,9 @@
 
   .background-commands{
     height: 20vh !important;
+  }
+  .background-video{
+    top:  0 !important;
   }
 
 }
@@ -363,7 +370,7 @@ img-command-recharge{
 
 .background-commands{
   position: absolute !important;
-  bottom: 0vh !important;
+  bottom: 5vh !important;
   display:inline-block;
  /** background-image: url('/assets/lingobot/home/testar_pergaminho.jpg');**/
   height: 15vh ;

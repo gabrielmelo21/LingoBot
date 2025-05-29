@@ -4,6 +4,7 @@
 * {
   -webkit-tap-highlight-color: transparent !important; /* Remove o efeito azul no mobile */
   outline: none !important; /* Remove a borda de foco */
+  overflow: hidden !important;
 }
 button, a, input, textarea {
   -webkit-tap-highlight-color: transparent !important;
@@ -16,8 +17,7 @@ button:focus, a:focus, input:focus, textarea:focus {
 html, body {
   height: 100%;
   margin: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden !important;
   background-image: url('/assets/lingobot/loading-bg/loading.jpg');
   background-color: darkgoldenrod;
   background-size: contain; /* Melhor que 200% se quiser cobrir tudo */
