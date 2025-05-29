@@ -176,7 +176,7 @@ this.router.events.subscribe(event => {
       this.router.navigate(['/login']);
     } else {
     //this.router.navigate(['/home']);
-     // this.router.navigate(['/babel-tower']);
+      this.router.navigate(['/babel-tower']);
     }
 
 
@@ -236,5 +236,9 @@ this.router.events.subscribe(event => {
     this.playSound.playCleanSound2();
     this.mages = !this.mages;
     console.log(this.mages);
+  }
+  tower() {
+    this.playSound.playCleanSound2();
+    this.router.navigate(['/tower']);
   }
 }
