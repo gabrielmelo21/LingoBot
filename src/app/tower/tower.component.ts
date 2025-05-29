@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild} from '@angular/core';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import {PlaySoundService} from "../services/play-sound.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -10,6 +12,9 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
   styleUrls: ['./tower.component.css']
 })
 export class TowerComponent implements AfterViewInit, OnDestroy {
+
+  constructor(private playSoundService: PlaySoundService, private router: Router) { }
+
   @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
   @Input() height: number = 400; // 200 = 4 andares
 
@@ -349,4 +354,9 @@ export class TowerComponent implements AfterViewInit, OnDestroy {
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   };
+
+  back() {
+    this.playSoundService.playCleanSound2();
+    this.router.navigate(['/babel-tower']);
+  }
 }

@@ -11,3 +11,34 @@ canvas {
   height: 100%;
   object-fit: contain; /* para manter proporção sem distorcer */
 }
+
+
+.back-button{
+  position: absolute;
+  z-index: 5;
+  top: 10vh;
+  left: 1vh;
+  width: 15%;
+  height: auto;
+
+}
+
+.quest-upgrade-button{
+  position: absolute;
+  z-index: 5;
+  top: 10vh;
+  right: 1vh;
+  width: 18%;
+  height: auto;
+}
+
+.upgrade-button {
+  position: absolute;
+  z-index: 5;
+  bottom: 5vh; /* ou use top se quiser */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: auto;
+}
+
