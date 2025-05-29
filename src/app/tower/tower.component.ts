@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild} from 
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 
+
 @Component({
   selector: 'app-tower',
   templateUrl: './tower.component.html',
