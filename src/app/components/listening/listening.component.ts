@@ -41,6 +41,7 @@ export class ListeningComponent implements AfterViewInit {
   playCount: number = 0;
   tipsCount: number = 0;
   tipsMax: number = 0;
+  jackpot: boolean = false;
 
 
   constructor(private playSoundService: PlaySoundService,
@@ -52,14 +53,20 @@ export class ListeningComponent implements AfterViewInit {
 
                this.playSoundService.playListeningSoundTrack()
 
-                // this.cenarioCount = 6
+
+    const sorteio = Math.floor(Math.random() * 10) + 1;
+
+    this.jackpot = sorteio >= 7;
+
+//    console.log('Número sorteado:', sorteio);
+//    console.log('Jackpot:', this.jackpot);
 
 
 
     switch (this.authService.getDifficulty()) {
       case 'easy':
         this.srcExercises = 'assets/lingobot/json/listening/easy.json';
-        this.finalGoldReward = 25;
+        this.finalGoldReward = this.jackpot ? 50 : 25;
         this.finalXpReward = 20000;
         this.tipsMax = 3;
         break;
@@ -67,7 +74,7 @@ export class ListeningComponent implements AfterViewInit {
       case 'medium':
         this.srcExercises = 'assets/lingobot/json/listening/medium.json';
         // Recompensa 1,5× da easy
-        this.finalGoldReward = 30;
+        this.finalGoldReward = this.jackpot ? 60 : 30;
         this.finalXpReward = 25000;
         this.tipsMax = 4;
         break;
@@ -75,7 +82,7 @@ export class ListeningComponent implements AfterViewInit {
       case 'hard':
         this.srcExercises = 'assets/lingobot/json/listening/hard.json';
         // Recompensa 2× da easy
-        this.finalGoldReward = 35;
+        this.finalGoldReward = this.jackpot ? 70 : 35;
         this.finalXpReward = 30000;
         this.tipsMax = 6;
         break;
@@ -83,7 +90,7 @@ export class ListeningComponent implements AfterViewInit {
       case 'elder':
         this.srcExercises = 'assets/lingobot/json/listening/elder.json';
         // Recompensa 3× da easy
-        this.finalGoldReward = 40;
+        this.finalGoldReward = this.jackpot ? 80 : 40;
         this.finalXpReward = 35000;
         this.tipsMax = 10;
         break;
@@ -154,7 +161,7 @@ export class ListeningComponent implements AfterViewInit {
 
       if (this.currentStep < 2) {
 
-        if (this.cenarioCount < 7){
+        if (this.cenarioCount < 3){
           this.elder = "assets/lingobot/elders/listening/parado.png";
           this.playSoundService.playWin2()
 
@@ -177,7 +184,7 @@ export class ListeningComponent implements AfterViewInit {
 
         console.log("🎉 Exercício completo!");
         // Aqui pode-se exibir feedback e/ou iniciar novo exercício
-        if (this.cenarioCount !== 7){
+        if (this.cenarioCount !== 3){
 
           this.elder = "assets/lingobot/elders/listening/win.png";
           setTimeout(() => {
@@ -194,11 +201,11 @@ export class ListeningComponent implements AfterViewInit {
            // premio final
           setTimeout(() =>  {
             this.dialog = 7;
-            console.log("Moedas de ouro ganho: ", this.finalGoldReward);
+            this.authService.addRandomItemToUser();
             this.authService.updateLocalUserData({ tokens :this.finalGoldReward });
             this.authService.checkLevelUp(this.finalXpReward)
             this.authService.addXpSkills('listening');
-          }, 7000);
+          },11000);
 
 
         }// END cenarios
@@ -343,60 +350,38 @@ export class ListeningComponent implements AfterViewInit {
 
 
 
-
-  // Referências dos vídeos
-  @ViewChild('videoFinal1') videoFinal1Ref!: ElementRef<HTMLVideoElement>;
-  @ViewChild('videoFinal2') videoFinal2Ref!: ElementRef<HTMLVideoElement>;
-
-
+  @ViewChild('videoFinal') videoFinalRef!: ElementRef<HTMLVideoElement>;
+  videoFinalSrc: string = '';
 
   ngAfterViewInit(): void {
-    // Garante que ambos os vídeos fiquem pausados e no início.
-    this.videoFinal1Ref.nativeElement.pause();
-    this.videoFinal1Ref.nativeElement.currentTime = 0;
-    this.videoFinal2Ref.nativeElement.pause();
-    this.videoFinal2Ref.nativeElement.currentTime = 0;
+    if (this.videoFinalRef) {
+      const video = this.videoFinalRef.nativeElement;
+      video.pause();
+      video.currentTime = 0;
+    }
   }
 
-
-
-// Método para iniciar a sequência dos vídeos
   iniciarSequenciaFinal(): void {
-    // Aciona o som e exibe o primeiro cenário
     this.playSoundService.playOpenChest();
     this.cenarioFinal = true;
-    this.finalChestAnimation = false;
     this.elder = 'assets/lingobot/elders/listening/opening-chest.png';
 
-    // Aguarda um curto delay para o Angular atualizar o DOM,
-    // depois toca o primeiro vídeo:
-    setTimeout(() => {
-      const video1 = this.videoFinal1Ref.nativeElement;
-      video1.currentTime = 0;
-      // Se desejar reativar o som, altere o muted para false
-      video1.muted = false;
-      video1.play();
-    }, 50);
+    // Define o vídeo de acordo com o jackpot
+    this.videoFinalSrc = this.jackpot
+      ? 'assets/lingobot/cenas_na_masmorra/listening/jackpot.mp4'
+      : 'assets/lingobot/cenas_na_masmorra/listening/common-win.mp4';
 
-    // Após 5 segundos, muda o cenário e toca o segundo vídeo:
+
+
     setTimeout(() => {
-      // Aciona o som de vitória, muda as flags e a imagem do elder
-      this.playSoundService.playChestWin();
-      this.cenarioFinal = false;
-      this.finalChestAnimation = true;
       this.elder = 'assets/lingobot/elders/listening/win.png';
-
-      // Aguarda a atualização do DOM para tocar o segundo vídeo:
       setTimeout(() => {
-        const video2 = this.videoFinal2Ref.nativeElement;
-        video2.currentTime = 0;
-        // Se necessário, desmutar para tocar som
-        video2.muted = false;
-        video2.play();
+        const video = this.videoFinalRef.nativeElement;
+        video.currentTime = 0;
+        video.muted = false;
+        video.play();
       }, 50);
-    }, 5000);
+    }, 2000);
   }
-
-
 
 }

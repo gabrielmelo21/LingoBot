@@ -19,7 +19,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   templateUrl: './babel-tower.component.html',
   styleUrls: ['./babel-tower.component.css'],
 })
-export class BabelTowerComponent  implements OnInit{
+export class BabelTowerComponent  implements OnInit, AfterViewInit{
   userDifficulty: string = '';
   checkQuestModal: boolean = false;
   rechargeValue: number = 0;
@@ -165,27 +165,30 @@ export class BabelTowerComponent  implements OnInit{
 
 
   private cooldownInProgress = false;
-
-  private async startCooldown(duration: number = 2000): Promise<void> {
-    this.cooldownInProgress = true;
-    await new Promise(resolve => setTimeout(resolve, duration));
-    this.cooldownInProgress = false;
-  }
-
+  private inCommandRunning = false; // usado apenas para 'in'
 
   private delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-
   async command(cmd: string) {
-    // bloqueia comandos simultâneos
     if (this.cooldownInProgress) {
-      console.warn("Ação em cooldown. Aguarde...");
+      console.warn("Cooldown global em andamento.");
       return;
     }
 
-    // executa a ação imediatamente
+    // trava 'in' se já estiver em execução
+    if (cmd === 'in' && this.inCommandRunning) {
+      console.warn("Comando 'in' já está em execução.");
+      return;
+    }
+
+    // inicia cooldown global
+    this.cooldownInProgress = true;
+    setTimeout(() => {
+      this.cooldownInProgress = false;
+    }, 3000);
+
     this.playSound.playCleanSound();
 
     if (cmd === 'up') {
@@ -197,36 +200,30 @@ export class BabelTowerComponent  implements OnInit{
       } else {
         this.trilhaService.updateTorreData({ andar_atual: 1 });
         this.mudarCena(this.transitionUp, true);
-        console.log("mudar cena UP true");
-
         await this.delay(1500);
         this.loadVideoByAndar();
-        console.log("mudou a cena de acordo com andar");
       }
 
     } else if (cmd === 'in') {
-      if (this.currentBattery > 0) {
-        this.removeBattery();
-        this.mudarCena(this.roomActive, true);
+      this.inCommandRunning = true; // trava aqui
 
-        await this.delay(5600); // espera cena carregar
+      try {
+        if (this.currentBattery > 0) {
+          this.mudarCena(this.roomActive, true);
 
-        switch (this.getTextoPorAndar()) {
-          case "Writing":
-            this.router.navigate(['/writing']);
-            break;
-          case "Listening":
-            this.router.navigate(['/listening']);
-            break;
-          case "Reading":
-            this.router.navigate(['/reading']);
-            break;
-          case "Speaking":
-            this.router.navigate(['/speaking']);
-            break;
+          // se quiser delay da animação da sala, ative aqui
+           await this.delay(5600);
+
+          const destino = this.getTextoPorAndar().toLowerCase();
+          if (["writing", "listening", "reading", "speaking"].includes(destino)) {
+            this.removeBattery();
+            await this.router.navigate([`/${destino}`]); // espera navegação
+          }
+        } else {
+          this.rechargeBattery();
         }
-      } else {
-        this.rechargeBattery();
+      } finally {
+        this.inCommandRunning = false; // libera só depois que tudo for feito
       }
 
     } else if (cmd === 'down') {
@@ -235,19 +232,15 @@ export class BabelTowerComponent  implements OnInit{
       if (t.andar_atual > 1) {
         this.trilhaService.updateTorreData({ andar_atual: -1 });
         this.mudarCena(this.transitionDown, true);
-        console.log("mudar down true");
-
         await this.delay(1500);
         this.loadVideoByAndar();
-        console.log("mudou a cena de acordo com andar");
       } else {
         alert("Não é possível descer abaixo do primeiro andar.");
       }
     }
-
-    // inicia cooldown só após a ação
-    this.startCooldown(2000); // não precisa await, só ativa
   }
+
+
 
 
 
@@ -333,11 +326,21 @@ export class BabelTowerComponent  implements OnInit{
 
 
   @ViewChildren('video') videosRefs!: QueryList<ElementRef<HTMLVideoElement>>;
-
   cena: number = 0;
 
+  ngAfterViewInit() {
+    // Aguarda um pequeno tempo para garantir que o Angular já aplicou os bindings
+    setTimeout(() => {
+      this.videosRefs.forEach(ref => {
+        const video = ref.nativeElement;
+        video.muted = true;
+        video.pause();
+        video.currentTime = 0;
+      });
+    }, 0);
+  }
+
   mudarCena(novaCena: number, playVideo: boolean = true) {
-    // Pausa e reseta todos os vídeos
     this.videosRefs.forEach(videoRef => {
       const video = videoRef.nativeElement;
       video.pause();
@@ -349,7 +352,6 @@ export class BabelTowerComponent  implements OnInit{
 
     if (!playVideo) return;
 
-    // Aguarda o Angular aplicar o novo [hidden]
     setTimeout(() => {
       const videoRef = this.videosRefs.find(ref => {
         const video = ref.nativeElement;
@@ -365,6 +367,4 @@ export class BabelTowerComponent  implements OnInit{
       }
     }, 50);
   }
-
-
 }

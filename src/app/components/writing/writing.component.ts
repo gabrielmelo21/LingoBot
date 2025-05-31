@@ -41,7 +41,10 @@ export class WritingComponent {
   currentHp: number = 5;
   hpArray: number[] = [];
 
-
+  bloquearScroll(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // ou behavior: 'auto' se não quiser animação
+    document.body.style.overflow = 'hidden !important';
+  }
 
   constructor(private router: Router,
                private playSoundService: PlaySoundService,
@@ -49,6 +52,8 @@ export class WritingComponent {
                private authService: AuthService,
               private cdr: ChangeDetectorRef
   ) {
+    this.bloquearScroll();
+
 
      setTimeout(() =>{
          this.cena = 2;

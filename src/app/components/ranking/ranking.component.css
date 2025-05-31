@@ -97,7 +97,7 @@
   flex-direction: column;
   margin-top: 20px;
   max-height: 250px; /* Limite de altura para o ranking */
-  overflow-y: scroll; /* Scroll vertical */
+  overflow-y: scroll !important; /* Scroll vertical */
   padding-right: 10px; /* Ajuste para o scroll */
 }
 

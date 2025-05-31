@@ -1,17 +1,16 @@
 
 /* Vídeo de fundo */
 .background-video {
-  position: absolute;
-  top: 0px; /* Alinha o topo do vídeo com o topo do contêiner */
-  padding-bottom:50px !important;
-  left: 0; /* Alinha a esquerda do vídeo com a esquerda do contêiner */
-  width: 100%; /* Faz o vídeo ocupar 100% da largura do contêiner */
-  height: auto; /* Faz o vídeo ocupar 100% da altura do contêiner */
-  object-fit: cover; /* Faz o vídeo cobrir toda a área do contêiner */
-  z-index: 5; /* Coloca o vídeo atrás dos outros elementos */
-
-
+  position: fixed; /* Fixa na tela */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Garante que ocupe 100% da largura da viewport */
+  height: 100vh; /* Garante que ocupe 100% da altura da viewport */
+  object-fit: cover; /* Mantém a proporção e cobre toda a tela */
+  z-index: 5; /* Fica atrás de todos os elementos */
+  pointer-events: none; /* Não bloqueia cliques */
 }
+
 
 /* Imagem de fundo */
 .background-image {
@@ -26,7 +25,7 @@
 
 
 .background-commands {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;

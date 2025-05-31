@@ -181,7 +181,7 @@
 .inventory-slot {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-
+  overflow-y: scroll;
   width:90%;
   height: 80px;
   position: relative;

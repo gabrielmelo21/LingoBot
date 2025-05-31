@@ -155,9 +155,50 @@
   </div>
 
 
-  <!-- Recharge banner -->
-  <app-recharge *ngIf="rechargeModal && currentBattery < 1" ></app-recharge>
-  <app-charged *ngIf="rechargeModal && currentBattery >= 1" ></app-charged>
+  <div
+    class="recharge-modal"
+    *ngIf="rechargeModal"
+    [ngStyle]="{
+    'background-image': currentBattery < 1 ?
+      'url(assets/lingobot/discharged/discharged.png)' :
+      'url(assets/lingobot/discharged/charged_battery.png)'
+  }"
+  >
+
+
+      <div class="commands-group-recharge">
+
+        <div  class="command" (click)="rechargeBattery()" style="width: 33% !important;margin-top: 2vh;">
+          <img src="assets/lingobot/poses/lingobot-running.png"  style="width: 80%;height: auto" class="flipped">
+        </div>
+
+        <div  (click)=" addBattery()" class="command" style="width: 33% !important;margin-top: 3vh;" *ngIf="currentBattery !== 10">
+          <img src="assets/lingobot/menu-icons/battery-on.png"  style="width: 30%;height: auto" >
+          <h4 style="font-weight: bolder">Recharge</h4>
+          <div class="recharge-gem">
+            <h3>1</h3>
+            <img src="assets/lingobot/itens/gemas.png" class="gema-icon">
+          </div>
+        </div>
+
+        <div (click)="rechargeAll()" class="command" style="width: 33% !important;margin-top: 3vh;" *ngIf="currentBattery !== 10">
+          <img src="assets/lingobot/menu-icons/recharge_all.png"  style="width:80%;height: auto">
+          <h4  style="font-weight: bolder">Recharge All</h4>
+          <div class="recharge-gem">
+            <h3>{{  rechargeValue }}</h3>
+            <img src="assets/lingobot/itens/gemas.png" class="gema-icon">
+          </div>
+        </div>
+
+      </div>
+
+
+  </div>
+
+
+
+
+
 
 
   <!-- quest paper FLUTUANTE -->
@@ -210,45 +251,17 @@
 
   <!-- COMMANDOS -->
   <div class="background-commands"  >
-
-
     <div class="show-quest-infos" *ngIf="checkQuestModal">
-
-
-
       <div class="next-question"  >
         <h3 (click)="closeQuestModal();" class="command-button-2"  >
           Close
         </h3>
-    </div>
-    </div>
-    <div class="commands-group" *ngIf="rechargeModal && !checkQuestModal" style="margin-top: 20px !important;">
-      <div  class="command" (click)="rechargeBattery()" style="width: 33% !important;margin-top: 2vh;">
-        <img src="assets/lingobot/poses/lingobot-running.png"  style="width: 80%;height: auto" class="flipped">
       </div>
+    </div>
 
-      <div  (click)=" addBattery()" class="command" style="width: 33% !important;margin-top: 3vh;" *ngIf="currentBattery !== 10">
-        <img src="assets/lingobot/menu-icons/battery-on.png"  style="width: 30%;height: auto" >
-        <h4 style="font-weight: bolder">Recharge</h4>
-        <div class="recharge-gem">
-          <h3>1</h3>
-          <img src="assets/lingobot/itens/gemas.png" class="gema-icon">
-        </div>
-      </div>
-
-      <div (click)="rechargeAll()" class="command" style="width: 33% !important;margin-top: 3vh;" *ngIf="currentBattery !== 10">
-        <img src="assets/lingobot/menu-icons/recharge_all.png"  style="width:80%;height: auto">
-        <h4  style="font-weight: bolder">Recharge All</h4>
-        <div class="recharge-gem">
-          <h3>{{  rechargeValue }}</h3>
-          <img src="assets/lingobot/itens/gemas.png" class="gema-icon">
-        </div>
-      </div>
-    </div>
     <div class="main-commands" *ngIf="!rechargeModal && !checkQuestModal">
-    <h3 class="actions-title" *ngIf="blockAction">Ação em andamento...</h3>
-    <div class="commands-group">
 
+    <div class="commands-group">
       <div class="command" (click)="command('down')">
         <img src="assets/lingobot/menu-icons/arrow_down.png"
              class="img-command">

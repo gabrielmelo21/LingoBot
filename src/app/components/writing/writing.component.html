@@ -1,8 +1,4 @@
-
-<!-- Imagem estática
-<img   src="assets/lingobot/cenas_on_city/default-cena.png" class="background-image">
--->
-
+ <div class="container">
 
 <!-- Vídeo 1 -->
 <video *ngIf="cena == 1" autoplay  class="background-video">
@@ -14,11 +10,6 @@
 
  </div>
 
-
-<!-- Cenario - blackboard -->
-<div  class="background-image" *ngIf="cena == 2" >
-
-</div>
 
 
 
@@ -186,6 +177,7 @@
   </div> <!-- background commands -->
 
 
+ </div>
 
 
 
@@ -195,38 +187,7 @@
 
 
 
-  .hp-container {
-    position: absolute;
-    top: 10vh;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 20px;
-    background-color: #900;         /* fundo vermelho escuro */
-    border-radius: 10px;
-    overflow: hidden;
-    z-index: 10;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-  }
 
-  .hp-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #a8e063 0%, #56ab2f 100%);
-    border-radius: 10px 0 0 10px;
-    transition: width 0.3s ease-in-out;
-  }
-
-  .hp-text {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    color: #fff;
-    pointer-events: none;
-    font-size: 0.9rem;
-  }
 
 
 
@@ -282,30 +243,6 @@
     }
   }
 
-
-/**   @keyframes slideInOut {
-    0% {
-      right: -200px;
-      left: auto;
-      transform: translateY(-50%);
-    }
-    40% {
-      right: 25%;
-      left: auto;
-      transform: translate(50%, -50%);
-    }
-    60% {
-      right: 25%;
-      left: auto;
-      transform: translate(50%, -50%);
-    }
-    100% {
-      right: -200px;
-      left: auto;
-      transform: translateY(-50%);
-    }
-  }
-**/
 
   .exercise {
     position: absolute;
@@ -369,17 +306,6 @@
     border-radius: 10px 0 0 10px;
     transition: width 0.3s ease-in-out;
   }
-
-  .progress-text {
-    text-align: center;
-    color: #000;
-    font-weight: bold;
-    font-size: 14px;
-    z-index: 11;
-    pointer-events: none;
-  }
-
-
 
 
 
@@ -460,19 +386,10 @@
   }
 
 
-  .img-command{
-    width: 50%  ;
-    height: auto ;
-    margin-top: 3vh;
-  }
 
   /** Celular pequeno **/
   @media (max-height: 700px) {
-    .img-command{
-      width: 20% !important;
-      height: auto;
-      margin-top: 0vh;
-    }
+
 
 
     .background-commands{
@@ -503,21 +420,6 @@
 
     height: 80vh  ;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

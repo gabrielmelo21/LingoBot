@@ -24,6 +24,7 @@ export class AppComponent implements OnInit{
 
 
   isFlashcardsRoute = false;
+  isHomeRoute = false;
   showLingoBotModal = false;
   showFlashcardModal = false;
   showOpenTools = false;
@@ -43,13 +44,13 @@ export class AppComponent implements OnInit{
 
 
 
-
   constructor(   private trilhaService: TrilhaService,
                 private router: Router,
                 private auth: AuthService,
                 private playSound: PlaySoundService,
                  private modalService: ModalService
   ) {
+
 
     //localStorage.clear();
 
@@ -98,7 +99,8 @@ this.router.events.subscribe(event => {
 
     this.router.events.subscribe(() => {
       this.isLoginRoute = this.router.url === '/login';
-      this.isFlashcardsRoute = this.router.url === '/flashcards';
+      this.isHomeRoute = this.router.url === '/home';
+    //  this.isFlashcardsRoute = this.router.url === '/flashcards';
     });
 
 
@@ -176,7 +178,7 @@ this.router.events.subscribe(event => {
       this.router.navigate(['/login']);
     } else {
     //this.router.navigate(['/home']);
-      this.router.navigate(['/babel-tower']);
+     // this.router.navigate(['/babel-tower']);
     }
 
 

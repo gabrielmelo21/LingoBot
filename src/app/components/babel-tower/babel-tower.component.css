@@ -5,16 +5,16 @@
 /* Vídeo de fundo */
 .background-video {
   position: absolute;
-  top: 10vh; /* Alinha o topo do vídeo com o topo do contêiner */
-  padding-bottom:50px !important;
-  left: 0; /* Alinha a esquerda do vídeo com a esquerda do contêiner */
-  width: 100%; /* Faz o vídeo ocupar 100% da largura do contêiner */
-  height: auto; /* Faz o vídeo ocupar 100% da altura do contêiner */
-  object-fit: cover; /* Faz o vídeo cobrir toda a área do contêiner */
-  z-index: 5; /* Coloca o vídeo atrás dos outros elementos */
-
-
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 5; /* ou 0, dependendo do layout */
+  margin: 0;
+  padding: 0;
 }
+
 
 /* Imagem de fundo */
 .background-image {
@@ -29,8 +29,8 @@
 
 
 .background-commands {
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+
   left: 0;
   width: 100%;
   height: auto;
@@ -41,20 +41,13 @@
 
 
 
-.actions-title {
-  text-align: center;
-  font-size: 1.1em;
-  font-weight: bold;
-  margin-bottom: 5px;
-  margin-top: 0px;
-  color: #1e1e1e;
-}
-
 .commands-group {
   display: flex;
   justify-content: center;
   gap: 1px; /* Espaçamento entre os comandos */
   align-items: center;
+  position: fixed;
+  bottom: 3vh !important;
 }
 
 .command {
@@ -169,64 +162,6 @@
 
 
 
-.recharge {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 20px;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.recharge-command-button {
-  padding: 10px;
-  border-radius: 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  width: 160px;
-  background: none;
-  border: none;
-}
-
-.recharge-command-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 8px rgba(79, 195, 247, 0.4);
-}
-
-.recharge-img {
-  width: 40%;
-  height: auto;
-  border-radius: 20px;
-  display: block;
-  margin: 0 auto 8px auto;
-}
-
-.flipped {
-  transform: rotateY(180deg);
-}
-
-.recharge-gem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  margin-top: 2px;
-}
-
-.recharge-gem h3 {
-  color: #4FC3F7;
-  font-weight: bolder;
-  margin: 0;
-}
-
-.gema-icon {
-  width: 18px;
-  height: 18px;
-}
-
-
 
 
 
@@ -245,10 +180,26 @@
 
 
 
+
+.recharge-modal{
+  position: absolute;
+  top: 17vh;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+
+
+
 .riscado {
   text-decoration: line-through;
   opacity: 0.6;
 }
+
+
 
 
 .quest-check{
@@ -485,4 +436,106 @@ img-command-recharge{
   font-weight: bold;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.recharge-modal {
+  width: 100%; /* ou o tamanho que quiser */
+  height: 100%; /* ajuste conforme a imagem */
+  top: -10vh !important;
+  border-radius: 20px !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.recharge {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.recharge-command-button {
+  padding: 10px;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 160px;
+  background: none;
+  border: none;
+}
+
+.recharge-command-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(79, 195, 247, 0.4);
+}
+
+.recharge-img {
+  width: 40%;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto 8px auto;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.recharge-gem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  margin-top: -2px;
+}
+
+.recharge-gem h3 {
+  color: #4FC3F7;
+  font-weight: bolder;
+  margin: 0;
+}
+
+.gema-icon {
+  width: 18px;
+  height: 18px;
+}
+
+
+.commands-group-recharge {
+  background-image: url("/assets/lingobot/menu-icons/pergaminho.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  border-radius: 20px !important;
+  position: fixed !important;
+  bottom: 0vh !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }

@@ -1,6 +1,6 @@
 <div class="container">
-  <app-header></app-header>
-  <router-outlet style="background: black !important;"></router-outlet>
+  <app-header *ngIf="!this.isHomeRoute"></app-header>
+  <router-outlet></router-outlet>
 </div>
 
 
@@ -256,12 +256,12 @@ assets/lingobot/menu-icons/powers/bag-icon.png
 </button>
 -->
 
-<button   style="z-index: 9999112112" class="floating-button image-button" (touchstart)="openTools()" *ngIf="!isLoginRoute">
+<button   style="z-index: 9999112112" class="floating-button image-button" (touchstart)="openTools()" *ngIf="!isLoginRoute && !this.isHomeRoute">
   <img src="assets/lingobot/menu-icons/bag-icon.png" alt="Bag Photo">
 </button>
 
 
-<button   style="z-index: 9999112112" class="floating-button image-button-mage" (touchstart)="  tower()" *ngIf="!isLoginRoute">
+<button   style="z-index: 9999112112" class="floating-button image-button-mage" (touchstart)="  tower()" *ngIf="!isLoginRoute && !this.isHomeRoute">
   <img src="assets/lingobot/menu-icons/icone-home.png" alt="Bag Photo">
 </button>
 
@@ -312,8 +312,6 @@ assets/lingobot/menu-icons/powers/bag-icon.png
 
 
 
-
-<app-bottom-navigation *ngIf="!isLoginRoute" ></app-bottom-navigation>
 
 
 
