@@ -2,8 +2,52 @@
   overflow: hidden !important;
 }
 
-/* Vídeo de fundo */
+.video-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+}
+/* Ícone de loading centralizado e girando */
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  animation: spin 1s linear infinite;
+}
+
+.loading-spinner img {
+  width: 96px;
+  height: 96px;
+}
+
+
+/* Animação de rotação */
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+
+/* Imagem de fundo */
+.background-image {
   position: absolute;
   top: 0;
   left: 0;
@@ -15,17 +59,6 @@
   padding: 0;
 }
 
-
-/* Imagem de fundo */
-.background-image {
-  position: absolute;
-  top: 0px; /* Mesma posição do vídeo */
-  left: 0;
-  width: 100%; /* Mesma largura do vídeo */
-  height: auto; /* Altura proporcional */
-  object-fit: cover; /* Cobrir a área como o vídeo */
-  z-index: 5; /* Mesmo z-index do vídeo */
-}
 
 
 .background-commands {
@@ -78,8 +111,8 @@
 .quests-button {
   position: absolute;
   z-index: 6;
-  right: 3vh;
-  bottom: 25vh;
+  left: 3vh;
+  top: 20vh;
   width: 13%;
   height: auto;
 
@@ -227,7 +260,7 @@
 }
 .quest-check-infos{
   position: absolute;
-  top:45vh;
+  top:47vh;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999999;
@@ -539,3 +572,133 @@ img-command-recharge{
   align-items: center;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.fechar-btn {
+  position: absolute;
+  top: 20vh;
+  left: 2vh;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000000000000 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fechar-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+.claim-reward-btn {
+  width: 130px;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.claim-reward-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.claim-reward-btn:active {
+  transform: scale(0.92);
+  filter: brightness(0.95);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.strike-info {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.strike-text {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #444;
+}
+
+.strike-text .highlight {
+  color: darkgoldenrod;
+  font-weight: bold;
+}
+
+.strike-inline {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.strike-item {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #fff;
+  background-color: rgba(0,0,0,.3);
+  padding: 6px 12px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.strike-item img {
+  width: 20%;
+  height: auto;
+  margin-left: 10px;
+}
+

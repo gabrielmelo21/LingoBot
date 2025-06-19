@@ -4,6 +4,7 @@ import {BehaviorSubject, catchError, Observable, Subject, tap, throwError} from 
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {PlaySoundService} from "./play-sound.service";
 import {ModalService} from "./modal.service";
+import {TimersService} from "./timers.service";
 
 
 export interface UserItem {
@@ -43,7 +44,9 @@ export class AuthService {
   };
 
 
-  constructor(private http: HttpClient, private playSound: PlaySoundService, private modalService: ModalService) {
+  constructor(private http: HttpClient,
+              private playSound: PlaySoundService,
+              private modalService: ModalService) {
 
       this.startAutoRefresh();
 
@@ -93,19 +96,21 @@ export class AuthService {
   }
 
 
-  // logica do sistema de ranking
-  // esse metodo é para verificar o andar atual do usuario e colocar o ranking com o andar mais alto que ele atingiu
-  // por exemplo se o usuario atingiu um novo andar, deve atualizar, pq ele nunca esteve nesse novo andar
-  // e o ranking sempre vai pegar o ultimo andar mais alto que o usuario conseguiu chegar
-  // resultado é , se o andar mais alto que o usuario atingiu foi 30, o ranking é 30
-
-
 
   getDifficulty(){
     const userData = this.getUserData();
     return  userData.difficulty;
   }
 
+
+  getRanking(){
+    const userData = this.getUserData();
+    return  userData.ranking
+  }
+
+
+
+  /**
   getAndarUser(){
     const userData = this.getUserData();
     return  userData.ranking
@@ -130,7 +135,7 @@ export class AuthService {
 
   }
 
-
+**/
 
 
   saveUserData(token: string): void {
@@ -322,7 +327,9 @@ export class AuthService {
 
 
 
-  checkQuest(andar: number): any {
+  checkQuest(): any {
+    const andar = this.getRanking();
+
     console.log('[checkQuest] Andar:', andar);
 
     const userData = this.getUserData();
@@ -714,5 +721,15 @@ export class AuthService {
       })
     );
   }
+
+
+
+
+
+
+
+
+
+
 
 }

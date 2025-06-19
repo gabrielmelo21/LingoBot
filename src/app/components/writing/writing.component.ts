@@ -1,9 +1,11 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
 import {HttpClient} from "@angular/common/http";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {AuthService} from "../../services/auth.service";
+import {TimersService} from "../../services/timers.service";
+import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.service";
 
 
 export interface VocabEntry {
@@ -19,7 +21,10 @@ export interface VocabEntry {
 
 
 })
-export class WritingComponent {
+export class WritingComponent   {
+
+
+
   private exercicios: VocabEntry[] = [];
   cena: number = 1;
   dialog: number = 1;
@@ -50,8 +55,16 @@ export class WritingComponent {
                private playSoundService: PlaySoundService,
                private http: HttpClient,
                private authService: AuthService,
-              private cdr: ChangeDetectorRef
+               private cdr: ChangeDetectorRef,
+               private timersService: TimersService,
+              private eldersRoomGuardiamService: EldersRoomGuardiamService
   ) {
+
+    const allowed = this.eldersRoomGuardiamService.verifyAccessOrRedirect('writing_was_paid');
+    if (!allowed) return;
+
+
+
     this.bloquearScroll();
 
 
@@ -65,8 +78,7 @@ export class WritingComponent {
 
 
 
-
-    console.log(this.authService.getDifficulty())
+   // console.log(this.authService.getDifficulty())
 
     switch (this.authService.getDifficulty()) {
       case 'easy':
@@ -111,6 +123,10 @@ export class WritingComponent {
 
 
    } // end constructor
+
+
+
+
 
 
 
@@ -343,13 +359,16 @@ export class WritingComponent {
     this.playSoundService.playCleanSound2();
     this.selectedOption = index;
     this.optionIsSelected = true;
-    //console.log('Selecionado:', this.alternativas[index]);
-
+  }
+  resetSelectedOption(): void {
+    this.optionIsSelected = false;
+    this.selectedOption = null;
   }
 
 
 
   newExercise(): void {
+    this.  resetSelectedOption();
     if(this.progress >= 100) {
       this.startAnimation();
       this.playSoundService.playWinSound()
@@ -359,6 +378,7 @@ export class WritingComponent {
       this.authService.checkLevelUp(this.finalXpReward)
       this.authService.updateLocalUserData( { tokens: this.finalGoldReward})
       this.authService.addXpSkills('writing');
+      this.timersService.updateMission('writing');
 
       setTimeout(() => {
            this.playSoundService.playItemDrop()

@@ -1,5 +1,5 @@
 <div class="container">
-  <app-header *ngIf="!this.isHomeRoute"></app-header>
+  <app-header *ngIf="this.isBabelTower"></app-header>
   <router-outlet></router-outlet>
 </div>
 
@@ -27,20 +27,20 @@
 
 
 
-<!-- modal lingobot -->
+<!-- modal lingobot
 <div *ngIf="showLingoBotModal" class="flashcard-modal" style="margin-top: -20px !important;background: transparent!important;border:none !important;  ">
   <div class="modal-flashcard-content">
     <app-lingobot-card></app-lingobot-card>
   </div>
 </div>
-
-<!-- esse é o modal de flashcard -->
+-->
+<!-- esse é o modal de flashcard
 <div *ngIf="showFlashcardModal" class="flashcard-modal" style="margin-top: -20px !important; transform: scale(0.8)">
   <div class="modal-flashcard-content animation-zoom">
-    <app-create-flashcard></app-create-flashcard>
+
   </div>
 </div>
-
+-->
 
 
 <div *ngIf="showCelularModal" class="user-info-dialog">
@@ -111,7 +111,7 @@
 
 
 
-
+<!--
 <div *ngIf="showEldersBookModal" class="mug-dialog">
   <div class="mug-content">
     <div class="modal-content">
@@ -130,7 +130,7 @@
 </div>
 
 
-
+-->
 
 
 
@@ -256,12 +256,12 @@ assets/lingobot/menu-icons/powers/bag-icon.png
 </button>
 -->
 
-<button   style="z-index: 9999112112" class="floating-button image-button" (touchstart)="openTools()" *ngIf="!isLoginRoute && !this.isHomeRoute">
+<button   style="z-index: 9999112112" class="floating-button image-button" (touchstart)="openTools()"  *ngIf="this.isBabelTower">
   <img src="assets/lingobot/menu-icons/bag-icon.png" alt="Bag Photo">
 </button>
 
 
-<button   style="z-index: 9999112112" class="floating-button image-button-mage" (touchstart)="  tower()" *ngIf="!isLoginRoute && !this.isHomeRoute">
+<button   style="z-index: 9999112112" class="floating-button image-button-mage" (touchstart)="  tower()"  *ngIf="this.isBabelTower">
   <img src="assets/lingobot/menu-icons/icone-home.png" alt="Bag Photo">
 </button>
 

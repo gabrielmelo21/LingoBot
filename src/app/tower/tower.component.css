@@ -41,4 +41,239 @@ canvas {
   width: 40%;
   height: auto;
 }
+.floating-button {
+  position: absolute;
+  z-index: 5;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: auto;
+  animation: floating 2s ease-in-out infinite;
+  will-change: transform;
+}
 
+@keyframes floating {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+.upgrade-button:hover {
+  filter: brightness(1.1);
+  animation: none; /* Opcional: pausa a animação no hover */
+  transform: translateX(-50%) scale(1.1);
+}
+
+
+
+
+
+
+.fechar-btn {
+  position: absolute;
+  top: 20vh;
+  left: 2vh;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000000000000 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fechar-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+
+
+
+
+.riscado {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+
+
+
+.quest-check{
+  position: absolute;
+  top: 17vh;
+  left: 0;
+  z-index: 999999;
+  width: 100%;
+  height: auto;
+}
+
+.quest-check-text{
+  position: absolute;
+
+
+
+  top: 25vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+
+  z-index: 999999;
+  font-weight: bolder;
+  width: 70%;
+}
+.quest-check-infos{
+  position: absolute;
+  top:45vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+  width: 70%;
+  height: 25vh;
+  overflow: auto;
+}
+
+.quest-check-infos {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Arial', sans-serif;
+}
+
+.quest-check-text ul {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+.quest-check-text li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+.quest-check-text li:before {
+  content: "•";
+  color: darkgoldenrod;
+  font-size: 1.2em;
+  position: absolute;
+  left: 0;
+}
+
+
+
+.requisito-item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  color:  black;
+  background-color: transparent;
+  border: 2px solid rgba(255, 243, 209, 0.2);
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+
+  transition: all 0.2s ease;
+}
+
+.requisito-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+
+
+
+.upgrade-requirements {
+  position: absolute;
+  top: 33vh; /* Ajuste esta posição conforme necessário */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999;
+  text-align: center;
+  width: 70%;
+}
+
+.upgrade-requirements img {
+  width: 24px; /* Tamanho das imagens dos itens */
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.upgrade-requirements span {
+  font-weight: bold;
+  font-size: 30pt !important;
+  vertical-align: middle;
+}
+
+.upgrade-requirements span:first-of-type {
+  color: #4FC3F7 !important;
+}
+
+.upgrade-requirements span:last-of-type {
+  color: darkgoldenrod; /* Cor para o valor do gold */
+}
+
+
+.gemas{
+    width: 20% !important;
+    height: auto !important;
+}
+.coins{
+  width: 20% !important;
+  height: auto !important;
+}
+
+
+/* Estilo para o botão de confirmar */
+.upgrade-requirements + img {
+  position: absolute;
+  top: 50vh; /* Ajuste esta posição conforme necessário */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999;
+  width: 30%;
+  height: auto;
+  cursor: pointer; /* Para indicar que é clicável */
+}
+
+
+
+
+
+
+
+.confirm-btn {
+  position: absolute;
+  top: 51vh;
+  left: 35%;
+  z-index: 999999;
+  width: 30%;
+  height: auto;
+  cursor: pointer;
+  /* Seus estilos atuais */
+  transition: transform 0.1s ease; /* Adiciona transição suave */
+}
+
+
+
+.confirm-btn:active {
+  transform: scale(0.95) !important; /* Reduz ligeiramente o tamanho quando clicado */
+}
+
+/* Opcional: efeito de hover */
+.confirm-btn:hover {
+  filter: brightness(1.1) !important; /* Aumenta levemente o brilho */
+}

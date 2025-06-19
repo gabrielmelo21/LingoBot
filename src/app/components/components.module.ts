@@ -14,15 +14,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {YouTubePlayerModule} from "@angular/youtube-player";
 import { LoginComponent } from './login/login.component';
-import { FooterLinksComponent } from './footer-links/footer-links.component';
-import { FlashcardsComponent } from './flashcards/flashcards.component';
 import { HeaderComponent } from './header/header.component';
-import { DiscoverExpressionsComponent } from './discover-expressions/discover-expressions.component';
-import { LingobotCardComponent } from './lingobot-card/lingobot-card.component';
-import { QuestsComponent } from './quests/quests.component';
 import { ModalFeedbackComponent } from './modal-feedback/modal-feedback.component';
-import { PlanosComponent } from './planos/planos.component';
-import { CreateFlashcardComponent } from './create-flashcard/create-flashcard.component';
 import { MissoesDiariasComponent } from './missoes-diarias/missoes-diarias.component';
 import { ReferralComponent } from './referral/referral.component';
 
@@ -34,7 +27,6 @@ import { SkillsComponent } from './skills/skills.component';
 import { BabelTowerComponent } from './babel-tower/babel-tower.component';
 import { MugTranslateComponent } from './mug-translate/mug-translate.component';
 import { NotebookComponent } from './notebook/notebook.component';
-import { EldersNotebookComponent } from './elders-notebook/elders-notebook.component';
 import { WritingComponent } from './writing/writing.component';
 import { ReadingComponent } from './reading/reading.component';
 import { SpeakingComponent } from './speaking/speaking.component';
@@ -43,8 +35,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { ItensComponent } from './itens/itens.component';
 import { LevelUpComponent } from './level-up/level-up.component';
 import { NewItemModalComponent } from './new-item-modal/new-item-modal.component';
-import { RechargeComponent } from './recharge/recharge.component';
-import { ChargedComponent } from './charged/charged.component';
+import { UpgradeTowerVideoComponent } from './upgrade-tower-video/upgrade-tower-video.component';
+
 
 /**
  *
@@ -78,18 +70,10 @@ import { ChargedComponent } from './charged/charged.component';
   declarations: [
     HomeComponent,
     LoginComponent,
-    FooterLinksComponent,
-    FlashcardsComponent,
     HeaderComponent,
-    DiscoverExpressionsComponent,
-    LingobotCardComponent,
-    QuestsComponent,
     ModalFeedbackComponent,
-    PlanosComponent,
-    CreateFlashcardComponent,
     MissoesDiariasComponent,
     ReferralComponent,
-
     BugReportComponent,
     RankingComponent,
     AccountSettingsComponent,
@@ -97,7 +81,6 @@ import { ChargedComponent } from './charged/charged.component';
     BabelTowerComponent,
     MugTranslateComponent,
     NotebookComponent,
-    EldersNotebookComponent,
     WritingComponent,
     ReadingComponent,
     SpeakingComponent,
@@ -106,20 +89,15 @@ import { ChargedComponent } from './charged/charged.component';
     ItensComponent,
     LevelUpComponent,
     NewItemModalComponent,
-    RechargeComponent,
-    ChargedComponent,
+    UpgradeTowerVideoComponent,
 
   ],
   exports: [
     HeaderComponent,
-    FooterLinksComponent,
-    CreateFlashcardComponent,
-    LingobotCardComponent,
     AccountSettingsComponent,
     RankingComponent,
     MugTranslateComponent,
     NotebookComponent,
-    EldersNotebookComponent,
     SettingsComponent,
     ItensComponent,
     LevelUpComponent,

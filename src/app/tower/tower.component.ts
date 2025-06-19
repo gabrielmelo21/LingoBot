@@ -3,20 +3,119 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {PlaySoundService} from "../services/play-sound.service";
 import {Router} from "@angular/router";
+import {NgForOf, NgIf} from "@angular/common";
+import {AuthService} from "../services/auth.service";
 
 
 @Component({
-  selector: 'app-tower',
-  templateUrl: './tower.component.html',
-  standalone: true,
-  styleUrls: ['./tower.component.css']
+    selector: 'app-tower',
+    templateUrl: './tower.component.html',
+    standalone: true,
+    imports: [
+        NgForOf,
+        NgIf
+    ],
+    styleUrls: ['./tower.component.css']
 })
 export class TowerComponent implements AfterViewInit, OnDestroy {
 
-  constructor(private playSoundService: PlaySoundService, private router: Router) { }
+
+  coinsToUpgrade = 0;
+  gemasToUpgrade = 0;
+
+  constructor(private playSoundService: PlaySoundService,
+              private router: Router,
+              private auth: AuthService) {
+
+    this.verifyIsCanUpgrade();
+    // pega os valores numericos do texto
+    this.coinsToUpgrade = parseInt(this.resultadoPedagio.requisitos[1].nome.match(/\d+/)?.[0] || '0', 10);
+    this.gemasToUpgrade = parseInt(this.resultadoPedagio.requisitos[0].nome.match(/\d+/)?.[0] || '0', 10);
+
+
+  }
+
+
+
+  /** Rules **/
+
+
+  upgradeModal: boolean = false;
+  ranking = this.auth.getRanking();
+  firstNewFloor = Math.abs(this.ranking+1);
+  lastNewFloor = Math.abs(this.ranking+4);
+
+
+  resultadoPedagio: {
+    precisaPagar: boolean;
+    podeSubir: boolean;
+    mensagem: string;
+    requisitos: { nome: string; completo: boolean }[];
+  } = {
+    precisaPagar: false,
+    podeSubir: false,
+    mensagem: '',
+    requisitos: []
+  };
+
+
+  checkQuestModal: boolean = false;
+
+  getRequisitoIcon(index: number): string {
+    const icons = [
+      'assets/lingobot/itens/gemas.png',
+      'assets/lingobot/itens/gold.png',
+      'assets/lingobot/menu-icons/level.png',
+      'assets/lingobot/skills/listening.png',
+      'assets/lingobot/skills/speaking.png',
+      'assets/lingobot/skills/reading.png',
+      'assets/lingobot/skills/writing.png'
+    ];
+    return icons[index];
+  }
+
+  verifyIsCanUpgrade(){
+    this.resultadoPedagio = this.auth.checkQuest();
+  }
+
+  checkQuest(){
+    this.checkQuestModal = !this.checkQuestModal;
+  }
+
+   openUpgradeModal(){
+    this.playSoundService.playCleanSound2();
+      this.upgradeModal = !this.upgradeModal;
+   }
+
+  upgradeTower() {
+
+    // no video upgrade , alterar variavel de ranking do usuario, se estava 4, agora é 8 , soma
+    // ver o tamanho do video para redirecionar
+
+    this.playSoundService.playCleanSound2();
+
+    localStorage.setItem("upgradeAnimation", "true");
+
+    this.auth.decreaseLocalUserData({ gemas: this.gemasToUpgrade  });
+    this.auth.decreaseLocalUserData({ tokens: this.coinsToUpgrade });
+
+    this.router.navigate(['/upgradeTowerVideo']);
+  }
+
+
+
+
+
+
+
+
+
+
+
+   /** 3D CONFIGS **/
 
   @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
-  @Input() height: number = 400; // 200 = 4 andares
+  @Input() height: number = (this.auth.getRanking() / 4) * 200;
 
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
@@ -359,4 +458,6 @@ export class TowerComponent implements AfterViewInit, OnDestroy {
     this.playSoundService.playCleanSound2();
     this.router.navigate(['/babel-tower']);
   }
+
+
 }

@@ -1,133 +1,27 @@
 <div class="container">
-  <!-- Imagem estática staticSceneSrc
-  <img [hidden]="getTextoPorAndar() !== 'Writing'" src="assets/lingobot/elders_room/writing.jpg" class="background-image">
-  <img [hidden]="getTextoPorAndar() !== 'Reading'" src="assets/lingobot/elders_room/reading.jpg" class="background-image">
-  <img [hidden]="getTextoPorAndar() !== 'Listening'" src="assets/lingobot/elders_room/listening.jpg" class="background-image">
-  <img [hidden]="getTextoPorAndar() !== 'Speaking'" src="assets/lingobot/elders_room/speaking.jpg" class="background-image">
-  -->
+<!--
+  <img [src]="currentVideoFrame" class="background-image" [hidden]="videoReady">
+-->
 
-  <!-- Ender posicionado
-  <img *ngIf="getTextoPorAndar() == 'Writing'" src="assets/lingobot/elders_room/writing-elder.png" class="elder-writing">
-  <img *ngIf="getTextoPorAndar() == 'Reading'" src="assets/lingobot/elders_room/reading-elder.png" class="elder-reading">
-  <img *ngIf="getTextoPorAndar() == 'Listening'" src="assets/lingobot/elders_room/listening-elder.png" class="elder-listening">
-  <img *ngIf="getTextoPorAndar() == 'Speaking'" src="assets/lingobot/elders_room/speaking-elder.png" class="elder-speaking">
-  -->
+  <div class="video-container">
+    <!-- Loading por cima -->
+    <div class="loading-spinner" *ngIf="loading">
+      <img src="assets/lingobot/menu-icons/lingobot-energy-on.png" alt="Loading" />
+    </div>
 
-
-<!-- DA PRA ANIMAR O BONECO e colocar sem fundo e usar
-<style>
-   .lingobot-pose{
-     position: absolute;
-     z-index: 5;
-     width: 30%;
-     left: 1vh;
-     height: auto;
-     bottom: 30vh;
-   }
-</style>
-
-
-  <img [src]=" this.lingobot" class="lingobot-pose">
-  -->
-
-
-
-
-
-  <!-- ENTRADA WRITING -->
-  <video #video [hidden]="cena !== 10" autoplay muted   preload="auto" class="background-video">
-    <source  src ="assets/lingobot/enters_animation/writing.mp4" type="video/mp4" />
-  </video>
-
-  <!-- ENTRADA READING -->
-  <video #video [hidden]="cena !== 11" autoplay muted   preload="auto" class="background-video">
-    <source  src ="assets/lingobot/enters_animation/reading.mp4" type="video/mp4" />
-  </video>
-  <!-- ENTRADA LISTENING -->
-  <video #video [hidden]="cena !== 12" autoplay muted   preload="auto" class="background-video">
-    <source  src ="assets/lingobot/enters_animation/listening.mp4" type="video/mp4" />
-  </video>
-
-  <!-- ENTRADA SPEAKING -->
-  <video #video [hidden]="cena !== 13" autoplay muted   preload="auto" class="background-video">
-    <source  src ="assets/lingobot/enters_animation/speaking.mp4" type="video/mp4" />
-  </video>
-
-
-
-
-
-
-  <!-- WRITING TO READING (INDO) -->
-  <video #video [hidden]="cena !== 2" muted preload="auto" class="background-video">
-    <source src="assets/lingobot/teleport/writing_to_reading.mp4" type="video/mp4" />
-  </video>
-
-  <!-- READING TO WRITING (VOLTANDO) -->
-  <video #video [hidden]="cena !== 3" muted preload="auto" class="background-video">
-    <source src="assets/lingobot/teleport/reading_to_writing.mp4" type="video/mp4" />
-  </video>
-
-  <!-- READING TO LISTENING (INDO) -->
-  <video #video [hidden]="cena !== 4" muted preload="auto" class="background-video">
-    <source src="assets/lingobot/teleport/reading_to_listening.mp4" type="video/mp4" />
-  </video>
-
-  <!-- LISTENING TO READING (VOLTANDO) -->
-  <video #video [hidden]="cena !== 5" muted preload="auto" class="background-video">
-    <source src="assets/lingobot/teleport/listening_to_reading.mp4" type="video/mp4" />
-  </video>
-
-
-  <!-- LISTENING TO SPEAKING (INDO) -->
-  <video #video [hidden]="cena !== 6" muted preload="auto" class="background-video">
-    <source src="assets/lingobot/teleport/listening_to_speaking.mp4" type="video/mp4" />
-  </video>
-
-  <!-- SPEAKING TO LISTENING (VOLTANDO) -->
-  <video #video [hidden]="cena !== 7" muted preload="auto" class="background-video">
-    <source src="assets/lingobot/teleport/speaking_to_listening.mp4" type="video/mp4" />
-  </video>
-
-
-
-  <!-- SPEAKING TO WRITING (VOLTANDO AO INICIO) -->
-  <video #video [hidden]="cena !== 8" muted preload="auto" class="background-video">
-    <source src="assets/lingobot/teleport/speaking_to_writing.mp4" type="video/mp4" />
-  </video>
-
-  <!-- WRITING TO SPEAKING (VOLTANDO) -->
-  <video #video [hidden]="cena !== 9" muted preload="auto" class="background-video">
-    <source src="assets/lingobot/teleport/writing_to_speaking.mp4" type="video/mp4" />
-  </video>
-
-
-
-  <!-- Vídeo 1
-
-  staticSceneSrc
-
-
-  <video #video [hidden]="cena !== 1" autoplay muted loop preload="auto" class="background-video">
-    <source [src]="video1Src" type="video/mp4" />
-  </video>
-
-
-  <video #video [hidden]="cena !== 2" autoplay muted preload="auto" class="background-video">
-    <source [src]="video2Src" type="video/mp4" />
-  </video>
-
-
-  <video #video [hidden]="cena !== 3" autoplay muted preload="auto" class="background-video">
-    <source [src]="video3Src" type="video/mp4" />
-  </video>
-
-  <video #video [hidden]="cena !== 4" autoplay muted preload="auto" class="background-video">
-    <source [src]="video4Src" type="video/mp4" />
-  </video>
-
-
-  -->
+    <!-- Vídeo ao fundo -->
+    <video
+      #videoPlayer
+      autoplay
+      playsinline
+      preload="auto"
+      muted
+      poster="assets/lingobot/main-animation/poster.jpg"
+      class="background-video"
+    >
+      <source src="https://firebasestorage.googleapis.com/v0/b/geekco-image-storage.appspot.com/o/main-animation-compress.mp4?alt=media&token=79e3822e-871c-401b-89bf-3c7d7a52de92" type="video/mp4" />
+    </video>
+  </div>
 
 
 
@@ -158,11 +52,7 @@
   <div
     class="recharge-modal"
     *ngIf="rechargeModal"
-    [ngStyle]="{
-    'background-image': currentBattery < 1 ?
-      'url(assets/lingobot/discharged/discharged.png)' :
-      'url(assets/lingobot/discharged/charged_battery.png)'
-  }"
+
   >
 
 
@@ -198,30 +88,157 @@
 
 
 
+<!--
+  <div style="margin: 20px;position:absolute;z-index: 21321321321321;top: 10vh;display: inline-block ">
+    <button (click)="marcarComoFeita('writing')">Completar Writing</button>
+    <button (click)="marcarComoFeita('reading')">Completar Reading</button>
+    <button (click)="marcarComoFeita('listening')">Completar Listening</button>
+    <button (click)="marcarComoFeita('speaking')">Completar Speaking</button>
+    <button (click)="resetarMissoes()">Resetar Missões</button>
+  </div>
+  -->
+  <div style="margin: 20px;position:absolute;z-index: 21321321321321;top: 10vh;display: inline-block ">
+    <button (click)="addXpSpeaking()">Level em speaking</button>
 
-
-
-  <!-- quest paper FLUTUANTE -->
-  <img (click)="checkQuest()" src="assets/lingobot/menu-icons/quests.png" class="quests-button"  *ngIf="!rechargeModal">
-
-
-
-
-<!-- QUEST MODAL -->
- <img src="assets/lingobot/paper.png" class="quest-check" *ngIf="checkQuestModal">
-  <div class="quest-check-text"  *ngIf="checkQuestModal">
-    <p style="text-align: center;"><b style="color: darkgoldenrod">Mission</b><br>Move from floor {{  this.andar_final_conjunto }} to {{ this.andar_final_conjunto + 1}}, the following is required</p>
   </div>
 
 
-  <div *ngIf="checkQuestModal" class="quest-check-infos">
-    <div *ngFor="let requisito of resultadoPedagio.requisitos; let i = index" class="requisito-item" [class.riscado]="requisito.completo">
-      <img class="requisito-icon" [src]="getRequisitoIcon(i)" alt="ícone">
-      <span>{{ requisito.nome }}</span>
+  <img
+    (click)="checkQuest()"
+    src="assets/lingobot/menu-icons/daily-missions.png"
+    class="quests-button"
+    [ngClass]="{ 'neon-green': todasFeitas() && !recompensaReivindicada }"
+    *ngIf="!rechargeModal"
+  />
+
+
+  <ng-container *ngIf="checkMissoesModal">
+    <button (click)="checkQuest()" class="fechar-btn">✕</button>
+
+    <img src="assets/lingobot/paper.png" class="quest-check">
+
+
+    <div class="quest-check-text" *ngIf="recompensaReivindicada">
+      <p style="text-align: center;">
+        <b style="color: darkgoldenrod">Concluído com Sucesso!</b><br>
+       Parabéns, você concluiu as missões de hoje.
+      </p>
     </div>
-  </div>
 
-  <!-- QUEST MODAL END -->
+    <div class="quest-check-text" *ngIf="!recompensaReivindicada">
+
+      <div class="strike-info">
+        <p class="strike-text">
+          Mantenha seu <strong>Strike diário</strong> para <span class="highlight">aumentar sua recompensa!</span><br>
+
+        </p>
+        <div class="strike-inline">
+          <div class="strike-item">
+            <img src="assets/lingobot/menu-icons/strike.png" alt="Strike">
+            <span>{{ this.timersService.getStrikes() }} dias</span>
+          </div>
+          <div class="strike-item">
+            <img src="assets/lingobot/itens/gemas.png" alt="Gemas"  style="  margin-left: 30px !important;">
+            <span>{{ this.timersService.getReward() }}</span>
+          </div>
+        </div>
+
+
+        <span style="font-size: 9pt !important; text-align: center;">
+                    Next Reset: {{  this.timersService.getNextResetTime() }}
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <div class="quest-check-infos">
+      <!-- Lista de tarefas -->
+      <div *ngIf="!todasMissoesCompletas">
+        <div *ngFor="let missao of missoesDiarias"
+             class="requisito-item"
+             [class.riscado]="missao.completo">
+          <img class="requisito-icon"
+               [src]="getIconeMissao(missao.nome)"
+               [alt]="missao.nome">
+          <span>Praticar {{ missao.nome }}</span>
+        </div>
+      </div>
+
+      <!-- Recompensa final -->
+      <div *ngIf="todasFeitas() && !recompensaReivindicada"
+           class="recompensa-final"
+           style="margin-top: 30px; text-align: center;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
+          <img src="assets/lingobot/itens/gemas.png" alt="Gemas" style="width: 48px; height: 48px;">
+          <span style="color: dodgerblue; font-size: 34px; font-weight: bolder;">{{ this.timersService.getReward() }}</span>
+        </div>
+        <img
+          src="assets/lingobot/menu-icons/claim-reward.png"
+          alt="Claim Reward"
+          (click)="claimReward()"
+          class="claim-reward-btn">
+      </div>
+
+      <div *ngIf="recompensaReivindicada" class="bg-final">
+
+      </div>
+    </div>
+
+
+
+  </ng-container>
+
+
+  <style>
+
+    .neon-green {
+      box-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00, 0 0 24px #00cc00;
+      border-radius: 10px;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+
+    .bg-final{
+      height: 500px;
+      margin-top: 10px;
+      background-image: url('/assets/lingobot/menu-icons/dayli-missions-end.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+
+
+    .claim-btn {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: dodgerblue;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .claim-btn:hover {
+      background-color: #1e70c1;
+    }
+
+  </style>
+
+
+
+
 
 
 
@@ -262,13 +279,13 @@
     <div class="main-commands" *ngIf="!rechargeModal && !checkQuestModal">
 
     <div class="commands-group">
-      <div class="command" (click)="command('down')">
+      <div class="command" (click)="command('down')" *ngIf="this.getTextoPorAndar().toLowerCase() !== 'writing'">
         <img src="assets/lingobot/menu-icons/arrow_down.png"
              class="img-command">
       </div>
 
       <div class="command" (click)="command('in')">
-        <img src="assets/lingobot/poses/lingobot-running.png"
+        <img [src]="currentElderImage"
           class="img-command-center">
         <div class="battery-consuming" style="margin-left: 7vh">
           <p class="battery-text">-1</p>
@@ -276,7 +293,7 @@
         </div>
       </div>
 
-      <div class="command" (click)="command('up')">
+      <div class="command" (click)="command('up')" *ngIf="this.getTextoPorAndar().toLowerCase() !== 'speaking'">
         <img src="assets/lingobot/menu-icons/arrow_up.png" class="img-command">
       </div>
 

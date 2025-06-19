@@ -2,7 +2,7 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component, ElementRef,
-  HostListener,
+  HostListener, OnDestroy,
   OnInit,
   QueryList, ViewChild,
   ViewChildren
@@ -12,29 +12,25 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {TrilhaService} from "../../services/trilha.service";
 import {Subscription} from "rxjs";
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {TimersService} from "../../services/timers.service";
+import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.service";
+
+
+
 
 @Component({
   selector: 'app-babel-tower',
   templateUrl: './babel-tower.component.html',
   styleUrls: ['./babel-tower.component.css'],
 })
-export class BabelTowerComponent  implements OnInit, AfterViewInit{
+export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
+
+
+  currentElderImage: string = "";
   userDifficulty: string = '';
   checkQuestModal: boolean = false;
   rechargeValue: number = 0;
-  blockAction: boolean = false;
-  resultadoPedagio: {
-    precisaPagar: boolean;
-    podeSubir: boolean;
-    mensagem: string;
-    requisitos: { nome: string; completo: boolean }[];
-  } = {
-    precisaPagar: false,
-    podeSubir: false,
-    mensagem: '',
-    requisitos: []
-  };
+
   showPedagioModal: boolean = false;
 
   currentBattery: number = 0;
@@ -43,22 +39,126 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
   rechargeModal: boolean = false ;
 
 
+  andarAtual: number = 0;
 
 
-  torreSubscription!: Subscription;
-  andarAtual: number = 0; // Variável para armazenar o andar atual
-  exercise1: boolean = false; // Variável para o exercício 1
-  exercise2: boolean = false; // Variável para o exercício 2
-  andar_inicial_conjunto: number = 0;
-  andar_final_conjunto: number = 0;
+
+
 
   constructor(private playSound: PlaySoundService,
               private router: Router,
               protected auth: AuthService,
               private trilhaService: TrilhaService,
-              private cdr: ChangeDetectorRef) {window.scrollTo(0, 0);this.playSound.playTowerSoundTrack()}
+              private cdr: ChangeDetectorRef,
+              protected timersService: TimersService,
+              private eldersRoomGuardiamService:  EldersRoomGuardiamService) {
+    window.scrollTo(0, 0);
+   // this.playSound.playTowerSoundTrack()
+
+
+
+
+  }
+  checkMissoesModal: boolean = false;
+  missoesDiarias: { nome: string; completo: boolean }[] = [];
+
+
+  private missionsSubscription?: Subscription;
+  recompensaReivindicada = this.timersService.isRewardClaimed();
+
+  getIconeMissao(nome: string): string {
+    return `assets/lingobot/skills/${nome.toLowerCase()}.png`;
+  }
+
+  // Métodos de teste
+  marcarComoFeita(missao: string) {
+    this.timersService.updateMission(missao.toLowerCase());
+    this.atualizarMissoes();
+  }
+
+  atualizarMissoes() {
+    const data = this.timersService.getMissionsData();
+    this.missoesDiarias = [
+      { nome: 'Writing', completo: data.writing === 'true' },
+      { nome: 'Reading', completo: data.reading === 'true' },
+      { nome: 'Listening', completo: data.listening === 'true' },
+      { nome: 'Speaking', completo: data.speaking === 'true' }
+    ];
+   // this.recompensaReivindicada = data.claimed_reward_today === 'true';
+  }
+
+  todasFeitas(): boolean {
+    return this.missoesDiarias.every(m => m.completo);
+  }
+
+
+  resetarMissoes() {
+    this.timersService.resetAllMissionsForTesting();
+    this.atualizarMissoes();
+  }
+
+  checkQuest(){
+    this.playSound.playCleanSound2();
+    this.checkMissoesModal = !this.checkMissoesModal;
+    this.renderizar();
+  }
+
+  get todasMissoesCompletas(): boolean {
+    return this.missoesDiarias.every(missao => missao.completo);
+  }
+
+  claimReward(): void {
+    this.playSound.playWin2()
+    this.timersService. claimReward();
+
+    this.recompensaReivindicada = this.timersService.getClaimedRewardStatus();
+
+    console.log('Recompensa coletada!');
+    // Aqui você pode desativar o modal, adicionar recompensa ao jogador etc.
+    //this.checkMissoesModal = false;
+  }
+
+
+
+  subirAndar(){
+     this.andarAtual++;
+     localStorage.setItem("andarAtual", this.andarAtual.toString());
+  }
+  descerAndar(){
+     this.andarAtual--;
+     localStorage.setItem("andarAtual", this.andarAtual.toString());
+  }
 
   ngOnInit() {
+
+
+ //this.auth.updateLocalUserData({ ranking: 4})
+ //localStorage.setItem("andarAtual", "1");
+
+
+    if (!localStorage.getItem("andarAtual")) {localStorage.setItem("andarAtual", "1");}
+    this.andarAtual = parseInt(localStorage.getItem("andarAtual") || "1", 10);
+
+
+
+    // Se inscreve para mudanças automáticas
+    this.missionsSubscription = this.timersService.missionsUpdated$.subscribe(
+      (updated) => {
+        if (updated) {
+          console.log('Atualizando display das missões...');
+          this.updateMissionsDisplay();
+        }
+      }
+    );
+
+
+    this.atualizarMissoes();
+    // this.recompensaReivindicada = this.timersService.isRewardClaimed();
+   // this.timersService.setTomorrowMissionLiberationForTesting('10/06/2025 14:48:00');
+    console.log("recompensa revindicada: ", this.recompensaReivindicada)
+
+
+
     this.loadBattery();
     this.auth.user$.subscribe(userData => {
       if (!userData) return;
@@ -69,30 +169,51 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
 
 
 
-    this.torreSubscription = this.trilhaService.torre$.subscribe((torre) => {
-      this.andarAtual = torre.andar_atual;
-      this.andar_inicial_conjunto = torre.andar_inicial_conjunto;
-      this.andar_final_conjunto = torre.andar_final_conjunto;
-      this.exercise1 = torre.exercise1;
-      this.exercise2 = torre.exercise2;
-      this.auth.checkAndUpdateRanking(this.andarAtual);
-    });
-
 
     this.loadVideoByAndar();
+
+
+
+
+    if (localStorage.getItem("newFloorAnimation")  !== null && localStorage.getItem("newFloorAnimation") === "true") {
+      localStorage.setItem("newFloorAnimation", "false");
+      this.playCongratsScene();
+      setTimeout(() => {
+        this.loadVideoByAndar();
+      }, 21900)
+    }
+
+
+
+
+  }
+
+  // Método para atualizar todas as variáveis do display
+  private updateMissionsDisplay(): void {
+    // Atualiza recompensaReivindicada
+    this.recompensaReivindicada = this.timersService.isRewardClaimed();
+
+    // Atualiza status das missões individuais (se você tiver essa variável)
+    if (this.missoesDiarias) {
+      this.missoesDiarias = this.missoesDiarias.map(missao => ({
+        ...missao,
+        completo: this.timersService.isMissionComplete(missao.nome)
+      }));
+    }
+  //  console.log('Display atualizado - recompensaReivindicada:', this.recompensaReivindicada);
+  }
+
+
+  ngOnDestroy() {
+    // Limpa a subscription para evitar memory leaks
+    if (this.missionsSubscription) {
+      this.missionsSubscription.unsubscribe();
+    }
   }
   verificarPedagio() {}
   renderizar(){this.cdr.detectChanges();}
-  pagarPedagio() {
-    // Deduzir os valores e avançar o andar
-   // this.auth.pagarPedagio(); // você pode criar esse método depois
-    this.closeModal();
-  }
-  checkQuest(){
-  this.resultadoPedagio = this.auth.checkQuest(4);
-  this.checkQuestModal = !this.checkQuestModal;
-  this.renderizar();
-}
+
+
   closeQuestModal() {
     this.checkQuestModal = !this.checkQuestModal;
     this.renderizar();
@@ -101,18 +222,6 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
      this.rechargeModal = !this.rechargeModal;
      this.loadBattery()
      this.renderizar();
-  }
-  getRequisitoIcon(index: number): string {
-    const icons = [
-      'assets/lingobot/itens/gemas.png',
-      'assets/lingobot/itens/gold.png',
-      'assets/lingobot/menu-icons/level.png',
-      'assets/lingobot/skills/listening.png',
-      'assets/lingobot/skills/speaking.png',
-      'assets/lingobot/skills/reading.png',
-      'assets/lingobot/skills/writing.png'
-    ];
-    return icons[index];
   }
   setEnergyImage() {
     this.energyImagePath = this.currentBattery > 0
@@ -146,12 +255,16 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
 
     switch (andarNoConjunto) {
       case 0:
+        this.currentElderImage = "assets/lingobot/elders/writing/parado.png";
         return "Writing";  // Andar 1, 5, 9, 13, ...
       case 1:
+        this.currentElderImage = "assets/lingobot/elders/reading/parado.png";
         return "Reading";  // Andar 2, 6, 10, 14, ...
       case 2:
+        this.currentElderImage = "assets/lingobot/elders/listening/focado.png";
         return "Listening";  // Andar 3, 7, 11, 15, ...
       case 3:
+        this.currentElderImage = "assets/lingobot/elders/speaking/speaking.png";
         return "Speaking";  // Andar 4, 8, 12, 16, ...
       default:
         return "";  // Caso não encontre
@@ -164,77 +277,52 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
 
 
 
-  private cooldownInProgress = false;
-  private inCommandRunning = false; // usado apenas para 'in'
-
-  private delay(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   async command(cmd: string) {
-    if (this.cooldownInProgress) {
-      console.warn("Cooldown global em andamento.");
-      return;
-    }
-
-    // trava 'in' se já estiver em execução
-    if (cmd === 'in' && this.inCommandRunning) {
-      console.warn("Comando 'in' já está em execução.");
-      return;
-    }
-
-    // inicia cooldown global
-    this.cooldownInProgress = true;
-    setTimeout(() => {
-      this.cooldownInProgress = false;
-    }, 3000);
-
     this.playSound.playCleanSound();
 
     if (cmd === 'up') {
-      this.auth.checkAndUpdateRanking(this.andarAtual);
 
-      if (this.andarAtual === this.andar_final_conjunto) {
-        this.verificarPedagio();
-        this.showPedagioModal = true;
-      } else {
-        this.trilhaService.updateTorreData({ andar_atual: 1 });
-        this.mudarCena(this.transitionUp, true);
-        await this.delay(1500);
+      if (this.getTextoPorAndar().toLowerCase() !== "speaking") {
+        this.subirAndar()
         this.loadVideoByAndar();
       }
 
+
+
     } else if (cmd === 'in') {
-      this.inCommandRunning = true; // trava aqui
+
 
       try {
         if (this.currentBattery > 0) {
-          this.mudarCena(this.roomActive, true);
+          this.playEnterAnimation()
 
-          // se quiser delay da animação da sala, ative aqui
-           await this.delay(5600);
 
-          const destino = this.getTextoPorAndar().toLowerCase();
-          if (["writing", "listening", "reading", "speaking"].includes(destino)) {
-            this.removeBattery();
-            await this.router.navigate([`/${destino}`]); // espera navegação
-          }
+          setTimeout( () => {
+            const destino = this.getTextoPorAndar().toLowerCase();
+            if (["writing", "listening", "reading", "speaking"].includes(destino)) {
+              this.removeBattery();
+              this.eldersRoomGuardiamService.markAsPaid(destino);
+
+
+              this.router.navigate([`/${destino}`]); // espera navegação
+            }
+          }, this.waitAnimationTime +100)
+
+
+
         } else {
           this.rechargeBattery();
         }
       } finally {
-        this.inCommandRunning = false; // libera só depois que tudo for feito
+
       }
 
     } else if (cmd === 'down') {
-      const t = this.trilhaService.getTorreData();
-
-      if (t.andar_atual > 1) {
-        this.trilhaService.updateTorreData({ andar_atual: -1 });
-        this.mudarCena(this.transitionDown, true);
-        await this.delay(1500);
-        this.loadVideoByAndar();
+      if (this.andarAtual > 1) {
+         this.descerAndar();
+         this.loadVideoByAndar();
       } else {
+
         alert("Não é possível descer abaixo do primeiro andar.");
       }
     }
@@ -246,125 +334,184 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
 
 
 
-  roomActive: number = 0;
-  transitionUp: number = 0;
-  transitionDown: number = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  loopStart = 0;
+  loopEnd = 0;
+  finalEnd = 0;
+  isLooping = true;
+  waitAnimationTime: number = 0;
+  private onVideoPlaying = () => {};
+
+
+  loadingTransition() {
+    const video = this.videoPlayer.nativeElement;
+
+    // Ativa loading
+    this.loading = true;
+
+    // Remove listeners antigos para evitar acumulo
+    video.removeEventListener('playing', this.onVideoPlaying);
+
+    // Cria função handler para 'playing'
+    this.onVideoPlaying = () => {
+      this.loading = false;
+      video.removeEventListener('playing', this.onVideoPlaying);
+    };
+
+    // Adiciona o listener para quando o vídeo começar a tocar
+    video.addEventListener('playing', this.onVideoPlaying);
+  }
+
+
+  @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
+  loading: boolean = true;
+
+
+  ngAfterViewInit() {
+    const video = this.videoPlayer.nativeElement;
+
+
+    // Esconde o loading quando começar a tocar
+    video.addEventListener('playing', () => {
+      this.loading = false;
+    });
+
+
+    video.addEventListener('timeupdate', () => {
+      if (this.isLooping && video.currentTime >= this.loopEnd) {
+        video.currentTime = this.loopStart;
+        video.play();
+      }
+
+      if (!this.isLooping && video.currentTime >= this.finalEnd) {
+        video.pause();
+      }
+    });
+
+    // Quando o vídeo estiver pronto, inicia a reprodução
+    video.addEventListener('loadedmetadata', () => {
+      video.currentTime = this.loopStart;
+      video.playbackRate = 1;
+      video.play().catch(err => console.error('Erro ao dar play no vídeo:', err));
+    });
+
+  }
 
   loadVideoByAndar() {
+    this.loadingTransition();
+
     const andarNoConjunto = (this.andarAtual - 1) % 4;
+
     switch (andarNoConjunto) {
       case 0:
         // WRITING
-        this.transitionUp = 2;
-        this.transitionDown = 3;
-
-        setTimeout(() => {
-          this.mudarCena(10, false); //cena de writing static
-          this.roomActive = 10;
-
-        }, 1500);
-
+        this.loopStart = 0;
+        this.loopEnd = 12.0;
+        this.finalEnd = 17.21;
         break;
       case 1:
         // READING
-        this.transitionUp = 4; // ok
-        this.transitionDown = 3; // ok
-
-        setTimeout(() => {
-          this.mudarCena(11, false); //cena de writing static
-          this.roomActive = 11;
-
-        }, 1500);
+        this.loopStart = 17.80;
+        this.loopEnd = 25.0;
+        this.finalEnd = 29.0;
         break;
       case 2:
         // LISTENING
-        this.transitionUp = 6; // ok
-        this.transitionDown = 5; // ok
-
-        setTimeout(() => {
-          this.mudarCena(12, false);
-          this.roomActive = 12;
-
-        }, 1500);
+        this.loopStart = 32.0;
+        this.loopEnd = 42.5;
+        this.finalEnd = 51.0;
         break;
       case 3:
         // SPEAKING
-        this.transitionUp = 8; // ok
-        this.transitionDown = 7; // ok
-
-        setTimeout(() => {
-          this.mudarCena(13, false);
-          this.roomActive = 13;
-
-        }, 1500);
+        this.loopStart = 51.8;
+        this.loopEnd = 63.0;
+        this.finalEnd = 68.0;
         break;
     }
 
-    this.renderizar();
+    this.waitAnimationTime = Math.abs(this.loopEnd - this.finalEnd) * 1000;
+
+    const video = this.videoPlayer.nativeElement;
+    this.isLooping = true;
+
+    if (video.readyState >= 2) {
+      video.currentTime = this.loopStart;
+      video.play();
+    } else {
+      video.addEventListener('loadedmetadata', () => {
+        video.currentTime = this.loopStart;
+        video.play();
+      }, { once: true });
+    }
   }
 
 
 
+  playEnterAnimation() {
+    const video = this.videoPlayer.nativeElement;
+    this.isLooping = false;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  @ViewChildren('video') videosRefs!: QueryList<ElementRef<HTMLVideoElement>>;
-  cena: number = 0;
-
-  ngAfterViewInit() {
-    // Aguarda um pequeno tempo para garantir que o Angular já aplicou os bindings
-    setTimeout(() => {
-      this.videosRefs.forEach(ref => {
-        const video = ref.nativeElement;
-        video.muted = true;
-        video.pause();
-        video.currentTime = 0;
-      });
-    }, 0);
+    if (video.readyState >= 2) {
+      video.currentTime = this.loopEnd;
+      video.play();
+    } else {
+      video.addEventListener('loadedmetadata', () => {
+        video.currentTime = this.loopEnd;
+        video.play();
+      }, { once: true });
+    }
   }
 
-  mudarCena(novaCena: number, playVideo: boolean = true) {
-    this.videosRefs.forEach(videoRef => {
-      const video = videoRef.nativeElement;
-      video.pause();
-      video.currentTime = 0;
-      video.muted = true;
-    });
 
-    this.cena = novaCena;
+  playCongratsScene() {
+    const video = this.videoPlayer.nativeElement;
+    this.loopStart = 69.5;
+    this.loopEnd = 90.0;
+    this.finalEnd = 90.0;
+    this.isLooping = false;
 
-    if (!playVideo) return;
+    video.playbackRate = 1;
 
-    setTimeout(() => {
-      const videoRef = this.videosRefs.find(ref => {
-        const video = ref.nativeElement;
-        return !video.hidden;
-      });
+    if (video.readyState >= 2) {
+      video.currentTime = 69.5;
+      video.play();
+    } else {
+      video.addEventListener('loadedmetadata', () => {
+        video.currentTime = 69.5;
+        video.play();
+      }, { once: true });
+    }
+  }
 
-      if (videoRef) {
-        const video = videoRef.nativeElement;
-        video.muted = false;
-        video.play().catch(e => {
-          console.warn('Erro ao dar play no vídeo:', e);
-        });
-      }
-    }, 50);
+
+  addXpSpeaking() {
+    this.auth.addXpSkills('speaking');
   }
 }

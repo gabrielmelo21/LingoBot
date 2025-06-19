@@ -1,4 +1,19 @@
-<video  autoplay playsinline loop class="background-video">
-  <source src="assets/lingobot/entrando-na-torre-animation/entrando-na-torre.mp4" type="video/mp4" />
-</video>
+<div class="video-container">
+  <!-- Loading por cima -->
+  <div class="loading-spinner" *ngIf="loading">
+    <img src="assets/lingobot/menu-icons/lingobot-energy-on.png" alt="Loading" />
+  </div>
 
+  <!-- Vídeo ao fundo -->
+  <video
+    #videoRef
+    autoplay
+    playsinline
+    preload="auto"
+    muted
+    poster="assets/lingobot/entrando-na-torre-animation/poster.jpg"
+    class="background-video"
+  >
+    <source src="https://firebasestorage.googleapis.com/v0/b/geekco-image-storage.appspot.com/o/entrando-na-torre.mp4?alt=media&token=c79b58ad-de2f-4c48-8b79-ea4cc6a4c1e9" type="video/mp4" />
+  </video>
+</div>

@@ -1,49 +1,232 @@
-
-/* Vídeo de fundo */
-.background-video {
-  position: fixed; /* Fixa na tela */
+.background-image {
+  background-image: url('/assets/lingobot/cenas_na_masmorra/writing/background.png');
+  position: fixed; /* Use fixed em vez de absolute para garantir cobertura total */
   top: 0;
   left: 0;
-  width: 100vw; /* Garante que ocupe 100% da largura da viewport */
-  height: 100vh; /* Garante que ocupe 100% da altura da viewport */
-  object-fit: cover; /* Mantém a proporção e cobre toda a tela */
-  z-index: 5; /* Fica atrás de todos os elementos */
-  pointer-events: none; /* Não bloqueia cliques */
+  width: 100vw;
+  height: 100vh;
+  background-size: cover; /* Use background-size em vez de object-fit */
+  background-position: center center; /* Centraliza a imagem */
+  background-repeat: no-repeat; /* Evita repetição */
+  z-index: 5;
+  margin: 0;
+  padding: 0;
 }
-
-
-/* Imagem de fundo */
-.background-image {
-  position: absolute;
-  top: 0px; /* Mesma posição do vídeo */
-  left: 0;
-  width: 100%; /* Mesma largura do vídeo */
-  height: auto; /* Altura proporcional */
-  object-fit: cover; /* Cobrir a área como o vídeo */
-  z-index: 5; /* Mesmo z-index do vídeo */
-}
-
-
-.background-commands {
+/* Imagem de fundo principal - parede.png (mais atrás) */
+.background-wall {
+  background-image: url('/assets/lingobot/cenas_na_masmorra/writing/parede.png');
   position: fixed;
-  bottom: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 1; /* Z-index menor que a outra imagem */
+  margin: 0;
+  padding: 0;
+}
+
+/* Para dispositivos móveis - ajustes específicos se necessário */
+@media screen and (max-width: 768px) {
+  .background-image {
+    /* Força altura mínima para cobrir toda a viewport */
+    min-height: 100vh;
+    min-height: 100dvh; /* Usa dynamic viewport height se suportado */
+  }
+}
+
+/* Para dispositivos muito altos ou muito largos, ajusta o comportamento */
+@media screen and (aspect-ratio > 16/9) {
+  .background-image {
+    background-size: auto 100vh; /* Ajusta altura primeiro em telas muito largas */
+  }
+}
+
+@media screen and (aspect-ratio < 9/16) {
+  .background-image {
+    background-size: 100vw auto; /* Ajusta largura primeiro em telas muito altas */
+  }
+}
+
+
+/* Container principal */
+.background-commands {
+  bottom:0;
+  left: 0;
+  position:  fixed !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25vh;
+  z-index: 6 !important;
+}
+
+/* Container do diálogo com glassmorphism */
+.dialog-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Lista de opções */
+.dialog-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Cada opção individual */
+.dialog-option {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de brilho sutil */
+.dialog-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
   left: 0;
   width: 100%;
-  object-fit: cover;
-  z-index: 4;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Estados hover e active */
+.dialog-option:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dialog-option:hover::before {
+  opacity: 1;
+}
+
+.dialog-option:active {
+  transform: scale(0.98) translateY(-1px);
+  transition: transform 0.1s ease;
+}
+
+/* Número da opção */
+.option-number {
+  color: #ffd700;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-right: 15px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+/* Texto da opção */
+.option-text {
+  flex: 1;
+  line-height: 1.3;
 }
 
 
-
-
-.actions-title {
-  text-align: center;
-  font-size: 1.1em;
-  font-weight: bold;
-  margin-bottom: 5px;
-  margin-top: 0px;
-  color: #1e1e1e;
+.response-button-container{
+  z-index: 9 !important;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20vh;
+  width: 100%;
+  height: auto;
 }
+
+
+/* Botões de ação (mantidos do código anterior) */
+.action-button {
+  width: 30%;
+  height: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+.action-button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.action-button:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .dialog-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .dialog-option {
+    padding: 12px 15px;
+    font-size: 1rem;
+  }
+
+  .option-number {
+    font-size: 1.1rem;
+    margin-right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .background-commands {
+    height: 30vh;
+  }
+
+  .dialog-container {
+    padding: 15px;
+  }
+
+  .dialog-option {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .option-number {
+    font-size: 1rem;
+    margin-right: 10px;
+  }
+
+  .action-button {
+    width: 40%;
+  }
+}
+
 
 .commands-group {
   display: flex;
@@ -76,42 +259,11 @@
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.neon-border {
-  filter: drop-shadow(0 0 10px #00aaff) drop-shadow(0 0 20px #00aaff) drop-shadow(0 0 30px #00aaff);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .battery-bars {
   position: absolute;
-  top: 10vh;
+  top: 0vh;
   left: 5%;
   width: 90%;
   display: flex;
@@ -162,6 +314,394 @@
   width: 16%;
   height: auto;
 }
+
+
+
+.progress-container {
+  position: absolute;
+  top: 7vh; /* Ajuste conforme sua tela */
+  left:52%;
+  transform: translateX(-50%);
+  width: 60%; /* largura total da barra */
+  height: 20px;
+  background-color: #444; /* cor da barra vazia */
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #f6d365 0%, #fda085 100%);
+  border-radius: 10px 0 0 10px;
+  transition: width 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+.exercise {
+  position: absolute;
+  top: 40vh !important;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: white;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  width: 60% !important;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.question-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.enunciado-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.enunciado {
+  color: #ffd700;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-item {
+  width: 85%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 15px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.option-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.option-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.option-item:hover::before {
+  opacity: 1;
+}
+
+.option-item:active {
+  transform: scale(0.98) translateY(-1px);
+}
+
+.option-item.selected {
+  background: linear-gradient(135deg,
+  rgba(59, 130, 246, 0.4),
+  rgba(147, 197, 253, 0.3)
+  );
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow:
+    0 0 20px rgba(59, 130, 246, 0.3),
+    0 8px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.option-item.selected::before {
+  background: linear-gradient(45deg,
+  rgba(59, 130, 246, 0.2),
+  rgba(147, 197, 253, 0.1)
+  );
+  opacity: 1;
+}
+
+.option-letter {
+  font-weight: 700;
+  color: #ffd700;
+  margin-right: 15px;
+  font-size: 18px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.option-text {
+  flex: 1;
+  line-height: 1.3;
+}
+
+/* Animação de bounce personalizada */
+/* Animação de bounce personalizada */
+@keyframes bounceSelect {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  80% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.option-item.selected {
+  animation: bounceSelect 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Efeito de click mais suave */
+.option-item:active {
+  transform: scale(0.96) translateY(0px);
+  transition: transform 0.1s ease;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .exercise {
+    width: 95%;
+    padding: 20px;
+    top: 35vh;
+  }
+
+  .enunciado {
+    font-size: 14px;
+  }
+
+  .option-item {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .option-letter {
+    font-size: 16px;
+    margin-right: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CSS para os botões de ação */
+.action-button {
+  width: 30%;
+  height: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Efeitos hover para os botões */
+.action-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  filter: brightness(1.1);
+}
+
+/* Efeito de click */
+.action-button:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .action-button {
+    width: 40%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.baloon-container {
+  position: absolute;
+  top: 11vh; /* Ajuste conforme necessário */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px; /* Ou o tamanho que preferir */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10 !important;
+}
+
+.dialog-baloon {
+  background-image: url('/assets/lingobot/cenas_na_masmorra/balao_right.png');
+  background-size: 100% 100%; /* Para cobrir todo o balão */
+  background-repeat: no-repeat;
+  padding: 30px 40px; /* Ajuste conforme o design do seu balão */
+  min-width: 300px;
+  max-width: 600px;
+  min-height: 150px;
+  margin-bottom: -20px; /* Sobrepor um pouco com a imagem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.dialog-baloon p {
+  font-size: 20px; /* Tamanho grande para o texto */
+  color: #000; /* Cor do texto */
+  text-align: center;
+  margin: 0;
+  padding: 10px 20px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.character-img {
+  width: 350px; /* Ajuste conforme necessário */
+  height: auto;
+  position: absolute;
+  bottom: 21vh; /* Ajuste conforme necessário */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.animated-image {
+  position: absolute;
+  width: 70%; /* Ajuste conforme necessário */
+  height: auto;
+  right: -100px; /* Posição inicial fora da tela */
+  bottom:  -20vh !important;
+  z-index: 5;
+  transform: translateY(-50%);
+  transition: none; /* Desativa transição inicial */
+}
+
+.animate {
+  animation: slideInOut 2s ease-in-out forwards;
+}
+
+@keyframes slideInOut {
+  0% {
+    right: -100px;
+    left: auto;
+    transform: translateY(-50%);
+  }
+
+  50%{
+    right: -25px;
+    left: auto;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    right: -100px;
+    left: auto;
+    transform: translateY(-50%);
+  }
+}
+
 
 
 

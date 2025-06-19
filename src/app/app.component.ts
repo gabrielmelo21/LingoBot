@@ -25,6 +25,7 @@ export class AppComponent implements OnInit{
 
   isFlashcardsRoute = false;
   isHomeRoute = false;
+  isBabelTower: boolean = false;
   showLingoBotModal = false;
   showFlashcardModal = false;
   showOpenTools = false;
@@ -100,6 +101,7 @@ this.router.events.subscribe(event => {
     this.router.events.subscribe(() => {
       this.isLoginRoute = this.router.url === '/login';
       this.isHomeRoute = this.router.url === '/home';
+      this.isBabelTower = this.router.url === '/babel-tower';
     //  this.isFlashcardsRoute = this.router.url === '/flashcards';
     });
 
