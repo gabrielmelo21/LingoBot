@@ -1,52 +1,6 @@
-
-<img    src="assets/lingobot/level-up/level-up.png" class="background-image">
-
-
-
-
-<div class="background-commands">
-
-
-  <div class="next-question"  >
-    <!-- se acertou botao next question, se errou, tentar novamente -->
-
-    <h3 (click)="close_modal()"  class="command-button-2" >
-      Continuar
-    </h3>
-
-
-  </div>
-
-
+<div class="full-image-container">
+  <img src="assets/lingobot/level-up/level-up.png" class="levelUpImage">
+  <img *ngIf="showConfirmButton"
+       (click)="close_modal()"
+       src="assets/lingobot/menu-icons/confirm.png" class="confirmButton">
 </div>
-
-
-
-<style>
-  /* Imagem de fundo */
-  .background-image {
-    position: absolute;
-    top: 0px; /* Mesma posição do vídeo */
-    left: 0;
-    width: 100%; /* Mesma largura do vídeo */
-    height: auto; /* Altura proporcional */
-    object-fit: cover; /* Cobrir a área como o vídeo */
-    z-index: 5; /* Mesmo z-index do vídeo */
-  }
-
-
-  .background-commands{
-    position: absolute !important;
-    bottom: 0 !important;
-    display:inline-block;
-    background-image: url('assets/lingobot/home/testar_pergaminho.jpg');
-    height: 30vh !important;
-    background-size: cover;
-    background-position: top;
-    z-index: 5 !important;
-
-  }
-
-
-
-</style>

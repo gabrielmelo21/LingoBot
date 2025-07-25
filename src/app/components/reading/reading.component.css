@@ -1,72 +1,191 @@
-/* Vídeo de fundo */
-.background-video {
-  position: absolute;
-  top: 0px; /* Alinha o topo do vídeo com o topo do contêiner */
-  padding-bottom:50px !important;
-  left: 0; /* Alinha a esquerda do vídeo com a esquerda do contêiner */
-  width: 100%; /* Faz o vídeo ocupar 100% da largura do contêiner */
-  height: auto; /* Faz o vídeo ocupar 100% da altura do contêiner */
-  object-fit: cover; /* Faz o vídeo cobrir toda a área do contêiner */
-  z-index: 5; /* Coloca o vídeo atrás dos outros elementos */
 
-
-}
-
-/* Imagem de fundo */
-.background-image {
-  position: absolute;
-  top: 0px; /* Mesma posição do vídeo */
-  left: 0;
-  width: 100%; /* Mesma largura do vídeo */
-  height: auto; /* Altura proporcional */
-  object-fit: cover; /* Cobrir a área como o vídeo */
-  z-index: 5; /* Mesmo z-index do vídeo */
-  background-image: url('/assets/lingobot/cenas_na_masmorra/reading/cenario.png') !important;
-}
-
-
-
-.background-commands {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  object-fit: cover;
+.character-img {
+  width: 80%;
+  height: auto;
   z-index: 4;
+  position: absolute;
+  top: 25vh;
+  right: -15vh;
+  transition: filter 0.3s ease;
+
 }
 
 
 
 
-.actions-title {
-  text-align: center;
-  font-size: 1.1em;
+
+.tablet {
+  transition: transform 0.2s ease;
+  width: 40%;
+  height: auto;
+  z-index: 4;
+  position: absolute;
+  top: 30vh;
+  right: 0;
+  transform: scale(1); /* Adicionado estado inicial explícito */
+  cursor: pointer; /* Adicionado para indicar que é clicável */
+}
+
+.tablet:active {
+  animation: bounce 0.3s ease forwards;
+}
+
+
+
+
+
+/** MODAL **/
+
+.quest-check{
+  position: absolute;
+  top: 17vh;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: auto;
+}
+
+
+
+.quest-check-text{
+  position: absolute;
+  top: 28vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  z-index: 999999;
+  font-weight: bolder;
+  width: 70%;
+}
+
+
+
+
+.fechar-btn {
+  position: absolute;
+  top: 20vh;
+  left: 2vh;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 5px;
-  margin-top: 0px;
-  color: #1e1e1e;
+  cursor: pointer;
+  z-index: 100 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fechar-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.glass-container {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-height: 80vh;
+  padding: 20px;
+  z-index: 100;
+}
+
+.text-box {
+  font-weight: bold;
+  font-family: monospace;
+  color: #fff !important;
+  font-size: 15pt;
+  height: 100%;
+  overflow: auto;
+  margin: 0;
+  padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+.glass-box {
+  position: absolute;
+  bottom: -1vh;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  max-width: 500px;
+  margin: 30px auto;
 }
 
 .commands-group {
   display: flex;
-  justify-content: center;
-  gap: 1px; /* Espaçamento entre os comandos */
   align-items: center;
+  gap: 10px;
 }
 
-.command {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.command-textarea {
+  flex: 1;
+  resize: none;
+  padding: 12px 16px;
+  font-size: 20px;
   text-align: center;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  font-weight: bold;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  outline: none;
+  min-height: 60px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.command-text {
-  margin-top: 8px;
-  font-size: 1.0em;
-  font-weight: bold;
-  color: #222; /* Cor um pouco mais escura para melhor contraste */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Pequeno sombreamento para destaque */
+.command-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
+
+.submit-button {
+  transition: transform 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%; /* Faz o botão ocupar a largura total */
+  transform: scale(1.0);
+}
+
+.submit-button img {
+  width:100%;
+  max-width: 160px; /* Ajuste esse valor conforme o layout */
+  height: auto;
+  object-fit: contain;
+}
+
+.submit-button:hover {
+  transform: scale(1.1);
+}
+.submit-button:active {
+  animation: bounce 0.3s ease forwards;
+}
+
+
+
+
+
+

@@ -1,0 +1,83 @@
+{
+  "character": "Doctor",
+  "blocks": [
+    [
+      {
+        "question": "What brings you in today?",
+        "options": [
+          "I’m with pain in the head since yesterday.",
+          "I’ve had a headache since yesterday."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Do you have any allergies?",
+        "options": [
+          "Yes, I have allergy of dust.",
+          "Yes, I’m allergic to dust."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Have you taken any medication?",
+        "options": [
+          "Yes, I take one medicine for the pain.",
+          "Yes, I took some medicine for the pain."
+        ],
+        "correctIndex": 1
+      }
+    ],
+    [
+      {
+        "question": "Are you experiencing any other symptoms?",
+        "options": [
+          "Yes, I’m feeling many cold and much tired.",
+          "Yes, I’m feeling very cold and tired."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Do you have a fever?",
+        "options": [
+          "Yes, I’m with fever since night.",
+          "Yes, I’ve had a fever since last night."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "How long have you been feeling this way?",
+        "options": [
+          "I’m feel bad make three days.",
+          "I’ve been feeling bad for three days."
+        ],
+        "correctIndex": 1
+      }
+    ],
+    [
+      {
+        "question": "Do you smoke or drink alcohol?",
+        "options": [
+          "No, I no do these things.",
+          "No, I don’t do those things."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "I’m going to prescribe you some antibiotics.",
+        "options": [
+          "Okay, I go take the recipe in pharmacy.",
+          "Okay, I’ll get the prescription at the pharmacy."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Please come back if you don’t feel better in a few days.",
+        "options": [
+          "Okay, I back if I no be good.",
+          "Okay, I’ll come back if I don’t get better."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  ]
+}

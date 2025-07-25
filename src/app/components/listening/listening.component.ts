@@ -4,6 +4,13 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {MainAPIService} from "../../services/main-api.service";
+import {JackpotService} from "../../services/jackpot.service";
+import {VideoControllerService} from "../../services/video-controller.service";
+import {DialogService} from "../../services/dialog.service";
+import {TimersService} from "../../services/timers.service";
+import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.service";
+import {LifeBarComponent} from "../life-bar/life-bar.component";
+import {RewardService} from "../../services/reward.service";
 
 
 export interface ListeningExercise {
@@ -21,17 +28,104 @@ export interface ListeningExercise {
   styleUrls: ['./listening.component.css']
 })
 export class ListeningComponent implements AfterViewInit {
+
+
+  @ViewChild(LifeBarComponent) lifeBarComponent!: LifeBarComponent;
+
+
+
+  loading: boolean = true;
+  finishButton: boolean = false;
+  hidePosWin: boolean = false;
+
+
+
+  @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
+
+
+  ngAfterViewInit() {
+    this.videoController.setup(this.videoPlayer);
+    const video = this.videoPlayer.nativeElement;
+    video.addEventListener('playing', () => {
+      this.loading = false;
+    });
+
+
+    this.gateController(0);
+    this.muteOrUnmute(true);
+
+  }
+
+  muteOrUnmute(boolean: boolean) {
+    return boolean?this.videoController.mute():this.videoController.unmute();
+  }
+
+
+ gateController(number: number) {
+    switch (number) {
+      case 0:
+        this.videoController.setStaticLoop("00:00", "00:00");
+      break;
+      case 1:
+        // executa efeito do 0:01 ao 0:02, e fixa no 0:02
+
+        this.videoController.playSegment("0:01", "0:02", () => {
+          this.videoController.setStaticLoop("00:02", "00:02");
+
+        });
+        break;
+      case 2:
+
+        this.videoController.playSegment("0:03", "0:04", () => {
+          this.videoController.setStaticLoop("00:04", "00:04");
+
+        });
+        break;
+      case 3:
+
+        this.muteOrUnmute(false);
+        this.videoController.playSegment("0:04", "0:05", () => {
+          this.videoController.setStaticLoop("00:05", "00:05");
+
+
+          //executa animação de win ou jackpot
+          this.victoryAnimation();
+        });
+        break;
+
+    }
+ }
+
+ victoryAnimation(){
+
+   if(!this.jackpot){
+      this.videoController.playSegment("0:05", "0:13", () => {
+        this.videoController.setStaticLoop("00:13", "00:13");
+        this.giveUserReward();
+        this.finishButton = true;
+        this.muteOrUnmute(true);
+      });
+    }else{
+      this.videoController.playSegment("0:13", "0:21", () => {
+        this.videoController.setStaticLoop("00:21", "00:21");
+        this.giveUserReward();
+        this.finishButton = true;
+        this.muteOrUnmute(true);
+      });
+    }
+ }
+
+
+
   dialog: number = 0;
-  cena: number = 1;
-  cenario: string = "assets/lingobot/cenas_na_masmorra/listening/listening_gate0.jpg";
+
   cenarioCount: number = 0;
-  cenarioFinal: boolean = false;
-  finalChestAnimation: boolean = false;
+
   audioUrl: string | null = null;
   isPlaying: boolean = false;
   audioElement: HTMLAudioElement | null = null;
   isLoading: boolean = false;
-  elder: string = "assets/lingobot/elders/listening/parado.png";
+  elder: string = "assets/lingobot/elders/listening/focado.png";
   srcExercises: string = '';
   finalGoldReward: number = 10;
   finalXpReward: number = 10000;
@@ -41,26 +135,43 @@ export class ListeningComponent implements AfterViewInit {
   playCount: number = 0;
   tipsCount: number = 0;
   tipsMax: number = 0;
-  jackpot: boolean = false;
-
+  jackpot: boolean = this.jackpotService.isJackpot();
 
   constructor(private playSoundService: PlaySoundService,
               private http: HttpClient,
               private router: Router,
               private authService: AuthService,
-              private apiService: MainAPIService) {
+              private apiService: MainAPIService,
+              private jackpotService: JackpotService,
+              private videoController: VideoControllerService,
+              protected dialogService: DialogService,
+              private timerService: TimersService,
+              private eldersRoomGuardiamService: EldersRoomGuardiamService,
+              private rewardService: RewardService) {
              // this.getAudioTTS("eu sou um audio gerado pelo python, i am audio from python")
 
-               this.playSoundService.playListeningSoundTrack()
+
+    const allowed = this.eldersRoomGuardiamService.verifyAccessOrRedirect('listening_was_paid');
+    if (!allowed) return;
 
 
-    const sorteio = Math.floor(Math.random() * 10) + 1;
+          this.playSoundService.playListeningSoundTrack()
 
-    this.jackpot = sorteio >= 7;
 
-//    console.log('Número sorteado:', sorteio);
-//    console.log('Jackpot:', this.jackpot);
-
+    this.dialogService.startDialog([
+      { text: 'Olá, aventureiro. Eu sou o Ancião da Compreensão Auditiva, ou Listening Elder, e preciso da sua ajuda.',
+        expression: "assets/lingobot/elders/listening/parado.png" },
+      { text: 'Através daquele portão existe um tesouro, que acredito conter muitas moedas de ouro.',
+      expression: "assets/lingobot/elders/listening/explicando.png" },
+      { text: 'Perceba que há 3 espaços vazios. Para abrir o portão, é preciso preenchê-los com as esferas de poder.',
+        expression: "assets/lingobot/elders/listening/explicando.png" },
+      { text: 'Porém, para isso, é necessário descobrir o que a Vitrola diz — e ela só fala em inglês.',
+        expression: "assets/lingobot/elders/listening/error.png" },
+      { text: 'Cada palavra que ela disser, você deve entender e responder o que ouviu.',
+      expression: "assets/lingobot/elders/listening/focado.png" },
+      { text: 'Ao final, terá a palavra-passe que coloca uma esfera de poder. Repita até o portão se abrir.',
+      expression: "assets/lingobot/elders/listening/parado.png" },
+    ]);
 
 
     switch (this.authService.getDifficulty()) {
@@ -104,10 +215,6 @@ export class ListeningComponent implements AfterViewInit {
         break;
     }
 
-
-
-
-
   }
 
 
@@ -127,8 +234,63 @@ export class ListeningComponent implements AfterViewInit {
     this.playNextAudio();
   }
 
+  next() {
+    this.playSoundService.playCleanSound2();
+    this.dialogService.nextDialog();
+    if (!this.dialogService.isActive){
+        this.loadExercises();
+    }
+  }
 
-  private playNextAudio(): void {
+  prev() {
+    this.playSoundService.playCleanSound2();
+    this.dialogService.prevDialog();
+  }
+
+  close() {
+
+    this.playSoundService.playCleanSound2();
+    this.dialogService.endDialog();
+  }
+
+
+
+giveUserReward(): void {
+  this.rewardService.giveUserRewards(this.finalXpReward, this.finalGoldReward, 'listening');
+}
+
+eldersBackToFocus(){
+  setTimeout(() => {
+    this.elder = "assets/lingobot/elders/listening/focado.png";
+  },1500)
+}
+
+
+eldersExpressions(number: number){
+
+  switch (number) {
+      case 1: // correct answer
+        this.elder = "assets/lingobot/elders/listening/parado.png";
+        this.playSoundService.playWin2()
+        this.eldersBackToFocus();
+      break;
+      case 2: // incorrect answer
+        this.elder = "assets/lingobot/elders/listening/error.png";
+        this.playSoundService.playErrorQuestion()
+        this.eldersBackToFocus();
+      break;
+      case 3:
+
+
+        this.elder = "assets/lingobot/elders/listening/win.png";
+        this.playSoundService.playWin2()
+      break;
+    }
+}
+
+
+
+  playNextAudio(): void {
     this.isLoading = true;
 
     let textToPlay = '';
@@ -142,8 +304,6 @@ export class ListeningComponent implements AfterViewInit {
 
     this.getAudioTTS(textToPlay);
   }
-
-
   enviarResposta(resposta: string, inputElement: HTMLTextAreaElement): void {
     const esperado = this.currentStep === 0
       ? this.currentExercise.p1
@@ -152,97 +312,43 @@ export class ListeningComponent implements AfterViewInit {
         : this.currentExercise.phrase;
 
     if (resposta.trim().toLowerCase() === esperado.trim().toLowerCase()) {
+      this.eldersExpressions(1)
       console.log("✅ Resposta correta:", resposta);
-
-      // limpar textarea
       inputElement.value = '';
 
-
-
       if (this.currentStep < 2) {
-
-        if (this.cenarioCount < 3){
-          this.elder = "assets/lingobot/elders/listening/parado.png";
-          this.playSoundService.playWin2()
-
-          setTimeout(() => {
-            this.elder = "assets/lingobot/elders/listening/focado.png";
-          },1500)
-        }
-
-
+       // if (this.cenarioCount < 3){ }
         this.currentStep++;
         this.playNextAudio();
       } else {
         this.playSoundService.playWinSound()
-
-
         this.cenarioCount++;
-        this.changeCenario(this.cenarioCount)
-
         console.log(this.cenarioCount + " cenarioCount");
-
+        this.gateController(this.cenarioCount);
         console.log("🎉 Exercício completo!");
-        // Aqui pode-se exibir feedback e/ou iniciar novo exercício
         if (this.cenarioCount !== 3){
-
-          this.elder = "assets/lingobot/elders/listening/win.png";
-          setTimeout(() => {
-            this.elder = "assets/lingobot/elders/listening/focado.png";
-          },2000)
-
-
-
-          setTimeout(() => this.getRandomExercise(), 2000); // espera 2s e gera novo
+          this.eldersExpressions(3);
+          setTimeout(() => this.getRandomExercise(), 2000);
         }else{
+        // FINAL
 
-          this.iniciarSequenciaFinal()
-
-           // premio final
-          setTimeout(() =>  {
-            this.dialog = 7;
-            this.authService.addRandomItemToUser();
-            this.authService.updateLocalUserData({ tokens :this.finalGoldReward });
-            this.authService.checkLevelUp(this.finalXpReward)
-            this.authService.addXpSkills('listening');
-          },11000);
-
+          this.timerService.updateMission('listening');
+          this.hidePosWin = true;
+          this.eldersExpressions(3);
+                //this.giveUserReward();
 
         }// END cenarios
 
-
-
       }
     } else {
-      this.tipsCount++;
-
-      this.playSoundService.playErrorQuestion()
-      this.elder = "assets/lingobot/elders/listening/error.png";
-
-      if (this.tipsCount < this.tipsMax){
-        setTimeout(() => {
-          this.elder = "assets/lingobot/elders/listening/focado.png";
-        },1500)
-      }else{
-        this.elder = "assets/lingobot/elders/listening/explicando.png";
-      }
-
-
-
-
+      this.lifeBarComponent.onWrongAnswer();
+      this.eldersExpressions(2);
       console.log("❌ Resposta incorreta.");
+      //this.tipsCount++;
     }
   }
-
-  closeElderTip(){
-    this.elder = "assets/lingobot/elders/listening/focado.png";
-    this.tipsCount = 0;
-  }
-
-
-
   getAudioTTS(text: string) {
-    this.apiService.getTTS(text).subscribe(audioBlob => {
+    this.apiService.getTTS(text , 0).subscribe(audioBlob => {
       try {
         this.audioUrl = URL.createObjectURL(audioBlob);
         this.playAudio();
@@ -253,37 +359,6 @@ export class ListeningComponent implements AfterViewInit {
       }
     });
   }
-
-
-
-  changeCenario(number: number) {
-     switch (number) {
-       case 1:
-       this.cenario = "assets/lingobot/cenas_na_masmorra/listening/gate_listening1.png";
-       break;
-       case 2:
-         this.cenario = "assets/lingobot/cenas_na_masmorra/listening/gate_listening2.png";
-        break;
-       case 3:
-         this.cenario = "assets/lingobot/cenas_na_masmorra/listening/gate_listening3.png";
-         break;
-       case 4:
-         this.cenario = "assets/lingobot/cenas_na_masmorra/listening/gate_listening4.png";
-         break;
-       case 5:
-         this.cenario = "assets/lingobot/cenas_na_masmorra/listening/gate_listening5.png";
-         break;
-       case 6:
-         this.cenario = "assets/lingobot/cenas_na_masmorra/listening/gate_listening6.png";
-         break;
-       case 7:
-         this.cenario = "assets/lingobot/cenas_na_masmorra/listening/gate_listening7.png";
-         break;
-     }
-  }
-
-
-
 
   playAudio() {
     if (this.audioElement) {
@@ -300,88 +375,10 @@ export class ListeningComponent implements AfterViewInit {
       this.playCount++;
     };
   }
-  chooseOption(number: number) {
-    this.playSoundService.playCleanSound2()
 
 
-    switch (number) {
-      case  1:
-        this.dialog = 1;
-        this.elder = "assets/lingobot/elders/listening/explicando.png"
-        break;
-      case 2:
-        // voltar
-        this.router.navigate(['/babel-tower']);
-        break;
-      case 3:
-        this.dialog = 3;
 
-        break;
-      case 4:
-        this.dialog = 4;
-        break;
-      case 5:
-        this.dialog = 5;
-        break;
-      case 6:
-        this.loadExercises();
-        this.dialog = 6;
-        this.elder = "assets/lingobot/elders/listening/focado.png"
-        break;
-      case 7:
-        this.router.navigate(['/babel-tower']);
-        break;
-
-
-    }
-
-
+  back() {
+    this.router.navigate(['/babel-tower']);
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-  @ViewChild('videoFinal') videoFinalRef!: ElementRef<HTMLVideoElement>;
-  videoFinalSrc: string = '';
-
-  ngAfterViewInit(): void {
-    if (this.videoFinalRef) {
-      const video = this.videoFinalRef.nativeElement;
-      video.pause();
-      video.currentTime = 0;
-    }
-  }
-
-  iniciarSequenciaFinal(): void {
-    this.playSoundService.playOpenChest();
-    this.cenarioFinal = true;
-    this.elder = 'assets/lingobot/elders/listening/opening-chest.png';
-
-    // Define o vídeo de acordo com o jackpot
-    this.videoFinalSrc = this.jackpot
-      ? 'assets/lingobot/cenas_na_masmorra/listening/jackpot.mp4'
-      : 'assets/lingobot/cenas_na_masmorra/listening/common-win.mp4';
-
-
-
-    setTimeout(() => {
-      this.elder = 'assets/lingobot/elders/listening/win.png';
-      setTimeout(() => {
-        const video = this.videoFinalRef.nativeElement;
-        video.currentTime = 0;
-        video.muted = false;
-        video.play();
-      }, 50);
-    }, 2000);
-  }
-
 }

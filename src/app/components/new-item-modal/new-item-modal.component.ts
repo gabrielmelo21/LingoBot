@@ -11,8 +11,15 @@ import {ModalService} from "../../services/modal.service";
 export class NewItemModalComponent implements OnInit {
   showNewItemModal: any;
   @Input() item!: any;
+  showConfirmButton: boolean = false;
 
   constructor(private authService: AuthService, private playSoundService: PlaySoundService, private modalService: ModalService) {
+
+    setTimeout(() => {
+      this.showConfirmButton = true;
+    }, 1500);
+
+
   }
 
   ngOnInit() {
@@ -30,6 +37,7 @@ export class NewItemModalComponent implements OnInit {
 
 
   itemImgUrl: string = '';
+
 
   setBackground(): void {
     console.log(this.item)

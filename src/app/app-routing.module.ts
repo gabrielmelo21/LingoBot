@@ -14,6 +14,13 @@ import {ListeningComponent} from "./components/listening/listening.component";
 import {SpeakingComponent} from "./components/speaking/speaking.component";
 import {TowerComponent} from "./tower/tower.component";
 import {UpgradeTowerVideoComponent} from "./components/upgrade-tower-video/upgrade-tower-video.component";
+import {WritingPremium1Component} from "./components/writing-premium1/writing-premium1.component";
+import {ReadingPremium1Component} from "./components/reading-premium1/reading-premium1.component";
+import {ListeningPremium1Component} from "./components/listening-premium1/listening-premium1.component";
+import {SpeakingPremium1Component} from "./components/speaking-premium1/speaking-premium1.component";
+import {LevelUpComponent} from "./components/level-up/level-up.component";
+
+
 
 
 const routes: Routes = [
@@ -29,14 +36,23 @@ const routes: Routes = [
   { path: "ranking", component: RankingComponent },
 
   { path: "skills", component: SkillsComponent  },
+  { path: "tower", component: TowerComponent },
+  { path: "upgradeTowerVideo", component: UpgradeTowerVideoComponent },
+
+  { path: "level", component: LevelUpComponent },
+
+  // FREE
   { path: "writing", component: WritingComponent  },
   { path: "reading", component: ReadingComponent },
   { path: "listening", component: ListeningComponent },
   { path: "speaking", component: SpeakingComponent },
 
-  { path: "tower", component: TowerComponent },
+  // PREMIUM
+  { path: "writing_premium1", component: WritingPremium1Component  },
+  { path: "reading_premium1", component: ReadingPremium1Component },
+  { path: "listening_premium1", component: ListeningPremium1Component },
+  { path: "speaking_premium1", component: SpeakingPremium1Component},
 
-  { path: "upgradeTowerVideo", component: UpgradeTowerVideoComponent },
 
 ];
 

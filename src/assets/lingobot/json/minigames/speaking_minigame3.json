@@ -1,0 +1,83 @@
+{
+  "character": "Airport Staff",
+  "blocks": [
+    [
+      {
+        "question": "Good morning! May I see your passport and ticket?",
+        "options": [
+          "Yes, I bring it in the bag.",
+          "Sure, here are my passport and ticket."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Are you checking in any luggage today?",
+        "options": [
+          "Yes, I have one bag to dispatch.",
+          "Yes, I have one bag to check in."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Do you have any liquids in your carry-on?",
+        "options": [
+          "Only my water and shampoo in the hand bag.",
+          "Only small bottles within the allowed limit."
+        ],
+        "correctIndex": 1
+      }
+    ],
+    [
+      {
+        "question": "Would you like a window or an aisle seat?",
+        "options": [
+          "I want sit in window.",
+          "I’d like a window seat, please."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Do you have any connecting flights?",
+        "options": [
+          "Yes, I go to Miami and after New York.",
+          "Yes, I have a connection in Miami before heading to New York."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Can you place your bag on the scale, please?",
+        "options": [
+          "Yes, I put here the bag.",
+          "Sure, I’ll place it here."
+        ],
+        "correctIndex": 1
+      }
+    ],
+    [
+      {
+        "question": "Do you have any electronic devices in your luggage?",
+        "options": [
+          "Yes, my notebook and phone is inside.",
+          "Yes, I have a laptop and a phone in my bag."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Here is your boarding pass. Your gate is B12.",
+        "options": [
+          "Thanks, where I to go now?",
+          "Thank you! I’ll head to the gate."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Enjoy your flight!",
+        "options": [
+          "Thanks, good trip to you too.",
+          "Thank you!"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  ]
+}

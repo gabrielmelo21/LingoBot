@@ -1,264 +1,216 @@
-
-<!--
-<div id="mobile-console" style="
-  position: absolute;
-  top: 5vh;
-  left: 1vw;
-  width: 80%;
-  height:100px;
-  overflow-y: auto;
-  background-color: black;
-  color: white;
-  font-family: monospace;
-  font-size: 12px;
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 9999 !important;
-  white-space: pre-wrap;
-"></div>
--->
-
-<img src="assets/lingobot/cenas_na_masmorra/speaking/Battle-scene-base.png" class="background-video">
-
-
-
-<!-- Cena 1 - waiting-attack.mp4 (loop: true) -->
-<video #video1 [hidden]="cena !== 1" preload="auto" autoplay loop muted class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/waiting-attack.mp4" type="video/mp4" />
-</video>
-
-<!-- Cena 2 -->
-<video #video2 [hidden]="cena !== 2" preload="auto" autoplay muted class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/eletric-thunder.mp4" type="video/mp4" />
-</video>
-
-<!-- Cena 3 -->
-<video #video3 [hidden]="cena !== 3" preload="auto" autoplay muted class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/elder_atack.mp4" type="video/mp4" />
-</video>
-
-<!-- Cena 4 -->
-<video #video4 [hidden]="cena !== 4" preload="auto" autoplay muted class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/eletric-atack-new.mp4" type="video/mp4" />
-</video>
-
-<!-- Cena 5 -->
-<video #video5 [hidden]="cena !== 5" preload="auto" autoplay muted class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/heal.mp4" type="video/mp4" />
-</video>
-
-<!-- Cena 6 -->
-<video #video6 [hidden]="cena !== 6" preload="auto" autoplay muted class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/dodge.mp4" type="video/mp4" />
-</video>
-
-<!-- Cena 7 -->
-<video #video7 [hidden]="cena !== 7" preload="auto" autoplay muted class="background-video">
-  <source src="assets/lingobot/cenas_na_masmorra/speaking/elder_defeat.mp4" type="video/mp4" />
-</video>
-
-
-
-
-<!-- DODGE ACTIVE SYMBOL -->
-<img src="assets/lingobot/cenas_na_masmorra/speaking/dodge.png" class="dodge-symbol" *ngIf="dodgeStatus">
-
-
-<!-- VIDA DO LINGOBOT -->
-<div class="battery-bars">
-  <img
-    src="assets/lingobot/cenas_na_masmorra/speaking/lingobot.png"
-    class="battery-icon"
-    [class.damage-animation]="lingobotTookDamage">
-
-
-  <div class="battery-bar-container">
-    <img *ngFor="let bar of lingobotBatteryArray; let i = index"
-         [src]="i < lingobotBattery ? 'assets/lingobot/menu-icons/battery-on.png' : 'assets/lingobot/menu-icons/battery-off.png'"
-         class="battery-bar-img">
-  </div>
-</div>
-
-
-<!-- VIDA DO ELDER -->
-<div class="battery-bars-elder">
-  <div class="battery-bar-container">
-    <img *ngFor="let bar of elderBatteryArray; let i = index"
-         [src]="i < elderBattery ? 'assets/lingobot/cenas_na_masmorra/speaking/elder-life.png' : 'assets/lingobot/cenas_na_masmorra/speaking/elder-life-off.png'"
-         class="battery-bar-img">
-  </div>
-  <img
-    src="assets/lingobot/cenas_na_masmorra/speaking/elder.png"
-    class="battery-icon"
-    [class.damage-animation]="elderTookDamage">
-
-</div>
-
-
-
-<!-- LETREIRO  -->
-<div
-  class="letreiro"
-  *ngIf="imagemAtual"
-  [@bounce]="animacaoEstado"
->
-  <img [src]="imagemAtual" />
-</div>
-
-
-
-
-<!-- MAGIC BOOK -->
-<div class="magic-book" *ngIf="magic_book_modal">
-
-
-  <!-- Skill Preview Section -->
-  <div *ngIf="skill_selected" class="skill-preview">
-    <h3 class="change-mage" (click)="chooseAnotherSkill()" >Change Mage</h3>
-    <img [src]="skill_selected_src" class="selected-img">
-    <h3 class="skill-title">{{ skill_selected_title }}</h3>
-    <p class="skill-description">{{ skill_selected_description }}</p>
-    <h3 class="how_to_cast">Para conjurar, diga: </h3>
-    <b  class="skill_phrase">“{{ this.skill_phrase }}”</b>
-    <img
-      src="assets/lingobot/cenas_na_masmorra/speaking/tocar_som.png"
-      class="tocar_som pulse"
-      (click)="!isLoading && getAudioTTS(skill_phrase)"
-      [class.loading]="isLoading"
-    />
-
-
+<div class="video-container">
+  <!-- Loading por cima -->
+  <div class="loading-spinner" *ngIf="loading">
+    <img src="assets/lingobot/menu-icons/lingobot-energy-on.png" alt="Loading" />
   </div>
 
 
-  <div class="grid-imagens-compacto" *ngIf="!skill_selected">
+  <app-mug-translate   top="25vh" left="1vh"    *ngIf="!this.firstDialog && !showReportModal && currentStep !== null" ></app-mug-translate>
 
-    <div class="grupo" >
-      <img src="assets/lingobot/cenas_na_masmorra/speaking/eletric-atack.png" alt="ataque 1" (click)="chooseSkill(1)">
-      <small>Attack</small>
-    </div>
-    <div class="grupo">
-      <img src="assets/lingobot/cenas_na_masmorra/speaking/eletric-atack2.png" alt="ataque 2" (click)="chooseSkill(2)">
-      <small>Attack</small>
-    </div>
-    <div class="grupo">
-      <img src="assets/lingobot/cenas_na_masmorra/speaking/heal.png" alt="cura" (click)="chooseSkill(3)">
-      <small>Defesa</small>
-    </div>
-    <div class="grupo">
-      <img src="assets/lingobot/cenas_na_masmorra/speaking/dodge.png" alt="desvio" (click)="chooseSkill(4)">
-      <small>Defesa</small>
-    </div>
 
+  <!-- Vídeo ao fundo -->
+  <video
+    #videoPlayer
+    playsinline
+    preload="auto"
+    poster="assets/lingobot/cenas_na_masmorra/speaking/poster.jpg"
+    class="background-video"
+  >
+
+    <source src="https://firebasestorage.googleapis.com/v0/b/geekco-image-storage.appspot.com/o/speaking-free-compress.mp4?alt=media" type="video/mp4" />
+  </video>
+
+
+
+  <div
+    class="baloon-container"
+    *ngIf="showBaloon ? (dialogService.currentLine$ | async) : null as line"
+    style="top:-2vh !important;"
+  >
+    <div class="dialog-baloon">
+      <p>{{ line.text }}</p>
+    </div>
   </div>
 
 
 
 
-</div> <!-- End magic book -->
-
-
-
-
-
-
-<div   class="background-commands">
-
-  <!-- Botões para testar -->
-  <button (click)="triggerLingobotDamage()">Dano no Lingobot</button>
-  <button (click)="triggerElderDamage()">Dano no Elder</button>
-
-
-
-
-  <!-- MIC IMAGE COM COUNTDOWN -->
-  <div class="mic-container" *ngIf="skill_selected">
-
-
-    <div *ngIf="!apiLoading && userResponseStatus==''">
-    <img
-      *ngIf="mic"
-      src="assets/lingobot/skills/speaking.png"
-      class="mic"
-      [ngClass]="{ 'pulse-animation': buttonEffect }"
-      (click)="iniciarGracavaoContagem()"
-    />
-    <p>{{this.recordStatus}}</p>
-    </div>
-
-
-    <div *ngIf="apiLoading && userResponseStatus==''" class="processing-box">
+  <div class="dialog-box"   *ngIf="this.firstDialog" >
+    <div class="dialog-controls">
       <img
-        src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png"
-        class="book-icon"
-        alt="Processando..."
+        src="assets/lingobot/menu-icons/back.png"
+        alt="Voltar"
+        class="arrow-button left"
+        (click)="prev(); "
       />
-      <p class="processing-text">O livro está reagindo ao seu conjuramento. Aguarde...</p>
-    </div>
 
-
-
-
-    <div *ngIf="showCountdown" class="countdown-text">
-      <p *ngIf="countdownValue > 0">{{ countdownValue }}</p>
-      <p *ngIf="countdownValue === 0">🎤 Fale!</p>
-    </div>
-
-
-
-    <!-- ✅ RESPOSTA CORRETA -->
-    <div *ngIf="userResponseStatus=='correct'" class="processing-box">
       <img
-        src="assets/lingobot/cenas_na_masmorra/speaking/check.png"
-        class="book-icon"
-        alt="Resposta correta"
+        src="assets/lingobot/menu-icons/right.png"
+        alt="Avançar"
+        class="arrow-button right"
+        (click)="next(); "
       />
-      <p class="processing-text">Conjurando poder</p>
     </div>
-
-
-    <!-- ❌ RESPOSTA INCORRETA -->
-  <div *ngIf="userResponseStatus=='error'" class="processing-box">
-    <img
-      src="assets/lingobot/cenas_na_masmorra/speaking/error.png"
-      class="book-icon"
-      alt="Resposta incorreta"
-    />
-    <p class="processing-text">
-      Você disse:
-      "<b class="error-phrase">{{ transcriptionText }}</b>"
-      Correto é: <b class="correct-phrase">"{{ skill_phrase }}"</b>   </p>
-  </div>
-
   </div>
 
 
 
 
-<div class="fundo" (click)="openMagicBook();"   *ngIf="!skill_selected && currentTurn!=='elders_turn' && !disableOptions">
-    <img src="assets/lingobot/cenas_na_masmorra/speaking/magic-book-icon.png" class="magic-book-icon">
-  <br>
-     <h3 class="elders-magic-book-title">Elders' Magic Book</h3>
+
+
+  <!-- Duas cartas, duas opções -->
+
+
+  <!-- Cartas centralizadas -->
+  <div class="cards-wrapper" *ngIf="currentStep">
+
+
+    <div
+      class="card"
+      *ngFor="let option of currentStep.options; let i = index"
+      [class.selected]="i === selectedIndex"
+      (click)="selectOption(i)"
+    >
+      <img src="assets/lingobot/menu-icons/card.png" class="card-img" />
+      <div class="card-text">{{ option }}</div>
+
+    </div>
+  </div>
+
+  <!-- Botão de confirmar -->
+  <img
+    *ngIf="this.isCardSelected"
+    class="confirm-button"
+    src="assets/lingobot/menu-icons/confirm.png"
+    (click)="confirmSelection()"
+  />
+
+
+
+
+
+
+
+
+
+
+  <!-- Modal de Relatório -->
+  <div class="report-modal-overlay" *ngIf="showReportModal">
+    <div class="report-modal">
+      <!-- Imagem de fundo do papel -->
+      <img src="assets/lingobot/paper.png" class="report-paper" />
+
+      <!-- Conteúdo do relatório -->
+      <div class="report-content" *ngIf="currentReportData">
+        <h2 class="report-title">📋 Exercise Report</h2>
+        <h3 class="report-subtitle">{{ currentReportData.exerciseName }}</h3>
+
+        <!-- Estatísticas -->
+        <div class="report-stats">
+          <div class="stat-item">
+            <span class="stat-icon">✅</span>
+            <span class="stat-text">Correct: {{ currentReportData.correctAnswers }}/{{ currentReportData.totalQuestions }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">❌</span>
+            <span class="stat-text">Incorrect: {{ currentReportData.errors.length }}/{{ currentReportData.totalQuestions }}</span>
+          </div>
+        </div>
+
+        <!-- Lista de erros -->
+        <div class="errors-section" *ngIf="currentReportData.errors.length > 0">
+          <h4 class="errors-title">❌ Mistakes to Review:</h4>
+          <div class="error-list">
+            <div class="error-item" *ngFor="let error of currentReportData.errors; let i = index">
+              <div class="error-number">{{ i + 1 }}.</div>
+              <div class="error-details">
+                <div class="error-question">
+                  <strong>Q{{ error.questionNumber }}:</strong> {{ error.question }}
+                </div>
+                <div class="error-answers">
+                  <div class="user-answer">
+                    <span class="answer-label">Your answer:</span>
+                    <span class="answer-text wrong">"{{ error.userAnswer }}"</span>
+                  </div>
+                  <div class="correct-answer">
+                    <span class="answer-label">Correct answer:</span>
+                    <span class="answer-text correct">"{{ error.correctAnswer }}"</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mensagem de sucesso -->
+        <div class="success-message" *ngIf="currentReportData.errors.length === 0">
+          <div class="success-icon">🎉</div>
+          <div class="success-text">Perfect! You got all questions right!</div>
+        </div>
+
+        <!-- Botão para continuar -->
+        <div class="continue-button-container">
+          <img
+            class="continue-button"
+            src="assets/lingobot/menu-icons/confirm.png"
+            (click)="closeReportAndContinue()"
+            alt="Continue"
+          />
+          <div class="continue-text">Continue to Next Exercise</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resto do template original -->
+  <!-- Duas cartas, duas opções -->
+  <div class="cards-wrapper" *ngIf="currentStep && !showReportModal">
+    <div
+      class="card"
+      *ngFor="let option of currentStep.options; let i = index"
+      [class.selected]="i === selectedIndex"
+      (click)="selectOption(i)"
+    >
+      <img src="assets/lingobot/menu-icons/card.png" class="card-img" />
+      <div class="card-text">{{ option }}</div>
+    </div>
+  </div>
+
+  <!-- Botão de confirmar -->
+  <img
+    *ngIf="this.isCardSelected && !showReportModal"
+    class="confirm-button"
+    src="assets/lingobot/menu-icons/confirm.png"
+    (click)="confirmSelection()"
+
+  />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <app-after-win-dialog
+    *ngIf="hidePosWin"
+    [jackpot]=this.jackpot
+    [elder_img]="'assets/lingobot/elders/speaking/speaking.png'"
+    [reward_xp]="this.finalXpReward"
+    [reward_coins]="this.finalGoldReward">
+  </app-after-win-dialog>
+
+
+  <div class="finish-button"  *ngIf="hidePosWin"  (click)="back();" >
+    <img src="assets/lingobot/menu-icons/confirm.png"  >
+  </div>
+
+
+
 </div>
-
-  <div class="fundo" (click)="sair()"   *ngIf="disableOptions">
-    <h3 class="elders-magic-book-title">Sair da Arena</h3>
-  </div>
-
-
-
-
-  <ng-template  *ngIf="currentTurn=='elders_turn'">
-
-    <img src="assets/lingobot/cenas_na_masmorra/speaking/elders_turn.png" style="width: 30%;height: auto">
-  </ng-template>
-
-
-
-</div>  <!-- background commands end -->
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
 import {HttpClient} from "@angular/common/http";
@@ -6,6 +6,8 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 import {AuthService} from "../../services/auth.service";
 import {TimersService} from "../../services/timers.service";
 import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.service";
+import {LifeBarComponent} from "../life-bar/life-bar.component";
+import {RewardService} from "../../services/reward.service";
 
 
 export interface VocabEntry {
@@ -22,7 +24,7 @@ export interface VocabEntry {
 
 })
 export class WritingComponent   {
-
+  @ViewChild(LifeBarComponent) lifeBarComponent!: LifeBarComponent;
 
 
   private exercicios: VocabEntry[] = [];
@@ -57,7 +59,8 @@ export class WritingComponent   {
                private authService: AuthService,
                private cdr: ChangeDetectorRef,
                private timersService: TimersService,
-              private eldersRoomGuardiamService: EldersRoomGuardiamService
+              private eldersRoomGuardiamService: EldersRoomGuardiamService,
+              private rewardService: RewardService
   ) {
 
     const allowed = this.eldersRoomGuardiamService.verifyAccessOrRedirect('writing_was_paid');
@@ -74,7 +77,7 @@ export class WritingComponent   {
      }, 10) // 13000
 
 
-    this.setupHpByDifficulty();
+  //  this.setupHpByDifficulty();
 
 
 
@@ -136,7 +139,7 @@ export class WritingComponent   {
   }
 
 
-
+/**
   private setupHpByDifficulty() {
     switch (this.authService.getDifficulty()) {
       case 'easy':
@@ -174,7 +177,7 @@ export class WritingComponent   {
     this.router.navigate(['/babel-tower']);
   }
 
-
+**/
 
 
   isAnimating = false;
@@ -286,7 +289,7 @@ export class WritingComponent   {
       this.startAnimation()
 
     }else{
-      this.onWrongAnswer()
+      this.lifeBarComponent.onWrongAnswer();
       this.playSoundService.playErrorQuestion();
       this.caminhoImagem = 'assets/lingobot/elders/writing/explicando.png';
       this.dialog = 6;
@@ -375,15 +378,15 @@ export class WritingComponent   {
       this.postMission = true;
       this.dialog = 7
       this.caminhoImagem = 'assets/lingobot/elders/writing/finish.png';
-      this.authService.checkLevelUp(this.finalXpReward)
-      this.authService.updateLocalUserData( { tokens: this.finalGoldReward})
-      this.authService.addXpSkills('writing');
-      this.timersService.updateMission('writing');
 
-      setTimeout(() => {
-           this.playSoundService.playItemDrop()
-           this.authService.addRandomItemToUser();
-      }, 2000)
+
+
+      this.rewardService.giveUserRewards(this.finalXpReward, this.finalGoldReward, 'writing');
+
+
+
+
+
 
     }else{
     this.caminhoImagem = 'assets/lingobot/elders/writing/pensando.png';

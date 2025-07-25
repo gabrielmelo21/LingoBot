@@ -1,76 +1,210 @@
-/* Vídeo de fundo */
-.background-video {
-  position: absolute;
-  top: 0px; /* Alinha o topo do vídeo com o topo do contêiner */
-  padding-bottom:50px !important;
-  left: 0; /* Alinha a esquerda do vídeo com a esquerda do contêiner */
-  width: 100%; /* Faz o vídeo ocupar 100% da largura do contêiner */
-  height: auto; /* Faz o vídeo ocupar 100% da altura do contêiner */
-  object-fit: cover; /* Faz o vídeo cobrir toda a área do contêiner */
-  z-index: 5; /* Coloca o vídeo atrás dos outros elementos */
+/* Tablet Button */
+.tablet-button {
+  position: fixed;
+  width: 15%;
+  height: auto;
 
-
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
-/* Imagem de fundo */
-.background-image {
-  position: absolute;
-  top: 0px; /* Mesma posição do vídeo */
-  left: 0;
-  width: 100%; /* Mesma largura do vídeo */
-  height: auto; /* Altura proporcional */
-  object-fit: cover; /* Cobrir a área como o vídeo */
-  z-index: 5; /* Mesmo z-index do vídeo */
+.tablet-button:focus, .tablet-button:hover {
+  transform: scale(1.1) rotate(10deg);
 }
 
+/* Modal Styles */
+.modal-overlay {
 
-.background-commands {
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  z-index: 4;
-}
-
-
-
-
-.actions-title {
-  text-align: center;
-  font-size: 1.1em;
-  font-weight: bold;
-  margin-bottom: 5px;
-  margin-top: 0px;
-  color: #1e1e1e;
-}
-
-.commands-group {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9998;
   display: flex;
   justify-content: center;
-  gap: 1px; /* Espaçamento entre os comandos */
   align-items: center;
+  backdrop-filter: blur(5px);
 }
 
-.command {
+.modal-content {
+  animation: bounce 0.8s ease forwards;
+  position: relative;
+  width: 90%;
+  max-width: 350px;
+  height: auto;
+}
+
+.tablet-img {
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+}
+
+/* Glass Container */
+.translator-glass {
+  position: absolute;
+  z-index: 1;
+  width: 70%;
+  height: 65%;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow:
+    inset 0 0 15px rgba(255, 255, 255, 0.2),
+    0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Chat Container */
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  overflow-y: auto;
+  max-height: 70%;
+}
+
+.translated-content{
+  color: white;
+}
+.translated-content strong{
+   color: deepskyblue;
+}
+/* Translated Text */
+.translated-text {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  padding: 12px 15px;
+  border-radius: 18px;
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  word-break: break-word;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 85%;
+  align-self: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading */
+.loading-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999; /* bem alto pra ficar acima de tudo */
+  display: flex;
+  justify-content: center;
   align-items: center;
-  text-align: center;
+
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/* Input Container */
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.translator-input {
+  flex: 1;
+  padding: 12px 5px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  outline: none;
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.translator-input:focus {
+  background: white;
+}
+
+.translator-input::placeholder {
+  color: #999;
+  font-size: 15px;
+}
+
+/* Confirm Button */
+.confirm-btn {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+
+  height: auto;
+  transition: all 0.3s ease;
+
 }
 
-.command-text {
-  margin-top: 8px;
-  font-size: 1.0em;
-  font-weight: bold;
-  color: #222; /* Cor um pouco mais escura para melhor contraste */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Pequeno sombreamento para destaque */
+.confirm-btn img {
+  width:150%;
+  height: auto;
+
 }
 
+.confirm-btn:hover {
+  transform: scale(1.05);
+  background: rgba(0, 200, 83, 0.9);
+}
 
-.commands-group img {
-  transition: box-shadow 0.3s ease-in-out;
+.confirm-btn:active {
+  transform: scale(0.95);
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }

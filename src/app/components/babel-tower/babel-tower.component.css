@@ -18,31 +18,6 @@
   object-fit: cover;
   z-index: 1;
 }
-/* Ícone de loading centralizado e girando */
-.loading-spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  animation: spin 1s linear infinite;
-}
-
-.loading-spinner img {
-  width: 96px;
-  height: 96px;
-}
-
-
-/* Animação de rotação */
-@keyframes spin {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
 
 
 
@@ -108,7 +83,22 @@
 
 
 
+
+.tablet-button {
+  position: absolute;
+  z-index: 6;
+  left: 3vh;
+  top: 30vh;
+  width: 13%;
+  height: auto;
+
+  /* animação de flutuação */
+  animation: float 3s ease-in-out infinite;
+}
+
+
 .quests-button {
+
   position: absolute;
   z-index: 6;
   left: 3vh;
@@ -236,6 +226,7 @@
 
 
 .quest-check{
+
   position: absolute;
   top: 17vh;
   left: 0;
@@ -244,23 +235,21 @@
   height: auto;
 }
 
+
+
 .quest-check-text{
   position: absolute;
-
-
-
-  top: 25vh;
+  top: 28vh;
   left: 50%;
   transform: translate(-50%, -50%);
-
-
+  color: #fff;
   z-index: 999999;
   font-weight: bolder;
   width: 70%;
 }
 .quest-check-infos{
   position: absolute;
-  top:47vh;
+  top:55vh;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999999;
@@ -282,9 +271,10 @@
   align-items: center;
   font-size: 16px;
   font-weight: bold;
-  color:  black;
+  margin-top:10px ;
+  color:  white;
   background-color: transparent;
-  border: 2px solid rgba(255, 243, 209, 0.2);
+
   padding: 8px 12px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
@@ -668,7 +658,7 @@ img-command-recharge{
 .strike-text {
   margin-bottom: 5px;
   font-size: 16px;
-  color: #444;
+  color: #FFF;
 }
 
 .strike-text .highlight {
@@ -700,5 +690,284 @@ img-command-recharge{
   width: 20%;
   height: auto;
   margin-left: 10px;
+}
+
+.neon-green {
+  box-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00, 0 0 24px #00cc00;
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+
+.bg-final{
+  height: 500px;
+  margin-top: 10px;
+  background-image: url('/assets/lingobot/menu-icons/dayli-missions-end.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+
+
+.claim-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.claim-btn:hover {
+  background-color: #1e70c1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.activity-type--free strong {
+  color: #10b981; /* verde emerald */
+}
+
+.activity-type--premium strong {
+  color: #bfa046; /* dark royal gold */
+}
+
+
+.activity-modal__list-container {
+  position: absolute;
+  top: 40vh;
+  left: 45%;
+
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+  width: 80%;
+
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+
+/* Estilo base */
+.activity-list__item {
+  position: relative;
+  display: flex;
+  align-items: start;
+  margin: 5px;
+  padding: 12px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+
+.activity-list__item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  border-radius: 20px;
+}
+
+.activity-list__item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.activity-list__item:hover::before {
+  opacity: 1;
+}
+
+.activity-list__item:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+}
+
+/* Selecionado com azul mais forte */
+.activity-list__item--selected {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%) !important;
+  border-color: #1d4ed8;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4), 0 8px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  animation: bounceSelect 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 2;
+}
+
+.activity-list__item--selected::before {
+  background: linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(147, 197, 253, 0.1));
+  opacity: 1;
+}
+
+.activity-list__premium-icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 12px;
+  z-index: 2;
+}
+
+/* Botão de confirmar */
+.activity-modal__confirm-button {
+  position: absolute;
+  top: 56vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 30%;
+  height: auto;
+
+  transition: all 0.3s ease;
+
+  z-index: 999999;
+}
+
+.activity-modal__confirm-button:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+
+  filter: brightness(1.1);
+}
+
+.activity-modal__confirm-button:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+
+/* Bounce select */
+@keyframes bounceSelect {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  80% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.activity-list__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2;
+  text-align: left;
+  line-height: 1.2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   VERSÃO SIMPLIFICADA (RECOMENDADA)
+   ========================= */
+
+.premium-tools-modal {
+  /* Posicionamento fixo centralizado */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Dimensões responsivas */
+  width: 80%;
+  height: auto;
+
+  /* Z-index alto */
+  z-index: 999999;
+
+  /* Previne vazamento */
+  overflow: hidden;
+  box-sizing: border-box;
+
+  /* Sombra para destacar */
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
+
+
+.premium-tools-box-position {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80%;
+  height: auto;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 

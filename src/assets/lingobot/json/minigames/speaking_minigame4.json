@@ -1,0 +1,83 @@
+{
+  "character": "Hotel Receptionist",
+  "blocks": [
+    [
+      {
+        "question": "Good afternoon! Do you have a reservation with us?",
+        "options": [
+          "Yes, I have one reservation with you.",
+          "Yes, I have a reservation under my name."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "May I see your ID and a credit card, please?",
+        "options": [
+          "Yes, I go show my documents now.",
+          "Sure, here are my ID and credit card."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Would you like help with your luggage?",
+        "options": [
+          "No need, I take the bag alone.",
+          "No, I can carry it myself, thank you."
+        ],
+        "correctIndex": 1
+      }
+    ],
+    [
+      {
+        "question": "Your room is ready. Would you like one key or two?",
+        "options": [
+          "I want two keys because my friend come later.",
+          "Two keys, please. My friend will come later."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Breakfast is served from 7 to 10 AM in the dining room.",
+        "options": [
+          "Okay, I go eat before ten hours.",
+          "Thank you! I’ll have breakfast before 10."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Do you need a wake-up call in the morning?",
+        "options": [
+          "Yes, can wake me 6 o'clock?",
+          "Yes, could you wake me up at 6 AM?"
+        ],
+        "correctIndex": 1
+      }
+    ],
+    [
+      {
+        "question": "If you need anything, just dial 0 from your room.",
+        "options": [
+          "Thanks, if I need I call for you.",
+          "Thank you, I’ll call if I need anything."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "How was your stay with us?",
+        "options": [
+          "It was good, I like very much the room.",
+          "It was very nice, the room was great."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "We hope to see you again soon!",
+        "options": [
+          "Thanks, I go back in other day.",
+          "Thank you! I’ll come back another day."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  ]
+}

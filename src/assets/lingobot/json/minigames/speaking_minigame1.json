@@ -1,0 +1,109 @@
+{
+  "character": "HR Elder",
+  "blocks": [
+    [
+      {
+        "question": "Hello! Thanks for coming. Can you please introduce yourself?",
+        "options": [
+          "Hi, I am student and I look for one job.",
+          "Hi, I am a student and I’m looking for a job."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Great! What are your strengths?",
+        "options": [
+          "I like so much computers and learning fast.",
+          "I really like working with computers and I learn fast."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Do you have any experience working in a team?",
+        "options": [
+          "Yes, I worked before in group and was all fine.",
+          "Yes, I have worked in teams before and it went well."
+        ],
+        "correctIndex": 1
+      }
+    ],
+    [
+      {
+        "question": "Welcome! Tell me, why do you want this job?",
+        "options": [
+          "Because I need work and money for live.",
+          "Because I want to grow professionally and contribute to your company."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "How do you handle stress or pressure?",
+        "options": [
+          "I stay nervouser but I do.",
+          "I stay calm and try to focus on solutions."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "What do you know about our company?",
+        "options": [
+          "I see little things about the company in Google.",
+          "I read about your projects and mission online."
+        ],
+        "correctIndex": 1
+      }
+    ],
+    [
+      {
+        "question": "What are your salary expectations?",
+        "options": [
+          "You choose the salary, for me is ok.",
+          "I hope to be paid fairly based on my skills and responsibilities."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Where do you see yourself in five years?",
+        "options": [
+          "Maybe in house, making games.",
+          "Growing in my career and taking on new challenges."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Do you prefer to work alone or in a team?",
+        "options": [
+          "Alone, because I no talk much.",
+          "I like both, but I enjoy working in a team environment."
+        ],
+        "correctIndex": 1
+      }
+    ],
+    [
+      {
+        "question": "What are your salary expectations? 2",
+        "options": [
+          "You choose the salary, for me is ok. 2 ",
+          "I hope to be paid fairly based on my skills and responsibilities. 2"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Where do you see yourself in five years? 2",
+        "options": [
+          "Maybe in house, making games. 2" ,
+          "Growing in my career and taking on new challenges. 2"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Do you prefer to work alone or in a team? 2 ",
+        "options": [
+          "Alone, because I no talk much. 2",
+          "I like both, but I enjoy working in a team environment. 2"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  ]
+}

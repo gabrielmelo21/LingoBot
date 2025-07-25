@@ -59,11 +59,21 @@ export class EldersRoomGuardiamService {
 
   /** Marca um desafio como pago usando o nome base (writing, reading, etc) */
   markAsPaid(section: string): void {
-    const key = `${section}_was_paid` as keyof EldersRoomStatus;
+    const skills = ['reading', 'speaking', 'listening', 'writing'];
+
+    const foundSkill = skills.find(skill => section.includes(skill));
+
+    if (!foundSkill) {
+      console.warn(`Nenhuma habilidade reconhecida encontrada em: ${section}`);
+      return;
+    }
+
+    const key = `${foundSkill}_was_paid` as keyof EldersRoomStatus;
     const status = this.getStatus();
     status[key] = true;
     this.setStatus(status);
   }
+
 
   /** Faz a verificação de acesso com base na rota */
   verifyAccessOrRedirect(route: keyof EldersRoomStatus): boolean {

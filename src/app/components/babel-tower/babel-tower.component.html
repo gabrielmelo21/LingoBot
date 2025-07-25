@@ -19,7 +19,7 @@
       poster="assets/lingobot/main-animation/poster.jpg"
       class="background-video"
     >
-      <source src="https://firebasestorage.googleapis.com/v0/b/geekco-image-storage.appspot.com/o/main-animation-compress.mp4?alt=media&token=79e3822e-871c-401b-89bf-3c7d7a52de92" type="video/mp4" />
+      <source src="https://firebasestorage.googleapis.com/v0/b/geekco-image-storage.appspot.com/o/main-animation-compress.mp4?alt=media" type="video/mp4" />
     </video>
   </div>
 
@@ -32,7 +32,7 @@
     <!-- Imagem -->
     <img src="assets/lingobot/home/tabua.png">
     <!-- Texto sobreposto  {{ getTextoPorAndar() }} -->
-    <h3>Andar <br> N° {{ andarAtual }}</h3>
+    <h3>Floor <br> N° {{ andarAtual }}</h3>
   </div>
 
 
@@ -95,14 +95,39 @@
     <button (click)="marcarComoFeita('listening')">Completar Listening</button>
     <button (click)="marcarComoFeita('speaking')">Completar Speaking</button>
     <button (click)="resetarMissoes()">Resetar Missões</button>
+    <button (click)="addXpSpeaking()">Level em speaking</button>
   </div>
   -->
-  <div style="margin: 20px;position:absolute;z-index: 21321321321321;top: 10vh;display: inline-block ">
-    <button (click)="addXpSpeaking()">Level em speaking</button>
-
-  </div>
 
 
+
+
+
+  <!-- ICONE FLUTUANTE TOOLS
+  <img
+    (click)="openTablet()"
+    src="assets/lingobot/tools-icons/tablet-icon.png"
+    class="tablet-button"
+  />
+
+  -->
+<!--
+  <ng-container *ngIf="tabletModal">
+    <button (click)="openTablet()" class="fechar-btn">✕</button>
+    <img src="assets/lingobot/tools-icons/tablet.png" class="quest-check">
+
+
+<div class="premium-tools-box-position">
+  <app-premium-tools></app-premium-tools>
+</div>
+
+  </ng-container>
+
+ -->
+
+
+
+  <!-- ICONE FLUTUANTE DAYLI MISSIONS -->
   <img
     (click)="checkQuest()"
     src="assets/lingobot/menu-icons/daily-missions.png"
@@ -110,22 +135,21 @@
     [ngClass]="{ 'neon-green': todasFeitas() && !recompensaReivindicada }"
     *ngIf="!rechargeModal"
   />
+  <ng-container *ngIf="checkMissoesModal"  >
 
-
-  <ng-container *ngIf="checkMissoesModal">
     <button (click)="checkQuest()" class="fechar-btn">✕</button>
 
-    <img src="assets/lingobot/paper.png" class="quest-check">
+    <img src="assets/lingobot/paper.png" class="quest-check  bouncing-animation">
 
 
-    <div class="quest-check-text" *ngIf="recompensaReivindicada">
+    <div class="quest-check-text" *ngIf="recompensaReivindicada"  style="top: 35vh !important;">
       <p style="text-align: center;">
         <b style="color: darkgoldenrod">Concluído com Sucesso!</b><br>
        Parabéns, você concluiu as missões de hoje.
       </p>
     </div>
 
-    <div class="quest-check-text" *ngIf="!recompensaReivindicada">
+    <div class="quest-check-text" *ngIf="!recompensaReivindicada" style="top: 35vh !important;">
 
       <div class="strike-info">
         <p class="strike-text">
@@ -144,7 +168,7 @@
         </div>
 
 
-        <span style="font-size: 9pt !important; text-align: center;">
+        <span style="font-size: 9pt !important; text-align: center;color: white;">
                     Next Reset: {{  this.timersService.getNextResetTime() }}
         </span>
 
@@ -198,43 +222,6 @@
   </ng-container>
 
 
-  <style>
-
-    .neon-green {
-      box-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00, 0 0 24px #00cc00;
-      border-radius: 10px;
-      transition: box-shadow 0.3s ease-in-out;
-    }
-
-
-    .bg-final{
-      height: 500px;
-      margin-top: 10px;
-      background-image: url('/assets/lingobot/menu-icons/dayli-missions-end.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-    }
-
-
-
-    .claim-btn {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background-color: dodgerblue;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .claim-btn:hover {
-      background-color: #1e70c1;
-    }
-
-  </style>
 
 
 
@@ -242,28 +229,78 @@
 
 
 
+  <!--
+
+   ESCOLHE O TIPO DE ATIVIDADE
+
+   -->
+
+  <ng-container *ngIf="choseActivityModal">
+    <button (click)="ActivityModal()" class="fechar-btn">✕</button>
+
+    <img src="assets/lingobot/paper.png" class="quest-check bouncing-animation">
 
 
-
-
-
-<!-- LOGO IREI TRABALHAR NELE -->
-  <div *ngIf="showPedagioModal" class="pedagio-dialog" style="margin-top: -20px !important;">
-    <div  class="pedagio-content"
-
-    >
-      <div style=" margin-top: 100px !important;">
-        <div style="width:200px !important;">
-          <button (click)="verificarPedagio()">Verificar Pedágio</button>
-
-          <div class="button-container">
-            <button class="game-button" (click)="closeModal()">Voltar</button>
-            <button class="game-button" (click)="closeModal()">Pagar</button>
-          </div>
-        </div>
-      </div>
+    <div class="quest-check-text" >
+      <p style="text-align: center;">
+        Escolher Exercício
+      </p>
     </div>
-  </div> <!-- PEDAGIO end -->
+
+    <div class="activity-modal__list-container">
+      <ul>
+        <li
+          *ngFor="let activity of activities"
+          (click)="selectActivity(activity.name)"
+          [class.activity-list__item--selected]="activity.name === selectedActivity"
+          class="activity-list__item"
+        >
+          <div
+            class="activity-list__content"
+            [ngClass]="{
+                          'activity-type--free': activity.type === 'free',
+                          'activity-type--premium': activity.type === 'premium'
+                        }"
+          >
+            {{ activity.name }}
+            <strong>{{ activity.type.toUpperCase() }}</strong>
+          </div>
+
+
+          <img
+            *ngIf="activity.type === 'premium'"
+            src="assets/lingobot/icons/lxp.png"
+            class="activity-list__premium-icon"
+            alt="Premium"
+          />
+        </li>
+
+
+      </ul>
+    </div>
+
+    <img
+      *ngIf="canConfirmSelectedActivity()"
+      src="assets/lingobot/menu-icons/confirm.png"
+      alt="Confirm"
+      (click)="confirmActivity()"
+      class="activity-modal__confirm-button"
+    />
+
+  </ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <!-- COMMANDOS -->

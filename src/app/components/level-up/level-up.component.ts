@@ -11,10 +11,19 @@ import {PlaySoundService} from "../../services/play-sound.service";
 export class LevelUpComponent {
   showLevelUpModal: any;
 
+  showConfirmButton = false;
+
+
   constructor(private authService: AuthService, private playSoundService: PlaySoundService, private modalService: ModalService) {
     this.modalService.showLevelUpModal$.subscribe(state => {
       this.showLevelUpModal = state;
     });
+
+    setTimeout(() => {
+      this.showConfirmButton = true;
+    }, 1500);
+
+
 
   }
 

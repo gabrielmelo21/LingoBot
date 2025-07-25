@@ -1,179 +1,89 @@
-<!-- Imagem estática -->
-<img   *ngIf="cena_static == 1"  src="assets/lingobot/cenas_powers/mug_parado.png" class="background-image">
-<img   *ngIf="cena_static == 2"  src="assets/lingobot/cenas_powers/blackboard.png" class="background-image">
+<!-- ÍCONE FLUTUANTE -->
+<img
+  (click)="openTablet()"
+  src="assets/lingobot/tools-icons/tablet-icon.png"
+  class="tablet-button"
+  [ngStyle]="{
+    top: top,
+    left: left,
+    right: right,
+    bottom: bottom,
+    position: 'fixed',
+      'z-index': zIndex
+  }"
+/>
+
+/>
+
+<!-- MODAL -->
+<div *ngIf="isTabletOpen" class="modal-overlay" (click)="closeTablet()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <img src="assets/lingobot/tools-icons/tablet.png" class="tablet-img" />
+
+    <!-- GLASS CONTAINER -->
+    <div class="translator-glass">
+      <!-- Chat Container -->
+      <div class="chat-container">
+        <!-- Translated Content Section -->
+        <div class="translated-content" *ngIf="translationResult && !isLoading">
+          <!-- Exibe o erro se houver -->
+          <p *ngIf="translationResult.error" class="error-message">
+            {{ translationResult.error }}
+          </p>
 
 
-<!-- Imagem estática LOADING -->
-<img   *ngIf="cena == 4"  src="assets/lingobot/cenas_powers/mug-writing.png" class="background-image">
+                <p *ngIf="translationResult.significado">
+                  <strong>Word: </strong> {{ this.translatedWord }}
+                </p>
 
-<!-- Imagem estática LOADING -->
-<img   *ngIf="cena == 5"  src="assets/lingobot/cenas_powers/blackboard.png" class="background-image">
+          <!-- Exibe o significado se existir -->
+          <p *ngIf="translationResult.significado">
 
-<div
-style=" position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-z-index: 10;
-color: white;
-font-size: 20pt !important;
-font-weight: bold;
-letter-spacing: 2px;
-"
->
-  {{this.translation }}
+            <strong>Tradução:</strong> {{ translationResult.significado }}
+          </p>
+
+          <!-- Exibe a explicação se existir -->
+          <p *ngIf="translationResult.categoria">
+            <strong>Categoria:</strong> {{ translationResult.categoria }}
+          </p>
+
+          <!-- Exibe o exemplo se existir -->
+          <p *ngIf="translationResult.exemplo">
+            <strong>Exemplo:</strong> {{ translationResult.exemplo }}
+          </p>
+        </div>
+
+        <!-- Texto inicial quando não há tradução e não está carregando -->
+        <div class="translated-text" *ngIf="!translationResult && !isLoading">
+          {{ translatedText }}
+        </div>
+
+        <p *ngIf="translationResult && !translationResult.significado && !translationResult.error" class="info-message">
+          Não foi possível obter uma tradução. Tente outra palavra.
+        </p>
+
+
+
+
+        <div class="loading-spinner" *ngIf="isLoading" style="top: 10vh !important;left: 12vh !important;">
+          <img src="assets/lingobot/menu-icons/lingobot-energy-on.png" alt="Loading" />
+        </div>
+      </div>
+
+      <!-- Input and Button Section -->
+      <div class="input-container" *ngIf="!isLoading">
+        <input
+          type="text"
+          placeholder="Digite a palavra..."
+          [(ngModel)]="inputText"
+          class="translator-input"
+          (keyup.enter)="translate()"
+        />
+
+        <div  class="confirm-btn">
+          <img  src="assets/lingobot/menu-icons/confirm.png" (click)="translate()" />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-<!-- Vídeo 1 -->
-<video *ngIf="cena == 0" autoplay muted   class="background-video">
-  <source src="assets/lingobot/cenas_powers/start-writing.mp4" type="video/mp4">
-</video>
-
-
-<!-- Vídeo 2 -->
-<video *ngIf="cena == 2" autoplay muted loop class="background-video">
-  <source src="assets/lingobot/cenas_powers/finish_writing_teletransport.mp4" type="video/mp4">
-</video>
-
-
-<!-- Vídeo 3 -->
-<video *ngIf="cena == 3" autoplay muted loop class="background-video">
-  <source src="assets/lingobot/cenas_powers/back_to_next_question.mp4" type="video/mp4">
-</video>
-
-
-
-
-<div class="background-commands">
-  <h3 style="text-align: center;">Tradutor</h3>
-  <p style="text-align: center;">Digite uma  palavra ou frase em inglês para o <b>Mug</b> traduzir</p>
-
-    <form [formGroup]="formulario" class="commands-group">
-    <textarea     formControlName="english" class="command-textarea" placeholder="Digite a palavra ou frase em inglês aqui..."></textarea>
-
-      <button (click)="getTranslation()" mat-flat-button class="game-button">   <img   src="assets/lingobot/icons/pencil-icon.png" alt="Perguntar" class="menu-icon"></button>
-
-    </form>
-
-</div>
-
-
-
-
-<style>
-
-  .commands-group {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-
-    border-radius: 12px;
-    padding: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-
-    backdrop-filter: blur(16px); /* Efeito de vidro mais leve */
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Sombra bem sutil */
-  }
-
-  .command-textarea {
-    text-align: center;
-    flex: 1;
-    resize: none;
-    border: none;
-    outline: none;
-    background-color: #fff;
-    color: #000;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 16px;
-    min-height: 40px;
-    margin-right: 10px;
-    font-family: 'Segoe UI', 'Roboto', sans-serif;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
-  }
-
-
-  .menu-icon {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-
-  .menu-icon:hover {
-    transform: scale(1.1);
-  }
-
-
-  .background-commands{
-    position: absolute !important;
-    bottom: 0 !important;
-    display:inline-block;
-    background-image: url('assets/lingobot/home/testar_pergaminho.jpg');
-    height: 30vh !important;
-    background-size: cover;
-    background-position: top;
-    z-index: 5 !important;
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-  .game-button {
-    height: 47px !important;
-    margin-top: 0px !important;
-    padding: 15px;
-    font-size: 12pt  ;
-    color: white  ;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    outline: none;
-    background: linear-gradient(145deg, #007bff, #6f42c1);
-    box-shadow: 0 5px 0 #0056b3, 0 8px 10px rgba(0, 0, 0, 0.3);
-    transition: all 0.1s ease-in-out;
-  }
-
-  .game-button:active {
-    box-shadow: 0 2px 0 #0056b3, 0 4px 6px rgba(0, 0, 0, 0.3);
-  }
-
-  .game-button:hover {
-    background: linear-gradient(145deg, #1e90ff, #8a2be2);
-
-  }
-
-  .game-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.1)
-    );
-    transition: left 0.5s ease-in-out;
-  }
-
-  .game-button:hover::before {
-    left: 100%;
-  }
-</style>

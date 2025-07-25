@@ -26,6 +26,48 @@ export class MainAPIService {
 
 
 
+  // Método para chamar a API do Gemini
+  callGemini(prompt: string): Observable<string> {
+    const body = { text: prompt };
+    return this.http.post(`${this.API}/api/gemini`, body, {
+      responseType: 'text'  // Esperamos uma resposta em texto puro
+    });
+  }
+
+
+  async callGeminiStructured(prompt: string): Promise<any> {
+    try {
+      const body = {
+        text: `Responda APENAS com o conteúdo JSON, sem comentários ou marcadores como \`\`\`json. ${prompt}`
+      };
+
+      const response = await this.http.post(`${this.API}/ai/gemini`, body, {
+        responseType: 'text'
+      }).toPromise();
+
+      // Limpa a resposta removendo marcadores e whitespace
+      const cleanedResponse = (response as string)
+        .replace(/```json/g, '')
+        .replace(/```/g, '')
+        .trim();
+
+      return JSON.parse(cleanedResponse);
+
+    } catch (error) {
+      console.error('Error processing Gemini response:', error);
+      return {
+        error: 'Failed to process',
+      };
+    }
+  }
+
+
+
+
+
+
+
+
 
   uploadAudio(formData: FormData): Observable<{ text: string }> {
     return this.http.post<{ text: string }>(this.API + "/transcribe", formData);
@@ -247,10 +289,25 @@ Gere apenas o JSON como resposta.`;
 
 
 
-  //gerar texto para audio
-  getTTS(text: string) {
-    return this.http.post(`${this.API}/tts`, { text }, { responseType: 'blob' });
+/* gerar texto para audio
+  0 - Josh                  - meio serio e misterioso
+  1 - Adam                  - Grossa pra kct, de narrador parece
+  2 - James                 - mais suave de explainer, 40 anos
+  3 - Sam                   - Bem jovem e determinado
+  4 - Arnold                - vegeta
+  5 - Bella (feminina padrão)
+ */
+
+  getTTS(text: string, voice?: number) {
+    const body: any = { text };
+    if (voice) {
+      body.voice = voice;
+    }
+    return this.http.post(`${this.API}/tts`, body, { responseType: 'blob' });
   }
+
+
+
 
   translateText(text: string): Observable<any> {
     const data = { "text": text };

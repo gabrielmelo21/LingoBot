@@ -1,0 +1,83 @@
+{
+  "character": "McDonald's Clerk",
+  "blocks": [
+    [
+      {
+        "question": "Hi! Welcome to McDonald's. Can I take your order?",
+        "options": [
+          "Yes, I want a combo number one, please.",
+          "Yes, I want one combo number one, please."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "question": "Would you like a drink with that?",
+        "options": [
+          "Yes, I want a Coke, please.",
+          "Yes, I want one Coca, please."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "question": "Is that for here or to go?",
+        "options": [
+          "I will eat here.",
+          "It’s to travel."
+        ],
+        "correctIndex": 0
+      }
+    ],
+    [
+      {
+        "question": "What size fries would you like?",
+        "options": [
+          "Big size, please.",
+          "Large size, please."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Would you like to add a dessert?",
+        "options": [
+          "Yes, give me one ice cream.",
+          "Yes, I’d like an ice cream, please."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "Do you want to make it a combo?",
+        "options": [
+          "Yes, make complete.",
+          "Yes, I’d like the combo."
+        ],
+        "correctIndex": 1
+      }
+    ],
+    [
+      {
+        "question": "Anything else I can get for you?",
+        "options": [
+          "No, is only this.",
+          "No, that’s all, thank you."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "question": "How would you like to pay?",
+        "options": [
+          "With card, please.",
+          "For card, please."
+        ],
+        "correctIndex": 0
+      },
+      {
+        "question": "Here is your order. Enjoy your meal!",
+        "options": [
+          "Thanks, good food for you too.",
+          "Thanks! Have a nice day."
+        ],
+        "correctIndex": 1
+      }
+    ]
+  ]
+}

@@ -4,6 +4,13 @@ import {HttpClient} from "@angular/common/http";
 import {VocabEntry} from "../writing/writing.component";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {VideoControllerService} from "../../services/video-controller.service";
+import {DialogService} from "../../services/dialog.service";
+import {JackpotService} from "../../services/jackpot.service";
+import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.service";
+import {TimersService} from "../../services/timers.service";
+import {LifeBarComponent} from "../life-bar/life-bar.component";
+import {RewardService} from "../../services/reward.service";
 
 
 export interface PuzzelText {
@@ -26,69 +33,74 @@ interface SentencePair {
   styleUrls: ['./reading.component.css']
 })
 export class ReadingComponent implements AfterViewInit{
-  cena: number = 1;
-  isShaking = false;
-  puzzleText: PuzzelText[] = [];
-  currentText: string = '';
-  currentPassword: string = '';
-  currentTip: string = '';
-  currentTranslate: string = '';
-  sentencePairs: SentencePair[] = [];
-  dialog: number = 0 ;
-  elder: string = "assets/lingobot/elders/reading/parado.png";
-  padlock: string = "assets/lingobot/cenas_na_masmorra/reading/padlock.png";
-  readingScroll: boolean = false;
-  srcExercises: string = '';
-  finalGoldReward: number = 10;
-  finalXpReward: number = 10000;
-  tipCounts: number = 0;
-  tipLimit: number = 3;
+
+  @ViewChild(LifeBarComponent) lifeBarComponent!: LifeBarComponent;
 
 
 
+  tabletModal: boolean = false;
+  jackpot: boolean = this.jackpotService.isJackpot();
+  hidePosWin: boolean = false;
 
 
-  constructor(private playSoundService: PlaySoundService,
+  constructor(
+              private playSoundService: PlaySoundService,
               private http: HttpClient,
               private router: Router,
               private authService: AuthService,
-              private cdr: ChangeDetectorRef) {
+              private videoController: VideoControllerService,
+              protected dialogService: DialogService,
+              private jackpotService: JackpotService,
+              private eldersRoomGuardiamService: EldersRoomGuardiamService,
+              private timerService: TimersService,
+              private rewardService: RewardService
+) {
+
+  const allowed = this.eldersRoomGuardiamService.verifyAccessOrRedirect('reading_was_paid');
+  if (!allowed) return;
+
 
     this.playSoundService.playReadingTheme()
 
 
+    this.dialogService.startDialog([
+      { text: 'Olá, Lingobot. Eu sou o Ancião da Leitura. Ainda bem que chegou, preciso de sua Ajuda.' },
+      { text: 'Em minha sala, tenho baús misteriosos, que para serem abertos é necessário Desvendar seu Segredo.' },
+      { text: 'Para abrir esse baú é necessário ler o texto que enviei para seu Tablet e descobrir a palavra-passe, que está nesse texto' },
+      { text: 'O texto está em inglês então você precisa estuda-lo, toque nas palavras e será mostrado a tradução.' },
+      { text: 'A resposta é apenas uma palavra em inglês, descubra ela e ganhe Moedas e XP  ' },
+    ]);
 
-    console.log(this.authService.getDifficulty())
 
     switch (this.authService.getDifficulty()) {
       case 'easy':
         this.srcExercises = 'assets/lingobot/json/reading/easy.json';
-        this.finalGoldReward = 10;
-        this.finalXpReward = 10000;
+        this.finalGoldReward = this.jackpot ? 50 : 25;
+        this.finalXpReward = 20000;
         this.tipLimit = 3;  // se errar 3 vezes aparece a ajuda
         break;
 
       case 'medium':
         this.srcExercises = 'assets/lingobot/json/reading/medium.json';
         // Recompensa 1,5× da easy
-        this.finalGoldReward = 15;
-        this.finalXpReward = 15000;
+        this.finalGoldReward = this.jackpot ? 60 : 30;
+        this.finalXpReward = 25000;
         this.tipLimit = 4;
         break;
 
       case 'hard':
         this.srcExercises = 'assets/lingobot/json/reading/hard.json';
         // Recompensa 2× da easy
-        this.finalGoldReward = 20;
-        this.finalXpReward = 20000;
+        this.finalGoldReward = this.jackpot ? 70 : 35;
+        this.finalXpReward = 30000;
         this.tipLimit = 5;
         break;
 
       case 'elder':
         this.srcExercises = 'assets/lingobot/json/reading/elder.json';
         // Recompensa 3× da easy
-        this.finalGoldReward = 30;
-        this.finalXpReward = 30000;
+        this.finalGoldReward = this.jackpot ? 80 : 40;
+        this.finalXpReward = 35000;
         this.tipLimit = 7;
         break;
 
@@ -100,18 +112,117 @@ export class ReadingComponent implements AfterViewInit{
         this.finalXpReward = 10000;
         break;
     }
-
-
-    console.log(this.srcExercises);
     this.loadExercises()
+  }
 
+
+  next() {
+    this.playSoundService.playCleanSound2();
+    this.dialogService.nextDialog();
+  }
+
+  prev() {
+    this.playSoundService.playCleanSound2();
+    this.dialogService.prevDialog();
+  }
+
+  close() {
+
+    this.playSoundService.playCleanSound2();
+    this.dialogService.endDialog();
   }
 
 
 
-  renderizar(){
-    this.cdr.detectChanges();
+
+
+
+
+
+  loading: boolean = true;
+
+  @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
+
+
+  ngAfterViewInit() {
+    this.videoController.setup(this.videoPlayer);
+    const video = this.videoPlayer.nativeElement;
+    video.addEventListener('playing', () => {
+      this.loading = false;
+    });
+    this.staticPadlock();
   }
+
+
+  staticPadlock() {
+    this.videoController.setStaticLoop(0.8, 0.9);
+  }
+
+
+  shakePadLock() {
+    this.videoController.playSegment(0.1, 0.85, () => {
+      this.staticPadlock(); // volta ao loop padrão
+      console.log('Shake finalizado e loop restaurado');
+    });
+  }
+
+ commonWinAnimation(){
+   this.videoController.playSegment("0:01", "0:08", () => {
+     this.giveRewards()
+     this.videoController.playSegment("0:08", "0:08", () => {
+       this.videoController.mute();
+       this.hidePosWin = true;
+     });
+   });
+
+ }
+
+  jackpotWinAnimation(){
+    this.videoController.playSegment("0:09", "0:17", () => {
+      this.giveRewards()
+      this.videoController.playSegment("0:08", "0:08", () => {
+        this.videoController.mute();
+        this.hidePosWin = true;
+      });
+
+    });
+
+  }
+
+
+  giveRewards(){
+    this.rewardService.giveUserRewards(this.finalXpReward, this.finalGoldReward, 'reading');
+  }
+
+
+
+
+
+
+  openTabletModal(){
+
+    this.tabletModal = !this.tabletModal;
+  }
+
+
+
+
+
+
+  puzzleText: PuzzelText[] = [];
+  currentText: string = '';
+  currentPassword: string = '';
+  currentTip: string = '';
+  currentTranslate: string = '';
+  sentencePairs: SentencePair[] = [];
+  dialog: number = 0 ;
+  elder: string = "assets/lingobot/elders/reading/parado.png";
+  srcExercises: string = '';
+  finalGoldReward: number = 10;
+  finalXpReward: number = 10000;
+  tipCounts: number = 0;
+  tipLimit: number = 3;
+
 
 
 
@@ -122,10 +233,6 @@ export class ReadingComponent implements AfterViewInit{
         this.getRandomExercise();
       });
   }
-
-
-
-
 
   private getRandomExercise(): void {
     if (!this.puzzleText || this.puzzleText.length === 0) return;
@@ -157,192 +264,29 @@ export class ReadingComponent implements AfterViewInit{
   }
 
 
-
-
-  shakePadlock() {
-    this.isShaking = true;
-    this.playSoundService.playPadlockLocked()
-    setTimeout(() => {
-      this.isShaking = false;
-    }, 500); // mesma duração da animação
-    this.renderizar();
-  }
-
-  glowActive: boolean = false;
-
-  toggleGlow() {
-    this.glowActive = !this.glowActive;
-  }
-
-
-
-  chooseOption(number: number) {
-    this.playSoundService.playCleanSound2()
-
-
-    switch (number) {
-      case  1:
-        this.dialog = 1;
-
-        break;
-      case 2:
-        // voltar
-        this.router.navigate(['/babel-tower']);
-        break;
-      case 3:
-        this.dialog = 3;
-
-        break;
-      case 4:
-        this.dialog = 4;
-        break;
-      case 5:
-        this.dialog = 5;
-        break;
-      case 6:
-        this.dialog = 6;
-        this.elder = "assets/lingobot/elders/reading/pensando.png"
-
-
-        break;
-
-      case 10:
-          this.router.navigate(['/babel-tower']);
-        break;
-
-
-    }
-
-
-  }
-
-
-
-
-
-
-
-  askTip(){
-    if (this.tipCounts >= this.tipLimit) {
-       this.playSoundService.playCleanSound2();
-       this.dialog = 15;
-       this.glowActive = false;
-       this.tipCounts = 0;
-       this.renderizar();
-    }
-  }
-
-
-
-
-
+hideOnWin: boolean = false;
   enviarResposta(texto: string) {
-
     if (texto != this.currentPassword){
-      this.shakePadlock()
-      this.tipCounts++;
-      //console.log(this.tipCounts);
-
-      if (this.tipCounts >= this.tipLimit) {
-         this.toggleGlow()
-         this.elder = "assets/lingobot/elders/reading/parado.png"
-      }
-
+      this.lifeBarComponent.onWrongAnswer();
+       this.shakePadLock();
+       this.tipCounts++;
     }
-
     if (texto.toLowerCase() === this.currentPassword.toLowerCase()) {
-      // Senha correta, independente de maiúsculas/minúsculase3
-      this.padlock = "assets/lingobot/cenas_na_masmorra/reading/padlock-open.png"
-      this.mudarCena(2)
+      this.hideOnWin = true;
+     this.timerService.updateMission('reading');
       this.playSoundService.playOpenChest()
-      this.renderizar();
-       this.elder = "assets/lingobot/elders/reading/opening_the_chest.png"
-      setTimeout(() => {
-        this.playSoundService. playChestWin()
-        this.elder = "assets/lingobot/elders/reading/win.png"
-
-        this.dialog = 10;
-        console.log("Moedas de ouro ganho: ", this.finalGoldReward);
-        this.authService.updateLocalUserData({ tokens :this.finalGoldReward });
-        this.authService.checkLevelUp(this.finalXpReward)
-        this.authService.addXpSkills('reading');
-
-      },3000)
-
-      setTimeout(() => {
-        this.playSoundService.playItemDrop()
-        this.authService.addRandomItemToUser();
-      }, 5000)
-
-
-
-
-      // dialogo elder final e premios
-    }
-
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  ngAfterViewInit() {
-    // opcional: pause todos os vídeos inicialmente
-    this.video2Ref.nativeElement.pause();
-  }
-
-
-
-  openPergaminho(number: number) {
-    this.cena = 3;
-    if (number===3){
-      this.readingScroll = true;
-    }else{
-      this.readingScroll = false;
-      this.cena = 1;
-    }
-    this.renderizar()
-  }
-
-
-  @ViewChild('video2') video2Ref!: ElementRef<HTMLVideoElement>;
-  // adicione outros vídeos conforme necessário
-  mudarCena(novaCena: number) {
-    this.cena = novaCena;
-
-    // Pare todos os vídeos
-    this.video2Ref.nativeElement.pause();
-    this.video2Ref.nativeElement.currentTime = 0;
-
-    // Aguarde um pouco para o Angular atualizar o DOM
-    setTimeout(() => {
-      switch (novaCena) {
-        case 2:
-          const v2 = this.video2Ref.nativeElement;
-          v2.currentTime = 0;
-          v2.muted = false; // ou true, se quiser continuar sem som
-          v2.play();
-          break;
-        // adicione os outros vídeos aqui
+      if (this.jackpot){
+        this.jackpotWinAnimation();
+      }else{
+        this.commonWinAnimation();
       }
-    }, 50);
+    }
   }
 
 
+
+
+  back() {
+    this.router.navigate(['/babel-tower']);
+  }
 }

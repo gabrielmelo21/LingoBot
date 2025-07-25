@@ -1,0 +1,85 @@
+
+.character-img {
+  width: 80%;
+  height: auto;
+  z-index: 4;
+  position: absolute;
+  top: 35vh;
+  right: -15vh;
+  transition: filter 0.3s ease;
+
+}
+
+
+
+.rewards-container {
+  text-align: center;
+  color: #000;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.3rem;
+}
+
+.rewards-title {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.reward-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: -10px !important;
+}
+
+.reward-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.1rem 0;
+}
+
+.reward-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 0.4rem;
+}
+
+.reward-text {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.gold-text {
+  color: #ffaa00;
+}
+
+.xp-text {
+  color: #0077ff;
+}
+
+.jackpot-pulse {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffaa00;
+  animation: pulseText 1.5s infinite;
+  line-height: 1.3;
+}
+
+@keyframes pulseText {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

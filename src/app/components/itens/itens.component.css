@@ -153,14 +153,14 @@
 
 .inventory-container {
   position: absolute;
-  top: 15vh;
+  top: 17vh;
   left: 52%;
   transform: translateX(-50%);
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
   gap: 5px;
-  width: 80%;
+  width: 75%;
   max-height: 260px;
   overflow-y: auto;
   padding-right: 5px;
@@ -179,23 +179,32 @@
 
 
 .inventory-slot {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1); /* fundo levemente branco */
+  color: white;
   border-radius: 12px;
   overflow-y: scroll;
-  width:90%;
+  width: 90%;
   height: 80px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px); /* efeito glass */
+  -webkit-backdrop-filter: blur(10px); /* para compatibilidade */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* borda sutil */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* sombra suave */
 }
-
 .inventory-slot.selected {
-  background: linear-gradient(145deg, #c2e9fb, #a1c4fd); /* azul bebê -> azul claro */
-  border: 2px solid #a1c4fd;
-  box-shadow: 0 0 10px #a1c4fd;
+  background: linear-gradient(135deg, #3a8dde, #1c75d8); /* azul mais forte e moderno */
+  border: 2px solid #1c75d8;
+  box-shadow: 0 0 15px rgba(28, 117, 216, 0.7);
+  transform: scale(1.02);
+}
+.inventory-slot:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 

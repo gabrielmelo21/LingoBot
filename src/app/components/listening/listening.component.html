@@ -1,34 +1,53 @@
-<div class="conteiner">
+<div class="video-container">
+
+  <app-life-bar></app-life-bar>
 
 
 
-<video
-  #videoFinal
-  *ngIf="cenarioFinal"
-  class="background-video"
-  [attr.src]="videoFinalSrc"
-  muted
-></video>
 
-
-<!-- Cenario -->
-<!-- Imagem estática -->
-<img [src]="cenario" class="background-image" *ngIf="!cenarioFinal && !finalChestAnimation">
-
-
-
-<div class="baloon-container" *ngIf="this.dialog !== 6" >
-  <div class="dialog-baloon">
-    <p *ngIf="dialog == 0">Olá, aventureiro. Eu sou o Ancião da Compreensão Auditiva, ou Listening Elder, e preciso da sua ajuda.</p>
-    <p *ngIf="dialog == 1">Através daquele portão existe um tesouro, que acredito conter muitas moedas de ouro.</p>
-    <p *ngIf="dialog == 2">Perceba que há 7 espaços vazios. Para abrir o portão, é preciso preenchê-los com as esferas de poder.</p>
-    <p *ngIf="dialog == 3">Porém, para isso, é necessário descobrir o que a Vitrola diz — e ela só fala em inglês.</p>
-    <p *ngIf="dialog == 4">Cada palavra que ela disser, você deve entender e responder o que ouviu.</p>
-    <p *ngIf="dialog == 5">Ao final, terá a palavra-passe que coloca uma esfera de poder. Repita até o portão se abrir.</p>
-    <p *ngIf="dialog == 7">Parabéns! Você abriu o portão e ganhou <b style="color: goldenrod"> {{ this.finalGoldReward }} Gold Coins <span *ngIf="jackpot">2x com Jackpot!</span> </b> & <b style="color: blueviolet">{{ this.finalXpReward }} LXP</b> </p>
-
+  <!-- Loading por cima -->
+  <div class="loading-spinner" *ngIf="loading">
+    <img src="assets/lingobot/menu-icons/lingobot-energy-on.png" alt="Loading" />
   </div>
+
+  <!-- Vídeo ao fundo -->
+  <video
+    #videoPlayer
+    playsinline
+    preload="auto"
+    poster="assets/lingobot/cenas_na_masmorra/listening/poster.jpg"
+    class="background-video"
+  >
+
+    <source src="https://firebasestorage.googleapis.com/v0/b/geekco-image-storage.appspot.com/o/listening-compress.mp4?alt=media" type="video/mp4" />
+  </video>
+
+
+  <app-after-win-dialog
+    *ngIf="finishButton"
+    [jackpot]=this.jackpot
+    [elder_img]="'assets/lingobot/elders/listening/parado.png'"
+    [reward_xp]="this.finalXpReward"
+    [reward_coins]="this.finalGoldReward">
+  </app-after-win-dialog>
+
+
+
+
+
+  <div class="baloon-container" *ngIf="dialogService.currentLine$ | async as line" >
+  <div class="dialog-baloon">
+    <p>  {{ line.text }}</p>
 </div>
+
+
+   <img
+     [src]="line.expression"
+     class="character-img"
+   >
+
+
+   </div>
 
 
 <div class="baloon-container" *ngIf="this.tipsCount >= this.tipsMax" >
@@ -38,13 +57,15 @@
 </div>
 
 
+  <img
+    [src]="elder"
+    class="character-img"
+    style="top: 45vh !important;"
+    *ngIf="!this.dialogService.isActive && !hidePosWin"
+  >
 
 
-
-<img
-  [src]="elder"
-  [ngClass]="cenarioCount >= 5 ? 'character-img2' : 'character-img'"
->
+  <app-mug-translate   top="3vh" right="1vh"    ></app-mug-translate>
 
 
 <img
@@ -52,7 +73,7 @@
   alt="Tocar áudio"
   (click)="playAudio()"
   [class.pulse]="isPlaying"
-  [ngClass]="cenarioCount >= 5 ? 'vitrola2' : 'vitrola'"
+  class="vitrola"
   style="cursor: pointer;"
   *ngIf="cenarioCount < 3"
 />
@@ -60,40 +81,21 @@
 
 
 <!-- ETAPA ATUAL E TRADUÇÃO (opcional) -->
-<div class="status-text" *ngIf="dialog===6 && cenarioCount < 3">
-  <p *ngIf="currentStep === 0" class="highlight"><span>Passo 1 de 3:</span><br> Escreva a primeira parte</p>
-  <p *ngIf="currentStep === 1" class="highlight"><span  >Passo 2 de 3:</span><br> Escreva a segunda </p>
-  <p *ngIf="currentStep === 2" class="highlight"><span  >Passo 3 de 3:</span><br> Escreva a frase em inglês</p>
-  <p *ngIf="currentStep === 2" class="highlight">Tradução: <strong  >{{ currentExercise.translate }}</strong>
+<div class="status-text" *ngIf="cenarioCount < 3 && !dialogService.isActive">
+  <p *ngIf="currentStep === 0" ><span>Passo 1 de 3:</span><br> Escreva a primeira parte</p>
+  <p *ngIf="currentStep === 1"  ><span  >Passo 2 de 3:</span><br> Escreva a segunda </p>
+  <p *ngIf="currentStep === 2"  ><span  >Passo 3 de 3:</span><br> Escreva a frase em inglês</p>
+  <p *ngIf="currentStep === 2" >Tradução: <strong  >{{ currentExercise.translate }}</strong>
   </p>
 </div>
-<style>
-  .highlight{
-    padding:5px;border-radius:10px;background: rgba(0,0,0,.6);color: white !important;
-  }
-</style>
 
 
 
-<div class="background-commands">
 
-  <h3 class="actions-title"  >Sua Resposta:</h3>
-
-  <p *ngIf="dialog===6"  style="margin-top:10px;margin: 5px;text-align: center">*Toque na vitrola para ouvir o aúdio novamente</p>
   <!--
-     <button (click)="mudarCena(1);">mudar cena</button>
-    <button (click)="shakePadlock()">Tremer cadeado</button>
-    <button (click)="mudarCena(3)">Texto</button>
 
-      <div *ngIf="audioUrl" style="text-align: center;">  </div>    <p style="font-size: 10px; color: gray; margin-top: 5px;">Toque para ouvir novamente.</p>
-  -->
+    <div  *ngIf="dialog == 6 && this.tipsCount < this.tipsMax" >
 
-
-
-
-
-  <div  *ngIf="dialog == 6 && this.tipsCount < this.tipsMax" >
-    <!-- FORMULÁRIO DE RESPOSTA -->
     <form class="commands-group" (submit)="enviarResposta(textoInput.value, textoInput); $event.preventDefault();">
   <textarea
     #textoInput
@@ -103,70 +105,70 @@
     autofocus
   ></textarea>
 
-      <button type="submit" mat-flat-button class="game-button">
-        <img src="assets/lingobot/icons/pencil-icon.png" alt="Enviar" class="menu-icon" />
+      <button type="submit" mat-flat-button>
+        <img src="assets/lingobot/menu-icons/confirm.png" alt="Enviar" style="width: 30%;height: auto"  />
       </button>
     </form>
 
-  </div> <!-- CAIXA DE TEXTO RESPONDER END -->
+  </div>  CAIXA DE TEXTO RESPONDER END
+
+  -->
 
 
 
 
 
-  <div class="fundo"  *ngIf="dialog == 0" >
-    <ol class="respostas">
-      <li (click)="chooseOption(1);" >Em que posso ajuda-lo? </li>
-      <li (click)="chooseOption(6);" >Pular diálogo</li>
-      <li (click)="chooseOption(2);">Foi um engano, estou indo embora.</li>
-    </ol>
-  </div>
 
+  <div class="glass-box" *ngIf="!this.dialogService.isActive && !hidePosWin">
+    <form class="commands-group" (submit)="enviarResposta(textoInput.value, textoInput); $event.preventDefault();">
+    <textarea
+      #textoInput
+      class="command-textarea"
+      placeholder="Digite o que ouviu aqui..."
+      autofocus
+    ></textarea>
 
-
-
-  <div class="fundo"  *ngIf="dialog == 1" >
-    <ol class="respostas">
-      <li (click)="chooseOption(3);" >Intessante, eu estou atrás de Moedas de Ouro </li>
-    </ol>
-  </div>
-
-  <div class="fundo"  *ngIf="dialog == 3" >
-    <ol class="respostas">
-      <li (click)="chooseOption(4);" >Hmm.. continue</li>
-    </ol>
-  </div>
-  <div class="fundo"  *ngIf="dialog == 4" >
-    <ol class="respostas">
-      <li (click)="chooseOption(5);" >Ok, certo</li>
-    </ol>
-  </div>
-
-  <div class="fundo"  *ngIf="dialog == 5" >
-    <ol class="respostas">
-      <li (click)="chooseOption(6);" >Entendido, vamos começar.</li>
-    </ol>
-  </div>
-
-
-  <div class="fundo"  *ngIf="dialog == 7" >
-    <ol class="respostas">
-      <li (click)="chooseOption(7);" >Sair</li>
-    </ol>
-  </div>
-
-  <div class="fundo"     *ngIf="this.tipsCount >= this.tipsMax" >
-    <ol class="respostas">
-      <li (click)="closeElderTip();" >Fechar Dica</li>
-    </ol>
+      <button type="submit" class="submit-button">
+        <img src="assets/lingobot/menu-icons/confirm.png" alt="Confirmar" />
+      </button>
+    </form>
   </div>
 
 
 
 
 
-</div> <!-- background commands -->
 
 
 
-</div> <!-- container -->
+
+
+
+  <div class="dialog-box"  *ngIf="this.dialogService.isActive && !this.dialogService.isFinalDialog">
+    <div class="dialog-controls">
+      <img
+        src="assets/lingobot/menu-icons/back.png"
+        alt="Voltar"
+        class="arrow-button left"
+        (click)="prev();  "
+      />
+
+      <img
+        src="assets/lingobot/menu-icons/right.png"
+        alt="Avançar"
+        class="arrow-button right"
+        (click)="next(); "
+      />
+    </div>
+  </div>
+
+
+  <div class="finish-button" *ngIf="finishButton"  (click)="back();" >
+    <img src="assets/lingobot/menu-icons/confirm.png"  >
+  </div>
+
+
+
+
+
+</div> <!-- video conteiner -->

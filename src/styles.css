@@ -57,3 +57,252 @@ button:focus, a:focus, input:focus, textarea:focus {
 
 
 
+
+
+
+
+/* ESTRUTURA PADRÃO DE VIDEO E LOADING */
+.video-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Estilo do vídeo de fundo */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ícone de loading centralizado e girando */
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  animation: spin 1s linear infinite;
+}
+
+.loading-spinner img {
+  width: 96px;
+  height: 96px;
+}
+
+
+/* Animação de rotação */
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+
+
+/** FINISH BUTTON - botão centralizado no bottom  **/
+.finish-button {
+  position: absolute;
+  bottom: 2vh !important;
+  left: 33%;
+  cursor: pointer;
+  transition: transform 0.1s ease, filter 0.1s ease;
+}
+
+.finish-button img {
+  width: 50%;
+  height: auto;
+}
+
+/* Efeito ao clicar */
+.finish-button.pressed {
+  transform: translate(-50%, -50%) scale(0.95);
+  filter: brightness(0.9);
+}
+
+
+
+
+/** BALÃO DE DIALOGO **/
+.baloon-container {
+  position: absolute;
+  top: 11vh; /* Ajuste conforme necessário */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px; /* Ou o tamanho que preferir */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+}
+
+.dialog-baloon {
+  background-image: url('/assets/lingobot/cenas_na_masmorra/balao_right.png');
+  background-size: 100% 100%; /* Para cobrir todo o balão */
+  background-repeat: no-repeat;
+  padding: 30px 40px; /* Ajuste conforme o design do seu balão */
+  min-width: 300px;
+  max-width: 600px;
+  min-height: 150px;
+  margin-bottom: -20px; /* Sobrepor um pouco com a imagem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.dialog-baloon p {
+  font-size: 20px; /* Tamanho grande para o texto */
+  color: #000; /* Cor do texto */
+  text-align: center;
+  margin: 0;
+  padding: 10px 20px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+
+
+
+
+
+.dialog-box {
+  position: absolute;
+  bottom: 5vh;
+  left: 0;
+  right: 0;
+  height: 0;
+  z-index: 99999;
+}
+
+.dialog-controls {
+  position: relative;
+  width: 100%;
+  height: 0;
+}
+
+.arrow-button {
+  position: absolute;
+  bottom: 0;
+  width: 25%;
+  height: auto;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.2s ease;
+}
+
+.arrow-button.left {
+  left: 5vw;
+}
+
+.arrow-button.right {
+  right: 5vw;
+}
+
+.arrow-button:hover {
+  transform: scale(1.1);
+}
+
+.arrow-button:active {
+  animation: bounce 0.3s ease forwards;
+  /* Adicionado forwards para manter o estado final da animação */
+}
+
+.bouncing-animation{
+  animation: bounce 0.8s ease forwards;
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.2); }
+  50% { transform: scale(0.9); }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .confirmButton {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  width: 40%;
+  height: auto;
+  z-index: 6;
+  cursor: pointer;
+  animation: zoomIn 0.4s ease-out forwards;
+}
+
+ .confirmButton:hover {
+  transform: translateX(-50%) scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+/* Ícone de loading centralizado e girando */
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  animation: spin 1s linear infinite;
+}
+
+.loading-spinner img {
+  width: 96px;
+  height: 96px;
+}
+
+
+/* Animação de rotação */
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+

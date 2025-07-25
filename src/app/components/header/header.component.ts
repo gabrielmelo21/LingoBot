@@ -40,8 +40,11 @@ export class HeaderComponent implements OnInit{
   }
 
   toggleRankingModal() {
+    alert("Coming soon");
+    /**
     this.playSound.playCleanSound2();
     this.modalService.toggleRankingModal();
+      */
   }
 
   toggleSettingsModal() {

@@ -36,6 +36,13 @@ import { ItensComponent } from './itens/itens.component';
 import { LevelUpComponent } from './level-up/level-up.component';
 import { NewItemModalComponent } from './new-item-modal/new-item-modal.component';
 import { UpgradeTowerVideoComponent } from './upgrade-tower-video/upgrade-tower-video.component';
+import { WritingPremium1Component } from './writing-premium1/writing-premium1.component';
+import { ReadingPremium1Component } from './reading-premium1/reading-premium1.component';
+import { ListeningPremium1Component } from './listening-premium1/listening-premium1.component';
+import { SpeakingPremium1Component } from './speaking-premium1/speaking-premium1.component';
+
+import { AfterWinDialogComponent } from './after-win-dialog/after-win-dialog.component';
+import { LifeBarComponent } from './life-bar/life-bar.component';
 
 
 /**
@@ -90,6 +97,14 @@ import { UpgradeTowerVideoComponent } from './upgrade-tower-video/upgrade-tower-
     LevelUpComponent,
     NewItemModalComponent,
     UpgradeTowerVideoComponent,
+    WritingPremium1Component,
+    ReadingPremium1Component,
+    ListeningPremium1Component,
+    SpeakingPremium1Component,
+
+    AfterWinDialogComponent,
+    LifeBarComponent,
+
 
   ],
   exports: [

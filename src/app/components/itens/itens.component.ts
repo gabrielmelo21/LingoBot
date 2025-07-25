@@ -82,6 +82,8 @@ export class ItensComponent implements OnInit {
   }
 
   sellItem(item: UserItem): void {
+    this.playSoundService.playCoinDrop();
+
     console.log(item);
     if (item.quant > 0) {
       const success = this.authService.sellUserItem(item);

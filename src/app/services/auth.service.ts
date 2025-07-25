@@ -51,6 +51,7 @@ export class AuthService {
       this.startAutoRefresh();
 
 
+
     //console.log("User data atual é ", JSON.stringify(this.getUserData()))
   }
 
@@ -82,7 +83,7 @@ export class AuthService {
         if (response.access_token) {
           localStorage.setItem("access_token", response.access_token);
           this.setBackupData(this.getUserData()); // Atualiza o backup
-          //console.log("Novo JWT salvo:", response.access_token);
+         console.log("Novo JWT salvo:", response.access_token);
         } else {
           console.error("Resposta do servidor não contém access_token:", response);
         }
@@ -96,6 +97,15 @@ export class AuthService {
   }
 
 
+  getLearning(){
+    const userData = this.getUserData();
+    return userData.learning;
+  }
+
+  getPlano(){
+     const userData = this.getUserData();
+     return userData.plano;
+  }
 
   getDifficulty(){
     const userData = this.getUserData();
@@ -283,6 +293,7 @@ export class AuthService {
 
 
   addRandomItemToUser(): void {
+    this.playSound.playItemDrop()
     this.http.get<any[]>('assets/lingobot/json/itens/itens.json').subscribe((itemPool) => {
       const userData = this.getUserData();
       if (!userData) return;
@@ -315,7 +326,7 @@ export class AuthService {
 
       this.updateLocalUserData({ items: JSON.stringify(currentItems) });
 
-      console.log("Item adicionado ao inventário:", selectedItem.itemName);
+     // console.log("Item adicionado ao inventário:", selectedItem.itemName);
 
       // MOSTRA O MODAL COM O ITEM
       this.modalService.toggleNewItemsModal(true, selectedItem);
@@ -326,20 +337,31 @@ export class AuthService {
 
 
 
+calcularSkillsMinimas(index: number): number {
+    let total = 5; // Começa com 5 no primeiro pedágio (andar 4)
+    let incremento = 6;
+    for (let i = 1; i <= index; i++) {
+      total += incremento;
+      incremento++;
+    }
+    return total;
+  }
+
+
 
   checkQuest(): any {
     const andar = this.getRanking();
 
-    console.log('[checkQuest] Andar:', andar);
+//    console.log('[checkQuest] Andar:', andar);
 
     const userData = this.getUserData();
 
     const precisaPagar = andar % 4 === 0;
 
-    console.log('[checkQuest] precisaPagar:', precisaPagar);
+  //  console.log('[checkQuest] precisaPagar:', precisaPagar);
 
     if (!precisaPagar) {
-      console.log('[checkQuest] Nenhum pedágio necessário.');
+    //  console.log('[checkQuest] Nenhum pedágio necessário.');
       return {
         precisaPagar: false,
         mensagem: 'Nenhum pedágio necessário neste andar.',
@@ -347,7 +369,7 @@ export class AuthService {
     }
 
     const indexPedagio = Math.floor((andar - 1) / 4);
-    console.log('[checkQuest] indexPedagio:', indexPedagio);
+    //console.log('[checkQuest] indexPedagio:', indexPedagio);
 
     const base = {
       tokens: 100,
@@ -360,8 +382,9 @@ export class AuthService {
     const custoTokens = Math.floor(base.tokens * Math.pow(base.multiplicador, indexPedagio));
     const custoGemas = Math.floor(base.gemas * Math.pow(base.multiplicador, indexPedagio));
     const levelMinimo = base.level + indexPedagio * 5;
-    const skillsMinimas = base.skills + indexPedagio;
+    const skillsMinimas = this.calcularSkillsMinimas(indexPedagio);
 
+/**
     console.log('[checkQuest] Custos:', {
       custoTokens,
       custoGemas,
@@ -369,6 +392,18 @@ export class AuthService {
       skillsMinimas
     });
 
+
+
+    requisitos.forEach((r, i) => {
+    console.log(`[checkQuest] Requisito ${i + 1}: ${r.nome} - ${r.completo ? 'OK' : 'FALHOU'}`);
+    });
+
+    const podeSubir = requisitos.every(r => r.completo);
+    console.log('[checkQuest] podeSubir:', podeSubir);
+
+
+
+**/
     const requisitos = [
       {
         nome: `Ter ${custoGemas} gemas`,
@@ -399,6 +434,7 @@ export class AuthService {
         completo: userData.writing >= skillsMinimas
       }
     ];
+
 
     requisitos.forEach((r, i) => {
       console.log(`[checkQuest] Requisito ${i + 1}: ${r.nome} - ${r.completo ? 'OK' : 'FALHOU'}`);
@@ -437,7 +473,7 @@ export class AuthService {
 
 
 
-
+/**
 
   updateMetaUser(changes: Record<string, boolean>): void {
     const userData = this.getUserData();
@@ -477,7 +513,7 @@ export class AuthService {
   }
 
 
-
+**/
 
 
 
@@ -518,11 +554,12 @@ export class AuthService {
 
 
 
-/**  BATTERY **/
+/**  BATTERY
   getBattery(){
     const userData = this.getUserData();
     return userData.battery;
   }
+ **/
   addBatteryEnergy(number: number){
     this.updateLocalUserData({ battery : number})
   }
@@ -620,7 +657,7 @@ export class AuthService {
 
 
 
-
+/**
 
   decreseToken(tokensToSubtract: number): void {
     let userData = this.getUserData();
@@ -645,6 +682,12 @@ export class AuthService {
     return userData.tokens;
   }
 
+
+
+
+
+
+
   checkTokens(): void {
     let userData = this.getUserData();
 
@@ -662,6 +705,24 @@ export class AuthService {
     }
   }
 
+  getToken(): string | null {
+  return localStorage.getItem(this.tokenKey);
+  }
+
+
+
+  isTokenExpired(token: string): boolean {
+  try {
+  const decoded: any = jwtDecode(token);
+  const currentTime = Math.floor(Date.now() / 1000);
+  return decoded.exp < currentTime;
+  } catch (error) {
+  return true;
+  }
+  }
+**/
+
+
 
 
 
@@ -675,9 +736,6 @@ export class AuthService {
     this.saveUserData(token); // Chamando a função corrigida
   }
 
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
-  }
 
   getRefreshToken(): string | null {
     return localStorage.getItem(this.refreshTokenKey);
@@ -690,15 +748,7 @@ export class AuthService {
     this.userSubject.next(null); // Emite null para o BehaviorSubject
   }
 
-  isTokenExpired(token: string): boolean {
-    try {
-      const decoded: any = jwtDecode(token);
-      const currentTime = Math.floor(Date.now() / 1000);
-      return decoded.exp < currentTime;
-    } catch (error) {
-      return true;
-    }
-  }
+
 
   refreshToken(): Observable<any> {
     const refreshToken = this.getRefreshToken();
@@ -721,13 +771,6 @@ export class AuthService {
       })
     );
   }
-
-
-
-
-
-
-
 
 
 

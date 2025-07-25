@@ -1,7 +1,10 @@
  <div class="container">
 
+   <app-life-bar></app-life-bar>
 
-<!-- Cenario - blackboard -->
+
+
+   <!-- Cenario - blackboard -->
    <div  class="background-wall"  ></div>
    <div  class="background-image"  ></div>
 
@@ -9,7 +12,7 @@
 
 
 
-
+   <app-mug-translate   bottom="5vh" left="5vh"  *ngIf="dialog==4"   ></app-mug-translate>
 
 
 
@@ -46,7 +49,7 @@
     >
 
 
-
+<!--  *ngIf="quizSession"
 
 <div class="battery-bars" *ngIf="quizSession">
   <img src="assets/lingobot/cenas_na_masmorra/speaking/lingobot.png" class="battery-icon">
@@ -59,8 +62,7 @@
          class="battery-bar-img">
   </div>
 </div>
-
-
+   -->
 
 
 

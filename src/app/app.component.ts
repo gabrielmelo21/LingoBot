@@ -2,7 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from "@angular/router";
 import {AuthService} from "./services/auth.service";
 import {PlaySoundService} from "./services/play-sound.service";
-import {TrilhaService} from "./services/trilha.service";
+
 import {Subscription} from "rxjs";
 import {ModalService} from "./services/modal.service";
 
@@ -45,8 +45,7 @@ export class AppComponent implements OnInit{
 
 
 
-  constructor(   private trilhaService: TrilhaService,
-                private router: Router,
+  constructor(  private router: Router,
                 private auth: AuthService,
                 private playSound: PlaySoundService,
                  private modalService: ModalService
@@ -142,16 +141,6 @@ this.router.events.subscribe(event => {
     this.modalService.newItem$.subscribe(item => {
       this.newItem = item;
     });
-
-
-    //INICIALIZA JSON TORRE
-    if (!this.trilhaService.getTorreData()) {
-     console.log("trilha iniciada");
-      this.trilhaService.initializeTorreData();
-    }else{
-     console.log("torre base ja foi iniciada - " + localStorage.getItem("torreData"))
-    }
-
 
 
 

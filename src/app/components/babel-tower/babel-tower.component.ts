@@ -10,7 +10,6 @@ import {
 import {PlaySoundService} from "../../services/play-sound.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
-import {TrilhaService} from "../../services/trilha.service";
 import {Subscription} from "rxjs";
 import {TimersService} from "../../services/timers.service";
 import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.service";
@@ -25,46 +24,170 @@ import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.ser
 })
 export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
 
-
   currentElderImage: string = "";
   userDifficulty: string = '';
   checkQuestModal: boolean = false;
+
   rechargeValue: number = 0;
-
-  showPedagioModal: boolean = false;
-
   currentBattery: number = 0;
   batteryArray = Array(10).fill(0);
   energyImagePath: string = '';
   rechargeModal: boolean = false ;
-
-
   andarAtual: number = 0;
+  checkMissoesModal: boolean = false;
+  missoesDiarias: { nome: string; completo: boolean }[] = [];
+  private missionsSubscription?: Subscription;
+  recompensaReivindicada = this.timersService.isRewardClaimed();
 
+  choseActivityModal: boolean = false;
+  selectedActivity: string | null = null;
 
+  activities: { name: string; type: 'free' | 'premium' }[] = [];
 
-
+   planoUsuario: string = '';
 
   constructor(private playSound: PlaySoundService,
               private router: Router,
               protected auth: AuthService,
-              private trilhaService: TrilhaService,
               private cdr: ChangeDetectorRef,
               protected timersService: TimersService,
               private eldersRoomGuardiamService:  EldersRoomGuardiamService) {
     window.scrollTo(0, 0);
-   // this.playSound.playTowerSoundTrack()
+  // this.playSound.playTowerSoundTrack()
 
+  //  this.auth.addRandomItemToUser();
+
+    this.planoUsuario = this.auth.getPlano();
 
 
 
   }
-  checkMissoesModal: boolean = false;
-  missoesDiarias: { nome: string; completo: boolean }[] = [];
 
 
-  private missionsSubscription?: Subscription;
-  recompensaReivindicada = this.timersService.isRewardClaimed();
+
+  selectActivity(activityName: string) {
+    this.playSound.playCleanSound2();
+    this.selectedActivity = activityName;
+
+    console.log(this.selectedActivity);
+  }
+
+  confirmActivity() {
+    //console.log('Atividade confirmada:', this.selectedActivity);
+
+    switch (this.selectedActivity) {
+
+      /** WRITING **/
+      case 'Writing - Aumente seu vocabulário':
+        this.enterActivity("writing");
+        break;
+      case 'Writing - Criação e correção textual':
+        this.enterActivity("writing_premium1");
+        break;
+
+      /** READING **/
+      case 'Reading - Descubra a senha do Báu!':
+        this.enterActivity("reading");
+        break;
+      case 'Reading - Vocabulário em contexto':
+        this.enterActivity("reading_premium1");
+        break;
+
+      /** LISTENING **/
+      case 'Listening - Escute e forme frases e abra o portão!':
+        this.enterActivity("listening");
+        break;
+      case 'Listening - Entrevistas':
+        this.enterActivity("listening_premium1");
+        break;
+
+      /** SPEAKING ROOM **/
+      case 'Speaking - Converse com o Speaking Elder':
+           this.enterActivity("speaking");
+      break;
+      case 'Speaking - Epic Boss Battle':
+        this.enterActivity("speaking_premium1");
+        break;
+
+
+    }
+
+   this.ActivityModal();
+  }
+
+
+
+  enterActivity(redirectTo: string) {
+      if (this.currentBattery > 0) {
+        this.playEnterAnimation()
+        setTimeout( () => {
+          const destino = this.getTextoPorAndar().toLowerCase();
+            this.removeBattery();
+            this.eldersRoomGuardiamService.markAsPaid(destino);
+            this.router.navigate([`/${redirectTo}`]); // espera navegação
+
+        }, this.waitAnimationTime +100)
+   } else {
+     this.rechargeBattery();
+      }
+  }
+
+  ActivityModal() {
+    this.choseActivityModal = !this.choseActivityModal;
+
+    if (this.choseActivityModal) {
+      const materia = this.getTextoPorAndar().toLowerCase();
+      this.activities = this.getActivitiesBySubject(materia);
+
+    }else{
+      this.selectedActivity = '';
+    }
+  }
+
+  getActivitiesBySubject(subject: string): { name: string; type: 'free' | 'premium' }[]  {
+    switch (subject) {
+      case 'writing':
+        return [
+          { name: 'Writing - Aumente seu vocabulário', type: 'free' },
+          { name: 'Writing - Criação e correção textual', type: 'premium' },
+        ];
+      case 'reading':
+        return [
+          { name: 'Reading - Descubra a senha do Báu!', type: 'free' },
+          { name: 'Reading - Vocabulário em contexto', type: 'premium' },
+        ];
+      case 'listening':
+        return [
+          { name: 'Listening - Escute e forme frases e abra o portão!', type: 'free' },
+          { name: 'Listening - Entrevistas', type: 'premium' },
+        ];
+      case 'speaking':
+        return [
+          { name: 'Speaking - Converse com o Speaking Elder', type: 'free' },
+          { name: 'Speaking - Epic Boss Battle', type: 'premium' },
+        ];
+      default:
+        return [];
+    }
+  }
+
+  canConfirmSelectedActivity(): boolean {
+    if (!this.selectedActivity) return false;
+
+
+    const atividade = this.activities.find(
+      (a) => a.name === this.selectedActivity
+    );
+
+    if (!atividade) return false;
+
+    return this.planoUsuario === 'premium' || atividade.type === 'free';
+  }
+
+
+
+
+
 
   getIconeMissao(nome: string): string {
     return `assets/lingobot/skills/${nome.toLowerCase()}.png`;
@@ -75,6 +198,8 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
     this.timersService.updateMission(missao.toLowerCase());
     this.atualizarMissoes();
   }
+
+
 
   atualizarMissoes() {
     const data = this.timersService.getMissionsData();
@@ -118,7 +243,12 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
     //this.checkMissoesModal = false;
   }
 
-
+  tabletModal: boolean = false;
+  openTablet(){
+    this.playSound.playCleanSound2();
+    this.tabletModal = !this.tabletModal;
+    this.renderizar();
+  }
 
   subirAndar(){
      this.andarAtual++;
@@ -205,15 +335,11 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
 
 
   ngOnDestroy() {
-    // Limpa a subscription para evitar memory leaks
     if (this.missionsSubscription) {
       this.missionsSubscription.unsubscribe();
     }
   }
-  verificarPedagio() {}
   renderizar(){this.cdr.detectChanges();}
-
-
   closeQuestModal() {
     this.checkQuestModal = !this.checkQuestModal;
     this.renderizar();
@@ -270,11 +396,6 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
         return "";  // Caso não encontre
     }
   }
-  closeModal() {
-    this.showPedagioModal = false;
-  }
-
-
 
 
   async command(cmd: string) {
@@ -290,32 +411,7 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
 
 
     } else if (cmd === 'in') {
-
-
-      try {
-        if (this.currentBattery > 0) {
-          this.playEnterAnimation()
-
-
-          setTimeout( () => {
-            const destino = this.getTextoPorAndar().toLowerCase();
-            if (["writing", "listening", "reading", "speaking"].includes(destino)) {
-              this.removeBattery();
-              this.eldersRoomGuardiamService.markAsPaid(destino);
-
-
-              this.router.navigate([`/${destino}`]); // espera navegação
-            }
-          }, this.waitAnimationTime +100)
-
-
-
-        } else {
-          this.rechargeBattery();
-        }
-      } finally {
-
-      }
+          this.ActivityModal();
 
     } else if (cmd === 'down') {
       if (this.andarAtual > 1) {

@@ -10,11 +10,11 @@
   <p class="drop-rate">Drop Rate: {{ getDropRate(item.dropRate) }}</p>
 </div>
 
-<!-- Feito nao precisa mexer-->
-<div class="background-commands">
-    <h3 (click)="close_modal()"  class="command-button-2" >
-      Continuar
-    </h3>
-</div>
+
+<img
+  *ngIf="showConfirmButton"
+  class="confirmButton"
+  src="assets/lingobot/menu-icons/confirm.png"
+  (click)="close_modal()" />
 
 

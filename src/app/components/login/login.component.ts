@@ -35,46 +35,6 @@ export class LoginComponent {
   }
 
 
-
-
-
-
-
-
-
-  currentFeatureIndex: number = 0;
-  rotateFeatures() {
-    setInterval(() => {
-      const featureElement = document.querySelector('.rotating-feature') as HTMLElement;
-      if (featureElement) {
-        // Inicia o fade-out
-        featureElement.classList.remove('fade-in');
-
-        // Aguarda o término do fade-out antes de atualizar o texto
-        setTimeout(() => {
-          this.currentFeatureIndex = (this.currentFeatureIndex + 1) % this.features.length;
-          featureElement.textContent = this.features[this.currentFeatureIndex];
-
-          // Inicia o fade-in
-          featureElement.classList.add('fade-in');
-        }, 500); // Tempo correspondente à duração do fade-out
-      }
-    }, 6000); // Intervalo de 6 segundos entre as frases
-  }
-  features: string[] = [
-    'Descubra significados de expressões que não têm tradução direta.',
-    'Receba explicações detalhadas pelo LingoBot',
-    'Salve as explicações em flashcards personalizados.',
-    'Estude com vídeos em inglês no YouTube.',
-    "Desvende Expressões em Inglês com o LingoBot",
-    "Resolva desafios de Listening, Reading e Writing",
-    "Resolva exercícios propostos pelo LingoBot"
-  ];
-
-
-
-
-
   isLoginMode = true;
   isLoading: boolean = false;
   loginIsLoading: boolean = false;
@@ -135,7 +95,10 @@ export class LoginComponent {
     private playSound: PlaySoundService,
     private fb: FormBuilder,
     private mainAPI: MainAPIService,
-    private router: Router) {
+    private router: Router,
+    ) {
+
+
 
     this.playSound.playTowerSoundTrack();
 
@@ -160,10 +123,10 @@ export class LoginComponent {
 
 
     this.loginForm = this.fb.group({
-       email: ['', [Validators.required, Validators.email]],
-       password: ['', [Validators.required, Validators.minLength(6)]],
+       email: [ '' , [Validators.required, Validators.email]],
+       password: [ '', [Validators.required, Validators.minLength(6)]],
     })
-
+   this.loginForm.value.email = "teste"
   }
 
 
@@ -176,6 +139,7 @@ export class LoginComponent {
     const confirmSenha = group.get('confirmSenha')?.value;
     return senha === confirmSenha ? null : { mismatch: true };
   }
+
 
 
 // Método para chamar a criação do usuário
@@ -201,6 +165,7 @@ export class LoginComponent {
         battery: 10
       };
 
+
       // Chamada para a API com a senha em texto puro
       this.mainAPI.criarUsuario(usuario).subscribe(
         (response) => {
@@ -211,6 +176,15 @@ export class LoginComponent {
             console.log(response)
             this.loadingDance = false;
           }, 5000)
+
+
+
+
+          this.loginForm.setValue({
+            email: usuario.email,
+            password: usuario.password
+          });
+
 
         },
         (error) => {
