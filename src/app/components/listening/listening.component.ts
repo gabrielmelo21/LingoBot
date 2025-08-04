@@ -116,26 +116,27 @@ export class ListeningComponent implements AfterViewInit {
  }
 
 
-
   dialog: number = 0;
-
   cenarioCount: number = 0;
-
   audioUrl: string | null = null;
   isPlaying: boolean = false;
   audioElement: HTMLAudioElement | null = null;
   isLoading: boolean = false;
   elder: string = "assets/lingobot/elders/listening/focado.png";
   srcExercises: string = '';
-  finalGoldReward: number = 10;
-  finalXpReward: number = 10000;
   exercises: ListeningExercise[] = [];
   currentExercise!: ListeningExercise;
   currentStep: number = 0; // 0 = p1, 1 = p2, 2 = phrase
   playCount: number = 0;
   tipsCount: number = 0;
   tipsMax: number = 0;
+
+
+
   jackpot: boolean = this.jackpotService.isJackpot();
+  finalGoldReward: number = this.jackpot?this.rewardService.getCurrentGoldReward()*2:this.rewardService.getCurrentGoldReward();
+  finalXpReward: number = this.jackpot?this.rewardService.getCurrentXPReward()*2:this.rewardService.getCurrentXPReward();
+
 
   constructor(private playSoundService: PlaySoundService,
               private http: HttpClient,
@@ -177,32 +178,21 @@ export class ListeningComponent implements AfterViewInit {
     switch (this.authService.getDifficulty()) {
       case 'easy':
         this.srcExercises = 'assets/lingobot/json/listening/easy.json';
-        this.finalGoldReward = this.jackpot ? 50 : 25;
-        this.finalXpReward = 20000;
         this.tipsMax = 3;
         break;
 
       case 'medium':
         this.srcExercises = 'assets/lingobot/json/listening/medium.json';
-        // Recompensa 1,5× da easy
-        this.finalGoldReward = this.jackpot ? 60 : 30;
-        this.finalXpReward = 25000;
         this.tipsMax = 4;
         break;
 
       case 'hard':
         this.srcExercises = 'assets/lingobot/json/listening/hard.json';
-        // Recompensa 2× da easy
-        this.finalGoldReward = this.jackpot ? 70 : 35;
-        this.finalXpReward = 30000;
         this.tipsMax = 6;
         break;
 
       case 'elder':
         this.srcExercises = 'assets/lingobot/json/listening/elder.json';
-        // Recompensa 3× da easy
-        this.finalGoldReward = this.jackpot ? 80 : 40;
-        this.finalXpReward = 35000;
         this.tipsMax = 10;
         break;
 
@@ -210,8 +200,6 @@ export class ListeningComponent implements AfterViewInit {
         // Fallback caso o valor seja inesperado
         console.warn(`Dificuldade desconhecida: ${this.authService.getDifficulty()}`);
         this.srcExercises = 'assets/lingobot/json/listening/easy.json';
-        this.finalGoldReward = 15;
-        this.finalXpReward = 10000;
         break;
     }
 
@@ -256,7 +244,7 @@ export class ListeningComponent implements AfterViewInit {
 
 
 giveUserReward(): void {
-  this.rewardService.giveUserRewards(this.finalXpReward, this.finalGoldReward, 'listening');
+  this.rewardService.giveUserRewards(this.jackpot, 'listening');
 }
 
 eldersBackToFocus(){

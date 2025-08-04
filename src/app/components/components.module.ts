@@ -43,35 +43,12 @@ import { SpeakingPremium1Component } from './speaking-premium1/speaking-premium1
 
 import { AfterWinDialogComponent } from './after-win-dialog/after-win-dialog.component';
 import { LifeBarComponent } from './life-bar/life-bar.component';
+import { DailyMissionComponent } from './daily-mission/daily-mission.component';
+import { ItemModalComponent } from './item-modal/item-modal.component';
+import {AppModule} from "../app.module";
+import { SelectQuestModalComponent } from './select-quest-modal/select-quest-modal.component';
 
 
-/**
- *
- * import { TrilhaDeEstudosComponent } from './trilha-de-estudos/trilha-de-estudos.component';
- * import { TrilhaDeEstudosActiveComponent } from './trilha-de-estudos-active/trilha-de-estudos-active.component';
- * import { Step2Component } from './step2/step2.component';
- * import { Step3Component } from './step3/step3.component';
- * import { Step4Component } from './step4/step4.component';
- * import { Step1FreeComponent } from './step1-free/step1-free.component';
- * import { Step2FreeComponent } from './step2-free/step2-free.component';
- * import { Step3FreeComponent } from './step3-free/step3-free.component';
- * import { ZExerciseListening1Component } from './z-exercise-listening1/z-exercise-listening1.component';
- * import { ZExerciseWriting1Component } from './z-exercise-writing1/z-exercise-writing1.component';
- * import { ZExerciseReading1Component } from './z-exercise-reading1/z-exercise-reading1.component';
- * import { ZExerciseSpeaking1Component } from './z-exercise-speaking1/z-exercise-speaking1.component';
- *     TrilhaDeEstudosComponent,
- *     TrilhaDeEstudosActiveComponent,
- *     Step2Component,
- *     Step3Component,
- *     Step4Component,
- *     Step1FreeComponent,
- *     Step2FreeComponent,
- *     Step3FreeComponent,
- *     ZExerciseListening1Component,
- *     ZExerciseWriting1Component,
- *     ZExerciseReading1Component,
- *     ZExerciseSpeaking1Component,
- */
 
 @NgModule({
   declarations: [
@@ -104,6 +81,9 @@ import { LifeBarComponent } from './life-bar/life-bar.component';
 
     AfterWinDialogComponent,
     LifeBarComponent,
+    DailyMissionComponent,
+    ItemModalComponent,
+    SelectQuestModalComponent,
 
 
   ],
@@ -118,22 +98,23 @@ import { LifeBarComponent } from './life-bar/life-bar.component';
     LevelUpComponent,
     NewItemModalComponent
   ],
-  imports: [
-    CommonModule,
-    ComponentRoutingModule,
-    MatButtonModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    MatSelectModule,
-    MatRippleModule,
-    MatCardModule,
-    FormsModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatGridListModule,
-    MatToolbarModule,
-    YouTubePlayerModule
+    imports: [
+        CommonModule,
+        ComponentRoutingModule,
+        MatButtonModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+        MatSelectModule,
+        MatRippleModule,
+        MatCardModule,
+        FormsModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatGridListModule,
+        MatToolbarModule,
+        YouTubePlayerModule,
 
-  ]
+
+    ]
 })
 export class ComponentsModule { }

@@ -1,31 +1,28 @@
-<div class="user-card">
 
+
+<div
+  class="holograma-card"
+  *ngIf="modal || isClosing"   [class.open]="modal && !isClosing"
+  [class.close]="isClosing"
+>
+
+
+  <div class="content">
 
   <div class="top-items">
-
     <div class="item-container">
-      <img src="assets/lingobot/lingobot-icon.png" alt="Token" class="token-icon">
-      <span class="token-text">{{ user.nome }}</span>
+      <img src="assets/lingobot/lingobot-icon.png" alt="Token" class="token-icon" style="  border-radius: 50%;">
+      <span class="token-text">{{ userName }}</span>
     </div>
-
-
-
     <div class="item-container">
-      <img src="assets/lingobot/menu-icons/icone-home.png" alt="Token" class="token-icon">
+      <img src="assets/lingobot/menu-icons/icone-home.png" alt="Token" class="token-icon" style="width: 30px !important;">
       <span class="token-text">{{  this.ranking }}°</span>
     </div>
-<!--
-    <div class="item-container">
-      <img src="assets/lingobot/icons/LingoToken.png" alt="Token" class="token-icon">
-      <span class="token-text">{{ user.tokens }}</span>
-    </div>
- -->
   </div>
-
 
   <!-- Seção centralizada: Avatar e nome do usuário -->
   <div class="user-info-centered" style="margin-top: 40px !important;">
-    <h4 style="font-size: 15pt !important;font-weight:bold;color:goldenrod;margin: 0px !important;">  Lv.{{ user.Level }}</h4>
+    <h4 style="font-size: 15pt !important;font-weight:bold;color:goldenrod;margin: 0px !important;">  Lv.{{ userLevel  }}</h4>
   </div>
 
   <!-- Barra de progresso -->
@@ -37,14 +34,11 @@
     </div>
     <p style="display: flex; align-items: center; gap: 5px; justify-content: center;">
       <img src="assets/lingobot/icons/lxp.png" width="10%" height="10%">
-      {{ user.LingoEXP }} / {{ expNeeded }}
+      {{ userLingoEXP }} / {{ expNeeded }}
     </p>
   </div>
-
-
 <app-skills></app-skills>
   <br>
-
   <div class="difficulty-container" *ngIf="selectedDifficulty">
     <h4 style="font-size: 15pt !important; font-weight: bold; color: goldenrod; margin: 0px !important; text-align: center">
       Dificuldade
@@ -62,104 +56,21 @@
 
 
 
-  <br>
 
-
-  <div style="display: flex;justify-content: center;align-items: center" (click)="  toggleCelularModal()">
-    <h3>&#10006; Guardar Celular</h3>
+  <div class="center-element x-position"  (click)="openUserStats()">
+     <img src="assets/lingobot/menu-icons/x.png" class="x">
   </div>
 
 
+
+  </div>
 </div>
 
 
-
-<style>
-
-
-
-
-  /* Container principal para a seção de dificuldade */
-  .difficulty-container {
-    text-align: center; /* Centraliza todo o conteúdo do container */
-  }
-
-  /* Container para alinhar a imagem e o texto */
-  .image-text-container {
-    display: flex;
-    align-items: center; /* Alinha verticalmente a imagem e o texto */
-    justify-content: center; /* Centraliza horizontalmente */
-    gap: 10px; /* Espaçamento entre a imagem e o texto */
-  }
-
-  /* Estilização da imagem */
-  .difficulty-image {
-    width: 30%; /* Define a largura da imagem como 20% da largura do container pai */
-    height: auto; /* Mantém a proporção da imagem */
-    border-radius: 50%; /* Mantém a imagem circular (opcional) */
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5); /* Sombra suave */
-  }
-
-  /* Container para o texto */
-  .text-container {
-    text-align: center; /* Centraliza o texto */
-  }
-
-  /* Estilização do parágrafo */
-  .text-container p {
-    font-size: 14px; /* Tamanho da fonte */
-    color: white; /* Cor do texto */
-    margin: 0; /* Remove margens padrão */
-  }
-
-  /* Estilização do título "Baby bot" */
-  .text-container h4 {
-    font-size: 16px; /* Tamanho da fonte */
-    color: white; /* Cor do texto */
-    font-weight: bold; /* Negrito para destaque */
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-  /* Container principal para os itens do topo */
-  .top-items {
-    position: absolute;
-    top: 10px; /* Ajusta a posição vertical */
-    left: 50%; /* Centraliza horizontalmente */
-    transform: translateX(-50%); /* Compensa o deslocamento para centralizar */
-    display: flex;
-    gap: 10px; /* Espaçamento entre os itens */
-    align-items: center; /* Alinha verticalmente os itens */
-  }
-
-  /* Container individual para cada item */
-  .item-container {
-    display: flex;
-    align-items: center; /* Alinha verticalmente ícone e texto */
-    gap: 5px; /* Espaçamento entre ícone e texto */
-  }
-
-  /* Ícone */
-  .token-icon {
-    width: 30px; /* Reduzindo o tamanho do ícone */
-    height: auto;
-    border-radius: 50%; /* Mantém o ícone circular */
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5); /* Sombra suave */
-  }
-
-  /* Texto ao lado do ícone */
-  .token-text {
-    font-size: 14px; /* Tamanho da fonte */
-    color: white; /* Cor do texto */
-    font-weight: bold; /* Negrito para destaque */
-  }
-</style>
+<img
+     *ngIf="this.modal"
+     src="assets/lingobot/menu-icons/holograma.png"
+     class="projetor entrar-da-esquerda"
+     [ngClass]="{'sair-para-esquerda': animandoSaida}"
+     (animationend)="onAnimationEnd($event)"
+>

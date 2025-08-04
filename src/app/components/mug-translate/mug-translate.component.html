@@ -2,7 +2,7 @@
 <img
   (click)="openTablet()"
   src="assets/lingobot/tools-icons/tablet-icon.png"
-  class="tablet-button"
+  class="float-modal-button"
   [ngStyle]="{
     top: top,
     left: left,
@@ -13,75 +13,109 @@
   }"
 />
 
-/>
-
 <!-- MODAL -->
 <div *ngIf="isTabletOpen" class="modal-overlay" (click)="closeTablet()">
   <div class="modal-content" (click)="$event.stopPropagation()">
     <img src="assets/lingobot/tools-icons/tablet.png" class="tablet-img" />
 
-    <!-- GLASS CONTAINER -->
-    <div class="translator-glass">
-      <!-- Chat Container -->
-      <div class="chat-container">
-        <!-- Translated Content Section -->
-        <div class="translated-content" *ngIf="translationResult && !isLoading">
-          <!-- Exibe o erro se houver -->
-          <p *ngIf="translationResult.error" class="error-message">
-            {{ translationResult.error }}
-          </p>
+    <!-- TRANSLATOR CONTAINER -->
+    <div class="translator-container">
+      <!-- Header -->
+      <div class="translator-header">
+        <div class="header-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3>Translate Everything</h3>
+      </div>
 
-
-                <p *ngIf="translationResult.significado">
-                  <strong>Word: </strong> {{ this.translatedWord }}
-                </p>
-
-          <!-- Exibe o significado se existir -->
-          <p *ngIf="translationResult.significado">
-
-            <strong>Tradução:</strong> {{ translationResult.significado }}
-          </p>
-
-          <!-- Exibe a explicação se existir -->
-          <p *ngIf="translationResult.categoria">
-            <strong>Categoria:</strong> {{ translationResult.categoria }}
-          </p>
-
-          <!-- Exibe o exemplo se existir -->
-          <p *ngIf="translationResult.exemplo">
-            <strong>Exemplo:</strong> {{ translationResult.exemplo }}
-          </p>
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Loading State -->
+        <div class="loading-container"  *ngIf="isLoading">
+          <div class="loading-spinner">
+            <img src="assets/lingobot/menu-icons/lingobot-energy-on.png" alt="Loading" />
+          </div>
         </div>
 
-        <!-- Texto inicial quando não há tradução e não está carregando -->
-        <div class="translated-text" *ngIf="!translationResult && !isLoading">
-          {{ translatedText }}
+        <!-- Translation Result -->
+        <div class="translation-result" *ngIf="translationResult && !isLoading">
+          <!-- Error Message -->
+          <div class="error-card" *ngIf="translationResult.error">
+            <div class="error-icon">⚠️</div>
+            <p>{{ translationResult.error }}</p>
+          </div>
+
+          <!-- Success Result -->
+          <div class="result-cards" *ngIf="!translationResult.error">
+            <!-- Word Card -->
+            <div class="result-card word-card" *ngIf="translatedWord">
+              <div class="card-header">
+                <span class="card-icon">📝</span>
+                <span class="card-title">Palavra</span>
+              </div>
+              <p class="card-content"  style="text-transform: uppercase">{{ translatedWord }}</p>
+            </div>
+
+            <!-- Translation Card -->
+            <div class="result-card translation-card" *ngIf="translationResult.significado">
+              <div class="card-header">
+                <span class="card-icon">🔄</span>
+                <span class="card-title">Tradução</span>
+              </div>
+              <p class="card-content"  style="text-transform: uppercase">{{ translationResult.significado }}</p>
+            </div>
+
+            <!-- Category Card -->
+            <div class="result-card category-card" *ngIf="translationResult.categoria">
+              <div class="card-header">
+                <span class="card-icon">🏷️</span>
+                <span class="card-title">Categoria</span>
+              </div>
+              <p class="card-content" style="text-transform: uppercase">{{ translationResult.categoria }}</p>
+            </div>
+
+            <!-- Example Card -->
+            <div class="result-card example-card" *ngIf="translationResult.exemplo">
+              <div class="card-header">
+                <span class="card-icon">💭</span>
+                <span class="card-title">Exemplo</span>
+              </div>
+              <p class="card-content" >{{ translationResult.exemplo }}</p>
+            </div>
+          </div>
+
+          <!-- No Translation Message -->
+          <div class="info-card" *ngIf="translationResult && !translationResult.significado && !translationResult.error">
+            <div class="info-icon">ℹ️</div>
+            <p>Não foi possível obter uma tradução. Tente outra palavra.</p>
+          </div>
         </div>
 
-        <p *ngIf="translationResult && !translationResult.significado && !translationResult.error" class="info-message">
-          Não foi possível obter uma tradução. Tente outra palavra.
-        </p>
-
-
-
-
-        <div class="loading-spinner" *ngIf="isLoading" style="top: 10vh !important;left: 12vh !important;">
-          <img src="assets/lingobot/menu-icons/lingobot-energy-on.png" alt="Loading" />
+        <!-- Initial State -->
+        <div class="initial-state" *ngIf="!translationResult && !isLoading">
+          <div class="welcome-icon">🌍</div>
+          <h4>{{ translatedText }}</h4>
+          <p>Digite uma palavra para começar a traduzir</p>
         </div>
       </div>
 
-      <!-- Input and Button Section -->
-      <div class="input-container" *ngIf="!isLoading">
-        <input
-          type="text"
-          placeholder="Digite a palavra..."
-          [(ngModel)]="inputText"
-          class="translator-input"
-          (keyup.enter)="translate()"
-        />
-
-        <div  class="confirm-btn">
-          <img  src="assets/lingobot/menu-icons/confirm.png" (click)="translate()" />
+      <!-- Input Section -->
+      <div class="input-section" *ngIf="!isLoading">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            placeholder="Digite a palavra..."
+            [(ngModel)]="inputText"
+            class="translator-input"
+            (keyup.enter)="translate()"
+          />
+          <button class="translate-btn" (click)="translate()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+            </svg>
+          </button>
         </div>
       </div>
     </div>

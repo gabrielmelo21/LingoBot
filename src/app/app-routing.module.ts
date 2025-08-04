@@ -22,7 +22,6 @@ import {LevelUpComponent} from "./components/level-up/level-up.component";
 
 
 
-
 const routes: Routes = [
   //{ path: '', redirectTo: 'login', pathMatch: 'full' },
   {

@@ -75,32 +75,24 @@ export class ReadingComponent implements AfterViewInit{
     switch (this.authService.getDifficulty()) {
       case 'easy':
         this.srcExercises = 'assets/lingobot/json/reading/easy.json';
-        this.finalGoldReward = this.jackpot ? 50 : 25;
-        this.finalXpReward = 20000;
         this.tipLimit = 3;  // se errar 3 vezes aparece a ajuda
         break;
 
       case 'medium':
         this.srcExercises = 'assets/lingobot/json/reading/medium.json';
         // Recompensa 1,5× da easy
-        this.finalGoldReward = this.jackpot ? 60 : 30;
-        this.finalXpReward = 25000;
         this.tipLimit = 4;
         break;
 
       case 'hard':
         this.srcExercises = 'assets/lingobot/json/reading/hard.json';
         // Recompensa 2× da easy
-        this.finalGoldReward = this.jackpot ? 70 : 35;
-        this.finalXpReward = 30000;
         this.tipLimit = 5;
         break;
 
       case 'elder':
         this.srcExercises = 'assets/lingobot/json/reading/elder.json';
         // Recompensa 3× da easy
-        this.finalGoldReward = this.jackpot ? 80 : 40;
-        this.finalXpReward = 35000;
         this.tipLimit = 7;
         break;
 
@@ -108,8 +100,6 @@ export class ReadingComponent implements AfterViewInit{
         // Fallback caso o valor seja inesperado
         console.warn(`Dificuldade desconhecida: ${this.authService.getDifficulty()}`);
         this.srcExercises = 'assets/lingobot/json/reading/easy.json';
-        this.finalGoldReward = 10;
-        this.finalXpReward = 10000;
         break;
     }
     this.loadExercises()
@@ -191,7 +181,7 @@ export class ReadingComponent implements AfterViewInit{
 
 
   giveRewards(){
-    this.rewardService.giveUserRewards(this.finalXpReward, this.finalGoldReward, 'reading');
+    this.rewardService.giveUserRewards(this.jackpot, 'reading');
   }
 
 
@@ -218,8 +208,8 @@ export class ReadingComponent implements AfterViewInit{
   dialog: number = 0 ;
   elder: string = "assets/lingobot/elders/reading/parado.png";
   srcExercises: string = '';
-  finalGoldReward: number = 10;
-  finalXpReward: number = 10000;
+  finalGoldReward: number = this.jackpot?this.rewardService.getCurrentGoldReward()*2:this.rewardService.getCurrentGoldReward();
+  finalXpReward: number = this.jackpot?this.rewardService.getCurrentXPReward()*2:this.rewardService.getCurrentXPReward();
   tipCounts: number = 0;
   tipLimit: number = 3;
 

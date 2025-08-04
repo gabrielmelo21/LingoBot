@@ -1,19 +1,64 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {ModalService} from "../../services/modal.service";
 import {PlaySoundService} from "../../services/play-sound.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
   styleUrls: ['./account-settings.component.css']
 })
-export class AccountSettingsComponent implements OnInit{
+export class AccountSettingsComponent implements OnInit, OnDestroy{
+
   isLoginRoute = false;
   expPercentage: number = 0; // Inicializa a porcentagem
   expNeeded: number = 10000; // Valor padrão inicial
-  user: any;  // Variável para armazenar os dados do usuário
+  userName: string =  '';
+  userLevel: string =  '';
+  userLingoEXP: string =  '';
+
+
+  private sub!: Subscription;
+  modal: boolean = false;
+  isClosing: boolean = false;
+  animandoSaida = false;
+  animandoEntrada = false;
+
+
+  openUserStats() {
+    if (this.modal) {
+      this.animandoSaida = true;
+      this.isClosing = true;
+      this.playSoundService.playHologram();
+    } else {
+      this.animandoEntrada = true;
+      this.isClosing = false;
+      this.modalService.toggleUserInfosModal(); // exibe o modal
+    }
+  }
+
+  onAnimationEnd(event: AnimationEvent) {
+    const { animationName } = event;
+
+    if (animationName === 'entrarDaEsquerda') {
+      this.animandoEntrada = false;
+    }
+
+    if (animationName === 'sairParaEsquerda') {
+      this.animandoSaida = false;
+      this.modalService.toggleUserInfosModal(); // oculta o modal após a saída
+      this.isClosing = false;
+    }
+  }
+
+
+
+
+
+
+
 
   constructor(private router: Router,
               private auth: AuthService,
@@ -59,22 +104,33 @@ export class AccountSettingsComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(userData => {
-      if (!userData) return;
-      this.user = userData;
-      this.ranking = userData.ranking;
+
+    this.sub = this.modalService.showUserInfosModal$.subscribe(show => {
+
+      this.modal = show;
+    });
+
+
+
+
+      this.ranking =  this.auth.getRanking();
+      this.userName = this.auth.getUserName();
+      this.userLevel = this.auth.getUserLevel();
+      this.userLingoEXP = this.auth.getLingoEXP();
+
 
       this.expNeeded = this.auth.getExpNeededForNextLevel();
       this.expPercentage = this.auth.getExpPercentage();
-
-      this.userDifficulty = userData.difficulty;
+      this.userDifficulty = this.auth.getDifficulty();
       this.selectedDifficulty = this.difficulties.find(d => d.id === this.userDifficulty);
-    });
+
+  }
+
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 
-  toggleCelularModal() {
-    this.playSoundService.playCleanSound2();
-    this.modalService.toggleCelularModal();
-  }
 }

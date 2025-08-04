@@ -1,6 +1,16 @@
 <div class="full-image-container">
-  <img src="assets/lingobot/level-up/level-up.png" class="levelUpImage">
-  <img *ngIf="showConfirmButton"
-       (click)="close_modal()"
-       src="assets/lingobot/menu-icons/confirm.png" class="confirmButton">
+
+  <div class="level-up-container" *ngIf="show">
+
+    <div class="level-up-label">
+      <span class="level-text">Level up!</span>
+      <span class="level-number">{{ level }} lv</span>
+    </div>
+  </div>
+
+
+
+
 </div>
+
+

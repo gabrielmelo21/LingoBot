@@ -8,6 +8,7 @@ import {TimersService} from "../../services/timers.service";
 import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.service";
 import {LifeBarComponent} from "../life-bar/life-bar.component";
 import {RewardService} from "../../services/reward.service";
+import {JackpotService} from "../../services/jackpot.service";
 
 
 export interface VocabEntry {
@@ -42,11 +43,14 @@ export class WritingComponent   {
   postMission: boolean = false;
   questionTitle: string = '';
   srcExercises: string = '';
-  finalGoldReward: number = 10;
-  finalXpReward: number = 10000;
+
+  jackpot: boolean = this.jackpotService.isJackpot();
+  finalGoldReward: number = this.jackpot?this.rewardService.getCurrentGoldReward()*2:this.rewardService.getCurrentGoldReward();
+  finalXpReward: number = this.jackpot?this.rewardService.getCurrentXPReward()*2:this.rewardService.getCurrentXPReward();
   maxHp: number = 5;
   currentHp: number = 5;
   hpArray: number[] = [];
+
 
   bloquearScroll(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' }); // ou behavior: 'auto' se não quiser animação
@@ -60,7 +64,8 @@ export class WritingComponent   {
                private cdr: ChangeDetectorRef,
                private timersService: TimersService,
               private eldersRoomGuardiamService: EldersRoomGuardiamService,
-              private rewardService: RewardService
+              private rewardService: RewardService,
+              private jackpotService: JackpotService
   ) {
 
     const allowed = this.eldersRoomGuardiamService.verifyAccessOrRedirect('writing_was_paid');
@@ -379,14 +384,7 @@ export class WritingComponent   {
       this.dialog = 7
       this.caminhoImagem = 'assets/lingobot/elders/writing/finish.png';
 
-
-
-      this.rewardService.giveUserRewards(this.finalXpReward, this.finalGoldReward, 'writing');
-
-
-
-
-
+      this.rewardService.giveUserRewards(this.jackpot, 'writing');
 
     }else{
     this.caminhoImagem = 'assets/lingobot/elders/writing/pensando.png';

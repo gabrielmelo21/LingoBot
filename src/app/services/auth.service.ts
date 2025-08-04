@@ -107,6 +107,11 @@ export class AuthService {
      return userData.plano;
   }
 
+  getUserLevel(){
+     const userData = this.getUserData();
+     return userData.Level;
+  }
+
   getDifficulty(){
     const userData = this.getUserData();
     return  userData.difficulty;
@@ -117,7 +122,14 @@ export class AuthService {
     const userData = this.getUserData();
     return  userData.ranking
   }
-
+  getUserName(){
+    const userData = this.getUserData();
+    return  userData.nome;
+  }
+  getLingoEXP(){
+    const userData = this.getUserData();
+    return  userData.LingoEXP;
+  }
 
 
   /**

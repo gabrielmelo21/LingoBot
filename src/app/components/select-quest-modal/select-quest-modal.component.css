@@ -1,0 +1,185 @@
+.game-menu-container {
+  position: absolute;
+  bottom: 10vh !important;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  padding: 12px 24px;
+  border-radius: 20px;
+  z-index: 99;
+}
+
+
+.menu-item .quest-icon {
+  width: 74px;
+  height: 84px;
+  object-fit: contain;  /* Mantém proporção sem distorcer */
+  pointer-events: none;
+  user-select: none;
+  border-radius: 12px;
+}
+
+/* Estilos principais do container, com position: relative */
+.quest-infos {
+  position: relative; /* Essencial para posicionar o botão 'Start' dentro deste container */
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+  margin: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: fadeIn 0.5s ease-out;
+  padding-bottom: 90px; /* Adicionado espaço extra no fundo para o botão não sobrepor */
+}
+
+/* Títulos e textos permanecem os mesmos */
+.quest-infos h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  text-align: center;
+  color: #f7d774;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.quest-infos p {
+  font-weight: bolder;
+  font-size: 1rem;
+  opacity: 0.85;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #f0f0f0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* --- MUDANÇAS PRINCIPAIS AQUI --- */
+
+/* Nova estrutura do Grid para a lista de prêmios */
+.quest-infos ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  grid-template-areas:
+    "free      free"
+    "gold      xp"
+    "dice      dice"
+    "studyGoal studyGoal"
+    "battery   .";
+}
+
+.quest-infos li {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0,0, 0.4);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.quest-infos li:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.03);
+}
+
+.quest-infos li img {
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.quest-infos li span {
+  font-weight: bold;
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* Posicionamento de cada item na sua área do grid */
+.quest-infos li:nth-child(1) { grid-area: free; justify-content: center; color: #00ffae; }
+.quest-infos li:nth-child(2) { grid-area: xp; justify-content: flex-start; color: #33c3f0; }
+.quest-infos li:nth-child(3) { grid-area: gold; justify-content: flex-start; color: #f7d774; }
+.quest-infos li:nth-child(4) { grid-area: dice; justify-content: center; color:  #f7d774; text-align: center}
+.quest-infos li:nth-child(5) {
+  grid-area: studyGoal;
+  justify-content: center;
+  color: #00ffae;
+  text-align: center;
+}
+
+
+.bottom-action-bar {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.battery-display {
+
+  width: 100% ;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: red;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.battery-display img {
+  width: 21px;
+  height: auto;
+  margin-right: 8px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.battery-display span {
+  font-size: 20pt;
+  text-shadow: 0 0 10px currentColor;
+}
+
+
+
+
+.start-mission-button {
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 120px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.6));
+  border-radius: 10px;
+}
+
+.start-mission-button:hover {
+  transform: scale(1.05);
+}
+
+/* Animação de entrada permanece a mesma */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

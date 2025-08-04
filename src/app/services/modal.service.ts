@@ -49,6 +49,52 @@ export class ModalService {
 
 
 
+  // MISSOES DIARIAS
+
+  private showDailySubject = new BehaviorSubject<boolean>(false);
+  showDailyModal$ = this.showDailySubject.asObservable();
+
+  toggleDailyModal() {
+    this.showDailySubject.next(!this.showDailySubject.value);
+  }
+
+
+  // USER INFOS
+  private showUserInfosModalSubject = new BehaviorSubject<boolean>(false);
+  showUserInfosModal$ = this.showUserInfosModalSubject.asObservable();
+
+  toggleUserInfosModal() {
+    this.showUserInfosModalSubject.next(!this.showUserInfosModalSubject.value);
+  }
+
+
+
+
+  // ITEMS MODAL
+  private showItemsModalSubject = new BehaviorSubject<boolean>(false);
+  showItemsModal$ = this.showItemsModalSubject.asObservable();
+
+  toggleItemsModal() {
+    this.showItemsModalSubject.next(!this.showItemsModalSubject.value);
+  }
+
+
+
+
+
+  // SELECT QUESYT
+  private showSelectQuestSubject = new BehaviorSubject<boolean>(false);
+  showSelectQuestModal$ = this.showSelectQuestSubject.asObservable();
+
+  toggleSelectQuestModal() {
+    this.showSelectQuestSubject.next(!this.showSelectQuestSubject.value);
+  }
+
+
+
+
+
+
 
 
 

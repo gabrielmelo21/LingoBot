@@ -1,96 +1,87 @@
-<img    src="assets/lingobot/paper.png" class="background-image">
-
-
-
-
-
-
-<div class="inventory-container"  >
-
-  <div class="inventory-slot">
-    <img src="assets/lingobot/itens/gold.png" alt="Item 1" class="item-image">
-    <span class="item-quantidade gold">{{ this.goldCoins }}</span>
-  </div>
-  <div class="inventory-slot">
-    <img src="assets/lingobot/itens/gemas.png" alt="Item 2" class="item-image" style="width: 45% !important;">
-    <span class="item-quantidade gemas">{{this.gemsCoins}}</span>
+<div class="inventory-container">
+  <!-- Currency Section -->
+  <div class="currency-section">
+    <div class="currency-item gold">
+      <img src="assets/lingobot/itens/gold.png" alt="Gold" class="currency-icon">
+      <span class="currency-amount">{{ this.goldCoins }}</span>
+    </div>
+    <div class="currency-item gems">
+      <img src="assets/lingobot/itens/gemas.png" alt="Gems" class="currency-icon">
+      <span class="currency-amount">{{ this.gemsCoins }}</span>
+    </div>
   </div>
 
-
-<!-- Itens de Poder-->
-
-
-
-
-<!-- Itens colecionaveis -->
-  <div
-    class="inventory-slot"
-    *ngFor="let item of itens; let i = index"
-    [class.selected]="selectedIndex === i"
-    (click)="selectItem(i)"
-  >
-    <img [src]="item.itemSrc" alt="Item" class="item-image">
-    <span class="item-quantidade">x{{ item.quant }}</span>
+  <!-- Items Grid -->
+  <div class="items-grid">
+    <div
+      class="item-slot"
+      *ngFor="let item of itens; let i = index"
+      [class.selected]="selectedIndex === i"
+      (click)="selectItem(i)"
+    >
+      <img [src]="item.itemSrc" alt="Item" class="item-image">
+      <span class="item-quantity">{{ item.quant }}</span>
+    </div>
   </div>
 </div>
 
+<!-- Item Details Panel -->
+<div class="item-details-panel">
+  <h3 class="panel-title">Detalhe do Item</h3>
 
-
-
-<div class="background-commands">
-  <h3 style="text-align: center;">Detalhe do Item</h3>
-
-  <!--
-  <button (click)="addItem()" >ADD ITEM ALEATORIO</button>
-  -->
-
-  <div class="show-quest-infos" *ngIf="!selectedItem">
-    <div class="next-question"  >
-      <h3   class="command-button-2"  >
-        Select a Item
-      </h3>
+  <!-- No Item Selected State -->
+  <div class="no-selection" *ngIf="!selectedItem">
+    <div class="selection-prompt">
+      <h3 class="prompt-text">Select a Item</h3>
     </div>
   </div>
 
-
+  <!-- Item Details -->
   <div *ngIf="selectedItem" class="item-details">
-    <div class="item-left">
+    <!-- Left Side: Item Info and Sell Button -->
+    <div class="item-left-side">
 
+      <div class="item-container">
 
-      <p>
-        <span style="font-size: 15pt" [ngClass]="selectedItem.rarity.toLowerCase()" >
- {{ selectedItem.rarity.charAt(0).toUpperCase() + selectedItem.rarity.slice(1).toLowerCase() }}
-        </span><br>
-        <span style="font-size: 9pt !important;">
-  ({{ selectedItem.dropRate * 100 | number: '1.0-2' }}% DropRate)
-</span>
-      </p>
+      <!-- Item Name -->
+      <h3 class="item-name">{{ selectedItem.itemName }}</h3>
 
+      <!-- Rarity and Drop Rate -->
+      <div class="item-stats">
+        <span class="rarity" [ngClass]="selectedItem.rarity.toLowerCase()">
+          {{ selectedItem.rarity.charAt(0).toUpperCase() + selectedItem.rarity.slice(1).toLowerCase() }}
+        </span>
+        <span class="drop-rate">
+          ({{ selectedItem.dropRate * 100 | number: '1.0-2' }}% Drop Rate)
+        </span>
+      </div>
 
-      <p *ngIf="selectedItem.gemsValue" class="centered-text"
-         [ngStyle]="{
-     'color': isCommonToRare(selectedItem.rarity) ? 'darkgoldenrod' : '#4FC3F7'
-   }">
-        <img [src]="getGemImage(selectedItem.rarity)" alt="Gema" class="gem-image">
-        {{ selectedItem.gemsValue }}
-      </p>
-
-      <p class="descricao"> {{ selectedItem.describe || 'Um item misterioso e valioso.' }}</p>
-
-      <button class="sell-button" (click)="sellItem(selectedItem)">
-        Sell
-      </button>
-
+      <!-- Gem Value -->
+    <div class="center-element">
+      <div *ngIf="selectedItem.gemsValue" class="gem-value"
+           [ngStyle]="{
+             'color': isCommonToRare(selectedItem.rarity) ? '#FFD700' : '#4FC3F7'
+           }">
+        <img [src]="getGemImage(selectedItem.rarity)" alt="Gem" class="gem-icon">
+        <span class="gem-amount">{{ selectedItem.gemsValue }}</span>
+      </div>
     </div>
 
-    <div class="item-right">
-      <img class="item-img" [src]="selectedItem.itemSrc" alt="{{ selectedItem.itemName }}">
-      <h3 class="item-title">{{ selectedItem.itemName }}</h3>
+
+
+      </div>
+      <!-- Sell Button -->
+      <img src="assets/lingobot/menu-icons/sell.png"
+           alt="Sell"
+           class="sell-button"
+           (click)="sellItem(selectedItem)">
+    </div>
+
+    <!-- Right Side: Item Image -->
+    <div class="item-right-side">
+      <div class="item-image-container">
+        <img class="selected-item-image" [src]="selectedItem.itemSrc" alt="{{ selectedItem.itemName }}">
+      </div>
     </div>
   </div>
-
-
-
-
-
 </div>

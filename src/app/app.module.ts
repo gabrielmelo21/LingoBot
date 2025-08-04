@@ -10,18 +10,15 @@ import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from '@angular/common/http';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {ComponentsModule} from "./components/components.module";
 import {MatTabsModule} from "@angular/material/tabs";
-import { ServiceWorkerModule } from '@angular/service-worker';
-import {environment} from "../environments/environment";
-
+import {ComponentsModule} from "./components/components.module";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
+    declarations: [
+        AppComponent
 
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,15 +32,15 @@ import {environment} from "../environments/environment";
     HttpClientModule,
     MatSnackBarModule,
     MatToolbarModule,
-    ComponentsModule,
     MatIconModule,
     MatTabsModule,
-
+    ComponentsModule,
 
 
   ],
-  providers: [
-  ],
-  bootstrap: [AppComponent]
+    providers: [],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

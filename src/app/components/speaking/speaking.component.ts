@@ -36,9 +36,9 @@ export class SpeakingComponent implements AfterViewInit {
   showBaloon: boolean = true;
   hidePosWin: boolean = false;
   jackpot: boolean = this.jackpotService.isJackpot();
-
-  finalXpReward: number = 0;
   finalGoldReward: number = 0;
+  finalXpReward: number = 0;
+
 
   dialogLines = [];
   currentStep: MiniGameStep | null = null;
@@ -228,7 +228,7 @@ export class SpeakingComponent implements AfterViewInit {
       this.videoController.setStaticLoop("01:04", "01:04");
       this.playSoundService.playSpeakingFreeSoundTrack(true);
       this.hidePosWin = true;
-      this.rewardService.giveUserRewards(this.finalXpReward, this.finalGoldReward, "speaking");
+      this.rewardService.giveUserRewards(this.jackpot, "speaking", this.finalGoldReward, this.finalXpReward);
 
 
     });
@@ -239,7 +239,7 @@ export class SpeakingComponent implements AfterViewInit {
       this.videoController.setStaticLoop("01:13", "01:13");
       this.playSoundService.playSpeakingFreeSoundTrack(true);
       this.hidePosWin = true;
-      this.rewardService.giveUserRewards(this.finalXpReward, this.finalGoldReward, "speaking");
+      this.rewardService.giveUserRewards(this.jackpot, "speaking", this.finalGoldReward, this.finalXpReward);
 
 
     });
@@ -500,8 +500,11 @@ export class SpeakingComponent implements AfterViewInit {
     ]
     });
 **/
-    this.finalXpReward = 3000 * totalCorrect;
-    this.finalGoldReward = this.jackpot? 20 * totalCorrect : 10 * totalCorrect;
+
+
+
+    this.finalXpReward =  3000 * totalCorrect;
+    this.finalGoldReward =  10 * totalCorrect;
 
 
   }

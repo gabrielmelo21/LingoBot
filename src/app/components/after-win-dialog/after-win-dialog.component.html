@@ -1,31 +1,28 @@
-<div class="baloon-container"  >
-  <div class="dialog-baloon"  >
+<div class="baloon-container">
+  <div class="dialog-baloon">
+    <p class="dialog-text" *ngIf="!jackpot">{{ dialogText }}</p>
 
-    <div class="rewards-container">
-      <p class="rewards-title" *ngIf="!jackpot">Parabéns, você venceu o desafio e ganhou:</p>
-
-      <ul class="reward-list">
-        <li>
-          <img src="assets/lingobot/itens/gold.png" class="reward-icon" />
-          <span class="reward-text gold-text">{{ reward_coins }} moedas</span>
-        </li>
-        <li>
-          <img src="assets/lingobot/icons/lxp.png" class="reward-icon" />
-          <span class="reward-text xp-text">{{ reward_xp }} XP</span>
-        </li>
-      </ul>
-
-      <div *ngIf="jackpot" class="jackpot-pulse">
-        🎉 JACKPOT! 🎉 <br />
-        <span style="color: black !important;">Seus prêmios foram dobrados!</span>
-      </div>
+    <div *ngIf="jackpot" class="dialog-text">
+      🎉 JACKPOT! 🎉 <br />
+      <span>Seus prêmios foram dobrados!</span>
     </div>
+  </div>
 
+  <!-- Labels animados no canto inferior esquerdo -->
+  <div class="reward-label gold-label animate-gold">
+    <img src="assets/lingobot/itens/gold.png" alt="Moedas" />
+    <span>+{{ reward_coins }} moedas</span>
+  </div>
 
+  <div class="reward-label xp-label animate-xp">
+    <img src="assets/lingobot/icons/lxp.png" alt="XP" />
+    <span>+{{ reward_xp }} XP</span>
+  </div>
 
-
+  <div *ngIf="jackpot" class="reward-label jackpot-label animate-jackpot">
+    <span>🎉</span>
+    <span>JACKPOT!</span>
   </div>
 </div>
 
-
-<img class="character-img" [src]="elder_img"  >
+<img class="character-img" [src]="elder_img" />

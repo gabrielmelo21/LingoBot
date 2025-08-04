@@ -306,3 +306,276 @@ button:focus, a:focus, input:focus, textarea:focus {
   }
 }
 
+
+
+
+
+/* Float Button */
+.float-modal-button {
+  position: fixed;
+  width: 15%;
+  height: auto;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.float-modal-button:focus, .float-modal-button:hover {
+  transform: scale(1.1) rotate(10deg);
+}
+
+
+
+
+.holograma-card.open {
+  animation: holograma-de-baixo 1.2s ease-out forwards;
+}
+
+.holograma-card.close {
+  animation: holograma-para-cima 0.8s ease-in forwards;
+}
+
+/* Animação de Abertura */
+@keyframes holograma-de-baixo {
+  0% {
+    transform: translateX(-50%) translateY(100%) scaleY(0.2) skewY(10deg);
+    opacity: 0;
+    filter: brightness(2) blur(6px);
+  }
+  20% {
+    transform: translateX(-50%) translateY(60%) scaleY(0.4) skewY(-8deg);
+    opacity: 0.3;
+    filter: brightness(1.5) blur(4px);
+  }
+  40% {
+    transform: translateX(-50%) translateY(30%) scaleY(0.7) skewY(5deg);
+    opacity: 0.7;
+    filter: brightness(1.2) blur(2px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(10%) scaleY(0.9) skewY(-2deg);
+    opacity: 0.85;
+    filter: brightness(1) blur(1px);
+  }
+  80% {
+    transform: translateX(-50%) translateY(2%) scaleY(1.02) skewY(1deg);
+    opacity: 0.95;
+    filter: brightness(1.05);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0%) scaleY(1) skewY(0deg);
+    opacity: 1;
+    filter: none;
+  }
+}
+
+/* Animação de Fechamento */
+@keyframes holograma-para-cima {
+  0% {
+    transform: translateX(-50%) translateY(0%) scaleY(1) skewY(0deg);
+    opacity: 1;
+    filter: none;
+  }
+  20% {
+    transform: translateX(-50%) translateY(15%) scaleY(0.9) skewY(-2deg);
+    opacity: 0.85;
+    filter: brightness(1.1);
+  }
+  40% {
+    transform: translateX(-50%) translateY(40%) scaleY(0.6) skewY(4deg);
+    opacity: 0.4;
+    filter: brightness(1.3) blur(2px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(70%) scaleY(0.3) skewY(-6deg);
+    opacity: 0.2;
+    filter: brightness(1.6) blur(4px);
+  }
+  80% {
+    transform: translateX(-48%) translateY(90%) scaleY(0.1) skewY(10deg);
+    opacity: 0.08;
+    filter: brightness(2) blur(6px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(100%) scaleY(0) skewY(0deg);
+    opacity: 0;
+    filter: brightness(2.5) blur(10px);
+  }
+}
+
+.holograma-card {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform-origin: bottom center;
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  height: 80%;
+  width: 100%;
+  z-index: 9998;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  background: rgba(0, 205, 255, 0.43);
+
+
+  -webkit-backdrop-filter: blur(19.5px);
+
+  clip-path: polygon(
+    0% 0%,       /* topo esquerdo */
+    100% 0%,     /* topo direito */
+    100% 80%,    /* lateral direita antes do V */
+    50% 100%,    /* centro inferior (ponta do V) */
+    0% 80%       /* lateral esquerda antes do V */
+  );
+
+  transform-origin: bottom center;
+  transition: transform 0.5s ease-in-out;
+
+}
+
+.holograma-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 20%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.15),
+    transparent 70%
+  );
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+
+.holograma-card.open {
+  animation: holograma-de-baixo 1.2s ease-out forwards;
+}
+
+.holograma-card.close {
+  animation: holograma-para-cima 0.8s ease-in forwards; /* Duração um pouco menor para o fechamento */
+}
+
+.projetor {
+  position: absolute;
+  z-index: 10;
+  bottom: 1vh;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width:100%;
+  height: auto;
+}
+
+@keyframes entrarDaEsquerda {
+  0% {
+    opacity: 0;
+    transform: translateX(-100vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.entrar-da-esquerda {
+  animation: entrarDaEsquerda 0.8s ease forwards;
+}
+
+@keyframes sairParaEsquerda {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100vw);
+  }
+}
+
+.sair-para-esquerda {
+  animation: sairParaEsquerda 0.8s ease forwards;
+}
+
+
+
+
+.x{
+  width: 10%;
+  height: auto;
+  margin:5px;
+
+
+}
+.x-position{
+  position: absolute;
+  bottom: 1vh;
+  left: -1vh;
+  z-index: 999;
+}
+
+
+.center-element{
+  display: flex;justify-content: center;align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+    MENU SLIDER MAIN
+   ========================= */
+
+.game-menu-container {
+  position: absolute;
+  bottom: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  padding: 12px 24px;
+  border-radius: 20px;
+  z-index: 99;
+}
+
+
+.menu-wrapper {
+  position: relative;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-item {
+  position: absolute;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-item img {
+  width: 54px;
+  height: 64px;
+  object-fit: contain;  /* Mantém proporção sem distorcer */
+  pointer-events: none;
+  user-select: none;
+  border-radius: 12px;
+}
+
+

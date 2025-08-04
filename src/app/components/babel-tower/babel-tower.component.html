@@ -1,7 +1,14 @@
 <div class="container">
-<!--
-  <img [src]="currentVideoFrame" class="background-image" [hidden]="videoReady">
--->
+  <app-account-settings></app-account-settings>
+  <app-daily-mission></app-daily-mission>
+  <app-item-modal></app-item-modal>
+  <app-settings></app-settings>
+  <app-mug-translate   top="3vh" right="1vh"   zIndex="99" ></app-mug-translate>
+  <app-select-quest-modal
+    *ngIf="modalService.showSelectQuestModal$ | async"
+    [currentSubject]="getTextoPorAndar().toLowerCase()">
+  </app-select-quest-modal>
+
 
   <div class="video-container">
     <!-- Loading por cima -->
@@ -24,23 +31,18 @@
   </div>
 
 
-
-
-
   <!-- INDICADOR DO ANDAR ATUAL -->
   <div class="tabua">
     <!-- Imagem -->
-    <img src="assets/lingobot/home/tabua.png">
+    <img src="assets/lingobot/menu-icons/floor-indicator-icon.png">
     <!-- Texto sobreposto  {{ getTextoPorAndar() }} -->
-    <h3>Floor <br> N° {{ andarAtual }}</h3>
+    <h3> N° {{ andarAtual }}</h3>
   </div>
 
 
   <!-- BATTERY BARS -->
   <div class="battery-bars">
-
     <img [src]="energyImagePath" class="battery-icon2" (click)="rechargeBattery();" >
-
     <div class="battery-bar-container">
       <img *ngFor="let bar of batteryArray; let i = index"
            [src]="i < currentBattery ? 'assets/lingobot/menu-icons/battery-on.png' : 'assets/lingobot/menu-icons/battery-off.png'"
@@ -88,19 +90,15 @@
 
 
 
-<!--
+  <!--
+
   <div style="margin: 20px;position:absolute;z-index: 21321321321321;top: 10vh;display: inline-block ">
-    <button (click)="marcarComoFeita('writing')">Completar Writing</button>
-    <button (click)="marcarComoFeita('reading')">Completar Reading</button>
-    <button (click)="marcarComoFeita('listening')">Completar Listening</button>
-    <button (click)="marcarComoFeita('speaking')">Completar Speaking</button>
-    <button (click)="resetarMissoes()">Resetar Missões</button>
-    <button (click)="addXpSpeaking()">Level em speaking</button>
+
+    <button (click)=" changeLoadComponentToFalse()">{{ loadComponent }}</button>
   </div>
+
+
   -->
-
-
-
 
 
   <!-- ICONE FLUTUANTE TOOLS
@@ -127,113 +125,18 @@
 
 
 
-  <!-- ICONE FLUTUANTE DAYLI MISSIONS -->
-  <img
-    (click)="checkQuest()"
-    src="assets/lingobot/menu-icons/daily-missions.png"
-    class="quests-button"
-    [ngClass]="{ 'neon-green': todasFeitas() && !recompensaReivindicada }"
-    *ngIf="!rechargeModal"
-  />
-  <ng-container *ngIf="checkMissoesModal"  >
-
-    <button (click)="checkQuest()" class="fechar-btn">✕</button>
-
-    <img src="assets/lingobot/paper.png" class="quest-check  bouncing-animation">
-
-
-    <div class="quest-check-text" *ngIf="recompensaReivindicada"  style="top: 35vh !important;">
-      <p style="text-align: center;">
-        <b style="color: darkgoldenrod">Concluído com Sucesso!</b><br>
-       Parabéns, você concluiu as missões de hoje.
-      </p>
-    </div>
-
-    <div class="quest-check-text" *ngIf="!recompensaReivindicada" style="top: 35vh !important;">
-
-      <div class="strike-info">
-        <p class="strike-text">
-          Mantenha seu <strong>Strike diário</strong> para <span class="highlight">aumentar sua recompensa!</span><br>
-
-        </p>
-        <div class="strike-inline">
-          <div class="strike-item">
-            <img src="assets/lingobot/menu-icons/strike.png" alt="Strike">
-            <span>{{ this.timersService.getStrikes() }} dias</span>
-          </div>
-          <div class="strike-item">
-            <img src="assets/lingobot/itens/gemas.png" alt="Gemas"  style="  margin-left: 30px !important;">
-            <span>{{ this.timersService.getReward() }}</span>
-          </div>
-        </div>
-
-
-        <span style="font-size: 9pt !important; text-align: center;color: white;">
-                    Next Reset: {{  this.timersService.getNextResetTime() }}
-        </span>
-
-      </div>
-
-
-    </div>
-
-
-
-
-
-
-
-
-    <div class="quest-check-infos">
-      <!-- Lista de tarefas -->
-      <div *ngIf="!todasMissoesCompletas">
-        <div *ngFor="let missao of missoesDiarias"
-             class="requisito-item"
-             [class.riscado]="missao.completo">
-          <img class="requisito-icon"
-               [src]="getIconeMissao(missao.nome)"
-               [alt]="missao.nome">
-          <span>Praticar {{ missao.nome }}</span>
-        </div>
-      </div>
-
-      <!-- Recompensa final -->
-      <div *ngIf="todasFeitas() && !recompensaReivindicada"
-           class="recompensa-final"
-           style="margin-top: 30px; text-align: center;">
-        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
-          <img src="assets/lingobot/itens/gemas.png" alt="Gemas" style="width: 48px; height: 48px;">
-          <span style="color: dodgerblue; font-size: 34px; font-weight: bolder;">{{ this.timersService.getReward() }}</span>
-        </div>
-        <img
-          src="assets/lingobot/menu-icons/claim-reward.png"
-          alt="Claim Reward"
-          (click)="claimReward()"
-          class="claim-reward-btn">
-      </div>
-
-      <div *ngIf="recompensaReivindicada" class="bg-final">
-
-      </div>
-    </div>
-
-
-
-  </ng-container>
-
-
-
-
-
-
-
 
 
   <!--
 
    ESCOLHE O TIPO DE ATIVIDADE
 
-   -->
+
+
+
+
+
+
 
   <ng-container *ngIf="choseActivityModal">
     <button (click)="ActivityModal()" class="fechar-btn">✕</button>
@@ -289,6 +192,7 @@
 
   </ng-container>
 
+   -->
 
 
 
@@ -301,6 +205,28 @@
 
 
 
+
+
+  <!--
+     MENU SLIDER COVER FLOW
+   -->
+  <div
+    class="game-menu-container"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <div class="menu-wrapper">
+      <div
+        class="menu-item"
+        *ngFor="let item of menuItems; let i = index"
+        [@iconTransition]
+        [ngStyle]="getItemStyle(i)"
+        (click)="openModal(item.icon)"
+      >
+        <img [src]="item.icon"  />
+      </div>
+    </div>
+  </div>
 
 
   <!-- COMMANDOS -->
@@ -324,10 +250,12 @@
       <div class="command" (click)="command('in')">
         <img [src]="currentElderImage"
           class="img-command-center">
+        <!--
         <div class="battery-consuming" style="margin-left: 7vh">
           <p class="battery-text">-1</p>
           <img class="battery-icon" src="assets/lingobot/menu-icons/battery-on.png">
         </div>
+        -->
       </div>
 
       <div class="command" (click)="command('up')" *ngIf="this.getTextoPorAndar().toLowerCase() !== 'speaking'">

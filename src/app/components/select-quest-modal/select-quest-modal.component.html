@@ -1,0 +1,120 @@
+
+
+<div
+  class="holograma-card"
+  *ngIf="modal || isClosing"   [class.open]="modal && !isClosing"
+  [class.close]="isClosing"
+>
+
+  <div class="content">
+
+
+
+    <div class="quest-infos" *ngIf="menuItems[selectedIndex]">
+      <h3>{{ menuItems[selectedIndex].questTitle || 'Missão sem nome' }}</h3>
+      <p>{{ menuItems[selectedIndex].questDescription || 'Sem descrição disponível.' }}</p>
+
+      <ul>
+        <li>
+          <img src="assets/lingobot/menu-icons/premium.png" />
+          <span *ngIf="menuItems[selectedIndex].free">Free</span>
+          <span *ngIf="!menuItems[selectedIndex].free" style="color: goldenrod !important;">Premium</span>
+        </li>
+        <li>
+          <img src="assets/lingobot/icons/lxp.png" />
+          <span>{{ menuItems[selectedIndex].questXpReward || 'XP indefinido' }}</span>
+        </li>
+        <li>
+          <img src="assets/lingobot/itens/gold.png" />
+          <span>{{ menuItems[selectedIndex].questGoldReward || '0' }}</span>
+        </li>
+        <li>
+          <img src="assets/lingobot/menu-icons/dice.png" />
+          <span>{{ menuItems[selectedIndex].questJackpotPercentage || '0%' }} <br>
+            <b style="font-size: 10pt !important;">(Chance de dobrar os prêmios)</b></span>
+        </li>
+        <li>
+          <img src="assets/lingobot/menu-icons/brain.png" />
+          <span>{{ menuItems[selectedIndex].questStudyGoal || 'Melhorar o Inglês' }}</span>
+        </li>
+
+      </ul>
+
+      <!-- NOVA DIV para bateria + botão -->
+      <div class="bottom-action-bar">
+        <div class="battery-display center-element">
+          <img src="assets/lingobot/menu-icons/battery-on.png" alt="Energia" />
+          <span>-1</span>
+        </div>
+
+        <img
+          src="assets/lingobot/menu-icons/start-mission.png"
+          alt="Start Mission"
+          class="start-mission-button"
+          (click)="startMission()" />
+      </div>
+
+
+    </div>
+
+
+
+
+
+    <!--
+     MENU SLIDER COVER FLOW
+   -->
+    <div
+      class="game-menu-container"
+      (touchstart)="onTouchStart($event)"
+      (touchend)="onTouchEnd($event)"
+    >
+      <div class="menu-wrapper">
+        <div
+          class="menu-item"
+          *ngFor="let item of menuItems; let i = index"
+          [@iconTransition]
+          [ngStyle]="getItemStyle(i)"
+        >
+          <img [src]="item.icon"  class="quest-icon"/>
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+    </div> <!-- game-menu-container -->
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+  <div class="center-element x-position"  (click)="openSelectQuest()">
+    <img src="assets/lingobot/menu-icons/x.png" class="x">
+  </div>
+
+</div>
+
+
+<img
+  *ngIf="this.modal"
+  src="assets/lingobot/menu-icons/holograma.png"
+  class="projetor entrar-da-esquerda"
+  [ngClass]="{'sair-para-esquerda': animandoSaida}"
+  (animationend)="onAnimationEnd($event)"
+>

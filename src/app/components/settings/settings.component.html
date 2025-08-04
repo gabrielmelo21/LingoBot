@@ -1,26 +1,15 @@
-<div class="conteiner" style="width: 100%;">
 
-<div *ngIf="selectedOption==''">
-  <div class="menu-container">
-    <h1>Settings</h1>
-    <hr />
 
-    <ul class="menu-options">
-      <li
-        *ngFor="let option of options"
-        (click)="selectOption(option)"
-        [class.active]="selectedOption === option"
-      >
-        {{ option }}
-      </li>
-    </ul>
-  </div>
+<div
+  class="holograma-card"
+  *ngIf="modal || isClosing"   [class.open]="modal && !isClosing"
+  [class.close]="isClosing"
+>
 
-</div>
 
-  <div *ngIf="selectedOption == 'Dificuldade'">
-    <span class="voltar-texto" (click)="selectedOption = ''">← Voltar</span>
-    <h3 class="title-alterar">
+
+  <div  >
+    <h3 class="title">
       Alterar Dificuldade
     </h3>
 
@@ -41,30 +30,20 @@
   </div>
 
 
-
-
-  <div *ngIf="selectedOption === 'Personalização'" class="personalizacao-container">
-    <h3 class="titulo">Personalização</h3>
-    <span class="voltar-texto" (click)="selectedOption = ''">← Voltar</span>
-    <p>Para obter exercícios personalizados, coloque informações sobre o que você mais gosta:</p>
-
-    <div *ngFor="let campo of campos" class="form-campo">
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>{{ campo.label }}</mat-label>
-        <input
-          #inputRef
-          matInput
-          [placeholder]="campo.exemplo"
-          (blur)="salvarPreferencia(inputRef.value, campo.key)"
-          [value]="preferencias[campo.key].join(', ') || ''"
-        />
-
-      </mat-form-field>
-    </div>
+  <div class="center-element x-position"  (click)="openSettings()">
+    <img src="assets/lingobot/menu-icons/x.png" class="x">
   </div>
 
 
-
 </div>
+
+
+<img
+  *ngIf="this.modal"
+  src="assets/lingobot/menu-icons/holograma.png"
+  class="projetor entrar-da-esquerda"
+  [ngClass]="{'sair-para-esquerda': animandoSaida}"
+  (animationend)="onAnimationEnd($event)"
+>
 
 

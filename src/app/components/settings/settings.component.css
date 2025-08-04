@@ -1,12 +1,21 @@
+.title{
+  text-align: center;
+  color: gold;
+  font-weight: bold;
+}
+/* Container da lista */
 .difficulty-list {
-  width: 100%;
+  margin-left: 5px;
+  margin-right: 5px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  overflow-y: scroll;
-  height: 500px !important;
+  overflow-y: auto;
+  height: 500px;
+  padding-right: 8px;
 }
 
+/* Cada item da dificuldade */
 .difficulty-item {
   display: flex;
   align-items: center;
@@ -14,135 +23,49 @@
   border: 2px solid transparent;
   border-radius: 12px;
   cursor: pointer;
-  transition: border 0.2s, box-shadow 0.2s;
-  width: 100%;
-  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-.difficulty-item.selected {
-  border-color: #89CFF0; /* azul bebê */
-  box-shadow: 0 0 10px rgba(137, 207, 240, 0.4);
-  background-color: #f0faff;
-}
-
+/* Imagem do bot */
 .difficulty-img {
-  width:94px;
+  width: 94px;
   height: 94px;
   object-fit: cover;
   border-radius: 8px;
   margin-right: 16px;
+  transition: all 0.3s ease;
 }
 
+/* Texto (título e descrição) */
 .difficulty-text h3 {
   margin: 0;
   font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
 }
 
 .difficulty-text p {
   margin: 4px 0 0;
   font-size: 0.95rem;
-  color: #555;
+  color: #ccc;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
-.dificuldade-container {
-  position: relative;
+/* Estilo quando o item está selecionado */
+.difficulty-item.selected {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  border-color: #00d9ff;
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.5);
+  transform: scale(1.02);
 }
 
-.voltar-texto {
-  position: absolute;
-  top: 15vh;
-  left: 1vh;
-  font-size: 1rem;
-  color: #555;
-  cursor: pointer;
-  padding: 10px;
-  transition: color 0.2s;
+.difficulty-item.selected .difficulty-text h3,
+.difficulty-item.selected .difficulty-text p {
+  color: #fff;
+  text-shadow: 0 0 6px rgba(0, 217, 255, 0.3);
 }
 
-.voltar-texto:hover {
-  color: #000;
-  text-decoration: underline;
-}
-
-.titulo-dificuldade {
-  margin: 10px;
-  padding: 2px;
-  text-align: center;
-  font-weight: bold;
-  color: darkgoldenrod;
-}
-
-
-.title-alterar{
-  margin: 10px; padding: 2px; text-align: center; font-weight: bold;   color: #000;
-}
-
-
-.menu-container {
-  text-align: center;
-  padding: 40px 20px;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.menu-container h1 {
-  font-size: 2rem;
-  margin-bottom: 8px;
-}
-
-.menu-container hr {
-  width: 100px;
-  margin: 0 auto 24px;
-  border: none;
-  border-top: 2px solid #ccc;
-}
-
-.menu-options {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.menu-options li {
-  font-size: 1.2rem;
-  color: #000;
-  cursor: pointer;
-  padding: 12px;
-  transition: color 0.2s;
-}
-
-.menu-options li:hover {
-  color: #333;
-}
-
-.menu-options li.active {
-  color: #000;
-  font-weight: bold;
-}
-
-
-
-
-
-.personalizacao-container {
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-  overflow-y: scroll;
-  height: 450px !important;
-}
-
-.titulo {
-  margin-bottom: 12px;
-  text-align: center;
-  font-weight: bold;
-  color: darkgoldenrod;
-}
-
-.form-campo {
-  margin-bottom: 16px;
-}
-
-.full-width {
-  width: 100%;
+.difficulty-item.selected .difficulty-img {
+  filter: drop-shadow(0 0 8px #00d9ff);
 }

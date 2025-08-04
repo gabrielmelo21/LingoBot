@@ -1,84 +1,78 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {PlaySoundService} from "../../services/play-sound.service";
 import {ModalService} from "../../services/modal.service";
 import {AuthService} from "../../services/auth.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css']
 })
-export class SettingsComponent implements OnInit {
-  selectedOption: string = '';
+export class SettingsComponent implements OnInit, OnDestroy {
+
   selectedDifficult: string = '';
   user: any;
-//'Conta',
-  options = [ 'Dificuldade', 'Fechar Settings'];
-  campos = [
-    { key: 'comida', label: 'Comida favorita', exemplo: 'Pizza, Sushi, Feijoada' },
-    { key: 'filme', label: 'Filme favorito', exemplo: 'Toy Story, Vingadores, Carros' },
-    { key: 'carro', label: 'Carro favorito', exemplo: 'Lamborghini, Fusca, Fórmula 1' },
-    { key: 'banda', label: 'Cantor(a)/banda favorita', exemplo: 'BTS, Taylor Swift, Iron Maiden' },
-    { key: 'desenho', label: 'Desenho favorito', exemplo: 'Ben 10, Bob Esponja, Naruto' },
-    { key: 'animal', label: 'Animal favorito', exemplo: 'Gato, Leão, Golfinho' },
-    { key: 'heroi', label: 'Super-herói favorito', exemplo: 'Homem-Aranha, Mulher-Maravilha' },
-    { key: 'cor', label: 'Cor favorita', exemplo: 'Azul, Vermelho, Preto' },
-    { key: 'hobby', label: 'Hobby ou passatempo favorito', exemplo: 'Jogar futebol, desenhar, tocar violão' },
-    { key: 'personagem', label: 'Personagem favorito de jogo', exemplo: 'Mario, Sonic, Steve (Minecraft)' }
-  ];
-
-  preferencias: { [key: string]: string[] } = {};
 
   constructor(private playSound: PlaySoundService,
               private modalService: ModalService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private cdr: ChangeDetectorRef) {
+
+    this.selectedDifficult = this.authService. getDifficulty();
+
   }
 
 
   ngOnInit(): void {
-    const dados = localStorage.getItem('preferencias');
-    if (dados) {
-      this.preferencias = JSON.parse(dados);
+    this.sub = this.modalService.showSettingsModal$.subscribe(show => {
+      this.modal = show;
+    });
+  }
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
+
+
+
+  private sub!: Subscription;
+  modal: boolean = false;
+  isClosing: boolean = false;
+
+
+  animandoSaida = false;
+  animandoEntrada = false;
+
+
+  openSettings() {
+    if (this.modal) {
+      this.animandoSaida = true;
+      this.isClosing = true;
+      this.playSound.playHologram();
+    } else {
+      this.animandoEntrada = true;
+      this.isClosing = false;
+      this.modalService.toggleSettingsModal(); // exibe o modal
+    }
+  }
+
+  onAnimationEnd(event: AnimationEvent) {
+    const { animationName } = event;
+
+    if (animationName === 'entrarDaEsquerda') {
+      this.animandoEntrada = false;
     }
 
-    this.authService.user$.subscribe(userData => {
-      if (!userData) return;
-      this.user = userData;
-
-
-      // Define a dificuldade atual do usuário como selecionada inicialmente
-      this.selectedDifficult = userData.difficulty;
-
-
-  });
-
-
-
-  }
-
-  salvarPreferencia(valor: string, key: string): void {
-    if (!valor.trim()) return;
-
-    const valoresSeparados = valor
-      .split(',')
-      .map(v => v.trim())
-      .filter(v => v !== '');
-
-    this.preferencias[key] = valoresSeparados;
-
-    localStorage.setItem('preferencias', JSON.stringify(this.preferencias));
-    console.log(this.preferencias);
-  }
-
-  selectOption(option: string) {
-    this.playSound.playCleanSound2()
-    this.selectedOption = option;
-
-    if (this.selectedOption === 'Fechar Settings') {
-        this.modalService.toggleSettingsModal();
+    if (animationName === 'sairParaEsquerda') {
+      this.animandoSaida = false;
+      this.modalService.toggleSettingsModal(); // oculta o modal após a saída
+      this.isClosing = false;
     }
-
   }
+
+
 
 
 
@@ -108,17 +102,13 @@ export class SettingsComponent implements OnInit {
       description: 'Apenas para os Anciões. exercícios com inglês nativo.'
     },
   ];
-
-
-
   changeDifficult(newDifficulty: string) {
     this.selectedDifficult = newDifficulty;
+    this.authService.updateLocalUserData({ difficulty : newDifficulty})
     this.playSound.playCleanSound()
     console.log('Dificuldade selecionada:', newDifficulty);
-    this.authService.updateLocalUserData({ difficulty : newDifficulty})
+    this.cdr.detectChanges();
 
   }
-
-
 
 }

@@ -13,6 +13,11 @@ import {AuthService} from "../../services/auth.service";
 import {Subscription} from "rxjs";
 import {TimersService} from "../../services/timers.service";
 import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.service";
+import {animate, transition, trigger} from "@angular/animations";
+import {ModalService} from "../../services/modal.service";
+
+
+
 
 
 
@@ -21,57 +26,49 @@ import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.ser
   selector: 'app-babel-tower',
   templateUrl: './babel-tower.component.html',
   styleUrls: ['./babel-tower.component.css'],
+  animations: [
+    trigger('iconTransition', [
+      transition('* => *', [
+        animate('300ms ease')
+      ])
+    ])
+  ]
 })
-export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
+export class BabelTowerComponent  implements OnInit, AfterViewInit{
 
   currentElderImage: string = "";
   userDifficulty: string = '';
   checkQuestModal: boolean = false;
-
   rechargeValue: number = 0;
   currentBattery: number = 0;
   batteryArray = Array(10).fill(0);
   energyImagePath: string = '';
   rechargeModal: boolean = false ;
   andarAtual: number = 0;
-  checkMissoesModal: boolean = false;
-  missoesDiarias: { nome: string; completo: boolean }[] = [];
-  private missionsSubscription?: Subscription;
-  recompensaReivindicada = this.timersService.isRewardClaimed();
-
   choseActivityModal: boolean = false;
   selectedActivity: string | null = null;
-
   activities: { name: string; type: 'free' | 'premium' }[] = [];
-
-   planoUsuario: string = '';
+  planoUsuario: string = '';
 
   constructor(private playSound: PlaySoundService,
               private router: Router,
               protected auth: AuthService,
               private cdr: ChangeDetectorRef,
               protected timersService: TimersService,
-              private eldersRoomGuardiamService:  EldersRoomGuardiamService) {
+              private eldersRoomGuardiamService:  EldersRoomGuardiamService,
+              protected modalService: ModalService) {
     window.scrollTo(0, 0);
   // this.playSound.playTowerSoundTrack()
-
   //  this.auth.addRandomItemToUser();
-
     this.planoUsuario = this.auth.getPlano();
-
-
-
   }
-
 
 
   selectActivity(activityName: string) {
     this.playSound.playCleanSound2();
     this.selectedActivity = activityName;
-
     console.log(this.selectedActivity);
   }
-
   confirmActivity() {
     //console.log('Atividade confirmada:', this.selectedActivity);
 
@@ -114,9 +111,6 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
 
    this.ActivityModal();
   }
-
-
-
   enterActivity(redirectTo: string) {
       if (this.currentBattery > 0) {
         this.playEnterAnimation()
@@ -131,19 +125,17 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
      this.rechargeBattery();
       }
   }
-
   ActivityModal() {
-    this.choseActivityModal = !this.choseActivityModal;
+    //this.choseActivityModal = !this.choseActivityModal;
 
     if (this.choseActivityModal) {
       const materia = this.getTextoPorAndar().toLowerCase();
-      this.activities = this.getActivitiesBySubject(materia);
+    //  this.activities = this.getActivitiesBySubject(materia);
 
     }else{
       this.selectedActivity = '';
     }
   }
-
   getActivitiesBySubject(subject: string): { name: string; type: 'free' | 'premium' }[]  {
     switch (subject) {
       case 'writing':
@@ -170,7 +162,6 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
         return [];
     }
   }
-
   canConfirmSelectedActivity(): boolean {
     if (!this.selectedActivity) return false;
 
@@ -183,73 +174,6 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
 
     return this.planoUsuario === 'premium' || atividade.type === 'free';
   }
-
-
-
-
-
-
-  getIconeMissao(nome: string): string {
-    return `assets/lingobot/skills/${nome.toLowerCase()}.png`;
-  }
-
-  // Métodos de teste
-  marcarComoFeita(missao: string) {
-    this.timersService.updateMission(missao.toLowerCase());
-    this.atualizarMissoes();
-  }
-
-
-
-  atualizarMissoes() {
-    const data = this.timersService.getMissionsData();
-    this.missoesDiarias = [
-      { nome: 'Writing', completo: data.writing === 'true' },
-      { nome: 'Reading', completo: data.reading === 'true' },
-      { nome: 'Listening', completo: data.listening === 'true' },
-      { nome: 'Speaking', completo: data.speaking === 'true' }
-    ];
-   // this.recompensaReivindicada = data.claimed_reward_today === 'true';
-  }
-
-  todasFeitas(): boolean {
-    return this.missoesDiarias.every(m => m.completo);
-  }
-
-
-  resetarMissoes() {
-    this.timersService.resetAllMissionsForTesting();
-    this.atualizarMissoes();
-  }
-
-  checkQuest(){
-    this.playSound.playCleanSound2();
-    this.checkMissoesModal = !this.checkMissoesModal;
-    this.renderizar();
-  }
-
-  get todasMissoesCompletas(): boolean {
-    return this.missoesDiarias.every(missao => missao.completo);
-  }
-
-  claimReward(): void {
-    this.playSound.playWin2()
-    this.timersService. claimReward();
-
-    this.recompensaReivindicada = this.timersService.getClaimedRewardStatus();
-
-    console.log('Recompensa coletada!');
-    // Aqui você pode desativar o modal, adicionar recompensa ao jogador etc.
-    //this.checkMissoesModal = false;
-  }
-
-  tabletModal: boolean = false;
-  openTablet(){
-    this.playSound.playCleanSound2();
-    this.tabletModal = !this.tabletModal;
-    this.renderizar();
-  }
-
   subirAndar(){
      this.andarAtual++;
      localStorage.setItem("andarAtual", this.andarAtual.toString());
@@ -258,34 +182,12 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
      this.andarAtual--;
      localStorage.setItem("andarAtual", this.andarAtual.toString());
   }
-
   ngOnInit() {
-
-
- //this.auth.updateLocalUserData({ ranking: 4})
- //localStorage.setItem("andarAtual", "1");
-
 
     if (!localStorage.getItem("andarAtual")) {localStorage.setItem("andarAtual", "1");}
     this.andarAtual = parseInt(localStorage.getItem("andarAtual") || "1", 10);
 
 
-
-    // Se inscreve para mudanças automáticas
-    this.missionsSubscription = this.timersService.missionsUpdated$.subscribe(
-      (updated) => {
-        if (updated) {
-          console.log('Atualizando display das missões...');
-          this.updateMissionsDisplay();
-        }
-      }
-    );
-
-
-    this.atualizarMissoes();
-    // this.recompensaReivindicada = this.timersService.isRewardClaimed();
-   // this.timersService.setTomorrowMissionLiberationForTesting('10/06/2025 14:48:00');
-    console.log("recompensa revindicada: ", this.recompensaReivindicada)
 
 
 
@@ -317,29 +219,9 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
 
 
   }
-
-  // Método para atualizar todas as variáveis do display
-  private updateMissionsDisplay(): void {
-    // Atualiza recompensaReivindicada
-    this.recompensaReivindicada = this.timersService.isRewardClaimed();
-
-    // Atualiza status das missões individuais (se você tiver essa variável)
-    if (this.missoesDiarias) {
-      this.missoesDiarias = this.missoesDiarias.map(missao => ({
-        ...missao,
-        completo: this.timersService.isMissionComplete(missao.nome)
-      }));
-    }
-  //  console.log('Display atualizado - recompensaReivindicada:', this.recompensaReivindicada);
+  renderizar(){
+    this.cdr.detectChanges();
   }
-
-
-  ngOnDestroy() {
-    if (this.missionsSubscription) {
-      this.missionsSubscription.unsubscribe();
-    }
-  }
-  renderizar(){this.cdr.detectChanges();}
   closeQuestModal() {
     this.checkQuestModal = !this.checkQuestModal;
     this.renderizar();
@@ -398,6 +280,13 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
   }
 
 
+
+  loadComponent: boolean = false;
+
+  changeLoadComponentToFalse(){
+    this.loadComponent = !this.loadComponent;
+  }
+
   async command(cmd: string) {
     this.playSound.playCleanSound();
 
@@ -411,7 +300,11 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
 
 
     } else if (cmd === 'in') {
-          this.ActivityModal();
+      this.ActivityModal();
+
+           this.loadComponent = true;
+           this.modalService.toggleSelectQuestModal();
+
 
     } else if (cmd === 'down') {
       if (this.andarAtual > 1) {
@@ -423,35 +316,115 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
       }
     }
   }
+  goToTower() {
+    this.playSound.playCleanSound2();
+    this.router.navigate(['/tower']);
+  }
+
+
+openModal(icon: any){
+    switch (icon) {
+
+      case 'assets/lingobot/menu-icons/bussula.png':
+        this.playSound.playHologram();
+        this.modalService.toggleDailyModal();
+        break;
+      case 'assets/lingobot/menu-icons/holograma-icon.png':
+        this.playSound.playHologram();
+        this.modalService.toggleUserInfosModal();
+        break;
+      case 'assets/lingobot/menu-icons/icone-home.png':
+        this.goToTower();
+       break;
+      case 'assets/lingobot/menu-icons/bag-icon.png':
+        this.playSound.playHologram();
+        this.modalService.toggleItemsModal();
+       break;
+      case 'assets/lingobot/menu-icons/gear_icon.png':
+        this.playSound.playHologram();
+        this.modalService.toggleSettingsModal();
+        break;
+    }
+}
 
 
 
 
 
+  menuItems = [
+    { icon: 'assets/lingobot/menu-icons/icone-home.png' },
+    { icon: 'assets/lingobot/menu-icons/bag-icon.png' },
+    { icon: 'assets/lingobot/menu-icons/bussula.png' },
+    { icon: 'assets/lingobot/menu-icons/holograma-icon.png' },
+    { icon: 'assets/lingobot/menu-icons/gear_icon.png' },
+  ];
 
+  selectedIndex = 2;
 
+  private touchStartX = 0;
+  private touchEndX = 0;
 
+  onTouchStart(event: TouchEvent) {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
 
+  onTouchEnd(event: TouchEvent) {
+    this.touchEndX = event.changedTouches[0].screenX;
+    this.handleSwipe();
+  }
 
+  handleSwipe() {
+    const swipeDistance = this.touchStartX - this.touchEndX;
 
+    if (Math.abs(swipeDistance) < 30) return; // Ignora toques muito curtos
 
+    if (swipeDistance > 0) {
+      // Swipe para a esquerda
+      this.swipeLeft();
+      this.playSound.playPop();
+    } else {
+      // Swipe para a direita
+      this.swipeRight();
+      this.playSound.playPop();
+    }
+  }
 
+  swipeLeft() {
+    if (this.selectedIndex < this.menuItems.length - 1) {
+      this.selectedIndex++;
+    }
+  }
 
+  swipeRight() {
+    if (this.selectedIndex > 0) {
+      this.selectedIndex--;
+    }
+  }
 
+  getItemStyle(index: number) {
+    const offset = index - this.selectedIndex;
 
+    const scale = offset === 0 ? 1.5 : 1 - Math.abs(offset) * 0.2;
+    const translateX = offset * 80;
+    const rotateY = offset * -35;
+    const opacity = Math.abs(offset) > 2 ? 0 : 1;
+    const zIndex = 10 - Math.abs(offset);
 
+    const blur = Math.abs(offset) === 2 ? '2px' : '0';
 
-
-
-
-
-
-
-
-
-
-
-
+    return {
+      transform: `
+      perspective(1000px)
+      translateX(${translateX}px)
+      scale(${scale})
+      rotateY(${rotateY}deg)
+    `,
+      opacity,
+      zIndex,
+      filter: `blur(${blur})`,
+      transition: 'transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease'
+    };
+  }
 
 
 
@@ -490,7 +463,32 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
   loading: boolean = true;
 
 
+
+
+
+
+
   ngAfterViewInit() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const video = this.videoPlayer.nativeElement;
 
 
@@ -610,4 +608,6 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit, OnDestroy{
   addXpSpeaking() {
     this.auth.addXpSkills('speaking');
   }
+
+
 }

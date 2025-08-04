@@ -200,11 +200,13 @@
 
   <app-after-win-dialog
     *ngIf="hidePosWin"
-    [jackpot]=this.jackpot
+    [jackpot]="jackpot"
     [elder_img]="'assets/lingobot/elders/speaking/speaking.png'"
-    [reward_xp]="this.finalXpReward"
-    [reward_coins]="this.finalGoldReward">
+    [reward_xp]="finalXpReward"
+    [reward_coins]="finalGoldReward"
+    [dialogText]="'Parabéns! Você venceu o desafio e ganhou:'">
   </app-after-win-dialog>
+
 
 
   <div class="finish-button"  *ngIf="hidePosWin"  (click)="back();" >

@@ -1,0 +1,27 @@
+
+<div
+  class="holograma-card"
+  *ngIf="modal || isClosing"   [class.open]="modal && !isClosing"
+  [class.close]="isClosing"
+>
+
+  <div class="content">
+
+    <app-itens></app-itens>
+
+    <div class="center-element x-position"  (click)="openModal()">
+      <img src="assets/lingobot/menu-icons/x.png" class="x">
+    </div>
+
+  </div>
+</div>
+
+
+
+<img
+  *ngIf="this.modal"
+  src="assets/lingobot/menu-icons/holograma.png"
+  class="projetor entrar-da-esquerda"
+  [ngClass]="{'sair-para-esquerda': animandoSaida}"
+  (animationend)="onAnimationEnd($event)"
+>

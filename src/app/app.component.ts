@@ -15,62 +15,28 @@ import {ModalService} from "./services/modal.service";
 })
 export class AppComponent implements OnInit{
   title = 'LingoBot';
-  user: any;  // Variável para armazenar os dados do usuário
+  user: any;
   showLevelUpModal = false;
 
 
   isLoginRoute: any;
   referralCode: string = '';
 
-
-  isFlashcardsRoute = false;
   isHomeRoute = false;
   isBabelTower: boolean = false;
-  showLingoBotModal = false;
-  showFlashcardModal = false;
-  showOpenTools = false;
-  showPedagioModal: boolean = false;
-  showCelularModal: boolean = false;
+
   showRankingModal: boolean = false;
-  showMugModal: boolean = false;
-  showBookModal: boolean = false;
-  showEldersBookModal: boolean = false;
-  showSettingsModal: boolean = false;
+
   showItensModal: boolean = false; //bolsa com itens do usuario
   showNewItemModal = false; // quando ganha um novo item
   userLevel: any;
   newItem: any;
-  isLoading: boolean = true;
-
-
-
 
   constructor(  private router: Router,
                 private auth: AuthService,
                 private playSound: PlaySoundService,
                  private modalService: ModalService
   ) {
-
-
-    //localStorage.clear();
-
-
-
-
-
-
-    this.modalService.showCelularModal$.subscribe(state => {
-      this.showCelularModal = state;
-    });
-
-    this.modalService.showRankingModal$.subscribe(state => {
-      this.showRankingModal = state;
-    });
-
-    this.modalService.showSettingsModal$.subscribe(state => {
-      this.showSettingsModal = state;
-    });
-
 
     this.modalService.showItensModal$.subscribe(state => {
       this.showItensModal = state;
@@ -87,7 +53,6 @@ export class AppComponent implements OnInit{
     });
 
 
-
 this.router.events.subscribe(event => {
   if (event instanceof NavigationStart) {
   this.playSound.stopAudio(); // Para qualquer som em execução ao mudar de página
@@ -95,40 +60,14 @@ this.router.events.subscribe(event => {
 });
 
 
-
-
     this.router.events.subscribe(() => {
       this.isLoginRoute = this.router.url === '/login';
       this.isHomeRoute = this.router.url === '/home';
       this.isBabelTower = this.router.url === '/babel-tower';
-    //  this.isFlashcardsRoute = this.router.url === '/flashcards';
+
     });
-
-
-
-
-    /**
-    this.auth.levelUpEvent.subscribe(() => {
-      this.showLevelUpModal = true;
-    });
-
-
-
-    this.auth.tokenEvent.subscribe(() => {
-      this.showTokensModal = true;
-    });
-      **/
-
-
 
   }
-
-
-  torreSubscription!: Subscription;
-  andarAtual: number = 0; // Variável para armazenar o andar atual
-  andar_inicial_conjunto: number = 0;
-  andar_final_conjunto: number = 0;
-
 
 
 
@@ -141,9 +80,6 @@ this.router.events.subscribe(event => {
     this.modalService.newItem$.subscribe(item => {
       this.newItem = item;
     });
-
-
-
 
 
 
@@ -186,52 +122,4 @@ this.router.events.subscribe(event => {
 
 
 
-  toggleFlashcardModal() {
-    this.playSound.playCleanSound2();
-    this.showFlashcardModal = !this.showFlashcardModal;
-  }
-
-  toggleLingoBot() {
-    this.playSound.playCleanSound2();
-    this.showLingoBotModal = !this.showLingoBotModal;
-  }
-
-  openTools() {
-    this.playSound.playCleanSound2();
-    this.showItensModal = !this.showItensModal;
-   // this.showOpenTools = !this.showOpenTools;
-  }
-
-
-  toggleMug() {
-    this.playSound.playCleanSound2();
-    this.showMugModal = !this.showMugModal;
-  }
-
-  toggleBook() {
-    this.playSound.playCleanSound2();
-    this.showBookModal = !this.showBookModal;
-  }
-
-  toggleEldersBook() {
-    this.playSound.playCleanSound2();
-    this.showEldersBookModal = !this.showEldersBookModal;
-  }
-
-  toggleItens() {
-    this.playSound.playCleanSound2();
-    this.showItensModal = !this.showItensModal;
-  }
-
-  mages: boolean = false;
-
-  mage() {
-    this.playSound.playCleanSound2();
-    this.mages = !this.mages;
-    console.log(this.mages);
-  }
-  tower() {
-    this.playSound.playCleanSound2();
-    this.router.navigate(['/tower']);
-  }
 }
