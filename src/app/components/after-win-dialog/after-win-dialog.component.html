@@ -26,3 +26,20 @@
 </div>
 
 <img class="character-img" [src]="elder_img" />
+
+
+<img 
+  [src]="chestImage" 
+  class="chest" 
+  [ngClass]="{'animate': !chestWasOpen}" 
+  (click)="openChest()" 
+>
+
+<div 
+  class="finish-button"   
+  *ngIf="chestWasOpen" 
+  (click)="back();" 
+>
+  <img src="assets/lingobot/menu-icons/confirm.png">
+</div>
+

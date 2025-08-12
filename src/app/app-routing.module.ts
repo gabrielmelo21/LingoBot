@@ -14,10 +14,14 @@ import {ListeningComponent} from "./components/listening/listening.component";
 import {SpeakingComponent} from "./components/speaking/speaking.component";
 import {TowerComponent} from "./tower/tower.component";
 import {UpgradeTowerVideoComponent} from "./components/upgrade-tower-video/upgrade-tower-video.component";
-import {WritingPremium1Component} from "./components/writing-premium1/writing-premium1.component";
-import {ReadingPremium1Component} from "./components/reading-premium1/reading-premium1.component";
-import {ListeningPremium1Component} from "./components/listening-premium1/listening-premium1.component";
-import {SpeakingPremium1Component} from "./components/speaking-premium1/speaking-premium1.component";
+import { TheosRoomWritingComponent } from "./components/questsPremium/theos-room-writing/theos-room-writing.component";
+import { TheosRoomReadingComponent } from "./components/questsPremium/theos-room-reading/theos-room-reading.component";
+import { TheosRoomListeningComponent } from "./components/questsPremium/theos-room-listening/theos-room-listening.component";
+import { TheosRoomSpeakingComponent } from "./components/questsPremium/theos-room-speaking/theos-room-speaking.component";
+import { DoorsSecretWritingComponent } from "./components/questsPremium/doors-secret-writing/doors-secret-writing.component";
+import { DoorsSecretReadingComponent } from "./components/questsPremium/doors-secret-reading/doors-secret-reading.component";
+import { DoorsSecretListeningComponent } from "./components/questsPremium/doors-secret-listening/doors-secret-listening.component";
+import { DoorsSecretSpeakingComponent } from "./components/questsPremium/doors-secret-speaking/doors-secret-speaking.component";
 import {LevelUpComponent} from "./components/level-up/level-up.component";
 
 
@@ -47,10 +51,14 @@ const routes: Routes = [
   { path: "speaking", component: SpeakingComponent },
 
   // PREMIUM
-  { path: "writing_premium1", component: WritingPremium1Component  },
-  { path: "reading_premium1", component: ReadingPremium1Component },
-  { path: "listening_premium1", component: ListeningPremium1Component },
-  { path: "speaking_premium1", component: SpeakingPremium1Component},
+  { path: "theos_room_writing", component: TheosRoomWritingComponent },
+  { path: "theos_room_reading", component: TheosRoomReadingComponent },
+  { path: "theos_room_listening", component: TheosRoomListeningComponent },
+  { path: "theos_room_speaking", component: TheosRoomSpeakingComponent },
+  { path: "doors_secret_writing", component: DoorsSecretWritingComponent },
+  { path: "doors_secret_reading", component: DoorsSecretReadingComponent },
+  { path: "doors_secret_listening", component: DoorsSecretListeningComponent },
+  { path: "doors_secret_speaking", component: DoorsSecretSpeakingComponent },
 
 
 ];

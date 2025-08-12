@@ -113,6 +113,13 @@ export class ModalService {
     this.showNewItemsSubject.next(false);
   }
 
+  // GEMAS WARNING
+  private showGemasWarningSubject = new BehaviorSubject<boolean>(false);
+  showGemasWarningModal$ = this.showGemasWarningSubject.asObservable();
+
+  toggleGemasWarningModal() {
+    this.showGemasWarningSubject.next(!this.showGemasWarningSubject.value);
+  }
 
 
 }

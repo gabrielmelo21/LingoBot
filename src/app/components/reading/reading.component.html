@@ -46,9 +46,31 @@
 
   <img class="character-img" [src]="elder"  *ngIf="this.dialogService.isActive">
 
-  <img (click)="openTabletModal(); "  class="tablet" src="assets/lingobot/tools-icons/tablet-icon.png"  *ngIf="!this.dialogService.isActive && !hideOnWin">
+ 
 
+<div class="blackboard-content center-element" *ngIf="!this.dialogService.isActive && !hideOnWin">
+  <div class="blackboard-text">
+    <div class="glass-container">
+      <div class="text-box scrollable">
+     <span  class="translate-text">Toque para Traduzir</span>
+        <div class="sentence-pair" *ngFor="let pair of sentencePairs; let i = index">
+ 
 
+          <p class="english-text" (click)="toggleTranslation(i)">
+            {{ pair.en }}
+          </p>
+          <p class="portuguese-text" *ngIf="pair.show">
+            {{ pair.pt }}
+          </p>
+        </div>
+      </div>
+      <div class="tip-box" *ngIf="this.tipCounts >= this.tipLimit">
+        <span class="tip-text">Tip: {{ this.currentTip }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+ 
 
   <div class="dialog-box"  *ngIf="this.dialogService.isActive && !this.dialogService.isFinalDialog">
     <div class="dialog-controls">
@@ -74,41 +96,7 @@
 
 
 
-
-
-  <ng-container *ngIf="tabletModal">
-    <button (click)="openTabletModal()" class="fechar-btn">✕</button>
-
-    <img src="assets/lingobot/paper.png" class="quest-check bouncing-animation">
-
-
-    <div class="quest-check-text" >
-      <p style="text-align: center;">
-
-      </p>
-    </div>
-
-
-    <div class="glass-container" >
-      <div class="text-box">
-        <div *ngFor="let pair of sentencePairs; let i = index">
-          <p (click)="toggleTranslation(i)">
-            {{ pair.en }}
-          </p>
-          <p *ngIf="pair.show" style="color: darkgoldenrod; margin-left: 10px;">
-            {{ pair.pt }}
-          </p>
-        </div>
-      </div>
-      <br>
-      <div class="text-box" *ngIf="this.tipCounts >= this.tipLimit">
-        Tip: {{ this.currentTip }}
-      </div>
-    </div>
-
-  </ng-container>
-
-
+ 
 
 
 
@@ -131,14 +119,11 @@
   </div>
 
 
-
-
-  <div class="finish-button" *ngIf="hidePosWin"  (click)="back();" >
-    <img src="assets/lingobot/menu-icons/confirm.png"  >
-  </div>
+ 
 
 
 
+ <!-- this.jackpot-->
 
   <app-after-win-dialog
     *ngIf="hidePosWin"

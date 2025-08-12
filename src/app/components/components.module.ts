@@ -47,6 +47,16 @@ import { DailyMissionComponent } from './daily-mission/daily-mission.component';
 import { ItemModalComponent } from './item-modal/item-modal.component';
 import {AppModule} from "../app.module";
 import { SelectQuestModalComponent } from './select-quest-modal/select-quest-modal.component';
+import { BatteryComponent } from './battery/battery.component';
+import { GemasWarningComponent } from './gemas-warning/gemas-warning.component';
+import { TheosRoomWritingComponent } from './questsPremium/theos-room-writing/theos-room-writing.component';
+import { DoorsSecretWritingComponent } from './questsPremium/doors-secret-writing/doors-secret-writing.component';
+import { TheosRoomReadingComponent } from './questsPremium/theos-room-reading/theos-room-reading.component';
+import { TheosRoomListeningComponent } from './questsPremium/theos-room-listening/theos-room-listening.component';
+import { TheosRoomSpeakingComponent } from './questsPremium/theos-room-speaking/theos-room-speaking.component';
+import { DoorsSecretReadingComponent } from './questsPremium/doors-secret-reading/doors-secret-reading.component';
+import { DoorsSecretListeningComponent } from './questsPremium/doors-secret-listening/doors-secret-listening.component';
+import { DoorsSecretSpeakingComponent } from './questsPremium/doors-secret-speaking/doors-secret-speaking.component';
 
 
 
@@ -84,6 +94,16 @@ import { SelectQuestModalComponent } from './select-quest-modal/select-quest-mod
     DailyMissionComponent,
     ItemModalComponent,
     SelectQuestModalComponent,
+    BatteryComponent,
+    GemasWarningComponent,
+    TheosRoomWritingComponent,
+    DoorsSecretWritingComponent,
+    TheosRoomReadingComponent,
+    TheosRoomListeningComponent,
+    TheosRoomSpeakingComponent,
+    DoorsSecretReadingComponent,
+    DoorsSecretListeningComponent,
+    DoorsSecretSpeakingComponent,
 
 
   ],
@@ -96,7 +116,8 @@ import { SelectQuestModalComponent } from './select-quest-modal/select-quest-mod
     SettingsComponent,
     ItensComponent,
     LevelUpComponent,
-    NewItemModalComponent
+    NewItemModalComponent,
+    GemasWarningComponent
   ],
     imports: [
         CommonModule,

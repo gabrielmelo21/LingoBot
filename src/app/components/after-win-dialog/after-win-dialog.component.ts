@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PlaySoundService} from "../../services/play-sound.service";
+import {Router} from "@angular/router";
+import {RewardService} from "../../services/reward.service";
 
 @Component({
   selector: 'app-after-win-dialog',
@@ -7,8 +9,16 @@ import {PlaySoundService} from "../../services/play-sound.service";
   styleUrls: ['./after-win-dialog.component.css']
 })
 export class AfterWinDialogComponent implements OnInit{
+   
+chestWasOpen: boolean = false;
+chestImage: string = "assets/lingobot/itens/chest-closed.png";
 
-   constructor(private playSoundService: PlaySoundService) { }
+
+   constructor(
+    private playSoundService: PlaySoundService,
+    private router: Router,
+    private rewardService: RewardService,
+   ) { }
 
   ngOnInit() {
     // Som para o label de ouro (aparece aos 0.2s, animação dura 0.6s)
@@ -29,6 +39,20 @@ export class AfterWinDialogComponent implements OnInit{
     }
   }
 
+
+openChest() {
+  if (!this.chestWasOpen) {
+        this.rewardService.giveUserItem();
+    this.chestWasOpen = true;
+    this.chestImage = "assets/lingobot/itens/chest-open.png";
+  }
+}
+
+
+
+  back() {
+    this.router.navigate(['/babel-tower']);
+  }
 
 
 

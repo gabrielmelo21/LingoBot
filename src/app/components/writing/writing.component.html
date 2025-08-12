@@ -49,6 +49,9 @@
     >
 
 
+
+ 
+
 <!--  *ngIf="quizSession"
 
 <div class="battery-bars" *ngIf="quizSession">
@@ -197,6 +200,22 @@
   </div> <!-- background commands -->
 
 
+
+
+        
+  <app-after-win-dialog
+   style="z-index: 99999999999 !important;"
+    [jackpot]="jackpot"
+    [elder_img]="'assets/lingobot/elders/writing/writing.png'"
+    [reward_xp]="finalXpReward"
+    [reward_coins]="finalGoldReward"
+    [dialogText]="'Parabéns! Você venceu o desafio e ganhou:'">
+  </app-after-win-dialog>
+
+
+  
  </div>
 
 
+
+ 

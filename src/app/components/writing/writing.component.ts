@@ -71,8 +71,6 @@ export class WritingComponent   {
     const allowed = this.eldersRoomGuardiamService.verifyAccessOrRedirect('writing_was_paid');
     if (!allowed) return;
 
-
-
     this.bloquearScroll();
 
 

@@ -1,0 +1,64 @@
+<!-- BATTERY BARS -->
+<div class="battery-bars">
+  <img [src]="energyImagePath" class="battery-icon2"  (click)="rechangeBatteryModal()" >
+  <div class="battery-bar-container">
+    <img *ngFor="let bar of batteryArray; let i = index"
+         [src]="i < currentBattery ? 'assets/lingobot/menu-icons/battery-on.png' : 'assets/lingobot/menu-icons/battery-off.png'"
+         class="battery-bar-img">
+  </div>
+
+</div>
+ 
+
+
+<div
+  class="holograma-card"
+  *ngIf="modal || isClosing"   [class.open]="modal && !isClosing"
+  [class.close]="isClosing"
+>
+
+
+  <div class="content" [ngClass]="getBatteryClass()">
+
+    <div class="battery-bars center-element">
+
+      <div class="battery-bar-container">
+        <img *ngFor="let bar of batteryArray; let i = index"
+             [src]="i < currentBattery ? 'assets/lingobot/menu-icons/battery-on.png' : 'assets/lingobot/menu-icons/battery-off.png'"
+             class="battery-bar-img">
+      </div>
+    
+    </div>
+ 
+    
+
+    <div class="battery-container">
+      <img [class.disabled]="currentBattery >= 10"
+           [class.bounce]="isBouncing"
+           (click)="onBounceClick()"
+           (animationend)="isBouncing = false"
+           src="assets/lingobot/menu-icons/wake-up.png">
+    </div>
+
+ 
+
+
+
+    <div class="center-element x-position"  (click)="rechangeBatteryModal()">
+      <img src="assets/lingobot/menu-icons/x.png" class="x">
+    </div>
+
+
+
+  </div>
+</div>
+
+
+<img
+  *ngIf="this.modal"
+  src="assets/lingobot/menu-icons/holograma.png"
+  class="projetor entrar-da-esquerda"
+  [ngClass]="{'sair-para-esquerda': animandoSaida}"
+  (animationend)="onAnimationEnd($event)"
+>
+

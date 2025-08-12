@@ -1,4 +1,5 @@
 <div class="container">
+  <app-battery></app-battery>
   <app-account-settings></app-account-settings>
   <app-daily-mission></app-daily-mission>
   <app-item-modal></app-item-modal>
@@ -8,8 +9,6 @@
     *ngIf="modalService.showSelectQuestModal$ | async"
     [currentSubject]="getTextoPorAndar().toLowerCase()">
   </app-select-quest-modal>
-
-
   <div class="video-container">
     <!-- Loading por cima -->
     <div class="loading-spinner" *ngIf="loading">
@@ -29,187 +28,12 @@
       <source src="https://firebasestorage.googleapis.com/v0/b/geekco-image-storage.appspot.com/o/main-animation-compress.mp4?alt=media" type="video/mp4" />
     </video>
   </div>
-
-
   <!-- INDICADOR DO ANDAR ATUAL -->
   <div class="tabua">
-    <!-- Imagem -->
     <img src="assets/lingobot/menu-icons/floor-indicator-icon.png">
-    <!-- Texto sobreposto  {{ getTextoPorAndar() }} -->
     <h3> N° {{ andarAtual }}</h3>
   </div>
-
-
-  <!-- BATTERY BARS -->
-  <div class="battery-bars">
-    <img [src]="energyImagePath" class="battery-icon2" (click)="rechargeBattery();" >
-    <div class="battery-bar-container">
-      <img *ngFor="let bar of batteryArray; let i = index"
-           [src]="i < currentBattery ? 'assets/lingobot/menu-icons/battery-on.png' : 'assets/lingobot/menu-icons/battery-off.png'"
-           class="battery-bar-img">
-    </div>
-  </div>
-
-
-  <div
-    class="recharge-modal"
-    *ngIf="rechargeModal"
-
-  >
-
-
-      <div class="commands-group-recharge">
-
-        <div  class="command" (click)="rechargeBattery()" style="width: 33% !important;margin-top: 2vh;">
-          <img src="assets/lingobot/poses/lingobot-running.png"  style="width: 80%;height: auto" class="flipped">
-        </div>
-
-        <div  (click)=" addBattery()" class="command" style="width: 33% !important;margin-top: 3vh;" *ngIf="currentBattery !== 10">
-          <img src="assets/lingobot/menu-icons/battery-on.png"  style="width: 30%;height: auto" >
-          <h4 style="font-weight: bolder">Recharge</h4>
-          <div class="recharge-gem">
-            <h3>1</h3>
-            <img src="assets/lingobot/itens/gemas.png" class="gema-icon">
-          </div>
-        </div>
-
-        <div (click)="rechargeAll()" class="command" style="width: 33% !important;margin-top: 3vh;" *ngIf="currentBattery !== 10">
-          <img src="assets/lingobot/menu-icons/recharge_all.png"  style="width:80%;height: auto">
-          <h4  style="font-weight: bolder">Recharge All</h4>
-          <div class="recharge-gem">
-            <h3>{{  rechargeValue }}</h3>
-            <img src="assets/lingobot/itens/gemas.png" class="gema-icon">
-          </div>
-        </div>
-
-      </div>
-
-
-  </div>
-
-
-
-
-  <!--
-
-  <div style="margin: 20px;position:absolute;z-index: 21321321321321;top: 10vh;display: inline-block ">
-
-    <button (click)=" changeLoadComponentToFalse()">{{ loadComponent }}</button>
-  </div>
-
-
-  -->
-
-
-  <!-- ICONE FLUTUANTE TOOLS
-  <img
-    (click)="openTablet()"
-    src="assets/lingobot/tools-icons/tablet-icon.png"
-    class="tablet-button"
-  />
-
-  -->
-<!--
-  <ng-container *ngIf="tabletModal">
-    <button (click)="openTablet()" class="fechar-btn">✕</button>
-    <img src="assets/lingobot/tools-icons/tablet.png" class="quest-check">
-
-
-<div class="premium-tools-box-position">
-  <app-premium-tools></app-premium-tools>
-</div>
-
-  </ng-container>
-
- -->
-
-
-
-
-
-  <!--
-
-   ESCOLHE O TIPO DE ATIVIDADE
-
-
-
-
-
-
-
-
-  <ng-container *ngIf="choseActivityModal">
-    <button (click)="ActivityModal()" class="fechar-btn">✕</button>
-
-    <img src="assets/lingobot/paper.png" class="quest-check bouncing-animation">
-
-
-    <div class="quest-check-text" >
-      <p style="text-align: center;">
-        Escolher Exercício
-      </p>
-    </div>
-
-    <div class="activity-modal__list-container">
-      <ul>
-        <li
-          *ngFor="let activity of activities"
-          (click)="selectActivity(activity.name)"
-          [class.activity-list__item--selected]="activity.name === selectedActivity"
-          class="activity-list__item"
-        >
-          <div
-            class="activity-list__content"
-            [ngClass]="{
-                          'activity-type--free': activity.type === 'free',
-                          'activity-type--premium': activity.type === 'premium'
-                        }"
-          >
-            {{ activity.name }}
-            <strong>{{ activity.type.toUpperCase() }}</strong>
-          </div>
-
-
-          <img
-            *ngIf="activity.type === 'premium'"
-            src="assets/lingobot/icons/lxp.png"
-            class="activity-list__premium-icon"
-            alt="Premium"
-          />
-        </li>
-
-
-      </ul>
-    </div>
-
-    <img
-      *ngIf="canConfirmSelectedActivity()"
-      src="assets/lingobot/menu-icons/confirm.png"
-      alt="Confirm"
-      (click)="confirmActivity()"
-      class="activity-modal__confirm-button"
-    />
-
-  </ng-container>
-
-   -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!--
-     MENU SLIDER COVER FLOW
-   -->
+  <!-- MENU slider -->
   <div
     class="game-menu-container"
     (touchstart)="onTouchStart($event)"
@@ -229,35 +53,34 @@
   </div>
 
 
+
+ 
+
+
+
   <!-- COMMANDOS -->
   <div class="background-commands"  >
-    <div class="show-quest-infos" *ngIf="checkQuestModal">
-      <div class="next-question"  >
-        <h3 (click)="closeQuestModal();" class="command-button-2"  >
-          Close
-        </h3>
-      </div>
-    </div>
 
-    <div class="main-commands" *ngIf="!rechargeModal && !checkQuestModal">
+    <div class="main-commands">
 
+
+      <!-- ARROW DOWN -->
     <div class="commands-group">
       <div class="command" (click)="command('down')" *ngIf="this.getTextoPorAndar().toLowerCase() !== 'writing'">
         <img src="assets/lingobot/menu-icons/arrow_down.png"
              class="img-command">
       </div>
 
+
+         <!-- OPEN MISSIONS MODAL -->
       <div class="command" (click)="command('in')">
         <img [src]="currentElderImage"
           class="img-command-center">
-        <!--
-        <div class="battery-consuming" style="margin-left: 7vh">
-          <p class="battery-text">-1</p>
-          <img class="battery-icon" src="assets/lingobot/menu-icons/battery-on.png">
-        </div>
-        -->
       </div>
 
+
+
+    <!-- ARROW UP -->
       <div class="command" (click)="command('up')" *ngIf="this.getTextoPorAndar().toLowerCase() !== 'speaking'">
         <img src="assets/lingobot/menu-icons/arrow_up.png" class="img-command">
       </div>
@@ -265,8 +88,5 @@
     </div> <!-- commands group -->
     </div>
   </div> <!-- background commands -->
-
-
-
-</div> <!-- CONTAINER -->
+</div>
 

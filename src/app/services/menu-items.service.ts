@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RewardService } from './reward.service';
 import { AuthService } from './auth.service';
+import {JackpotService} from "./jackpot.service";
 
 
 
@@ -15,6 +16,7 @@ interface MenuItens{
   questGoldReward?: string;
   questJackpotPercentage?: string;
   questStudyGoal?: string;
+  questSubject?: string;
 }
 
 
@@ -25,7 +27,8 @@ interface MenuItens{
 export class MenuItemsService {
   constructor(
     private rewardService: RewardService,
-    private authService: AuthService
+    private authService: AuthService,
+    private jackpotService: JackpotService
   ) {}
 
   getMenuItems(subject: string): MenuItens[] {
@@ -39,12 +42,35 @@ export class MenuItemsService {
           {
             free: true,
             icon: 'assets/lingobot/quests-icons/writing-free.png',
-            questTitle: 'A palavra certa?',
-            questDescription: 'escolha a opção correta, ',
+            questTitle: 'The Correct Word',
+            questDescription: 'Escolha a palavra certa tanto inglês/português ',
             questXpReward: this.rewardService.getCurrentXPReward() + 'XP',
             questGoldReward: this.rewardService.getCurrentGoldReward() + 'G',
-            questJackpotPercentage: '10%',
-            questStudyGoal: "Aumentar Vocabulário"
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(),
+            questStudyGoal: "Aumentar Vocabulário",
+            questSubject: "writing"
+          },
+          {
+            free: false,
+            icon: 'assets/lingobot/quests-icons/theos-room-premium.png',
+            questTitle: "Theos' Room",
+            questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
+            questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
+            questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(true),
+            questStudyGoal: "Aumentar Vocabulário",
+            questSubject: "writing"
+          },
+          {
+            free: false,
+            icon: 'assets/lingobot/quests-icons/the-doors-secret.png',
+            questTitle: "The Door's Secret",
+            questDescription: 'Descubra o Phrasal Verb correto.',
+            questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
+            questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(true),
+            questStudyGoal: "Aprenda Phrsal Verbs",
+            questSubject: "writing"
           },
         ];
 
@@ -57,8 +83,9 @@ export class MenuItemsService {
             questDescription: 'Descubra a palavra passe para abrir o báu com prêmios.',
             questXpReward: this.rewardService.getCurrentXPReward() + 'XP',
             questGoldReward: this.rewardService.getCurrentGoldReward() + 'G',
-            questJackpotPercentage: '8%',
-            questStudyGoal: "Interpretação Textual"
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(),
+            questStudyGoal: "Interpretação Textual",
+            questSubject: "reading"
           },
           {
             free: false,
@@ -67,36 +94,94 @@ export class MenuItemsService {
             questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
             questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',
-            questJackpotPercentage: '50%',
-            questStudyGoal: "Aumentar Vocabulário"
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(true),
+            questStudyGoal: "Aumentar Vocabulário",
+            questSubject: "reading"
+          },
+          {
+            free: false,
+            icon: 'assets/lingobot/quests-icons/the-doors-secret.png',
+            questTitle: "The Door's Secret",
+            questDescription: 'Descubra o Phrasal Verb correto.',
+            questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
+            questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(true),
+            questStudyGoal: "Aprenda Phrsal Verbs",
+            questSubject: "reading"
           },
         ];
 
       case 'listening':
         return [
           {
-            free: false,
+            free: true,
             icon: 'assets/lingobot/quests-icons/listening-free.png',
             questTitle: 'Magic Gramophone',
             questDescription: 'Escute as frases do gramofone para abrir o portão',
             questXpReward: this.rewardService.getCurrentXPReward() + 'XP',
             questGoldReward: this.rewardService.getCurrentGoldReward() + 'G',
-            questJackpotPercentage: '9%',
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(),
             questStudyGoal: "Compreensão Auditiva",
+            questSubject: "listening"
+          },
+          {
+            free: false,
+            icon: 'assets/lingobot/quests-icons/theos-room-premium.png',
+            questTitle: "Theos' Room",
+            questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
+            questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
+            questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(true),
+            questStudyGoal: "Aumentar Vocabulário",
+            questSubject: "listening"
+          },
+          {
+            free: false,
+            icon: 'assets/lingobot/quests-icons/the-doors-secret.png',
+            questTitle: "The Door's Secret",
+            questDescription: 'Descubra o Phrasal Verb correto.',
+            questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
+            questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(true),
+            questStudyGoal: "Aprenda Phrsal Verbs",
+            questSubject: "listening"
           },
         ];
 
       case 'speaking':
         return [
           {
-            free: false,
+            free: true,
             icon: 'assets/lingobot/quests-icons/speaking-free.png',
-            questTitle: 'Pronunciation Practice',
-            questDescription: 'Repeat 10 phrases to practice pronunciation.',
+            questTitle: 'The right way to speak',
+            questDescription: 'Escolha entre duas cartas a maneira correta de falar',
             questXpReward: this.rewardService.getCurrentXPReward() + 'XP',
             questGoldReward: this.rewardService.getCurrentGoldReward() + 'G',
-            questJackpotPercentage: '12%',
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(),
             questStudyGoal: "Construção de Frases da forma certa",
+            questSubject: "speaking"
+          },
+          {
+            free: false,
+            icon: 'assets/lingobot/quests-icons/theos-room-premium.png',
+            questTitle: "Theos' Room",
+            questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
+            questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
+            questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(true),
+            questStudyGoal: "Aumentar Vocabulário",
+            questSubject: "speaking" 
+          },
+          {
+            free: false,
+            icon: 'assets/lingobot/quests-icons/the-doors-secret.png',
+            questTitle: "The Door's Secret",
+            questDescription: 'Descubra o Phrasal Verb correto.',
+            questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
+            questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',
+            questJackpotPercentage: this.jackpotService.getJackpotChanceLabel(true),
+            questStudyGoal: "Aprenda Phrsal Verbs",
+            questSubject: "speaking"
           },
         ];
 

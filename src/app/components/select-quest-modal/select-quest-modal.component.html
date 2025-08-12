@@ -9,6 +9,7 @@
   <div class="content">
 
 
+    
 
     <div class="quest-infos" *ngIf="menuItems[selectedIndex]">
       <h3>{{ menuItems[selectedIndex].questTitle || 'Missão sem nome' }}</h3>
@@ -50,8 +51,12 @@
         <img
           src="assets/lingobot/menu-icons/start-mission.png"
           alt="Start Mission"
+          [class.bounce]="isBouncing"
           class="start-mission-button"
-          (click)="startMission()" />
+          [ngClass]="{'disabled': isButtonDisabled}"
+          (animationend)="isBouncing = false"
+          (click)="startMission(menuItems[selectedIndex].questTitle, menuItems[selectedIndex].questSubject)" />
+ 
       </div>
 
 

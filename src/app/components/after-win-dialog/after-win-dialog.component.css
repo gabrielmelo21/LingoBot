@@ -43,16 +43,17 @@
 .gold-label {
   background: linear-gradient(135deg, #ffb800, #ff8800);
   background: linear-gradient(135deg, rgba(255, 184, 0, 0.9), rgba(255, 136, 0, 0.9));
+   bottom: -20vh;
 }
 
 .xp-label {
   background: linear-gradient(135deg, rgba(0, 153, 255, 0.9), rgba(0, 102, 204, 0.9));
-  bottom: 4rem; /* Posiciona acima do label de ouro */
+   bottom: -28vh;
 }
 
 .jackpot-label {
   background: linear-gradient(135deg, rgba(255, 0, 204, 0.9), rgba(255, 102, 0, 0.9));
-  bottom: 6.5rem; /* Posiciona acima do label de XP */
+     bottom: -35vh;
   animation: jackpotPulse 2s infinite alternate;
 }
 
@@ -114,3 +115,62 @@
   animation-delay: 1.4s;
 }
 
+.chest {
+  position: absolute;
+  bottom: 15vh; /* um pouco acima do botão */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: auto;
+  cursor: pointer;
+}
+
+/* Efeito de shake + neon dourado */
+.chest.animate {
+  animation: shake 0.6s infinite, neon-gold 1.5s infinite alternate;
+}
+
+
+
+.finish-button {
+  position: absolute;
+  bottom: 2vh; /* continua na parte de baixo */
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: transform 0.1s ease, filter 0.1s ease;
+}
+
+.finish-button img {
+  width: 140px; /* tamanho maior */
+  height: auto;
+}
+
+
+
+
+
+/* Animação de tremer */
+@keyframes shake {
+  0% { transform: translate(-50%, 0); }
+  20% { transform: translate(-50%, -2px) rotate(-2deg); }
+  40% { transform: translate(-50%, 2px) rotate(2deg); }
+  60% { transform: translate(-50%, -2px) rotate(-1deg); }
+  80% { transform: translate(-50%, 2px) rotate(1deg); }
+  100% { transform: translate(-50%, 0); }
+}
+
+/* Animação de brilho neon dourado */
+@keyframes neon-gold {
+  0% { filter: drop-shadow(0 0 5px gold) drop-shadow(0 0 10px goldenrod); }
+  100% { filter: drop-shadow(0 0 15px gold) drop-shadow(0 0 25px goldenrod); }
+}
+
+.finish-button {
+  position: absolute;
+  bottom: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: transform 0.1s ease, filter 0.1s ease;
+}

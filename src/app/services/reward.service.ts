@@ -36,9 +36,16 @@ export class RewardService {
 
     this.authService.addXpSkills(materia);
     this.timersService.updateMission(materia);
-    this.playSound.playItemDrop();
-    this.authService.addRandomItemToUser();
+
   }
+
+   giveUserItem(){ 
+     this.playSound.playItemDrop();
+    this.authService.addRandomItemToUser();
+   }
+
+
+
 
   getCurrentGoldReward(): any{
    if (this.isPremium === 'free'){

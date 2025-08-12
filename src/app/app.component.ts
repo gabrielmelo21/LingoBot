@@ -26,6 +26,7 @@ export class AppComponent implements OnInit{
   isBabelTower: boolean = false;
 
   showRankingModal: boolean = false;
+  showGemasWarningModal: boolean = false;
 
   showItensModal: boolean = false; //bolsa com itens do usuario
   showNewItemModal = false; // quando ganha um novo item
@@ -45,6 +46,10 @@ export class AppComponent implements OnInit{
 
     this.modalService.showLevelUpModal$.subscribe(state => {
       this.showLevelUpModal = state;
+    });
+
+    this.modalService.showGemasWarningModal$.subscribe(state => {
+      this.showGemasWarningModal = state;
     });
 
 

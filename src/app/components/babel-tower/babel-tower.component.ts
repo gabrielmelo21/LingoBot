@@ -36,19 +36,20 @@ import {ModalService} from "../../services/modal.service";
 })
 export class BabelTowerComponent  implements OnInit, AfterViewInit{
 
+  
   currentElderImage: string = "";
   userDifficulty: string = '';
-  checkQuestModal: boolean = false;
-  rechargeValue: number = 0;
-  currentBattery: number = 0;
-  batteryArray = Array(10).fill(0);
-  energyImagePath: string = '';
-  rechargeModal: boolean = false ;
   andarAtual: number = 0;
   choseActivityModal: boolean = false;
   selectedActivity: string | null = null;
   activities: { name: string; type: 'free' | 'premium' }[] = [];
   planoUsuario: string = '';
+
+
+  
+  currentBattery: number = 0;
+
+  isButtonDisabled: boolean = false; 
 
   constructor(private playSound: PlaySoundService,
               private router: Router,
@@ -59,8 +60,17 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
               protected modalService: ModalService) {
     window.scrollTo(0, 0);
   // this.playSound.playTowerSoundTrack()
-  //  this.auth.addRandomItemToUser();
+  //  
     this.planoUsuario = this.auth.getPlano();
+
+    /**      for (let index = 0; index < 10; index++) {
+          this.auth.removeBatteryEnergy();
+      } **/
+  
+      
+
+
+
   }
 
 
@@ -111,20 +121,23 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
 
    this.ActivityModal();
   }
+ 
   enterActivity(redirectTo: string) {
       if (this.currentBattery > 0) {
         this.playEnterAnimation()
         setTimeout( () => {
           const destino = this.getTextoPorAndar().toLowerCase();
-            this.removeBattery();
+   
             this.eldersRoomGuardiamService.markAsPaid(destino);
             this.router.navigate([`/${redirectTo}`]); // espera navegação
 
         }, this.waitAnimationTime +100)
    } else {
-     this.rechargeBattery();
+ 
       }
   }
+
+
   ActivityModal() {
     //this.choseActivityModal = !this.choseActivityModal;
 
@@ -184,26 +197,16 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
   }
   ngOnInit() {
 
+  
+     this.auth.showUserData();
+
     if (!localStorage.getItem("andarAtual")) {localStorage.setItem("andarAtual", "1");}
     this.andarAtual = parseInt(localStorage.getItem("andarAtual") || "1", 10);
+ 
 
-
-
-
-
-    this.loadBattery();
-    this.auth.user$.subscribe(userData => {
-      if (!userData) return;
-      this.userDifficulty = userData.difficulty;
-      this.currentBattery = userData.battery;
-      this.setEnergyImage()
-    });
-
-
-
-
+    this.renderizar();
     this.loadVideoByAndar();
-
+ 
 
 
 
@@ -222,41 +225,8 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
   renderizar(){
     this.cdr.detectChanges();
   }
-  closeQuestModal() {
-    this.checkQuestModal = !this.checkQuestModal;
-    this.renderizar();
-  }
-  rechargeBattery() {
-     this.rechargeModal = !this.rechargeModal;
-     this.loadBattery()
-     this.renderizar();
-  }
-  setEnergyImage() {
-    this.energyImagePath = this.currentBattery > 0
-      ? 'assets/lingobot/menu-icons/lingobot-energy-on.png'
-      : 'assets/lingobot/menu-icons/lingobot-energy-off.png';
-  }
-  loadBattery() {
-    this.setEnergyImage();
-    this.rechargeValue = Math.abs(this.currentBattery - 10);
-    this.renderizar()
-  }
-  addBattery() {
-    this.playSound.playCleanSound2()
-    this.auth.addBatteryEnergy(1);
-    this.auth.decreaseLocalUserData( {gemas: 1 });
-    this.loadBattery();
-  }
-  rechargeAll(){
-    this.playSound.playCleanSound2()
-    this.auth.addBatteryEnergy(this.rechargeValue);
-    this.auth.decreaseLocalUserData( {gemas: this.rechargeValue });
-    this.loadBattery();
-  }
-  removeBattery() {
-    this.auth.removeBatteryEnergy();
-    this.loadBattery();
-  }
+ 
+ 
   getTextoPorAndar(): string {
     // Calcula a posição do andar dentro do conjunto de 4
     const andarNoConjunto = (this.andarAtual - 1) % 4;  // Faz a divisão inteira para achar o resto

@@ -27,7 +27,7 @@ export class AuthService {
   private refreshTokenKey = 'refreshToken';
   private userKey = 'userData';
   private apiUrl = 'https://lingobot-api.onrender.com/'; // Ajuste para o URL real do seu backend
- // private readonly  apiUrl = "http://127.0.0.1:5000/" //aqui tem a barra, no outro arquivo não, pq nao padroniza seu FDP!!!
+  // private readonly  apiUrl = "http://127.0.0.1:5000/" //aqui tem a barra, no outro arquivo não, pq nao padroniza seu FDP!!!
 
   private userSubject = new BehaviorSubject<any>(this.getUserData()); // Inicializa com os dados do localStorage
   user$ = this.userSubject.asObservable(); // Observable para observar as mudanças no usuário
@@ -67,14 +67,19 @@ export class AuthService {
     return !backupData || JSON.stringify(currentData) !== backupData;
   }
 
+
+  showUserData(){
+     console.log(JSON.stringify(this.getUserData()));
+  }
+
   regenerateJWT(): void {
     const token = localStorage.getItem('token');
     if (!token) return;
     if (!this.hasUserDataChanged()) return; // Só regenera se houver mudanças
 
-   console.log("Data sended...");
+//   console.log("Data sended...");
     const body = this.getUserData();
-   // console.log("Dados atuais do usuário ->", JSON.stringify(body));
+ //    console.log("Dados atuais do usuário ->", JSON.stringify(body));
 
     this.http.post(`${this.apiUrl}generate-new-jwt`, body, {
       headers: { 'Content-Type': 'application/json' }
@@ -188,20 +193,50 @@ export class AuthService {
       ...userData,
       ...Object.keys(changes).reduce((acc, key) => {
         const isRankingKey = key === "ranking";
-        const isNum = typeof changes[key] === "number"
-          && typeof userData[key] === "number";
-
+        const isBatteryKey = key === "battery";
+        const isNum = typeof changes[key] === "number" && typeof userData[key] === "number";
+    
+        if (isBatteryKey) {
+          const currentBattery = userData[key];
+          const newBattery = currentBattery + changes[key];
+    
+          if (currentBattery >= 10) {
+            alert("A bateria já está cheia (10). Nenhuma mudança será aplicada.");
+            acc[key] = currentBattery;
+            return acc;
+          }
+    
+          if (changes[key] > 10) {
+            alert(`${changes[key]} é maior que 10. Mudança recusada.`);
+            acc[key] = currentBattery;
+            return acc;
+          }
+    
+          // Garante que battery fique no intervalo 0–10 após a adição
+          acc[key] = Math.max(0, Math.min(10, newBattery));
+          return acc;
+        }
+    
+        // Para tokens e gemas, soma o valor ao existente
+        if ((key === "tokens" || key === "gemas") && typeof changes[key] === "number") {
+          const currentValue = userData[key] || 0; // Se não existir, começa com 0
+          acc[key] = Math.max(0, currentValue + changes[key]); // Garante que não fique negativo
+          return acc;
+        }
+    
         if (isNum && !isRankingKey) {
-          acc[key] = userData[key] + changes[key];
+          acc[key] = userData[key] >= changes[key] ? userData[key] - changes[key] : 0;
         } else {
           acc[key] = changes[key];
         }
+    
         return acc;
       }, {} as any),
     };
-
+    
     localStorage.setItem(this.userKey, JSON.stringify(updatedUser));
     this.userSubject.next(updatedUser);
+
    // console.log("userKey foi atualizado -> " + localStorage.getItem(this.userKey));
   }
 
@@ -566,17 +601,40 @@ calcularSkillsMinimas(index: number): number {
 
 
 
-/**  BATTERY
+  getGemas(){
+     const userData = this.getUserData();
+     return userData.gemas; 
+  }
+
   getBattery(){
     const userData = this.getUserData();
     return userData.battery;
   }
- **/
+
+
   addBatteryEnergy(number: number){
-    this.updateLocalUserData({ battery : number})
+     // Verifica se a bateria já está cheia
+     if (this.getBattery() >= 10) {
+       console.log(this.getBattery());
+       return;
+     }
+
+     // Verifica se o usuário tem gemas suficientes
+     if (this.getGemas() < number) {
+       this.showGemasWarning();
+       return;
+     }
+
+     // Se tem gemas suficientes, adiciona bateria e remove as gemas
+     if (this.getBattery() < 10) {
+       this.updateLocalUserData({ battery : number});
+       this.decreaseLocalUserData({ gemas : number });
+     }
   }
   removeBatteryEnergy(){
-    this.decreaseLocalUserData({ battery : 1 })
+    if (this.getBattery() >= 0){
+      this.decreaseLocalUserData({ battery : 1 })
+    }
   }
 
 
@@ -785,6 +843,11 @@ calcularSkillsMinimas(index: number): number {
   }
 
 
+
+
+  showGemasWarning() {
+    this.modalService.toggleGemasWarningModal();
+  }
 
 
 }

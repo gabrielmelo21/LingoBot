@@ -276,7 +276,5 @@ hideOnWin: boolean = false;
 
 
 
-  back() {
-    this.router.navigate(['/babel-tower']);
-  }
+ 
 }

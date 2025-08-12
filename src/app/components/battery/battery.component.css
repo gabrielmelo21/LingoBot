@@ -1,0 +1,121 @@
+ 
+.battery-bars {
+  position: absolute;
+  top: 1vh;
+  left: 0vh;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 2vh;
+  z-index: 10;
+}
+
+.battery-icon {
+  height: 50px;
+  width: auto;
+}
+
+
+
+.battery-bar-img {
+  height: 36px;
+  width: auto;
+  transition: transform 0.2s ease;
+}
+
+.battery-bar-img:hover {
+  transform: scale(1.1);
+}
+
+
+.battery-consuming {
+  display: flex;
+  align-items: center; /* Alinha verticalmente */
+  gap: 8px; /* Espaçamento opcional entre o texto e o ícone */
+}
+
+.battery-text {
+  color: red;
+  margin: 0; /* Remove margens padrão */
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+.battery-icon2 {
+  width: 16%;
+  height: auto;
+}
+.battery-icon {
+  height: auto !important;
+  width: 10% !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.battery-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 60vh !important;
+  width: 100%;
+}
+
+.battery-container img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+  
+.battery-container img.disabled {
+  pointer-events: none;
+  opacity: 0.7  ;
+}
+
+
+
+
+.holograma-card {
+ background-color: #1F3D4F !important;
+}
+.content {
+  height: 120vh !important;
+  width: 100% !important;
+  background-image: url('/assets/lingobot/lingobot-wake-up/1.png') !important;
+  background-size: cover;
+  background-position: center;
+}
+
+.content.battery-low {
+  background-image: url('/assets/lingobot/lingobot-wake-up/1.png') !important;
+}
+
+.content.battery-medium {
+  background-image: url('/assets/lingobot/lingobot-wake-up/2.png') !important;
+}
+
+.content.battery-high {
+  background-image: url('/assets/lingobot/lingobot-wake-up/3.png') !important;
+}
+
+.command-glass img {
+  width: 32px;
+  height: 32px;
+}
