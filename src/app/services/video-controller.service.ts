@@ -43,6 +43,7 @@ export class VideoControllerService {
 
   clearLoop() {
     this.isLooping = false;
+    this.removeCurrentListener();
   }
 
   playSegment(start: number | string, end: number | string, callback?: () => void) {
@@ -78,7 +79,15 @@ export class VideoControllerService {
     this.video.play();
   }
 
-  // ✅ Novo método para mutar o vídeo
+  // ✅ Novo método para pausar no tempo exato
+  pauseAt(time: number | string) {
+    const timeInSeconds = this.convertToSeconds(time);
+    this.clearLoop(); // para garantir que não tem loop ativo
+    this.removeCurrentListener();
+    this.video.currentTime = timeInSeconds;
+    this.video.pause();
+  }
+
   mute() {
     if (this.video) {
       this.video.muted = true;
@@ -86,7 +95,6 @@ export class VideoControllerService {
     }
   }
 
-  // ✅ Novo método para desmutar o vídeo
   unmute() {
     if (this.video) {
       this.video.muted = false;

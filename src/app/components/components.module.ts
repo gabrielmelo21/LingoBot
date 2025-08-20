@@ -106,6 +106,7 @@ import { DoorsSecretSpeakingComponent } from './questsPremium/doors-secret-speak
     DoorsSecretSpeakingComponent,
 
 
+
   ],
   exports: [
     HeaderComponent,

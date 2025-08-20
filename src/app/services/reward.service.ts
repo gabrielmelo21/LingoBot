@@ -36,12 +36,14 @@ export class RewardService {
 
     this.authService.addXpSkills(materia);
     this.timersService.updateMission(materia);
+    this.authService.saveLocalDataOnBackend();
 
   }
 
-   giveUserItem(){ 
+   giveUserItem(){
      this.playSound.playItemDrop();
     this.authService.addRandomItemToUser();
+     this.authService.saveLocalDataOnBackend();
    }
 
 

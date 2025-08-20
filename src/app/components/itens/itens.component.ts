@@ -110,6 +110,10 @@ export class ItensComponent implements OnInit {
        // alert("Erro ao vender o item.");
       }
 
+
+      this.authService.saveLocalDataOnBackend();
+
+
     } else {
      // alert("Você não possui mais este item!");
     }

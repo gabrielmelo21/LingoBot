@@ -225,7 +225,7 @@ export class SpeakingComponent implements AfterViewInit {
   playJackpot() {
     // Implemente o segmento de vídeo para o segundo exercício
     this.videoController.playSegment("00:57", "01:04", () => {
-      this.videoController.setStaticLoop("01:04", "01:04");
+      this.videoController.pauseAt("01:04");
       this.playSoundService.playSpeakingFreeSoundTrack(true);
       this.hidePosWin = true;
       this.rewardService.giveUserRewards(this.jackpot, "speaking", this.finalGoldReward, this.finalXpReward);
@@ -236,7 +236,7 @@ export class SpeakingComponent implements AfterViewInit {
 
   playWin(){
     this.videoController.playSegment("01:05", "01:13", () => {
-      this.videoController.setStaticLoop("01:13", "01:13");
+      this.videoController.pauseAt("01:13");
       this.playSoundService.playSpeakingFreeSoundTrack(true);
       this.hidePosWin = true;
       this.rewardService.giveUserRewards(this.jackpot, "speaking", this.finalGoldReward, this.finalXpReward);

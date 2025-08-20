@@ -81,26 +81,26 @@
     ],
     [
       {
-        "question": "What are your salary expectations? 2",
+        "question": "What are your salary expectations?",
         "options": [
-          "You choose the salary, for me is ok. 2 ",
-          "I hope to be paid fairly based on my skills and responsibilities. 2"
+          "You choose the salary, for me is ok.",
+          "I hope to be paid fairly based on my skills and responsibilities."
         ],
         "correctIndex": 1
       },
       {
-        "question": "Where do you see yourself in five years? 2",
+        "question": "Where do you see yourself in five years?",
         "options": [
-          "Maybe in house, making games. 2" ,
-          "Growing in my career and taking on new challenges. 2"
+          "Maybe in house, making games." ,
+          "Growing in my career and taking on new challenges."
         ],
         "correctIndex": 1
       },
       {
-        "question": "Do you prefer to work alone or in a team? 2 ",
+        "question": "Do you prefer to work alone or in a team?",
         "options": [
-          "Alone, because I no talk much. 2",
-          "I like both, but I enjoy working in a team environment. 2"
+          "Alone, because I no talk much.",
+          "I like both, but I enjoy working in a team environment."
         ],
         "correctIndex": 1
       }

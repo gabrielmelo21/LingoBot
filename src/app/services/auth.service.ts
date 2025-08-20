@@ -17,6 +17,22 @@ export interface UserItem {
   describe: string;
 }
 
+export interface DailyMissionData {
+  writing: boolean;
+  reading: boolean;
+  listening: boolean;
+  speaking: boolean;
+  chestWasOpen1: boolean;
+  chestWasOpen2: boolean;
+  chestWasOpen3: boolean;
+  chestWasOpen4: boolean;
+  strikes: number;
+  rewardPerChest: number;
+  chestsOpenedAt: number;
+  refreshTimeAt: number;
+  [key: `chestWasOpen${number}`]: boolean;
+}
+
 
 
 @Injectable({
@@ -33,38 +49,17 @@ export class AuthService {
   user$ = this.userSubject.asObservable(); // Observable para observar as mudanças no usuário
   levelUpEvent = new Subject<void>();
   tokenEvent = new Subject<void>();
-
-
-
-  private readonly refreshInterval = 60 * 400 ; //              60   60 * 1000 = 1 minuto
-  private readonly localStorageKeys = {
-    user: 'userData',
-    backup: 'backupUserKey',
-    lastRefresh: 'lastRefreshTime'
-  };
-
+  savingStarted = new Subject<void>();
+  savingFinished = new Subject<void>();
 
   constructor(private http: HttpClient,
               private playSound: PlaySoundService,
               private modalService: ModalService) {
 
-      this.startAutoRefresh();
-
-
-
     //console.log("User data atual é ", JSON.stringify(this.getUserData()))
-  }
 
-  private setBackupData(data: any): void {
-    localStorage.setItem(this.localStorageKeys.backup, JSON.stringify(data));
-    localStorage.setItem(this.localStorageKeys.lastRefresh, Date.now().toString());
-  }
+    //this.updateDailyMission({ writing: true });
 
-  private hasUserDataChanged(): boolean {
-    const currentData = this.getUserData();
-    const backupData = localStorage.getItem(this.localStorageKeys.backup);
-
-    return !backupData || JSON.stringify(currentData) !== backupData;
   }
 
 
@@ -72,33 +67,129 @@ export class AuthService {
      console.log(JSON.stringify(this.getUserData()));
   }
 
-  regenerateJWT(): void {
+  saveLocalDataOnBackend() {
+    this.modalService.showFloppyDisk();
+
     const token = localStorage.getItem('token');
-    if (!token) return;
-    if (!this.hasUserDataChanged()) return; // Só regenera se houver mudanças
+    if (!token) {
+      this.modalService.hideFloppyDisk(); // Hide if no token
+      return;
+    }
 
 //   console.log("Data sended...");
     const body = this.getUserData();
- //    console.log("Dados atuais do usuário ->", JSON.stringify(body));
+    //    console.log("Dados atuais do usuário ->", JSON.stringify(body));
 
     this.http.post(`${this.apiUrl}generate-new-jwt`, body, {
-      headers: { 'Content-Type': 'application/json' }
+      headers: {'Content-Type': 'application/json'}
     }).subscribe({
       next: (response: any) => {
         if (response.access_token) {
           localStorage.setItem("access_token", response.access_token);
-          this.setBackupData(this.getUserData()); // Atualiza o backup
-         console.log("Novo JWT salvo:", response.access_token);
+          console.log("Novo JWT salvo:", response.access_token);
         } else {
           console.error("Resposta do servidor não contém access_token:", response);
         }
+        this.modalService.hideFloppyDisk();
       },
-      error: (error) => console.error("Erro ao gerar novo JWT:", error)
+      error: (error) => {
+        console.error("Erro ao gerar novo JWT:", error);
+        this.modalService.hideFloppyDisk();
+      }
     });
+
   }
 
-  private startAutoRefresh(): void {
-    setInterval(() => this.regenerateJWT(), this.refreshInterval);
+
+  getDailyData(): DailyMissionData {
+    const userData = this.getUserData();
+
+    // If userData is null or undefined, return a default DailyMissionData
+    if (!userData) {
+      return {
+        writing: false,
+        reading: false,
+        listening: false,
+        speaking: false,
+        chestWasOpen1: false,
+        chestWasOpen2: false,
+        chestWasOpen3: false,
+        chestWasOpen4: false,
+        strikes: 0,
+        rewardPerChest: 5,
+        chestsOpenedAt: 0,
+        refreshTimeAt: 0
+      };
+    }
+
+    // Existing logic for parsing dailyMissions if it's a string
+    if (typeof userData.dailyMissions === 'string') {
+      try {
+        return JSON.parse(userData.dailyMissions);
+      } catch (e) {
+        console.error('Error parsing dailyMissions from string:', e);
+        // Fallback to default or handle error appropriately
+        return {
+          writing: false,
+          reading: false,
+          listening: false,
+          speaking: false,
+          chestWasOpen1: false,
+          chestWasOpen2: false,
+          chestWasOpen3: false,
+          chestWasOpen4: false,
+          strikes: 0,
+          rewardPerChest: 5,
+          chestsOpenedAt: 0,
+          refreshTimeAt: 0
+        };
+      }
+    }
+    // If userData exists and dailyMissions is not a string, return it directly
+    return userData.dailyMissions;
+  }
+
+  updateDailyMission(updates: Partial<DailyMissionData>): void {
+    const userData = this.getUserData();
+    if (!userData) { // Check for userData being null
+      console.error('User data not found.');
+      return;
+    }
+
+    // Get the current dailyMissions, ensuring it's a proper object
+    const currentDailyMissions = this.getDailyData(); // This will handle parsing if it's a string
+
+    const updatedDailyMissions = {
+      ...currentDailyMissions, // Now this will spread a proper object
+      ...updates
+    };
+
+    // Update the dailyMissions property within the main user data
+    const updatedUser = {
+      ...userData,
+      dailyMissions: updatedDailyMissions
+    };
+
+    localStorage.setItem(this.userKey, JSON.stringify(updatedUser));
+    this.userSubject.next(updatedUser); // Notify subscribers of the change
+  }
+
+  resetDailyMissions(): void {
+    const defaultDailyData: DailyMissionData = {
+      writing: false,
+      reading: false,
+      listening: false,
+      speaking: false,
+      chestWasOpen1: false,
+      chestWasOpen2: false,
+      chestWasOpen3: false,
+      chestWasOpen4: false,
+      strikes: 0,
+      rewardPerChest: 5,
+      chestsOpenedAt: 0,
+      refreshTimeAt: 0
+    };
+    this.updateDailyMission(defaultDailyData);
   }
 
 
@@ -185,60 +276,73 @@ export class AuthService {
 
 
 
-  updateLocalUserData(changes: any): void {
-    const userData = this.getUserData();
-    if (!userData) return;
+updateLocalUserData(changes: any): void {
+  const userData = this.getUserData();
+  if (!userData) return;
 
-    const updatedUser = {
-      ...userData,
-      ...Object.keys(changes).reduce((acc, key) => {
-        const isRankingKey = key === "ranking";
-        const isBatteryKey = key === "battery";
-        const isNum = typeof changes[key] === "number" && typeof userData[key] === "number";
-    
-        if (isBatteryKey) {
-          const currentBattery = userData[key];
-          const newBattery = currentBattery + changes[key];
-    
-          if (currentBattery >= 10) {
-            alert("A bateria já está cheia (10). Nenhuma mudança será aplicada.");
-            acc[key] = currentBattery;
-            return acc;
-          }
-    
-          if (changes[key] > 10) {
-            alert(`${changes[key]} é maior que 10. Mudança recusada.`);
-            acc[key] = currentBattery;
-            return acc;
-          }
-    
-          // Garante que battery fique no intervalo 0–10 após a adição
-          acc[key] = Math.max(0, Math.min(10, newBattery));
+  const updatedUser = {
+    ...userData,
+    ...Object.keys(changes).reduce((acc, key) => {
+      const isRankingKey = key === "ranking";
+      const isBatteryKey = key === "battery";
+      const isNum = typeof changes[key] === "number" && typeof userData[key] === "number";
+
+      // ----------- Lógica para bateria -----------
+      if (isBatteryKey) {
+        const currentBattery = userData[key];
+        const newBattery = currentBattery + changes[key];
+
+        if (currentBattery >= 10) {
+          alert("A bateria já está cheia (10). Nenhuma mudança será aplicada.");
+          acc[key] = currentBattery;
           return acc;
         }
-    
-        // Para tokens e gemas, soma o valor ao existente
-        if ((key === "tokens" || key === "gemas") && typeof changes[key] === "number") {
-          const currentValue = userData[key] || 0; // Se não existir, começa com 0
-          acc[key] = Math.max(0, currentValue + changes[key]); // Garante que não fique negativo
+
+        if (changes[key] > 10) {
+          alert(`${changes[key]} é maior que 10. Mudança recusada.`);
+          acc[key] = currentBattery;
           return acc;
         }
-    
-        if (isNum && !isRankingKey) {
-          acc[key] = userData[key] >= changes[key] ? userData[key] - changes[key] : 0;
-        } else {
-          acc[key] = changes[key];
-        }
-    
+
+        acc[key] = Math.max(0, Math.min(10, newBattery));
         return acc;
-      }, {} as any),
-    };
-    
-    localStorage.setItem(this.userKey, JSON.stringify(updatedUser));
-    this.userSubject.next(updatedUser);
+      }
 
-   // console.log("userKey foi atualizado -> " + localStorage.getItem(this.userKey));
-  }
+      // ----------- Tokens e gemas -----------
+      if ((key === "tokens" || key === "gemas") && typeof changes[key] === "number") {
+        const currentValue = userData[key] || 0;
+        acc[key] = Math.max(0, currentValue + changes[key]);
+        return acc;
+      }
+
+      // ----------- XP sempre soma -----------
+      if (key === "LingoEXP" && typeof changes[key] === "number") {
+        const currentValue = userData[key] || 0;
+        acc[key] = currentValue + changes[key];
+        return acc;
+      }
+
+      // ----------- Level sempre soma -----------
+      if (key === "Level" && typeof changes[key] === "number") {
+        const currentValue = userData[key] || 0;
+        acc[key] = currentValue + changes[key];
+        return acc;
+      }
+
+      // ----------- Outros números (subtração) -----------
+      if (isNum && !isRankingKey) {
+        acc[key] = userData[key] >= changes[key] ? userData[key] + changes[key] : 0;
+      } else {
+        acc[key] = changes[key];
+      }
+
+      return acc;
+    }, {} as any),
+  };
+
+  localStorage.setItem(this.userKey, JSON.stringify(updatedUser));
+  this.userSubject.next(updatedUser);
+}
 
 
 
@@ -603,7 +707,7 @@ calcularSkillsMinimas(index: number): number {
 
   getGemas(){
      const userData = this.getUserData();
-     return userData.gemas; 
+     return userData.gemas;
   }
 
   getBattery(){

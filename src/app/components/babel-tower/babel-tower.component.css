@@ -84,6 +84,7 @@
 
 
 
+
 .tablet-button {
   position: absolute;
   z-index: 6;
@@ -187,7 +188,6 @@
 
 
 
-
 .command-button-2{
   font-size:25pt !important;
   font-weight:bolder;
@@ -195,9 +195,6 @@
   color:#FFF;
   margin-top: 8vh !important;
 }
-
-
-
 
 
 
@@ -247,7 +244,6 @@
   }
 
 }
-
 
 
 
@@ -305,6 +301,16 @@ img-command-recharge{
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -428,6 +434,15 @@ img-command-recharge{
 
 
 
+
+
+
+
+
+
+
+
+
 .fechar-btn {
   position: absolute;
   top: 20vh;
@@ -465,21 +480,6 @@ img-command-recharge{
   transform: scale(0.92);
   filter: brightness(0.95);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -641,43 +641,8 @@ img-command-recharge{
   line-height: 1.2;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.command.disabled {
+  opacity: 0.5;
+  filter: grayscale(100%);
+  cursor: not-allowed;
+}

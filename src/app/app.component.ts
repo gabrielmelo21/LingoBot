@@ -19,6 +19,9 @@ export class AppComponent implements OnInit{
   showLevelUpModal = false;
 
 
+  isSaving: boolean = false;
+
+
   isLoginRoute: any;
   referralCode: string = '';
 
@@ -33,11 +36,15 @@ export class AppComponent implements OnInit{
   userLevel: any;
   newItem: any;
 
+  showFloppyDisk$: any;
+
   constructor(  private router: Router,
                 private auth: AuthService,
                 private playSound: PlaySoundService,
                  private modalService: ModalService
   ) {
+
+   // PARA TESTE this.auth.saveLocalDataOnBackend();
 
     this.modalService.showItensModal$.subscribe(state => {
       this.showItensModal = state;
@@ -71,6 +78,8 @@ this.router.events.subscribe(event => {
       this.isBabelTower = this.router.url === '/babel-tower';
 
     });
+
+
 
   }
 
@@ -123,7 +132,19 @@ this.router.events.subscribe(event => {
 
     });
 
+    this.modalService.showFloppyDisk$.subscribe(state => {
+      this.isSaving = state;
+    });
+
+
+
   }
+
+
+
+
+
+
 
 
 

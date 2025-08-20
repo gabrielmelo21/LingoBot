@@ -2,80 +2,52 @@
 
 <div  class="holograma-card"  *ngIf="modal || isClosing"   [class.open]="modal && !isClosing"  [class.close]="isClosing">
 
-  <div class="quest-check-text" *ngIf="recompensaReivindicada"  style="top: 35vh !important;">
-    <p style="text-align: center;">
-      <b style="color: darkgoldenrod">Concluído com Sucesso!</b><br>
-      Parabéns, você concluiu as missões de hoje.
-    </p>
-  </div>
-
-  <div class="quest-check-text" *ngIf="!recompensaReivindicada" style="top: 35vh !important;">
-
-    <div class="strike-info">
-      <p class="strike-text">
-        Mantenha seu <strong>Strike diário</strong> para <span class="highlight">aumentar sua recompensa!</span><br>
-
-      </p>
-      <div class="strike-inline">
-        <div class="strike-item">
-          <img src="assets/lingobot/menu-icons/strike.png" alt="Strike">
-          <span>{{ this.timersService.getStrikes() }} dias</span>
-        </div>
-        <div class="strike-item">
-          <img src="assets/lingobot/itens/gemas.png" alt="Gemas"  style="  margin-left: 30px !important;">
-          <span>{{ this.timersService.getReward() }}</span>
-        </div>
-      </div>
-
-
-      <span style="font-size: 9pt !important; text-align: center;color: white;">
-                    Next Reset: {{  this.timersService.getNextResetTime() }}
-        </span>
-
-    </div>
-
-
-  </div>
 
 
 
-
-
-
-
-
-  <div class="quest-check-infos">
-    <!-- Lista de tarefas -->
-    <div *ngIf="!todasMissoesCompletas">
-      <div *ngFor="let missao of missoesDiarias"
-           class="requisito-item"
-           [class.riscado]="missao.completo">
-        <img class="requisito-icon"
-             [src]="getIconeMissao(missao.nome)"
-             [alt]="missao.nome">
-        <span>Praticar {{ missao.nome }}</span>
-      </div>
-    </div>
-
-    <!-- Recompensa final -->
-    <div *ngIf="todasFeitas() && !recompensaReivindicada"
-         class="recompensa-final"
-         style="margin-top: 30px; text-align: center;">
-      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
-        <img src="assets/lingobot/itens/gemas.png" alt="Gemas" style="width: 48px; height: 48px;">
-        <span style="color: dodgerblue; font-size: 34px; font-weight: bolder;">{{ this.timersService.getReward() }}</span>
-      </div>
+  <div class="chest-boxes">
+    <div class="chest-box" *ngFor="let missao of missoesDiarias">
+      <!-- BAÚ -->
       <img
-        src="assets/lingobot/menu-icons/claim-reward.png"
-        alt="Claim Reward"
-        (click)="claimReward()"
-        class="claim-reward-btn">
-    </div>
+        [src]="getChestImage(missao)"
+        class="chest-image"
+        [ngClass]="{ 'animate': missao.completo && !isChestOpen(missao) }"
+        (click)="openChest(missao)"
+        alt="Chest"
+        draggable="false"
+      />
 
-    <div *ngIf="recompensaReivindicada" class="bg-final">
-
+      <!-- INFO DA MISSÃO -->
+      <div class="mission-info">
+        <img
+          class="mission-icon"
+          [src]="getIconeMissao(missao.nome)"
+          [alt]="missao.nome"
+          draggable="false"
+        />
+        <span class="mission-title" [class.riscado]="missao.completo">
+        Praticar {{ missao.nome }}
+      </span>
+      </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <div  *ngIf="this.modal" class="x-position center-element" (click)="openQuestModal()">
     <img src="assets/lingobot/menu-icons/x.png" class="x">

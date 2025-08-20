@@ -25,7 +25,7 @@
       poster="assets/lingobot/main-animation/poster.jpg"
       class="background-video"
     >
-      <source src="https://firebasestorage.googleapis.com/v0/b/geekco-image-storage.appspot.com/o/main-animation-compress.mp4?alt=media" type="video/mp4" />
+      <source src="assets/lingobot/main-animation/mainVideo-compress.mp4" type="video/mp4" />
     </video>
   </div>
   <!-- INDICADOR DO ANDAR ATUAL -->
@@ -54,7 +54,7 @@
 
 
 
- 
+
 
 
 
@@ -66,7 +66,7 @@
 
       <!-- ARROW DOWN -->
     <div class="commands-group">
-      <div class="command" (click)="command('down')" *ngIf="this.getTextoPorAndar().toLowerCase() !== 'writing'">
+      <div class="command" (click)="command('down')" [ngClass]="{'disabled': isDownArrowDisabled}" [style.pointerEvents]="isDownArrowDisabled ? 'none' : 'auto'">
         <img src="assets/lingobot/menu-icons/arrow_down.png"
              class="img-command">
       </div>
@@ -81,7 +81,7 @@
 
 
     <!-- ARROW UP -->
-      <div class="command" (click)="command('up')" *ngIf="this.getTextoPorAndar().toLowerCase() !== 'speaking'">
+      <div class="command" (click)="command('up')" [ngClass]="{'disabled': isUpArrowDisabled}" [style.pointerEvents]="isUpArrowDisabled ? 'none' : 'auto'">
         <img src="assets/lingobot/menu-icons/arrow_up.png" class="img-command">
       </div>
 

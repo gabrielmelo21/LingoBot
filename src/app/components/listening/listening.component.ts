@@ -64,28 +64,32 @@ export class ListeningComponent implements AfterViewInit {
  gateController(number: number) {
     switch (number) {
       case 0:
-        this.videoController.setStaticLoop("00:00", "00:00");
+ 
+        this.videoController.pauseAt("00:00");
+
       break;
       case 1:
         // executa efeito do 0:01 ao 0:02, e fixa no 0:02
 
         this.videoController.playSegment("0:01", "0:02", () => {
-          this.videoController.setStaticLoop("00:02", "00:02");
+  
+          this.videoController.pauseAt("00:02");
 
         });
         break;
       case 2:
 
         this.videoController.playSegment("0:03", "0:04", () => {
-          this.videoController.setStaticLoop("00:04", "00:04");
-
+         
+                this.videoController.pauseAt("00:04");
         });
         break;
       case 3:
 
         this.muteOrUnmute(false);
         this.videoController.playSegment("0:04", "0:05", () => {
-          this.videoController.setStaticLoop("00:05", "00:05");
+ 
+               this.videoController.pauseAt("00:05");
 
 
           //executa animação de win ou jackpot
@@ -100,14 +104,14 @@ export class ListeningComponent implements AfterViewInit {
 
    if(!this.jackpot){
       this.videoController.playSegment("0:05", "0:13", () => {
-        this.videoController.setStaticLoop("00:13", "00:13");
+        this.videoController.pauseAt("00:13");
         this.giveUserReward();
         this.finishButton = true;
         this.muteOrUnmute(true);
       });
     }else{
       this.videoController.playSegment("0:13", "0:21", () => {
-        this.videoController.setStaticLoop("00:21", "00:21");
+        this.videoController.pauseAt("00:21");
         this.giveUserReward();
         this.finishButton = true;
         this.muteOrUnmute(true);

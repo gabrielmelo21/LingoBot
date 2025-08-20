@@ -15,6 +15,7 @@ import {TimersService} from "../../services/timers.service";
 import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.service";
 import {animate, transition, trigger} from "@angular/animations";
 import {ModalService} from "../../services/modal.service";
+import {VideoControllerService} from "../../services/video-controller.service";
 
 
 
@@ -35,21 +36,76 @@ import {ModalService} from "../../services/modal.service";
   ]
 })
 export class BabelTowerComponent  implements OnInit, AfterViewInit{
+  loading: boolean = false;
+  @ViewChild('videoPlayer', {static: false}) videoPlayer!: ElementRef<HTMLVideoElement>;
 
-  
+  isDownArrowDisabled: boolean = false;
+  isUpArrowDisabled: boolean = false;
+
+  ngAfterViewInit() {
+    this.loading = true;
+    this.videoController.setup(this.videoPlayer);
+    this.loadVideoByAndar(); // ADD THIS LINE HERE
+
+    // Esconde o loading quando começar a tocar
+    this.videoPlayer.nativeElement.addEventListener('playing', () => {
+      this.loading = false;
+    });
+    this.renderizar();
+  }
+
+  loadVideoByAndar() {
+
+
+    const andarNoConjunto = (this.andarAtual - 1) % 4;
+
+    switch (andarNoConjunto) {
+      case 0:
+        // WRITING
+
+        this.videoController.setLoop("0:00", "00:12");
+
+
+
+        break;
+      case 1:
+        // READING
+        this.videoController.setLoop("00:13", "00:24");
+        break;
+      case 2:
+        // LISTENING
+        this.videoController.setLoop("00:26", "00:39");
+        break;
+      case 3:
+        // SPEAKING
+        this.videoController.setLoop("00:40", "00:52");
+        break;
+    }
+  }
+
+  ngOnInit() {
+
+
+    // this.auth.syncData();
+    this.auth.showUserData();
+
+    if (!localStorage.getItem("andarAtual")) {localStorage.setItem("andarAtual", "1");}
+    this.andarAtual = parseInt(localStorage.getItem("andarAtual") || "1", 10);
+
+
+    this.renderizar();
+
+
+  }
+
+
+
   currentElderImage: string = "";
-  userDifficulty: string = '';
+
   andarAtual: number = 0;
-  choseActivityModal: boolean = false;
-  selectedActivity: string | null = null;
-  activities: { name: string; type: 'free' | 'premium' }[] = [];
+
   planoUsuario: string = '';
 
-
-  
-  currentBattery: number = 0;
-
-  isButtonDisabled: boolean = false; 
 
   constructor(private playSound: PlaySoundService,
               private router: Router,
@@ -57,136 +113,24 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
               private cdr: ChangeDetectorRef,
               protected timersService: TimersService,
               private eldersRoomGuardiamService:  EldersRoomGuardiamService,
-              protected modalService: ModalService) {
+              protected modalService: ModalService,
+              private videoController: VideoControllerService) {
     window.scrollTo(0, 0);
   // this.playSound.playTowerSoundTrack()
-  //  
+  //
     this.planoUsuario = this.auth.getPlano();
 
     /**      for (let index = 0; index < 10; index++) {
           this.auth.removeBatteryEnergy();
-      } **/
-  
-      
-
-
-
-  }
-
-
-  selectActivity(activityName: string) {
-    this.playSound.playCleanSound2();
-    this.selectedActivity = activityName;
-    console.log(this.selectedActivity);
-  }
-  confirmActivity() {
-    //console.log('Atividade confirmada:', this.selectedActivity);
-
-    switch (this.selectedActivity) {
-
-      /** WRITING **/
-      case 'Writing - Aumente seu vocabulário':
-        this.enterActivity("writing");
-        break;
-      case 'Writing - Criação e correção textual':
-        this.enterActivity("writing_premium1");
-        break;
-
-      /** READING **/
-      case 'Reading - Descubra a senha do Báu!':
-        this.enterActivity("reading");
-        break;
-      case 'Reading - Vocabulário em contexto':
-        this.enterActivity("reading_premium1");
-        break;
-
-      /** LISTENING **/
-      case 'Listening - Escute e forme frases e abra o portão!':
-        this.enterActivity("listening");
-        break;
-      case 'Listening - Entrevistas':
-        this.enterActivity("listening_premium1");
-        break;
-
-      /** SPEAKING ROOM **/
-      case 'Speaking - Converse com o Speaking Elder':
-           this.enterActivity("speaking");
-      break;
-      case 'Speaking - Epic Boss Battle':
-        this.enterActivity("speaking_premium1");
-        break;
-
-
-    }
-
-   this.ActivityModal();
-  }
- 
-  enterActivity(redirectTo: string) {
-      if (this.currentBattery > 0) {
-        this.playEnterAnimation()
-        setTimeout( () => {
-          const destino = this.getTextoPorAndar().toLowerCase();
-   
-            this.eldersRoomGuardiamService.markAsPaid(destino);
-            this.router.navigate([`/${redirectTo}`]); // espera navegação
-
-        }, this.waitAnimationTime +100)
-   } else {
- 
       }
+              this.auth.addXpSkills('writing');
+          this.auth.checkLevelUp(800) **/
+
+
+
   }
 
 
-  ActivityModal() {
-    //this.choseActivityModal = !this.choseActivityModal;
-
-    if (this.choseActivityModal) {
-      const materia = this.getTextoPorAndar().toLowerCase();
-    //  this.activities = this.getActivitiesBySubject(materia);
-
-    }else{
-      this.selectedActivity = '';
-    }
-  }
-  getActivitiesBySubject(subject: string): { name: string; type: 'free' | 'premium' }[]  {
-    switch (subject) {
-      case 'writing':
-        return [
-          { name: 'Writing - Aumente seu vocabulário', type: 'free' },
-          { name: 'Writing - Criação e correção textual', type: 'premium' },
-        ];
-      case 'reading':
-        return [
-          { name: 'Reading - Descubra a senha do Báu!', type: 'free' },
-          { name: 'Reading - Vocabulário em contexto', type: 'premium' },
-        ];
-      case 'listening':
-        return [
-          { name: 'Listening - Escute e forme frases e abra o portão!', type: 'free' },
-          { name: 'Listening - Entrevistas', type: 'premium' },
-        ];
-      case 'speaking':
-        return [
-          { name: 'Speaking - Converse com o Speaking Elder', type: 'free' },
-          { name: 'Speaking - Epic Boss Battle', type: 'premium' },
-        ];
-      default:
-        return [];
-    }
-  }
-  canConfirmSelectedActivity(): boolean {
-    if (!this.selectedActivity) return false;
-
-
-    const atividade = this.activities.find(
-      (a) => a.name === this.selectedActivity
-    );
-
-    if (!atividade) return false;
-
-    return this.planoUsuario === 'premium' || atividade.type === 'free';
-  }
   subirAndar(){
      this.andarAtual++;
      localStorage.setItem("andarAtual", this.andarAtual.toString());
@@ -195,54 +139,31 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
      this.andarAtual--;
      localStorage.setItem("andarAtual", this.andarAtual.toString());
   }
-  ngOnInit() {
 
-  
-     this.auth.showUserData();
-
-    if (!localStorage.getItem("andarAtual")) {localStorage.setItem("andarAtual", "1");}
-    this.andarAtual = parseInt(localStorage.getItem("andarAtual") || "1", 10);
- 
-
-    this.renderizar();
-    this.loadVideoByAndar();
- 
-
-
-
-    if (localStorage.getItem("newFloorAnimation")  !== null && localStorage.getItem("newFloorAnimation") === "true") {
-      localStorage.setItem("newFloorAnimation", "false");
-      this.playCongratsScene();
-      setTimeout(() => {
-        this.loadVideoByAndar();
-      }, 21900)
-    }
-
-
-
-
-  }
   renderizar(){
     this.cdr.detectChanges();
+    // Update arrow disabled states
+    this.isDownArrowDisabled = this.andarAtual === 1; // Disable down arrow if on floor 1 (Writing)
+    this.isUpArrowDisabled = this.getTextoPorAndar().toLowerCase() === 'speaking'; // Disable up arrow if on Speaking floor
   }
- 
- 
+
+
   getTextoPorAndar(): string {
     // Calcula a posição do andar dentro do conjunto de 4
     const andarNoConjunto = (this.andarAtual - 1) % 4;  // Faz a divisão inteira para achar o resto
 
     switch (andarNoConjunto) {
       case 0:
-        this.currentElderImage = "assets/lingobot/elders/writing/parado.png";
+        this.currentElderImage = "assets/lingobot/skills/writing.png";
         return "Writing";  // Andar 1, 5, 9, 13, ...
       case 1:
-        this.currentElderImage = "assets/lingobot/elders/reading/parado.png";
+        this.currentElderImage = "assets/lingobot/skills/reading.png";
         return "Reading";  // Andar 2, 6, 10, 14, ...
       case 2:
-        this.currentElderImage = "assets/lingobot/elders/listening/focado.png";
+        this.currentElderImage = "assets/lingobot/skills/listening.png";
         return "Listening";  // Andar 3, 7, 11, 15, ...
       case 3:
-        this.currentElderImage = "assets/lingobot/elders/speaking/speaking.png";
+        this.currentElderImage = "assets/lingobot/skills/speaking.png";
         return "Speaking";  // Andar 4, 8, 12, 16, ...
       default:
         return "";  // Caso não encontre
@@ -261,30 +182,26 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
     this.playSound.playCleanSound();
 
     if (cmd === 'up') {
-
+      if (this.isUpArrowDisabled) { // Check if up arrow is disabled
+        return; // Do nothing if disabled
+      }
       if (this.getTextoPorAndar().toLowerCase() !== "speaking") {
         this.subirAndar()
         this.loadVideoByAndar();
       }
-
-
-
     } else if (cmd === 'in') {
-      this.ActivityModal();
-
-           this.loadComponent = true;
-           this.modalService.toggleSelectQuestModal();
-
-
+      this.loadComponent = true;
+      this.modalService.toggleSelectQuestModal();
     } else if (cmd === 'down') {
+      if (this.isDownArrowDisabled) { // Check if down arrow is disabled
+        return; // Do nothing if disabled
+      }
       if (this.andarAtual > 1) {
          this.descerAndar();
          this.loadVideoByAndar();
-      } else {
-
-        alert("Não é possível descer abaixo do primeiro andar.");
       }
     }
+    this.renderizar(); // Call renderizar to update arrow states after command
   }
   goToTower() {
     this.playSound.playCleanSound2();
@@ -295,7 +212,7 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
 openModal(icon: any){
     switch (icon) {
 
-      case 'assets/lingobot/menu-icons/bussula.png':
+      case 'assets/lingobot/menu-icons/compass.png':
         this.playSound.playHologram();
         this.modalService.toggleDailyModal();
         break;
@@ -324,7 +241,7 @@ openModal(icon: any){
   menuItems = [
     { icon: 'assets/lingobot/menu-icons/icone-home.png' },
     { icon: 'assets/lingobot/menu-icons/bag-icon.png' },
-    { icon: 'assets/lingobot/menu-icons/bussula.png' },
+    { icon: 'assets/lingobot/menu-icons/compass.png' },
     { icon: 'assets/lingobot/menu-icons/holograma-icon.png' },
     { icon: 'assets/lingobot/menu-icons/gear_icon.png' },
   ];
@@ -396,188 +313,6 @@ openModal(icon: any){
     };
   }
 
-
-
-
-
-
-  loopStart = 0;
-  loopEnd = 0;
-  finalEnd = 0;
-  isLooping = true;
-  waitAnimationTime: number = 0;
-  private onVideoPlaying = () => {};
-
-
-  loadingTransition() {
-    const video = this.videoPlayer.nativeElement;
-
-    // Ativa loading
-    this.loading = true;
-
-    // Remove listeners antigos para evitar acumulo
-    video.removeEventListener('playing', this.onVideoPlaying);
-
-    // Cria função handler para 'playing'
-    this.onVideoPlaying = () => {
-      this.loading = false;
-      video.removeEventListener('playing', this.onVideoPlaying);
-    };
-
-    // Adiciona o listener para quando o vídeo começar a tocar
-    video.addEventListener('playing', this.onVideoPlaying);
-  }
-
-
-  @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
-  loading: boolean = true;
-
-
-
-
-
-
-
-  ngAfterViewInit() {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    const video = this.videoPlayer.nativeElement;
-
-
-    // Esconde o loading quando começar a tocar
-    video.addEventListener('playing', () => {
-      this.loading = false;
-    });
-
-
-    video.addEventListener('timeupdate', () => {
-      if (this.isLooping && video.currentTime >= this.loopEnd) {
-        video.currentTime = this.loopStart;
-        video.play();
-      }
-
-      if (!this.isLooping && video.currentTime >= this.finalEnd) {
-        video.pause();
-      }
-    });
-
-    // Quando o vídeo estiver pronto, inicia a reprodução
-    video.addEventListener('loadedmetadata', () => {
-      video.currentTime = this.loopStart;
-      video.playbackRate = 1;
-      video.play().catch(err => console.error('Erro ao dar play no vídeo:', err));
-    });
-
-  }
-
-  loadVideoByAndar() {
-    this.loadingTransition();
-
-    const andarNoConjunto = (this.andarAtual - 1) % 4;
-
-    switch (andarNoConjunto) {
-      case 0:
-        // WRITING
-        this.loopStart = 0;
-        this.loopEnd = 12.0;
-        this.finalEnd = 17.21;
-        break;
-      case 1:
-        // READING
-        this.loopStart = 17.80;
-        this.loopEnd = 25.0;
-        this.finalEnd = 29.0;
-        break;
-      case 2:
-        // LISTENING
-        this.loopStart = 32.0;
-        this.loopEnd = 42.5;
-        this.finalEnd = 51.0;
-        break;
-      case 3:
-        // SPEAKING
-        this.loopStart = 51.8;
-        this.loopEnd = 63.0;
-        this.finalEnd = 68.0;
-        break;
-    }
-
-    this.waitAnimationTime = Math.abs(this.loopEnd - this.finalEnd) * 1000;
-
-    const video = this.videoPlayer.nativeElement;
-    this.isLooping = true;
-
-    if (video.readyState >= 2) {
-      video.currentTime = this.loopStart;
-      video.play();
-    } else {
-      video.addEventListener('loadedmetadata', () => {
-        video.currentTime = this.loopStart;
-        video.play();
-      }, { once: true });
-    }
-  }
-
-
-
-  playEnterAnimation() {
-    const video = this.videoPlayer.nativeElement;
-    this.isLooping = false;
-
-    if (video.readyState >= 2) {
-      video.currentTime = this.loopEnd;
-      video.play();
-    } else {
-      video.addEventListener('loadedmetadata', () => {
-        video.currentTime = this.loopEnd;
-        video.play();
-      }, { once: true });
-    }
-  }
-
-
-  playCongratsScene() {
-    const video = this.videoPlayer.nativeElement;
-    this.loopStart = 69.5;
-    this.loopEnd = 90.0;
-    this.finalEnd = 90.0;
-    this.isLooping = false;
-
-    video.playbackRate = 1;
-
-    if (video.readyState >= 2) {
-      video.currentTime = 69.5;
-      video.play();
-    } else {
-      video.addEventListener('loadedmetadata', () => {
-        video.currentTime = 69.5;
-        video.play();
-      }, { once: true });
-    }
-  }
-
-
-  addXpSpeaking() {
-    this.auth.addXpSkills('speaking');
-  }
 
 
 }

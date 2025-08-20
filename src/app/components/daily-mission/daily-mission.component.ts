@@ -2,6 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {TimersService} from "../../services/timers.service";
 import {PlaySoundService} from "../../services/play-sound.service";
 import {Subscription} from "rxjs";
+import {DailyMissionData} from "../../services/auth.service";
 import {ModalService} from "../../services/modal.service";
 
 @Component({
@@ -22,10 +23,6 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
 
   missoesDiarias: { nome: string; completo: boolean }[] = [];
   private missionsSubscription?: Subscription;
-
-  recompensaReivindicada = this.timersService.isRewardClaimed();
-
-
 
 
 
@@ -69,23 +66,16 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
       this.modal = show;
     });
 
+    // Call atualizarMissoes to populate missoesDiarias on init
+    this.atualizarMissoes();
 
-    // Se inscreve para mudanças automáticas
-    this.missionsSubscription = this.timersService.missionsUpdated$.subscribe(
-      (updated) => {
-        if (updated) {
-          console.log('Atualizando display das missões...');
-          this.updateMissionsDisplay();
-        }
+    // Subscribe to missions$ to update missoesDiarias when data changes
+    this.missionsSubscription = this.timersService.missions$.subscribe(
+      (updatedData: DailyMissionData) => { // Use DailyMissionData for type safety
+        console.log('Missions data updated:', updatedData);
+        this.atualizarMissoes(); // Re-populate missoesDiarias with new data
       }
     );
-
-
-    this.atualizarMissoes();
-    // this.recompensaReivindicada = this.timersService.isRewardClaimed();
-    // this.timersService.setTomorrowMissionLiberationForTesting('10/06/2025 14:48:00');
-    console.log("recompensa revindicada: ", this.recompensaReivindicada)
-
   }
   ngOnDestroy() {
     if (this.sub){
@@ -96,87 +86,93 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
     }
   }
 
+  getChestImage(missao: { nome: string; completo: boolean }): string {
+    const dailyData = this.timersService.getMissionsData();
+    let chestOpenStatus = false;
 
+    // Map mission name to chestWasOpenX property
+    switch (missao.nome.toLowerCase()) {
+      case 'writing':
+        chestOpenStatus = dailyData.chestWasOpen1;
+        break;
+      case 'reading':
+        chestOpenStatus = dailyData.chestWasOpen2;
+        break;
+      case 'listening':
+        chestOpenStatus = dailyData.chestWasOpen3;
+        break;
+      case 'speaking':
+        chestOpenStatus = dailyData.chestWasOpen4;
+        break;
+    }
 
+    if (chestOpenStatus) {
+      return 'assets/lingobot/itens/chest-open.png';
+    } else {
+      return 'assets/lingobot/itens/chest-closed.png';
+    }
+  }
 
+  isChestOpen(missao: { nome: string; completo: boolean }): boolean {
+    const dailyData = this.timersService.getMissionsData();
+    let chestOpenStatus = false;
 
-
-
-
+    switch (missao.nome.toLowerCase()) {
+      case 'writing':
+        chestOpenStatus = dailyData.chestWasOpen1;
+        break;
+      case 'reading':
+        chestOpenStatus = dailyData.chestWasOpen2;
+        break;
+      case 'listening':
+        chestOpenStatus = dailyData.chestWasOpen3;
+        break;
+      case 'speaking':
+        chestOpenStatus = dailyData.chestWasOpen4;
+        break;
+    }
+    return chestOpenStatus;
+  }
 
 
   getIconeMissao(nome: string): string {
     return `assets/lingobot/skills/${nome.toLowerCase()}.png`;
   }
 
-  // Métodos de teste
-  marcarComoFeita(missao: string) {
-    this.timersService.updateMission(missao.toLowerCase());
-    this.atualizarMissoes();
-  }
-
-
-
-  // Método para atualizar todas as variáveis do display
-  private updateMissionsDisplay(): void {
-    // Atualiza recompensaReivindicada
-    this.recompensaReivindicada = this.timersService.isRewardClaimed();
-
-    // Atualiza status das missões individuais (se você tiver essa variável)
-    if (this.missoesDiarias) {
-      this.missoesDiarias = this.missoesDiarias.map(missao => ({
-        ...missao,
-        completo: this.timersService.isMissionComplete(missao.nome)
-      }));
-    }
-    //  console.log('Display atualizado - recompensaReivindicada:', this.recompensaReivindicada);
-  }
-
-
-
-
   atualizarMissoes() {
     const data = this.timersService.getMissionsData();
     this.missoesDiarias = [
-      { nome: 'Writing', completo: data.writing === 'true' },
-      { nome: 'Reading', completo: data.reading === 'true' },
-      { nome: 'Listening', completo: data.listening === 'true' },
-      { nome: 'Speaking', completo: data.speaking === 'true' }
+      { nome: 'Writing', completo: data.writing },
+      { nome: 'Reading', completo: data.reading },
+      { nome: 'Listening', completo: data.listening },
+      { nome: 'Speaking', completo: data.speaking }
     ];
-    // this.recompensaReivindicada = data.claimed_reward_today === 'true';
   }
 
-  todasFeitas(): boolean {
-    return this.missoesDiarias.every(m => m.completo);
+  openChest(missao: { nome: string; completo: boolean }) {
+    if (missao.completo) {
+      const chestNumber = this.getChestNumber(missao.nome);
+      if (chestNumber > 0) {
+        this.timersService.markChestAsOpen(chestNumber);
+        this.timersService.claimChestReward(); // Call to give gems and reset strikes
+        // Assuming playSound has a method for chest opening
+        // this.playSound.playChestOpen(); // Need to confirm this method exists
+        this.timersService.checkAllChestsOpened();
+        this.atualizarMissoes(); // Update display after opening chest
+      }
+    } else {
+      console.log('Mission not complete, cannot open chest.');
+      // Optionally, play a sound or show a message indicating mission is not complete
+    }
   }
 
-
-  resetarMissoes() {
-    this.timersService.resetAllMissionsForTesting();
-    this.atualizarMissoes();
+  private getChestNumber(missionName: string): number {
+    switch (missionName.toLowerCase()) {
+      case 'writing': return 1;
+      case 'reading': return 2;
+      case 'listening': return 3;
+      case 'speaking': return 4;
+      default: return 0; // Should not happen with valid mission names
+    }
   }
-
-  checkQuest(){
-    this.playSound.playCleanSound2();
-    this.modal = !this.modal;
-
-  }
-
-  get todasMissoesCompletas(): boolean {
-    return this.missoesDiarias.every(missao => missao.completo);
-  }
-
-  claimReward(): void {
-    this.playSound.playWin2()
-    this.timersService. claimReward();
-
-    this.recompensaReivindicada = this.timersService.getClaimedRewardStatus();
-
-    console.log('Recompensa coletada!');
-    // Aqui você pode desativar o modal, adicionar recompensa ao jogador etc.
-    //this.checkMissoesModal = false;
-  }
-
-
-
 }

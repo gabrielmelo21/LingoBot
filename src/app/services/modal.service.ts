@@ -122,4 +122,22 @@ export class ModalService {
   }
 
 
+  // FLOPPY DISK
+  private showFloppyDiskSubject = new BehaviorSubject<boolean>(false);
+  showFloppyDisk$ = this.showFloppyDiskSubject.asObservable();
+
+  showFloppyDisk() {
+    this.showFloppyDiskSubject.next(true);
+  }
+
+  hideFloppyDisk() {
+    this.showFloppyDiskSubject.next(false);
+  }
+
+
+
+
+
+  
+
 }

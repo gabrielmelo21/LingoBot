@@ -144,8 +144,8 @@ export class ReadingComponent implements AfterViewInit{
   }
 
 
-  staticPadlock() {
-    this.videoController.setStaticLoop(0.8, 0.9);
+  staticPadlock() {  
+     this.videoController.pauseAt("0:01"); // vai para 8 segundos e pausa
   }
 
 
@@ -159,10 +159,8 @@ export class ReadingComponent implements AfterViewInit{
  commonWinAnimation(){
    this.videoController.playSegment("0:01", "0:08", () => {
      this.giveRewards()
-     this.videoController.playSegment("0:08", "0:08", () => {
-       this.videoController.mute();
-       this.hidePosWin = true;
-     });
+     this.videoController.pauseAt("0:08"); // vai para 8 segundos e pausa
+     this.hidePosWin = true;
    });
 
  }
@@ -170,11 +168,8 @@ export class ReadingComponent implements AfterViewInit{
   jackpotWinAnimation(){
     this.videoController.playSegment("0:09", "0:17", () => {
       this.giveRewards()
-      this.videoController.playSegment("0:08", "0:08", () => {
-        this.videoController.mute();
-        this.hidePosWin = true;
-      });
-
+      this.videoController.pauseAt("0:17"); // vai para 8 segundos e pausa
+      this.hidePosWin = true;
     });
 
   }

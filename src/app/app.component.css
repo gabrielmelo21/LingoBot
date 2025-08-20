@@ -512,3 +512,88 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container do disquete de salvamento */
+.floppy-disk {
+  position: fixed; /* Posição fixa na tela */
+  top: 20vh; /* Moved slightly up */
+  right: 2vh; /* Moved slightly to the right */
+  transform: translateY(-50%); /* Adjusts for perfect vertical centering */
+  z-index: 9999; /* High z-index to overlay other elements */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  opacity: 0; /* Starts invisible */
+  pointer-events: none; /* Doesn't interact with the mouse when invisible */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition to appear/disappear */
+}
+
+/* Class that makes the floppy disk visible */
+.floppy-disk.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Floppy disk icon style */
+.floppy-disk img {
+  width: 80px; /* Icon size */
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); /* Shadow to highlight */
+  animation: floating 3s ease-in-out infinite; /* Applies floating animation */
+}
+
+/* Animation for the icon's floating effect */
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); } /* Rises 10px */
+  100% { transform: translateY(0px); }
+}
+
+/* "Saving..." text style */
+.floppy-disk h3 {
+  color: #fff;
+  font-weight: bold;
+  margin-top: -10px;
+  margin-right: -10px;
+  white-space: nowrap; /* Prevents line break */
+  font-size: 12pt;
+}
+
+/* Pseudo-element to add dots to the text */
+.floppy-disk h3 span {
+  display: inline-block; /* Allows min-width to be applied */
+  min-width: 15px; /* Ensures space for the dots, preventing text shift */
+}
+
+.floppy-disk h3 span::after {
+  content: ''; /* Starts empty */
+  animation: dot-animation 1.5s infinite steps(1, end); /* Dots animation */
+}
+
+/* Dots animation */
+@keyframes dot-animation {
+  0% { content: ''; }
+  33% { content: '.'; }
+  66% { content: '..'; }
+  100% { content: '...'; }
+}
