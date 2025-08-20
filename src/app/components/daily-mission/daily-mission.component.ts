@@ -155,8 +155,7 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
       if (chestNumber > 0) {
         this.timersService.markChestAsOpen(chestNumber);
         this.timersService.claimChestReward(); // Call to give gems and reset strikes
-        // Assuming playSound has a method for chest opening
-        // this.playSound.playChestOpen(); // Need to confirm this method exists
+        this.playSound.playCoinDrop(); // Play sound for coin drop
         this.timersService.checkAllChestsOpened();
         this.atualizarMissoes(); // Update display after opening chest
       }
