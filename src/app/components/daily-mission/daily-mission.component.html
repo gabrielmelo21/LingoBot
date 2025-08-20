@@ -57,6 +57,12 @@
 
 </div>
 
+<!-- Reward Alert -->
+<div *ngIf="showRewardAlert" class="reward-alert" [ngClass]="rewardAlertClass">
+  <img src="assets/lingobot/itens/gemas.png" alt="Gemas" class="gem-icon">
+  <span class="reward-text">+ {{ currentRewardAmount }}</span>
+</div>
+
 
 <img
   *ngIf="this.modal"

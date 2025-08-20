@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {catchError, map, Observable, tap, throwError} from "rxjs";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {jwtDecode} from "jwt-decode";
+import {HttpResponse} from "@capacitor/core";
 
 interface UserData {
   id: string;
@@ -22,7 +23,9 @@ interface UserData {
 })
 export class MainAPIService {
   private readonly API = 'https://lingobot-api.onrender.com';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+  }
 
 
 

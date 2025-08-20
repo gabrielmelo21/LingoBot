@@ -14,6 +14,8 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
   modal: boolean = false;
   private sub!: Subscription;
 
+
+
   constructor(protected timersService : TimersService,
               private playSound: PlaySoundService,
               private modalService: ModalService) {
@@ -23,6 +25,10 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
 
   missoesDiarias: { nome: string; completo: boolean }[] = [];
   private missionsSubscription?: Subscription;
+
+  showRewardAlert: boolean = false;
+  currentRewardAmount: number = 0;
+  rewardAlertClass: string = '';
 
 
 
@@ -156,6 +162,23 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
         this.timersService.markChestAsOpen(chestNumber);
         this.timersService.claimChestReward(); // Call to give gems and reset strikes
         this.playSound.playCoinDrop(); // Play sound for coin drop
+
+        // Show reward alert with class-based animation
+        const gemsToGive = this.timersService.giveUserGems(); // Get the amount of gems
+        this.currentRewardAmount = gemsToGive;
+        this.showRewardAlert = true; // Make element visible in DOM
+
+        this.rewardAlertClass = 'show'; // Trigger show animation
+
+        setTimeout(() => {
+          this.rewardAlertClass = 'hide'; // Trigger hide animation
+          setTimeout(() => {
+            this.showRewardAlert = false; // Remove from DOM after hide animation
+          }, 500); // Duration of fadeOutSlideUp animation
+        }, 1500); // Duration of show animation + display time (e.g., 0.5s + 1s)
+
+        // Assuming playSound has a method for chest opening
+        // this.playSound.playChestOpen(); // Need to confirm this method exists
         this.timersService.checkAllChestsOpened();
         this.atualizarMissoes(); // Update display after opening chest
       }

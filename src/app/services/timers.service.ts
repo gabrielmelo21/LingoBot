@@ -19,8 +19,8 @@ export class TimersService implements OnInit {
 
    // this.markChestAsOpen(1);
    //this.authService.updateDailyMission({  refreshTimeAt : 1755704930 })
-  //this.updateMission("writing");
-  this.updateMission("reading");
+ this.updateMission("writing");
+  //this.updateMission("reading");
   //this.updateMission("listening");
   //this.updateMission("speaking");
   }

@@ -96,3 +96,59 @@
 
 
 
+/* ====== REWARD ALERT ====== */
+.reward-alert {
+  position: fixed;
+  top: 20px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #007bff, #8e2de2); /* Beautiful blue with a hint of purple */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px; /* Rounded corners */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 9999; /* Ensure it's on top */
+  opacity: 0; /* Start hidden for animation */
+}
+
+.reward-alert.show {
+  opacity: 1;
+  animation: fadeInSlideDown 0.5s forwards;
+}
+
+.reward-alert.hide {
+  animation: fadeOutSlideUp 0.5s forwards;
+}
+
+.reward-alert .gem-icon {
+  width: 30px; /* Adjust size as needed */
+  height: 30px;
+}
+
+/* Animations */
+@keyframes fadeInSlideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes fadeOutSlideUp {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50px);
+  }
+}
