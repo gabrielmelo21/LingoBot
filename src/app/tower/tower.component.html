@@ -117,7 +117,8 @@
       [class.close]="isClosing">
 
 
-<h2>Modal teste</h2>
+<h2 class="daily-missions-title">Upgrade Tower</h2>
+<p class="daily-missions-description">Cumpra com os pre-requisitos para evoluir sua torre, e aumente seus prêmios</p>
 
 
   <div
@@ -154,7 +155,17 @@
 
 
 
-  <!-- Upgrade Quest button -->
+  <!-- Upgrade Quest button
+
+    <img
+    [src]="resultadoPedagio.podeSubir ? 'assets/lingobot/menu-icons/upgrade-tower.png' : 'assets/lingobot/menu-icons/upgrade-tower-off.png'"
+    class="upgrade-button"
+    [class.floating-button]="resultadoPedagio.podeSubir"
+    (click)="resultadoPedagio.podeSubir && openUpgradeModal()"
+    [ngClass]="{'disabled-button': !resultadoPedagio.podeSubir}"
+  >
+
+  -->
   <img
     [src]="resultadoPedagio.podeSubir ? 'assets/lingobot/menu-icons/upgrade-tower.png' : 'assets/lingobot/menu-icons/upgrade-tower-off.png'"
     class="upgrade-button"

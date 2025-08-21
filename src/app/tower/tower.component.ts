@@ -30,6 +30,11 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
               private router: Router,
               private auth: AuthService) {
 
+
+
+
+
+
     this.verifyIsCanUpgrade();
     // pega os valores numericos do texto
     this.coinsToUpgrade = parseInt(this.resultadoPedagio.requisitos[1].nome.match(/\d+/)?.[0] || '0', 10);
