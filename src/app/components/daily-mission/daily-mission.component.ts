@@ -14,10 +14,14 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
   modal: boolean = false;
   private sub!: Subscription;
 
+
+
   constructor(protected timersService : TimersService,
               private playSound: PlaySoundService,
               private modalService: ModalService) {
   }
+
+
 
   missoesDiarias: { nome: string; completo: boolean }[] = [];
   private missionsSubscription?: Subscription;
@@ -152,11 +156,6 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
   }
 
   openChest(missao: { nome: string; completo: boolean }) {
-    if (this.isChestOpen(missao)) { // Add this check
-      console.log('Chest already open, cannot claim reward again.');
-      return; // Exit the function if chest is already open
-    }
-
     if (missao.completo) {
       const chestNumber = this.getChestNumber(missao.nome);
       if (chestNumber > 0) {
@@ -198,74 +197,4 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
       default: return 0; // Should not happen with valid mission names
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  selectedIndex = 0; // começa no primeiro baú
-
-  private touchStartX = 0;
-  private touchEndX = 0;
-
-  onTouchStart(event: TouchEvent) {
-    this.touchStartX = event.changedTouches[0].screenX;
-  }
-
-  onTouchEnd(event: TouchEvent) {
-    this.touchEndX = event.changedTouches[0].screenX;
-    this.handleSwipe();
-  }
-
-  handleSwipe() {
-    const swipeDistance = this.touchStartX - this.touchEndX;
-
-    if (Math.abs(swipeDistance) < 30) return; // Ignora toques curtos
-
-    if (swipeDistance > 0) {
-      this.swipeLeft();
-    } else {
-      this.swipeRight();
-    }
-  }
-
-  swipeLeft() {
-    if (this.selectedIndex < this.missoesDiarias.length - 1) {
-      this.selectedIndex++;
-    }
-  }
-
-  swipeRight() {
-    if (this.selectedIndex > 0) {
-      this.selectedIndex--;
-    }
-  }
-
-  /**
-   * Define estilo baseado no índice
-   */
-  getItemStyle(index: number) {
-    const offset = index - this.selectedIndex;
-    const baseScale = 1 - Math.abs(offset) * 0.2;
-    const translateX = offset * 240; // espaçamento entre cards
-
-    return {
-      transform: `translateX(${translateX}px) scale(${baseScale})`,
-      opacity: Math.abs(offset) > 2 ? 0 : 1,
-      zIndex: 100 - Math.abs(offset),
-    };
-  }
-
 }

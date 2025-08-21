@@ -1,24 +1,16 @@
-/* Container geral do swiper */
-.chest-swiper-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  padding: 20px 0;
+/* ====== GRID ====== */
+.chest-boxes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
-/* Wrapper que segura os itens lado a lado */
-.chest-swiper-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 260px; /* ajusta de acordo com o tamanho dos baús */
-  position: relative;
-}
-
-/* Card do baú (mantive seu estilo de antes) */
+/* ====== CARD (GLASS) ====== */
 .chest-box {
-  position: absolute;
-  width: 220px;
+  position: relative;
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -29,10 +21,18 @@
   box-shadow:
     0 6px 20px rgba(0, 0, 0, 0.20),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transition: transform .3s ease, opacity .3s ease;
+  transition: transform .2s ease, background .25s ease, box-shadow .25s ease;
 }
 
-/* Imagem do baú */
+.chest-box:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+}
+
+/* ====== CHEST IMAGE ====== */
 .chest-image {
   width: 110px;
   height: auto;
@@ -195,7 +195,7 @@
 }
 
 .daily-missions-title {
-  font-size: 2.5em;
+  font-size: 1.5em; /* Reduced font size */
   color: #fff;
   text-align: center;
   margin-bottom: 10px;
@@ -203,22 +203,12 @@
 }
 
 .daily-missions-description {
-  font-size: 1.2em;
+  font-size: 0.9em; /* Reduced font size */
   color: #eee;
   text-align: center;
   margin-bottom: 20px;
   line-height: 1.4;
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ====== GRID ====== */
-.chest-boxes {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 10px;
+  max-width: 80%; /* Added max-width */
+  margin-left: auto; /* Centered */
+  margin-right: auto; /* Centered */
 }

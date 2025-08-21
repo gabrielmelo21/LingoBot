@@ -25,40 +25,29 @@
 
 
 
-  <!-- SWIPER CONTAINER -->
-  <div
-    class="chest-swiper-container"
-    (touchstart)="onTouchStart($event)"
-    (touchend)="onTouchEnd($event)"
-  >
-    <div class="chest-swiper-wrapper">
-      <div
-        class="chest-box"
-        *ngFor="let missao of missoesDiarias; let i = index"
-        [ngStyle]="getItemStyle(i)"
-      >
-        <!-- BAÚ -->
+  <div class="chest-boxes">
+    <div class="chest-box" *ngFor="let missao of missoesDiarias">
+      <!-- BAÚ -->
+      <img
+        [src]="getChestImage(missao)"
+        class="chest-image"
+        [ngClass]="{ 'animate': missao.completo && !isChestOpen(missao) }"
+        (click)="openChest(missao)"
+        alt="Chest"
+        draggable="false"
+      />
+
+      <!-- INFO DA MISSÃO -->
+      <div class="mission-info">
         <img
-          [src]="getChestImage(missao)"
-          class="chest-image"
-          [ngClass]="{ 'animate': missao.completo && !isChestOpen(missao) }"
-          (click)="openChest(missao)"
-          alt="Chest"
+          class="mission-icon"
+          [src]="getIconeMissao(missao.nome)"
+          [alt]="missao.nome"
           draggable="false"
         />
-
-        <!-- INFO DA MISSÃO -->
-        <div class="mission-info">
-          <img
-            class="mission-icon"
-            [src]="getIconeMissao(missao.nome)"
-            [alt]="missao.nome"
-            draggable="false"
-          />
-          <span class="mission-title" [class.riscado]="missao.completo">
-          Praticar {{ missao.nome }}
-        </span>
-        </div>
+        <span class="mission-title" [class.riscado]="missao.completo">
+        Praticar {{ missao.nome }}
+      </span>
       </div>
     </div>
   </div>
