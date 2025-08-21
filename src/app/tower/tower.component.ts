@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {PlaySoundService} from "../services/play-sound.service";
 import {Router} from "@angular/router";
-import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {AuthService} from "../services/auth.service";
 
 
@@ -14,7 +14,8 @@ import {AuthService} from "../services/auth.service";
   imports: [
     NgForOf,
     NgIf,
-    NgClass
+    NgClass,
+    NgStyle
   ],
     styleUrls: ['./tower.component.css']
 })
@@ -520,6 +521,60 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
       this.isClosing = false;
     }
   }
+
+
+
+
+  selectedIndex = 0;
+
+  private touchStartX = 0;
+  private touchEndX = 0;
+
+  onTouchStart(event: TouchEvent) {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
+
+  onTouchEnd(event: TouchEvent) {
+    this.touchEndX = event.changedTouches[0].screenX;
+    this.handleSwipe();
+  }
+
+  handleSwipe() {
+    const swipeDistance = this.touchStartX - this.touchEndX;
+
+    if (Math.abs(swipeDistance) < 30) return;
+
+    if (swipeDistance > 0) {
+      this.swipeLeft();
+    } else {
+      this.swipeRight();
+    }
+  }
+
+  swipeLeft() {
+    if (this.selectedIndex < this.resultadoPedagio.requisitos.length - 1) {
+      this.selectedIndex++;
+    }
+  }
+
+  swipeRight() {
+    if (this.selectedIndex > 0) {
+      this.selectedIndex--;
+    }
+  }
+
+  getItemStyle(index: number) {
+    const offset = index - this.selectedIndex;
+    const baseScale = 1 - Math.abs(offset) * 0.2;
+    const translateX = offset * 240;
+
+    return {
+      transform: `translateX(${translateX}px) scale(${baseScale})`,
+      opacity: Math.abs(offset) > 2 ? 0 : 1,
+      zIndex: 100 - Math.abs(offset),
+    };
+  }
+
 
 
 }

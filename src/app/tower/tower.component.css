@@ -104,119 +104,75 @@ canvas {
 
 
 
-
-.quest-check{
-  position: absolute;
-  top: 17vh;
-  left: 0;
-  z-index: 999999;
+.quest-swiper-container {
   width: 100%;
-  height: auto;
-}
-
-.quest-check-text{
-  color: white;
-  position: absolute;
-  top: 30vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  z-index: 999999;
-  font-weight: bolder;
-  width: 70%;
-}
-.quest-check-infos{
+  overflow: hidden;
   position: relative;
-
-  width: 70%;
-  height: 40vh;
-  overflow: auto;
+  padding: 20px 0;
 }
 
-.quest-check-infos {
-  padding: 12px;
+.quest-swiper-wrapper {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-family: 'Arial', sans-serif;
-  color: white;
-}
-
-.quest-check-text ul {
-  list-style-type: none;
-  padding-left: 10px;
-  color: white;
-}
-
-.quest-check-text li {
+  justify-content: center;
+  align-items: center;
+  height: 320px; /* altura da área total do swiper */
   position: relative;
-  padding-left: 20px;
-  margin-bottom: 8px;
 }
 
-.quest-check-text li:before {
-  content: "•";
-  color: darkgoldenrod;
-  font-size: 1.2em;
+/* Card com tamanho fixo */
+.quest-card {
   position: absolute;
-  left: 0;
+  width: 220px;   /* largura padrão */
+  height: 260px;  /* altura padrão */
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  padding: 16px 14px;
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: transform .3s ease, opacity .3s ease;
+
+  display: flex;              /* garante alinhamento */
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* distribui ícone principal em cima e status embaixo */
 }
 
+/* Ícone principal fixo */
+.requisito-principal {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 12px;
+  user-select: none;
+}
 
-
-.requisito-item {
+/* Status (check/x + texto) */
+.requisito-status {
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.requisito-status img {
+  width: 28px;
+  height: 28px;
+}
+
+.requisito-status span {
   font-size: 16px;
   font-weight: bold;
   color: white;
-  background-color: transparent;
-  border: 2px solid rgba(255, 243, 209, 0.2);
-  padding: 8px 12px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
-
-  transition: all 0.2s ease;
-}
-
-.requisito-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-}
-
-
-
-
-.upgrade-requirements {
-  position: absolute;
-  top: 33vh; /* Ajuste esta posição conforme necessário */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999999;
   text-align: center;
-  width: 70%;
+  flex: 1;
 }
 
-.upgrade-requirements img {
-  width: 24px; /* Tamanho das imagens dos itens */
-  height: 24px;
-  vertical-align: middle;
-  margin-right: 8px;
-}
-
-.upgrade-requirements span {
-  font-weight: bold;
-  font-size: 30pt !important;
-  vertical-align: middle;
-}
-
-.upgrade-requirements span:first-of-type {
-  color: #4FC3F7 !important;
-}
-
-.upgrade-requirements span:last-of-type {
-  color: darkgoldenrod; /* Cor para o valor do gold */
+.riscado {
+  text-decoration: line-through;
+  opacity: 0.6;
 }
 
 

@@ -120,14 +120,37 @@
 <h2>Modal teste</h2>
 
 
-  <div class="quest-check-infos">
-    <div *ngFor="let requisito of resultadoPedagio.requisitos; let i = index"
-         class="requisito-item"
-         [class.riscado]="requisito.completo">
-      <img class="requisito-icon" [src]="getRequisitoIcon(i)" alt="ícone">
-      <span>{{ requisito.nome }}</span>
+  <div
+    class="quest-swiper-container"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <div class="quest-swiper-wrapper">
+      <div
+        class="quest-card"
+        *ngFor="let requisito of resultadoPedagio.requisitos; let i = index"
+        [ngStyle]="getItemStyle(i)"
+      >
+        <!-- ÍCONE PRINCIPAL DO REQUISITO -->
+        <img
+          class="requisito-principal"
+          [src]="getRequisitoIcon(i)"
+          [alt]="requisito.nome"
+          draggable="false"
+        />
+
+        <!-- ÍCONE DE STATUS (check ou X) -->
+        <div class="requisito-status">
+          <img
+            [src]="'assets/lingobot/menu-icons/' + (requisito.completo ? 'check.png' : 'x.png')"
+            [alt]="requisito.completo ? 'Completo' : 'Não completo'"
+          />
+          <span [class.riscado]="requisito.completo">{{ requisito.nome }}</span>
+        </div>
+      </div>
     </div>
   </div>
+
 
 
 
