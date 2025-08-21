@@ -5,6 +5,26 @@
 
 
 
+
+
+
+
+  <h2 class="daily-missions-title">Daily Missions</h2>
+  <p class="daily-missions-description">Faça as missões diárias, ganhe gemas e mantenha seu strike diário</p>
+
+  <div class="currency-section">
+    <div class="currency-item gold">
+      <img src="assets/lingobot/menu-icons/strike.png" alt="Gold" class="currency-icon">
+      <span class="currency-amount"> {{ timersService.getStrikes() }}</span>
+    </div>
+    <div class="currency-item gems">
+      <img src="assets/lingobot/itens/gemas.png" alt="Gems" class="currency-icon">
+      <span class="currency-amount"> {{ timersService.getMissionsData().rewardPerChest }}</span>
+    </div>
+  </div>
+
+
+
   <div class="chest-boxes">
     <div class="chest-box" *ngFor="let missao of missoesDiarias">
       <!-- BAÚ -->

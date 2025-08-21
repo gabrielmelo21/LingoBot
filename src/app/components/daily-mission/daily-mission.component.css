@@ -152,3 +152,63 @@
     transform: translate(-50%, -50px);
   }
 }
+
+
+
+
+/* ============ CURRENCY SECTION ============ */
+.currency-section {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.currency-item {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 25px;
+  padding: 8px 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.currency-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.currency-amount {
+  font-weight: bold;
+  font-size: 16px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.currency-item.gold .currency-amount {
+  color: #FFD700;
+}
+
+.currency-item.gems .currency-amount {
+  color: #4FC3F7;
+}
+
+.daily-missions-title {
+  font-size: 1.5em; /* Reduced font size */
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.daily-missions-description {
+  font-size: 0.9em; /* Reduced font size */
+  color: #eee;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  max-width: 80%; /* Added max-width */
+  margin-left: auto; /* Centered */
+  margin-right: auto; /* Centered */
+}
