@@ -155,10 +155,13 @@
 
 
   <!-- Upgrade Quest button -->
-  <img *ngIf="!resultadoPedagio.podeSubir" src="assets/lingobot/menu-icons/upgrade-tower-off.png" class="upgrade-button" >
-
-  <!-- Upgrade Quest button -->
-  <img (click)="openUpgradeModal()" *ngIf="resultadoPedagio.podeSubir" src="assets/lingobot/menu-icons/upgrade-tower.png" class="upgrade-button floating-button" >
+  <img
+    [src]="resultadoPedagio.podeSubir ? 'assets/lingobot/menu-icons/upgrade-tower.png' : 'assets/lingobot/menu-icons/upgrade-tower-off.png'"
+    class="upgrade-button"
+    [class.floating-button]="resultadoPedagio.podeSubir"
+    (click)="resultadoPedagio.podeSubir && openUpgradeModal()"
+    [ngClass]="{'disabled-button': !resultadoPedagio.podeSubir}"
+  >
 
 
 
