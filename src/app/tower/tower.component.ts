@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {PlaySoundService} from "../services/play-sound.service";
 import {Router} from "@angular/router";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {AuthService} from "../services/auth.service";
 
 
@@ -11,17 +11,19 @@ import {AuthService} from "../services/auth.service";
     selector: 'app-tower',
     templateUrl: './tower.component.html',
     standalone: true,
-    imports: [
-        NgForOf,
-        NgIf
-    ],
+  imports: [
+    NgForOf,
+    NgIf,
+    NgClass
+  ],
     styleUrls: ['./tower.component.css']
 })
-export class TowerComponent implements AfterViewInit, OnDestroy {
+export class TowerComponent implements AfterViewInit, OnDestroy{
 
 
   coinsToUpgrade = 0;
   gemasToUpgrade = 0;
+
 
   constructor(private playSoundService: PlaySoundService,
               private router: Router,
@@ -132,16 +134,39 @@ export class TowerComponent implements AfterViewInit, OnDestroy {
     this.startRenderingLoop();
     window.addEventListener('resize', this.onWindowResize);
 
-
+    // Add click event listener
+    this.renderer.domElement.addEventListener('click', this.onCanvasClick.bind(this), false);
   }
 
   ngOnDestroy(): void {
     window.removeEventListener('resize', this.onWindowResize);
+    this.renderer.domElement.removeEventListener('click', this.onCanvasClick.bind(this), false);
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
     }
     this.controls.dispose();
     this.renderer.dispose();
+  }
+
+  private onCanvasClick(event: MouseEvent): void {
+    // Calculate mouse position in normalized device coordinates (-1 to +1) for both components
+    const mouse = new THREE.Vector2();
+    mouse.x = (event.clientX / this.renderer.domElement.clientWidth) * 2 - 1;
+    mouse.y = -(event.clientY / this.renderer.domElement.clientHeight) * 2 + 1;
+
+    // Update the picking ray with the camera and mouse position
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(mouse, this.camera);
+
+    // Calculate objects intersecting the picking ray
+    const intersects = raycaster.intersectObjects([this.cylinder]);
+
+    if (intersects.length > 0) {
+      // An object was clicked, check if it's the tower
+      if (intersects[0].object === this.cylinder) {
+        this.openQuestModal();
+      }
+    }
   }
 
   private initScene(): void {
@@ -180,6 +205,7 @@ export class TowerComponent implements AfterViewInit, OnDestroy {
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = true;
+    this.controls.enablePan = false;
 
     // Permite rotação vertical entre 45° e 90°, para visão mais dinâmica
     this.controls.minPolarAngle = Math.PI / 4;   // 45 graus
@@ -454,9 +480,45 @@ export class TowerComponent implements AfterViewInit, OnDestroy {
     this.renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   };
 
+
   back() {
     this.playSoundService.playCleanSound2();
     this.router.navigate(['/babel-tower']);
+  }
+
+
+
+  modal: boolean = false;
+  isClosing: boolean = false;
+  openQuestModal() {
+    if (this.modal) {
+      this.animandoSaida = true;
+      this.isClosing = true;
+      this.playSoundService.playHologram();
+    } else {
+      this.animandoEntrada = true;
+      this.isClosing = false;
+      this.modal = true;
+    }
+  }
+
+
+
+  animandoEntrada: boolean = false;
+  animandoSaida: boolean = false;
+
+  onAnimationEnd(event: AnimationEvent) {
+    const { animationName } = event;
+
+    if (animationName === 'entrarDaEsquerda') {
+      this.animandoEntrada = false;
+    }
+
+    if (animationName === 'sairParaEsquerda') {
+      this.animandoSaida = false;
+       this.modal = false;
+      this.isClosing = false;
+    }
   }
 
 

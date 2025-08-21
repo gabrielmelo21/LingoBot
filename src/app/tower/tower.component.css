@@ -16,7 +16,7 @@ canvas {
 .back-button{
   position: absolute;
   z-index: 5;
-  top: 10vh;
+  top: 5vh;
   left: 1vh;
   width: 15%;
   height: auto;
@@ -24,10 +24,7 @@ canvas {
 }
 
 .quest-upgrade-button{
-  position: absolute;
-  z-index: 5;
-  top: 10vh;
-  right: 1vh;
+  position: relative;
   width: 18%;
   height: auto;
 }
@@ -129,11 +126,8 @@ canvas {
   width: 70%;
 }
 .quest-check-infos{
-  position: absolute;
-  top:55vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 999999;
+  position: relative;
+
   width: 70%;
   height: 40vh;
   overflow: auto;

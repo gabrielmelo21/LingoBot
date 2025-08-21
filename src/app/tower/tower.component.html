@@ -5,15 +5,10 @@
 <img src="assets/lingobot/menu-icons/back.png" class="back-button" (click)="back();" >
 
 
-<!-- Upgrade Quest button -->
+<!-- Upgrade Quest button
 <img src="assets/lingobot/tools-icons/tablet-icon.png" class="quest-upgrade-button"  (click)="checkQuest()" >
+-->
 
-
-<!-- Upgrade Quest button -->
-<img *ngIf="!resultadoPedagio.podeSubir" src="assets/lingobot/menu-icons/upgrade-tower-off.png" class="upgrade-button" >
-
-<!-- Upgrade Quest button -->
-<img (click)="openUpgradeModal()" *ngIf="resultadoPedagio.podeSubir" src="assets/lingobot/menu-icons/upgrade-tower.png" class="upgrade-button floating-button" >
 
 
 
@@ -75,9 +70,6 @@
 
 
 
-  <div class="confirm-btn-container" (click)="upgradeTower()" >
-    <img src="assets/lingobot/menu-icons/confirm.png" class="confirm-btn">
-  </div>
 
 
 </ng-container>
@@ -85,3 +77,78 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div  class="holograma-card"
+      *ngIf="modal || isClosing"
+      [class.open]="modal && !isClosing"
+      [class.close]="isClosing">
+
+
+<h2>Modal teste</h2>
+
+
+  <div class="quest-check-infos">
+    <div *ngFor="let requisito of resultadoPedagio.requisitos; let i = index"
+         class="requisito-item"
+         [class.riscado]="requisito.completo">
+      <img class="requisito-icon" [src]="getRequisitoIcon(i)" alt="ícone">
+      <span>{{ requisito.nome }}</span>
+    </div>
+  </div>
+
+
+
+  <!-- Upgrade Quest button -->
+  <img *ngIf="!resultadoPedagio.podeSubir" src="assets/lingobot/menu-icons/upgrade-tower-off.png" class="upgrade-button" >
+
+  <!-- Upgrade Quest button -->
+  <img (click)="openUpgradeModal()" *ngIf="resultadoPedagio.podeSubir" src="assets/lingobot/menu-icons/upgrade-tower.png" class="upgrade-button floating-button" >
+
+
+
+  <div  *ngIf="this.modal" class="x-position center-element" (click)="openQuestModal()">
+    <img src="assets/lingobot/menu-icons/x.png" class="x">
+  </div>
+</div>
+
+
+<img
+  *ngIf="this.modal"
+  src="assets/lingobot/menu-icons/holograma.png"
+  class="projetor entrar-da-esquerda"
+  [ngClass]="{'sair-para-esquerda': animandoSaida}"
+  (animationend)="onAnimationEnd($event)"
+>
