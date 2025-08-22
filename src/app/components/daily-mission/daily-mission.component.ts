@@ -109,9 +109,9 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
     }
 
     if (chestOpenStatus) {
-      return 'assets/lingobot/itens/chest-open.png';
+      return 'assets/lingobot/itens/chest-open.webp';
     } else {
-      return 'assets/lingobot/itens/chest-closed.png';
+      return 'assets/lingobot/itens/chest-closed.webp';
     }
   }
 
@@ -138,7 +138,7 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
 
 
   getIconeMissao(nome: string): string {
-    return `assets/lingobot/skills/${nome.toLowerCase()}.png`;
+    return `assets/lingobot/skills/${nome.toLowerCase()}.webp`;
   }
 
   atualizarMissoes() {
@@ -231,7 +231,7 @@ export class DailyMissionComponent implements OnInit, OnDestroy {
 
   handleSwipe() {
     const swipeDistance = this.touchStartX - this.touchEndX;
-
+    this.playSound.playPop();
     if (Math.abs(swipeDistance) < 30) return; // Ignora toques curtos
 
     if (swipeDistance > 0) {

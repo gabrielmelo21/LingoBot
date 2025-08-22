@@ -7,7 +7,7 @@
 
   <!-- Loading por cima -->
   <div class="loading-spinner" *ngIf="loading">
-    <img src="assets/lingobot/menu-icons/lingobot-energy-on.png" alt="Loading" />
+    <img src="assets/lingobot/menu-icons/lingobot-energy-on.webp" alt="Loading" />
   </div>
 
   <!-- Vídeo ao fundo -->
@@ -15,7 +15,7 @@
     #videoPlayer
     playsinline
     preload="auto"
-    poster="assets/lingobot/cenas_na_masmorra/listening/poster.jpg"
+    poster="assets/lingobot/cenas_na_masmorra/listening/poster.webp"
     class="background-video"
   >
 
@@ -26,7 +26,7 @@
   <app-after-win-dialog
     *ngIf="finishButton"
     [jackpot]=this.jackpot
-    [elder_img]="'assets/lingobot/elders/listening/parado.png'"
+    [elder_img]="'assets/lingobot/elders/listening/parado.webp'"
     [reward_xp]="this.finalXpReward"
     [reward_coins]="this.finalGoldReward">
   </app-after-win-dialog>
@@ -69,7 +69,7 @@
 
 
 <img
-  [src]="isPlaying ? 'assets/lingobot/cenas_na_masmorra/listening/vitrola-on.png' : 'assets/lingobot/cenas_na_masmorra/listening/vitrola-off.png'"
+  [src]="isPlaying ? 'assets/lingobot/cenas_na_masmorra/listening/vitrola-on.webp' : 'assets/lingobot/cenas_na_masmorra/listening/vitrola-off.webp'"
   alt="Tocar áudio"
   (click)="playAudio()"
   [class.pulse]="isPlaying"
@@ -106,7 +106,7 @@
   ></textarea>
 
       <button type="submit" mat-flat-button>
-        <img src="assets/lingobot/menu-icons/confirm.png" alt="Enviar" style="width: 30%;height: auto"  />
+        <img src="assets/lingobot/menu-icons/confirm.webp" alt="Enviar" style="width: 30%;height: auto"  />
       </button>
     </form>
 
@@ -129,7 +129,7 @@
     ></textarea>
 
       <button type="submit" class="submit-button">
-        <img src="assets/lingobot/menu-icons/confirm.png" alt="Confirmar" />
+        <img src="assets/lingobot/menu-icons/confirm.webp" alt="Confirmar" />
       </button>
     </form>
   </div>
@@ -147,14 +147,14 @@
   <div class="dialog-box"  *ngIf="this.dialogService.isActive && !this.dialogService.isFinalDialog">
     <div class="dialog-controls">
       <img
-        src="assets/lingobot/menu-icons/back.png"
+        src="assets/lingobot/menu-icons/back.webp"
         alt="Voltar"
         class="arrow-button left"
         (click)="prev();  "
       />
 
       <img
-        src="assets/lingobot/menu-icons/right.png"
+        src="assets/lingobot/menu-icons/right.webp"
         alt="Avançar"
         class="arrow-button right"
         (click)="next(); "

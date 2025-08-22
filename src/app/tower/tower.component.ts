@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnDestroy, TrackByFunction, ViewChild} from '@angular/core';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {PlaySoundService} from "../services/play-sound.service";
@@ -6,6 +6,12 @@ import {Router} from "@angular/router";
 import {NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {AuthService} from "../services/auth.service";
 
+
+
+interface Wave {
+  id: number;
+  isActive: boolean;
+}
 
 @Component({
     selector: 'app-tower',
@@ -30,10 +36,10 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
               private router: Router,
               private auth: AuthService) {
 
+    this.executeAutoClickSequence();
 
-
-
-
+    this.ranking = this.auth.getRanking();
+    this.currentLevel = Math.floor(this.ranking / 4);
 
     this.verifyIsCanUpgrade();
     // pega os valores numericos do texto
@@ -50,6 +56,7 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
 
   upgradeModal: boolean = false;
   ranking = this.auth.getRanking();
+  currentLevel: number;
   firstNewFloor = Math.abs(this.ranking+1);
   lastNewFloor = Math.abs(this.ranking+4);
 
@@ -71,13 +78,13 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
 
   getRequisitoIcon(index: number): string {
     const icons = [
-      'assets/lingobot/itens/gemas.png',
-      'assets/lingobot/itens/gold.png',
-      'assets/lingobot/menu-icons/level.png',
-      'assets/lingobot/skills/listening.png',
-      'assets/lingobot/skills/speaking.png',
-      'assets/lingobot/skills/reading.png',
-      'assets/lingobot/skills/writing.png'
+      'assets/lingobot/itens/gemas.webp',
+      'assets/lingobot/itens/gold.webp',
+      'assets/lingobot/menu-icons/level.webp',
+      'assets/lingobot/skills/listening.webp',
+      'assets/lingobot/skills/speaking.webp',
+      'assets/lingobot/skills/reading.webp',
+      'assets/lingobot/skills/writing.webp'
     ];
     return icons[index];
   }
@@ -182,14 +189,14 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
 
 
     const textureLoader = new THREE.TextureLoader();
-    //this.scene.background = textureLoader.load('assets/lingobot/tower/noite.png');  // Coloque sua textura aqui
+    //this.scene.background = textureLoader.load('assets/lingobot/tower/noite.webp');  // Coloque sua textura aqui
 
 
     const loader = new THREE.CubeTextureLoader();
     this.scene.background = loader.load([
-      'assets/lingobot/tower/noite.png', 'assets/lingobot/tower/noite.png',
-      'assets/lingobot/tower/noite.png', 'assets/lingobot/tower/noite.png',
-      'assets/lingobot/tower/noite.png', 'assets/lingobot/tower/noite.png',
+      'assets/lingobot/tower/noite.webp', 'assets/lingobot/tower/noite.webp',
+      'assets/lingobot/tower/noite.webp', 'assets/lingobot/tower/noite.webp',
+      'assets/lingobot/tower/noite.webp', 'assets/lingobot/tower/noite.webp',
     ]);
 
 
@@ -243,7 +250,7 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
 
 
     // Textura lateral
-    const sideTexture = new THREE.TextureLoader().load('assets/lingobot/tower/andar-textura.png');
+    const sideTexture = new THREE.TextureLoader().load('assets/lingobot/tower/andar-textura.webp');
     sideTexture.wrapS = THREE.RepeatWrapping;
     sideTexture.wrapT = THREE.RepeatWrapping;
     sideTexture.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
@@ -257,7 +264,7 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
     });
 
     // Textura topo
-    const topTexture = new THREE.TextureLoader().load('assets/lingobot/tower/topo-textura.png');
+    const topTexture = new THREE.TextureLoader().load('assets/lingobot/tower/topo-textura.webp');
     topTexture.wrapS = THREE.RepeatWrapping;
     topTexture.wrapT = THREE.RepeatWrapping;
     topTexture.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
@@ -284,7 +291,7 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
 
 
 // --- Textura para argolas ---
-    const ringTexture = textureLoader.load('assets/lingobot/tower/chao-textura.png');
+    const ringTexture = textureLoader.load('assets/lingobot/tower/chao-textura.webp');
     ringTexture.wrapS = THREE.RepeatWrapping;
     ringTexture.wrapT = THREE.RepeatWrapping;
     ringTexture.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
@@ -311,7 +318,7 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
 
     //COLOCAR COLUNAS
     // --- Textura para colunas ---
-    const colunaTexture = textureLoader.load('assets/lingobot/tower/chao-textura.png');
+    const colunaTexture = textureLoader.load('assets/lingobot/tower/chao-textura.webp');
     colunaTexture.wrapS = THREE.RepeatWrapping;
     colunaTexture.wrapT = THREE.RepeatWrapping;
     colunaTexture.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
@@ -345,7 +352,7 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
 
     /**
      NAO SEI OQUE FAZ AINDA
-    const displacementTexture = new THREE.TextureLoader().load('assets/lingobot/tower/andar-textura.png');
+    const displacementTexture = new THREE.TextureLoader().load('assets/lingobot/tower/andar-textura.webp');
     displacementTexture.wrapS = THREE.RepeatWrapping;
     displacementTexture.wrapT = THREE.RepeatWrapping;
     displacementTexture.repeat.set(3, numeroAndares);
@@ -372,7 +379,7 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
     const alturaDaTorre = this.height;
 
 
-    const ameiaTexture = new THREE.TextureLoader().load('assets/lingobot/tower/ameias.png');
+    const ameiaTexture = new THREE.TextureLoader().load('assets/lingobot/tower/ameias.webp');
     ameiaTexture.wrapS = THREE.RepeatWrapping;
     ameiaTexture.wrapT = THREE.RepeatWrapping;
     ameiaTexture.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
@@ -407,7 +414,7 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
 
 //========================== planeta terra ======================
 // Carregar textura da Terra (ou sua textura de solo)
-    const groundTexture = new THREE.TextureLoader().load('assets/lingobot/tower/planeta.png'); // substitua pela textura da Terra depois
+    const groundTexture = new THREE.TextureLoader().load('assets/lingobot/tower/planeta.webp'); // substitua pela textura da Terra depois
 
 // Geometria de esfera
     const groundGeometry = new THREE.SphereGeometry(3000, 64, 64, 0, Math.PI * 2, 0, Math.PI / 2);
@@ -500,8 +507,9 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
     if (this.modal) {
       this.animandoSaida = true;
       this.isClosing = true;
-      this.playSoundService.playHologram();
+
     } else {
+      this.playSoundService.playHologram();
       this.animandoEntrada = true;
       this.isClosing = false;
       this.modal = true;
@@ -546,10 +554,11 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
 
   handleSwipe() {
     const swipeDistance = this.touchStartX - this.touchEndX;
-
+    this.playSoundService.playPop();
     if (Math.abs(swipeDistance) < 30) return;
 
     if (swipeDistance > 0) {
+
       this.swipeLeft();
     } else {
       this.swipeRight();
@@ -580,6 +589,115 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
     };
   }
 
+  getLevelImagePaths(): string[] {
+    const levelStr = this.currentLevel.toString();
+    return levelStr.split('').map(digit => `assets/lingobot/levels/${digit}.webp`);
+  }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  isClicking: boolean = false;
+  isVisible: boolean = true;
+  waves: Wave[] = [];
+  private waveCounter: number = 0;
+
+  onHandClick(): void {
+    this.isClicking = true;
+    this.createWaves();
+
+    // Remove a classe de click após a animação
+    setTimeout(() => {
+      this.isClicking = false;
+    }, 300);
+  }
+
+  // Método público para executar 3 cliques automáticos e depois sumir
+  executeAutoClickSequence(): void {
+
+    this.playSoundService.playPop();
+    this.isVisible = true;
+    let clickCount = 0;
+    const totalClicks = 3;
+    const clickInterval = 800; // 800ms entre cada clique
+
+    const autoClick = () => {
+      if (clickCount < totalClicks) {
+        this.performClick();
+        clickCount++;
+
+        setTimeout(autoClick, clickInterval);
+
+      } else {
+        // Após os 3 cliques, espera um pouco e some
+        setTimeout(() => {
+          this.isVisible = false;
+        }, 500);
+      }
+    };
+
+    autoClick();
+  }
+
+  // Método para mostrar a mãozinha novamente
+  showHand(): void {
+    this.isVisible = true;
+  }
+
+  trackByWaveId(index: number, wave: Wave): number {
+    return wave.id;
+  }
+
+  private performClick(): void {
+    this.isClicking = true;
+    this.createWaves();
+
+    // Remove a classe de click após a animação
+    setTimeout(() => {
+      this.isClicking = false;
+    }, 300);
+  }
+
+  private createWaves(): void {
+    // Limpa ondas antigas
+    this.waves = [];
+
+    // Cria 3 ondas
+    for (let i = 0; i < 3; i++) {
+      const wave: Wave = {
+        id: this.waveCounter++,
+        isActive: true
+      };
+
+      this.waves.push(wave);
+
+      // Remove a onda após a animação
+      setTimeout(() => {
+        const index = this.waves.findIndex(w => w.id === wave.id);
+        if (index > -1) {
+          this.waves.splice(index, 1);
+        }
+      }, 1000);
+    }
+  }
 }

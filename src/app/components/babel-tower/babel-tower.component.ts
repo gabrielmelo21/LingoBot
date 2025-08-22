@@ -127,6 +127,8 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
           this.auth.checkLevelUp(800) **/
 
 
+    this.auth.addRandomItemToUser();
+
 
   }
 
@@ -154,16 +156,16 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
 
     switch (andarNoConjunto) {
       case 0:
-        this.currentElderImage = "assets/lingobot/skills/writing.png";
+        this.currentElderImage = "assets/lingobot/skills/writing.webp";
         return "Writing";  // Andar 1, 5, 9, 13, ...
       case 1:
-        this.currentElderImage = "assets/lingobot/skills/reading.png";
+        this.currentElderImage = "assets/lingobot/skills/reading.webp";
         return "Reading";  // Andar 2, 6, 10, 14, ...
       case 2:
-        this.currentElderImage = "assets/lingobot/skills/listening.png";
+        this.currentElderImage = "assets/lingobot/skills/listening.webp";
         return "Listening";  // Andar 3, 7, 11, 15, ...
       case 3:
-        this.currentElderImage = "assets/lingobot/skills/speaking.png";
+        this.currentElderImage = "assets/lingobot/skills/speaking.webp";
         return "Speaking";  // Andar 4, 8, 12, 16, ...
       default:
         return "";  // Caso não encontre
@@ -212,22 +214,22 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
 openModal(icon: any){
     switch (icon) {
 
-      case 'assets/lingobot/menu-icons/compass.png':
+      case 'assets/lingobot/menu-icons/compass.webp':
         this.playSound.playHologram();
         this.modalService.toggleDailyModal();
         break;
-      case 'assets/lingobot/menu-icons/holograma-icon.png':
+      case 'assets/lingobot/menu-icons/holograma-icon.webp':
         this.playSound.playHologram();
         this.modalService.toggleUserInfosModal();
         break;
-      case 'assets/lingobot/menu-icons/icone-home.png':
+      case 'assets/lingobot/menu-icons/icone-home.webp':
         this.goToTower();
        break;
-      case 'assets/lingobot/menu-icons/bag-icon.png':
+      case 'assets/lingobot/menu-icons/bag-icon.webp':
         this.playSound.playHologram();
         this.modalService.toggleItemsModal();
        break;
-      case 'assets/lingobot/menu-icons/gear_icon.png':
+      case 'assets/lingobot/menu-icons/gear_icon.webp':
         this.playSound.playHologram();
         this.modalService.toggleSettingsModal();
         break;
@@ -239,11 +241,11 @@ openModal(icon: any){
 
 
   menuItems = [
-    { icon: 'assets/lingobot/menu-icons/icone-home.png' },
-    { icon: 'assets/lingobot/menu-icons/bag-icon.png' },
-    { icon: 'assets/lingobot/menu-icons/compass.png' },
-    { icon: 'assets/lingobot/menu-icons/holograma-icon.png' },
-    { icon: 'assets/lingobot/menu-icons/gear_icon.png' },
+    { icon: 'assets/lingobot/menu-icons/icone-home.webp' },
+    { icon: 'assets/lingobot/menu-icons/bag-icon.webp' },
+    { icon: 'assets/lingobot/menu-icons/compass.webp' },
+    { icon: 'assets/lingobot/menu-icons/holograma-icon.webp' },
+    { icon: 'assets/lingobot/menu-icons/gear_icon.webp' },
   ];
 
   selectedIndex = 2;

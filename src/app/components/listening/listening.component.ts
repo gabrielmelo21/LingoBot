@@ -126,7 +126,7 @@ export class ListeningComponent implements AfterViewInit {
   isPlaying: boolean = false;
   audioElement: HTMLAudioElement | null = null;
   isLoading: boolean = false;
-  elder: string = "assets/lingobot/elders/listening/focado.png";
+  elder: string = "assets/lingobot/elders/listening/focado.webp";
   srcExercises: string = '';
   exercises: ListeningExercise[] = [];
   currentExercise!: ListeningExercise;
@@ -165,17 +165,17 @@ export class ListeningComponent implements AfterViewInit {
 
     this.dialogService.startDialog([
       { text: 'Olá, aventureiro. Eu sou o Ancião da Compreensão Auditiva, ou Listening Elder, e preciso da sua ajuda.',
-        expression: "assets/lingobot/elders/listening/parado.png" },
+        expression: "assets/lingobot/elders/listening/parado.webp" },
       { text: 'Através daquele portão existe um tesouro, que acredito conter muitas moedas de ouro.',
-      expression: "assets/lingobot/elders/listening/explicando.png" },
+      expression: "assets/lingobot/elders/listening/explicando.webp" },
       { text: 'Perceba que há 3 espaços vazios. Para abrir o portão, é preciso preenchê-los com as esferas de poder.',
-        expression: "assets/lingobot/elders/listening/explicando.png" },
+        expression: "assets/lingobot/elders/listening/explicando.webp" },
       { text: 'Porém, para isso, é necessário descobrir o que a Vitrola diz — e ela só fala em inglês.',
-        expression: "assets/lingobot/elders/listening/error.png" },
+        expression: "assets/lingobot/elders/listening/error.webp" },
       { text: 'Cada palavra que ela disser, você deve entender e responder o que ouviu.',
-      expression: "assets/lingobot/elders/listening/focado.png" },
+      expression: "assets/lingobot/elders/listening/focado.webp" },
       { text: 'Ao final, terá a palavra-passe que coloca uma esfera de poder. Repita até o portão se abrir.',
-      expression: "assets/lingobot/elders/listening/parado.png" },
+      expression: "assets/lingobot/elders/listening/parado.webp" },
     ]);
 
 
@@ -253,7 +253,7 @@ giveUserReward(): void {
 
 eldersBackToFocus(){
   setTimeout(() => {
-    this.elder = "assets/lingobot/elders/listening/focado.png";
+    this.elder = "assets/lingobot/elders/listening/focado.webp";
   },1500)
 }
 
@@ -262,19 +262,19 @@ eldersExpressions(number: number){
 
   switch (number) {
       case 1: // correct answer
-        this.elder = "assets/lingobot/elders/listening/parado.png";
+        this.elder = "assets/lingobot/elders/listening/parado.webp";
         this.playSoundService.playWin2()
         this.eldersBackToFocus();
       break;
       case 2: // incorrect answer
-        this.elder = "assets/lingobot/elders/listening/error.png";
+        this.elder = "assets/lingobot/elders/listening/error.webp";
         this.playSoundService.playErrorQuestion()
         this.eldersBackToFocus();
       break;
       case 3:
 
 
-        this.elder = "assets/lingobot/elders/listening/win.png";
+        this.elder = "assets/lingobot/elders/listening/win.webp";
         this.playSoundService.playWin2()
       break;
     }

@@ -401,7 +401,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('/assets/lingobot/home/testar_pergaminho.jpg');
+  background-image: url('/assets/lingobot/home/testar_pergaminho.webp');
   background-size: cover; /* A imagem cobrirá toda a tela */
   background-position: center;
   background-repeat: no-repeat;
@@ -465,7 +465,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('/assets/lingobot/pergaminho.png');
+  background-image: url('/assets/lingobot/pergaminho.webp');
   background-size: cover; /* A imagem cobrirá toda a tela */
   background-position: center;
   background-repeat: no-repeat;

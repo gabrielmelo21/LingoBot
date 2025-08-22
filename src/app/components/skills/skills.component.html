@@ -2,38 +2,58 @@
 
   <!-- Skill: Listening -->
   <div class="skill-card">
-    <img src="assets/lingobot/skills/listening.png" alt="Listening" class="skill-image">
+    <img src="assets/lingobot/skills/listening.webp" alt="Listening" class="skill-image">
     <div class="skill-info">
       <h4 class="skill-name">Listening</h4>
-      <p class="skill-level">Lv. {{   this.listening  }}</p>
+      <div class="skill-level-display">
+        <img src="assets/lingobot/levels/lv.webp" alt="Level" class="skill-level-icon">
+        <ng-container *ngFor="let imagePath of getSkillLevelImagePaths(this.listening)">
+          <img [src]="imagePath" alt="Level Number" class="skill-level-icon">
+        </ng-container>
+      </div>
     </div>
   </div>
 
   <!-- Skill: Reading -->
   <div class="skill-card">
-    <img src="assets/lingobot/skills/reading.png" alt="Reading" class="skill-image">
+    <img src="assets/lingobot/skills/reading.webp" alt="Reading" class="skill-image">
     <div class="skill-info">
       <h4 class="skill-name">Reading</h4>
-      <p class="skill-level">Lv. {{   this.reading }}</p>
+      <div class="skill-level-display">
+        <img src="assets/lingobot/levels/lv.webp" alt="Level" class="skill-level-icon">
+        <ng-container *ngFor="let imagePath of getSkillLevelImagePaths(this.reading)">
+          <img [src]="imagePath" alt="Level Number" class="skill-level-icon">
+        </ng-container>
+      </div>
     </div>
   </div>
 
   <!-- Skill: Writing -->
   <div class="skill-card">
-    <img  src="assets/lingobot/skills/writing.png" alt="Writing" class="skill-image">
+    <img  src="assets/lingobot/skills/writing.webp" alt="Writing" class="skill-image">
     <div class="skill-info">
       <h4 class="skill-name">Writing</h4>
-      <p class="skill-level">Lv. {{ this.writing }}</p>
+      <div class="skill-level-display">
+        <img src="assets/lingobot/levels/lv.webp" alt="Level" class="skill-level-icon">
+        <ng-container *ngFor="let imagePath of getSkillLevelImagePaths(this.writing)">
+          <img [src]="imagePath" alt="Level Number" class="skill-level-icon">
+        </ng-container>
+      </div>
 
     </div>
   </div>
 
   <!-- Skill: Speaking -->
   <div class="skill-card">
-    <img  src="assets/lingobot/skills/speaking.png" alt="Speaking" class="skill-image">
+    <img  src="assets/lingobot/skills/speaking.webp" alt="Speaking" class="skill-image">
     <div class="skill-info">
       <h4 class="skill-name">Speaking</h4>
-      <p class="skill-level">Lv. {{ speaking }}</p>
+      <div class="skill-level-display">
+        <img src="assets/lingobot/levels/lv.webp" alt="Level" class="skill-level-icon">
+        <ng-container *ngFor="let imagePath of getSkillLevelImagePaths(this.speaking)">
+          <img [src]="imagePath" alt="Level Number" class="skill-level-icon">
+        </ng-container>
+      </div>
     </div>
   </div>
 

@@ -12,7 +12,7 @@
   <div class="video-container">
     <!-- Loading por cima -->
     <div class="loading-spinner" *ngIf="loading">
-      <img src="assets/lingobot/menu-icons/lingobot-energy-on.png" alt="Loading" />
+      <img src="assets/lingobot/menu-icons/lingobot-energy-on.webp" alt="Loading" />
     </div>
 
     <!-- Vídeo ao fundo -->
@@ -22,7 +22,7 @@
       playsinline
       preload="auto"
       muted
-      poster="assets/lingobot/main-animation/poster.jpg"
+      poster="assets/lingobot/main-animation/poster.webp"
       class="background-video"
     >
       <source src="assets/lingobot/main-animation/mainVideo-compress.mp4" type="video/mp4" />
@@ -30,7 +30,7 @@
   </div>
   <!-- INDICADOR DO ANDAR ATUAL -->
   <div class="tabua">
-    <img src="assets/lingobot/menu-icons/floor-indicator-icon.png">
+    <img src="assets/lingobot/menu-icons/floor-indicator-icon.webp">
     <h3> N° {{ andarAtual }}</h3>
   </div>
   <!-- MENU slider -->
@@ -67,7 +67,7 @@
       <!-- ARROW DOWN -->
     <div class="commands-group">
       <div class="command" (click)="command('down')" [ngClass]="{'disabled': isDownArrowDisabled}" [style.pointerEvents]="isDownArrowDisabled ? 'none' : 'auto'">
-        <img src="assets/lingobot/menu-icons/arrow_down.png"
+        <img src="assets/lingobot/menu-icons/arrow_down.webp"
              class="img-command">
       </div>
 
@@ -82,7 +82,7 @@
 
     <!-- ARROW UP -->
       <div class="command" (click)="command('up')" [ngClass]="{'disabled': isUpArrowDisabled}" [style.pointerEvents]="isUpArrowDisabled ? 'none' : 'auto'">
-        <img src="assets/lingobot/menu-icons/arrow_up.png" class="img-command">
+        <img src="assets/lingobot/menu-icons/arrow_up.webp" class="img-command">
       </div>
 
     </div> <!-- commands group -->

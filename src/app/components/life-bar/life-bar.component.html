@@ -1,12 +1,12 @@
 
 <div class="battery-bars"  >
-  <img src="assets/lingobot/lingobot-icon.png" class="battery-icon">
+  <img src="assets/lingobot/menu-icons/lingobot-icon.webp" class="battery-icon">
 
   <div class="battery-bar-container">
     <img *ngFor="let bar of hpArray; let i = index"
          [src]="i < currentHp
-           ? 'assets/lingobot/menu-icons/battery-on.png'
-           : 'assets/lingobot/menu-icons/battery-off.png'"
+           ? 'assets/lingobot/menu-icons/battery-on.webp'
+           : 'assets/lingobot/menu-icons/battery-off.webp'"
          class="battery-bar-img">
   </div>
 </div>

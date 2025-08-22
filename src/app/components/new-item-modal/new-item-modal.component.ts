@@ -45,19 +45,19 @@ export class NewItemModalComponent implements OnInit {
 
     switch (this.item?.rarity?.toLowerCase()) {
       case 'common':
-        this.itemImgUrl = 'assets/lingobot/itens/background-common.png';
+        this.itemImgUrl = 'assets/lingobot/itens/background-common.webp';
         break;
       case 'uncommon':
-        this.itemImgUrl = 'assets/lingobot/itens/background-uncommon.png';
+        this.itemImgUrl = 'assets/lingobot/itens/background-uncommon.webp';
         break;
       case 'rare':
-        this.itemImgUrl = 'assets/lingobot/itens/background-rare.png';
+        this.itemImgUrl = 'assets/lingobot/itens/background-rare.webp';
         break;
       case 'epic':
-        this.itemImgUrl = 'assets/lingobot/itens/background-epic.png';
+        this.itemImgUrl = 'assets/lingobot/itens/background-epic.webp';
         break;
       case 'legendary':
-        this.itemImgUrl = 'assets/lingobot/itens/background-legendary.png';
+        this.itemImgUrl = 'assets/lingobot/itens/background-legendary.webp';
         break;
     }
   }

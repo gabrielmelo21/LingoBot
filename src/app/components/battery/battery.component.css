@@ -98,21 +98,21 @@
 .content {
   height: 120vh !important;
   width: 100% !important;
-  background-image: url('/assets/lingobot/lingobot-wake-up/1.png') !important;
+  background-image: url('/assets/lingobot/lingobot-wake-up/1.webp') !important;
   background-size: cover;
   background-position: center;
 }
 
 .content.battery-low {
-  background-image: url('/assets/lingobot/lingobot-wake-up/1.png') !important;
+  background-image: url('/assets/lingobot/lingobot-wake-up/1.webp') !important;
 }
 
 .content.battery-medium {
-  background-image: url('/assets/lingobot/lingobot-wake-up/2.png') !important;
+  background-image: url('/assets/lingobot/lingobot-wake-up/2.webp') !important;
 }
 
 .content.battery-high {
-  background-image: url('/assets/lingobot/lingobot-wake-up/3.png') !important;
+  background-image: url('/assets/lingobot/lingobot-wake-up/3.webp') !important;
 }
 
 .command-glass img {

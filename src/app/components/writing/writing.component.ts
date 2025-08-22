@@ -39,7 +39,7 @@ export class WritingComponent   {
   progress: number = 0; // de 0 a 100
   rightOrWrongAnswer: boolean = false;
   quizSession: boolean = false;
-  caminhoImagem: string = 'assets/lingobot/elders/writing/pensando.png';
+  caminhoImagem: string = 'assets/lingobot/elders/writing/pensando.webp';
   postMission: boolean = false;
   questionTitle: string = '';
   srcExercises: string = '';
@@ -287,14 +287,14 @@ export class WritingComponent   {
       this.playSoundService.playWin2()
       this.progress += 10;
       this.updateProgress(this.progress,100)
-      this.caminhoImagem = 'assets/lingobot/elders/writing/acertou.png';
+      this.caminhoImagem = 'assets/lingobot/elders/writing/acertou.webp';
       this.dialog = 5;
       this.startAnimation()
 
     }else{
       this.lifeBarComponent.onWrongAnswer();
       this.playSoundService.playErrorQuestion();
-      this.caminhoImagem = 'assets/lingobot/elders/writing/explicando.png';
+      this.caminhoImagem = 'assets/lingobot/elders/writing/explicando.webp';
       this.dialog = 6;
       this.startAnimation()
     }
@@ -380,12 +380,12 @@ export class WritingComponent   {
       this.playSoundService.playWinSound()
       this.postMission = true;
       this.dialog = 7
-      this.caminhoImagem = 'assets/lingobot/elders/writing/finish.png';
+      this.caminhoImagem = 'assets/lingobot/elders/writing/finish.webp';
 
       this.rewardService.giveUserRewards(this.jackpot, 'writing');
 
     }else{
-    this.caminhoImagem = 'assets/lingobot/elders/writing/pensando.png';
+    this.caminhoImagem = 'assets/lingobot/elders/writing/pensando.webp';
     this.rightOrWrongAnswer = false;
     this.dialog = 4
     const exercicio = this.randomExercise();

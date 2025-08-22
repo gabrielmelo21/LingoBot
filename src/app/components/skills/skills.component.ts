@@ -28,6 +28,11 @@ export class SkillsComponent implements OnInit {
     });
   }
 
+  getSkillLevelImagePaths(level: any): string[] {
+    const levelStr = level.toString();
+    return levelStr.split('').map((digit: string) => `assets/lingobot/levels/${digit}.webp`);
+  }
+
 
 }
 

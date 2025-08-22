@@ -14,11 +14,11 @@
 
   <div class="currency-section">
     <div class="currency-item gold">
-      <img src="assets/lingobot/menu-icons/strike.png" alt="Gold" class="currency-icon">
+      <img src="assets/lingobot/menu-icons/strike.webp" alt="Gold" class="currency-icon">
       <span class="currency-amount"> {{ timersService.getStrikes() }}</span>
     </div>
     <div class="currency-item gems">
-      <img src="assets/lingobot/itens/gemas.png" alt="Gems" class="currency-icon">
+      <img src="assets/lingobot/itens/gemas.webp" alt="Gems" class="currency-icon">
       <span class="currency-amount"> {{ timersService.getMissionsData().rewardPerChest }}</span>
     </div>
   </div>
@@ -81,7 +81,7 @@
 
 
   <div  *ngIf="this.modal" class="x-position center-element" (click)="openQuestModal()">
-    <img src="assets/lingobot/menu-icons/x.png" class="x">
+    <img src="assets/lingobot/menu-icons/x.webp" class="x">
   </div>
 
 
@@ -90,14 +90,14 @@
 
 <!-- Reward Alert -->
 <div *ngIf="showRewardAlert" class="reward-alert" [ngClass]="rewardAlertClass">
-  <img src="assets/lingobot/itens/gemas.png" alt="Gemas" class="gem-icon">
+  <img src="assets/lingobot/itens/gemas.webp" alt="Gemas" class="gem-icon">
   <span class="reward-text">+ {{ currentRewardAmount }}</span>
 </div>
 
 
 <img
   *ngIf="this.modal"
-  src="assets/lingobot/menu-icons/holograma.png"
+  src="assets/lingobot/menu-icons/holograma.webp"
   class="projetor entrar-da-esquerda"
   [ngClass]="{'sair-para-esquerda': animandoSaida}"
   (animationend)="onAnimationEnd($event)"

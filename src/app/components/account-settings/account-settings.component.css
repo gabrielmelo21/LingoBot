@@ -180,4 +180,16 @@ h2 {
   margin-top: 5%;
 }
 
+.level-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px !important;
+}
+
+.level-icon {
+  height: 25px; /* Adjust as needed */
+  margin: 0 2px; /* Space between images */
+}
+
 

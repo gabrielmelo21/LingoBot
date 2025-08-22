@@ -2,13 +2,45 @@
 
 
 <!-- Botão voltar -->
-<img src="assets/lingobot/menu-icons/back.png" class="back-button" (click)="back();" >
+<img src="assets/lingobot/menu-icons/back.webp" class="back-button" (click)="back();" >
 
 
 <!-- Upgrade Quest button
-<img src="assets/lingobot/tools-icons/tablet-icon.png" class="quest-upgrade-button"  (click)="checkQuest()" >
+<img src="assets/lingobot/tools-icons/tablet-icon.webp" class="quest-upgrade-button"  (click)="checkQuest()" >
 -->
 
+
+
+
+<!-- Colocar Levels aqui -->
+<div class="level-display">
+  <img src="assets/lingobot/levels/lv.webp" alt="Level" class="level-icon">
+  <ng-container *ngFor="let imagePath of getLevelImagePaths()">
+    <img [src]="imagePath" alt="Level Number" class="level-icon">
+  </ng-container>
+</div>
+
+
+
+
+
+
+<!-- hand-click.component.html -->
+<div class="hand-container" (click)="onHandClick()" *ngIf="isVisible">
+  <img
+    src="assets/lingobot/menu-icons/gloves.webp"
+    alt="Hand pointing"
+    class="hand-image"
+    [class.clicking]="isClicking">
+
+  <!-- Ondas dinâmicas -->
+  <div
+    *ngFor="let wave of waves; "
+    class="wave"
+    [class.wave-delay-1]="waves.indexOf(wave) === 1"
+    [class.wave-delay-2]="waves.indexOf(wave) === 2">
+  </div>
+</div>
 
 
 
@@ -17,7 +49,7 @@
 <ng-container *ngIf="checkQuestModal">
   <button (click)="checkQuest()" class="fechar-btn">✕</button>
 
-  <img src="assets/lingobot/paper.png" class="quest-check">
+  <img src="assets/lingobot/paper.webp" class="quest-check">
 
 
   <div class="quest-check-text">
@@ -47,7 +79,7 @@
 <ng-container *ngIf="upgradeModal">
   <button (click)="openUpgradeModal()" class="fechar-btn">✕</button>
 
-  <img src="assets/lingobot/paper.png" class="quest-check">
+  <img src="assets/lingobot/paper.webp" class="quest-check">
 
 
   <div class="quest-check-text" style="top: 27vh !important;">
@@ -61,10 +93,10 @@
   </div>
 
   <div class="upgrade-requirements">
-    <img src="assets/lingobot/itens/gemas.png" class="gemas">
+    <img src="assets/lingobot/itens/gemas.webp" class="gemas">
     <span>{{this.gemasToUpgrade}}</span>
     <br><br>
-    <img src="assets/lingobot/itens/gold.png" class="coins">
+    <img src="assets/lingobot/itens/gold.webp" class="coins">
     <span>{{ this.coinsToUpgrade }}</span>
   </div>
 
@@ -143,7 +175,7 @@
         <!-- ÍCONE DE STATUS (check ou X) -->
         <div class="requisito-status">
           <img
-            [src]="'assets/lingobot/menu-icons/' + (requisito.completo ? 'check.png' : 'x.png')"
+            [src]="'assets/lingobot/menu-icons/' + (requisito.completo ? 'check.webp' : 'x.webp')"
             [alt]="requisito.completo ? 'Completo' : 'Não completo'"
           />
           <span [class.riscado]="requisito.completo">{{ requisito.nome }}</span>
@@ -158,7 +190,7 @@
   <!-- Upgrade Quest button
 
     <img
-    [src]="resultadoPedagio.podeSubir ? 'assets/lingobot/menu-icons/upgrade-tower.png' : 'assets/lingobot/menu-icons/upgrade-tower-off.png'"
+    [src]="resultadoPedagio.podeSubir ? 'assets/lingobot/menu-icons/upgrade-tower.webp' : 'assets/lingobot/menu-icons/upgrade-tower-off.webp'"
     class="upgrade-button"
     [class.floating-button]="resultadoPedagio.podeSubir"
     (click)="resultadoPedagio.podeSubir && openUpgradeModal()"
@@ -167,7 +199,7 @@
 
   -->
   <img
-    [src]="resultadoPedagio.podeSubir ? 'assets/lingobot/menu-icons/upgrade-tower.png' : 'assets/lingobot/menu-icons/upgrade-tower-off.png'"
+    [src]="resultadoPedagio.podeSubir ? 'assets/lingobot/menu-icons/upgrade-tower.webp' : 'assets/lingobot/menu-icons/upgrade-tower-off.webp'"
     class="upgrade-button"
     [class.floating-button]="resultadoPedagio.podeSubir"
     (click)="resultadoPedagio.podeSubir && openUpgradeModal()"
@@ -177,14 +209,14 @@
 
 
   <div  *ngIf="this.modal" class="x-position center-element" (click)="openQuestModal()">
-    <img src="assets/lingobot/menu-icons/x.png" class="x">
+    <img src="assets/lingobot/menu-icons/x.webp" class="x">
   </div>
 </div>
 
 
 <img
   *ngIf="this.modal"
-  src="assets/lingobot/menu-icons/holograma.png"
+  src="assets/lingobot/menu-icons/holograma.webp"
   class="projetor entrar-da-esquerda"
   [ngClass]="{'sair-para-esquerda': animandoSaida}"
   (animationend)="onAnimationEnd($event)"

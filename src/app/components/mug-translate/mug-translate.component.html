@@ -1,7 +1,7 @@
 <!-- ÍCONE FLUTUANTE -->
 <img
   (click)="openTablet()"
-  src="assets/lingobot/tools-icons/tablet-icon.png"
+  src="assets/lingobot/menu-icons/tablet-icon.webp"
   class="float-modal-button"
   [ngStyle]="{
     top: top,
@@ -16,7 +16,7 @@
 <!-- MODAL -->
 <div *ngIf="isTabletOpen" class="modal-overlay" (click)="closeTablet()">
   <div class="modal-content" (click)="$event.stopPropagation()">
-    <img src="assets/lingobot/tools-icons/tablet.png" class="tablet-img" />
+    <img src="assets/lingobot/menu-icons/tablet.webp" class="tablet-img" />
 
     <!-- TRANSLATOR CONTAINER -->
     <div class="translator-container">
@@ -35,7 +35,7 @@
         <!-- Loading State -->
         <div class="loading-container"  *ngIf="isLoading">
           <div class="loading-spinner">
-            <img src="assets/lingobot/menu-icons/lingobot-energy-on.png" alt="Loading" />
+            <img src="assets/lingobot/menu-icons/lingobot-energy-on.webp" alt="Loading" />
           </div>
         </div>
 

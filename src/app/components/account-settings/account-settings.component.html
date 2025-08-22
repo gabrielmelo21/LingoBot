@@ -10,7 +10,12 @@
   <div class="content">
  
   <div class="user-info-centered" style="margin-top: 40px !important;">
-    <h4 style="font-size: 15pt !important;font-weight:bold;color:goldenrod;margin: 0px !important;">  Lv.{{ userLevel  }}</h4>
+    <div class="level-display">
+      <img src="assets/lingobot/levels/lv.webp" alt="Level" class="level-icon">
+      <ng-container *ngFor="let imagePath of getLevelImagePaths()">
+        <img [src]="imagePath" alt="Level Number" class="level-icon">
+      </ng-container>
+    </div>
   </div>
 
   <!-- Barra de progresso -->
@@ -21,7 +26,7 @@
       </div>
     </div>
     <p style="display: flex; align-items: center; gap: 5px; justify-content: center;">
-      <img src="assets/lingobot/icons/lxp.png" width="10%" height="10%">
+      <img src="assets/lingobot/menu-icons/xp.webp" width="10%" height="10%">
       {{ userLingoEXP }} / {{ expNeeded }}
     </p>
   </div>
@@ -46,7 +51,7 @@
 
 
   <div class="center-element x-position"  (click)="openUserStats()">
-     <img src="assets/lingobot/menu-icons/x.png" class="x">
+     <img src="assets/lingobot/menu-icons/x.webp" class="x">
   </div>
 
 
@@ -57,7 +62,7 @@
 
 <img
      *ngIf="this.modal"
-     src="assets/lingobot/menu-icons/holograma.png"
+     src="assets/lingobot/menu-icons/holograma.webp"
      class="projetor entrar-da-esquerda"
      [ngClass]="{'sair-para-esquerda': animandoSaida}"
      (animationend)="onAnimationEnd($event)"

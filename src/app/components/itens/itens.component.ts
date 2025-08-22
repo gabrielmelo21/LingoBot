@@ -67,8 +67,8 @@ export class ItensComponent implements OnInit {
 
   getGemImage(rarity: string): string {
     return this.isCommonToRare(rarity)
-      ? 'assets/lingobot/itens/gold.png'
-      : 'assets/lingobot/itens/gemas.png';
+      ? 'assets/lingobot/itens/gold.webp'
+      : 'assets/lingobot/itens/gemas.webp';
   }
 
 

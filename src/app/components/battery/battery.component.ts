@@ -63,8 +63,8 @@ export class BatteryComponent implements OnInit{
   }
   setEnergyImage() {
     this.energyImagePath = this.currentBattery > 0
-      ? 'assets/lingobot/menu-icons/lingobot-energy-on.png'
-      : 'assets/lingobot/menu-icons/lingobot-energy-off.png';
+      ? 'assets/lingobot/menu-icons/lingobot-energy-on.webp'
+      : 'assets/lingobot/menu-icons/lingobot-energy-off.webp';
   }
 
 

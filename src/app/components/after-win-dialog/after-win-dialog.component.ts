@@ -11,7 +11,7 @@ import {RewardService} from "../../services/reward.service";
 export class AfterWinDialogComponent implements OnInit{
    
 chestWasOpen: boolean = false;
-chestImage: string = "assets/lingobot/itens/chest-closed.png";
+chestImage: string = "assets/lingobot/itens/chest-closed.webp";
 
 
    constructor(
@@ -44,7 +44,7 @@ openChest() {
   if (!this.chestWasOpen) {
         this.rewardService.giveUserItem();
     this.chestWasOpen = true;
-    this.chestImage = "assets/lingobot/itens/chest-open.png";
+    this.chestImage = "assets/lingobot/itens/chest-open.webp";
   }
 }
 

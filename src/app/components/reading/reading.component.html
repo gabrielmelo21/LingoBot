@@ -14,7 +14,7 @@
 <div class="video-container">
   <!-- Loading por cima -->
   <div class="loading-spinner" *ngIf="loading">
-    <img src="assets/lingobot/menu-icons/lingobot-energy-on.png" alt="Loading" />
+    <img src="assets/lingobot/menu-icons/lingobot-energy-on.webp" alt="Loading" />
   </div>
 
   <!-- Vídeo ao fundo -->
@@ -22,7 +22,7 @@
     #videoPlayer
     playsinline
     preload="auto"
-    poster="assets/lingobot/cenas_na_masmorra/reading/poster.jpg"
+    poster="assets/lingobot/cenas_na_masmorra/reading/poster.webp"
     class="background-video"
   >
 
@@ -75,14 +75,14 @@
   <div class="dialog-box"  *ngIf="this.dialogService.isActive && !this.dialogService.isFinalDialog">
     <div class="dialog-controls">
       <img
-        src="assets/lingobot/menu-icons/back.png"
+        src="assets/lingobot/menu-icons/back.webp"
         alt="Voltar"
         class="arrow-button left"
         (click)="prev(); "
       />
 
       <img
-        src="assets/lingobot/menu-icons/right.png"
+        src="assets/lingobot/menu-icons/right.webp"
         alt="Avançar"
         class="arrow-button right"
         (click)="next(); "
@@ -113,7 +113,7 @@
     ></textarea>
 
       <button type="button" (click)="enviarResposta(textoInput.value); " class="submit-button">
-        <img src="assets/lingobot/menu-icons/confirm.png" alt="Confirmar" />
+        <img src="assets/lingobot/menu-icons/confirm.webp" alt="Confirmar" />
       </button>
     </form>
   </div>
@@ -128,7 +128,7 @@
   <app-after-win-dialog
     *ngIf="hidePosWin"
     [jackpot]=this.jackpot
-    [elder_img]="'assets/lingobot/elders/reading/win.png'"
+    [elder_img]="'assets/lingobot/elders/reading/win.webp'"
     [reward_xp]="this.finalXpReward"
     [reward_coins]="this.finalGoldReward">
   </app-after-win-dialog>

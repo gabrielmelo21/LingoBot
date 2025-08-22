@@ -17,25 +17,25 @@
 
       <ul>
         <li>
-          <img src="assets/lingobot/menu-icons/premium.png" />
+          <img src="assets/lingobot/menu-icons/premium.webp" />
           <span *ngIf="menuItems[selectedIndex].free">Free</span>
           <span *ngIf="!menuItems[selectedIndex].free" style="color: goldenrod !important;">Premium</span>
         </li>
         <li>
-          <img src="assets/lingobot/icons/lxp.png" />
+          <img src="assets/lingobot/menu-icons/xp.webp" />
           <span>{{ menuItems[selectedIndex].questXpReward || 'XP indefinido' }}</span>
         </li>
         <li>
-          <img src="assets/lingobot/itens/gold.png" />
+          <img src="assets/lingobot/itens/gold.webp" />
           <span>{{ menuItems[selectedIndex].questGoldReward || '0' }}</span>
         </li>
         <li>
-          <img src="assets/lingobot/menu-icons/dice.png" />
+          <img src="assets/lingobot/menu-icons/dice.webp" />
           <span>{{ menuItems[selectedIndex].questJackpotPercentage || '0%' }} <br>
             <b style="font-size: 10pt !important;">(Chance de dobrar os prêmios)</b></span>
         </li>
         <li>
-          <img src="assets/lingobot/menu-icons/brain.png" />
+          <img src="assets/lingobot/menu-icons/brain.webp" />
           <span>{{ menuItems[selectedIndex].questStudyGoal || 'Melhorar o Inglês' }}</span>
         </li>
 
@@ -44,12 +44,12 @@
       <!-- NOVA DIV para bateria + botão -->
       <div class="bottom-action-bar">
         <div class="battery-display center-element">
-          <img src="assets/lingobot/menu-icons/battery-on.png" alt="Energia" />
+          <img src="assets/lingobot/menu-icons/battery-on.webp" alt="Energia" />
           <span>-1</span>
         </div>
 
         <img
-          src="assets/lingobot/menu-icons/start-mission.png"
+          src="assets/lingobot/menu-icons/start-mission.webp"
           alt="Start Mission"
           [class.bounce]="isBouncing"
           class="start-mission-button"
@@ -110,7 +110,7 @@
 
 
   <div class="center-element x-position"  (click)="openSelectQuest()">
-    <img src="assets/lingobot/menu-icons/x.png" class="x">
+    <img src="assets/lingobot/menu-icons/x.webp" class="x">
   </div>
 
 </div>
@@ -118,7 +118,7 @@
 
 <img
   *ngIf="this.modal"
-  src="assets/lingobot/menu-icons/holograma.png"
+  src="assets/lingobot/menu-icons/holograma.webp"
   class="projetor entrar-da-esquerda"
   [ngClass]="{'sair-para-esquerda': animandoSaida}"
   (animationend)="onAnimationEnd($event)"

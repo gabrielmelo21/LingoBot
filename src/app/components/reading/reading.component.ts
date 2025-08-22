@@ -201,7 +201,7 @@ export class ReadingComponent implements AfterViewInit{
   currentTranslate: string = '';
   sentencePairs: SentencePair[] = [];
   dialog: number = 0 ;
-  elder: string = "assets/lingobot/elders/reading/parado.png";
+  elder: string = "assets/lingobot/elders/reading/parado.webp";
   srcExercises: string = '';
   finalGoldReward: number = this.jackpot?this.rewardService.getCurrentGoldReward()*2:this.rewardService.getCurrentGoldReward();
   finalXpReward: number = this.jackpot?this.rewardService.getCurrentXPReward()*2:this.rewardService.getCurrentXPReward();

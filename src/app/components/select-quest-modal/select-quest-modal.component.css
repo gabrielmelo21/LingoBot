@@ -97,6 +97,7 @@
   height: 26px;
   margin-right: 10px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  object-fit: contain;
 }
 
 .quest-infos li span {

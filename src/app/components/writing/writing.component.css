@@ -1,5 +1,5 @@
 .background-image {
-  background-image: url('/assets/lingobot/cenas_na_masmorra/writing/background.png');
+  background-image: url('/assets/lingobot/cenas_na_masmorra/writing/background.webp');
   position: fixed; /* Use fixed em vez de absolute para garantir cobertura total */
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@
 }
 /* Imagem de fundo principal - parede.png (mais atrás) */
 .background-wall {
-  background-image: url('/assets/lingobot/cenas_na_masmorra/writing/parede.png');
+  background-image: url('/assets/lingobot/cenas_na_masmorra/writing/parede.webp');
   position: fixed;
   top: 0;
   left: 0;
@@ -565,7 +565,7 @@
 }
 
 .dialog-baloon {
-  background-image: url('/assets/lingobot/cenas_na_masmorra/balao_right.png');
+  background-image: url('/assets/lingobot/cenas_na_masmorra/balao_right.webp');
   background-size: 100% 100%; /* Para cobrir todo o balão */
   background-repeat: no-repeat;
   padding: 30px 40px; /* Ajuste conforme o design do seu balão */

@@ -21,6 +21,11 @@ export class AccountSettingsComponent implements OnInit, OnDestroy{
 
 
   private sub!: Subscription;
+
+  getLevelImagePaths(): string[] {
+    const levelStr = this.userLevel.toString();
+    return levelStr.split('').map(digit => `assets/lingobot/levels/${digit}.webp`);
+  }
   modal: boolean = false;
   isClosing: boolean = false;
   animandoSaida = false;
@@ -73,25 +78,25 @@ export class AccountSettingsComponent implements OnInit, OnDestroy{
   difficulties = [
     {
       id: 'easy',
-      img: 'assets/lingobot/dificuldades/baby_bot.png',
+      img: 'assets/lingobot/dificuldades/baby_bot.webp',
       title: 'Baby Bot',
       description: 'Ideal para iniciantes, exercícios com inglês básico.'
     },
     {
       id: 'medium',
-      img: 'assets/lingobot/dificuldades/young_bot.png',
+      img: 'assets/lingobot/dificuldades/young_bot.webp',
       title: 'Young Bot',
       description: 'Um bom desafio. exercícios com inglês nível médio.'
     },
     {
       id: 'hard',
-      img: 'assets/lingobot/dificuldades/adult_bot.png',
+      img: 'assets/lingobot/dificuldades/adult_bot.webp',
       title: 'Adult Bot',
       description: 'Requer habilidade. exercícios com inglês intermediário e expressões'
     },
     {
       id: 'elder',
-      img: 'assets/lingobot/dificuldades/elder_bot.png',
+      img: 'assets/lingobot/dificuldades/elder_bot.webp',
       title: 'Elder Bot',
       description: 'Apenas para os Anciões. exercícios com inglês nativo.'
     },

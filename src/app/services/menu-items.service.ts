@@ -41,7 +41,7 @@ export class MenuItemsService {
         return [
           {
             free: true,
-            icon: 'assets/lingobot/quests-icons/writing-free.png',
+            icon: 'assets/lingobot/quests-icons/writing-free.webp',
             questTitle: 'The Correct Word',
             questDescription: 'Escolha a palavra certa tanto inglês/português ',
             questXpReward: this.rewardService.getCurrentXPReward() + 'XP',
@@ -52,7 +52,7 @@ export class MenuItemsService {
           },
           {
             free: false,
-            icon: 'assets/lingobot/quests-icons/theos-room-premium.png',
+            icon: 'assets/lingobot/quests-icons/theos-room-premium.webp',
             questTitle: "Theos' Room",
             questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
@@ -63,7 +63,7 @@ export class MenuItemsService {
           },
           {
             free: false,
-            icon: 'assets/lingobot/quests-icons/the-doors-secret.png',
+            icon: 'assets/lingobot/quests-icons/the-doors-secret.webp',
             questTitle: "The Door's Secret",
             questDescription: 'Descubra o Phrasal Verb correto para abrir as portas e ganhar prêmios',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
@@ -78,7 +78,7 @@ export class MenuItemsService {
         return [
           {
             free: true,
-            icon: 'assets/lingobot/quests-icons/reading-free.png',
+            icon: 'assets/lingobot/quests-icons/reading-free.webp',
             questTitle: 'The Secret Word',
             questDescription: 'Descubra a palavra passe para abrir o báu com prêmios.',
             questXpReward: this.rewardService.getCurrentXPReward() + 'XP',
@@ -89,7 +89,7 @@ export class MenuItemsService {
           },
           {
             free: false,
-            icon: 'assets/lingobot/quests-icons/theos-room-premium.png',
+            icon: 'assets/lingobot/quests-icons/theos-room-premium.webp',
             questTitle: "Theos' Room",
             questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
@@ -100,7 +100,7 @@ export class MenuItemsService {
           },
           {
             free: false,
-            icon: 'assets/lingobot/quests-icons/the-doors-secret.png',
+            icon: 'assets/lingobot/quests-icons/the-doors-secret.webp',
             questTitle: "The Door's Secret",
             questDescription: 'Descubra o Phrasal Verb correto para abrir as portas e ganhar prêmios',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
@@ -115,7 +115,7 @@ export class MenuItemsService {
         return [
           {
             free: true,
-            icon: 'assets/lingobot/quests-icons/listening-free.png',
+            icon: 'assets/lingobot/quests-icons/listening-free.webp',
             questTitle: 'Magic Gramophone',
             questDescription: 'Escute as frases do gramofone para abrir o portão',
             questXpReward: this.rewardService.getCurrentXPReward() + 'XP',
@@ -126,7 +126,7 @@ export class MenuItemsService {
           },
           {
             free: false,
-            icon: 'assets/lingobot/quests-icons/theos-room-premium.png',
+            icon: 'assets/lingobot/quests-icons/theos-room-premium.webp',
             questTitle: "Theos' Room",
             questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
@@ -137,7 +137,7 @@ export class MenuItemsService {
           },
           {
             free: false,
-            icon: 'assets/lingobot/quests-icons/the-doors-secret.png',
+            icon: 'assets/lingobot/quests-icons/the-doors-secret.webp',
             questTitle: "The Door's Secret",
             questDescription: 'Descubra o Phrasal Verb correto para abrir as portas e ganhar prêmios',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
@@ -152,7 +152,7 @@ export class MenuItemsService {
         return [
           {
             free: true,
-            icon: 'assets/lingobot/quests-icons/speaking-free.png',
+            icon: 'assets/lingobot/quests-icons/speaking-free.webp',
             questTitle: 'The right way to speak',
             questDescription: 'Escolha entre duas cartas a maneira correta de falar',
             questXpReward: this.rewardService.getCurrentXPReward() + 'XP',
@@ -163,7 +163,7 @@ export class MenuItemsService {
           },
           {
             free: false,
-            icon: 'assets/lingobot/quests-icons/theos-room-premium.png',
+            icon: 'assets/lingobot/quests-icons/theos-room-premium.webp',
             questTitle: "Theos' Room",
             questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
@@ -174,7 +174,7 @@ export class MenuItemsService {
           },
           {
             free: false,
-            icon: 'assets/lingobot/quests-icons/the-doors-secret.png',
+            icon: 'assets/lingobot/quests-icons/the-doors-secret.webp',
             questTitle: "The Door's Secret",
             questDescription: 'Descubra o Phrasal Verb correto para abrir as portas e ganhar prêmios',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',

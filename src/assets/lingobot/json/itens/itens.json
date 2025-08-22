@@ -4,7 +4,7 @@
     "dropRate": 0.50,
     "gemsValue": 10,
     "rarity": "common",
-    "itemSrc": "assets/lingobot/itens/gear_common.png",
+    "itemSrc": "assets/lingobot/itens/gear_common.webp",
     "describe": "Vale algum dinheiro."
   },
   {
@@ -12,7 +12,7 @@
     "dropRate": 0.40,
     "gemsValue": 30,
     "rarity": "uncommon",
-    "itemSrc": "assets/lingobot/itens/gear_uncommon.png",
+    "itemSrc": "assets/lingobot/itens/gear_uncommon.webp",
     "describe": "Vale algum dinheiro."
   },
   {
@@ -20,7 +20,7 @@
     "dropRate": 0.30,
     "gemsValue": 50,
     "rarity": "rare",
-    "itemSrc": "assets/lingobot/itens/gear_rare.png",
+    "itemSrc": "assets/lingobot/itens/gear_rare.webp",
     "describe": "Vale algum dinheiro."
   },
   {
@@ -28,7 +28,7 @@
     "dropRate": 0.20,
     "gemsValue": 10,
     "rarity": "epic",
-    "itemSrc": "assets/lingobot/itens/gear_epic.png",
+    "itemSrc": "assets/lingobot/itens/gear_epic.webp",
     "describe": "Vale algum dinheiro."
   },
   {
@@ -36,7 +36,7 @@
     "dropRate": 0.10,
     "gemsValue": 20,
     "rarity": "legendary",
-    "itemSrc": "assets/lingobot/itens/gear_legendary.png",
+    "itemSrc": "assets/lingobot/itens/gear_legendary.webp",
     "describe": "Vale algum dinheiro."
   },
   {
@@ -44,7 +44,7 @@
     "dropRate": 0.01,
     "gemsValue": 10,
     "rarity": "legendary",
-    "itemSrc": "assets/lingobot/itens/og_ticket.png",
+    "itemSrc": "assets/lingobot/itens/og_ticket.webp",
     "describe": "OG ticket é para os pioneiros."
   },
   {
@@ -52,7 +52,7 @@
     "dropRate": 0.01,
     "gemsValue": 50,
     "rarity": "legendary",
-    "itemSrc": "assets/lingobot/itens/beta_tester_ticket.png",
+    "itemSrc": "assets/lingobot/itens/beta_tester_ticket.webp",
     "describe": "Ticket dos escolhidos"
   }
 ]

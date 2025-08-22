@@ -24,9 +24,9 @@
     </div>
 
   </div>
-   <img *ngIf="dialog == 1" class="character-img" src="assets/lingobot/elders/writing/parado.png">
-   <img *ngIf="dialog == 2" class="character-img" src="assets/lingobot/elders/writing/acertou.png">
-   <img *ngIf="dialog == 3" class="character-img" src="assets/lingobot/elders/writing/parado.png">
+   <img *ngIf="dialog == 1" class="character-img" src="assets/lingobot/elders/writing/parado.webp">
+   <img *ngIf="dialog == 2" class="character-img" src="assets/lingobot/elders/writing/acertou.">
+   <img *ngIf="dialog == 3" class="character-img" src="assets/lingobot/elders/writing/parado.webp">
 
 
 
@@ -50,18 +50,18 @@
 
 
 
- 
+
 
 <!--  *ngIf="quizSession"
 
 <div class="battery-bars" *ngIf="quizSession">
-  <img src="assets/lingobot/cenas_na_masmorra/speaking/lingobot.png" class="battery-icon">
+  <img src="assets/lingobot/cenas_na_masmorra/speaking/lingobot.webp" class="battery-icon">
 
   <div class="battery-bar-container">
     <img *ngFor="let bar of hpArray; let i = index"
          [src]="i < currentHp
-           ? 'assets/lingobot/menu-icons/battery-on.png'
-           : 'assets/lingobot/menu-icons/battery-off.png'"
+           ? 'assets/lingobot/menu-icons/battery-on.webp'
+           : 'assets/lingobot/menu-icons/battery-off.webp'"
          class="battery-bar-img">
   </div>
 </div>
@@ -105,7 +105,7 @@
    <div class="response-button-container">
      <div class="alternativas" *ngIf="!rightOrWrongAnswer">
        <img
-         src="assets/lingobot/menu-icons/confirm.png"
+         src="assets/lingobot/menu-icons/confirm.webp"
          alt="Confirm"
          class="action-button"
          (click)="corrigir()"
@@ -117,21 +117,21 @@
        <!-- se acertou botao next question, se errou, tentar novamente -->
 
        <img
-         src="assets/lingobot/menu-icons/next_question.png"
+         src="assets/lingobot/menu-icons/next_question.webp"
          alt="Next Question"
          class="action-button"
          (click)="newExercise()"
          *ngIf="this.dialog == 5">
 
        <img
-         src="assets/lingobot/menu-icons/try_again.png"
+         src="assets/lingobot/menu-icons/try_again.webp"
          alt="Try Again"
          class="action-button"
          (click)="newExercise()"
          *ngIf="this.dialog == 6">
 
        <img
-         src="assets/lingobot/menu-icons/finish.png"
+         src="assets/lingobot/menu-icons/finish.webp"
          alt="Finalizar"
          class="action-button"
          (click)="goHome()"
@@ -202,9 +202,9 @@
 
 
 
-  
+
  </div>
 
 
 
- 
+
