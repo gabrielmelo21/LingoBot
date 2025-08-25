@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, map, Observable, tap, throwError} from "rxjs";
+import {catchError, interval, map, Observable, Subscription, tap, throwError} from "rxjs";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {jwtDecode} from "jwt-decode";
 import {HttpResponse} from "@capacitor/core";
+import {KeepAPIService} from "./keep-api.service";
 
 interface UserData {
   id: string;
@@ -23,9 +24,44 @@ interface UserData {
 })
 export class MainAPIService {
   private readonly API = 'https://lingobot-api.onrender.com';
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private keepApiService: KeepAPIService) {}
 
+
+
+
+  async callGeminiStructured(prompt: string): Promise<any> {
+    try {
+      // Garante que a API está acordada antes da requisição
+      await this.keepApiService.ensureApiAwake();
+
+      const body = {
+        text: `Responda APENAS com o conteúdo JSON, sem comentários ou marcadores como \`\`\`json. ${prompt}`
+      };
+
+      const response = await this.http.post(`${this.API}/ai/gemini`, body, {
+        responseType: 'text'
+      }).toPromise();
+
+      const cleanedResponse = (response as string)
+        .replace(/```json/g, '')
+        .replace(/```/g, '')
+        .trim();
+
+      return JSON.parse(cleanedResponse);
+
+    } catch (error) {
+      console.error('Error processing Gemini response:', error);
+      return { error: 'Failed to process' };
+    }
   }
+
+
+
+
+
+
+
 
 
 
@@ -36,36 +72,6 @@ export class MainAPIService {
       responseType: 'text'  // Esperamos uma resposta em texto puro
     });
   }
-
-
-  async callGeminiStructured(prompt: string): Promise<any> {
-    try {
-      const body = {
-        text: `Responda APENAS com o conteúdo JSON, sem comentários ou marcadores como \`\`\`json. ${prompt}`
-      };
-
-      const response = await this.http.post(`${this.API}/ai/gemini`, body, {
-        responseType: 'text'
-      }).toPromise();
-
-      // Limpa a resposta removendo marcadores e whitespace
-      const cleanedResponse = (response as string)
-        .replace(/```json/g, '')
-        .replace(/```/g, '')
-        .trim();
-
-      return JSON.parse(cleanedResponse);
-
-    } catch (error) {
-      console.error('Error processing Gemini response:', error);
-      return {
-        error: 'Failed to process',
-      };
-    }
-  }
-
-
-
 
 
 

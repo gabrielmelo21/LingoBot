@@ -28,27 +28,8 @@
   padding: 0;
 }
 
-/* Para dispositivos móveis - ajustes específicos se necessário */
-@media screen and (max-width: 768px) {
-  .background-image {
-    /* Força altura mínima para cobrir toda a viewport */
-    min-height: 100vh;
-    min-height: 100dvh; /* Usa dynamic viewport height se suportado */
-  }
-}
 
-/* Para dispositivos muito altos ou muito largos, ajusta o comportamento */
-@media screen and (aspect-ratio > 16/9) {
-  .background-image {
-    background-size: auto 100vh; /* Ajusta altura primeiro em telas muito largas */
-  }
-}
 
-@media screen and (aspect-ratio < 9/16) {
-  .background-image {
-    background-size: 100vw auto; /* Ajusta largura primeiro em telas muito altas */
-  }
-}
 
 
 /* Container principal */
@@ -565,7 +546,7 @@
 }
 
 .dialog-baloon {
-  background-image: url('/assets/lingobot/cenas_na_masmorra/balao_right.webp');
+  background-image: url('/assets/lingobot/cenas_na_masmorra/balao_right.png');
   background-size: 100% 100%; /* Para cobrir todo o balão */
   background-repeat: no-repeat;
   padding: 30px 40px; /* Ajuste conforme o design do seu balão */

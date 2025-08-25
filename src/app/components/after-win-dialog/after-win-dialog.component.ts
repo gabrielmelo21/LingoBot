@@ -31,11 +31,16 @@ chestImage: string = "assets/lingobot/itens/chest-closed.webp";
       this.playSoundService.playPop();
     }, 1400); // 0.8s delay + 0.6s animação
 
-    // Som para o label de jackpot (aparece aos 1.4s, animação dura 0.6s)
+    // Som para o label de Level Up (aparece aos 1.4s, animação dura 0.6s)
+    setTimeout(() => {
+      this.playSoundService.playPop();
+    }, 2000); // 1.4s delay + 0.6s animação
+
+    // Som para o label de jackpot (aparece aos 2.0s, animação dura 0.6s)
     if (this.jackpot) {
       setTimeout(() => {
         this.playSoundService.playPop();
-      }, 2000); // 1.4s delay + 0.6s animação
+      }, 2600); // 2.0s delay + 0.6s animação
     }
   }
 
@@ -61,5 +66,6 @@ openChest() {
   @Input() reward_xp: number = 0;
   @Input() reward_coins: number = 0;
   @Input() dialogText: string = 'Parabéns, você venceu o desafio!';
+  @Input() leveledUpSkillIcon: string = 'assets/lingobot/skills/writing.webp'; // Default icon
 
 }

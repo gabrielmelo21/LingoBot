@@ -15,8 +15,13 @@
   </div>
 
   <div class="reward-label xp-label animate-xp">
-    <img src="assets/lingobot/menu-icons/xp.webp" alt="XP" />
+    <img src="assets/lingobot/menu-icons/level.webp" alt="XP" />
     <span>+{{ reward_xp }} XP</span>
+  </div>
+
+  <div class="reward-label level-up-label animate-level-up">
+    <img [src]="leveledUpSkillIcon" alt="Level Up" />
+    <span>Level Up!</span>
   </div>
 
   <div *ngIf="jackpot" class="reward-label jackpot-label animate-jackpot">
@@ -28,17 +33,17 @@
 <img class="character-img" [src]="elder_img" />
 
 
-<img 
-  [src]="chestImage" 
-  class="chest" 
-  [ngClass]="{'animate': !chestWasOpen}" 
-  (click)="openChest()" 
+<img
+  [src]="chestImage"
+  class="chest"
+  [ngClass]="{'animate': !chestWasOpen}"
+  (click)="openChest()"
 >
 
-<div 
-  class="finish-button"   
-  *ngIf="chestWasOpen" 
-  (click)="back();" 
+<div
+  class="finish-button"
+  *ngIf="chestWasOpen"
+  (click)="back();"
 >
   <img src="assets/lingobot/menu-icons/confirm.webp">
 </div>

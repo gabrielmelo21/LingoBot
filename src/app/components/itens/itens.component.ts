@@ -111,7 +111,7 @@ export class ItensComponent implements OnInit {
       }
 
 
-      this.authService.saveLocalDataOnBackend();
+      
 
 
     } else {

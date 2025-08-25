@@ -1,10 +1,13 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from "@angular/router";
 import {AuthService} from "./services/auth.service";
 import {PlaySoundService} from "./services/play-sound.service";
 
 import {Subscription} from "rxjs";
 import {ModalService} from "./services/modal.service";
+import {MainAPIService} from "./services/main-api.service";
+import {KeepAPIService} from "./services/keep-api.service";
+import {VideoService} from "./services/video.service";
 
 
 
@@ -38,10 +41,19 @@ export class AppComponent implements OnInit{
 
   showFloppyDisk$: any;
 
+
+
+
+
+
+
   constructor(  private router: Router,
                 private auth: AuthService,
                 private playSound: PlaySoundService,
-                 private modalService: ModalService
+                 private modalService: ModalService,
+                private mainAPI: MainAPIService,
+                private keepApiService: KeepAPIService,
+                private videoService: VideoService
   ) {
 
    // PARA TESTE this.auth.saveLocalDataOnBackend();
@@ -85,7 +97,42 @@ this.router.events.subscribe(event => {
 
 
 
+
+
+
+
+  @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
+
+
+  private async loadVideo() {
+    console.log('AppComponent carregado!');
+    const path = await this.videoService.getVideo('main-animation-compress');
+    console.log('Retorno do service no component:', path);
+
+    if (this.videoPlayer) {
+      this.videoPlayer.nativeElement.src = path;
+      this.videoPlayer.nativeElement.load();
+    }
+
+  }
+
+
+
+
+
   ngOnInit() {
+
+    this.loadVideo();
+
+// Garante que a API está acordada antes de qualquer coisa
+    this.keepApiService.ensureApiAwake();
+
+    // Opcional: mantém a API acordada em background
+    this.keepApiService.keepApiAwakeInBackground();
+
+
+
+
 
     this.modalService.showNewItemsModal$.subscribe(state => {
       this.showNewItemModal = state;

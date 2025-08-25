@@ -117,7 +117,7 @@ export class TimersService implements OnInit {
               strikes: data.strikes + 1
             });
             this._missionsSubject.next(this.authService.getDailyData());
-            this.authService.saveLocalDataOnBackend(); // Save to backend after all chests are opened
+            
         }
     }
   }
@@ -142,7 +142,7 @@ export class TimersService implements OnInit {
         rewardPerChest: 5
       });
       this._missionsSubject.next(this.authService.getDailyData());
-      this.authService.saveLocalDataOnBackend();
+      
     }
   }
 

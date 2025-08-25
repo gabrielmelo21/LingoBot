@@ -7,7 +7,7 @@
 -->
 
 
-<app-life-bar></app-life-bar>
+<app-life-bar *ngIf="!hideOnWin"></app-life-bar>
 
 
 
@@ -46,7 +46,7 @@
 
   <img class="character-img" [src]="elder"  *ngIf="this.dialogService.isActive">
 
- 
+
 
 <div class="blackboard-content center-element" *ngIf="!this.dialogService.isActive && !hideOnWin">
   <div class="blackboard-text">
@@ -54,7 +54,7 @@
       <div class="text-box scrollable">
      <span  class="translate-text">Toque para Traduzir</span>
         <div class="sentence-pair" *ngFor="let pair of sentencePairs; let i = index">
- 
+
 
           <p class="english-text" (click)="toggleTranslation(i)">
             {{ pair.en }}
@@ -70,7 +70,7 @@
     </div>
   </div>
 </div>
- 
+
 
   <div class="dialog-box"  *ngIf="this.dialogService.isActive && !this.dialogService.isFinalDialog">
     <div class="dialog-controls">
@@ -96,7 +96,7 @@
 
 
 
- 
+
 
 
 
@@ -119,7 +119,7 @@
   </div>
 
 
- 
+
 
 
 
