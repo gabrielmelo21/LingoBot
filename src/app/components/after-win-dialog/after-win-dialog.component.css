@@ -1,14 +1,16 @@
 :host {
   display: block;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-image: url('/assets/lingobot/menu-icons/after-win-background.webp');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  overflow: hidden; /* Ensures content doesn't spill outside */
-  /* For mobile 9:16 aspect ratio, we rely on background-size: cover and the viewport dimensions */
+  overflow: hidden;
+  z-index: 999;
 }
 
 .dialog-text {

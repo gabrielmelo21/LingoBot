@@ -1,0 +1,83 @@
+
+/* Imagem de fundo */
+.background-image {
+  position: fixed; /* Para cobrir toda a tela, independente do scroll */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: fill; /* ou 'fill' se quiser forçar esticar totalmente */
+  z-index: 1; /* abaixo dos demais elementos */
+}
+
+
+.item-modal {
+  position: fixed; /* cobre toda a tela mesmo com scroll */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 2rem;
+  width: 80%;
+  max-width: 500px;
+  z-index: 9999; /* muito alto para garantir sobreposição */
+}
+
+
+.item-image {
+  width: 50%;
+  height: auto;
+  margin: 1rem auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  margin: 0.5rem 0 0;
+  color: white;
+  background:rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.item-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.rarity-text {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  background:rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.common {
+  color: dimgray !important;
+  text-shadow: 0 0 3px white, 0 0 5px white;
+}
+
+.uncommon {
+  color: #3cb371 !important;
+  text-shadow: 0 0 3px black, 0 0 5px black;
+}
+
+.rare {
+  color: #1e90ff !important;
+  text-shadow: 0 0 3px black, 0 0 6px black;
+}
+
+.epic {
+  color: #8E24AA !important;
+  font-weight: bold !important;
+  text-shadow: 0 0 4px white, 0 0 8px mediumpurple !important;
+}
+
+.legendary {
+  color: darkgoldenrod !important;
+  font-weight: bold !important;
+  text-shadow: 0 0 4px black, 0 0 8px orange !important;
+}
