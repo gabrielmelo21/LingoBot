@@ -36,17 +36,16 @@ export class WritingComponent   {
   selectedOption: number | null = null;
   enunciado: any;
   alternativas: string[] = [];
-  progress: number = 0; // de 0 a 100
+  progress: number = 90; // de 0 a 100
   rightOrWrongAnswer: boolean = false;
   quizSession: boolean = false;
   caminhoImagem: string = 'assets/lingobot/elders/writing/pensando.webp';
   postMission: boolean = false;
   questionTitle: string = '';
   srcExercises: string = '';
+  hidePosWin: boolean = false;
 
   jackpot: boolean = this.jackpotService.isJackpot();
-  finalGoldReward: number = this.jackpot?this.rewardService.getCurrentGoldReward()*2:this.rewardService.getCurrentGoldReward();
-  finalXpReward: number = this.jackpot?this.rewardService.getCurrentXPReward()*2:this.rewardService.getCurrentXPReward();
   maxHp: number = 5;
   currentHp: number = 5;
   hpArray: number[] = [];
@@ -64,7 +63,7 @@ export class WritingComponent   {
                private cdr: ChangeDetectorRef,
                private timersService: TimersService,
               private eldersRoomGuardiamService: EldersRoomGuardiamService,
-              private rewardService: RewardService,
+              protected rewardService: RewardService,
               private jackpotService: JackpotService
   ) {
 
@@ -89,37 +88,23 @@ export class WritingComponent   {
     switch (this.authService.getDifficulty()) {
       case 'easy':
         this.srcExercises = 'assets/lingobot/json/writing/easy.json';
-        this.finalGoldReward = 10;
-        this.finalXpReward = 10000;
         break;
 
       case 'medium':
         this.srcExercises = 'assets/lingobot/json/writing/medium.json';
-        // Recompensa 1,5× da easy
-        this.finalGoldReward = 15;
-        this.finalXpReward = 15000;
         break;
 
       case 'hard':
         this.srcExercises = 'assets/lingobot/json/writing/hard.json';
-        // Recompensa 2× da easy
-        this.finalGoldReward = 20;
-        this.finalXpReward = 20000;
         break;
 
       case 'elder':
         this.srcExercises = 'assets/lingobot/json/writing/elder.json';
-        // Recompensa 3× da easy
-        this.finalGoldReward = 30;
-        this.finalXpReward = 30000;
         break;
 
       default:
-        // Fallback caso o valor seja inesperado
         console.warn(`Dificuldade desconhecida: ${this.authService.getDifficulty()}`);
         this.srcExercises = 'assets/lingobot/json/writing/easy.json';
-        this.finalGoldReward = 10;
-        this.finalXpReward = 10000;
         break;
     }
 
@@ -379,11 +364,7 @@ export class WritingComponent   {
       this.startAnimation();
       this.playSoundService.playWinSound()
       this.postMission = true;
-      this.dialog = 7
-      this.caminhoImagem = 'assets/lingobot/elders/writing/finish.webp';
-
-      this.rewardService.giveUserRewards(this.jackpot, 'writing');
-
+      this.hidePosWin = true;
     }else{
     this.caminhoImagem = 'assets/lingobot/elders/writing/pensando.webp';
     this.rightOrWrongAnswer = false;
@@ -407,12 +388,6 @@ export class WritingComponent   {
 
   updateProgress(etapa: number, total: number) {
     this.progress = (etapa / total) * 100;
-  }
-
-
-  goHome() {
-    this.playSoundService.playCleanSound()
-    this.router.navigate(['/babel-tower']);
   }
 
 

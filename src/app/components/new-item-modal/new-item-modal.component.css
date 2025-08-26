@@ -7,7 +7,7 @@
     width: 100vw;
     height: 100vh;
     object-fit: fill; /* ou 'fill' se quiser forçar esticar totalmente */
-    z-index: 1; /* abaixo dos demais elementos */
+    z-index: 1000 !important; /* abaixo dos demais elementos */
   }
 
 
@@ -20,7 +20,7 @@
     padding: 2rem;
     width: 80%;
     max-width: 500px;
-    z-index: 1000;
+    z-index: 1000 !important;
   }
 
   .item-image {

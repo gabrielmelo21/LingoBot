@@ -20,7 +20,7 @@
     <div class="dialog-baloon">
       <p *ngIf="dialog == 1">Olá, Eu sou o Ancião da Escrita. O que te traz aqui?</p>
       <p *ngIf="dialog == 2">Muito bem, vou te ajudar a aumentar seu vocabulário na língua inglesa.</p>
-      <p *ngIf="dialog == 3">Irei te propor 10 desafios de inglês, e no fim eu te dou <b style="color: goldenrod"> {{ this.finalGoldReward }} Gold Coins</b> & <b style="color: blueviolet">{{ this.finalXpReward }} LXP</b></p>
+      <p *ngIf="dialog == 3">Irei te propor 10 desafios de inglês, e no fim você receberá uma recompensa!</p>
     </div>
 
   </div>
@@ -34,10 +34,17 @@
   <div class="dialog-baloon">
     <p *ngIf="dialog == 5">Parabéns!! você acertou, agora vamos para próxima..</p>
     <p *ngIf="dialog == 6">Na verdade a resposta é <b style="color: goldenrod">{{this.respostaCorreta}}</b>, Vamos tentar novamente.</p>
-    <p *ngIf="dialog == 7">Muito bem, você venceu meu desafio, aqui está seu prêmio, <b style="color: goldenrod"> {{ this.finalGoldReward }} Gold Coins</b> & <b style="color: blueviolet">{{ this.finalXpReward }} LXP</b></p>
   </div>
 
 </div>
+
+<app-after-win-dialog
+  *ngIf="hidePosWin"
+  [jackpot]="this.jackpot"
+  [elder_img]="'assets/lingobot/elders/writing/finish.webp'"
+  [reward_xp]="this.rewardService.getCurrentXPReward()"
+  [reward_coins]="this.rewardService.getCurrentGoldReward()">
+</app-after-win-dialog>
 
 
     <img
@@ -129,13 +136,6 @@
          class="action-button"
          (click)="newExercise()"
          *ngIf="this.dialog == 6">
-
-       <img
-         src="assets/lingobot/menu-icons/finish.webp"
-         alt="Finalizar"
-         class="action-button"
-         (click)="goHome()"
-         *ngIf="this.dialog == 7">
      </div>
    </div>
 

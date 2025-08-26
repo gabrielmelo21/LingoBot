@@ -5,3 +5,7 @@ sempre me lembre de dar um git commit antes de fazermos alteração significativ
 response-language=pt-br
 generate-buddle command = npm run generate-buddle
 
+
+
+Contexto para o problema atual:
+
