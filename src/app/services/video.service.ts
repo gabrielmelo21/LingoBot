@@ -3,45 +3,63 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
 
 @Injectable({ providedIn: 'root' })
 export class VideoService {
-
-  private baseUrl = 'https://lingobot-api.onrender.com/static/videos'; // seu endpoint
+  private apiBase = 'https://lingobot-api.onrender.com/static/videos/';
 
   constructor() {
     console.log('VideoService inicializado!');
   }
 
-  async getVideo(videoName: string): Promise<string> {
-    const fileName = `${videoName}.mp4`;
+  async downloadVideoWithProgress(
+    videoName: string,
+    onProgress: (progress: number) => void
+  ): Promise<void> {
+    const url = `${this.apiBase}${videoName}`;
+    console.log('Baixando:', url);
 
+    const response = await fetch(url);
+    const reader = response.body?.getReader();
+    if (!reader) throw new Error('Não foi possível ler o stream do vídeo.');
+
+    const contentLength = Number(response.headers.get('Content-Length')) || 0;
+    let receivedLength = 0;
+    let chunks: Uint8Array[] = [];
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (value) {
+        chunks.push(value);
+        receivedLength += value.length;
+        if (contentLength) {
+          const progress = Math.round((receivedLength / contentLength) * 100);
+          onProgress(progress);
+        }
+      }
+    }
+
+    // Junta os chunks em um único Uint8Array
+    const blob = new Blob(chunks, { type: 'video/mp4' });
+    const base64Data = await this.blobToBase64(blob);
+
+    // Salva localmente
+    await Filesystem.writeFile({
+      path: videoName,
+      data: (base64Data as string).split(',')[1],
+      directory: Directory.Data,
+    });
+
+    console.log(`Vídeo ${videoName} baixado e salvo!`);
+  }
+
+  async getLocalVideo(videoName: string): Promise<string | null> {
     try {
-      // Tenta pegar o arquivo local
       const file = await Filesystem.readFile({
-        path: fileName,
-        directory: Directory.Data
-      });
-
-      console.log('Vídeo lido localmente (base64)');
-
-      // Retorna direto a base64
-      return `data:video/mp4;base64,${file.data}`;
-    } catch {
-      console.log('Vídeo não encontrado localmente, baixando do backend...');
-
-      const url = `${this.baseUrl}/${fileName}`;
-      const response = await fetch(url);
-      const blob = await response.blob();
-      const base64Data = await this.blobToBase64(blob);
-
-      // Salva local
-      await Filesystem.writeFile({
-        path: fileName,
-        data: (base64Data as string).split(',')[1], // salva sem o prefixo data:video/mp4;base64,
+        path: videoName,
         directory: Directory.Data,
       });
-
-      console.log('Vídeo baixado e salvo localmente');
-
-      return base64Data as string; // retorna completo com data:video/mp4;base64,...
+      return `data:video/mp4;base64,${file.data}`;
+    } catch {
+      return null;
     }
   }
 
@@ -53,4 +71,27 @@ export class VideoService {
       reader.readAsDataURL(blob);
     });
   }
+
+
+
+
+  /**
+   * Retorna a URL do vídeo pronta para o player, baixando se necessário
+   */
+  async getVideoForPlayer(videoName: string): Promise<string | null> {
+    // Tenta pegar local
+    let videoSrc = await this.getLocalVideo(videoName);
+
+    // Se não existir, baixa primeiro
+    if (!videoSrc) {
+      await this.downloadVideoWithProgress(videoName, (progress) => {
+        console.log(`Progresso do download ${videoName}: ${progress}%`);
+      });
+      videoSrc = await this.getLocalVideo(videoName);
+    }
+
+    return videoSrc;
+  }
+
+
 }

@@ -1,6 +1,14 @@
-<div class="container">
+<!-- Barra de progresso -->
+<div *ngIf="!isLoaded" class="progress-container">
+  <div class="progress-bar" [style.width.%]="loadingProgress"></div>
+  <span class="progress-text">{{ loadingProgress }}%</span>
+</div>
+
+
+<!-- Botões só aparecem quando isLoaded = true -->
+<div   class="container">
   <div class="overlay">
-    <div class="button-container2 animation-zoom">
+    <div class="button-container2 animation-zoom" *ngIf="isLoaded">
       <img
         src="assets/create-account.png"
         alt="Criar Conta"
@@ -17,234 +25,235 @@
   </div>
 </div>
 
+
 <!-- Estrutura do modal -->
-  <div class="modal-overlay" *ngIf="isModalOpen">
-    <div class="modal-content animation-zoom">
-      <!--
-      <img *ngIf="modalType=='login'" src="assets/lingobot/logo-final-beta.png" alt="Logo" style="margin:10px;width: 40%" class="animation-zoom">
-      -->
-      <button class="close-button" (click)="closeModal()">×</button>
+<div class="modal-overlay" *ngIf="isModalOpen">
+  <div class="modal-content animation-zoom">
+    <!--
+    <img *ngIf="modalType=='login'" src="assets/lingobot/logo-final-beta.png" alt="Logo" style="margin:10px;width: 40%" class="animation-zoom">
+    -->
+    <button class="close-button" (click)="closeModal()">×</button>
 
 
 
-      <!-- Mensagem de sucesso -->
-      <div style="text-align: center" *ngIf="successImg && !loadingDance">
-        <div class="center animation-zoom">
-          <img src="assets/check-mark.png" width="50%" height="50%">
-        </div><br>
-        <h4>Sucesso ao criar conta!</h4> <br>
-        <button mat-flat-button class="game-button" (click)="openModal('login')">Fazer Login</button>
-      </div>
-
-
-
-
-      <!-- Mensagem de falha -->
-      <div style="text-align: center" *ngIf="failImg">
-        <div class="center animation-zoom">
-          <img src="assets/error.png" width="50%" height="50%">
-        </div><br>
-        <h4>Falha ao criar conta, tente novamente.</h4><br>
-        <button (click)="tentarNovamente()" mat-fab extended class="game-button">Tentar Novamente</button>
-      </div>
+    <!-- Mensagem de sucesso -->
+    <div style="text-align: center" *ngIf="successImg && !loadingDance">
+      <div class="center animation-zoom">
+        <img src="assets/check-mark.png" width="50%" height="50%">
+      </div><br>
+      <h4>Sucesso ao criar conta!</h4> <br>
+      <button mat-flat-button class="game-button" (click)="openModal('login')">Fazer Login</button>
+    </div>
 
 
 
 
-      <div *ngIf="modalType=='criarConta'">
-        <div>
-          <!-- Spinner de loading -->
-          <div *ngIf="loginIsLoading" class="spinner-container">
-            <mat-spinner class="spinner" style="width: 100%;"></mat-spinner>
-            <br>
-            <h4 style="text-align: center">Loading...</h4>
-          </div>
+    <!-- Mensagem de falha -->
+    <div style="text-align: center" *ngIf="failImg">
+      <div class="center animation-zoom">
+        <img src="assets/error.png" width="50%" height="50%">
+      </div><br>
+      <h4>Falha ao criar conta, tente novamente.</h4><br>
+      <button (click)="tentarNovamente()" mat-fab extended class="game-button">Tentar Novamente</button>
+    </div>
 
 
 
 
-          <!-- Formulário dividido em partes -->
-          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" *ngIf="!this.successImg || !this.failImg ">
-            <!-- Parte 1: Nome, Sobrenome, Data de Nascimento e Gênero -->
-            <div *ngIf="currentStep === 1" class="form-step">
-              <h3>Passo 1: Informações Pessoais</h3>
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Nome</mat-label>
-                <input matInput formControlName="nome" type="text" required>
-                <mat-error *ngIf="signupForm.get('nome')?.invalid && signupForm.get('nome')?.touched">
-                  Nome é obrigatório
-                </mat-error>
-              </mat-form-field>
-              <div *ngIf="signupForm.controls['nome'].invalid && signupForm.controls['nome'].touched">
-                <small class="error">Nome inválido! Use apenas letras.</small>
-              </div>
-
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Sobrenome</mat-label>
-                <input matInput formControlName="sobrenome" type="text" required>
-                <mat-error *ngIf="signupForm.get('sobrenome')?.invalid && signupForm.get('sobrenome')?.touched">
-                  Sobrenome é obrigatório
-                </mat-error>
-              </mat-form-field>
-
-              <div *ngIf="signupForm.controls['sobrenome'].invalid && signupForm.controls['sobrenome'].touched">
-                <small class="error">Sobrenome inválido! Use apenas letras.</small>
-              </div>
-
-              <!-- Adicionando Data de Nascimento e Gênero -->
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Ano de Nascimento</mat-label>
-                <input matInput formControlName="dataNascimento" type="number" required>
-                <mat-error *ngIf="signupForm.get('dataNascimento')?.invalid && signupForm.get('dataNascimento')?.touched">
-                  Data de nascimento é obrigatória
-                </mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Gênero</mat-label>
-                <mat-select formControlName="genero" required>
-                  <mat-option value="masculino">Masculino</mat-option>
-                  <mat-option value="feminino">Feminino</mat-option>
-                  <mat-option value="outro">Outro</mat-option>
-                </mat-select>
-                <mat-error *ngIf="signupForm.get('genero')?.invalid && signupForm.get('genero')?.touched">
-                  Gênero é obrigatório
-                </mat-error>
-              </mat-form-field>
-
-              <div class="button-container">
-                <button mat-flat-button class="game-button" type="button" (click)="nextStep()">Próximo</button>
-              </div>
-            </div>
-
-            <!-- Parte 2: Email, Senha e Confirmar Senha -->
-            <div *ngIf="currentStep === 2" class="form-step">
-              <h3>Passo 2: Credenciais</h3>
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email" type="email" required>
-                <mat-error *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
-                  Email inválido
-                </mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Senha</mat-label>
-                <input matInput formControlName="senha" type="password" required>
-                <mat-error *ngIf="signupForm.get('senha')?.invalid && signupForm.get('senha')?.touched">
-                  A senha deve ter pelo menos 6 caracteres
-                </mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Confirme a Senha</mat-label>
-                <input matInput formControlName="confirmSenha" type="password" required>
-                <mat-error *ngIf="signupForm.get('confirmSenha')?.invalid && signupForm.get('confirmSenha')?.touched || signupForm.hasError('mismatch')">
-                  As senhas não correspondem
-                </mat-error>
-              </mat-form-field>
-
-              <div *ngIf="signupForm.hasError('mismatch') && signupForm.get('confirmSenha')?.touched" class="mismatch-message">
-                As senhas não correspondem
-              </div>
-
-
-              <!--
-              <mat-form-field appearance="fill" class="full-width">
-                <mat-label>Código de Referência (Opcional)</mat-label>
-                <input matInput formControlName="referal_code" type="text">
-              </mat-form-field>
-              -->
-
-
-
-
-
-
-
-              <video *ngIf="loadingDance" autoplay loop class="background-video">
-                <source src="assets/loading.mp4" type="video/mp4">
-              </video>
-
-              <!-- Loading -->
-              <div class="loading-dots" *ngIf="isLoading">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-              </div>
-
-
-
-              <style>
-                /* Vídeo de fundo */
-                .background-video {
-                  position: absolute;
-                  top: 0px; /* Alinha o topo do vídeo com o topo do contêiner */
-                  padding-bottom:50px !important;
-                  left: 0; /* Alinha a esquerda do vídeo com a esquerda do contêiner */
-                  width: 100%; /* Faz o vídeo ocupar 100% da largura do contêiner */
-                  height: auto; /* Faz o vídeo ocupar 100% da altura do contêiner */
-                  object-fit: cover; /* Faz o vídeo cobrir toda a área do contêiner */
-                  z-index: 5; /* Coloca o vídeo atrás dos outros elementos */
-
-
-                }
-
-              </style>
-
-
-
-
-
-              <div class="button-container">
-                <button mat-flat-button class="white-button" type="button" (click)="prevStep()">Voltar</button>
-                <button mat-flat-button class="game-button" type="submit">Criar conta</button>
-              </div>
-            </div>
-
-          </form>
+    <div *ngIf="modalType=='criarConta'">
+      <div>
+        <!-- Spinner de loading -->
+        <div *ngIf="loginIsLoading" class="spinner-container">
+          <mat-spinner class="spinner" style="width: 100%;"></mat-spinner>
+          <br>
+          <h4 style="text-align: center">Loading...</h4>
         </div>
-      </div>
 
-      <div *ngIf="modalType=='login'">
-        <form [formGroup]="loginForm" *ngIf="!loginIsLoading" (ngSubmit)="validateLogin()">
-          <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Email</mat-label>
-            <input matInput type="email" formControlName="email" required  >
-          </mat-form-field>
 
-          <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Senha</mat-label>
-            <input matInput type="password" formControlName="password" required   >
-          </mat-form-field>
 
-          <p style="color:red;" *ngIf="loginErrorMsg">{{ loginErrorMsg }}</p>
 
-          <div class="modal-actions">
-            <!--<button mat-flat-button class="white-button">Esqueci a Senha</button>-->
-            <button mat-flat-button class="game-button" type="submit">Entrar</button>
+        <!-- Formulário dividido em partes -->
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" *ngIf="!this.successImg || !this.failImg ">
+          <!-- Parte 1: Nome, Sobrenome, Data de Nascimento e Gênero -->
+          <div *ngIf="currentStep === 1" class="form-step">
+            <h3>Passo 1: Informações Pessoais</h3>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Nome</mat-label>
+              <input matInput formControlName="nome" type="text" required>
+              <mat-error *ngIf="signupForm.get('nome')?.invalid && signupForm.get('nome')?.touched">
+                Nome é obrigatório
+              </mat-error>
+            </mat-form-field>
+            <div *ngIf="signupForm.controls['nome'].invalid && signupForm.controls['nome'].touched">
+              <small class="error">Nome inválido! Use apenas letras.</small>
+            </div>
+
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Sobrenome</mat-label>
+              <input matInput formControlName="sobrenome" type="text" required>
+              <mat-error *ngIf="signupForm.get('sobrenome')?.invalid && signupForm.get('sobrenome')?.touched">
+                Sobrenome é obrigatório
+              </mat-error>
+            </mat-form-field>
+
+            <div *ngIf="signupForm.controls['sobrenome'].invalid && signupForm.controls['sobrenome'].touched">
+              <small class="error">Sobrenome inválido! Use apenas letras.</small>
+            </div>
+
+            <!-- Adicionando Data de Nascimento e Gênero -->
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Ano de Nascimento</mat-label>
+              <input matInput formControlName="dataNascimento" type="number" required>
+              <mat-error *ngIf="signupForm.get('dataNascimento')?.invalid && signupForm.get('dataNascimento')?.touched">
+                Data de nascimento é obrigatória
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Gênero</mat-label>
+              <mat-select formControlName="genero" required>
+                <mat-option value="masculino">Masculino</mat-option>
+                <mat-option value="feminino">Feminino</mat-option>
+                <mat-option value="outro">Outro</mat-option>
+              </mat-select>
+              <mat-error *ngIf="signupForm.get('genero')?.invalid && signupForm.get('genero')?.touched">
+                Gênero é obrigatório
+              </mat-error>
+            </mat-form-field>
+
+            <div class="button-container">
+              <button mat-flat-button class="game-button" type="button" (click)="nextStep()">Próximo</button>
+            </div>
           </div>
+
+          <!-- Parte 2: Email, Senha e Confirmar Senha -->
+          <div *ngIf="currentStep === 2" class="form-step">
+            <h3>Passo 2: Credenciais</h3>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" required>
+              <mat-error *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+                Email inválido
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Senha</mat-label>
+              <input matInput formControlName="senha" type="password" required>
+              <mat-error *ngIf="signupForm.get('senha')?.invalid && signupForm.get('senha')?.touched">
+                A senha deve ter pelo menos 6 caracteres
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Confirme a Senha</mat-label>
+              <input matInput formControlName="confirmSenha" type="password" required>
+              <mat-error *ngIf="signupForm.get('confirmSenha')?.invalid && signupForm.get('confirmSenha')?.touched || signupForm.hasError('mismatch')">
+                As senhas não correspondem
+              </mat-error>
+            </mat-form-field>
+
+            <div *ngIf="signupForm.hasError('mismatch') && signupForm.get('confirmSenha')?.touched" class="mismatch-message">
+              As senhas não correspondem
+            </div>
+
+
+            <!--
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Código de Referência (Opcional)</mat-label>
+              <input matInput formControlName="referal_code" type="text">
+            </mat-form-field>
+            -->
+
+
+
+
+
+
+
+            <video *ngIf="loadingDance" autoplay loop class="background-video">
+              <source src="assets/loading.mp4" type="video/mp4">
+            </video>
+
+            <!-- Loading -->
+            <div class="loading-dots" *ngIf="isLoading">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+
+
+
+            <style>
+              /* Vídeo de fundo */
+              .background-video {
+                position: absolute;
+                top: 0px; /* Alinha o topo do vídeo com o topo do contêiner */
+                padding-bottom:50px !important;
+                left: 0; /* Alinha a esquerda do vídeo com a esquerda do contêiner */
+                width: 100%; /* Faz o vídeo ocupar 100% da largura do contêiner */
+                height: auto; /* Faz o vídeo ocupar 100% da altura do contêiner */
+                object-fit: cover; /* Faz o vídeo cobrir toda a área do contêiner */
+                z-index: 5; /* Coloca o vídeo atrás dos outros elementos */
+
+
+              }
+
+            </style>
+
+
+
+
+
+            <div class="button-container">
+              <button mat-flat-button class="white-button" type="button" (click)="prevStep()">Voltar</button>
+              <button mat-flat-button class="game-button" type="submit">Criar conta</button>
+            </div>
+          </div>
+
         </form>
+      </div>
+    </div>
+
+    <div *ngIf="modalType=='login'">
+      <form [formGroup]="loginForm" *ngIf="!loginIsLoading" (ngSubmit)="validateLogin()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" required  >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="password" required   >
+        </mat-form-field>
+
+        <p style="color:red;" *ngIf="loginErrorMsg">{{ loginErrorMsg }}</p>
+
+        <div class="modal-actions">
+          <!--<button mat-flat-button class="white-button">Esqueci a Senha</button>-->
+          <button mat-flat-button class="game-button" type="submit">Entrar</button>
+        </div>
+      </form>
 
 
 
 
-          <!-- Loading -->
-          <div class="loading-dots"  *ngIf="loginIsLoading" style="margin-top: 50px;margin-bottom: 50px">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
-
-        <br>
-        <h4 style="text-align: center" *ngIf="loginIsLoading">Entrando...</h4>
-
-
+      <!-- Loading -->
+      <div class="loading-dots"  *ngIf="loginIsLoading" style="margin-top: 50px;margin-bottom: 50px">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
       </div>
 
-
+      <br>
+      <h4 style="text-align: center" *ngIf="loginIsLoading">Entrando...</h4>
 
 
     </div>
+
+
+
+
   </div>
+</div>
 

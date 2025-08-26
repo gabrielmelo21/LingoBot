@@ -16,6 +16,7 @@ import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.ser
 import {animate, transition, trigger} from "@angular/animations";
 import {ModalService} from "../../services/modal.service";
 import {VideoControllerService} from "../../services/video-controller.service";
+import {VideoService} from "../../services/video.service";
 
 
 
@@ -45,14 +46,22 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
   ngAfterViewInit() {
     this.loading = true;
     this.videoController.setup(this.videoPlayer);
-    this.loadVideoByAndar(); // ADD THIS LINE HERE
 
-    // Esconde o loading quando começar a tocar
+    // Só pede o vídeo para o service
+    this.videoService.getVideoForPlayer('mainVideo-compress.mp4').then((src) => {
+      if (src) {
+        this.videoPlayer.nativeElement.src = src;
+        this.videoPlayer.nativeElement.load();
+      }
+    });
+
     this.videoPlayer.nativeElement.addEventListener('playing', () => {
       this.loading = false;
     });
+
     this.renderizar();
   }
+
 
   loadVideoByAndar() {
 
@@ -114,32 +123,33 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
               protected timersService: TimersService,
               private eldersRoomGuardiamService:  EldersRoomGuardiamService,
               protected modalService: ModalService,
-              private videoController: VideoControllerService) {
+              private videoController: VideoControllerService,
+              private videoService: VideoService) {
     window.scrollTo(0, 0);
-  // this.playSound.playTowerSoundTrack()
-  //
+    // this.playSound.playTowerSoundTrack()
+    //
     this.planoUsuario = this.auth.getPlano();
 
     /**      for (let index = 0; index < 10; index++) {
-          this.auth.removeBatteryEnergy();
-      }
-              this.auth.addXpSkills('writing');
-          this.auth.checkLevelUp(800) **/
+     this.auth.removeBatteryEnergy();
+     }
+     this.auth.addXpSkills('writing');
+     this.auth.checkLevelUp(800) **/
 
 
-    this.auth.addRandomItemToUser();
+    //  this.auth.addRandomItemToUser();
 
 
   }
 
 
   subirAndar(){
-     this.andarAtual++;
-     localStorage.setItem("andarAtual", this.andarAtual.toString());
+    this.andarAtual++;
+    localStorage.setItem("andarAtual", this.andarAtual.toString());
   }
   descerAndar(){
-     this.andarAtual--;
-     localStorage.setItem("andarAtual", this.andarAtual.toString());
+    this.andarAtual--;
+    localStorage.setItem("andarAtual", this.andarAtual.toString());
   }
 
   renderizar(){
@@ -199,8 +209,8 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
         return; // Do nothing if disabled
       }
       if (this.andarAtual > 1) {
-         this.descerAndar();
-         this.loadVideoByAndar();
+        this.descerAndar();
+        this.loadVideoByAndar();
       }
     }
     this.renderizar(); // Call renderizar to update arrow states after command
@@ -211,7 +221,7 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
   }
 
 
-openModal(icon: any){
+  openModal(icon: any){
     switch (icon) {
 
       case 'assets/lingobot/menu-icons/compass.webp':
@@ -224,17 +234,17 @@ openModal(icon: any){
         break;
       case 'assets/lingobot/menu-icons/icone-home.webp':
         this.goToTower();
-       break;
+        break;
       case 'assets/lingobot/menu-icons/bag-icon.webp':
         this.playSound.playHologram();
         this.modalService.toggleItemsModal();
-       break;
+        break;
       case 'assets/lingobot/menu-icons/gear_icon.webp':
         this.playSound.playHologram();
         this.modalService.toggleSettingsModal();
         break;
     }
-}
+  }
 
 
 

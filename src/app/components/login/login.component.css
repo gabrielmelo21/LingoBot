@@ -368,3 +368,71 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.progress-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+
+  width: 80%;
+  height: 54px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  transition: width 0.2s ease-in-out;
+
+  background-image: url('/assets/lingobot/menu-icons/progress-bar.webp');
+  background-size: auto 100%; /* Mantém a altura fixa e largura proporcional */
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  color: #fff;
+  font-size: 18px;
+}

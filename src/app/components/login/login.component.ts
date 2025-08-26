@@ -4,6 +4,7 @@ import {MainAPIService} from "../../services/main-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
 import {AuthService} from "../../services/auth.service";
+import {VideoService} from "../../services/video.service";
 
 
 
@@ -13,10 +14,40 @@ import {AuthService} from "../../services/auth.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  videos = [
+    'listening-compress.mp4',
+    'mainVideo-compress.mp4',
+    'reading-chest-video-compress.mp4',
+    'speaking-free-compress.mp4',
+    'up_tower-compress.mp4'
+  ];
+
+
+  async ngOnInit() {
+    let completed = 0;
+    const totalVideos = this.videos.length;
+
+    for (const video of this.videos) {
+      await this.videoService.downloadVideoWithProgress(video, (progress) => {
+        // progress individual de cada vídeo
+        this.loadingProgress = Math.round(
+          ((completed + progress / 100) / totalVideos) * 100
+        );
+      });
+      completed++;
+    }
+
+    this.isLoaded = true;
+    console.log('Todos os vídeos foram baixados!');
+  }
+
 
   signupForm: FormGroup;
   loginForm: FormGroup;
+
+  loadingProgress = 0;
+  isLoaded = false;
 
 
   // Função para identificar se é PC ou celular
@@ -35,12 +66,11 @@ export class LoginComponent {
   }
 
 
-  isLoginMode = true;
   isLoading: boolean = false;
   loginIsLoading: boolean = false;
   successImg: boolean = false;
   failImg: boolean = false;
-  showPresentation = true;
+
   referralCode: string = '';
 
   tentarNovamente() {
@@ -57,9 +87,9 @@ export class LoginComponent {
 
   // Função para passar para a próxima etapa
   nextStep() {
-      if (this.currentStep === 1) {
-        this.currentStep = 2;
-      }
+    if (this.currentStep === 1) {
+      this.currentStep = 2;
+    }
   }
 
   // Função para voltar para a etapa anterior
@@ -90,13 +120,13 @@ export class LoginComponent {
   }
 
   constructor(
-    private route: ActivatedRoute,
     private auth: AuthService ,
     private playSound: PlaySoundService,
     private fb: FormBuilder,
     private mainAPI: MainAPIService,
     private router: Router,
-    ) {
+    private videoService: VideoService
+  ) {
 
 
 
@@ -123,10 +153,10 @@ export class LoginComponent {
 
 
     this.loginForm = this.fb.group({
-       email: [ '' , [Validators.required, Validators.email]],
-       password: [ '', [Validators.required, Validators.minLength(6)]],
+      email: [ '' , [Validators.required, Validators.email]],
+      password: [ '', [Validators.required, Validators.minLength(6)]],
     })
-   this.loginForm.value.email = "teste"
+    this.loginForm.value.email = "teste"
   }
 
 
