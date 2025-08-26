@@ -11,6 +11,7 @@ import {TimersService} from "../../services/timers.service";
 import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.service";
 import {LifeBarComponent} from "../life-bar/life-bar.component";
 import {RewardService} from "../../services/reward.service";
+import {VideoService} from "../../services/video.service";
 
 
 export interface ListeningExercise {
@@ -34,7 +35,7 @@ export class ListeningComponent implements AfterViewInit {
 
 
 
-  loading: boolean = true;
+  loading: boolean = false;
   finishButton: boolean = false;
   hidePosWin: boolean = false;
 
@@ -43,18 +44,29 @@ export class ListeningComponent implements AfterViewInit {
   @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
 
 
+
+
   ngAfterViewInit() {
     this.videoController.setup(this.videoPlayer);
+
     const video = this.videoPlayer.nativeElement;
+
+    // Carrega o vídeo local
+    this.videoService.getVideoForPlayer('listening-compress.mp4').then((src) => {
+      if (src) {
+        video.src = src;
+        video.load();
+      }
+    });
+
     video.addEventListener('playing', () => {
       this.loading = false;
     });
 
-
     this.gateController(0);
     this.muteOrUnmute(true);
-
   }
+
 
   muteOrUnmute(boolean: boolean) {
     return boolean?this.videoController.mute():this.videoController.unmute();
@@ -64,7 +76,7 @@ export class ListeningComponent implements AfterViewInit {
  gateController(number: number) {
     switch (number) {
       case 0:
- 
+
         this.videoController.pauseAt("00:00");
 
       break;
@@ -72,7 +84,7 @@ export class ListeningComponent implements AfterViewInit {
         // executa efeito do 0:01 ao 0:02, e fixa no 0:02
 
         this.videoController.playSegment("0:01", "0:02", () => {
-  
+
           this.videoController.pauseAt("00:02");
 
         });
@@ -80,7 +92,7 @@ export class ListeningComponent implements AfterViewInit {
       case 2:
 
         this.videoController.playSegment("0:03", "0:04", () => {
-         
+
                 this.videoController.pauseAt("00:04");
         });
         break;
@@ -88,7 +100,7 @@ export class ListeningComponent implements AfterViewInit {
 
         this.muteOrUnmute(false);
         this.videoController.playSegment("0:04", "0:05", () => {
- 
+
                this.videoController.pauseAt("00:05");
 
 
@@ -152,7 +164,8 @@ export class ListeningComponent implements AfterViewInit {
               protected dialogService: DialogService,
               private timerService: TimersService,
               private eldersRoomGuardiamService: EldersRoomGuardiamService,
-              private rewardService: RewardService) {
+              private rewardService: RewardService,
+              private videoService: VideoService) {
              // this.getAudioTTS("eu sou um audio gerado pelo python, i am audio from python")
 
 
