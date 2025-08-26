@@ -178,7 +178,7 @@ export class ListeningComponent implements AfterViewInit {
 
     this.dialogService.startDialog([
       { text: 'Olá, aventureiro. Eu sou o Ancião da Compreensão Auditiva, ou Listening Elder, e preciso da sua ajuda.',
-        expression: "assets/lingobot/elders/listening/parado.webp" },
+        expression: "assets/lingobot/elders/listening/focado.webp" },
       { text: 'Através daquele portão existe um tesouro, que acredito conter muitas moedas de ouro.',
       expression: "assets/lingobot/elders/listening/explicando.webp" },
       { text: 'Perceba que há 3 espaços vazios. Para abrir o portão, é preciso preenchê-los com as esferas de poder.',
@@ -236,6 +236,7 @@ export class ListeningComponent implements AfterViewInit {
     this.currentExercise = this.exercises[randomIndex];
     this.currentStep = 0;
     this.playCount = 0;
+    this.tipsCount = 0;
     this.playNextAudio();
   }
 
@@ -287,7 +288,7 @@ eldersExpressions(number: number){
       case 3:
 
 
-        this.elder = "assets/lingobot/elders/listening/win.webp";
+        this.elder = "assets/lingobot/elders/listening/parado.webp";
         this.playSoundService.playWin2()
       break;
     }
@@ -317,6 +318,7 @@ eldersExpressions(number: number){
         : this.currentExercise.phrase;
 
     if (resposta.trim().toLowerCase() === esperado.trim().toLowerCase()) {
+      this.tipsCount = 0;
       this.eldersExpressions(1)
       console.log("✅ Resposta correta:", resposta);
       inputElement.value = '';
@@ -349,7 +351,7 @@ eldersExpressions(number: number){
       this.lifeBarComponent.onWrongAnswer();
       this.eldersExpressions(2);
       console.log("❌ Resposta incorreta.");
-      //this.tipsCount++;
+      this.tipsCount++;
     }
   }
   getAudioTTS(text: string) {

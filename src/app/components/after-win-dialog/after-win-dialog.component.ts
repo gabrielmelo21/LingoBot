@@ -9,7 +9,7 @@ import {RewardService} from "../../services/reward.service";
   styleUrls: ['./after-win-dialog.component.css']
 })
 export class AfterWinDialogComponent implements OnInit{
-   
+
 chestWasOpen: boolean = false;
 chestImage: string = "assets/lingobot/itens/chest-closed.webp";
 
@@ -66,6 +66,6 @@ openChest() {
   @Input() reward_xp: number = 0;
   @Input() reward_coins: number = 0;
   @Input() dialogText: string = 'Parabéns, você venceu o desafio!';
-  @Input() leveledUpSkillIcon: string = 'assets/lingobot/skills/writing.webp'; // Default icon
+  @Input() leveledUpSkillIcon: string = 'assets/lingobot/skills/writing.webp';
 
 }

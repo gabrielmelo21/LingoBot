@@ -1,5 +1,3 @@
-
-
 .character-img {
   width: 80%;
   height: auto;
@@ -53,6 +51,9 @@
 }
 
 
+.baloon-container{
+  z-index: 11 !important;
+}
 
 
 
@@ -273,3 +274,44 @@
 }
 
 
+/* ========================================================================== */
+/* ========================== TIP BALOON STYLES =========================== */
+/* ========================================================================== */
+
+.tip-baloon {
+  position: absolute;
+  top: 11vh; /* Ajuste conforme necessário */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px; /* Ou o tamanho que preferir */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100 !important; /* Z-index alto para sobrepor outros elementos */
+}
+
+.dialog-baloon-tip {
+  background-image: url('/assets/lingobot/cenas_na_masmorra/balao_right.png');
+  background-size: 100% 100%; /* Para cobrir todo o balão */
+  background-repeat: no-repeat;
+  padding: 30px 40px; /* Ajuste conforme o design do seu balão */
+  min-width: 300px;
+  max-width: 600px;
+  min-height: 150px;
+  margin-bottom: -20px; /* Sobrepor um pouco com a imagem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.dialog-baloon-tip p {
+  font-size: 20px; /* Tamanho grande para o texto */
+  color: #000; /* Cor do texto */
+  text-align: center;
+  margin: 0;
+  padding: 10px 20px;
+  font-weight: bold;
+  line-height: 1.4;
+}
