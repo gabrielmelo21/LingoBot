@@ -100,20 +100,25 @@ this.router.events.subscribe(event => {
 
 
 
+  @ViewChild('videoPlayer', { static: true }) videoPlayer!: ElementRef<HTMLVideoElement>;
 
-  @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
 
+  private async loadVideo(videoName: string) {
+    console.log('Carregando vídeo via VideoService...');
 
-  private async loadVideo() {
-    console.log('AppComponent carregado!');
-    const path = await this.videoService.getVideo('main-animation-compress');
-    console.log('Retorno do service no component:', path);
+    try {
+      const base64Data = await this.videoService.getVideo(videoName);
 
-    if (this.videoPlayer) {
-      this.videoPlayer.nativeElement.src = path;
-      this.videoPlayer.nativeElement.load();
+      if (this.videoPlayer && base64Data) {
+        this.videoPlayer.nativeElement.src = base64Data;
+        this.videoPlayer.nativeElement.load();
+        this.videoPlayer.nativeElement.play()
+          .then(() => console.log('Vídeo iniciou com sucesso'))
+          .catch(err => console.error('Erro ao iniciar vídeo:', err));
+      }
+    } catch (err) {
+      console.error('Erro ao carregar vídeo:', err);
     }
-
   }
 
 
@@ -122,7 +127,7 @@ this.router.events.subscribe(event => {
 
   ngOnInit() {
 
-    this.loadVideo();
+    this.loadVideo('mainVideo-compress'); // nome do vídeo sem extensão
 
 // Garante que a API está acordada antes de qualquer coisa
     this.keepApiService.ensureApiAwake();

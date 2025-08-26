@@ -1,57 +1,47 @@
 import { Injectable } from '@angular/core';
 import { Filesystem, Directory } from '@capacitor/filesystem';
-import { getDownloadURL, ref } from 'firebase/storage';
-import { storage } from '../firebase.config';
 
 @Injectable({ providedIn: 'root' })
 export class VideoService {
+
+  private baseUrl = 'https://lingobot-api.onrender.com/static/videos'; // seu endpoint
 
   constructor() {
     console.log('VideoService inicializado!');
   }
 
   async getVideo(videoName: string): Promise<string> {
-    console.log('getVideo chamado para:', videoName);
-
     const fileName = `${videoName}.mp4`;
 
     try {
-      // tenta ler local
-      const uriResult = await Filesystem.getUri({
+      // Tenta pegar o arquivo local
+      const file = await Filesystem.readFile({
         path: fileName,
-        directory: Directory.Data,
+        directory: Directory.Data
       });
 
-      console.log('Vídeo encontrado localmente:', uriResult.uri);
-      return uriResult.uri;
-    } catch (err) {
-      console.log('Vídeo não encontrado localmente, baixando do Firebase...');
+      console.log('Vídeo lido localmente (base64)');
 
-      const url = await getDownloadURL(ref(storage, `videos/${fileName}`));
-      console.log('URL do Firebase:', url);
+      // Retorna direto a base64
+      return `data:video/mp4;base64,${file.data}`;
+    } catch {
+      console.log('Vídeo não encontrado localmente, baixando do backend...');
 
+      const url = `${this.baseUrl}/${fileName}`;
       const response = await fetch(url);
       const blob = await response.blob();
-      console.log('Blob do vídeo baixado, tamanho:', blob.size);
-
       const base64Data = await this.blobToBase64(blob);
-      console.log('Vídeo convertido para base64 (primeiros 100 chars):',
-        (base64Data as string).substring(0, 100));
 
+      // Salva local
       await Filesystem.writeFile({
         path: fileName,
-        data: base64Data as string,
-        directory: Directory.Data,
-      });
-      console.log('Vídeo salvo localmente!');
-
-      const uriResult = await Filesystem.getUri({
-        path: fileName,
+        data: (base64Data as string).split(',')[1], // salva sem o prefixo data:video/mp4;base64,
         directory: Directory.Data,
       });
 
-      console.log('Caminho final do vídeo local:', uriResult.uri);
-      return uriResult.uri;
+      console.log('Vídeo baixado e salvo localmente');
+
+      return base64Data as string; // retorna completo com data:video/mp4;base64,...
     }
   }
 
