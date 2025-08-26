@@ -11,6 +11,7 @@ import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.ser
 import {TimersService} from "../../services/timers.service";
 import {LifeBarComponent} from "../life-bar/life-bar.component";
 import {RewardService} from "../../services/reward.service";
+import {VideoService} from "../../services/video.service";
 
 
 export interface PuzzelText {
@@ -53,7 +54,8 @@ export class ReadingComponent implements AfterViewInit{
               private jackpotService: JackpotService,
               private eldersRoomGuardiamService: EldersRoomGuardiamService,
               private timerService: TimersService,
-              private rewardService: RewardService
+              private rewardService: RewardService,
+              private videoService: VideoService
 ) {
 
   const allowed = this.eldersRoomGuardiamService.verifyAccessOrRedirect('reading_was_paid');
@@ -129,28 +131,40 @@ export class ReadingComponent implements AfterViewInit{
 
 
 
-  loading: boolean = true;
+  loading: boolean = false;
 
   @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
 
 
   ngAfterViewInit() {
     this.videoController.setup(this.videoPlayer);
+
     const video = this.videoPlayer.nativeElement;
+
+    // Carrega o vídeo local usando o VideoService
+    this.videoService.getVideoForPlayer('reading-chest-video-compress.mp4').then((src) => {
+      if (src) {
+        video.src = src;
+        video.load();
+      }
+    });
+
     video.addEventListener('playing', () => {
       this.loading = false;
     });
+
     this.staticPadlock();
   }
 
 
-  staticPadlock() {  
+
+  staticPadlock() {
      this.videoController.pauseAt("0:01"); // vai para 8 segundos e pausa
   }
 
 
   shakePadLock() {
-    this.videoController.playSegment(0.1, 0.85, () => {
+    this.videoController.playSegment(0.1, 0.70, () => {
       this.staticPadlock(); // volta ao loop padrão
       console.log('Shake finalizado e loop restaurado');
     });
@@ -271,5 +285,5 @@ hideOnWin: boolean = false;
 
 
 
- 
+
 }
