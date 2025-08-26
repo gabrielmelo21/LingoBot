@@ -14,6 +14,7 @@ import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.ser
 import {TimersService} from "../../services/timers.service";
 import {RewardService} from "../../services/reward.service";
 import {PuzzelText} from "../reading/reading.component";
+import {VideoService} from "../../services/video.service";
 
 export interface MiniGameStep {
   question: string;
@@ -140,17 +141,30 @@ export class SpeakingComponent implements AfterViewInit {
   @ViewChild('videoPlayer', {static: false}) videoPlayer!: ElementRef<HTMLVideoElement>;
 
   ngAfterViewInit() {
-
     this.videoController.setup(this.videoPlayer);
+
     const video = this.videoPlayer.nativeElement;
+
+    // Carrega o vídeo local
+    this.videoService.getVideoForPlayer('speaking-free-compress.mp4').then((src) => {
+      if (src) {
+        video.src = src;
+        video.load();
+        video.play();
+      }
+    });
+
+
     video.addEventListener('playing', () => {
       this.loading = false;
     });
+
 
     this.playFirstDialog();
     this.dialogService.activeDialogId;
     this.dialogService.fullDialog;
   }
+
 
   constructor(
     private playSoundService: PlaySoundService,
@@ -163,7 +177,8 @@ export class SpeakingComponent implements AfterViewInit {
     private eldersRoomGuardiamService: EldersRoomGuardiamService,
     private timerService: TimersService,
     private rewardService: RewardService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private videoService: VideoService
   ) {
     this.playSoundService.playSpeakingFreeSoundTrack();
 

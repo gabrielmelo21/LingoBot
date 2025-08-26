@@ -8,17 +8,13 @@
   <app-mug-translate   top="25vh" left="1vh"    *ngIf="!this.firstDialog && !showReportModal && currentStep !== null" ></app-mug-translate>
 
 
-  <!-- Vídeo ao fundo -->
   <video
     #videoPlayer
     playsinline
     preload="auto"
     poster="assets/lingobot/cenas_na_masmorra/speaking/poster.webp"
     class="background-video"
-  >
-
-    <source src="https://firebasestorage.googleapis.com/v0/b/geekco-image-storage.appspot.com/o/speaking-free-compress.mp4?alt=media" type="video/mp4" />
-  </video>
+  ></video>
 
 
 
@@ -204,7 +200,8 @@
     [elder_img]="'assets/lingobot/elders/speaking/speaking.webp'"
     [reward_xp]="finalXpReward"
     [reward_coins]="finalGoldReward"
-    [dialogText]="'Parabéns! Você venceu o desafio e ganhou:'">
+    [dialogText]="'Parabéns! Você venceu o desafio e ganhou:'"
+    [leveledUpSkillIcon]="'assets/lingobot/skills/speaking.webp'">
   </app-after-win-dialog>
 
 
