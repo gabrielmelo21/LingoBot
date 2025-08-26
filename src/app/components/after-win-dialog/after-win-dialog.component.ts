@@ -21,6 +21,7 @@ chestImage: string = "assets/lingobot/itens/chest-closed.webp";
    ) { }
 
   ngOnInit() {
+    this.playSoundService.playWinTheme(true);
     // Som para o label de ouro (aparece aos 0.2s, animação dura 0.6s)
     setTimeout(() => {
       this.playSoundService.playPop();

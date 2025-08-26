@@ -106,6 +106,9 @@ export class PlaySoundService implements OnDestroy {
     this.playAudio('open-chest.mp3', false, loop, volume);
   }
 
+  playWinTheme(loop: boolean = false, volume: string = '50%') {
+    this.playAudio('jazz/victory-theme.mp3', false, loop, volume);
+  }
 
 
   // PRIVATE METHODS
