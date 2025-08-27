@@ -46,7 +46,7 @@ export class PlaySoundService implements OnDestroy {
 
 
   playItemDrop(loop: boolean = false, volume: string = '50%') {
-    this.playAudio("item-drop.mp3", false, loop, volume);
+    this.playAudio("item-drop.mp3", true, loop, volume);
   }
 
   playLevelUp(loop: boolean = false, volume: string = '50%') {
@@ -110,6 +110,12 @@ export class PlaySoundService implements OnDestroy {
     this.playAudio('jazz/victory-theme.mp3', false, loop, volume);
   }
 
+  playWritingTheme(loop: boolean = false, volume: string = '50%') {
+    this.playAudio('jazz/writing-theme-free.mp3', false, loop, volume);
+  }
+  playMainTheme(loop: boolean = false, volume: string = '50%') {
+    this.playAudio('jazz/main-theme.mp3', false, loop, volume);
+  }
 
   // PRIVATE METHODS
   private convertVolumeToNumber(volume: string): number {

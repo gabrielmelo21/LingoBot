@@ -72,11 +72,9 @@ export class WritingComponent   {
 
     this.bloquearScroll();
 
+    this.playSoundService.playWritingTheme(true, "20%")
+    this.cena = 2;
 
-     setTimeout(() =>{
-         this.cena = 2;
-       this.playSoundService.playPuzzleSolve()
-     }, 10) // 13000
 
 
   //  this.setupHpByDifficulty();

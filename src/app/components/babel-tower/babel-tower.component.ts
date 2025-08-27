@@ -74,8 +74,6 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
 
         this.videoController.setLoop("0:00", "00:12");
 
-
-
         break;
       case 1:
         // READING
@@ -127,6 +125,7 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
               private videoService: VideoService) {
     window.scrollTo(0, 0);
     // this.playSound.playTowerSoundTrack()
+    this.playSound.playMainTheme(true, "15%");
     //
     this.planoUsuario = this.auth.getPlano();
 
