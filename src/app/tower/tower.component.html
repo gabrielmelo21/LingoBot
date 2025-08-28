@@ -153,11 +153,14 @@
 <p class="daily-missions-description">Cumpra com os pre-requisitos para evoluir sua torre, e aumente seus prêmios</p>
 
 
+
+
+
   <div
     class="quest-swiper-container"
     (touchstart)="onTouchStart($event)"
     (touchend)="onTouchEnd($event)"
-    *ngIf="resultadoPedagio.podeSubir"
+    *ngIf="!resultadoPedagio.podeSubir"
   >
     <div class="quest-swiper-wrapper">
       <div

@@ -5,6 +5,7 @@ import {PlaySoundService} from "../services/play-sound.service";
 import {Router} from "@angular/router";
 import {NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {AuthService} from "../services/auth.service";
+import {RewardService} from "../services/reward.service";
 
 
 
@@ -34,7 +35,8 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
 
   constructor(private playSoundService: PlaySoundService,
               private router: Router,
-              private auth: AuthService) {
+              private auth: AuthService,
+              private rewardService: RewardService) {
 
     this.playSoundService.playSpaceTheme(true, "20%");
 
