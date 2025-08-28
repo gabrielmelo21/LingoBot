@@ -33,8 +33,8 @@ export class MenuItemsService {
 
   getMenuItems(subject: string): MenuItens[] {
     const isPremium = this.authService.getPlano(); // 'free' ou 'premium'
-    const addNumberGold = isPremium === 'free' ? 30 : 0;
-    const addNumberXP = isPremium === 'free' ? 30000 : 0;
+    const addNumberGold = isPremium === 'free' ? this.rewardService.getGoldDifference() : 0;
+    const addNumberXP = isPremium === 'free' ? this.rewardService.getXPDifference() : 0;
 
     switch (subject) {
       case 'writing':

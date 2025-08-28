@@ -363,6 +363,9 @@ export class WritingComponent   {
       this.playSoundService.playWinSound()
       this.postMission = true;
       this.hidePosWin = true;
+
+      this.rewardService.giveUserRewards(this.jackpot, "writing");
+
     }else{
     this.caminhoImagem = 'assets/lingobot/elders/writing/pensando.webp';
     this.rightOrWrongAnswer = false;

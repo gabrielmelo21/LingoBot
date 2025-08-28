@@ -157,6 +157,7 @@
     class="quest-swiper-container"
     (touchstart)="onTouchStart($event)"
     (touchend)="onTouchEnd($event)"
+    *ngIf="resultadoPedagio.podeSubir"
   >
     <div class="quest-swiper-wrapper">
       <div
@@ -202,7 +203,7 @@
     [src]="resultadoPedagio.podeSubir ? 'assets/lingobot/menu-icons/upgrade-tower.webp' : 'assets/lingobot/menu-icons/upgrade-tower-off.webp'"
     class="upgrade-button"
     [class.floating-button]="resultadoPedagio.podeSubir"
-    (click)="resultadoPedagio.podeSubir && openUpgradeModal()"
+    (click)="resultadoPedagio.podeSubir"
     [ngClass]="{'disabled-button': !resultadoPedagio.podeSubir}"
   >
 

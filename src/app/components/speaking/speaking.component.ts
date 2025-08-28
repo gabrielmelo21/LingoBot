@@ -518,8 +518,8 @@ export class SpeakingComponent implements AfterViewInit {
 
 
 
-    this.finalXpReward =  3000 * totalCorrect;
-    this.finalGoldReward =  10 * totalCorrect;
+    this.finalXpReward = 300 * totalCorrect;
+    this.finalGoldReward =  5 * totalCorrect;
 
 
   }

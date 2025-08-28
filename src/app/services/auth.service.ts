@@ -535,26 +535,6 @@ calcularSkillsMinimas(index: number): number {
     const levelMinimo = base.level + indexPedagio * 5;
     const skillsMinimas = this.calcularSkillsMinimas(indexPedagio);
 
-/**
-    console.log('[checkQuest] Custos:', {
-      custoTokens,
-      custoGemas,
-      levelMinimo,
-      skillsMinimas
-    });
-
-
-
-    requisitos.forEach((r, i) => {
-    console.log(`[checkQuest] Requisito ${i + 1}: ${r.nome} - ${r.completo ? 'OK' : 'FALHOU'}`);
-    });
-
-    const podeSubir = requisitos.every(r => r.completo);
-    console.log('[checkQuest] podeSubir:', podeSubir);
-
-
-
-**/
     const requisitos = [
       {
         nome: `Ter ${custoGemas} gemas`,

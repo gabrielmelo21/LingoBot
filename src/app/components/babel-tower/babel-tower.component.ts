@@ -17,6 +17,7 @@ import {animate, transition, trigger} from "@angular/animations";
 import {ModalService} from "../../services/modal.service";
 import {VideoControllerService} from "../../services/video-controller.service";
 import {VideoService} from "../../services/video.service";
+import {RewardService} from "../../services/reward.service";
 
 
 
@@ -42,9 +43,12 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
 
   isDownArrowDisabled: boolean = false;
   isUpArrowDisabled: boolean = false;
+  currentElderImage: string = "";
+  andarAtual: number = 0;
+  planoUsuario: string = '';
 
   ngAfterViewInit() {
-    this.loading = true;
+    setTimeout(() => this.loading = true);
     this.videoController.setup(this.videoPlayer);
 
     // Só pede o vídeo para o service
@@ -52,14 +56,13 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
       if (src) {
         this.videoPlayer.nativeElement.src = src;
         this.videoPlayer.nativeElement.load();
+        this.loadVideoByAndar();
       }
     });
 
     this.videoPlayer.nativeElement.addEventListener('playing', () => {
-      this.loading = false;
+      setTimeout(() => this.loading = false);
     });
-
-    this.renderizar();
   }
 
 
@@ -91,28 +94,13 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
   }
 
   ngOnInit() {
-
-
     // this.auth.syncData();
     this.auth.showUserData();
 
     if (!localStorage.getItem("andarAtual")) {localStorage.setItem("andarAtual", "1");}
     this.andarAtual = parseInt(localStorage.getItem("andarAtual") || "1", 10);
-
-
     this.renderizar();
-
-
   }
-
-
-
-  currentElderImage: string = "";
-
-  andarAtual: number = 0;
-
-  planoUsuario: string = '';
-
 
   constructor(private playSound: PlaySoundService,
               private router: Router,
@@ -122,7 +110,14 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
               private eldersRoomGuardiamService:  EldersRoomGuardiamService,
               protected modalService: ModalService,
               private videoController: VideoControllerService,
-              private videoService: VideoService) {
+              private videoService: VideoService,
+              private rewardService: RewardService) {
+
+    const result = this.rewardService.compareCurrentAndNextRewards('free', 'medium', 4);
+
+    console.log(result);
+
+
     window.scrollTo(0, 0);
     // this.playSound.playTowerSoundTrack()
     this.playSound.playMainTheme(true, "15%");

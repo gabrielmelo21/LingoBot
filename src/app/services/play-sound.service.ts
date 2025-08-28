@@ -117,6 +117,10 @@ export class PlaySoundService implements OnDestroy {
     this.playAudio('jazz/main-theme.mp3', false, loop, volume);
   }
 
+  playSpaceTheme(loop: boolean = false, volume: string = '50%') {
+    this.playAudio('space.mp3', false, loop, volume);
+  }
+
   // PRIVATE METHODS
   private convertVolumeToNumber(volume: string): number {
     const numericValue = parseFloat(volume.replace('%', ''));

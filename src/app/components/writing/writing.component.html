@@ -42,8 +42,8 @@
   *ngIf="hidePosWin"
   [jackpot]="this.jackpot"
   [elder_img]="'assets/lingobot/elders/writing/finish.webp'"
-  [reward_xp]="this.rewardService.getCurrentXPReward()"
-  [reward_coins]="this.rewardService.getCurrentGoldReward()">
+  [reward_xp]="this.jackpot?this.rewardService.getCurrentXPReward()*2:this.rewardService.getCurrentXPReward()"
+  [reward_coins]="this.jackpot?this.rewardService.getCurrentGoldReward()*2:this.rewardService.getCurrentGoldReward()">
 </app-after-win-dialog>
 
 

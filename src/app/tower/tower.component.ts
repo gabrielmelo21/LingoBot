@@ -36,6 +36,8 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
               private router: Router,
               private auth: AuthService) {
 
+    this.playSoundService.playSpaceTheme(true, "20%");
+
     this.executeAutoClickSequence();
 
     this.ranking = this.auth.getRanking();
