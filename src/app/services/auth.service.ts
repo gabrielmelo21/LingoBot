@@ -537,11 +537,11 @@ calcularSkillsMinimas(index: number): number {
 
     const requisitos = [
       {
-        nome: `Ter ${custoGemas} gemas`,
+        nome: `Ter ${custoGemas} Gemas`,
         completo: userData.gemas >= custoGemas
       },
       {
-        nome: `Ter ${custoTokens} gold coins`,
+        nome: `Ter ${custoTokens} Gold Coins`,
         completo: userData.tokens >= custoTokens
       },
       {

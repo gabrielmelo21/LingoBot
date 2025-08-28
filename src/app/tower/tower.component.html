@@ -5,11 +5,6 @@
 <img src="assets/lingobot/menu-icons/back.webp" class="back-button" (click)="back();" >
 
 
-<!-- Upgrade Quest button
-<img src="assets/lingobot/tools-icons/tablet-icon.webp" class="quest-upgrade-button"  (click)="checkQuest()" >
--->
-
-
 
 
 <!-- Colocar Levels aqui -->
@@ -45,99 +40,6 @@
 
 
 
-<!-- QUEST MODAL -->
-<ng-container *ngIf="checkQuestModal">
-  <button (click)="checkQuest()" class="fechar-btn">✕</button>
-
-  <img src="assets/lingobot/paper.webp" class="quest-check">
-
-
-  <div class="quest-check-text">
-    <p style="text-align: center;">
-      <b style="color: darkgoldenrod">Missão</b><br>
-      Para aumentar o nível de sua torre, cumpra com os pré-requisitos.
-    </p>
-  </div>
-
-  <div class="quest-check-infos">
-    <div *ngFor="let requisito of resultadoPedagio.requisitos; let i = index"
-         class="requisito-item"
-         [class.riscado]="requisito.completo">
-      <img class="requisito-icon" [src]="getRequisitoIcon(i)" alt="ícone">
-      <span>{{ requisito.nome }}</span>
-    </div>
-  </div>
-
-</ng-container>
-
-
-
-
-
-
-<!-- UPGRADE MODAL -->
-<ng-container *ngIf="upgradeModal">
-  <button (click)="openUpgradeModal()" class="fechar-btn">✕</button>
-
-  <img src="assets/lingobot/paper.webp" class="quest-check">
-
-
-  <div class="quest-check-text" style="top: 27vh !important;">
-    <p style="text-align: center;">
-      <b style="color: darkgoldenrod">Upgrade Your Tower</b>
-    </p>
-    <ul style="text-align: left; padding-left: 20px; margin-top: 10px;">
-      <li>Libera os andares {{firstNewFloor}}-{{lastNewFloor}}</li>
-      <li>Ganha 5% mais prêmios</li>
-    </ul>
-  </div>
-
-  <div class="upgrade-requirements">
-    <img src="assets/lingobot/itens/gemas.webp" class="gemas">
-    <span>{{this.gemasToUpgrade}}</span>
-    <br><br>
-    <img src="assets/lingobot/itens/gold.webp" class="coins">
-    <span>{{ this.coinsToUpgrade }}</span>
-  </div>
-
-
-
-
-
-</ng-container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -157,17 +59,42 @@
 
 
 
+  <!-- HTML Template -->
+  <div class="upgrade-requirements" *ngIf="upgradeActive">
+    <div class="requirements-header">
+      <h3 class="requirements-title">Upgrade Cost</h3>
+    </div>
 
+    <div class="requirements-content">
+      <div class="requirement-item">
+        <div class="requirement-icon-wrapper">
+          <img src="assets/lingobot/itens/gemas.webp" class="requirement-icon gemas">
+        </div>
+        <span class="requirement-value">{{ this.gemasToUpgrade }}</span>
+        <span class="requirement-label">Gems</span>
+      </div>
 
+      <div class="requirement-divider"></div>
+
+      <div class="requirement-item">
+        <div class="requirement-icon-wrapper">
+          <img src="assets/lingobot/itens/gold.webp" class="requirement-icon coins">
+        </div>
+        <span class="requirement-value">{{ this.coinsToUpgrade }}</span>
+        <span class="requirement-label">Coins</span>
+      </div>
+      <img src="assets/lingobot/menu-icons/confirm.webp" class="confirm-button" (click)="upgradeTower()">
+    </div>
+  </div>
 
 
 
 
   <!-- HTML Template -->
-  <div *ngIf="resultadoPedagio.podeSubir && rewardComparison" class="pre-upgrade-infos">
+  <div *ngIf="resultadoPedagio.podeSubir && rewardComparison && !upgradeActive" class="pre-upgrade-infos">
     <div class="rewards-container">
       <div class="current-rewards">
-        <h3 class="rewards-title">Recompensas Atuais</h3>
+        <h3 class="rewards-title">Current Rewards</h3>
         <div class="reward-item">
           <img src="assets/lingobot/itens/gold.webp" alt="Gold" class="reward-icon">
           <span class="reward-value">{{ rewardComparison.current.gold }}</span>
@@ -185,7 +112,7 @@
       </div>
 
       <div class="next-rewards">
-        <h3 class="rewards-title upgrade-title">Após Upgrade</h3>
+        <h3 class="rewards-title upgrade-title">Rewards after Upgrade</h3>
         <div class="reward-item upgraded">
           <img src="assets/lingobot/itens/gold.webp" alt="Gold" class="reward-icon">
           <span class="reward-value">{{ rewardComparison.next.gold }}</span>
@@ -249,10 +176,11 @@
 
   -->
   <img
+    *ngIf="!upgradeActive"
     [src]="resultadoPedagio.podeSubir ? 'assets/lingobot/menu-icons/upgrade-tower.webp' : 'assets/lingobot/menu-icons/upgrade-tower-off.webp'"
     class="upgrade-button"
     [class.floating-button]="resultadoPedagio.podeSubir"
-    (click)="resultadoPedagio.podeSubir"
+    (click)="setUpgradeActive()"
     [ngClass]="{'disabled-button': !resultadoPedagio.podeSubir}"
   >
 

@@ -28,9 +28,14 @@ interface Wave {
 })
 export class TowerComponent implements AfterViewInit, OnDestroy{
 
-
+  upgradeActive: boolean = false;
   coinsToUpgrade = 0;
   gemasToUpgrade = 0;
+
+  setUpgradeActive(){
+     this.upgradeActive = true;
+  }
+
 
   rewardComparison: {
     current: { gold: number; xp: number; ranking: number },
@@ -655,7 +660,7 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
     this.isVisible = true;
     let clickCount = 0;
     const totalClicks = 3;
-    const clickInterval = 800; // 800ms entre cada clique
+    const clickInterval = 500; // 500ms entre cada clique
 
     const autoClick = () => {
       if (clickCount < totalClicks) {
@@ -668,7 +673,7 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
         // Após os 3 cliques, espera um pouco e some
         setTimeout(() => {
           this.isVisible = false;
-        }, 500);
+        }, 100);
       }
     };
 

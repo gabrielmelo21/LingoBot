@@ -57,6 +57,7 @@ import { TheosRoomSpeakingComponent } from './questsPremium/theos-room-speaking/
 import { DoorsSecretReadingComponent } from './questsPremium/doors-secret-reading/doors-secret-reading.component';
 import { DoorsSecretListeningComponent } from './questsPremium/doors-secret-listening/doors-secret-listening.component';
 import { DoorsSecretSpeakingComponent } from './questsPremium/doors-secret-speaking/doors-secret-speaking.component';
+import { AchievementsComponent } from './achievements/achievements.component';
 
 
 
@@ -104,6 +105,7 @@ import { DoorsSecretSpeakingComponent } from './questsPremium/doors-secret-speak
     DoorsSecretReadingComponent,
     DoorsSecretListeningComponent,
     DoorsSecretSpeakingComponent,
+    AchievementsComponent,
 
 
 
