@@ -148,11 +148,57 @@
       [class.open]="modal && !isClosing"
       [class.close]="isClosing">
 
+  <div *ngIf="!resultadoPedagio.podeSubir">
+      <h2 class="daily-missions-title">Upgrade Tower</h2>
+      <p class="daily-missions-description">Cumpra com os pre-requisitos para evoluir sua torre, e aumente seus prêmios</p>
+  </div>
 
-<h2 class="daily-missions-title">Upgrade Tower</h2>
-<p class="daily-missions-description">Cumpra com os pre-requisitos para evoluir sua torre, e aumente seus prêmios</p>
 
 
+
+
+
+
+
+
+
+
+  <!-- HTML Template -->
+  <div *ngIf="resultadoPedagio.podeSubir && rewardComparison" class="pre-upgrade-infos">
+    <div class="rewards-container">
+      <div class="current-rewards">
+        <h3 class="rewards-title">Recompensas Atuais</h3>
+        <div class="reward-item">
+          <img src="assets/lingobot/itens/gold.webp" alt="Gold" class="reward-icon">
+          <span class="reward-value">{{ rewardComparison.current.gold }}</span>
+        </div>
+        <div class="reward-item">
+          <img src="assets/lingobot/menu-icons/level.webp" alt="XP" class="reward-icon">
+          <span class="reward-value">{{ rewardComparison.current.xp }}</span>
+        </div>
+      </div>
+
+      <div class="upgrade-arrow">
+        <div class="arrow-icon">
+          <img src="assets/lingobot/menu-icons/arrow_down.webp" alt="Arrow Down" class="arrow-image">
+        </div>
+      </div>
+
+      <div class="next-rewards">
+        <h3 class="rewards-title upgrade-title">Após Upgrade</h3>
+        <div class="reward-item upgraded">
+          <img src="assets/lingobot/itens/gold.webp" alt="Gold" class="reward-icon">
+          <span class="reward-value">{{ rewardComparison.next.gold }}</span>
+          <span class="upgrade-badge">+{{ rewardComparison.next.gold - rewardComparison.current.gold }}</span>
+        </div>
+        <div class="reward-item upgraded">
+          <img src="assets/lingobot/menu-icons/level.webp" alt="XP" class="reward-icon">
+          <span class="reward-value">{{ rewardComparison.next.xp }}</span>
+          <span class="upgrade-badge">+{{ rewardComparison.next.xp - rewardComparison.current.xp }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

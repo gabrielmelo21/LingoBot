@@ -32,13 +32,18 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
   coinsToUpgrade = 0;
   gemasToUpgrade = 0;
 
+  rewardComparison: {
+    current: { gold: number; xp: number; ranking: number },
+    next: { gold: number; xp: number; ranking: number }
+  } | undefined;
+
 
   constructor(private playSoundService: PlaySoundService,
               private router: Router,
               private auth: AuthService,
               private rewardService: RewardService) {
 
-    this.playSoundService.playSpaceTheme(true, "20%");
+    this.playSoundService.playSpaceTheme(true, "5%");
 
     this.executeAutoClickSequence();
 
@@ -49,6 +54,13 @@ export class TowerComponent implements AfterViewInit, OnDestroy{
     // pega os valores numericos do texto
     this.coinsToUpgrade = parseInt(this.resultadoPedagio.requisitos[1].nome.match(/\d+/)?.[0] || '0', 10);
     this.gemasToUpgrade = parseInt(this.resultadoPedagio.requisitos[0].nome.match(/\d+/)?.[0] || '0', 10);
+
+    // Chamar o método compareCurrentAndNextRewards aqui
+    this.rewardComparison = this.rewardService.compareCurrentAndNextRewards(
+      this.auth.getPlano(),
+      this.auth.getDifficulty(),
+      this.auth.getRanking()
+    );
 
 
   }

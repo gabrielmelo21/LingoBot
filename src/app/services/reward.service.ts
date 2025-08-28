@@ -120,6 +120,7 @@
       current: { gold: number; xp: number; ranking: number },
       next: { gold: number; xp: number; ranking: number }
     } {
+
       // pega multiplicador premium
       const premiumMult = isPremium === 'premium' ? this.premiumMultiplier : 1;
 
