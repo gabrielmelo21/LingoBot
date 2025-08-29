@@ -1,1 +1,83 @@
-<p>achievements works!</p>
+<div
+  class="holograma-card"
+  *ngIf="modal || isClosing"
+  [class.open]="modal && !isClosing"
+  [class.close]="isClosing"
+>
+  <h2 class="daily-missions-title">Achievements</h2>
+  <p class="daily-missions-description">Aumente o Level de sua torre para ganhar baús!</p>
+
+
+
+
+
+  <div class="achievements-container">
+    <div class="achievements-list">
+      <div
+        *ngFor="let achievement of achievements"
+        class="achievement-item"
+        [ngClass]="{
+        'unlocked': achievement.isUnlocked,
+        'locked': !achievement.isUnlocked,
+        'opened': achievement.isOpened
+      }"
+      >
+        <!-- Torre (lado esquerdo) -->
+        <div class="tower-icon">
+          <img
+            src="assets/lingobot/menu-icons/icone-home.webp"
+            alt="Tower Icon"
+            class="tower-image"
+          />
+        </div>
+
+        <!-- Informações centrais -->
+        <div class="achievement-info">
+          <h3 class="achievement-title">{{ achievement.title }}</h3>
+          <p class="achievement-description">{{ achievement.description }}</p>
+          <div class="achievement-status" *ngIf="!achievement.isUnlocked">
+            <span class="status-text">Torre Level {{ currentTowerLevel }}/{{ achievement.towerLevel }}</span>
+          </div>
+        </div>
+
+        <!-- Baú (lado direito) -->
+        <div class="chest-container">
+          <img
+            [src]="getChestImage(achievement)"
+            class="chest-image"
+            [ngClass]="{
+            'animate': isChestAnimated(achievement)
+          }"
+            (click)="openChest(achievement)"
+            alt="Chest"
+            draggable="false"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Conteúdo do modal de achievements (vazio por enquanto, como solicitado) -->
+  <div class="center-element x-position" (click)="closeAchievementsModal()">
+    <img src="assets/lingobot/menu-icons/x.webp" class="x">
+  </div>
+</div>
+
+<img
+  *ngIf="this.modal"
+  src="assets/lingobot/menu-icons/holograma.webp"
+  class="projetor entrar-da-esquerda"
+  [ngClass]="{'sair-para-esquerda': animandoSaida}"
+  (animationend)="onAnimationEnd($event)"
+>

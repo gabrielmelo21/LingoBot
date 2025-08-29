@@ -33,6 +33,12 @@ export interface DailyMissionData {
   [key: `chestWasOpen${number}`]: boolean;
 }
 
+export interface Achievements {
+  achievements: boolean[];
+}
+
+
+
 
 
 @Injectable({
@@ -149,6 +155,47 @@ export class AuthService {
     return userData.dailyMissions;
   }
 
+  getAchievements(): Achievements {
+    const userData = this.getUserData();
+
+    if (!userData || !userData.achievements) {
+      return { achievements: Array(55).fill(false) }; // Retorna um array de 55 falses como padrão
+    }
+
+    if (typeof userData.achievements === 'string') {
+      try {
+        return JSON.parse(userData.achievements);
+      } catch (e) {
+        console.error('Error parsing achievements from string:', e);
+        return { achievements: Array(55).fill(false) };
+      }
+    }
+    return userData.achievements;
+  }
+
+  setAchievements(index: number): void {
+    const userData = this.getUserData();
+    if (!userData) {
+      console.error('User data not found.');
+      return;
+    }
+
+    const currentAchievements = this.getAchievements();
+    if (index >= 0 && index < currentAchievements.achievements.length) {
+      currentAchievements.achievements[index] = true;
+
+      const updatedUser = {
+        ...userData,
+        achievements: JSON.stringify(currentAchievements)
+      };
+
+      localStorage.setItem(this.userKey, JSON.stringify(updatedUser));
+      this.userSubject.next(updatedUser);
+    } else {
+      console.error('Invalid achievement index.');
+    }
+  }
+
   updateDailyMission(updates: Partial<DailyMissionData>): void {
     const userData = this.getUserData();
     if (!userData) { // Check for userData being null
@@ -217,6 +264,11 @@ export class AuthService {
   getRanking(){
     const userData = this.getUserData();
     return  userData.ranking
+  }
+
+  getTowerLevel(): number {
+    const ranking = this.getRanking();
+    return Math.ceil(ranking / 4);
   }
   getUserName(){
     const userData = this.getUserData();

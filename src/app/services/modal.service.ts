@@ -82,6 +82,16 @@ export class ModalService {
 
 
 
+  // ACHIEVEMENTS MODAL
+  private showAchievementsModalSubject = new BehaviorSubject<boolean>(false);
+  showAchievementsModal$ = this.showAchievementsModalSubject.asObservable();
+
+  toggleAchievementsModal() {
+    this.showAchievementsModalSubject.next(!this.showAchievementsModalSubject.value);
+  }
+
+
+
   // SELECT QUESYT
   private showSelectQuestSubject = new BehaviorSubject<boolean>(false);
   showSelectQuestModal$ = this.showSelectQuestSubject.asObservable();

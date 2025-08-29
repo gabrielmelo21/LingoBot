@@ -15,6 +15,7 @@ import {VideoService} from "../../services/video.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  currentYear: number = new Date().getFullYear();
   videos = [
     'listening-compress.mp4',
     'mainVideo-compress.mp4',
@@ -176,8 +177,6 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.signupForm.valid) {
       this.isLoading = true;
-      this.loadingDance = true;
-
 
 
       const usuario = {
@@ -200,14 +199,9 @@ export class LoginComponent implements OnInit {
       this.mainAPI.criarUsuario(usuario).subscribe(
         (response) => {
           this.isLoading = false;
-          setTimeout(() => {
-            this.successImg = true;
-            this.modalType = "";
-            console.log(response)
-            this.loadingDance = false;
-          }, 5000)
-
-
+          this.successImg = true;
+          this.modalType = "";
+          console.log(response)
 
 
           this.loginForm.setValue({
@@ -219,7 +213,6 @@ export class LoginComponent implements OnInit {
         },
         (error) => {
           this.isLoading = false;
-          this.loadingDance = false;
           this.failImg = true;
           console.log(error);
           this.modalType = "";
@@ -230,7 +223,6 @@ export class LoginComponent implements OnInit {
 
 
   loginErrorMsg = ""
-  loadingDance: boolean = false;
 
 
   onLogin(email: string, password: string): void {

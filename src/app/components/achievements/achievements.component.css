@@ -1,0 +1,313 @@
+.daily-missions-title {
+  font-size: 2.5em;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.daily-missions-description {
+  font-size: 1.2em;
+  color: #eee;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ====== REWARD ALERT ====== */
+.reward-alert {
+  position: fixed;
+  top: 20px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #007bff, #8e2de2); /* Beautiful blue with a hint of purple */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px; /* Rounded corners */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 9999; /* Ensure it's on top */
+  opacity: 0; /* Start hidden for animation */
+}
+
+.reward-alert.show {
+  opacity: 1;
+  animation: fadeInSlideDown 0.5s forwards;
+}
+
+.reward-alert.hide {
+  animation: fadeOutSlideUp 0.5s forwards;
+}
+
+.reward-alert .gem-icon {
+  width: 30px; /* Adjust size as needed */
+  height: 30px;
+}
+
+/* Animations */
+@keyframes fadeInSlideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes fadeOutSlideUp {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50px);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container principal */
+.achievements-container {
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  max-height: 70vh;
+  overflow-y: auto;
+  margin-bottom: 100px;
+}
+
+/* Lista de achievements */
+.achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Item individual do achievement */
+.achievement-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  gap: 16px;
+}
+
+.achievement-item.unlocked {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.1);
+}
+
+.achievement-item.locked {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  opacity: 0.7;
+}
+
+.achievement-item.opened {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+/* Ícone da torre */
+.tower-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tower-image {
+  width: 50px;
+  height: 50px;
+  transition: filter 0.3s ease;
+  object-fit: contain;
+}
+
+.tower-image.grayscale {
+  filter: grayscale(100%) opacity(0.5);
+}
+
+/* Informações do achievement */
+.achievement-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.achievement-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.achievement-description {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.achievement-status {
+  margin-top: 4px;
+}
+
+.status-text {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+/* Container do baú */
+.chest-container {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagem do baú - usando os mesmos estilos do outro component */
+.chest-image {
+  width: 60px;
+  height: auto;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.2s ease;
+}
+
+.chest-image:active {
+  transform: scale(0.98);
+}
+
+.chest-image.grayscale {
+  filter: grayscale(100%) opacity(0.5);
+  cursor: not-allowed;
+}
+
+.achievement-item.unlocked .tower-image,
+.achievement-item.unlocked .chest-image {
+  filter: none; /* Remove qualquer filtro de grayscale */
+  opacity: 1; /* Garante opacidade total */
+}
+
+.achievement-item.locked .tower-image,
+.achievement-item.locked .chest-image {
+  filter: grayscale(100%) opacity(0.5);
+}
+
+/* Animação quando achievement desbloqueado e baú ainda não aberto */
+.chest-image.animate {
+  animation: shake 0.6s infinite, neon-gold 1.5s infinite alternate;
+}
+
+/* ====== ANIMATIONS ====== */
+@keyframes shake {
+  0% { transform: translate(0, 0) rotate(0); }
+  20% { transform: translate(-2px, -2px) rotate(-2deg); }
+  40% { transform: translate(2px, 2px) rotate(2deg); }
+  60% { transform: translate(-2px, -2px) rotate(-1deg); }
+  80% { transform: translate(2px, 2px) rotate(1deg); }
+  100% { transform: translate(0, 0) rotate(0); }
+}
+
+@keyframes neon-gold {
+  0%   { filter: drop-shadow(0 0 5px gold) drop-shadow(0 0 10px goldenrod); }
+  100% { filter: drop-shadow(0 0 15px gold) drop-shadow(0 0 26px goldenrod); }
+}
+
+/* Scroll customizado para webkit */
+.achievements-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.achievements-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.achievements-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.achievements-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+

@@ -48,6 +48,8 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
   planoUsuario: string = '';
 
   ngAfterViewInit() {
+
+
     setTimeout(() => this.loading = true);
     this.videoController.setup(this.videoPlayer);
 
@@ -112,10 +114,6 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
               private videoController: VideoControllerService,
               private videoService: VideoService,
               private rewardService: RewardService) {
-
-    const result = this.rewardService.compareCurrentAndNextRewards('free', 'medium', 4);
-
-    console.log(result);
 
 
     window.scrollTo(0, 0);
@@ -229,6 +227,10 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
       case 'assets/lingobot/menu-icons/icone-home.webp':
         this.goToTower();
         break;
+      case 'assets/lingobot/menu-icons/achievements.webp':
+        this.playSound.playHologram();
+        this.modalService.toggleAchievementsModal();
+        break;
       case 'assets/lingobot/menu-icons/bag-icon.webp':
         this.playSound.playHologram();
         this.modalService.toggleItemsModal();
@@ -246,6 +248,7 @@ export class BabelTowerComponent  implements OnInit, AfterViewInit{
 
   menuItems = [
     { icon: 'assets/lingobot/menu-icons/icone-home.webp' },
+    { icon: 'assets/lingobot/menu-icons/achievements.webp' },
     { icon: 'assets/lingobot/menu-icons/bag-icon.webp' },
     { icon: 'assets/lingobot/menu-icons/compass.webp' },
     { icon: 'assets/lingobot/menu-icons/holograma-icon.webp' },
