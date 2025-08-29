@@ -131,7 +131,7 @@ export class LoginComponent implements OnInit {
 
 
 
-    this.playSound.playTowerSoundTrack();
+    this.playSound.playTowerSoundTrack(true, "10%");
 
 
     // Criar o formulário com as validações PARA CRIAR CONTA
