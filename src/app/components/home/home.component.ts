@@ -1,5 +1,12 @@
-import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild, OnDestroy} from '@angular/core';
-import {Router} from "@angular/router";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  ViewChild,
+  OnDestroy
+} from '@angular/core';
+import { Router } from "@angular/router";
+import { VideoService } from "../../services/video.service";
 
 @Component({
   selector: 'app-home',
@@ -11,12 +18,15 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   loading: boolean = true;
   private loadingTimeout: any;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private videoService: VideoService
+  ) {}
 
   ngAfterViewInit(): void {
     const video = this.videoElement.nativeElement;
 
-    console.log('Video readyState:', video.readyState);
+    console.log('Video readyState inicial:', video.readyState);
 
     // Definir timeout para redirecionar caso o vídeo não carregue
     this.loadingTimeout = setTimeout(() => {
@@ -24,7 +34,24 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
         console.log('Video não carregou no tempo esperado, redirecionando...');
         this.router.navigate(['/babel-tower']);
       }
-    }, 10000); // 10 segundos - ajuste conforme necessário
+    }, 10000);
+
+    // Carregar o vídeo local (opening.mp4)
+    this.videoService.getVideoForPlayer('opening.mp4').then((src) => {
+      if (src) {
+        video.src = src;
+        video.load();
+
+        // Forçar play manualmente
+        video.play().catch(err => {
+          console.error('Erro ao tentar iniciar o vídeo:', err);
+          this.router.navigate(['/babel-tower']);
+        });
+      } else {
+        console.error('Não foi possível carregar o vídeo opening.mp4');
+        this.router.navigate(['/babel-tower']);
+      }
+    });
 
     // Eventos de carregamento
     video.addEventListener('loadstart', () => {
@@ -57,13 +84,6 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
     video.addEventListener('stalled', () => {
       console.log('Video travado/stalled');
-      // Opcional: redirecionar imediatamente ou esperar um pouco mais
-    });
-
-    // Forçar play manualmente
-    video.play().catch(err => {
-      console.error('Erro ao tentar iniciar o vídeo:', err);
-      this.router.navigate(['/babel-tower']);
     });
   }
 

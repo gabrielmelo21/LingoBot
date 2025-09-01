@@ -24,11 +24,9 @@ interface Achievement {
 export class AchievementsComponent implements OnInit, OnDestroy {
 
 
-
   currentTowerLevel: number = 0;
   achievements: Achievement[] = [];
   achievementsStatus: any = [];
-
 
 
   modal: boolean = false;
@@ -37,13 +35,14 @@ export class AchievementsComponent implements OnInit, OnDestroy {
   animandoEntrada = false;
   private modalSubscription!: Subscription; // Para gerenciar a inscrição
 
-
+  showRewardAlert: boolean = false;
+  currentRewardAmount: number = 0;
+  rewardAlertClass: string = '';
 
   constructor(private modalService: ModalService,
               private authService: AuthService,
-              ) { } // Injetar o ModalService
-
-
+  ) {
+  } // Injetar o ModalService
 
   loadData() {
     this.currentTowerLevel = this.authService.getTowerLevel();
@@ -76,7 +75,7 @@ export class AchievementsComponent implements OnInit, OnDestroy {
   }
 
   onAnimationEnd(event: AnimationEvent) {
-    const { animationName } = event;
+    const {animationName} = event;
 
     if (animationName === 'entrarDaEsquerda') {
       this.animandoEntrada = false;
@@ -88,21 +87,6 @@ export class AchievementsComponent implements OnInit, OnDestroy {
       this.isClosing = false;
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   generateAchievements() {
     this.achievements = [];
@@ -141,10 +125,23 @@ export class AchievementsComponent implements OnInit, OnDestroy {
       this.authService.setAchievements(achievement.id);
       achievement.isOpened = true;
 
-      // Aqui você pode adicionar a lógica para mostrar os efeitos do baú
-      // ou chamar o component que já tem os efeitos
+      // Adicionar 10 gemas para o usuário
+      this.authService.updateLocalUserData({gemas: 10})
+
+      // Ativar o reward alert idêntico ao do daily mission
+      this.currentRewardAmount = 10; // Define a quantidade de gemas
+      this.showRewardAlert = true; // Torna o elemento visível no DOM
+      this.rewardAlertClass = 'show'; // Ativa a animação de exibição
+
+      setTimeout(() => {
+        this.rewardAlertClass = 'hide'; // Ativa a animação de ocultação
+        setTimeout(() => {
+          this.showRewardAlert = false; // Remove do DOM após a animação de ocultação
+        }, 500); // Duração da animação fadeOutSlideUp
+      }, 1500); // Duração da animação de exibição + tempo de exibição (ex: 0.5s + 1s)
     }
   }
+
 
   isChestAnimated(achievement: Achievement): boolean {
     return achievement.isUnlocked && !achievement.isOpened;

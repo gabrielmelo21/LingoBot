@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { VideoService } from '../../services/video.service';
 
 @Component({
   selector: 'app-upgrade-tower-video',
@@ -11,7 +12,11 @@ export class UpgradeTowerVideoComponent implements AfterViewInit {
   @ViewChild('videoRef') videoElement!: ElementRef<HTMLVideoElement>;
   loading: boolean = true;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private videoService: VideoService
+  ) {}
 
   ngAfterViewInit(): void {
     // Verifica a flag de animação no momento certo
@@ -31,7 +36,24 @@ export class UpgradeTowerVideoComponent implements AfterViewInit {
 
       const video = this.videoElement.nativeElement;
 
-      // Adiciona eventos corretamente
+      // Carregar o vídeo local
+      this.videoService.getVideoForPlayer('up_tower-compress.mp4').then((src) => {
+        if (src) {
+          video.src = src;
+          video.load();
+
+          // Força play manualmente
+          video.play().catch(err => {
+            console.error('Erro ao tentar iniciar o vídeo:', err);
+            this.router.navigate(['/tower']);
+          });
+        } else {
+          console.error('Não foi possível carregar o vídeo up_tower-compress.mp4');
+          this.router.navigate(['/tower']);
+        }
+      });
+
+      // Eventos de vídeo
       video.addEventListener('playing', () => {
         this.loading = false;
       });
@@ -40,9 +62,9 @@ export class UpgradeTowerVideoComponent implements AfterViewInit {
         this.router.navigate(['/tower']);
       });
 
-      // Força a reprodução caso o autoplay falhe (em alguns navegadores)
-      video.play().catch(err => {
-        console.error('Erro ao tentar dar play no vídeo:', err);
+      video.addEventListener('error', (e) => {
+        console.error('Erro no vídeo:', e);
+        this.router.navigate(['/tower']);
       });
 
     } else if (upgradeAnimation === "false") {

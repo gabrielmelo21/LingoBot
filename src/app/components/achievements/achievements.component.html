@@ -69,9 +69,16 @@
 
 
   <!-- Conteúdo do modal de achievements (vazio por enquanto, como solicitado) -->
+  <!-- Conteúdo do modal de achievements (vazio por enquanto, como solicitado) -->
   <div class="center-element x-position" (click)="closeAchievementsModal()">
     <img src="assets/lingobot/menu-icons/x.webp" class="x">
   </div>
+</div>
+
+<!-- Reward Alert -->
+<div *ngIf="showRewardAlert" class="reward-alert" [ngClass]="rewardAlertClass">
+  <img src="assets/lingobot/itens/gemas.webp" alt="Gemas" class="gem-icon">
+  <span class="reward-text">+ {{ currentRewardAmount }}</span>
 </div>
 
 <img

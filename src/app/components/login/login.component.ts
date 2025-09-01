@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
     'mainVideo-compress.mp4',
     'reading-chest-video-compress.mp4',
     'speaking-free-compress.mp4',
-    'up_tower-compress.mp4'
+    'up_tower-compress.mp4',
+    'opening.mp4'
   ];
 
 

@@ -36,7 +36,7 @@ export class WritingComponent   {
   selectedOption: number | null = null;
   enunciado: any;
   alternativas: string[] = [];
-  progress: number = 90; // de 0 a 100
+  progress: number = 0; // de 0 a 100
   rightOrWrongAnswer: boolean = false;
   quizSession: boolean = false;
   caminhoImagem: string = 'assets/lingobot/elders/writing/pensando.webp';
