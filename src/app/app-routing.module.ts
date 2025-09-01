@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from "./components/login/login.component";
-import {MissoesDiariasComponent} from "./components/missoes-diarias/missoes-diarias.component";
-import {ReferralComponent} from "./components/referral/referral.component";
-import {RankingComponent} from "./components/ranking/ranking.component";
+
 
 
 import {SkillsComponent} from "./components/skills/skills.component";
@@ -34,9 +32,6 @@ const routes: Routes = [
   },
   { path: 'babel-tower', component: BabelTowerComponent },
   { path: 'login', component: LoginComponent },
-  { path: "missoes-diarias", component: MissoesDiariasComponent },
-  { path: "referral", component: ReferralComponent },
-  { path: "ranking", component: RankingComponent },
 
   { path: "skills", component: SkillsComponent  },
   { path: "tower", component: TowerComponent },

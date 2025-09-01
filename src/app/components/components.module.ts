@@ -14,19 +14,13 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {YouTubePlayerModule} from "@angular/youtube-player";
 import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
-import { ModalFeedbackComponent } from './modal-feedback/modal-feedback.component';
-import { MissoesDiariasComponent } from './missoes-diarias/missoes-diarias.component';
-import { ReferralComponent } from './referral/referral.component';
 
-import { BugReportComponent } from './bug-report/bug-report.component';
-import { RankingComponent } from './ranking/ranking.component';
 
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { SkillsComponent } from './skills/skills.component';
 import { BabelTowerComponent } from './babel-tower/babel-tower.component';
 import { MugTranslateComponent } from './mug-translate/mug-translate.component';
-import { NotebookComponent } from './notebook/notebook.component';
+
 import { WritingComponent } from './writing/writing.component';
 import { ReadingComponent } from './reading/reading.component';
 import { SpeakingComponent } from './speaking/speaking.component';
@@ -36,10 +30,7 @@ import { ItensComponent } from './itens/itens.component';
 import { LevelUpComponent } from './level-up/level-up.component';
 import { NewItemModalComponent } from './new-item-modal/new-item-modal.component';
 import { UpgradeTowerVideoComponent } from './upgrade-tower-video/upgrade-tower-video.component';
-import { WritingPremium1Component } from './writing-premium1/writing-premium1.component';
-import { ReadingPremium1Component } from './reading-premium1/reading-premium1.component';
-import { ListeningPremium1Component } from './listening-premium1/listening-premium1.component';
-import { SpeakingPremium1Component } from './speaking-premium1/speaking-premium1.component';
+
 
 import { AfterWinDialogComponent } from './after-win-dialog/after-win-dialog.component';
 import { LifeBarComponent } from './life-bar/life-bar.component';
@@ -65,17 +56,12 @@ import { AchievementsComponent } from './achievements/achievements.component';
   declarations: [
     HomeComponent,
     LoginComponent,
-    HeaderComponent,
-    ModalFeedbackComponent,
-    MissoesDiariasComponent,
-    ReferralComponent,
-    BugReportComponent,
-    RankingComponent,
+
     AccountSettingsComponent,
     SkillsComponent,
     BabelTowerComponent,
     MugTranslateComponent,
-    NotebookComponent,
+
     WritingComponent,
     ReadingComponent,
     SpeakingComponent,
@@ -85,10 +71,7 @@ import { AchievementsComponent } from './achievements/achievements.component';
     LevelUpComponent,
     NewItemModalComponent,
     UpgradeTowerVideoComponent,
-    WritingPremium1Component,
-    ReadingPremium1Component,
-    ListeningPremium1Component,
-    SpeakingPremium1Component,
+
 
     AfterWinDialogComponent,
     LifeBarComponent,
@@ -111,11 +94,11 @@ import { AchievementsComponent } from './achievements/achievements.component';
 
   ],
   exports: [
-    HeaderComponent,
+
     AccountSettingsComponent,
-    RankingComponent,
+
     MugTranslateComponent,
-    NotebookComponent,
+
     SettingsComponent,
     ItensComponent,
     LevelUpComponent,
