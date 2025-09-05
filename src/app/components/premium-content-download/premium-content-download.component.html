@@ -1,0 +1,9 @@
+<!-- Barra de progresso -->
+<div *ngIf="!isLoaded" class="progress-container">
+  <div class="progress-bar" [style.width.%]="loadingProgress"></div>
+  <span class="progress-text">{{ loadingProgress }}%</span>
+</div>
+
+<div   class="container">
+
+</div>

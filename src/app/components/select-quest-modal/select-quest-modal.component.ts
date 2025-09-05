@@ -48,7 +48,7 @@ export class SelectQuestModalComponent implements OnInit , OnDestroy, OnChanges{
   @Input() currentSubject: string = 'Nenhuma materia definida';
 
   isButtonDisabled: boolean = false;
-  isBouncing: boolean = false; 
+  isBouncing: boolean = false;
 
 
   constructor(private playSoundService: PlaySoundService,
@@ -68,7 +68,7 @@ export class SelectQuestModalComponent implements OnInit , OnDestroy, OnChanges{
   }
 
 
- 
+
 
  async startMission(questName: any, questSubject: any) {
   if (this.isBouncing) return;
@@ -82,6 +82,8 @@ export class SelectQuestModalComponent implements OnInit , OnDestroy, OnChanges{
     type: 'free' | 'premium';
     route: string;
   }
+
+
 
   const questMap: Record<string, QuestConfig> = {
     'The Correct Word':        { subject: 'writing',  type: 'free',    route: 'writing' },
@@ -121,9 +123,9 @@ export class SelectQuestModalComponent implements OnInit , OnDestroy, OnChanges{
 
   this.eldersRoomGuardiamService.markAsPaid(quest.subject);
   this.authService.removeBatteryEnergy();
- 
+
  await this.router.navigate([`/${quest.route}`], { skipLocationChange: false });
-  
+
   this.isBouncing = false;
 }
 
@@ -163,7 +165,7 @@ export class SelectQuestModalComponent implements OnInit , OnDestroy, OnChanges{
     this.sub = this.modalService.showSelectQuestModal$.subscribe(show => {
       this.modal = show;
     });
-    
+
     // Verificar a bateria quando o componente inicializar
     this.checkBatteryAndUpdateButton();
   }
@@ -172,19 +174,19 @@ export class SelectQuestModalComponent implements OnInit , OnDestroy, OnChanges{
   checkBatteryAndUpdateButton() {
     const battery = this.authService.getBattery();
     const currentQuest = this.menuItems[this.selectedIndex];
-    
+
     // Verificar se há bateria
     if (battery === 0) {
       this.isButtonDisabled = true;
       return;
     }
-    
+
     // Verificar se o usuário é free e a atividade é premium
     if (this.isPremium === 'free' && currentQuest && currentQuest.free === false) {
       this.isButtonDisabled = true;
       return;
     }
-    
+
     // Se passou por todas as verificações, pode usar o botão normal
     this.isButtonDisabled = false;
   }
@@ -305,5 +307,5 @@ export class SelectQuestModalComponent implements OnInit , OnDestroy, OnChanges{
 
   }
 
- 
+
 }

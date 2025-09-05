@@ -1,0 +1,67 @@
+.container {
+  position: fixed; /* Mudado de relative para fixed */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/assets/lingobot/premium-content/premium-content-download-splashart.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; /* Evita qualquer scroll no container */
+}
+
+
+.progress-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+
+  width: 80%;
+  height: 54px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+
+
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+  border-radius: 50px;
+
+  background-image: url('/assets/lingobot/menu-icons/progress-bar.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.progress-text {
+  /* Posiciona o texto no centro absoluto do container */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Estilos do texto conforme solicitado */
+  color: white;
+  font-weight: bold;
+  font-size: 18pt;
+
+  /* Garante que o texto fique acima da barra */
+  z-index: 1;
+
+  /* Remove margens e padding padrão */
+  margin: 0;
+  padding: 0;
+
+  /* Adiciona uma sombra sutil para melhor legibilidade */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+  /* Evita quebra de linha */
+  white-space: nowrap;
+}

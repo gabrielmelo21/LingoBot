@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {HomeComponent} from "./home/home.component";
 import {ComponentRoutingModule} from "./component-routing.module";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
@@ -12,7 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from "@angular/material/input";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {YouTubePlayerModule} from "@angular/youtube-player";
+
 import { LoginComponent } from './login/login.component';
 
 
@@ -49,12 +48,12 @@ import { DoorsSecretReadingComponent } from './questsPremium/doors-secret-readin
 import { DoorsSecretListeningComponent } from './questsPremium/doors-secret-listening/doors-secret-listening.component';
 import { DoorsSecretSpeakingComponent } from './questsPremium/doors-secret-speaking/doors-secret-speaking.component';
 import { AchievementsComponent } from './achievements/achievements.component';
+import { PremiumContentDownloadComponent } from './premium-content-download/premium-content-download.component';
 
 
 
 @NgModule({
   declarations: [
-    HomeComponent,
     LoginComponent,
 
     AccountSettingsComponent,
@@ -89,6 +88,7 @@ import { AchievementsComponent } from './achievements/achievements.component';
     DoorsSecretListeningComponent,
     DoorsSecretSpeakingComponent,
     AchievementsComponent,
+    PremiumContentDownloadComponent,
 
 
 
@@ -119,7 +119,7 @@ import { AchievementsComponent } from './achievements/achievements.component';
         ReactiveFormsModule,
         MatGridListModule,
         MatToolbarModule,
-        YouTubePlayerModule,
+
 
 
     ]

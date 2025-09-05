@@ -21,8 +21,7 @@ export class LoginComponent implements OnInit {
     'mainVideo-compress.mp4',
     'reading-chest-video-compress.mp4',
     'speaking-free-compress.mp4',
-    'up_tower-compress.mp4',
-    'opening.mp4'
+    'up_tower-compress.mp4'
   ];
 
 
@@ -241,7 +240,7 @@ export class LoginComponent implements OnInit {
           this.auth.setToken(response.access_token, response.refresh_token);
 
           // Redireciona o usuário para a página inicial (home)
-          this.router.navigate(['/home']);
+          this.router.navigate(['/babel-tower']);
         } else {
           // Caso a resposta não tenha os tokens, exibe uma mensagem de erro
           alert('Erro: Tokens não encontrados na resposta.');

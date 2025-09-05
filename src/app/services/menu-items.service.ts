@@ -53,7 +53,7 @@ export class MenuItemsService {
           {
             free: false,
             icon: 'assets/lingobot/quests-icons/theos-room-premium.webp',
-            questTitle: "Theos' Room",
+            questTitle: "Theo's Room",
             questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
             questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',
@@ -90,7 +90,7 @@ export class MenuItemsService {
           {
             free: false,
             icon: 'assets/lingobot/quests-icons/theos-room-premium.webp',
-            questTitle: "Theos' Room",
+            questTitle: "Theo's Room",
             questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
             questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',
@@ -127,7 +127,7 @@ export class MenuItemsService {
           {
             free: false,
             icon: 'assets/lingobot/quests-icons/theos-room-premium.webp',
-            questTitle: "Theos' Room",
+            questTitle: "Theo's Room",
             questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
             questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',
@@ -164,7 +164,7 @@ export class MenuItemsService {
           {
             free: false,
             icon: 'assets/lingobot/quests-icons/theos-room-premium.webp',
-            questTitle: "Theos' Room",
+            questTitle: "Theo's Room",
             questDescription: 'Alimente o Theo com brocolis e ganhe o báu com prêmios.',
             questXpReward: this.rewardService.getCurrentXPReward() + addNumberXP + 'XP',
             questGoldReward: this.rewardService.getCurrentGoldReward() + addNumberGold + 'G',

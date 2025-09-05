@@ -21,13 +21,16 @@ import { DoorsSecretReadingComponent } from "./components/questsPremium/doors-se
 import { DoorsSecretListeningComponent } from "./components/questsPremium/doors-secret-listening/doors-secret-listening.component";
 import { DoorsSecretSpeakingComponent } from "./components/questsPremium/doors-secret-speaking/doors-secret-speaking.component";
 import {LevelUpComponent} from "./components/level-up/level-up.component";
+import {
+  PremiumContentDownloadComponent
+} from "./components/premium-content-download/premium-content-download.component";
 
 
 
 const routes: Routes = [
   //{ path: '', redirectTo: 'login', pathMatch: 'full' },
   {
-    path: 'home',
+    path: 'babel-tower',
     loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule),
   },
   { path: 'babel-tower', component: BabelTowerComponent },
@@ -54,6 +57,11 @@ const routes: Routes = [
   { path: "doors_secret_reading", component: DoorsSecretReadingComponent },
   { path: "doors_secret_listening", component: DoorsSecretListeningComponent },
   { path: "doors_secret_speaking", component: DoorsSecretSpeakingComponent },
+
+
+
+
+  { path: "premium-content-download", component: PremiumContentDownloadComponent },
 
 
 ];

@@ -3,18 +3,15 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {PlaySoundService} from "../../services/play-sound.service";
 import {AuthService} from "../../services/auth.service";
-import {MainAPIService} from "../../services/main-api.service";
-import {interval, map, startWith, take, tap} from "rxjs";
-import { get as levenshtein } from 'fast-levenshtein';
-import {animate, state, style, transition, trigger} from "@angular/animations";
+
 import {VideoControllerService} from "../../services/video-controller.service";
 import {DialogService} from "../../services/dialog.service";
 import {JackpotService} from "../../services/jackpot.service";
 import {EldersRoomGuardiamService} from "../../services/elders-room-guardiam.service";
 import {TimersService} from "../../services/timers.service";
-import {RewardService} from "../../services/reward.service";
-import {PuzzelText} from "../reading/reading.component";
+
 import {VideoService} from "../../services/video.service";
+import {RewardService} from "../../services/reward.service";
 
 export interface MiniGameStep {
   question: string;
