@@ -1,0 +1,19 @@
+.video-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden !important; /* Mantém isso para prevenir scroll horizontal */
+  overflow-y: hidden !important; /* Permite apenas scroll vertical quando necessário */
+}
+
+.background-video {
+  overflow-x: hidden !important; /* Mantém isso para prevenir scroll horizontal */
+  overflow-y: hidden !important; /* Permite apenas scroll vertical quando necessário */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+}

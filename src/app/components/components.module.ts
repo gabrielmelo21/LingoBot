@@ -49,6 +49,7 @@ import { DoorsSecretListeningComponent } from './questsPremium/doors-secret-list
 import { DoorsSecretSpeakingComponent } from './questsPremium/doors-secret-speaking/doors-secret-speaking.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { PremiumContentDownloadComponent } from './premium-content-download/premium-content-download.component';
+import { TheoQuestComponent } from './questsPremium/theo-quest/theo-quest.component';
 
 
 
@@ -89,6 +90,7 @@ import { PremiumContentDownloadComponent } from './premium-content-download/prem
     DoorsSecretSpeakingComponent,
     AchievementsComponent,
     PremiumContentDownloadComponent,
+    TheoQuestComponent,
 
 
 

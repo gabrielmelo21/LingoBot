@@ -91,15 +91,12 @@ export class SelectQuestModalComponent implements OnInit , OnDestroy, OnChanges{
     'Magic Gramophone':        { subject: 'listening',type: 'free',    route: 'listening' },
     'The right way to speak':  { subject: 'speaking', type: 'free',    route: 'speaking' },
 
-    'Theos Room Writing':      { subject: 'writing',  type: 'premium', route: 'theos_room_writing' },
-    'Theos Room Reading':      { subject: 'reading',  type: 'premium', route: 'theos_room_reading' },
-    'Theos Room Listening':    { subject: 'listening',type: 'premium', route: 'theos_room_listening' },
-    'Theos Room Speaking':     { subject: 'speaking', type: 'premium', route: 'theos_room_speaking' },
+    'Theo Quest Writing':      { subject: 'writing',  type: 'premium', route: 'theo-quest' },
+    'Theo Quest Reading':      { subject: 'reading',  type: 'premium', route: 'theo-quest' },
+    'Theo Quest Listening':    { subject: 'listening',type: 'premium', route: 'theo-quest' },
+    'Theo Quest Speaking':     { subject: 'speaking', type: 'premium', route: 'theo-quest' },
 
-    'Doors Secret Writing':    { subject: 'writing',  type: 'premium', route: 'doors_secret_writing' },
-    'Doors Secret Reading':    { subject: 'reading',  type: 'premium', route: 'doors_secret_reading' },
-    'Doors Secret Listening':  { subject: 'listening',type: 'premium', route: 'doors_secret_listening' },
-    'Doors Secret Speaking':   { subject: 'speaking', type: 'premium', route: 'doors_secret_speaking' }
+
   };
 
   const quest = questMap[questName];
@@ -121,8 +118,24 @@ export class SelectQuestModalComponent implements OnInit , OnDestroy, OnChanges{
     return;
   }
 
+  if(quest.type === 'premium' && isPremiumUser) {
+
+    localStorage.setItem("redirect_route_after_download", quest.route);
+    quest.route = 'download-premium-content';
+    localStorage.setItem("quest-subject", quest.subject);
+
+
+
+
+   // rota = download
+    // rota_destino =  quest name  "theo-quest" component unico agora
+    //subject = writing
+
+  }
   this.eldersRoomGuardiamService.markAsPaid(quest.subject);
   this.authService.removeBatteryEnergy();
+
+
 
  await this.router.navigate([`/${quest.route}`], { skipLocationChange: false });
 

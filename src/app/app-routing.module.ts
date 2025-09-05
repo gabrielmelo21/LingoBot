@@ -24,6 +24,7 @@ import {LevelUpComponent} from "./components/level-up/level-up.component";
 import {
   PremiumContentDownloadComponent
 } from "./components/premium-content-download/premium-content-download.component";
+import {TheoQuestComponent} from "./components/questsPremium/theo-quest/theo-quest.component";
 
 
 
@@ -49,19 +50,11 @@ const routes: Routes = [
   { path: "speaking", component: SpeakingComponent },
 
   // PREMIUM
-  { path: "theos_room_writing", component: TheosRoomWritingComponent },
-  { path: "theos_room_reading", component: TheosRoomReadingComponent },
-  { path: "theos_room_listening", component: TheosRoomListeningComponent },
-  { path: "theos_room_speaking", component: TheosRoomSpeakingComponent },
-  { path: "doors_secret_writing", component: DoorsSecretWritingComponent },
-  { path: "doors_secret_reading", component: DoorsSecretReadingComponent },
-  { path: "doors_secret_listening", component: DoorsSecretListeningComponent },
-  { path: "doors_secret_speaking", component: DoorsSecretSpeakingComponent },
+  {path: "theo-quest", component: TheoQuestComponent},
 
 
-
-
-  { path: "premium-content-download", component: PremiumContentDownloadComponent },
+  // DOWNLOAD PREMIUM
+  { path: "download-premium-content", component: PremiumContentDownloadComponent },
 
 
 ];

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {VideoService} from "../../services/video.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-premium-content-download',
@@ -9,7 +10,7 @@ import {VideoService} from "../../services/video.service";
 })
 export class PremiumContentDownloadComponent  implements OnInit {
 
-  constructor(private videoService: VideoService) {
+  constructor(private videoService: VideoService, private router: Router) {
   }
 
   currentYear: number = new Date().getFullYear();
@@ -22,6 +23,10 @@ export class PremiumContentDownloadComponent  implements OnInit {
 
 
   async ngOnInit() {
+
+    const redirect = "/"+localStorage.getItem("redirect_route_after_download");
+
+
     let completed = 0;
     const totalVideos = this.videos.length;
 
@@ -37,6 +42,7 @@ export class PremiumContentDownloadComponent  implements OnInit {
 
     this.isLoaded = true;
     console.log('Todos os vídeos foram baixados!');
+    this.router.navigate([redirect]);
   }
 
 
